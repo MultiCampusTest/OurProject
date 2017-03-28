@@ -1,9 +1,11 @@
 package dao;
 
+import java.util.HashMap;
+
 public interface IMemberDao {
 	
-	public int insertMember(Member member);
-	public int updateMember(Member member);
+	public int insertMember(HashMap<String, Object> params);
+	public int updateMember(HashMap<String, Object> params);
 	public int deleteMember(String userid);
-	public Member selectOne(String userid);
+	public HashMap<String, Object> selectOne(String userid);
 }

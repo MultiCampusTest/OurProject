@@ -1,4 +1,4 @@
-package dao;
+package java.dao.contentsdao;
 
 import java.util.HashMap;
 import java.util.List;

@@ -1,4 +1,4 @@
-package dao;
+package java.dao.commentsdao;
 
 import java.util.HashMap;
 import java.util.List;

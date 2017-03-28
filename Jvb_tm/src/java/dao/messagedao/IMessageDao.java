@@ -1,4 +1,4 @@
-package dao;
+package java.dao.messagedao;
 
 import java.util.HashMap;
 import java.util.List;

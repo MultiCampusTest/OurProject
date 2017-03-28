@@ -1,4 +1,4 @@
-package dao;
+package java.dao.memberdao;
 
 import java.util.HashMap;
 

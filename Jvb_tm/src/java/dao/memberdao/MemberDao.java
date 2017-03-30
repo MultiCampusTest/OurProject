@@ -62,7 +62,7 @@ public class MemberDao implements IMemberDao {
 
 	@Override
 	public HashMap<String, Object> deletePwdCheck(String userid) {
-		// TODO Auto-generated method stub
+//		 TODO Auto-generated method stub
 		return null;
 	}
 	

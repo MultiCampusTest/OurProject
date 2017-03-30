@@ -47,7 +47,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		delete from member where userid = #{userid}
 	</delete>
 	
-<!-- 	회원탈퇴 비밀번호 확인 -->
+<!-- 	탈퇴 비밀번호 확인 -->
 	<select id="deletePwdCheck" parameterType="String" resultType="java.util.HashMap">
 		select pwd from member where userid = #{userid}
 	</select>

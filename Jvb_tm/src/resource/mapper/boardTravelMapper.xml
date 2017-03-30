@@ -2,4 +2,53 @@
 <!DOCTYPE mapper
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="dao.IBoardTravelDao"></mapper>
+<mapper namespace="dao.IBoardTravelDao">
+	
+	<sql id="b_code">
+		"t"
+	</sql>
+	
+	<insert id="insertBoardTravel" parameterType="java.util.HashMap">
+		insert into board (b_code, b_loc_category, b_sub_category,
+		 b_title, b_start_date, b_end_date, userid)
+		  values(<include refid="b_code"></include>,
+		   #{b_loc_category}, #{b_sub_category},
+		   0, #{b_start_date}, #{b_end_date}, #{userid});
+	</insert>
+
+	<update id="updateBoardTravel" parameterType="java.util.HashMap">
+		update board set b_code=#{b_code},
+		 b_loc_category=#{b_loc_category}, b_sub_category=#{b_sub_category},
+		  b_title=#{b_title}, b_start_date=#{b_start_date},
+		   b_end_date=#{b_end_date}, userid=#{userid} where b_idx=#{b_idx};
+	</update>
+	
+	<delete id="deleteBoardTravel" parameterType="int">
+		delete from board where b_idx=#{b_idx}
+	</delete>
+	
+	<select id="selectTravelOne" parameterType="int" resultType="java.util.HashMap">
+		select * from board b, img i where b.img_idx=#{b_idx} and  b.b_idx=i.img_code;
+	</select>
+	
+	<select id="selectTravelByLoc_Category" parameterType="String"
+	 resultType="java.util.HashMap">
+		select b.b_title, b.userid, b.b_date i.img_path 
+		from board b, image i where b.b_code=<include refid="b_code"></include>
+		 and b.b_loc_category=#{keyword} and  b.b_idx=i.img_code order by b.b_date desc;	
+	</select>
+	
+	<select id="selectTravelBySub_Category" parameterType="String"
+	 resultType="java.util.HashMap">
+		select b.b_title, b.userid, b.b_date i.img_path 
+		from board b, image i where b.b_code=<include refid="b_code"></include>
+		 and b.b_sub_category=#{keyword} and  b.b_idx=i.img_code order by b.b_date desc;	
+	</select>
+	
+	<select id="selectTravelByCode">
+		select * from board b, image i
+		 where b.b_code=<include refid="b_code"></include>
+		  and  b.b_idx=i.img_code order by b.b_date desc;
+	</select>
+	
+</mapper>

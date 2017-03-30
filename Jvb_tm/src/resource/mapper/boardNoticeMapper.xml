@@ -2,4 +2,41 @@
 <!DOCTYPE mapper
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="dao.IBoardNoticeDao"></mapper>
+<mapper namespace="dao.IBoardNoticeDao">
+
+	<sql id="b_code">
+		"n"
+	</sql>
+
+	<insert id="insertBoardNotice" parameterType="java.util.HashMap">
+		insert into board (b_code, loc_category, sub_category,
+		 title, start_date, end_date, userid) 
+		 values(<include refid="b_code"></include>, 0, 0, #{title}, 0, 0,  “admin”)
+	</insert>
+	
+	<update id="updateBoardNotice" parameterType="java.util.HashMap">
+		update board set b_code=#{b_code}, loc_category=#{loc_category}, 
+		sub_category=#{sub_category},  title=#{title}, 
+		start_date=#{start_date}, end_date=#{end_date}, 
+		content=#{content}, userid=#{userid} where b_idx=#{b_idx};
+	</update>
+	
+	<delete id="deleteBoardNotice" parameterType="int">
+		delete from board where b_idx=#{b_idx}
+	</delete>
+	
+	<select id="selectNoticeBySearch" parameterType="java.util.HashMap" 
+		resultType="java.util.HashMap">
+		select * from board where title like '%${keyword}%' order by b_date desc;
+	</select>
+	
+	<select id="selectNoticeOne" parameterType="int" resultType="java.util.HashMap">
+		select * from board where b_idx=#{b_idx}
+	</select>
+	
+	<select id="selectNoticeByCode" resultType="java.util.HashMap">
+		select * from board 
+		where b_code=<include refid="b_code"></include> order by b_date desc
+	</select>
+
+</mapper>

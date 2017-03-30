@@ -2,7 +2,7 @@ package java.commons;
 
 public class Constant {
 	
-	class Member{
+	class Member {
 		public static final String U_IDX="u_idx";
 		public static final String USERID="userid";
 		public static final String PWD="pwd";

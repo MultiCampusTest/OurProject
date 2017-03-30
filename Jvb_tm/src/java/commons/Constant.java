@@ -57,6 +57,7 @@ public class Constant {
 	
 	class Comments{
 		public static final String CM_IDX="cm_idx";
+		
 		public static final String B_IDX="b_idx";
 		public static final String USERID="userid";
 		public static final String CM_CONTENTS="cm_contents";

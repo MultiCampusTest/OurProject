@@ -60,7 +60,10 @@ public class Constant {
 		public static final String B_IDX="b_idx";
 		public static final String USERID="userid";
 		public static final String CM_CONTENTS="cm_contents";
-		public static final String CM_DATE="cm_date";		
+		public static final String CM_DATE="cm_date";
+		public static final String PARENT_CODE="parent_code";
+		public static final String GROUP_SEQ="group_seq";
+		public static final String GROUP_LV="group_lv";
 	}
 	
 	

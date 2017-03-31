@@ -13,5 +13,4 @@ public interface IBoardNoticeDao {
 	public List<HashMap<String, Object>> selectNoticeLimit(HashMap<String, Object> params);
 	public int getCountNotice();
 	
-	
 }

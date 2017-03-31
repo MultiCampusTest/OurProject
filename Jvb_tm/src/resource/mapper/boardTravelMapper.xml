@@ -51,4 +51,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		  and  b.b_idx=i.img_code order by b.b_date desc;
 	</select>
 	
+	<select id="selectTravelByLimit" resultType="java.util.HashMap" parameterType="java.util.HashMap">
+		select * from board where b_code=<include refid="b_code"></include> order by b_idx desc limit #{skip},#{count}
+	</select>
+	
+	<select id="getCountTravel" resultType="int" parameterType="int">
+		select count(*) from board where b_code=<include refid="b_code"></include>
+	</select>
+	
 </mapper>

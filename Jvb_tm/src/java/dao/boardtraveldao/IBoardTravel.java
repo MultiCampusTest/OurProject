@@ -8,8 +8,10 @@ public interface IBoardTravel {
 	public int insertBoardTravel(HashMap<String, Object> params);
 	public int updateBoardTravel(HashMap<String, Object> params);
 	public int deleteBoardTravel(int b_idx);
-	public HashMap<String, Object> selectOne(int b_idx); //세부글 보기 
-	public List<HashMap<String, Object>> selectByCode(HashMap<String, Object> params); //게시판 별 목록
-	public List<HashMap<String, Object>> selectByCategory(HashMap<String, Object> params);
-
+	public HashMap<String, Object> selectTravelOne(int b_idx); 
+	public List<HashMap<String, Object>> selectTravelByLoc_Category(HashMap<String, Object> params);
+	public List<HashMap<String, Object>> selectTravelBySub_Category(HashMap<String, Object> params);
+	public List<HashMap<String, Object>> selectByCode(HashMap<String, Object> params); 
+	public int getCountTravel();
+	
 }

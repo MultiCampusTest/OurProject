@@ -2,4 +2,22 @@
 <!DOCTYPE mapper
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="dao.IMatchingDao"></mapper>
+<mapper namespace="dao.IMatchingDao">
+
+<insert id="insertMatching" parameterType="java.util.HashMap">
+	insert into tb_matching values(0, #{mch_t_user},#{mch_g_user},#{b_idx},0,sysdate())
+</insert>
+
+<update id="updateMatching" parameterType="java.util.HashMap">
+	update tb_matching set mch_code=#{mch_code} where mch_idx=#{mch_idx}
+</update>
+
+<delete id="deleteMatching" parameterType="java.util.HashMap">
+	delete from tb_matching where mch_idx=#{mch_idx}
+</delete>
+
+<select id="selectMatchingByUserid" parameterType="String" resultType="java.util.HashMap">
+	select *from tb_matching where mch_t_userid=#{mch_userid} or mch_g_userid=#{mch_userid}
+</select>
+
+</mapper>

@@ -36,7 +36,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<select id="selectGuideByLimit" resultType="java.util.HashMap" parameterType="java.util.HashMap">
-		select * from board where b_code=<include refid="b_code"></include> order by b_date desc limit #{skip},#{count}
+		select * from board where b_code=<include refid="b_code"></include> order by b_idx desc limit #{skip},#{count}
 	</select>
 	
 	<select id="getCountGuide" resultType="int" parameterType="int">

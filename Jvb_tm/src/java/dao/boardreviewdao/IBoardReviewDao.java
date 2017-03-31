@@ -3,7 +3,7 @@ package java.dao.boardreviewdao;
 import java.util.HashMap;
 import java.util.List;
 
-public interface IBoardReview {
+public interface IBoardReviewDao {
 	
 	public int insertReviewBoard(HashMap<String, Object> params);
 	public int updateReviewBoard(HashMap<String, Object> params);

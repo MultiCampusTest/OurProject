@@ -2,4 +2,17 @@
 <!DOCTYPE mapper
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="dao.IMessageDao"></mapper>
+<mapper namespace="dao.IMessageDao">
+
+<insert id="insertMessage" parameterType="java.util.HashMap">
+insert into tb_message values(0, #{msg_send_userid}, #{msg_receive_userid}, #{msg_contents}, sysdate())
+</insert>
+
+<delete id="deleteMessage" parameterType="int">
+	delete from tb_message where msg_idx=#{msg_idx} 
+</delete>
+
+<select id="selectMessageByUserid" parameterType="String" resultType="java.util.HashMap">
+	select *from tb_message where msg_send_userid=#{msg_userid} or msg_receive_userid=#{msg_userid}
+</select>
+</mapper>

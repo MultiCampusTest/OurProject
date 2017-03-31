@@ -27,7 +27,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<select id="selectNoticeBySearch" parameterType="java.util.HashMap" 
 		resultType="java.util.HashMap">
-		select * from board where title like '%${keyword}%' order by b_date desc;
+		select * from board where title like '%${keyword}%' order by b_idx desc;
 	</select>
 	
 	<select id="selectNoticeOne" parameterType="int" resultType="java.util.HashMap">
@@ -36,7 +36,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<select id="selectNoticeByCode" resultType="java.util.HashMap">
 		select * from board 
-		where b_code=<include refid="b_code"></include> order by b_date desc
+		where b_code=<include refid="b_code"></include> order by b_idx desc
+	</select>
+	
+	<select id="selectNoticeByLimit" parameterType="java.util.HashMap">
+		select * from board where
+		 b_code=<include refid="b_cdoe"></include> 
+		 order by b_idx desc limit #{skip}, #{count}
+	</select>
+	
+	<select id="getCountNotice" resultType="int">
+		select count(*) from board
 	</select>
 
 </mapper>

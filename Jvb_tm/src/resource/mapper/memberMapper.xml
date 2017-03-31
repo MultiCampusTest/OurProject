@@ -43,8 +43,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</update>
 	
 <!-- 	회원탈퇴 -->
-	<delete id="deleteMember" parameterMap="String">
-		delete from member where userid = #{userid}
+	<delete id="deleteMember" parameterMap="int">
+		delete from member where u_idx = #{u_idx}
 	</delete>
 	
 <!-- 	탈퇴 비밀번호 확인 -->

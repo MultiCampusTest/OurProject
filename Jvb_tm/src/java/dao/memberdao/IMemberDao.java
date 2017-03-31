@@ -11,7 +11,7 @@ public interface IMemberDao {
 	public int insertMember(HashMap<String, Object> params);
 	public HashMap<String, Object> selectOne(String userid);
 	public int updateMember(HashMap<String, Object> params);
-	public int deleteMember(String userid);
+	public int deleteMember(int u_idx);
 	public HashMap<String, Object> deletePwdCheck(String userid);
 
 }

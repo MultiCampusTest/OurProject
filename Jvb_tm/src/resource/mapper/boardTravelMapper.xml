@@ -51,4 +51,5 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		  and  b.b_idx=i.img_code order by b.b_date desc;
 	</select>
 	
+	
 </mapper>

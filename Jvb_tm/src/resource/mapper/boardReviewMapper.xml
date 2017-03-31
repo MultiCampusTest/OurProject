@@ -36,4 +36,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select b.b_title, b.b_userid, b.b_date i.img_path from board b, image i where b.b_code=<include refid="b_code"></include> and b.b_sub_category=#{b_sub_category} and  b.b_idx=i.img_code order by b.b_date desc
 	</select>
 	
+	<select id="selectReviewByLimit" resultType="java.util.HashMap" parameterType="java.util.HashMap">
+		select * from board where b_code=<include refid="b_code"></include> order by b_idx desc limit #{skip},#{count}
+	</select>
+	
+	<select id="getCountReview" resultType="int" parameterType="int">
+		select count(*) from board where b_code=<include refid="b_code"></include>
+	</select>
+	
 </mapper>

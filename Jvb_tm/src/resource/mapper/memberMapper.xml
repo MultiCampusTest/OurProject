@@ -4,51 +4,41 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="dao.IMemberDao">
 
-<!-- 	로그인 체크 -->
 	<select id="loginCheck" parameterType="java.util.HashMap" resultType="java.util.HashMap">
 		select userid, pwd from member where userid = #{userid} and pwd = #{pwd}
 	</select>
 	
-<!-- 	아이디 찾기 -->
 	<select id="getId" parameterType="java.util.HashMap" resultType="java.util.HashMap">
 		select userid from member where name = #{name}, email = #{eamil}
 	</select>
 	
-<!-- 	비밀번호 찾기 -->
 	<select id="getPwd" parameterType="java.util.HashMap" resultType="java.util.HashMap">
 		select pwd from member where name = #{name} and userid = #{userid} and email = #{email}
 	</select>
 
-<!-- 	아이디 중복 검사 -->
 	<select id="idCheck" parameterType="String" resultType="java.util.HashMap">
 		select userid from member where userid = #{userid}
 	</select>
 
-<!-- 	회원가입 -->
 	<insert id="insertMember" parameterType="java.util.HashMap">
-		insert into member values(0, userid = #{userid}, pwd = #{pwd}, name = #{name},
-		email = #{email}, birthday = #{birthday}, nationality = #{nationality},
-		gender = #{gender}, introduce = #{introduce}, sysdate())
+		insert into member values(0, #{userid}, #{pwd}, #{name}, #{email},
+		#{birthday}, #{nationality}, #{gender}, #{introduce}, sysdate());
 	</insert>	
 
-<!-- 	회원정보 조회 -->
-	<select id="selectOne" parameterMap="String" resultType="java.util.HashMap">
-		select * from member where userid = #{userid}
-	</select>
-
-<!-- 	회원정보 수정 -->
 	<update id="updateMember" parameterType="java.util.HashMap">
 		update member set pwd = #{pwd}, name = #{name}, email = #{email},
 		nationality = #{nationality}, introduce = #{introduce} where userid = #{userid}
 	</update>
-	
-<!-- 	회원탈퇴 -->
+
 	<delete id="deleteMember" parameterMap="int">
 		delete from member where u_idx = #{u_idx}
 	</delete>
 	
-<!-- 	탈퇴 비밀번호 확인 -->
 	<select id="deletePwdCheck" parameterType="String" resultType="java.util.HashMap">
 		select pwd from member where userid = #{userid}
+	</select>
+
+	<select id="selectOne" parameterMap="String" resultType="java.util.HashMap">
+		select * from member where userid = #{userid}
 	</select>
 </mapper>

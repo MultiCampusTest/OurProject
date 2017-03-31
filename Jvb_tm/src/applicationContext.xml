@@ -7,17 +7,21 @@
 
 <context:component-scan base-package="java.dao.*"></context:component-scan>
 
-<bean class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+<bean class="org.springframework.jdbc.datasource.DriverManagerDataSource" id="dataSource">
 	<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
 	<property name="username" value="root"></property>
 	<property name="password" value="mysql"></property>
 	<property name="url" value="jdbc:mysql://localhost/~~~_db"></property>
 </bean>
 
-<bean class="org.mybatis.spring.SqlSessionFactoryBean">
+<bean class="org.mybatis.spring.SqlSessionFactoryBean" id="sqlSessionFactory">
 	<property name="mapperLocations" value="classpath*:resource/mapper/*.xml"></property>
 	<property name="typeAliasesPackage" value="dto.vo"></property>
 	<property name="dataSource" ref="dataSource"></property>
+</bean>
+
+<bean class="org.mybatis.spring.SqlSessionTemplate">
+	<constructor-arg ref="sqlSessionFactory"></constructor-arg>
 </bean>
 
 </beans>

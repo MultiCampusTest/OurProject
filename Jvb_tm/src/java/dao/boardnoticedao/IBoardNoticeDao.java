@@ -10,7 +10,7 @@ public interface IBoardNoticeDao {
 	public int deleteBoardNotice(int b_idx);
 	public HashMap<String, Object> selectOne(int b_idx);
 	public List<HashMap<String, Object>> selectByCode(HashMap<String, Object> params); 
-	public List<HashMap<String, Object>> selectNoticeLimit(HashMap<String, Object> params);
+	public List<HashMap<String, Object>> selectNoticeByLimit(HashMap<String, Object> params);
 	public int getCountNotice();
 	
 }

@@ -2,4 +2,22 @@
 <!DOCTYPE mapper
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="dao.IMapPositionDao"></mapper>
+<mapper namespace="dao.IMapPositionDao">
+
+	<insert id="insertMapPosition">
+		insert into mapposition values(0,
+		#{b_idx} ,#{map_marker},
+		#{map_lat_position}, #{map_loc_position})
+	</insert>
+
+	<delete id="deleteMapPosition">
+		delete from mapposition where b_idx=#{b_idx}
+	</delete>
+
+	<!-- 지도 마커 불러오기 -->
+	<select id="selectMapPositionByMarker">
+		select * from mapposition b_idx=#{b_idx}
+		order by map_marker
+	</select>
+
+</mapper>

@@ -2,4 +2,29 @@
 <!DOCTYPE mapper
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="dao.IContentsDao"></mapper>
+
+<mapper namespace="dao.IContentsDao">
+
+	<insert id="insertContents" parameterType="java.util.HashMap">
+		insert into contents
+		values(0, #{b_idx),
+		#{ct_num}, #{ct_contents})
+	</insert>
+
+	<update id="updateContents">
+		update contents set ct_contents=#{ct_contents}
+		where b_idx=#{b_idx}
+	</update>
+
+	<delete id="deleteContents">
+		delete from contents where b_idx=#{b_idx}
+	</delete>
+
+	<select id="selectContentsOne">
+		select * from contents where b_idx=#{b_idx}
+		order by
+		ct_num
+	</select>
+
+
+</mapper>

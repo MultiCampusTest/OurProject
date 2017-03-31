@@ -13,5 +13,5 @@ public interface IBoardTravel {
 	public List<HashMap<String, Object>> selectTravelBySub_Category(HashMap<String, Object> params);
 	public List<HashMap<String, Object>> selectByCode(HashMap<String, Object> params); 
 	public int getCountTravel();
-	
+	 
 }

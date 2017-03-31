@@ -48,6 +48,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="getCountNotice" resultType="int">
 		select count(*) from board
 	</select>
+	
 
 
 </mapper>

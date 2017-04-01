@@ -12,4 +12,6 @@ public interface IMemberDao {
 	public int deleteMember(int u_idx);
 	public HashMap<String, Object> deletePwdCheck(String userid);
 	public HashMap<String, Object> selectOne(String userid);
+	
+	
 }

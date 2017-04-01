@@ -79,4 +79,6 @@
 		<property name="mapperInterface" ref="dao.IMessageDao"></property>
 	</bean>
 	
+	
+	
 </beans>

@@ -80,4 +80,6 @@ public class MemberVo {
 				+ ", introduce=" + introduce + ", u_date=" + u_date + "]";
 	}
 	
+	
+	
 }

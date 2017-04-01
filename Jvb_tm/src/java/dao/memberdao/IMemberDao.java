@@ -1,17 +1,17 @@
 package java.dao.memberdao;
 
-import java.util.HashMap;
+import java.vo.MemberVo;
 
 public interface IMemberDao {
-	public HashMap<String, Object> loginCheck(HashMap<String, Object> params);
-	public HashMap<String, Object> getId(HashMap<String, Object> params);
-	public HashMap<String, Object> getPwd(HashMap<String, Object> params);
-	public HashMap<String, Object> idCheck(String userid);
-	public int insertMember(HashMap<String, Object> params);
-	public int updateMember(HashMap<String, Object> params);
+	public MemberVo loginCheck(MemberVo memberVo);
+	public MemberVo getId(MemberVo memberVo);
+	public MemberVo getPwd(MemberVo memberVo);
+	public MemberVo idCheck(String userid);
+	public int insertMember(MemberVo memberVo);
+	public int updateMember(MemberVo memberVo);
 	public int deleteMember(int u_idx);
-	public HashMap<String, Object> deletePwdCheck(String userid);
-	public HashMap<String, Object> selectOne(String userid);
+	public MemberVo deletePwdCheck(String userid);
+	public MemberVo selectOne(String userid);
 	
 	
 }

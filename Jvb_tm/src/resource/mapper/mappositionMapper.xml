@@ -4,20 +4,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="dao.IMapPositionDao">
 
-	<insert id="insertMapPosition">
-		insert into mapposition values(0,
-		#{b_idx} ,#{map_marker},
-		#{map_lat_position}, #{map_loc_position})
-	</insert>
+   <insert id="insertMapPosition" parameterType="MapPositionVo">
+      insert into mapposition values(0,
+      #{b_idx} ,#{map_marker},
+      #{map_lat_position}, #{map_loc_position})
+   </insert>
 
-	<delete id="deleteMapPosition">
-		delete from mapposition where b_idx=#{b_idx}
-	</delete>
+   <delete id="deleteMapPosition" parameterType="int">
+      delete from mapposition where b_idx=#{b_idx}
+   </delete>
 
-	<!-- 지도 마커 불러오기 -->
-	<select id="selectMapPositionByMarker">
-		select * from mapposition b_idx=#{b_idx}
-		order by map_marker
-	</select>
+   <!-- 지도 마커 불러오기 -->
+   <select id="selectMapPositionByMarker" parameterType="int" resultType="java.util.HashMap">
+      select * from mapposition b_idx=#{b_idx}
+      order by map_marker
+   </select>
 
 </mapper>

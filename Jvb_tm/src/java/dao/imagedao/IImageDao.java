@@ -1,13 +1,12 @@
 package java.dao.imagedao;
 
-import java.util.HashMap;
-import java.util.List;
+import java.vo.ImageVo;
 
 public interface IImageDao {
-	
-	public int insertImage(HashMap<String, Object> params);
-//	public int updateImage(Image image);
-	public int deleteImage(int img_idx);
-	public List<HashMap<String, Object>> selectByCode(String code);
+   public int insertImage(ImageVo imageVo);
+
+   public int updateImage(ImageVo imageVo);
+
+   public int deleteImage(int img_idx);
 
 }

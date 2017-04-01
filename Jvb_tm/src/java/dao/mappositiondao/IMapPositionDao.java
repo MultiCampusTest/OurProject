@@ -3,11 +3,13 @@ package java.dao.mappositiondao;
 import java.util.HashMap;
 import java.util.List;
 
-public interface IMapPositionDao {
+import java.vo.MapPositionVo;
 
-	public int insertMapPosition(HashMap<String, Object> params);
-//	public int updateMapPosition(MapPosition mapPosition);
-	public int deleteMapPosition(int b_idx);
-	public List<HashMap<String, Object>> selectByIdx(int b_idx);
-	
+public interface IMapPositionDao {
+   public int insertMapPosition(MapPositionVo mapPositionVo);
+
+   // public int updateMapPosition(MapPosition mapPosition);
+   public int deleteMapPosition(int b_idx);
+
+   public List<HashMap<String, Object>> selectByIdx(int b_idx);
 }

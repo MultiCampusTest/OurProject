@@ -9,10 +9,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select *from tb_comments where b_idx=#{b_idx}
 	</select>
 
-	public int insertComments(HashMap<String, Object> params);
-	public int updateComments(HashMap<String, Object> params);
-	public int deleteComments(int b_idx, int c_idx);
-	public List<HashMap<String, Object>> selectByIdx(int b_idx);
+<!-- 	public int insertComments(HashMap<String, Object> params); -->
+<!-- 	public int updateComments(HashMap<String, Object> params); -->
+<!-- 	public int deleteComments(int b_idx, int c_idx); -->
+<!-- 	public List<HashMap<String, Object>> selectByIdx(int b_idx); -->
 	
 
 

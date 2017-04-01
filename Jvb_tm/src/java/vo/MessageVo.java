@@ -37,7 +37,7 @@ public class MessageVo {
 	public void setMsg_date(String msg_date) {
 		this.msg_date = msg_date;
 	}
-	
+	 
 	@Override
 	public String toString() {
 		return "MessageVo [msg_idx=" + msg_idx + ", msg_send_userid=" + msg_send_userid + ", msg_receive_userid="

@@ -44,7 +44,7 @@ public class MatchingVo {
 	public void setMch_date(String mch_date) {
 		this.mch_date = mch_date;
 	}
-	
+	 
 	@Override
 	public String toString() {
 		return "MatchingVo [mch_idx=" + mch_idx + ", mch_t_userid=" + mch_t_userid + ", mch_g_userid=" + mch_g_userid

@@ -59,7 +59,6 @@ public class CommentsVo {
 		this.group_lv = group_lv;
 	}
 	
-	
 	@Override
 	public String toString() {
 		return "CommentsVo [cm_idx=" + cm_idx + ", b_idx=" + b_idx + ", userid=" + userid + ", cm_contents="

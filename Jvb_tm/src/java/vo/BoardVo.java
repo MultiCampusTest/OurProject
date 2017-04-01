@@ -93,4 +93,5 @@ public class BoardVo {
 				+ ", b_end_date=" + b_end_date + ", userid=" + userid + ", b_date=" + b_date + "]";
 	}
 	
+	
 }

@@ -8,13 +8,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		"n"
 	</sql>
 
-	<insert id="insertBoardNotice" parameterType="java.util.HashMap">
+	<insert id="insertBoardNotice" parameterType="boardVo">
 		insert into board (b_code, loc_category, sub_category,
 		 title, start_date, end_date, userid) 
 		 values(<include refid="b_code"></include>, 0, 0, #{title}, 0, 0,  “admin”)
 	</insert>
 	
-	<update id="updateBoardNotice" parameterType="java.util.HashMap">
+	<update id="updateBoardNotice" parameterType="boardVo">
 		update board set b_code=#{b_code}, loc_category=#{loc_category}, 
 		sub_category=#{sub_category},  title=#{title}, 
 		start_date=#{start_date}, end_date=#{end_date}, 
@@ -25,21 +25,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		delete from board where b_idx=#{b_idx}
 	</delete>
 	
-	<select id="selectNoticeBySearch" parameterType="java.util.HashMap" 
-		resultType="java.util.HashMap">
-		select * from board where title like '%${keyword}%' order by b_idx desc;
-	</select>
-	
 	<select id="selectNoticeOne" parameterType="int" resultType="java.util.HashMap">
 		select * from board where b_idx=#{b_idx}
 	</select>
 	
-	<select id="selectNoticeByCode" resultType="java.util.HashMap">
+	<select id="selectNoticeBySearch" parameterType="java.util.HashMap" 
+		resultType="boardVo">
+		select * from board where title like '%${keyword}%' order by b_idx desc;
+	</select>
+	
+	<select id="selectNoticeByCode" resultType="boardVo">
 		select * from board 
 		where b_code=<include refid="b_code"></include> order by b_idx desc
 	</select>
 	
-	<select id="selectNoticeByLimit" parameterType="java.util.HashMap">
+	<select id="selectNoticeByLimit" parameterType="java.util.HashMap" resultType="boardVo">
 		select * from board where
 		 b_code=<include refid="b_cdoe"></include> 
 		 order by b_idx desc limit #{skip}, #{count}

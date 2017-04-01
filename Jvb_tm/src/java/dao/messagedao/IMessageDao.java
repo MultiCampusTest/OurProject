@@ -2,13 +2,14 @@ package java.dao.messagedao;
 
 import java.util.HashMap;
 import java.util.List;
+import java.vo.MessageVo;
+
 
 public interface IMessageDao {
 	
-	public int insertMessage(HashMap<String, Object> params);
-	public int deleteMessage(HashMap<String, Object> params);
-	public List<HashMap<String, Object>> selectMessageByUserid(String msg_userid); 
+	public int insertMessage(MessageVo messageVo);
+	public int deleteMessage(int msg_idx);
+	public List<MessageVo> selectMessageByUserid(String msg_userid); 
 
-	
 
 }

@@ -16,7 +16,7 @@
 
 	<bean class="org.mybatis.spring.SqlSessionFactoryBean" id="sqlSessionFactory">
 		<property name="mapperLocations" value="classpath*:resource/mapper/*.xml"></property>
-		<property name="typeAliasesPackage" value="dto.vo"></property>
+		<property name="typeAliasesPackage" value="java.vo"></property>
 		<property name="dataSource" ref="dataSource"></property>
 	</bean>
 

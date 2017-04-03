@@ -28,4 +28,5 @@ public interface IBoardTravelDao {
 	public List<BoardVo> selectTravelByLimit(HashMap<String, Object> params); 
 	public int getCountTravel(); 
 	
+	
 }

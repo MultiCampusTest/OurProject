@@ -19,5 +19,4 @@ public interface IBoardNoticeDao {
 	public List<BoardVo> selectByCode(); 
 	public List<BoardVo> selectNoticeByLimit(HashMap<String, Object> params);
 	public int getCountNotice();
-	
 }

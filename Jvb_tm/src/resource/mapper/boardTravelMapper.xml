@@ -97,4 +97,5 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select count(*) from board where b_code=<include refid="b_code"></include>
 	</select>
 	 
+	 
 </mapper>

@@ -9,29 +9,45 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</sql>
 
 	<insert id="insertBoardNotice" parameterType="boardVo">
-		insert into board (b_code, loc_category, sub_category,
-		 title, start_date, end_date, userid) 
-		 values(<include refid="b_code"></include>, 0, 0, #{title}, 0, 0,  “admin”)
+		insert into board (b_code, b_loc_category, b_sub_category,
+		 b_title, b_start_date, b_end_date, userid) 
+		 values(<include refid="b_code"></include>, 0, 0, #{b_title}, 0, 0,  “admin”)
+	</insert>
+	
+	<insert id="insertContentsNotice" parameterType="contentsVo">
+		insert into contents values(0, #{b_idx}, #{ct_num}, #{ct_contents})
 	</insert>
 	
 	<update id="updateBoardNotice" parameterType="boardVo">
-		update board set b_code=#{b_code}, loc_category=#{loc_category}, 
-		sub_category=#{sub_category},  title=#{title}, 
-		start_date=#{start_date}, end_date=#{end_date}, 
-		content=#{content}, userid=#{userid} where b_idx=#{b_idx};
+		update board set b_code=#{b_code}, b_loc_category=#{b_loc_category}, 
+		b_sub_category=#{b_sub_category},  b_title=#{b_title}, 
+		b_start_date=#{b_start_date}, b_end_date=#{b_end_date}, 
+		 userid=#{userid} where b_idx=#{b_idx};
+	</update>
+	
+	<update id="updateContentsNotice" parameterType="contentsVo">
+		update contents set ct_contents=#{ct_contents} where b_idx=#{b_idx}
 	</update>
 	
 	<delete id="deleteBoardNotice" parameterType="int">
 		delete from board where b_idx=#{b_idx}
 	</delete>
 	
-	<select id="selectNoticeOne" parameterType="int" resultType="java.util.HashMap">
+	<delete id="deleteContentsNotice" parameterType="int">
+		delete from contents where b_idx=#{b_idx}
+	</delete>
+	
+	<select id="selectNoticeOne" parameterType="int" resultType="boardVo">
 		select * from board where b_idx=#{b_idx}
 	</select>
 	
-	<select id="selectNoticeBySearch" parameterType="java.util.HashMap" 
+	<select id="selectContentsNoticeOne" parameterType="int" resultType="contentsVo">
+		select * from contents where b_idx=#{b_idx}
+	</select>
+	
+	<select id="selectNoticeBySearch" parameterType="String" 
 		resultType="boardVo">
-		select * from board where title like '%${keyword}%' order by b_idx desc;
+		select * from board where b_title like '%${b_title}%' order by b_idx desc;
 	</select>
 	
 	<select id="selectNoticeByCode" resultType="boardVo">

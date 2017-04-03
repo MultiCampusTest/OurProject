@@ -15,6 +15,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		   #{b_loc_category}, #{b_sub_category},
 		   0, #{b_start_date}, #{b_end_date}, #{userid});
 	</insert>
+	
+	<insert id="insertContentsTravel" parameterType="contentsVo">
+		insert into contents values(0, #{b_idx}, #{ct_num}, #{ct_contents})
+	</insert>
+	
+	<insert id="insertImageTravel" parameterType="imageVo">
+		insert into image values(0, #{img_phy_name}, #{img_ori_name}, #{img_code}, #{img_path})
+	</insert>
 
 	<update id="updateBoardTravel" parameterType="boardVo">
 		update board set b_code=#{b_code},
@@ -23,12 +31,29 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		   b_end_date=#{b_end_date}, userid=#{userid} where b_idx=#{b_idx};
 	</update>
 	
+	<update id="updateImageTravel" parameterType="imageVo">
+		update image set img_phy_name=#{img_phy_name}, img_ori_name=#{img_ori_name},
+		 img_code=#{img_code}, img_path=#{img_path} where b_idx=#{b_idx}
+	</update>
+	
 	<delete id="deleteBoardTravel" parameterType="int">
 		delete from board where b_idx=#{b_idx}
 	</delete>
 	
+	<delete id="deleteContentsTravel" parameterType="int">
+		delete from contents where b_idx=#{b_idx}
+	</delete>
+	
+	<delete id="deleteImageTravel" parameterType="int">
+		delete from image where img_idx=#{img_idx}
+	</delete>
+	
 	<select id="selectTravelOne" parameterType="int" resultType="java.util.HashMap">
 		select * from board b, img i where b.img_idx=#{b_idx} and  b.b_idx=i.img_code;
+	</select>
+	
+	<select id="selectContentsTravelOne" parameterType="int" resultType="contentsVo">
+		select * from contents where b_idx=#{b_idx} order by ct_num;
 	</select>
 	
 	<select id="selectTravelByCode" resultType="java.util.HashMap">

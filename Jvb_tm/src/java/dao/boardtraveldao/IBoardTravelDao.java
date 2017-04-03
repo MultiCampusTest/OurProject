@@ -21,11 +21,11 @@ public interface IBoardTravelDao {
 	public int deleteMapPositionTravel(int b_idx);
 	public HashMap<String, Object> selectTravelOne(int b_idx);
 	public ContentsVo selectContentsTravelOne(int b_idx);
-	public MapPositionVo selectMapPositionTravelOne(int b_idx);
+	public List<MapPositionVo> selectMapPositionTravelOne(int b_idx);
 	public List<HashMap<String, Object>> selectTravelByCode();
 	public List<HashMap<String, Object>> selectTravelByLoc_Category(String b_loc_category);
 	public List<HashMap<String, Object>> selectTravelBySub_Category(String b_sub_category);
-	public BoardVo selectTravelByLimit(HashMap<String, Object> params); 
+	public List<BoardVo> selectTravelByLimit(HashMap<String, Object> params); 
 	public int getCountTravel(); 
 	
 }

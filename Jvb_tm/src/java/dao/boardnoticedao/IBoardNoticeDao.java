@@ -15,9 +15,9 @@ public interface IBoardNoticeDao {
 	public int deleteContentsNotice(int b_idx);
 	public BoardVo selectNoticeOne(int b_idx);
 	public ContentsVo selectContentsNoticeOne(int b_idx);
-	public BoardVo selectNoticeBySearch(HashMap<String, Object> params);
-	public BoardVo selectByCode(); 
-	public BoardVo selectNoticeByLimit(HashMap<String, Object> params);
+	public List<BoardVo> selectNoticeBySearch(HashMap<String, Object> params);
+	public List<BoardVo> selectByCode(); 
+	public List<BoardVo> selectNoticeByLimit(HashMap<String, Object> params);
 	public int getCountNotice();
 	
 }

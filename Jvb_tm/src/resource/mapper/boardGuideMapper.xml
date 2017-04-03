@@ -41,11 +41,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<select id="selectGuideByLocCategory" parameterType="String" resultType="java.util.HashMap">
-		select b.b_title, b.b_userid, b.b_date i.img_path from board b, image i where b.b_code=<include refid="b_code"></include> and b.b_loc_category=#{b_loc_category} and b.b_idx=i.img_code order by b.b_date desc
+		select b.b_title, b.b_userid, b.b_date, i.img_path from board b, image i where b.b_code=<include refid="b_code"></include> and b.b_loc_category=#{b_loc_category} and b.b_idx=i.img_code order by b.b_date desc
 	</select>
 	
 	<select id="selectGuideBySubCategory" parameterType="String" resultType="java.util.HashMap">
-		select b.b_title, b.userid, b.b_date i.img_path from board b, image i where b.b_code=<include refid="b_code"></include> and b.b_sub_category=#{b_sub_category} and  b.b_idx=i.img_code order by b.b_date desc		
+		select b.b_title, b.userid, b.b_date, i.img_path from board b, image i where b.b_code=<include refid="b_code"></include> and b.b_sub_category=#{b_sub_category} and  b.b_idx=i.img_code order by b.b_date desc		
 	</select>
 	
 	<select id="selectGuideByLimit" parameterType="java.util.HashMap" resultType="boardVo">

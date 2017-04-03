@@ -39,7 +39,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<update id="updateImageTravel" parameterType="imageVo">
 		update image set img_phy_name=#{img_phy_name}, img_ori_name=#{img_ori_name},
-		 img_code=#{img_code}, img_path=#{img_path} where b_idx=#{b_idx}
+		 img_code=#{img_code}, img_path=#{img_path} where img_code=#{img_code}
 	</update>
 	
 	<delete id="deleteBoardTravel" parameterType="int">
@@ -59,7 +59,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</delete>
 	
 	<select id="selectTravelOne" parameterType="int" resultType="java.util.HashMap">
-		select * from board b, img i where b.img_idx=#{b_idx} and  b.b_idx=i.img_code;
+		select * from board b, image i where b.b_idx=#{b_idx} and  b.b_idx=i.img_code;
 	</select>
 	
 	<select id="selectContentsTravelOne" parameterType="int" resultType="contentsVo">
@@ -67,26 +67,26 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<select id="selectMapPositionTravelOne" parameterType="int" resultType="mapPositionVo">
-		 select * from mapposition b_idx=#{b_idx}
+		 select * from mapposition where b_idx=#{b_idx}
 		  order by map_marker
 	</select>
 	
 	<select id="selectTravelByCode" resultType="java.util.HashMap">
 		select * from board b, image i
 		 where b.b_code=<include refid="b_code"></include>
-		  and  b.b_idx=i.img_code order by b.b_date desc;
+		  and  b.b_idx=i.img_code order by b.b_date desc
 	</select>
 	
 	<select id="selectTravelByLoc_Category" parameterType="String" resultType="java.util.HashMap">
-		select b.b_title, b.userid, b.b_date i.img_path 
+		select b.b_title, b.userid, b.b_date, i.img_path 
 		from board b, image i where b.b_code=<include refid="b_code"></include>
-		 and b.b_loc_category=#{b_loc_category} and  b.b_idx=i.img_code order by b.b_date desc;	
+		 and b.b_loc_category=#{b_loc_category} and  b.b_idx=i.img_code order by b.b_date desc
 	</select>
 	
 	<select id="selectTravelBySub_Category" parameterType="String" resultType="java.util.HashMap">
-		select b.b_title, b.userid, b.b_date i.img_path 
+		select b.b_title, b.userid, b.b_date, i.img_path 
 		from board b, image i where b.b_code=<include refid="b_code"></include>
-		 and b.b_sub_category=#{b_sub_category} and  b.b_idx=i.img_code order by b.b_date desc;	
+		 and b.b_sub_category=#{b_sub_category} and  b.b_idx=i.img_code order by b.b_date desc
 	</select>
 	
 	<select id="selectTravelByLimit" parameterType="java.util.HashMap" resultType="boardVo">

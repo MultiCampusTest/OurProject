@@ -14,7 +14,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<insert id="insertImage" parameterType="imageVo">
 		insert into image values(0, #{img_phy_name}, #{img_ori_name}, #{ima_code}, #{img_path});
 	</insert>
-	<insert id="insertContent" parameterType="contentVo">
+	<insert id="insertContent" parameterType="contentsVo">
 		insert into contents values(0, #{b_idx}, #{ct_num}, #{ct_contents});
 	</insert>
 	
@@ -24,7 +24,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<update id="updateImage" parameterType="imageVo">
 	      update image set img_phy_name=#{img_phy_name}, img_ori_name=#{img_ori_name}, img_path=#{img_path} where img_code=#{img_code}
 	</update>
-	<update id="updateContents" parameterType="contentVo">
+	<update id="updateContents" parameterType="contentsVo">
 		update contents set ct_contents=#{ct_contents} where b_idx=#{b_idx}
 	</update>
 	
@@ -56,4 +56,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select count(*) from board where b_code=<include refid="b_code"></include>
 	</select>
 	
+	<select id="selectContents" parameterType="int" resultType="java.util.HashMap">
+		select * from contents where b_idx=#{b_idx} order by ct_num
+	</select>
 </mapper>

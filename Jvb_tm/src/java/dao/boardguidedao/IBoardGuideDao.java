@@ -6,7 +6,7 @@ import java.vo.BoardVo;
 import java.vo.ContentsVo;
 import java.vo.ImageVo;
 
-public interface IBoardGuide {
+public interface IBoardGuideDao {
 
 	public int insertBoardGuide(BoardVo boardVo);
 	public int insertImage(ImageVo imageVo);
@@ -21,5 +21,6 @@ public interface IBoardGuide {
 	public List<HashMap<String, Object>> selectGuideBySubCategory(String b_sub_category);
 	public List<HashMap<String, Object>> selectGuideByLimit(HashMap<String, Object> params);
 	public int getCountGuide();
+	public HashMap<String, Object> selectContents(int b_idx);
 
 }

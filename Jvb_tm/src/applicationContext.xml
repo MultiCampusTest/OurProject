@@ -56,6 +56,7 @@
 		<property name="mapperInterface" value="tm.dao.contentsdao.IContentsDao"></property>
 	</bean>
 	
+	
 	<bean class="org.mybatis.spring.mapper.MapperFactoryBean" id="imageDao">
 		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
 		<property name="mapperInterface" value="tm.dao.imagedao.IImageDao"></property>

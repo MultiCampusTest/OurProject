@@ -13,12 +13,14 @@
 		<property name="username" value="root"></property>
 		<property name="password" value="mysql"></property>
 	</bean>
-
+	
+	
 	<bean class="org.mybatis.spring.SqlSessionFactoryBean" id="sqlSessionFactory">
 		<property name="mapperLocations" value="classpath*:resource/mapper/*.xml"></property>
-		<property name="typeAliasesPackage" value="java.vo"></property>
+		<property name="typeAliasesPackage" value="tm.vo"></property>
 		<property name="dataSource" ref="dataSource"></property>
 	</bean>
+	
 
 	<bean class="org.mybatis.spring.SqlSessionTemplate" id="sqlSession">
 		<constructor-arg ref="sqlSessionFactory"></constructor-arg>
@@ -26,59 +28,57 @@
 	
 	<bean class="org.mybatis.spring.mapper.MapperFactoryBean" id="boardGuideDao">
 		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
-		<property name="mapperInterface" ref="dao.IBoardGuideDao"></property>
+		<property name="mapperInterface" value="tm.dao.boardguidedao.IBoardGuideDao"></property>
 	</bean>
 	
 	<bean class="org.mybatis.spring.mapper.MapperFactoryBean" id="boardNoticeDao">
 		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
-		<property name="mapperInterface" ref="dao.IBoardNoticeDao"></property>
+		<property name="mapperInterface" value="tm.dao.boardnoticedao.IBoardNoticeDao"></property>
 	</bean>
 	
 	<bean class="org.mybatis.spring.mapper.MapperFactoryBean" id="boardReviewDao">
 		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
-		<property name="mapperInterface" ref="dao.IBoardReviewDao"></property>
+		<property name="mapperInterface" value="tm.dao.boardreviewdao.IBoardReviewDao"></property>
 	</bean>
 	
 	<bean class="org.mybatis.spring.mapper.MapperFactoryBean" id="boardTravelDao">
 		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
-		<property name="mapperInterface" ref="dao.IBoardTravelDao"></property>
+		<property name="mapperInterface" value="tm.dao.boardtraveldao.IBoardTravelDao"></property>
 	</bean>
 	
 	<bean class="org.mybatis.spring.mapper.MapperFactoryBean" id="commentsDao">
 		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
-		<property name="mapperInterface" ref="dao.ICommentsDao"></property>
+		<property name="mapperInterface" value="tm.dao.commentsdao.ICommentsDao"></property>
 	</bean>
 	
 	<bean class="org.mybatis.spring.mapper.MapperFactoryBean" id="contentsDao">
 		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
-		<property name="mapperInterface" ref="dao.IContentsDao"></property>
+		<property name="mapperInterface" value="tm.dao.contentsdao.IContentsDao"></property>
 	</bean>
 	
 	<bean class="org.mybatis.spring.mapper.MapperFactoryBean" id="imageDao">
 		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
-		<property name="mapperInterface" ref="dao.IImageDao"></property>
+		<property name="mapperInterface" value="tm.dao.imagedao.IImageDao"></property>
 	</bean>
 	
 	<bean class="org.mybatis.spring.mapper.MapperFactoryBean" id="mapPositionDao">
 		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
-		<property name="mapperInterface" ref="dao.IMapPositionDao"></property>
+		<property name="mapperInterface" value="tm.dao.mappositiondao.IMapPositionDao"></property>
 	</bean>
 	
 	<bean class="org.mybatis.spring.mapper.MapperFactoryBean" id="matchingDao">
 		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
-		<property name="mapperInterface" ref="dao.IMatchingDao"></property>
+		<property name="mapperInterface" value="tm.dao.matchingdao.IMatchingDao"></property>
 	</bean>
 	
 	<bean class="org.mybatis.spring.mapper.MapperFactoryBean" id="memberDao">
 		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
-		<property name="mapperInterface" ref="dao.IMemberDao"></property>
+		<property name="mapperInterface" value="tm.dao.memberdao.IMemberDao"></property>
 	</bean>
 	
 	<bean class="org.mybatis.spring.mapper.MapperFactoryBean" id="messageDao">
 		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
-		<property name="mapperInterface" ref="dao.IMessageDao"></property>
-	</bean>
-	
-	
+		<property name="mapperInterface" value="tm.dao.messagedao.IMessageDao"></property>
+	</bean>	
 	
 </beans>

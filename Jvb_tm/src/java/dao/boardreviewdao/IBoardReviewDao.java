@@ -21,4 +21,5 @@ public interface IBoardReviewDao {
 	public List<HashMap<String, Object>> selectReviewBySubCategory(String b_sub_category);
 	public List<HashMap<String, Object>> selectReviewByLimit(HashMap<String, Object> params);
 	public int getCountReview();
+	public HashMap<String, Object> selectContents(int b_idx);
 }

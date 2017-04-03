@@ -20,7 +20,7 @@ public interface IBoardTravelDao {
 	public int deleteImageTravel(int img_idx);
 	public int deleteMapPositionTravel(int b_idx);
 	public HashMap<String, Object> selectTravelOne(int b_idx);
-	public ContentsVo selectContentsTravelOne(int b_idx);
+	public List<ContentsVo> selectContentsTravelOne(int b_idx);
 	public List<MapPositionVo> selectMapPositionTravelOne(int b_idx);
 	public List<HashMap<String, Object>> selectTravelByCode();
 	public List<HashMap<String, Object>> selectTravelByLoc_Category(String b_loc_category);

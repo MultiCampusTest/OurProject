@@ -7,7 +7,7 @@ import java.vo.ContentsVo;
 import java.vo.ImageVo;
 import java.vo.MapPositionVo;
 
-public interface IBoardTravel {
+public interface IBoardTravelDao {
 	
 	public int insertBoardTravel(BoardVo boardVo);
 	public int insertContentsTravel(ContentsVo contentsVo);

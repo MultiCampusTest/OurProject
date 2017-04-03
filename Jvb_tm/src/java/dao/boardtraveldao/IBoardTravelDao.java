@@ -27,4 +27,5 @@ public interface IBoardTravelDao {
 	public List<HashMap<String, Object>> selectTravelBySub_Category(String b_sub_category);
 	public BoardVo selectTravelByLimit(HashMap<String, Object> params); 
 	public int getCountTravel(); 
+	
 }

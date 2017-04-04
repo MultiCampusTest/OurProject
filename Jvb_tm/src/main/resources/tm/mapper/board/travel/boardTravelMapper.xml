@@ -7,7 +7,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<sql id="b_code">
 		"t"
 	</sql>
-	
+	 
 	<insert id="insertBoardTravel" parameterType="boardVo">
 		insert into board (b_code, b_loc_category, b_sub_category,
 		 b_title, b_start_date, b_end_date, userid)

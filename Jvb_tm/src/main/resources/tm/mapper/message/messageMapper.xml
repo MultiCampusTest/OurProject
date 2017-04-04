@@ -7,7 +7,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <insert id="insertMessage" parameterType="messageVo">
 insert into message values(0, #{msg_send_userid}, #{msg_receive_userid}, #{msg_contents}, sysdate())
 </insert>
-
+ 
 <delete id="deleteMessage" parameterType="int">
 	delete from message where msg_idx=#{msg_idx} 
 </delete>

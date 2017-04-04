@@ -6,7 +6,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<sql id="b_code">
 		"n"
-	</sql>
+	</sql> 
 
 	<insert id="insertBoardNotice" parameterType="boardVo">
 		insert into board (b_code, b_loc_category, b_sub_category,

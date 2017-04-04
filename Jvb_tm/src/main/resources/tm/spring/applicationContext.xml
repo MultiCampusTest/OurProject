@@ -50,7 +50,7 @@
 		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
 		<property name="mapperInterface" value="tm.comments.dao.ICommentsDao"></property>
 	</bean>
-	
+	 
 	<bean class="org.mybatis.spring.mapper.MapperFactoryBean" id="matchingDao">
 		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
 		<property name="mapperInterface" value="tm.matching.dao.IMatchingDao"></property>

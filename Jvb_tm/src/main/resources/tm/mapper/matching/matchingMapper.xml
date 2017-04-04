@@ -11,7 +11,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <update id="updateMatching" parameterType="matchingVo">
 	update matching set mch_code=#{mch_code} where mch_idx=#{mch_idx}
 </update>
-
+ 
 <delete id="deleteMatching" parameterType="int">
 	delete from matching where mch_idx=#{mch_idx}
 </delete>

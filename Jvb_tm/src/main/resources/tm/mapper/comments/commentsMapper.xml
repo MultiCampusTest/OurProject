@@ -4,7 +4,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="tm.comments.dao.ICommentsDao">
 
-	
+	 
 	<select id="selectCommentsByIdx" parameterType="int" resultType="java.util.HashMap">
 		select *from tb_comments where b_idx=#{b_idx}
 	</select>

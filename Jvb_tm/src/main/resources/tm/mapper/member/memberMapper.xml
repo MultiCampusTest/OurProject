@@ -11,7 +11,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="getId" parameterType="memberVo" resultType="memberVo">
 		select userid from member where name = #{name} and email = #{eamil}
 	</select>
-	
+	 
 	<select id="getPwd" parameterType="memberVo" resultType="memberVo">
 		select pwd from member where name = #{name} and userid = #{userid} and email = #{email}
 	</select>

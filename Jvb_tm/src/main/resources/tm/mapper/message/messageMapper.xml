@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="dao.IMessageDao">
+<mapper namespace="tm.board.guide.dao.IMessageDao">
 
 <insert id="insertMessage" parameterType="messageVo">
 insert into message values(0, #{msg_send_userid}, #{msg_receive_userid}, #{msg_contents}, sysdate())

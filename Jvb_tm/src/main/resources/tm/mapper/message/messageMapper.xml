@@ -11,7 +11,7 @@ insert into message values(0, #{msg_send_userid}, #{msg_receive_userid}, #{msg_c
 <delete id="deleteMessage" parameterType="int">
 	delete from message where msg_idx=#{msg_idx} 
 </delete>
-
+ 
 <select id="selectMessageByUserid" parameterType="String" resultType="messageVo">
 	select *from message where msg_send_userid=#{msg_userid} or msg_receive_userid=#{msg_userid}
 </select>

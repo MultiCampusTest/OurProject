@@ -33,7 +33,7 @@
 	
 	<bean class="org.mybatis.spring.mapper.MapperFactoryBean" id="boardNoticeDao">
 		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
-		<property name="mapperInterface" value="tm.dao.boardnoticedao.IBoardNoticeDao"></property>
+		<property name="mapperInterface" value="tm.board.notice.dao.IBoardNoticeDao"></property>
 	</bean>
 	
 	<bean class="org.mybatis.spring.mapper.MapperFactoryBean" id="boardReviewDao">
@@ -43,27 +43,27 @@
 	
 	<bean class="org.mybatis.spring.mapper.MapperFactoryBean" id="boardTravelDao">
 		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
-		<property name="mapperInterface" value="tm.dao.boardtraveldao.IBoardTravelDao"></property>
+		<property name="mapperInterface" value="tm.board.travel.dao.IBoardTravelDao"></property>
 	</bean>
 	
 	<bean class="org.mybatis.spring.mapper.MapperFactoryBean" id="commentsDao">
 		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
-		<property name="mapperInterface" value="tm.dao.commentsdao.ICommentsDao"></property>
+		<property name="mapperInterface" value="tm.comments.dao.ICommentsDao"></property>
 	</bean>
 	
 	<bean class="org.mybatis.spring.mapper.MapperFactoryBean" id="matchingDao">
 		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
-		<property name="mapperInterface" value="tm.dao.matchingdao.IMatchingDao"></property>
+		<property name="mapperInterface" value="tm.matching.dao.IMatchingDao"></property>
 	</bean>
 	
 	<bean class="org.mybatis.spring.mapper.MapperFactoryBean" id="memberDao">
 		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
-		<property name="mapperInterface" value="tm.dao.memberdao.IMemberDao"></property>
+		<property name="mapperInterface" value="tm.member.dao.IMemberDao"></property>
 	</bean>
 	
 	<bean class="org.mybatis.spring.mapper.MapperFactoryBean" id="messageDao">
 		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
-		<property name="mapperInterface" value="tm.dao.messagedao.IMessageDao"></property>
+		<property name="mapperInterface" value="tm.message.dao.IMessageDao"></property>
 	</bean>	
 	
 </beans>

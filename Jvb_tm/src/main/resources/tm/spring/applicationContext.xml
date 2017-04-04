@@ -4,27 +4,27 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 
-	<context:component-scan base-package="java.dao.*"></context:component-scan>
+	
 
 	<bean class="org.springframework.jdbc.datasource.DriverManagerDataSource"
 		id="dataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
-		<property name="url" value="jdbc:mysql://localhost/travel_db"></property>
+		<property name="url" value="jdbc:mysql://localhost/travelmaker_db"></property>
 		<property name="username" value="root"></property>
 		<property name="password" value="mysql"></property>
 	</bean>
-	
+	 
 	
 	<bean class="org.mybatis.spring.SqlSessionFactoryBean" id="sqlSessionFactory">
-		<property name="mapperLocations" value="classpath*:resource/mapper/*.xml"></property>
+		<property name="mapperLocations" value="classpath*:tm/mapper/**/*.xml"></property>
 		<property name="typeAliasesPackage" value="tm.vo"></property>
 		<property name="dataSource" ref="dataSource"></property>
 	</bean>
 	
 
-	<bean class="org.mybatis.spring.SqlSessionTemplate" id="sqlSession">
-		<constructor-arg ref="sqlSessionFactory"></constructor-arg>
-	</bean>
+<!-- 	<bean class="org.mybatis.spring.SqlSessionTemplate" id="sqlSession"> -->
+<!-- 		<constructor-arg ref="sqlSessionFactory"></constructor-arg> -->
+<!-- 	</bean> -->
 	
 	<bean class="org.mybatis.spring.mapper.MapperFactoryBean" id="boardGuideDao">
 		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
@@ -33,7 +33,7 @@
 	
 	<bean class="org.mybatis.spring.mapper.MapperFactoryBean" id="boardNoticeDao">
 		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
-		<property name="mapperInterface" value="tm.dao.boardnoticedao.IBoardNoticeDao"></property>
+		<property name="mapperInterface" value="tm.board.notice.dao.IBoardNoticeDao"></property>
 	</bean>
 	
 	<bean class="org.mybatis.spring.mapper.MapperFactoryBean" id="boardReviewDao">
@@ -43,27 +43,27 @@
 	
 	<bean class="org.mybatis.spring.mapper.MapperFactoryBean" id="boardTravelDao">
 		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
-		<property name="mapperInterface" value="tm.dao.boardtraveldao.IBoardTravelDao"></property>
+		<property name="mapperInterface" value="tm.board.travel.dao.IBoardTravelDao"></property>
 	</bean>
 	
 	<bean class="org.mybatis.spring.mapper.MapperFactoryBean" id="commentsDao">
 		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
-		<property name="mapperInterface" value="tm.dao.commentsdao.ICommentsDao"></property>
+		<property name="mapperInterface" value="tm.comments.dao.ICommentsDao"></property>
 	</bean>
-	
+	 
 	<bean class="org.mybatis.spring.mapper.MapperFactoryBean" id="matchingDao">
 		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
-		<property name="mapperInterface" value="tm.dao.matchingdao.IMatchingDao"></property>
+		<property name="mapperInterface" value="tm.matching.dao.IMatchingDao"></property>
 	</bean>
 	
 	<bean class="org.mybatis.spring.mapper.MapperFactoryBean" id="memberDao">
 		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
-		<property name="mapperInterface" value="tm.dao.memberdao.IMemberDao"></property>
+		<property name="mapperInterface" value="tm.member.dao.IMemberDao"></property>
 	</bean>
 	
 	<bean class="org.mybatis.spring.mapper.MapperFactoryBean" id="messageDao">
 		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
-		<property name="mapperInterface" value="tm.dao.messagedao.IMessageDao"></property>
+		<property name="mapperInterface" value="tm.message.dao.IMessageDao"></property>
 	</bean>	
 	
 </beans>

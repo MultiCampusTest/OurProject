@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="tm.board.guide.dao.IMatchingDao">
+<mapper namespace="tm.matching.dao.IMatchingDao">
 
 <insert id="insertMatching" parameterType="matchingVo">
 	insert into matching values(0, #{mch_t_user},#{mch_g_user},#{b_idx},0,sysdate())
@@ -11,7 +11,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <update id="updateMatching" parameterType="matchingVo">
 	update matching set mch_code=#{mch_code} where mch_idx=#{mch_idx}
 </update>
-
+   
 <delete id="deleteMatching" parameterType="int">
 	delete from matching where mch_idx=#{mch_idx}
 </delete>

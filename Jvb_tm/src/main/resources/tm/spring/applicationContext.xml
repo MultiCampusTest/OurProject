@@ -28,7 +28,7 @@
 	
 	<bean class="org.mybatis.spring.mapper.MapperFactoryBean" id="boardGuideDao">
 		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
-		<property name="mapperInterface" value="tm.dao.boardguidedao.IBoardGuideDao"></property>
+		<property name="mapperInterface" value="tm.board.guide.dao.IBoardGuideDao"></property>
 	</bean>
 	
 	<bean class="org.mybatis.spring.mapper.MapperFactoryBean" id="boardNoticeDao">
@@ -38,7 +38,7 @@
 	
 	<bean class="org.mybatis.spring.mapper.MapperFactoryBean" id="boardReviewDao">
 		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
-		<property name="mapperInterface" value="tm.dao.boardreviewdao.IBoardReviewDao"></property>
+		<property name="mapperInterface" value="tm.board.review.dao.IBoardReviewDao"></property>
 	</bean>
 	
 	<bean class="org.mybatis.spring.mapper.MapperFactoryBean" id="boardTravelDao">

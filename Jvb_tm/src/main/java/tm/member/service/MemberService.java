@@ -1,5 +1,11 @@
 package tm.member.service;
 
-public class MemberService {
+import org.springframework.beans.factory.annotation.Autowired;
 
+import tm.member.dao.IMemberDao;
+
+public class MemberService {
+	
+	@Autowired
+	private IMemberDao mDao;
 }

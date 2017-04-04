@@ -40,7 +40,7 @@
 		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
 		<property name="mapperInterface" value="tm.board.review.dao.IBoardReviewDao"></property>
 	</bean>
-	 
+	
 	<bean class="org.mybatis.spring.mapper.MapperFactoryBean" id="boardTravelDao">
 		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
 		<property name="mapperInterface" value="tm.board.travel.dao.IBoardTravelDao"></property>

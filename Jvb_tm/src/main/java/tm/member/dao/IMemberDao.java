@@ -18,4 +18,5 @@ public interface IMemberDao {
 	public MemberVo pwdCheck(String userid);
 	public int deleteMember(int u_idx);
 	public HashMap<String, Object> selectOne(String userid);
+	
 }

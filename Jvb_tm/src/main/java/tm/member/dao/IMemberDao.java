@@ -15,7 +15,7 @@ public interface IMemberDao {
 	public int insertImage(ImageVo imageVo);
 	public int updateMember(MemberVo memberVo);
 	public int updateImage(ImageVo imageVo);
+	public MemberVo pwdCheck(String userid);
 	public int deleteMember(int u_idx);
-	public MemberVo deletePwdCheck(String userid);
 	public HashMap<String, Object> selectOne(String userid);
 }

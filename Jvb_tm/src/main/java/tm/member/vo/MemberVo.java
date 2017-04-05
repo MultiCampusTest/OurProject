@@ -8,7 +8,7 @@ public class MemberVo {
 	public String pwd;
 	public String name;
 	public String email;
-	public Date birthday;
+	public String birthday;
 	public String nationality;
 	public String gender;
 	public String introduce;
@@ -43,10 +43,10 @@ public class MemberVo {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public Date getBirthday() {
+	public String getBirthday() {
 		return birthday;
 	}
-	public void setBirthday(Date birthday) {
+	public void setBirthday(String birthday) {
 		this.birthday = birthday;
 	}
 	public String getNationality() {
@@ -79,7 +79,5 @@ public class MemberVo {
 				+ email + ", birthday=" + birthday + ", nationality=" + nationality + ", gender=" + gender
 				+ ", introduce=" + introduce + ", u_date=" + u_date + "]";
 	}
-	
-	
 	
 }

@@ -2,8 +2,10 @@ package tm.board.notice.dao;
 
 import java.util.HashMap;
 import java.util.List;
-import java.vo.BoardVo;
-import java.vo.ContentsVo;
+
+import tm.board.commons.BoardVo;
+import tm.commons.vo.ContentsVo;
+
 
 public interface IBoardNoticeDao {
 	

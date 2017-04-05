@@ -2,7 +2,9 @@ package tm.matching.dao;
 
 import java.util.HashMap;
 import java.util.List;
-import java.vo.MatchingVo;
+
+import tm.matching.vo.MatchingVo;
+
 
 public interface IMatchingDao {
 	

@@ -1,8 +1,7 @@
 package tm.comments.dao;
 
-import java.util.HashMap;
-import java.util.List;
-import java.vo.CommentsVo;
+import tm.comments.vo.CommentsVo;
+
 
 public interface ICommentsDao {
 	

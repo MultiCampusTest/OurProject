@@ -2,9 +2,11 @@ package tm.board.guide.dao;
 
 import java.util.HashMap;
 import java.util.List;
-import java.vo.BoardVo;
-import java.vo.ContentsVo;
-import java.vo.ImageVo;
+
+import tm.board.commons.BoardVo;
+import tm.commons.vo.ContentsVo;
+import tm.commons.vo.ImageVo;
+
 
 public interface IBoardGuideDao {
 

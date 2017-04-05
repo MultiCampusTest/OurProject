@@ -1,8 +1,9 @@
 package tm.message.dao;
 
-import java.util.HashMap;
 import java.util.List;
-import java.vo.MessageVo;
+
+import tm.message.vo.MessageVo;
+
 
 
 public interface IMessageDao {

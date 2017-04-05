@@ -1,8 +1,10 @@
 package tm.member.dao;
 
 import java.util.HashMap;
-import java.vo.ImageVo;
-import java.vo.MemberVo;
+
+import tm.commons.vo.ImageVo;
+import tm.member.vo.MemberVo;
+
 
 public interface IMemberDao {
 	public MemberVo loginCheck(MemberVo memberVo);

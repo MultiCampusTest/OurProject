@@ -16,17 +16,15 @@
 </head>
 <body>
 
-	<div class="row" align="center">
-		<div>
+<!-- 		<div> -->
 			<jsp:include page="module/top.jsp" flush="false"></jsp:include>
-		</div>
-		<div>
+<!-- 		</div> -->
+<!-- 		<div> -->
 			<jsp:include page="module/middle.jsp" flush="false"></jsp:include>
-		</div>
-		<div>
+<!-- 		</div> -->
+<!-- 		<div> -->
 			<jsp:include page="module/bottom.jsp" flush="false"></jsp:include>
-		</div>
-	</div>
+<!-- 		</div> -->
 
 </body>
 </html>

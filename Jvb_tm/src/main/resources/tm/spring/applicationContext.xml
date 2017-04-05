@@ -17,7 +17,15 @@
 	
 	<bean class="org.mybatis.spring.SqlSessionFactoryBean" id="sqlSessionFactory">
 		<property name="mapperLocations" value="classpath*:tm/mapper/**/*.xml"></property>
-		<property name="typeAliasesPackage" value="tm.vo"></property>
+		<property name="typeAliases">
+			<list>
+				<value>tm.board.commons.BoardVo</value>
+				<value>tm.comments.vo.CommentsVo</value>
+				<value>tm.matching.vo.MatchingVo</value>
+				<value>tm.member.vo.MemberVo</value>
+				<value>tm.message.vo.MessageVo</value>
+			</list>
+		</property>
 		<property name="dataSource" ref="dataSource"></property>
 	</bean>
 	

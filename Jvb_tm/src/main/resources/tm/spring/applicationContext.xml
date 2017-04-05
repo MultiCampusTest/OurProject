@@ -24,6 +24,9 @@
 				<value>tm.matching.vo.MatchingVo</value>
 				<value>tm.member.vo.MemberVo</value>
 				<value>tm.message.vo.MessageVo</value>
+				<value>tm.commons.vo.ContentsVo</value>
+				<value>tm.commons.vo.ImageVo</value>
+				<value>tm.commons.vo.MapPositionVo</value>
 			</list>
 		</property>
 		<property name="dataSource" ref="dataSource"></property>

@@ -84,4 +84,5 @@ public interface IBoardDao {
 //	public int deleteComments(int b_idx, int c_idx);
 //	public List<HashMap<String, Object>> selectCommentsByIdx(int b_idx);
 
+	
 }

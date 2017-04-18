@@ -13,5 +13,4 @@ public class BoardService {
 	private IBoardDao boardGuideDao;
 	
 	
-	
 }

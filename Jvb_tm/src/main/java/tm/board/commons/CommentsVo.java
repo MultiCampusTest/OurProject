@@ -1,4 +1,4 @@
-package tm.comments.vo;
+package tm.board.commons;
 
 public class CommentsVo {
 

@@ -30,24 +30,30 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+
+<!-- jQuery library (served from Google) -->
+<script src="/vendor/jquery/jquery.min.js"></script>
+<!-- bxSlider Javascript file -->
+<script src="/vendor/jquery/jquery.bxslider.min.js">
+// 	$(document).ready(function() {
+// 		$('.bxslider').bxSlider();
+// 	});
+</script>
+<!-- bxSlider CSS file -->
+<link href="/vendor/jquery/jquery.bxslider.css" rel="stylesheet" />
+
 </head>
 <body>
-		<header>
-	<div class="header-content">
-		<div class="header-content-inner">
-			<h1 id="homeHeading">Your Favorite Source of Free Bootstrap
-				Themes</h1>
-			<hr>
-			<p>Start Bootstrap can help you build better websites using the
-				Bootstrap CSS framework! Just download your template and start
-				going, no strings attached!</p>
-			<a href="#about" class="btn btn-primary btn-xl page-scroll">Find
-				Out More</a>
-		</div>
-	</div>
-		</header>
-
-
+	<ul class="bxslider">
+		<li><img src="/img/main/img01.jpg" /></li>
+		<li><img src="/img/main/img02.jpg" /></li>
+		<li><img src="/img/main/img03.jpg" /></li>
+		<li><img src="/img/main/img04.jpg" /></li>
+	</ul>
+	
+	<img src="/img/Koala.jpg" />
+	
+	
 	<!-- jQuery -->
 	<script src="vendor/jquery/jquery.min.js"></script>
 

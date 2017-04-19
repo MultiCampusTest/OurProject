@@ -3,11 +3,11 @@ package tm.board.dao;
 import java.util.HashMap;
 import java.util.List;
 
-import tm.board.commons.BoardVo;
-import tm.board.commons.CommentsVo;
+import tm.board.vo.BoardVo;
+import tm.board.vo.CommentsVo;
+import tm.board.vo.MapPositionVo;
 import tm.commons.vo.ContentsVo;
 import tm.commons.vo.ImageVo;
-import tm.commons.vo.MapPositionVo;
 
 
 public interface IBoardDao {

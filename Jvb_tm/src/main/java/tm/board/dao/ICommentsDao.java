@@ -3,7 +3,7 @@ package tm.board.dao;
 import java.util.HashMap;
 import java.util.List;
 
-import tm.board.commons.CommentsVo;
+import tm.board.vo.CommentsVo;
 
 public interface ICommentsDao {
 

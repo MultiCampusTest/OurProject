@@ -2,7 +2,7 @@ package tm.board.dao;
 
 import java.util.List;
 
-import tm.commons.vo.MapPositionVo;
+import tm.board.vo.MapPositionVo;
 
 public interface IMapPositionDao {
 	

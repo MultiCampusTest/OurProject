@@ -18,14 +18,14 @@
 		<property name="mapperLocations" value="classpath*:tm/mapper/**/*.xml"></property>
 		<property name="typeAliases">
 			<list>
-				<value>tm.board.commons.BoardVo</value>
+				<value>tm.board.vo.BoardVo</value>
 				<value>tm.comments.vo.CommentsVo</value>
 				<value>tm.matching.vo.MatchingVo</value>
 				<value>tm.member.vo.MemberVo</value>
 				<value>tm.message.vo.MessageVo</value>
 				<value>tm.commons.vo.ContentsVo</value>
 				<value>tm.commons.vo.ImageVo</value>
-				<value>tm.commons.vo.MapPositionVo</value>
+				<value>tm.board.vo.MapPositionVo</value>
 			</list>
 		</property>
 		<property name="dataSource" ref="dataSource"></property>

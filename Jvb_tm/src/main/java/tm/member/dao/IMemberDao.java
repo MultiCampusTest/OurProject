@@ -2,7 +2,7 @@ package tm.member.dao;
 
 import java.util.HashMap;
 
-import tm.commons.vo.ImageVo;
+import tm.image.vo.ImageVo;
 import tm.member.vo.MemberVo;
 
 

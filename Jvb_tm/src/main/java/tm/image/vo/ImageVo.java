@@ -1,4 +1,4 @@
-package tm.commons.vo;
+package tm.image.vo;
 
 public class ImageVo {
 

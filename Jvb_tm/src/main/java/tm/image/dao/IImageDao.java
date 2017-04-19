@@ -1,6 +1,6 @@
 package tm.image.dao;
 
-import tm.commons.vo.ImageVo;
+import tm.image.vo.ImageVo;
 
 public interface IImageDao {
 	

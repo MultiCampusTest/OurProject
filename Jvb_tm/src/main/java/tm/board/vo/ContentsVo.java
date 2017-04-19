@@ -1,4 +1,4 @@
-package tm.commons.vo;
+package tm.board.vo;
 
 public class ContentsVo {
 

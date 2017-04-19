@@ -28,13 +28,29 @@
 	</servlet-mapping>
 
 	<!-- 루트서블릿 -->
-	<!-- <listener> -->
-	<!-- <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class> -->
-	<!-- </listener> -->
-	<!-- <context-param> -->
-	<!-- <param-name>contextConfigLocation</param-name> -->
-	<!-- <param-value>/WEB-INF/rootContext.xml</param-value> -->
-	<!-- </context-param> -->
+	<listener>
+	<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	<context-param>
+	<param-name>contextConfigLocation</param-name>
+	<param-value>/WEB-INF/rootContext.xml</param-value>
+	</context-param>
+	
+	<!-- 인코딩 필터 -->
+	<filter>
+        <filter-name>encodingFilter</filter-name>
+        <filter-class>
+            org.springframework.web.filter.CharacterEncodingFilter
+    </filter-class>
+    <init-param>
+            <param-name>encoding</param-name>
+            <param-value>UTF-8</param-value>
+        </init-param>
+	</filter>
+	<filter-mapping>
+        <filter-name>encodingFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+	</filter-mapping>
 	<!-- 타일즈 설정파일 불러오기 -->
 	<!-- <servlet> -->
 	<!-- <servlet-name>tiles</servlet-name> -->

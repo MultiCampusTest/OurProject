@@ -19,13 +19,13 @@
 		<property name="typeAliases">
 			<list>
 				<value>tm.board.vo.BoardVo</value>
-				<value>tm.comments.vo.CommentsVo</value>
+				<value>tm.board.vo.CommentsVo</value>
+				<value>tm.board.vo.ContentsVo</value>
+				<value>tm.board.vo.MapPositionVo</value>
 				<value>tm.matching.vo.MatchingVo</value>
 				<value>tm.member.vo.MemberVo</value>
 				<value>tm.message.vo.MessageVo</value>
-				<value>tm.commons.vo.ContentsVo</value>
-				<value>tm.commons.vo.ImageVo</value>
-				<value>tm.board.vo.MapPositionVo</value>
+				<value>tm.image.vo.ImageVo</value>
 			</list>
 		</property>
 		<property name="dataSource" ref="dataSource"></property>
@@ -36,29 +36,29 @@
 <!-- 		<constructor-arg ref="sqlSessionFactory"></constructor-arg> -->
 <!-- 	</bean> -->
 	
-	<bean class="org.mybatis.spring.mapper.MapperFactoryBean" id="boardGuideDao">
+	<bean class="org.mybatis.spring.mapper.MapperFactoryBean" id="boardDao">
 		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
-		<property name="mapperInterface" value="tm.board.guide.dao.IBoardGuideDao"></property>
-	</bean>
-	
-	<bean class="org.mybatis.spring.mapper.MapperFactoryBean" id="boardNoticeDao">
-		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
-		<property name="mapperInterface" value="tm.board.notice.dao.IBoardNoticeDao"></property>
-	</bean>
-	
-	<bean class="org.mybatis.spring.mapper.MapperFactoryBean" id="boardReviewDao">
-		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
-		<property name="mapperInterface" value="tm.board.review.dao.IBoardReviewDao"></property>
-	</bean>
-	
-	<bean class="org.mybatis.spring.mapper.MapperFactoryBean" id="boardTravelDao">
-		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
-		<property name="mapperInterface" value="tm.board.travel.dao.IBoardTravelDao"></property>
+		<property name="mapperInterface" value="tm.board.dao.IBoardDao"></property>
 	</bean>
 	
 	<bean class="org.mybatis.spring.mapper.MapperFactoryBean" id="commentsDao">
 		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
-		<property name="mapperInterface" value="tm.comments.dao.ICommentsDao"></property>
+		<property name="mapperInterface" value="tm.board.dao.ICommentsDao"></property>
+	</bean>
+	
+	<bean class="org.mybatis.spring.mapper.MapperFactoryBean" id="contentsDao">
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+		<property name="mapperInterface" value="tm.board.dao.IContentsDao"></property>
+	</bean>
+	 
+	 <bean class="org.mybatis.spring.mapper.MapperFactoryBean" id="mapPositionDao">
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+		<property name="mapperInterface" value="tm.board.dao.IMapPositionDao"></property>
+	</bean>
+	 
+	<bean class="org.mybatis.spring.mapper.MapperFactoryBean" id="imageDao">
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+		<property name="mapperInterface" value="tm.image.dao.IImageDao"></property>
 	</bean>
 	 
 	<bean class="org.mybatis.spring.mapper.MapperFactoryBean" id="matchingDao">

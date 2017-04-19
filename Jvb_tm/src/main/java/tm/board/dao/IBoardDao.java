@@ -5,9 +5,9 @@ import java.util.List;
 
 import tm.board.vo.BoardVo;
 import tm.board.vo.CommentsVo;
+import tm.board.vo.ContentsVo;
 import tm.board.vo.MapPositionVo;
-import tm.commons.vo.ContentsVo;
-import tm.commons.vo.ImageVo;
+import tm.image.vo.ImageVo;
 
 
 public interface IBoardDao {

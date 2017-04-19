@@ -2,7 +2,7 @@ package tm.board.dao;
 
 import java.util.HashMap;
 
-import tm.commons.vo.ContentsVo;
+import tm.board.vo.ContentsVo;
 
 public interface IContentsDao {
 	

@@ -4,16 +4,19 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 
-<!-- <bean class="controller.HelloController"  -->
-<!-- name="/hello.do"></bean> -->
+	<!-- <bean class="controller.HelloController" -->
+	<!-- name="/hello.do"></bean> -->
 
-<!-- <bean class="controller.WhatTimeController"  -->
-<!-- name="/whatTime.do"></bean> -->
+	<!-- <bean class="controller.WhatTimeController" -->
+	<!-- name="/whatTime.do"></bean> -->
 
-<bean id="viewResolver" 
-class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-<property name="prefix" value="/jsp/"></property>
-<property name="suffix"	value=".jsp"></property>
-</bean>
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/jsp/"></property>
+		<property name="suffix" value=".jsp"></property>
+		<property name="order" value="2"></property>
+	</bean>
+
+
 
 </beans>

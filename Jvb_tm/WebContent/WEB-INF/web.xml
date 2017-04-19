@@ -37,7 +37,6 @@
               /WEB-INF/tiles/tiles-servlet.xml
             </param-value>
           </init-param>
-         <load-on-startup>1</load-on-startup>
     </servlet>    
 	<!--   TilesDispatchServlet 서블릿으로 등록 -->
 	<!--   클라이언트의 요청에 맞는 템플릿을 실행하는 서블릿 -->

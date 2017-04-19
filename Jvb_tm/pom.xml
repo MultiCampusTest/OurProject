@@ -7,8 +7,9 @@
 
 	<properties>
 		<spring_ver>4.3.7.RELEASE</spring_ver>
-		<tiles_ver>3.0.1</tiles_ver>
+		<tiles_ver>3.0.5</tiles_ver>
 		<aspectj_ver>1.8.10</aspectj_ver>
+		<org.slf4j-version>1.6.6</org.slf4j-version>
 	</properties>
 
 
@@ -47,6 +48,13 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
 			<version>${spring_ver}</version>
+			<exclusions>
+				<!-- Exclude Commons Logging in favor of SLF4j -->
+				<exclusion>
+					<groupId>commons-logging</groupId>
+					<artifactId>commons-logging</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -69,12 +77,30 @@
 			<version>${spring_ver}</version>
 		</dependency>
 
-		<!-- log4j -->
+		<!-- log -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>${org.slf4j-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>jcl-over-slf4j</artifactId>
+			<version>${org.slf4j-version}</version>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>${org.slf4j-version}</version>
+			<scope>runtime</scope>
+		</dependency>
 		<dependency>
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
 			<version>1.2.17</version>
 		</dependency>
+
 
 		<!-- mybatis -->
 		<dependency>

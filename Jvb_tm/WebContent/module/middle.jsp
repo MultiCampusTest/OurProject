@@ -5,6 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+
 <!-- Bootstrap Core CSS -->
 <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
@@ -24,38 +25,36 @@
 <!-- Theme CSS -->
 <link href="css/creative.min.css" rel="stylesheet">
 
-<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-<!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
-<!-- jQuery library (served from Google) -->
-<script src="/vendor/jquery/jquery.min.js"></script>
-<!-- bxSlider Javascript file -->
-<script src="/vendor/jquery/jquery.bxslider.min.js">
-// 	$(document).ready(function() {
-// 		$('.bxslider').bxSlider();
-// 	});
-</script>
 <!-- bxSlider CSS file -->
-<link href="/vendor/jquery/jquery.bxslider.css" rel="stylesheet" />
+<link href="vendor/jquery/jquery.bxslider.css" rel="stylesheet" />
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('.bxslider').bxSlider({
+			mode : 'fade', //default : 'horizontal', options: 'horizontal', 'vertical', 'fade'
+			speed : 1000, //default:500 이미지변환 속도
+			auto : true, //default:false 자동 시작
+			autoControls : true //default:false 정지,시작 콘트롤 노출, css 수정이 필요
+		});
+	});
+</script>
 
 </head>
 <body>
 	<ul class="bxslider">
-		<li><img src="/img/main/img01.jpg" /></li>
-		<li><img src="/img/main/img02.jpg" /></li>
-		<li><img src="/img/main/img03.jpg" /></li>
-		<li><img src="/img/main/img04.jpg" /></li>
+		<li><img src="img/main/img01.jpg" style="width: 100%" /></li>
+		<li><img src="img/main/img02.jpg" style="width: 100%" /></li>
+		<li><img src="img/main/img03.jpg" style="width: 100%" /></li>
+		<li><img src="img/main/img04.jpg" style="width: 100%" /></li>
 	</ul>
-	
-	<img src="/img/Koala.jpg" />
-	
-	
+
+
 	<!-- jQuery -->
 	<script src="vendor/jquery/jquery.min.js"></script>
+	<!-- 	jQuery library (served from Google) -->
+	<!-- <script src="vendor/jquery/jquery.min.js"></script> -->
+	<!-- bxSlider Javascript file -->
+	<script src="vendor/jquery/jquery.bxslider.min.js"></script>
 
 	<!-- Bootstrap Core JavaScript -->
 	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>

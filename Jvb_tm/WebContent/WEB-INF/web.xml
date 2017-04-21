@@ -51,30 +51,4 @@
         <filter-name>encodingFilter</filter-name>
         <url-pattern>/*</url-pattern>
 	</filter-mapping>
-	<!-- 타일즈 설정파일 불러오기 -->
-	<!-- <servlet> -->
-	<!-- <servlet-name>tiles</servlet-name> -->
-	<!-- <servlet-class>org.apache.tiles.web.startup.TilesServlet</servlet-class> -->
-	<!-- <init-param> -->
-	<!-- <param-name> -->
-	<!-- org.apache.tiles.impl.BasicTilesContainer.DEFINITIONS_CONFIG -->
-	<!-- </param-name> -->
-	<!-- <param-value> -->
-	<!-- /WEB-INF/tiles/tiles-servlet.xml -->
-	<!-- </param-value> -->
-	<!-- </init-param> -->
-	<!-- </servlet> -->
-	<!-- TilesDispatchServlet 서블릿으로 등록 -->
-	<!-- 클라이언트의 요청에 맞는 템플릿을 실행하는 서블릿 -->
-	<!-- <servlet> -->
-	<!-- <servlet-name>TilesDispatchServlet</servlet-name> -->
-	<!-- <servlet-class> -->
-	<!-- org.apache.tiles.web.util.TilesDispatchServlet -->
-	<!-- </servlet-class> -->
-	<!-- </servlet> -->
-	<!-- <servlet-mapping> -->
-	<!-- <servlet-name>TilesDispatchServlet</servlet-name> -->
-	<!-- <url-pattern>*.tiles</url-pattern> -->
-	<!-- </servlet-mapping> -->
-
 </web-app>

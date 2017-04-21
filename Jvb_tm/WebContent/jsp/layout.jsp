@@ -5,17 +5,16 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>레이아웃</title>
+<title>travel Maker</title>
 </head>
 <body>
-
-	<div style="position:absolute; ">
+	<div>
 		<tiles:insertAttribute name="top"></tiles:insertAttribute>
 	</div>
-	<div style="position:absolute;">
+	<div>
 		<tiles:insertAttribute name="middle"></tiles:insertAttribute>
 	</div>
-	<div style="position:absolute;">
+	<div>
 		<tiles:insertAttribute name="bottom"></tiles:insertAttribute>
 	</div>
 </body>

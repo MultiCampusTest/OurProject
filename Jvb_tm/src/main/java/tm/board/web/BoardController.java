@@ -6,9 +6,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class BoardController {
 
-	@RequestMapping("main.do")
+	@RequestMapping("myPage.do")
 	public String maindo(){
-		return "main";
+		return "myPage";
 	}
 	
 }

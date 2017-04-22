@@ -8,11 +8,16 @@ public class BoardController {
 
 	@RequestMapping("main.do")
 	public String main(){
-		return "layout.tiles";
+		return "layout";
 	}
 	
 	@RequestMapping("myPage.do")
 	public String maindo(){
 		return "myPage";
 	}
+	
+   @RequestMapping("noticeList.do")
+   public String noticeList(){
+	   return "noticeList";
+   }
 }

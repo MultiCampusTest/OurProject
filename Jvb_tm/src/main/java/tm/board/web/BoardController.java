@@ -8,7 +8,7 @@ public class BoardController {
 
 	@RequestMapping("main.do")
 	public String main(){
-		return "middle.tiles";
+		return "middle";
 	}
 	
 	@RequestMapping("myPage.do")

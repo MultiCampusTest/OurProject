@@ -1,0 +1,41 @@
+@CHARSET "UTF-8";
+.table-hover > tbody > tr:hover {  
+    background-color: #ff8040;  
+   color: #ffffff;  
+  }  
+  
+  a{
+  	color:#000000;
+  }
+  a:hover  
+  {
+  	color:#ffffff;
+  }
+  
+  .jb-center{
+  	
+  	text-align: center;
+  }
+  
+
+  
+  .pagination > li > a{
+  	float: none;
+  	color: #ff8040;
+  }
+  
+  .pagination > .active > a,
+  .pagination > .active > a:hover
+  {
+	
+	background-color:#ff8040;
+  	color: #ffffff;
+  	border-color: #ff8040;
+  }
+  
+  .pagination > li > a:active,
+  .pagination > li > a:hover
+  {
+  	background-color: #ff8040;
+  	color: #ffffff;
+  }

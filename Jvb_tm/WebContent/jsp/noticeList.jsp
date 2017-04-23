@@ -8,19 +8,20 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 
-<!--    <meta charset="utf-8"> -->
-<!--   <meta name="viewport" content="width=device-width, initial-scale=1"> -->
-<!--   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
-<!--   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script> -->
-<!--   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
-<!--   <link href="css/notice.css" rel="stylesheet">   -->
-  
-  <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-<script src="../vendor/jquery/jquery.min.js"></script>
-<script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-<style type="text/css">  
- .table-hover > tbody > tr:hover {  
+  
+<!-- <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" /> -->
+<!-- <script src="../vendor/jquery/jquery.min.js"></script> -->
+<!-- <script src="../vendor/bootstrap/js/bootstrap.min.js"></script> -->
+<!--   커스텀 CSS -->
+<!-- <link href="css/noticeList.css" rel="stylesheet"> -->
+<style type="text/css">
+.table-hover > tbody > tr:hover {  
     background-color: #ff8040;  
    color: #ffffff;  
   }  
@@ -28,7 +29,7 @@
   a{
   	color:#000000;
   }
-  a:hover
+  a:hover  
   {
   	color:#ffffff;
   }
@@ -61,8 +62,7 @@
   	color: #ffffff;
   }
 
-  
-  </style> 
+</style>
 </head>
 <body>
  <div class="container">

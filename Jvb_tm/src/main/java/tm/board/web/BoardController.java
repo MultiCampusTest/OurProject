@@ -8,7 +8,7 @@ public class BoardController {
 
 	@RequestMapping("main.do")
 	public String main(){
-		return "layout";
+		return "middle";
 	}
 	
 	@RequestMapping("myPage.do")
@@ -19,5 +19,10 @@ public class BoardController {
    @RequestMapping("noticeList.do")
    public String noticeList(){
 	   return "noticeList";
+   }
+   
+   @RequestMapping("noticeView.do")
+   public String noticeView(){
+	   return "noticeView";
    }
 }

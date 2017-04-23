@@ -22,18 +22,18 @@
 	<mvc:resources location="/vendor/" mapping="/vendor/**" />
 	<mvc:annotation-driven></mvc:annotation-driven>
 	
-	<mvc:interceptors>
-		<mvc:interceptor>
-			<mvc:mapping path="/*.do" />
-			<mvc:exclude-mapping path="/main.do" />
-			<ref bean="LogInterceptor" />
-		</mvc:interceptor>
+<!-- 	<mvc:interceptors> -->
+<!-- 		<mvc:interceptor> -->
+<!-- 			<mvc:mapping path="/*.do" /> -->
+<!-- 			<mvc:exclude-mapping path="/main.do" /> -->
+<!-- 			<ref bean="LoginCheckInterceptor" /> -->
+<!-- 		</mvc:interceptor> -->
 
-		<mvc:interceptor>
-			<mvc:mapping path="/**" />
-			<bean class="tm.log4j.LogInterceptor" id="logInterceptor" />
-		</mvc:interceptor>
-	</mvc:interceptors>
+<!-- 		<mvc:interceptor> -->
+<!-- 			<mvc:mapping path="/**" /> -->
+<!-- 			<bean class="tm.log4j.LogInterceptor" id="logInterceptor" /> -->
+<!-- 		</mvc:interceptor> -->
+<!-- 	</mvc:interceptors> -->
 
 <!-- <bean id="jspViewResolver" -->
 <!-- class="org.springframework.web.servlet.view.InternalResourceViewResolver"> -->

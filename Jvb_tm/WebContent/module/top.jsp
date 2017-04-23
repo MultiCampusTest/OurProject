@@ -50,11 +50,12 @@
 		<div class="collapse navbar-collapse"
 			id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav navbar-right">
-				<li><a class="page-scroll" href="">Notice</a></li>
+				<li><a class="page-scroll" href="noticeList.do">Notice</a></li>
 				<li><a class="page-scroll" href="">Travel</a></li>
 				<li><a class="page-scroll" href="">Guide</a></li>
 				<li><a class="page-scroll" href="">Review</a></li>
 				<li><a class="page-scroll" href=""><i class="fa fa-sign-in fa-1g" aria-hidden="true"></i>Login</a></li>
+				<li><a class="page-scroll" href="myPage.do">MyPage</a></li>
 				<li><a class="page-scroll" href="">Join</a></li>
 			</ul>
 		</div>

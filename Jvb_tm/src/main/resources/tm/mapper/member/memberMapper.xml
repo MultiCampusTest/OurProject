@@ -3,47 +3,7 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="tm.member.dao.IMemberDao">
-	<select id="loginCheck" parameterType="memberVo" resultType="memberVo">
-		select userid, pwd from member where userid = #{userid} and pwd = #{pwd}
-	</select>
-	
-	<select id="getId" parameterType="memberVo" resultType="memberVo">
-		select userid from member where name = #{name} and email = #{eamil}
-	</select>
-	   
-	<select id="getPwd" parameterType="memberVo" resultType="memberVo">
-		select pwd from member where name = #{name} and userid = #{userid} and email = #{email}
-	</select>
-
-	<select id="idCheck" parameterType="String" resultType="memberVo">
-		select userid from member where userid = #{userid}
-	</select>
-
 	<insert id="insertMember" parameterType="memberVo">
-		insert into member values(0, #{userid}, #{pwd}, #{name}, #{email}, #{birthday}, #{nationality}, #{gender}, #{introduce}, sysdate())
+		insert into member values(0,#{userid},#{pwd},#{name},#{email},#{birthday},#{nationality},#{gender},#{introduce},sysdate())
 	</insert>
-	
-	<insert id="insertImage" parameterType="imageVo">
-		insert into image values(0, #{img_phy_name}, #{img_ori_name}, #{img_code}, #{img_path})
-	</insert>
-
-	<update id="updateMember" parameterType="memberVo">
-		update member set pwd = #{pwd}, name = #{name}, email = #{email}, nationality = #{nationality}, introduce = #{introduce} where userid = #{userid}
-	</update>
-	
-	<update id="updateImage" parameterType="imageVo">
-		update image set img_phy_name=#{img_phy_name}, img_ori_name=#{img_ori_name}, img_path=#{img_path} where img_code=#{img_code}
-	</update>
-
-	<select id="pwdCheck" parameterType="String" resultType="memberVo">
-		select pwd from member where userid = #{userid}
-	</select>
-
-	<delete id="deleteMember" parameterMap="int">
-		delete from member where u_idx = #{u_idx}
-	</delete>	
-
-	<select id="selectOne" parameterMap="String" resultType="java.util.HashMap">
-		select * from member m natural join image i where m.userid = i.img_code and m.userid = #{userid}
-	</select>
 </mapper>

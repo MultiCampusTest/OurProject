@@ -5,6 +5,20 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<!-- jQuery -->
+<script src="vendor/jquery/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+
+<!-- Plugin JavaScript -->
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+
+
+<!-- Theme JavaScript -->
+<script src="js/creative.min.js"></script>
+
 
 <!-- Font Awesome CDN -->
 <link rel="stylesheet"
@@ -23,11 +37,8 @@
 	href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic'
 	rel='stylesheet' type='text/css'>
 
-<!-- Plugin CSS -->
-<link href="vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
-
 <!-- Theme CSS -->
-<link href="css/creative.min.css" rel="stylesheet">
+<link href="css/creative.css" rel="stylesheet">
 
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -46,10 +57,12 @@
 .navbar-default .navbar-brand {
 	color: #F05F40;
 }
+
 </style>
 
 </head>
 <body>
+<section>
 	<nav id="mainNav"
 		class="navbar navbar-default navbar-collapse navbar-fixed-top">
 	<div class="container-fluid">
@@ -74,27 +87,13 @@
 				<li><a class="page-scroll" href=""><i
 						class="fa fa-sign-in fa-1g" aria-hidden="true"></i>Login</a></li>
 				<li><a class="page-scroll" href="myPage.do">MyPage</a></li>
-				<li><a class="page-scroll" href="joinForm.do">Join</a></li>
+				<li><a class="page-scroll" href="">Join</a></li>
 			</ul>
 		</div>
 		<!-- /.navbar-collapse -->
 	</div>
 
 	<!-- /.container-fluid --> </nav>
-	<!-- jQuery -->
-	<script src="vendor/jquery/jquery.min.js"></script>
-
-	<!-- Bootstrap Core JavaScript -->
-	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-
-	<!-- Plugin JavaScript -->
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
-	<script src="vendor/scrollreveal/scrollreveal.min.js"></script>
-	<script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
-
-	<!-- Theme JavaScript -->
-	<script src="js/creative.min.js"></script>
-
+</section>
 </body>
 </html>

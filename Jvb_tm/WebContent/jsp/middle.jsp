@@ -16,54 +16,55 @@
 </script>
 
 </head>
+
 <body>
 
 	<div id="myCarousel" class="carousel slide carousel-fade fade-carousel"
 		data-ride="carousel">
+			<!--페이지-->
+			<ol class="carousel-indicators">
+				<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+				<li data-target="#myCarousel" data-slide-to="1"></li>
+				<li data-target="#myCarousel" data-slide-to="2"></li>
+				<li data-target="#myCarousel" data-slide-to="3"></li>
+			</ol>
+			<!--페이지-->
 
-		<!--페이지-->
-		<ol class="carousel-indicators">
-			<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-			<li data-target="#myCarousel" data-slide-to="1"></li>
-			<li data-target="#myCarousel" data-slide-to="2"></li>
-			<li data-target="#myCarousel" data-slide-to="3"></li>
-		</ol>
-		<!--페이지-->
+			<div class="carousel-inner">
+				<!--슬라이드1-->
+				<div class="item active">
+					<img src="img/main/img01.jpg" style="width: 100%" 
+						alt="First slide">
+				</div>
+				<!--슬라이드1-->
 
-		<div class="carousel-inner">
-			<!--슬라이드1-->
-			<div class="item active">
-				<img src="img/main/img01.jpg" style="width: 100%" alt="First slide">
+				<!--슬라이드2-->
+				<div class="item">
+					<img src="img/main/img02.jpg" style="width: 100%" data-src=""
+						alt="Second slide">
+				</div>
+				<!--슬라이드2-->
+
+				<!--슬라이드3-->
+				<div class="item">
+					<img src="img/main/img03.jpg" style="width: 100%" data-src=""
+						alt="Third slide">
+				</div>
+				<!--슬라이드3-->
+
+				<!--슬라이드4-->
+				<div class="item">
+					<img src="img/main/img04.jpg" style="width: 100%" data-src=""
+						alt="fourth slide">
+				</div>
+				<!--슬라이드4-->
 			</div>
-			<!--슬라이드1-->
 
-			<!--슬라이드2-->
-			<div class="item">
-				<img src="img/main/img02.jpg" style="width: 100%" data-src=""
-					alt="Second slide">
-			</div>
-			<!--슬라이드2-->
-
-			<!--슬라이드3-->
-			<div class="item">
-				<img src="img/main/img03.jpg" style="width: 100%" data-src=""
-					alt="Third slide">
-			</div>
-			<!--슬라이드3-->
-
-			<!--슬라이드4-->
-			<div class="item">
-				<img src="img/main/img04.jpg" style="width: 100%" data-src=""
-					alt="fourth slide">
-			</div>
-			<!--슬라이드4-->
-		</div>
-
-		<!--이전, 다음 버튼-->
-		<a class="left carousel-control" href="#myCarousel" data-slide="prev"><span
-			class="glyphicon glyphicon-chevron-left"></span></a> <a
-			class="right carousel-control" href="#myCarousel" data-slide="next"><span
-			class="glyphicon glyphicon-chevron-right"></span></a>
+			<!--이전, 다음 버튼-->
+			<a class="left carousel-control" href="#myCarousel" data-slide="prev"><span
+				class="glyphicon glyphicon-chevron-left"></span></a> <a
+				class="right carousel-control" href="#myCarousel" data-slide="next"><span
+				class="glyphicon glyphicon-chevron-right"></span></a>
 	</div>
 </body>
 </html>

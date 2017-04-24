@@ -25,4 +25,9 @@ public class BoardController {
    public String noticeView(){
 	   return "noticeView";
    }
+   
+   @RequestMapping("travelList.do")
+   public String travelList(){
+	   return "travelList";
+   }
 }

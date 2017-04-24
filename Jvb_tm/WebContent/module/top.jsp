@@ -74,7 +74,7 @@
 				<li><a class="page-scroll" href=""><i
 						class="fa fa-sign-in fa-1g" aria-hidden="true"></i>Login</a></li>
 				<li><a class="page-scroll" href="myPage.do">MyPage</a></li>
-				<li><a class="page-scroll" href="">Join</a></li>
+				<li><a class="page-scroll" href="joinForm.do">Join</a></li>
 			</ul>
 		</div>
 		<!-- /.navbar-collapse -->

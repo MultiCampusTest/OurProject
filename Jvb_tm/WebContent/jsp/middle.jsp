@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 
 <link href="vendor/bootstrap/css/bootstrap.css" rel="stylesheet" />
+<link href="css/mainSlide.css" rel="stylesheet" />
 <script src="vendor/jquery/jquery.min.js"></script>
 <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
 

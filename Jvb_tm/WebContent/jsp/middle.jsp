@@ -27,7 +27,7 @@
 <!-- 		</ol> -->
 		<!--페이지-->
 
-		<div class="carousel-inner">
+		<div class="carousel-inner slide-bg">
 			<div class="container">
 				<div class="carousel-caption">
 					<table width="100%">
@@ -55,7 +55,7 @@
 								You can travel freely with your preferred travel route !
 								</p>
 								<p>
-								You can share your travel information so you can hear your opinions !
+								You can share your travel information so you can hear other opinions !
 								</p>
 								<br><br>
 								<p>Enjoy your trip !</p>

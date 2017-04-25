@@ -276,3 +276,14 @@
 	background-color: #FF9D9A;
 	border-color: #FF9D9A;
 }
+
+.slide-bg:after {
+	background: none repeat scroll 0 0 #000;
+	content: "";
+	height: 100%;
+	left: 0;
+	opacity: 0.5;
+	position: absolute;
+	top: 0;
+	width: 100%;
+}

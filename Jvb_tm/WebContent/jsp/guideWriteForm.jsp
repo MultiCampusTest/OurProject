@@ -5,13 +5,23 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<!-- 부트스트랩 -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<!-- 달력 -->
+<link rel="stylesheet" href="https://unpkg.com/flatpickr/dist/flatpickr.min.css">
+<script src="https://unpkg.com/flatpickr"></script>
+<script src="https://npmcdn.com/flatpickr/dist/flatpickr.min.js"></script>
+<script src="https://npmcdn.com/flatpickr/dist/l10n/ru.js"></script>
+<link rel="stylesheet" href="css/calender.css">
+<script type="text/javascript">
+$(function() {
+	$(".selector").flatpickr({
+
+	});
+});
+</script>
 <style>
         #map { 
-         width: 500px; 
+         width: 400px; 
          height: 500px;; 
         } 
 </style>
@@ -40,41 +50,34 @@
     </div>
     <div class="col-md-7">
       <h2>Something Else here</h2>    
-      <form class="form-horizontal" role="form">
+      <form class="form" role="form" action="#">
       	<div class="form-group">
-          <label class="col-lg-4 control-label">제목:</label>
-          <div class="col-lg-8">
-            <input class="form-control" value="제목 입력" type="text">
-          </div>
+          <label class="control-label ">TITLE:</label>
+          <input class="form-control" value="제목 입력" type="text">
 	  	</div>
 	  	<div class="form-group">
-          <label class="col-lg-4 control-label">여행 일정:</label>
-          <div class="col-md-3">
-            <input class="form-control" value="제목 입력" type="text">
-          </div>
-          <div class="col-md-1">~</div>
-          <div class="col-md-3">
-            <input class="form-control" value="제목 입력" type="text">
-          </div>
-	  	</div>
+          <label class="control-label">DATE:</label><br>
+          <input class="selector" id="fromDate" type="text"> 
+          ~
+          <input class="selector" id="toDate" type="text"><br>
+        </div>
 	  	<div class="form-group">
-	      <label class="col-lg-4 control-label">카테고리:</label>
-	      <div class="col-lg-8">
-	        <div class="ui-select">
-	          <select id="user_time_zone" class="form-control">
+		  <label class="control-label">CATEGORY:</label>
+	      <div class="ui-select">
+	      	<select id="user_time_zone" class="form-control">
 	            <option value="eat">먹방</option>
 	            <option value="tour">관광</option>
 	            <option value="rest">휴양</option>
-	          </select>
-	        </div>
+	        </select>
 	      </div>
 	    </div>
 	    <div class="form-group">
-			          <label class="col-lg-4 control-label">상세내용:</label>
-			          <div class="col-lg-8">
-			            <textarea class="form-control col-sm-5" rows="10"></textarea>
-			          </div>
-			        </div>
+          <label class="control-label">CONTENT:</label>
+          <textarea class="form-control" rows="10"></textarea>
+		</div>
+		<div class="form-group">
+			<input type="submit" value="ok" class="form-control btn btn-primary">
+		</div>
       </form>
     </div>
   </div>

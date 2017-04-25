@@ -35,4 +35,9 @@ public class BoardController {
    public String guideWriteForm(){
 	   return "guideWriteForm";
    }
+   
+   @RequestMapping("travelWriteForm.do")
+   public String travelWriteForm(){
+	   return "travelWriteForm";
+   }
 }

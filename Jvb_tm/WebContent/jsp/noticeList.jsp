@@ -32,15 +32,15 @@
 						</ol>
 						<div class="carousel-inner">
 							<div class="item active">
-								<img class="slide-image" src="http://placehold.it/800x300"
+								<img class="slide-image" src="img/notice/img01.jpg"
 									alt="">
 							</div>
 							<div class="item">
-								<img class="slide-image" src="http://placehold.it/800x300"
+								<img class="slide-image" src="img/notice/img02.jpg"
 									alt="">
 							</div>
 							<div class="item">
-								<img class="slide-image" src="http://placehold.it/800x300"
+								<img class="slide-image" src="img/notice/img03.jpg"
 									alt="">
 							</div>
 						</div>

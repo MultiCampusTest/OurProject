@@ -100,7 +100,7 @@ aside {
 }
 .navbar-default .nav > li.active > a,
 .navbar-default .nav > li.active > a:focus {
-  color: #822525 !important;
+  color: #FF605A;
   background-color: transparent;
 }
 .navbar-default .nav > li.active > a:hover,
@@ -119,13 +119,9 @@ aside {
   .navbar-default .navbar-header .navbar-brand:focus {
     color: #FF9D9A;
   }
-  .navbar-default .nav > li > a,
-  .navbar-default .nav > li > a:focus {
-    color: rgba(255, 255, 255, 0.7);
-  }
   .navbar-default .nav > li > a:hover,
   .navbar-default .nav > li > a:focus:hover {
-    color: white;
+    color: #FF605A;
   }
   .navbar-default.affix {
     background-color: white;

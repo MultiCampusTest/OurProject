@@ -26,7 +26,7 @@
 	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
 <!-- Bootstrap Core CSS -->
-<link href="vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
+<link href="vendor/bootstrap/css/bootstrap.css" rel="stylesheet" >
 
 <!-- Custom Fonts -->
 <link href="vendor/font-awesome/css/font-awesome.min.css"

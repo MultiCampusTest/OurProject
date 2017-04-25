@@ -82,7 +82,7 @@
 			id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav navbar-right">
 				<li><a class="page-scroll" href="noticeList.do">Notice</a></li>
-				<li><a class="page-scroll" href="">Travel</a></li>
+				<li><a class="page-scroll" href="travelList.do">Travel</a></li>
 				<li><a class="page-scroll" href="">Guide</a></li>
 				<li><a class="page-scroll" href="">Review</a></li>
 				<c:choose>

@@ -16,7 +16,7 @@
 </head>
 
 <body>
-	<div class="container"  style="margin-top: 20px">
+	<div class="container" style="margin-top: 20px">
 
 		<div class="row">
 			<!-- The content of your page would go here. -->
@@ -29,7 +29,7 @@
 					Travel <span>Maker</span>
 				</h3>
 
-				<p class="footer-company-name">Travel Maker &copy; 2017</p>
+				<p class="footer-company-name">javaBang &copy; 2017</p>
 			</div>
 
 			<div class="footer-center">
@@ -58,8 +58,9 @@
 			<div class="footer-right">
 
 				<p class="footer-company-about">
-					<span>About the javaBang</span> It is possible to fail in many
-					ways...while to succeed is possible only in one way.
+					<span>About the javaBang</span> We're a great team. Our team is 5
+					people. We operate a travel site. We hope you will have a pleasant
+					trip in Korea. Thanks for coming to our site.
 				</p>
 
 				<div class="footer-icons">

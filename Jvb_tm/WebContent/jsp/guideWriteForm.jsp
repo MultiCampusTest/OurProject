@@ -76,7 +76,8 @@ $(function() {
           <textarea class="form-control" rows="10"></textarea>
 		</div>
 		<div class="form-group">
-			<input type="submit" value="ok" class="form-control btn btn-primary">
+			<input type="submit" value="ok" class="btn btn-primary">
+			<input type="button" value="list" class="btn btn-primary">
 		</div>
       </form>
     </div>

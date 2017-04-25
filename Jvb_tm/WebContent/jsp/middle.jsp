@@ -15,8 +15,7 @@
 </head>
 
 <body>
-
-	<div id="myCarousel" class="carousel slide carousel-fade fade-carousel"
+	<div id="myCarousel" class="carousel slide"
 		data-ride="carousel">
 		<!--페이지 표시-->
 <!-- 		<ol class="carousel-indicators"> -->
@@ -27,7 +26,7 @@
 <!-- 		</ol> -->
 		<!--페이지-->
 
-		<div class="carousel-inner slide-bg">
+		<div class="carousel-inner slide-bg ">
 			<div class="container">
 				<div class="carousel-caption">
 					<table width="100%">
@@ -74,7 +73,7 @@
 											placeholder="Password">
 									</div> <br><br>
 									<div>
-										<button type="submit" class="form-control btn btn-primary">SIGN IN</button>
+										<button type="submit" class="form-control btn btn-primary">LOGIN</button>
 										<br><br>
 										<button type="button" class="form-control btn btn-primary"
 										onclick="location.href='joinForm.do'">JOIN</button>
@@ -87,7 +86,7 @@
 
 			</div>
 			<!--슬라이드1-->
-			<div class="item active">
+			<div class="item active ">
 				<img src="img/main/img01.jpg" style="width: 100%" alt="First slide">
 			</div>
 			<!--슬라이드1-->

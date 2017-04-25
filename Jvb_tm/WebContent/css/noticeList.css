@@ -11,31 +11,6 @@
   {
   	color:#ffffff;
   }
-  
-  .jb-center{
-  	
-  	text-align: center;
-  }
-  
+
 
   
-  .pagination > li > a{
-  	float: none;
-  	color: #FF605A;
-  }
-  
-  .pagination > .active > a,
-  .pagination > .active > a:hover
-  {
-	
-	background-color:#FF605A;
-  	color: #ffffff;
-  	border-color: #FF605A;
-  }
-  
-  .pagination > li > a:active,
-  .pagination > li > a:hover
-  {
-  	background-color: #FF605A;
-  	color: #ffffff;
-  }

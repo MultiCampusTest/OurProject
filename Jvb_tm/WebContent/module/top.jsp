@@ -51,7 +51,7 @@
 <style type="text/css">
 /* Bootstrap Navigation Overriding by Readiz */
 .navbar-default .navbar-collapse {
-	background-color: #FFFFFF;
+	background-color: #FFFFFF !important;
 	border-color: #e7e7e7;
 }
 

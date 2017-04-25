@@ -14,7 +14,6 @@
 <script src="js/profile.js"></script>
 <!--   커스텀 CSS -->
 <link href="css/profile.css" rel="stylesheet">
-<link href="css/noticeList.css" rel="stylesheet">
 
 <title>Travel Maker</title>
 

@@ -13,7 +13,7 @@ a{
 
 font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif
 }
-hr{
+hr{ 
   border-color: #FF605A;
   border-width: 1px;
   max-width: 72%;

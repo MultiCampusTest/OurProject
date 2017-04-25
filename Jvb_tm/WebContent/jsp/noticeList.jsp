@@ -50,7 +50,7 @@
 						</a> <a class="right carousel-control"
 							href="#carousel-example-generic" data-slide="next"> <span
 							class="glyphicon glyphicon-chevron-right"></span>
-						</a>
+						</a> 
 					</div>
 				</div>
 

@@ -281,7 +281,7 @@
                            <ul class="pagination">
                              <li><a href="#"><span class="glyphicon glyphicon-chevron-left"></span></a></li>
                                 <c:forEach begin="1" end="10" step="1" varStatus="i">
-                                   <li><a href="#">${i.index}</a></li>
+                                   <li class="message default" id="paging_msg_${i.index }"><a href="#">${i.index}</a></li>
                                 </c:forEach>
                              <li><a href="#"><span class="glyphicon glyphicon-chevron-right"></span></a></li>
                            </ul>
@@ -379,7 +379,7 @@
                            <ul class="pagination">
                              <li><a href="#"><span class="glyphicon glyphicon-chevron-left"></span></a></li>
                                 <c:forEach begin="1" end="10" step="1" varStatus="i">
-                                   <li><a href="#">${i.index}</a></li>
+                                   <li class="matching default" id="paging_mch_${i.index }"><a href="#">${i.index}</a></li>
                                 </c:forEach>
                              <li><a href="#"><span class="glyphicon glyphicon-chevron-right"></span></a></li>
                            </ul>

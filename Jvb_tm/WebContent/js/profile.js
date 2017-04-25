@@ -48,6 +48,47 @@ $(document).ready(function() {
 		}    
 	}); 
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	   $('#paging_msg_'+1).attr('class', 'paging active message');
+	   $('#paging_mch_'+1).attr('class', 'paging active matching');
+	   $('#paging_not_'+1).attr('class', 'paging active notice');
+	   
+	   $('.jb-center .pagination .message').click(function(){
+	      var id=$(this).attr('id');
+	      var realid=id.substring(7);
+	      $('.message').removeClass("active").addClass("default");
+	      $('#paging_'+realid).removeClass("default").addClass("active");
+	      
+	   });
+	   
+	   $('.jb-center .pagination .matching').click(function(){
+	      var id=$(this).attr('id');
+	      var realid=id.substring(7);
+	      $('.matching').removeClass("active").addClass("default");
+	      $('#paging_'+realid).removeClass("default").addClass("active");
+	      
+	   });
+	   
+	   $('.jb-center .pagination .notice').click(function(){
+	      var id=$(this).attr('id');
+	      var realid=id.substring(7);
+	      $('.notice').removeClass("active").addClass("default");
+	      $('#paging_'+realid).removeClass("default").addClass("active");
+	      
+	   });
+	
+	
+	
+	
+	
 });
 
 

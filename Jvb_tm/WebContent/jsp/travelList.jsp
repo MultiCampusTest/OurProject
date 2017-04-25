@@ -6,22 +6,20 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 
-<link href="css/noticeList.css" rel="stylesheet">
+
+<style type="text/css">
+
+</style>
 </head>
 <body>
 <div class="content container" style="padding-top:90px">
 <p style="line-height:200%">
-<font style="font-size:12pt">유럽 일주</font>
-<a href="index.asp?region=1[1-4]&term=30&onlyReview=1&onlyBest=1"><span class="label rounded-2x label-light">유럽 30+</a>
-<a href="index.asp?region=1[1-4]&term=21&onlyReview=1&onlyBest=1"><span class="label rounded-2x label-green">유럽 21일</a>
-<a href="index.asp?region=1[1-4]&term=15&onlyReview=1&onlyBest=1"><span class="label rounded-2x label-light">유럽 15일</a>
-<a href="index.asp?region=1[1-4]&term=7&onlyReview=1&onlyBest=1"><span class="label rounded-2x label-light">유럽 7일</a>
-<a href="index.asp?region=13&onlyReview=1&onlyBest=1"><span class="label rounded-2x label-light">동유럽</a>
-<a href="index.asp?region=14&onlyReview=1&onlyBest=1"><span class="label rounded-2x label-light">북유럽</a>
+<font style="font-size:12pt">지역</font>
+<a href="#">경기도</a>
 </p>
 
 <p style="line-height:200%">
-<font style="font-size:12pt">유럽 1개국</font> 
+<font style="font-size:12pt">일수</font> 
 <a href="index.asp?region=11101&onlyReview=1&onlyBest=1"><span class="label rounded-2x label-light">프랑스</span></a>
 <a href="index.asp?region=11104&onlyReview=1&onlyBest=1"><span class="label rounded-2x label-light">이탈리아</span></a>
 <a href="index.asp?region=11103&onlyReview=1&onlyBest=1"><span class="label rounded-2x label-light">영국</span></a>

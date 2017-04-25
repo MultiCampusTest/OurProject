@@ -94,7 +94,7 @@
 				<tr>
 
 					<td>John</td>
-					<td><a href="#" style="text-decoration: none">Nada
+					<td><a href="#">Nada
 							Sisisisisbalabal</a></td>
 					<td>john@example.com</td>
 					<td>john@example.com</td>

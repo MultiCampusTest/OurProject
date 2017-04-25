@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>	
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -84,10 +85,16 @@
 				<li><a class="page-scroll" href="">Travel</a></li>
 				<li><a class="page-scroll" href="">Guide</a></li>
 				<li><a class="page-scroll" href="">Review</a></li>
-				<li><a class="page-scroll" href=""><i
-						class="fa fa-sign-in fa-1g" aria-hidden="true"></i>Login</a></li>
+				<c:choose>
+					<c:when test="${u_idx != null }">
+						<li><a class="page-scroll" href=""><i class="fa fa-sign-in fa-1g" aria-hidden="true"></i>Login</a></li>				
+					</c:when>
+					<c:otherwise>
+						<li><a class="page-scroll" onclick="location.href='myPage.do'"><i class="fa fa-sign-in fa-1g" aria-hidden="true"></i>회원님</a></li>
+					</c:otherwise>
+				</c:choose>
 				<li><a class="page-scroll" href="myPage.do">MyPage</a></li>
-				<li><a class="page-scroll" href="">Join</a></li>
+				<li><a class="page-scroll" href="joinForm.do">Join</a></li>
 			</ul>
 		</div>
 		<!-- /.navbar-collapse -->

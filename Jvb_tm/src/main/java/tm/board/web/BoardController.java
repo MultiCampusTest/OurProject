@@ -30,4 +30,9 @@ public class BoardController {
    public String travelList(){
 	   return "travelList";
    }
+   
+   @RequestMapping("guideWriteForm.do")
+   public String guideWriteForm(){
+	   return "guideWriteForm";
+   }
 }

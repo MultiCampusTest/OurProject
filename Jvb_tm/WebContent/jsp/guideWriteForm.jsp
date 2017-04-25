@@ -77,7 +77,7 @@ $(function() {
 		</div>
 		<div class="form-group">
 			<input type="submit" value="ok" class="btn btn-primary">
-			<input type="button" value="list" class="btn btn-primary">
+			<input type="button" value="list" class="btn btn-primary" onclick="location.href='guideList.do'">
 		</div>
       </form>
     </div>

@@ -14,6 +14,7 @@
 <script src="js/profile.js"></script>
 <!--   커스텀 CSS -->
 <link href="css/profile.css" rel="stylesheet">
+<link href="css/noticeList.css" rel="stylesheet">
 
 <title>Travel Maker</title>
 
@@ -249,50 +250,47 @@
 
 
 				<div class="tab-pane fade in" id="tab3">
-					<div class="container" style="padding-top: 60px;">
-						<h1 class="page-header">Message</h1>
+               <div class="container" style="padding-top: 60px;">
+                  <h1 class="page-header">Message</h1>
 
-						<!--           sender_userid 부분 -->
-						<div class="row" style="text-align: center">
-							<c:forEach begin="1" end="5" step="1" varStatus="i">
-								<div class="container-fluid">
-									<div class="sender col-lg-3" id="${i.index }">
-										<input type="hidden" id="msg_condition_${i.index }" value="1">
-										<div>
-											<img src="img/ex.jpg" width="50px" height="50px">
-										</div>
-										<div>sender_userid ${i.index }</div>
-									</div>
-									<div class="message" id="message_${i.index }">
-										<div class="msg_contents col-lg-7">sending message
-											${i.index }</div>
-										<div class="msg_date col-lg-2">sending date ${i.index }</div>
-									</div>
-									<div class="msg_contents_box col-lg-9" id="msg_box_${i.index }">
-										<div class="msg_box">msg_box ${i.index }</div>
-									</div>
-								</div>
-							</c:forEach>
-						</div>
-						<br>
-						<br>
+                  <!--           sender_userid 부분 -->
+                  <div class="row" style="text-align: center">
+                     <c:forEach begin="1" end="5" step="1" varStatus="i">
+                        <div class="container-fluid">
+                           <div class="sender col-lg-3" id="${i.index }">
+                              <input type="hidden" id="msg_condition_${i.index }" value="1">
+                              <div>
+                                 <img src="img/ex.jpg" width="50px" height="50px">
+                              </div>
+                              <div>sender_userid ${i.index }</div>
+                           </div>
+                           <div class="message" id="message_${i.index }">
+                              <div class="msg_contents col-lg-7">sending message
+                                 ${i.index }</div>
+                              <div class="msg_date col-lg-2">sending date ${i.index }</div>
+                           </div>
+                           <div class="msg_contents_box col-lg-9" id="msg_box_${i.index }">
+                              <div class="msg_box">msg_box ${i.index }</div>
+                           </div>
+                        </div>
+                     </c:forEach>
+                  </div>
+                  <br>
+                  <br>
 
-						<div class="row col-lg-6 col-lg-offset-3"
-							style="text-align: center;">
-							<div class="btn-primary col-md-1"><</div>
-							<div>
-								<c:forEach begin="1" end="10" step="1" varStatus="i">
-									<div class="btn-primary col-md-1">
-										<a href="" style="color: white">${i.index }</a>
-									</div>
-								</c:forEach>
-							</div>
-							<div class="btn-primary col-md-1">></div>
-						</div>
+                  <div class="jb-center">
+                           <ul class="pagination">
+                             <li><a href="#"><span class="glyphicon glyphicon-chevron-left"></span></a></li>
+                                <c:forEach begin="1" end="10" step="1" varStatus="i">
+                                   <li><a href="#">${i.index}</a></li>
+                                </c:forEach>
+                             <li><a href="#"><span class="glyphicon glyphicon-chevron-right"></span></a></li>
+                           </ul>
+                      </div>
 
 
-					</div>
-				</div>
+               </div>
+            </div>
 
 
 
@@ -308,91 +306,87 @@
 
 
 
-				<div class="tab-pane fade in" id="tab4">
-					<div class="container" style="padding-top: 60px;">
-						<h1 class="page-header">Matching</h1>
+            <div class="tab-pane fade in" id="tab4">
+               <div class="container" style="padding-top: 60px;">
+                  <h1 class="page-header">Matching</h1>
 
-						<!--           Matching 부분 -->
+                  <!--           Matching 부분 -->
 
-						<h3 class="page-header">Request Matching</h3>
+                  <h3 class="page-header">Request Matching</h3>
 
-						<div class="row" style="text-align: center">
-							<c:forEach begin="1" end="5" step="1" varStatus="i">
-								<div class="container-fluid">
-									<div class="not_accept col-lg-3" id="${i.index }">
-										<input type="hidden" id="req_match_condition_${i.index }"
-											value="1">
-										<div>
-											<img src="img/ex.jpg" width="50px" height="50px">
-										</div>
-										<div>Matching sender_userid ${i.index }</div>
-									</div>
-									<div class="request_matching" id="req_matching_${i.index }">
-										<div class="request_mch_contents col-lg-7">
-											<a href="board.do?b_idx=">해당 게시글 제목 ${i.index }</a>
-										</div>
-										<div class="request_mch_date col-lg-2">sending date
-											${i.index }</div>
-									</div>
-									<div class="matching_box" id="matching_box_${i.index }">
-										<div>매칭 요청을 수락하시겠습니까?</div>
-										<div class="matching_yes col-lg-4">
-											<input type="button" id="matcing_accept_yes" value="YES"
-												onclick="location.href='http://www.naver.com'">
-										</div>
-										<div class="matching_no col-lg-4">
-											<input type="button" id="matcing_accept_no" value="NO"
-												onclick="location.href='http://www.daum.net'">
-										</div>
-									</div>
-								</div>
-							</c:forEach>
-						</div>
+                  <div class="row" style="text-align: center">
+                     <c:forEach begin="1" end="5" step="1" varStatus="i">
+                        <div class="container-fluid">
+                           <div class="not_accept col-lg-3" id="${i.index }">
+                              <input type="hidden" id="req_match_condition_${i.index }"
+                                 value="1">
+                              <div>
+                                 <img src="img/ex.jpg" width="50px" height="50px">
+                              </div>
+                              <div>Matching sender_userid ${i.index }</div>
+                           </div>
+                           <div class="request_matching" id="req_matching_${i.index }">
+                              <div class="request_mch_contents col-lg-7">
+                                 <a href="board.do?b_idx=">해당 게시글 제목 ${i.index }</a>
+                              </div>
+                              <div class="request_mch_date col-lg-2">sending date
+                                 ${i.index }</div>
+                           </div>
+                           <div class="matching_box" id="matching_box_${i.index }">
+                              <div>매칭 요청을 수락하시겠습니까?</div>
+                              <div class="matching_yes col-lg-4">
+                                 <input type="button" id="matcing_accept_yes" value="YES"
+                                    onclick="location.href='http://www.naver.com'">
+                              </div>
+                              <div class="matching_no col-lg-4">
+                                 <input type="button" id="matcing_accept_no" value="NO"
+                                    onclick="location.href='http://www.daum.net'">
+                              </div>
+                           </div>
+                        </div>
+                     </c:forEach>
+                  </div>
 
 
 
-						<h3 class="page-header">Accepted Matching</h3>
-						<div class="row" style="text-align: center">
-							<c:forEach begin="1" end="5" step="1" varStatus="i">
-								<div class="container-fluid">
-									<div class="accept col-lg-3" id="${i.index }">
-										<input type="hidden" id="matched_condition_${i.index }"
-											value="1">
-										<div>
-											<img src="img/ex.jpg" width="50px" height="50px">
-										</div>
-										<div>Matching sender_userid ${i.index }</div>
-									</div>
-									<div class="accepted_matching"
-										id="accepted_matching_${i.index }">
-										<div class="accepted_mch_contents col-lg-7">
-											<a href="board.do?b_idx=">해당 게시글 제목 ${i.index }</a>
-										</div>
-										<div class="accepted_mch_date col-lg-2">sending date
-											${i.index }</div>
-									</div>
-								</div>
-							</c:forEach>
-						</div>
+                  <h3 class="page-header">Accepted Matching</h3>
+                  <div class="row" style="text-align: center">
+                     <c:forEach begin="1" end="5" step="1" varStatus="i">
+                        <div class="container-fluid">
+                           <div class="accept col-lg-3" id="${i.index }">
+                              <input type="hidden" id="matched_condition_${i.index }"
+                                 value="1">
+                              <div>
+                                 <img src="img/ex.jpg" width="50px" height="50px">
+                              </div>
+                              <div>Matching sender_userid ${i.index }</div>
+                           </div>
+                           <div class="accepted_matching"
+                              id="accepted_matching_${i.index }">
+                              <div class="accepted_mch_contents col-lg-7">
+                                 <a href="board.do?b_idx=">해당 게시글 제목 ${i.index }</a>
+                              </div>
+                              <div class="accepted_mch_date col-lg-2">sending date
+                                 ${i.index }</div>
+                           </div>
+                        </div>
+                     </c:forEach>
+                  </div>
 
-						<br>
-						<br>
-
-						<div class="row col-lg-6 col-lg-offset-3"
-							style="text-align: center;">
-							<div class="btn-primary col-md-1"><</div>
-							<div>
-								<c:forEach begin="1" end="10" step="1" varStatus="i">
-									<div class="btn-primary col-md-1">
-										<a href="" style="color: white">${i.index }</a>
-									</div>
-								</c:forEach>
-							</div>
-							<div class="btn-primary col-md-1">></div>
-						</div>
-
-					</div>
-				</div>
+                  <br>
+                  <br>
+               
+                  <div class="jb-center">
+                           <ul class="pagination">
+                             <li><a href="#"><span class="glyphicon glyphicon-chevron-left"></span></a></li>
+                                <c:forEach begin="1" end="10" step="1" varStatus="i">
+                                   <li><a href="#">${i.index}</a></li>
+                                </c:forEach>
+                             <li><a href="#"><span class="glyphicon glyphicon-chevron-right"></span></a></li>
+                           </ul>
+                      </div>
+               </div>
+            </div>
 
 
 

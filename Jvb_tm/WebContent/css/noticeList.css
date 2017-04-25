@@ -1,6 +1,6 @@
 @CHARSET "UTF-8";
 .table-hover > tbody > tr:hover {  
-    background-color: #ff8040;  
+    background-color: #FF605A;  
    color: #ffffff;  
   }  
   
@@ -21,21 +21,21 @@
   
   .pagination > li > a{
   	float: none;
-  	color: #ff8040;
+  	color: #FF605A;
   }
   
   .pagination > .active > a,
   .pagination > .active > a:hover
   {
 	
-	background-color:#ff8040;
+	background-color:#FF605A;
   	color: #ffffff;
-  	border-color: #ff8040;
+  	border-color: #FF605A;
   }
   
   .pagination > li > a:active,
   .pagination > li > a:hover
   {
-  	background-color: #ff8040;
+  	background-color: #FF605A;
   	color: #ffffff;
   }

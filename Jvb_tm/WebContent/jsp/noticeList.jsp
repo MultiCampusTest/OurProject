@@ -19,50 +19,8 @@
 <!-- <script src="../vendor/jquery/jquery.min.js"></script> -->
 <!-- <script src="../vendor/bootstrap/js/bootstrap.min.js"></script> -->
 <!--   커스텀 CSS -->
-<!-- <link href="css/noticeList.css" rel="stylesheet"> -->
-<style type="text/css">
-.table-hover > tbody > tr:hover {  
-    background-color: #ff8040;  
-   color: #ffffff;  
-  }  
-  
-  a{
-  	color:#000000;
-  }
-  a:hover  
-  {
-  	color:#ffffff;
-  }
-  
-  .jb-center{
-  	
-  	text-align: center;
-  }
-  
+<link href="css/noticeList.css" rel="stylesheet">
 
-  
-  .pagination > li > a{
-  	float: none;
-  	color: #ff8040;
-  }
-  
-  .pagination > .active > a,
-  .pagination > .active > a:hover
-  {
-	
-	background-color:#ff8040;
-  	color: #ffffff;
-  	border-color: #ff8040;
-  }
-  
-  .pagination > li > a:active,
-  .pagination > li > a:hover
-  {
-  	background-color: #ff8040;
-  	color: #ffffff;
-  }
-
-</style>
 </head>
 <body>
  <div class="container">

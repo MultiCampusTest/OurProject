@@ -1,7 +1,7 @@
 .footer-distributed{
 /* 	background-color: #292c2f; */
 /* 	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12); */
-	box-sizing: border-box;
+/* 	box-sizing: border-box; */
 	width: 100%;
 	text-align: left;
 	font: bold 16px sans-serif;
@@ -48,7 +48,7 @@
 	display:inline-block;
 	line-height: 1.8;
 	text-decoration: none;
-	color:  inherit;
+/* 	color:  inherit; */
 }
 
 .footer-distributed .footer-company-name{

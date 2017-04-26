@@ -12,6 +12,7 @@
 <script src="https://npmcdn.com/flatpickr/dist/flatpickr.min.js"></script>
 <script src="https://npmcdn.com/flatpickr/dist/l10n/ru.js"></script>
 <link rel="stylesheet" href="css/calender.css">
+<link rel="stylesheet" href="css/guideWriteForm.css">
 <script type="text/javascript">
 $(function() {
 	$(".selector").flatpickr({
@@ -34,7 +35,7 @@ $(function() {
   <div class="row">
     <div class="col-md-5">
       <h2>Google Map here</h2>
-      <div id="map"></div>
+      <div class="mapdiv" id="map"></div>
       <script>
 	      function initMap() {
 	        var uluru = {lat: -25.363, lng: 131.044};
@@ -55,14 +56,20 @@ $(function() {
       <form class="form" role="form" action="#">
       	<div class="form-group">
           <label class="control-label ">TITLE:</label>
-          <input class="form-control" value="제목 입력" type="text">
+          <input class="form-control" placeholder="Insert Title " type="text">
 	  	</div>
+	  	
+	  	<hr>
+	  	
 	  	<div class="form-group">
           <label class="control-label">DATE:</label><br>
           <input class="selector" id="fromDate" type="text"> 
           ~
           <input class="selector" id="toDate" type="text"><br>
         </div>
+        
+        <hr>
+        
 	  	<div class="form-group">
 		  <label class="control-label">CATEGORY:</label>
 	      <div class="ui-select">
@@ -73,9 +80,12 @@ $(function() {
 	        </select>
 	      </div>
 	    </div>
+	    
+	    <hr>
+	    
 	    <div class="form-group">
           <label class="control-label">CONTENT:</label>
-          <textarea class="form-control" rows="10"></textarea>
+          <textarea class="form-control" placeholder="Insert Content "rows="10"></textarea>
 		</div>
 		<div class="form-group">
 			<input type="submit" value="ok" class="btn btn-primary">

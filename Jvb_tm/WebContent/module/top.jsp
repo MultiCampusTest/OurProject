@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>	
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -26,7 +26,7 @@
 	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
 <!-- Bootstrap Core CSS -->
-<link href="vendor/bootstrap/css/bootstrap.css" rel="stylesheet" >
+<link href="vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
 
 <!-- Custom Fonts -->
 <link href="vendor/font-awesome/css/font-awesome.min.css"
@@ -58,13 +58,15 @@
 /* .navbar-default .navbar-brand { */
 /* 	color: #F05F40; */
 /* } */
-
+.dropdown:hover .dropdown-menu {
+	display: block;
+	margin-top: 0;
+}
 </style>
 
 </head>
 <body>
-<section>
-	<nav id="mainNav"
+	<section> <nav id="mainNav"
 		class="navbar navbar-default navbar-collapse navbar-fixed-top">
 	<div class="container-fluid">
 		<!-- Brand and toggle get grouped for better mobile display -->
@@ -81,26 +83,100 @@
 		<div class="collapse navbar-collapse"
 			id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav navbar-right">
-				<li><a class="page-scroll" href="noticeList.do">Notice</a></li>
-				<li><a class="page-scroll" href="travelList.do">Travel</a></li>
-				<li><a class="page-scroll" href="">Guide</a></li>
-				<li><a class="page-scroll" href="">Review</a></li>
+
+
+
+				<li class="dropdown"><a class="dropdown-toggle"
+					data-toggle="dropdown" href="noticeList.do">Notice<b
+						class="caret"></b></a>
+					<ul class="dropdown-menu">
+						<li><a href="noticeList.do">All Notice</a></li>
+					</ul></li>
+
+				<li class="dropdown"><a class="dropdown-toggle"
+					data-toggle="dropdown" href="travelList.do">Travel<b
+						class="caret"></b></a>
+					<ul class="dropdown-menu">
+						<li><a href="travelList.do?sub_category=five">5 days</a></li>
+						<li><a href="travelList.do?sub_category=ten">10 days</a></li>
+						<li><a href="travelList.do?sub_category=more">15 days</a></li>
+						<li class="divider"></li>
+						<!-- 						<li class="dropdown-header">네비게이션 헤더</li> -->
+						<li><a href="travelList.do?loc_category=seoul">seoul</a></li>
+						<li><a href="travelList.do?loc_category=incheon">incheon</a></li>
+						<li><a href="travelList.do?loc_category=daejeon">daejeon</a></li>
+						<li><a href="travelList.do?loc_category=gwangju">gwangju</a></li>
+						<li><a href="travelList.do?loc_category=daegu">daegu</a></li>
+						<li><a href="travelList.do?loc_category=busan">busan</a></li>
+						<li><a href="travelList.do?loc_category=jeju">jeju</a></li>
+						<li><a href="travelList.do?loc_category=gangwon">gangwon</a></li>
+						<li><a href="travelList.do?loc_category=gyeonggi">gyeonggi</a></li>
+						<li><a href="travelList.do?loc_category=chungcheong">chungcheong</a></li>
+						<li><a href="travelList.do?loc_category=jeonla">jeonla</a></li>
+						<li><a href="travelList.do?loc_category=kyeongsang">kyeongsang</a></li>
+					</ul></li>
+
+				<li class="dropdown"><a class="dropdown-toggle"
+					data-toggle="dropdown" href="guideList.do">Guide<b
+						class="caret"></b></a>
+					<ul class="dropdown-menu">
+						<li><a href="guideList.do?sub_category=five">5 days</a></li>
+						<li><a href="guideList.do?sub_category=ten">10 days</a></li>
+						<li><a href="guideList.do?sub_category=more">15 days</a></li>
+						<li class="divider"></li>
+						<!-- 						<li class="dropdown-header">네비게이션 헤더</li> -->
+						<li><a href="guideList.do?loc_category=seoul">seoul</a></li>
+						<li><a href="guideList.do?loc_category=incheon">incheon</a></li>
+						<li><a href="guideList.do?loc_category=daejeon">daejeon</a></li>
+						<li><a href="guideList.do?loc_category=gwangju">gwangju</a></li>
+						<li><a href="guideList.do?loc_category=daegu">daegu</a></li>
+						<li><a href="guideList.do?loc_category=busan">busan</a></li>
+						<li><a href="guideList.do?loc_category=jeju">jeju</a></li>
+						<li><a href="guideList.do?loc_category=gangwon">gangwon</a></li>
+						<li><a href="guideList.do?loc_category=gyeonggi">gyeonggi</a></li>
+						<li><a href="guideList.do?loc_category=chungcheong">chungcheong</a></li>
+						<li><a href="guideList.do?loc_category=jeonla">jeonla</a></li>
+						<li><a href="guideList.do?loc_category=kyeongsang">kyeongsang</a></li>
+					</ul></li>
+
+				<li class="dropdown"><a class="dropdown-toggle"
+					data-toggle="dropdown" href="reviewList.do">Review<b
+						class="caret"></b></a>
+					<ul class="dropdown-menu">
+						<li><a href="reviewList.do?sub_category=five">5 days</a></li>
+						<li><a href="reviewList.do?sub_category=ten">10 days</a></li>
+						<li><a href="reviewList.do?sub_category=more">15 days</a></li>
+						<li class="divider"></li>
+						<!-- 						<li class="dropdown-header">네비게이션 헤더</li> -->
+						<li><a href="reviewList.do?sub_category=food">food</a></li>
+						<li><a href="reviewList.do?sub_category=shopping">shopping</a></li>
+						<li><a href="reviewList.do?sub_category=stay">stay</a></li>
+						<li><a href="reviewList.do?sub_category=tour">tour</a></li>
+					</ul></li>
+
 				<c:choose>
 					<c:when test="${u_idx != null }">
+						<li><a class="page-scroll" href=""><i
+								class="fa fa-sign-in fa-1g" aria-hidden="true"></i>Login</a></li>
 					</c:when>
 					<c:otherwise>
-						<li><a class="page-scroll" href="loginForm.do"><i class="fa fa-sign-in fa-1g" aria-hidden="true"></i>Login</a></li>				
-						<li><a class="page-scroll" onclick="location.href='myPage.do'"><i class="fa fa-sign-in fa-1g" aria-hidden="true"></i>회원님</a></li>
+						<li><a class="page-scroll"
+							onclick="location.href='myPage.do'"><i
+								class="fa fa-sign-in fa-1g" aria-hidden="true"></i>회원님</a></li>
 					</c:otherwise>
 				</c:choose>
+
 				<li><a class="page-scroll" href="myPage.do">MyPage</a></li>
+
 				<li><a class="page-scroll" href="joinForm.do">Join</a></li>
+
+
+
 			</ul>
 		</div>
 		<!-- /.navbar-collapse -->
 	</div>
 
-	<!-- /.container-fluid --> </nav>
-</section>
+	<!-- /.container-fluid --> </nav> </section>
 </body>
 </html>

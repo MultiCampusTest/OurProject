@@ -81,3 +81,17 @@
 .btn-pref .btn {
     -webkit-border-radius:0 !important;
 }
+
+
+
+   .btn-primary:focus,
+   .btn-info:focus{
+      background-color: #FF605A !important;
+   }
+   
+   .btn-info{
+      background-color: #FF605A !important;
+   }
+   .btn-info:hover{
+      background-color: #FF9D9A !important;
+   }

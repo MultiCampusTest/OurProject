@@ -131,7 +131,7 @@
 			</section>
 		</div>
 		<div id="powered">
-			Create you account right now&nbsp;<a href="registerForm.do" target="_blank">
+			Create you account right now&nbsp;<a href="joinForm.do" target="_blank">
 			<b>Join Us</b></a>
 		</div>
 	</div>

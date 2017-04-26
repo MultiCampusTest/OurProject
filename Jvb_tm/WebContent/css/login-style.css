@@ -6,8 +6,6 @@ body {
 }
 
 li, ul, body, input {
-	margin: 0;
-	padding: 0;
 	list-style: none
 }
 
@@ -41,10 +39,6 @@ li, ul, body, input {
 }
 
 /*sectiop*/
-.section-logo {
-	margin-top: 150px;
-}
-
 .section-out {
 	width: 700px;
 	float: left;
@@ -122,19 +116,19 @@ li, ul, body, input {
 }
 
 .input:focus:invalid {
-	border-color: red
+	border-color: #FF605A
 }
 
 .input:focus:invalid+.icon {
-	border-color: red
+	border-color: #FF605A
 }
 
 .input:focus:valid {
-	border-color: green
+	border-color: #FF605A
 }
 
 .input:focus:valid+.icon {
-	border-color: green
+	border-color: #FF605A
 }
 
 #check, #check1 {

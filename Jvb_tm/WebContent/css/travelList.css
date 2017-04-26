@@ -1,16 +1,38 @@
 @CHARSET "UTF-8";
-a {
-  -webkit-transition: all 0.35s;
-  -moz-transition: all 0.35s;
-  transition: all 0.35s;
-  color: #000000;
-  text-decoration: none;
-  font-family: 'Merriweather', 'Helvetica Neue', Arial, sans-serif;
+p{
+
+font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
 }
-a:hover,
-a:focus {
-  color: #FF605A;
-  text-decoration: none;
+
+font{
+font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
+}
+
+hr{ 
+  border-color: #FF605A;
+  border-width: 1px;
+  max-width: 72%;
+  margin-left:220px;
+}
+
+.category{
+padding: 5px;
+/* border: 1px solid #FF605A; */
+background-color: #eceaeb;
+border-radius: 10px;
+font-size:13px;
+color:#000000;
+transition: 0.5s;
+}
+.category:hover{
+ background-color: #FF605A;  
+   color: #ffffff;  
+   transition: 0.5s;
+}
+
+.active{
+	background-color: #FF605A;  
+   	color: #ffffff;  
 }
 
  

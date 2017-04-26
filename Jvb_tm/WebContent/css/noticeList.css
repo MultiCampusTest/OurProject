@@ -1,7 +1,7 @@
 @CHARSET "UTF-8";
 
 .table-hover>tbody>tr:hover {
-	background-color: #ff8040;
+	background-color: #FF605A;
 	color: #ffffff;
 }
 

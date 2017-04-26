@@ -4,10 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<!-- 부트스트랩 -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 <!--   커스텀CSS -->
 <link href="css/noticeView.css" rel="stylesheet">
   
@@ -24,7 +21,7 @@
          <!-- Blog Post -->
 
          <!-- Title -->
-         <h1>Notice</h1>
+         <h1>NOTICE</h1>
 
          <!-- Author -->
          <p class="lead">
@@ -38,13 +35,13 @@
 
          <hr>
 
-         <!-- Preview Image -->
-         <img class="img-responsive col-lg-12" src="http://placehold.it/900x300" alt="">
-         
-         <hr>
 
          <!-- Post Content -->
-         <p class="lead">여기에 공지사항 글 </p>
+         <p class="lead">
+         	여기가 공지사항을 쓰는 곳이야. OTL 삼삼삼삼 하삼 
+         	해주삼 안녕하삼 안녕하삼안녕하삼안녕하삼안녕하삼안녕하삼안녕하삼안녕하삼안녕하삼안녕하삼안녕하삼안녕하삼안녕하삼안녕하삼안녕하삼안녕하삼
+         	안녕하삼 안녕하삼 안녕하삼 안녕하삼 안녕하삼 안녕하삼 안녕하삼 안녕하삼 안녕하삼 안녕하삼 안녕하삼 안녕하삼 
+         </p>
          <hr>
 
          <!-- Blog Comments -->
@@ -109,15 +106,6 @@
 
  <hr>
 
- <!-- Footer -->
- <footer>
-     <div class="row">
-         <div class="col-lg-12">
-             <p>Copyright &copy; Your Website 2014</p>
-         </div>
-     </div>
-     <!-- /.row -->
- </footer>
 
     </div>
 </body>

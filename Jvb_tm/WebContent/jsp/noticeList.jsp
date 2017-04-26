@@ -8,12 +8,10 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
 
-<!--   커스텀 CSS -->
-<script src="js/profile.js"></script>
+<!--   커스텀 CSS, JS -->
 <link href="css/noticeList.css" rel="stylesheet">
+<script src="js/profile.js"></script>
 
 </head>
 <body>

@@ -6,52 +6,47 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 
-<!-- <link rel="stylesheet" href="css/travelList.css"> -->
+<link rel="stylesheet" href="css/travelList.css">
 
-<style type="text/css">
-a{
-
-font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif
-}
-hr{ 
-  border-color: #FF605A;
-  border-width: 1px;
-  max-width: 72%;
-  margin-left:220px;
-}
-#haha{
-padding: 5px;
-/* border: 1px solid #FF605A; */
-background-color: #eceaeb;
-border-radius: 15px;
-font-size:13px;
-}
-
-</style>
 </head>
 <body>
 
 <div class="content container" style="padding-top:90px">
+<p style="line-height:200%">
+<font style="font-size:12pt">D A Y S</font>
+<a href="#"><span class="category active">5Days</span></a>
+<a href="#"><span class="category">10Days</span></a>
+<a href="#"><span class="category">15Days</span></a>
+<a href="#"><span class="category">YaHo</span></a>
+<a href="#"><span class="category">YaHoHo</span></a>
+</p>
+
 <p style="line-height:100%">
 <font style="font-size:12pt">LOCAITON</font>
-<a href="#"><span id="haha">Goyang</span></a>
-<a href="#"><span id="haha">hihihiho</span></a>
-
+<a href="#"><span class="category active">Seoul</span></a>
+<a href="#"><span class="category">Gangwon</span></a>
+<a href="#"><span class="category">Incheon</span></a>
+<a href="#"><span class="category">Gyeonggi</span></a>
+<a href="#"><span class="category">Sejong</span></a>
+<a href="#"><span class="category">Chungbuk</span></a>
+<a href="#"><span class="category">Chungnam</span></a>
+<a href="#"><span class="category">Daejeon</span></a>
 </p>
 
 <p style="line-height:100%">
-DAYS 
-<a href="index.asp?region=11101&onlyReview=1&onlyBest=1"><span class="label rounded-2x label-light">프랑스</span></a>
-<a href="index.asp?region=11104&onlyReview=1&onlyBest=1"><span class="label rounded-2x label-light">이탈리아</span></a>
-<a href="index.asp?region=11103&onlyReview=1&onlyBest=1"><span class="label rounded-2x label-light">영국</span></a>
-<a href="index.asp?region=12101&onlyReview=1&onlyBest=1"><span class="label rounded-2x label-light">스페인</span></a>
-<a href="index.asp?region=12104&onlyReview=1&onlyBest=1"><span class="label rounded-2x label-light">터키</span></a>
-<a href="index.asp?region=11106&onlyReview=1&onlyBest=1"><span class="label rounded-2x label-light">독일</span></a>
-<a href="index.asp?region=11102&onlyReview=1&onlyBest=1"><span class="label rounded-2x label-light">스위스</span></a>
-<a href="index.asp?region=13106&onlyReview=1&onlyBest=1"><span class="label rounded-2x label-light">크로아티아</a>
-<a href="index.asp?region=12103&onlyReview=1&onlyBest=1"><span class="label rounded-2x label-light">그리스</span></a>
-<a href="index.asp?region=12102"><span class="label rounded-2x label-light">포르투갈</span></a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="#"><span class="category">Jeonbuk</span></a>
+<a href="#"><span class="category">Jeonnam</span></a>
+<a href="#"><span class="category">Gwangju</span></a>
+<a href="#"><span class="category">Kyeongnam</span></a>
+<a href="#"><span class="category">Kyeongbuk</span></a>
+<a href="#"><span class="category">Daegu</span></a>
+<a href="#"><span class="category">Busan</span></a>
+<a href="#"><span class="category">Ulsan</span></a>
+<a href="#"><span class="category">Jeju</span></a>
 </p>
+
+
 </div>
 
 <hr/>
@@ -63,10 +58,9 @@ DAYS
                         <div class="thumbnail">
                             <img src="http://placehold.it/300x400" alt="">
                             <div class="caption">
-                                <p>USER_ID</p>
-                                <p>writeDate</p>
-                                <p>reviews</p>
-                                
+                                <font style="font-size:12pt">USER_ID</font><br>
+                                <font style="font-size:12pt">DATE</font><br>
+                                <font style="font-size:12pt">REVIEWS</font>
                             </div>
                           
                         </div>
@@ -75,10 +69,9 @@ DAYS
                         <div class="thumbnail">
                             <img src="http://placehold.it/300x400" alt="">
                             <div class="caption">
-                                <p>USER_ID</p>
-                                <p>writeDate</p>
-                                <p>reviews</p>
-                                
+                               <font style="font-size:12pt">USER_ID</font><br>
+                                <font style="font-size:12pt">DATE</font><br>
+                                <font style="font-size:12pt">REVIEWS</font>
                             </div>
                           
                         </div>
@@ -87,10 +80,9 @@ DAYS
                         <div class="thumbnail">
                             <img src="http://placehold.it/300x400" alt="">
                             <div class="caption">
-                                <p>USER_ID</p>
-                                <p>writeDate</p>
-                                <p>reviews</p>
-                                
+                               <font style="font-size:12pt">USER_ID</font><br>
+                                <font style="font-size:12pt">DATE</font><br>
+                                <font style="font-size:12pt">REVIEWS</font>
                             </div>
                           
                         </div>
@@ -99,10 +91,9 @@ DAYS
                         <div class="thumbnail">
                             <img src="http://placehold.it/300x400" alt="">
                             <div class="caption">
-                                <p>USER_ID</p>
-                                <p>writeDate</p>
-                                <p>reviews</p>
-                                
+                              <font style="font-size:12pt">USER_ID</font><br>
+                                <font style="font-size:12pt">DATE</font><br>
+                                <font style="font-size:12pt">REVIEWS</font>
                             </div>
                           
                         </div>
@@ -111,30 +102,32 @@ DAYS
                         <div class="thumbnail">
                             <img src="http://placehold.it/300x400" alt="">
                             <div class="caption">
-                                <p>USER_ID</p>
-                                <p>writeDate</p>
-                                <p>reviews</p>
-                                
+                               <font style="font-size:12pt">USER_ID</font><br>
+                                <font style="font-size:12pt">DATE</font><br>
+                                <font style="font-size:12pt">REVIEWS</font>
                             </div>
                           
                         </div>
                     </div>
-                    <a href="#">
+                    
                     <div class="col-sm-2 col-lg-2 col-md-2">
                         <div class="thumbnail">
+                        <a href="#" title="자세히보기">
                             <img src="http://placehold.it/300x400" alt="">
+                         </a>
                             <div class="caption">
-                                <p>USER_ID</p>
-                                <p>writeDate</p>
-                                <p>reviews</p>
-                                
+                                <font style="font-size:12pt">USER_ID</font><br>
+                                <font style="font-size:12pt">DATE</font><br>
+                                <font style="font-size:12pt">REVIEWS</font>
                             </div>
                           
                         </div>
                     </div>
-                    </a>
 				</div>
 				</div>
+				
+		<hr/>
+		
 	<div class="jb-center">
             <ul class="pagination">
               <li><a href="#"><span class="glyphicon glyphicon-chevron-left"></span></a></li>

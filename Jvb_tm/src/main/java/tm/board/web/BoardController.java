@@ -31,6 +31,11 @@ public class BoardController {
 	   return "noticeWriteForm";
    }
    
+   @RequestMapping("noticeUpdateForm.do")
+   public String noticeUpdateForm(){
+	   return "noticeUpdateForm";
+   }
+   
    @RequestMapping("travelList.do")
    public String travelList(){
 	   return "travelList";

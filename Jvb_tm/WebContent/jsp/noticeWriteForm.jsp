@@ -7,8 +7,48 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="css/noticeWriteForm.css">
 </head>
 <body>
- 
+ <div class="container">
+
+ <div class="row">
+
+     <!-- Notice Input Column -->
+     <div class="col-lg-12">
+     	 <p class="lead" style="font-size: 50px">
+     	 	NOTICE
+     	 </p>
+	
+		 <hr>
+		 <form class="form" action="#">
+         <!-- Title -->
+         <p class="lead">
+         	TITLE:
+         </p>
+         <input type="text" placeholder="제목을 입력하세요. " class="form-control" name="subject"/>
+
+         <hr>
+
+         <!-- Content -->
+         <p class="lead">
+         	CONTENT:
+         </p>
+         <textarea placeholder="내용을 입력하세요. " class="form-control-text" rows="10"></textarea>
+         
+         <hr>
+		 <!-- Widget -->
+		 <div class="form-group">
+			<input type="submit" value="ok" class="btn btn-primary">
+			<input type="button" value="list" class="btn btn-primary" onclick="location.href='noticeList.do'">
+		</div>
+		 </form>
+     </div>
+ </div>
+
+ <hr>
+
+
+    </div>
 </body>
 </html>

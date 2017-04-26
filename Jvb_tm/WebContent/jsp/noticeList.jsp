@@ -68,6 +68,15 @@
 				</tr>
 			</tbody>
 		</table>
+		<c:choose>
+			<c:when test="${u_idx != admin }">
+				<input type="button" class="btn btn-primary" value="등록" onclick="location.href='noticeWriteForm.do'">
+			</c:when>
+			<c:otherwise>
+				<input type="button" class="btn btn-primary" value="관리자가아니네?" onclick="location.href='main.do'">
+			</c:otherwise>
+		</c:choose>
+		<br>
 
 		<div class="jb-center">
 			<ul class="pagination">

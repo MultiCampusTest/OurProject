@@ -35,7 +35,7 @@
 								<h1>Travel Maker</h1>								
 								<br><br>
 								<p>								
-								We are Korea Travel Service with Guide .
+								We are Korea travel service with guide .
 								</p>
 								<p>
 								Want a special experience in Korea ?

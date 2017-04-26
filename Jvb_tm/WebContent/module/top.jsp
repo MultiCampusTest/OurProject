@@ -48,6 +48,25 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+<script type="text/javascript">
+	$(document).ready(function() {
+
+		$('.dropdown,.dropdown-menu').hover(function() {
+			if ($(window).width() >= 768) {
+				$(this).addClass('open').trigger('shown.bs.dropdown', relatedTarget)
+				return false;
+			}
+
+		}, function() {
+			if ($(window).width() >= 768) {
+				$(this).removeClass('open').trigger('hidden.bs.dropdown', relatedTarget)
+				return false;
+			}
+		})
+
+	})
+</script>
+
 <style type="text/css">
 /* Bootstrap Navigation Overriding by Readiz */
 /* .navbar-default .navbar-collapse { */
@@ -86,17 +105,12 @@
 
 
 
-				<li class="dropdown"><a class="dropdown-toggle"
-					data-toggle="dropdown" href="noticeList.do">Notice<b
-						class="caret"></b></a>
-					<ul class="dropdown-menu">
-						<li><a href="noticeList.do">All Notice</a></li>
-					</ul></li>
+				<li><a href="noticeList.do">Notice</a></li>
 
 				<li class="dropdown"><a class="dropdown-toggle"
-					data-toggle="dropdown" href="travelList.do">Travel<b
-						class="caret"></b></a>
+					data-toggle="dropdown" href="#">Travel</a>
 					<ul class="dropdown-menu">
+						<li><a href="travelList.do">All List</a></li>
 						<li><a href="travelList.do?sub_category=five">5 days</a></li>
 						<li><a href="travelList.do?sub_category=ten">10 days</a></li>
 						<li><a href="travelList.do?sub_category=more">15 days</a></li>
@@ -117,9 +131,9 @@
 					</ul></li>
 
 				<li class="dropdown"><a class="dropdown-toggle"
-					data-toggle="dropdown" href="guideList.do">Guide<b
-						class="caret"></b></a>
+					data-toggle="dropdown" href="#">Guide</a>
 					<ul class="dropdown-menu">
+						<li><a href="guideList.do">All List</a></li>
 						<li><a href="guideList.do?sub_category=five">5 days</a></li>
 						<li><a href="guideList.do?sub_category=ten">10 days</a></li>
 						<li><a href="guideList.do?sub_category=more">15 days</a></li>
@@ -140,9 +154,9 @@
 					</ul></li>
 
 				<li class="dropdown"><a class="dropdown-toggle"
-					data-toggle="dropdown" href="reviewList.do">Review<b
-						class="caret"></b></a>
+					data-toggle="dropdown" href="reviewList.do">Review</a>
 					<ul class="dropdown-menu">
+						<li><a href="reviewList.do">All List</a></li>
 						<li><a href="reviewList.do?sub_category=five">5 days</a></li>
 						<li><a href="reviewList.do?sub_category=ten">10 days</a></li>
 						<li><a href="reviewList.do?sub_category=more">15 days</a></li>
@@ -160,9 +174,8 @@
 								class="fa fa-sign-in fa-1g" aria-hidden="true"></i>Login</a></li>
 					</c:when>
 					<c:otherwise>
-						<li><a class="page-scroll"
-							onclick="location.href='myPage.do'"><i
-								class="fa fa-sign-in fa-1g" aria-hidden="true"></i>회원님</a></li>
+						<li><a class="page-scroll" href="myPage.do"><i
+								class="fa fa-sign-in fa-1g" aria-hidden="true"></i>Userid</a></li>
 					</c:otherwise>
 				</c:choose>
 

@@ -10,11 +10,30 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <!--   커스텀CSS -->
 <link href="css/noticeView.css" rel="stylesheet">
-<!-- 제이쿼리 -->
-<script
-  src="https://code.jquery.com/jquery-2.2.4.min.js"
-  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
-  crossorigin="anonymous"></script>
+
+
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />  
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>  
+<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
+
+<script type="text/javascript">
+$(function() {
+    $( "#testDatepicker" ).datepicker({
+    	nextText: 'Next Month',
+        prevText: 'Previous Month' ,
+        changeMonth: true, 
+        changeYear: true,
+        closeText: "Close",
+        showButtonPanel: true, 
+        currentText: 'Today', 
+        closeText: '닫기', 
+        dateFormat: "yy-mm-dd",
+        yearRange: 'c-100:c+10'
+        
+    });
+});
+</script>
+
 <script type="text/javascript">
 	function readURL(input) {
 		if (input.files && input.files[0]) {
@@ -52,10 +71,9 @@
 <link rel="stylesheet" href="css/form-elements.css">
 <link rel="stylesheet" href="css/join-style.css">
 
-<title>로그인 페이지</title>
+<title>Sing Up</title>
 </head>
 <body>
-
         <!-- Top content -->
         <div class="top-content">
         	
@@ -91,7 +109,7 @@
                                     <form action="regProc.do" method="post" class="registration-form">
                                         <div class="form-group">
                                             <label class="sr-only" for="form-userid">Userid</label>
-                                            <input type="text" name="form-first-name" placeholder="Username" class="form-first-name form-control" id="form-first-name">
+                                            <input type="text" name="form-first-name" placeholder="Account ID" class="form-first-name form-control" id="form-first-name">
                                         </div>
                                         <div class="form-group">
                                             <label class="sr-only" for="form-password">Password</label>
@@ -103,12 +121,29 @@
                                         </div>
                                         <div class="form-group">
                                             <label class="sr-only" for="form-password">Name</label>
-                                            <input type="text" name="form-last-name" placeholder="Your Name" class="form-last-name form-control" id="form-last-name">
+                                            <input type="text" name="form-last-name" placeholder="Name : First Name + Last Name" class="form-last-name form-control" id="form-last-name">
                                         </div>
                                         <div class="form-group">
+                                            <label class="sr-only" for="form-password">Gender</label>
+                                            <select class="nation">
+                                            	<option>Gender : Male or Female</option>
+                                            	<option value="m">Male</option>
+                                            	<option value="m">Female</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="sr-only" for="form-birthday">Name</label>
+                                        	<input type="text" id="testDatepicker" class="form-first-name form-control" placeholder="Date of Birth : pick up your birthday">
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="sr-only" for="form-birthday">Name</label>
+                                        	<input type="text" id="testDatepicker" class="form-first-name form-control" placeholder="Email : example@domain.com">
+                                        </div>
+                                        
+                                        <div class="form-group">
                                             <label class="sr-only" for="form-nationality">Nationality</label>
-                                            <select>
-											<option value="">Country</option>
+                                            <select class="nation">
+											<option value="">Country : Where you are from</option>
 											<optgroup label="A"></optgroup>
 											<option value="AF">Afghanistan</option>
 											<option value="AL">Albania</option>
@@ -371,15 +406,15 @@
 									</div>
 									<div class="form-group">
                                             <label class="sr-only" for="form-profile">Profile</label>
-                                            <img id="UploadedImg" src="img/profile.jpg" width="300" height="300">
+                                            <img id="UploadedImg" src="img/profile.jpg" width="300" height="300"><br>
                                         </div>
                                         <div class="form-group">
                                             <label class="sr-only" for="form-profile-upload">Profile Upload</label>
-                                            <input type="file" onchange="readURL(this);" name="form-last-name" class="form-last-name form-control" id="form-last-name">
+                                            <input type="file" onchange="readURL(this);" name="upload" class="form-last-name form-control" id="upload">
                                         </div>
                                         <div class="form-group">
                                             <label class="sr-only" for="form-introduce">Introduce</label>
-                                            <textarea name="form-about-yourself" placeholder="About yourself..." 
+                                            <textarea name="form-about-yourself" placeholder="About yourself" 
                                                         class="form-about-yourself form-control" id="form-about-yourself"></textarea>
                                         </div>
                                           

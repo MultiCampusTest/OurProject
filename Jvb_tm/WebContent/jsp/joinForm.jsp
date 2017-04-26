@@ -382,7 +382,7 @@
                                             <textarea name="form-about-yourself" placeholder="About yourself..." 
                                                         class="form-about-yourself form-control" id="form-about-yourself"></textarea>
                                         </div>
-                                         
+                                          
                                         <button type="submit" class="btn">SIGN UP</button>
                                     </form>
                                 </div>

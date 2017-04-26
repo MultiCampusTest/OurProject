@@ -35,8 +35,7 @@
          	CONTENT:
          </p>
          <textarea placeholder="Insert content " class="form-control-text" rows="10"></textarea>
-         
-         <hr>
+
 		 <!-- Widget -->
 		 <div class="form-group">
 			<input type="submit" value="ok" class="btn btn-primary">
@@ -45,8 +44,6 @@
 		 </form>
      </div>
  </div>
-
- <hr>
 
 
     </div>

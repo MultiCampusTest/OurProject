@@ -13,8 +13,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class MemberController {
 	
+	//회원가입 화면 요청
 	@RequestMapping("joinForm.do")
 	public String joinForm(){
 		return "joinForm";
+	}
+	
+	//로그인 화면 요청
+	@RequestMapping("loginForm.do")
+	public String loginForm(){
+		return "loginForm";
 	}
 }

@@ -87,9 +87,9 @@
 				<li><a class="page-scroll" href="">Review</a></li>
 				<c:choose>
 					<c:when test="${u_idx != null }">
-						<li><a class="page-scroll" href=""><i class="fa fa-sign-in fa-1g" aria-hidden="true"></i>Login</a></li>				
 					</c:when>
 					<c:otherwise>
+						<li><a class="page-scroll" href="loginForm.do"><i class="fa fa-sign-in fa-1g" aria-hidden="true"></i>Login</a></li>				
 						<li><a class="page-scroll" onclick="location.href='myPage.do'"><i class="fa fa-sign-in fa-1g" aria-hidden="true"></i>회원님</a></li>
 					</c:otherwise>
 				</c:choose>

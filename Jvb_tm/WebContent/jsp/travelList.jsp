@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -129,21 +131,17 @@
 		<hr/>
 		
 	<div class="jb-center">
-            <ul class="pagination">
-              <li><a href="#"><span class="glyphicon glyphicon-chevron-left"></span></a></li>
-              <li class="active"><a href="#">1</a></li>
-              <li><a href="#">2</a></li>
-              <li><a href="#">3</a></li>
-              <li><a href="#">4</a></li>
-              <li><a href="#">5</a></li>
-              <li><a href="#">6</a></li>
-              <li><a href="#">7</a></li>
-              <li><a href="#">8</a></li>
-              <li><a href="#">9</a></li>
-              <li><a href="#"><span class="glyphicon glyphicon-chevron-right"></span></a></li>
-            </ul>
-          </div>
-                    
+			<ul class="pagination">
+				<li><a href="#"><span
+						class="glyphicon glyphicon-chevron-left"></span></a></li>
+				<c:forEach begin="1" end="10" step="1" varStatus="i">
+					<li class="paging ${i.index eq pageNum ? 'active' : '' }"><a
+						href="#">${i.index}</a></li>
+				</c:forEach>
+				<li><a href="#"><span
+						class="glyphicon glyphicon-chevron-right"></span></a></li>
+			</ul>
+		</div>  
 
           
                 

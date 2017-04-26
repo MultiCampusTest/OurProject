@@ -11,7 +11,7 @@
 
 <!--   커스텀 CSS, JS -->
 <link href="css/noticeList.css" rel="stylesheet">
-<script src="js/profile.js"></script>
+<!-- <script src="js/profile.js"></script> -->
 
 </head>
 <body>
@@ -104,7 +104,7 @@
 				<li><a href="#"><span
 						class="glyphicon glyphicon-chevron-left"></span></a></li>
 				<c:forEach begin="1" end="10" step="1" varStatus="i">
-					<li class="notice default" id="paging_not_${i.index }"><a
+					<li class="paging ${i.index eq pageNum ? 'active' : '' }"><a
 						href="#">${i.index}</a></li>
 				</c:forEach>
 				<li><a href="#"><span

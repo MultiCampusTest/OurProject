@@ -26,7 +26,7 @@
          <p class="lead">
          	TITLE:
          </p>
-         <input type="text" placeholder="제목을 입력하세요. " class="form-control" name="subject"/>
+         <input type="text" placeholder="Insert Title " class="form-control" name="subject"/>
 
          <hr>
 
@@ -34,7 +34,7 @@
          <p class="lead">
          	CONTENT:
          </p>
-         <textarea placeholder="내용을 입력하세요. " class="form-control-text" rows="10"></textarea>
+         <textarea placeholder="Insert content " class="form-control-text" rows="10"></textarea>
          
          <hr>
 		 <!-- Widget -->

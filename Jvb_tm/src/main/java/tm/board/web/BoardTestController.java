@@ -22,6 +22,10 @@ public class BoardTestController {
 	@Autowired
 	BoardService boardService;
 	
+	/*
+	  write form test .. 
+	  add div 
+	 * */
 	@RequestMapping(value="" , method=RequestMethod.GET)
 	public String get(HttpServletRequest request
 			        , HttpServletResponse response) {

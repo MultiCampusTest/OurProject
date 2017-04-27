@@ -15,12 +15,77 @@
 <script src="https://npmcdn.com/flatpickr/dist/flatpickr.min.js"></script>
 <script src="https://npmcdn.com/flatpickr/dist/l10n/ru.js"></script>
 <link rel="stylesheet" href="css/calender.css">
+
 <script type="text/javascript">
 	$(function() {
 		$(".selector").flatpickr({
 
 		});
 	});
+
+	$(function() {
+		var divs = document.getElementsByClassName('imgDiv');
+		for (var i = 0; i < divs.length; ++i) {
+			var div = divs[i];
+			var divAspect = div.offsetHeight / div.offsetWidth;
+			div.style.overflow = 'hidden';
+
+			var img = div.querySelector('img');
+			var imgAspect = img.height / img.width;
+
+			if (imgAspect <= divAspect) {
+				// 이미지가 div보다 납작한 경우 세로를 div에 맞추고 가로는 잘라낸다
+				var imgWidthActual = div.offsetHeight / imgAspect;
+				var imgWidthToBe = div.offsetHeight / divAspect;
+				var marginLeft = (imgWidthActual - imgWidthToBe) / 2;
+
+				img.style.cssText = 'width: auto; height: 100%; margin-left: '
+					+ marginLeft + 'px;';
+			} else {
+				// 이미지가 div보다 길쭉한 경우 가로를 div에 맞추고 세로를 잘라낸다
+				img.style.cssText = 'width: 100%; height: auto; margin-left: 0;';
+			}
+		}
+
+	});
+
+
+// 	$(function() {
+// 		$("#ex_file").on('change', function() {
+// 			readURL(this);
+// 		});
+// 	});
+
+ 	function readURL(input) {
+		if (input.files && input.files[0]) {
+			var reader = new FileReader();
+			alert(id2);
+			
+			var id = $('.label').attr('id');
+			alert("하이염");
+			alert($('.label').attr('id'));
+			var num = $('.label').attr('id').substring(5);
+			alert(num);
+			
+
+			reader.onload = function(e) {
+				$('#img' + num).attr('src', e.target.result);
+			}
+			reader.readAsDataURL(input.files[0]);
+		}
+	} 
+	
+	$(document).ready(function(){
+		$('.label').on('click', function(){
+ 			 var id2 = $(this).attr('id');		
+ 			 
+		});
+	});
+	
+	
+	
+
+	
 </script>
 <style>
 .filebox label {
@@ -48,28 +113,35 @@
 	border: 0;
 }
 
-.table-responsive .table {
-/* 	border: 0px; */
-/* 	width: 500px !important; */
-/* 	height: 430px !important; */
-/* 	max-width: none !important; */
-}
-
 .row-eq-height {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-.table {
-  background-color: #eee;
-  height: 500px;
-  margin-bottom: 0;
-}
-.table-responsive {
-  height: 100%;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
 }
 
+.table {
+	background-color: #eee;
+	height: 500px;
+	margin-bottom: 0;
+}
+
+.table-responsive {
+	height: 100%;
+}
+
+div.aspect_1_1 {
+	width: 200px;
+	height: 80px;
+}
+
+.clearfix:after {
+	content: " ";
+	visibility: hidden;
+	display: block;
+	height: 0;
+	clear: both;
+}
 </style>
 </head>
 <body>
@@ -83,21 +155,30 @@
 				<div class="col-md-5">
 					<h2>Photo</h2>
 					<div class="table-responsive" id="reviewPhoto">
-						<table class="table" style="table-layout: fixed;">
-						
-							<c:forEach begin="1" end="5" var="i">
-								<tr align="center">
-									<td style="width: 20%">
+						<table border="1px" class="table table-condensed"
+							style="height: inherit; vertical-align: center">
+
+							<c:forEach begin="1" end="5" var="i" varStatus="status">
+								<tr class="clearfix" align="center"
+									style="vertical-align: center">
+									<td style="width: 35%; vertical-align: center">
 										<div class="filebox">
-											<label for="ex_file">choose file</label> <input type="file"
-												id="ex_file">
+											<label for="ex_file${status.index}" id="label${status.index}"
+												class="label">choose file</label> <input type="file"
+												id="ex_file${status.index}" onchange="readURL(this)">
 										</div>
 									</td>
-									<td style="width: 80%; height: 80%"><img alt=""
-										src="img/main/img01.jpg" style="width: 100%; height: 100%"></td>
+
+
+									<td style="width: 65%; height: 80%">
+										<div class="aspect_1_1 imgDiv">
+											<img id="img${status.index }" src="#">
+										</div>
+
+									</td>
 								</tr>
 							</c:forEach>
-							
+
 						</table>
 					</div>
 				</div>

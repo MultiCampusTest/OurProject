@@ -37,18 +37,50 @@ $(function() {
       <h2>Google Map here</h2>
       <div class="mapdiv" id="map"></div>
       <script>
-	      function initMap() {
-	        var uluru = {lat: -25.363, lng: 131.044};
-	        var map = new google.maps.Map(document.getElementById('map'), {
-	          zoom: 4,
-	          center: uluru
-	        });
-	        var marker = new google.maps.Marker({
-	          position: uluru,
-	          map: map
-	        });
-	      }
-      </script>
+
+      // This example creates an interactive map which constructs a polyline based on
+      // user clicks. Note that the polyline only appears once its path property
+      // contains two LatLng coordinates.
+
+      var poly;
+      var map;
+      var loc;
+
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 15	,
+          center: {lat: 37.575991, lng:  126.976926}
+        });
+
+        poly = new google.maps.Polyline({
+          strokeColor: '#000000',
+          strokeOpacity: 1.0,
+          strokeWeight: 3
+        });
+        poly.setMap(map);
+
+        map.addListener('click', addLatLng);
+      }
+
+      function addLatLng(event) {
+        var path = poly.getPath();
+        //클릭시 좌표값 얻기
+//         loc = event.latLng;
+        
+//         alert(loc);
+
+        path.push(event.latLng);
+
+        var marker = new google.maps.Marker({
+          position: event.latLng,
+          title: '#' + path.getLength(),
+          map: map
+        });
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyArBFw8nNcgJ_mlUdagcoWxjlyIY1pnh7E&callback=initMap">
+    </script>
       
     </div>
     <div class="col-md-7">
@@ -71,7 +103,7 @@ $(function() {
         <hr>
         
 	  	<div class="form-group">
-		  <label class="control-label">CATEGORY:</label>
+		  <label class="control-label">DATE CATEGORY:</label>
 	      <div class="ui-select">
 	      	<select id="user_time_zone" class="form-control">
 	            <option value="eat">먹방</option>
@@ -84,6 +116,18 @@ $(function() {
 	    <hr>
 	    
 	    <div class="form-group">
+		  <label class="control-label"> LOC CATEGORY:</label>
+	      <div class="ui-select">
+	      	<select id="user_time_zone" class="form-control">
+	            <option value="eat">Incheon</option>
+	            <option value="tour">Seoul</option>
+	            <option value="rest">Busan</option>
+	        </select>
+	      </div>
+	    </div>
+	    
+	    <hr>
+	    <div class="form-group">
           <label class="control-label">CONTENT:</label>
           <textarea class="form-control" placeholder="Insert Content "rows="10"></textarea>
 		</div>
@@ -95,8 +139,6 @@ $(function() {
     </div>
   </div>
 </div>
-     <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyArBFw8nNcgJ_mlUdagcoWxjlyIY1pnh7E&callback=initMap">
-    </script>
+     
 </body>
 </html>

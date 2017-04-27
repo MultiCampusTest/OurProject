@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -25,6 +26,18 @@ $(function() {
          width: 400px; 
          height: 500px;; 
         } 
+        #floating-panel {
+	        top: 10px;
+	        left: 25%;
+	        z-index: 5;
+	        background-color: #fff;
+	        padding: 5px;
+	        border: 1px solid #999;
+	        text-align: center;
+	        font-family: 'Roboto','sans-serif';
+	        line-height: 30px;
+	        padding-left: 10px;
+      }
 </style>
 </head>
 <body>
@@ -35,49 +48,55 @@ $(function() {
   <div class="row">
     <div class="col-md-5">
       <h2>Google Map here</h2>
+      <div id="floating-panel">
+	      <input id="address" type="textbox" value="">
+	      <input id="submit" type="button" value="Geocode">
+      </div>
       <div class="mapdiv" id="map"></div>
       <script>
-
-      // This example creates an interactive map which constructs a polyline based on
-      // user clicks. Note that the polyline only appears once its path property
-      // contains two LatLng coordinates.
-
-      var poly;
-      var map;
-      var loc;
-
+   	var poly;
+   	var map;
       function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 15	,
-          center: {lat: 37.575991, lng:  126.976926}
+          zoom: 15,
+          center: {lat: 37.577845, lng: 126.981681}
         });
-
+        var geocoder = new google.maps.Geocoder();
+        
         poly = new google.maps.Polyline({
-          strokeColor: '#000000',
-          strokeOpacity: 1.0,
-          strokeWeight: 3
-        });
-        poly.setMap(map);
+         strokeColor: '#000000',
+         strokeOpacity: 1.0,
+         strokeWeight: 3
+       });
+       poly.setMap(map);
 
-        map.addListener('click', addLatLng);
+        document.getElementById('submit').addEventListener('click', function() {
+          geocodeAddress(geocoder, map);
+        });
       }
 
-      function addLatLng(event) {
-        var path = poly.getPath();
-        //클릭시 좌표값 얻기
-//         loc = event.latLng;
-        
-//         alert(loc);
-
-        path.push(event.latLng);
-
-        var marker = new google.maps.Marker({
-          position: event.latLng,
-          title: '#' + path.getLength(),
-          map: map
+      function geocodeAddress(geocoder, resultsMap) {
+        var address = document.getElementById('address').value;
+        geocoder.geocode({'address': address}, function(results, status) {
+          if (status === 'OK') {
+        	var path = poly.getPath();
+        	path.push(results[0].geometry.location);
+            resultsMap.setCenter(results[0].geometry.location);
+            var marker = new google.maps.Marker({
+              map: resultsMap,
+              position: results[0].geometry.location
+            });
+            var div = document.createElement('div');
+            var loc = address;
+    	    div.innerHTML = "<span class='glyphicon glyphicon-map-marker'>"+loc+"</span>";
+    	    document.getElementById('field').append(div);
+          } else {
+            alert('Geocode was not successful for the following reason: ' + status);
+          }
         });
       }
     </script>
+	<div class="container" id="field"></div>
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyArBFw8nNcgJ_mlUdagcoWxjlyIY1pnh7E&callback=initMap">
     </script>

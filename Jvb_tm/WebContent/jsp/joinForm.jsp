@@ -19,7 +19,7 @@
 
 <!-- 제이쿼리 CDN -->
 <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
-
+ 
 <!-- 달력 관련 CDN -->
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />  
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>  
@@ -132,11 +132,10 @@
 							</div>
 
 							<div class="form-bottom">
-								<form action="regProc.do" method="post"
-									class="registration-form">
+								<form action="regProc.do" method="post" class="registration-form">
 									<div class="form-group">
-										<label class="sr-only" for="form-userid">userid</label>
-										<input type="text" id="userid" name="userid" placeholder="Account ID" class="form-control">
+										<label class="sr-only" for="form-email">email</label>
+										<input type="text" id="email" name="email" class="form-first-name form-control" placeholder="example@domain.com">
 									</div>
 									<div class="form-group">
 										<label class="sr-only" for="form-pwd">pwd</label>
@@ -166,10 +165,6 @@
 									<div class="form-group">
 										<label class="sr-only" for="form-birthday">birthday</label>
 										<input type="text" id="birthday" name="birthday" class="form-control" placeholder="Date of Birthday">
-									</div>
-									<div class="form-group">
-										<label class="sr-only" for="form-email">email</label>
-										<input type="text" id="email" name="email" class="form-first-name form-control" placeholder="example@domain.com">
 									</div>
 
 									<div class="form-group">

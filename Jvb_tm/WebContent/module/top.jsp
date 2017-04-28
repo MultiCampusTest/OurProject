@@ -159,11 +159,11 @@
 						<li><a href="reviewList.do?sub_category=stay">stay</a></li>
 						<li><a href="reviewList.do?sub_category=tour">tour</a></li>
 					</ul></li>
+						<li><a class="page-scroll" href=""><i
+								class="fa fa-sign-in fa-1g" aria-hidden="true"></i>Login</a></li>
 
 				<c:choose>
 					<c:when test="${u_idx != null }">
-						<li><a class="page-scroll" href=""><i
-								class="fa fa-sign-in fa-1g" aria-hidden="true"></i>Login</a></li>
 					</c:when>
 					<c:otherwise>
 						<li><a class="page-scroll" href="myPage.do"><i

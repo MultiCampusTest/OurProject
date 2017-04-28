@@ -4,136 +4,189 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Sign in</title>
-<meta name="description" content="Responsive Login Page / Signup Page Template Design In HTML5 And CSS3 With html css source code"/>
-<link href='http://fonts.googleapis.com/css?family=Ropa+Sans' rel='stylesheet'>
-<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel='stylesheet'>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="css/login-style.css" rel="stylesheet">
-<link href="css/layer-style.css" rel="stylesheet">
-<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
-<script type="text/javascript">
-	$(document).ready(function() {
-		$('.btn-example').click(function(){
-	        var $href = $(this).attr('href');
-	        layer_popup($href);
-	    });
-	    function layer_popup(el){
+<title>Insert title here</title>
+<style type="text/css">
+@import url(https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css);
+@import url(http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css);
 
-	        var $el = $(el);        //레이어의 id를 $el 변수에 저장
-	        var isDim = $el.prev().hasClass('dimBg');   //dimmed 레이어를 감지하기 위한 boolean 변수
+body {
+	font-family: 'Roboto';
+}
 
-	        isDim ? $('.dim-layer').fadeIn() : $el.fadeIn();
+.box {
+	background-color: #fff;
+	padding: 25px 40px;
+	margin-top: 30px; /*Remove, its example*/
+	box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
 
-	        var $elWidth = ~~($el.outerWidth()),
-	            $elHeight = ~~($el.outerHeight()),
-	            docWidth = $(document).width(),
-	            docHeight = $(document).height();
+.input-group {
+	margin: 5px 0px;
+}
+ 
+.addon-facebook {
+	background-color: #345387;
+	border: none;
+	border-radius: 2px 0px 0px 2px;
+	color: #fff;
+}
 
-	        // 화면의 중앙에 레이어를 띄운다.
-	        if ($elHeight < docHeight || $elWidth < docWidth) {
-	            $el.css({
-	                marginTop: -$elHeight /2,
-	                marginLeft: -$elWidth/2
-	            })
-	        } else {
-	            $el.css({top: 0, left: 0});
-	        }
+.btn-facebook,
+.btn-facebook:hover {
+	background-color: #4b6ea9;
+	color: #fff;
+	border-radius: 0px 2px 2px 0px;
+	font-size: 15px;
+}
 
-	        $el.find('a.btn-layerClose').click(function(){
-	            isDim ? $('.dim-layer').fadeOut() : $el.fadeOut(); // 닫기 버튼을 클릭하면 레이어가 닫힌다.
-	            return false;
-	        });
+.btn-primary {
+	border-radius: 2px;
+	background-color: #FF605A;
+	border-color: #FF605A;
+	margin: 10px 0px;
+}
 
-	        $('.layer .dimBg').click(function(){
-	            $('.dim-layer').fadeOut();
-	            return false;
-	        });
+p {
+	color: #aebbcb;
+} 
 
-	    }
-	});
-</script>
+a {
+	color: #FF605A;
+}
+
+.divider-form {
+    border: 1px solid #EBEFF1;
+    margin: 15px -40px 10px;
+}
+
+label {
+	text-transform: uppercase;
+	color: #FF6A64;
+}
+
+strong {
+	color: #95a5bb;
+}
+
+.form-control {
+    background: none;
+    height: 40px;
+    border: none;
+    border-radius: 0px;
+    box-shadow: none;
+    color: #8b9eb6;
+    padding: 0px;
+}
+
+.form-control:focus {
+    box-shadow: none;
+}
+</style>
 </head>
-<body>
-	<div id="login-form">
-	
-		<div class="section-logo">
-			<img alt="logo" src="http://static2.traveltek.net/images/www.travelmaker.co.uk/img/Travelmakerlogo.gif">
-		</div>
+<body class="container-fluid">
+<script>
+  function statusChangeCallback(response) {
+    console.log('statusChangeCallback');
+    console.log(response);
+    if (response.status === 'connected') {
+      testAPI();
+    } else {
+      document.getElementById('status').innerHTML = 'Please log ' +
+        'into this app.';
+    }
+  }
 
-		<div class="section-out">
-			<section class="login-section">
-			<div class="login">
-				<form action="loginProc.do" method="post">
-					<ul class="ul-list">
-						<li><input type="text" class="input" placeholder="Userid" /><span class="icon"></span></li>
-						<li><input type="password" class="input"
-							placeholder="Password" /><span class="icon"></span></li>
-						<li><span class="remember"><input type="checkbox"
-								id="check"> <label for="check">아이디 저장</label></span><span
-							class="validation">Forgot<a href="#layer2" class="btn-example">&nbsp;Your Account</a> 
-								<div class="dim-layer">
-									<div class="dimBg"></div>
-									<div id="layer2" class="pop-layer">
-										<div class="pop-container">
-											<div class="pop-conts">
-												<!--content //-->
-												<p class="ctxt mb20">
-													<h1>Search for ID</h1><br>
-													Fill in the form to find your ID<br>
-													<ul class="ul-list">
-													<li>
-													<input type="text" class="input" placeholder="Your Name" name="name" id="id"><span class="icon"></span><br>
-													</li>
-													<li>
-													<input type="text" class="input" name="email" placeholder="Your Email" id="email"><span class="icon"></span>
-													</li>
-													</ul>
-													<div class="btn-c">
-														<input type="button" value="Confirm" class="btn-confirm">
-													</div>
-												</p><br><br>
-												<p class="ctxt mb20">
-													<h1>Serch for Password</h1><br>
-													Fill in the form to find your Password<br>
-													<ul class="ul-list">
-													<li>
-													<input type="text" class="input" placeholder="Your Name" name="name" id="id"><span class="icon"></span><br>
-													</li>
-													<li>
-													<input type="name" class="input" placeholder="Your ID" name="name" id="name"><span class="icon"></span>
-													</li>
-													<li>
-													<input type="text" class="input" placeholder="Your Email" name="email" id="email"><span class="icon"></span>
-													</li>
-													</ul>
-													<div class="btn-c">
-														<input type="button" value="Confirm" class="btn-confirm">
-													</div>
-												</p>
-												<div class="btn-r">
-													<a href="#" class="btn-layerClose">Close</a>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								</span>
-						
-						</li>
-						<li><input type="submit" value="SIGN IN" class="btn"></li>
-					</ul>
+  function checkLoginState() {
+    FB.getLoginStatus(function(response) {
+      statusChangeCallback(response);
+    });
+  }
+
+  window.fbAsyncInit = function() {
+  FB.init({
+    appId      : '534503966938051',
+    cookie     : true,
+    xfbml      : true,
+    version    : 'v2.8'
+  });
+
+  FB.getLoginStatus(function(response) {
+    statusChangeCallback(response);
+  });
+
+  };
+
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+
+  
+  function testAPI() {
+    console.log('Welcome!  Fetching your information.... ');
+    FB.api('/me', {fields: 'id,first_name,last_name,email,gender'}, function(response) {
+      console.log('Successful login for: ' + response.name);
+      console.log(JSON.stringify(response));
+      document.getElementById('first_name').innerHTML = 'First Name : ' + response.first_name;      
+      document.getElementById('last_name').innerHTML = 'last Name : ' + response.last_name;
+      document.getElementById('email').innerHTML = 'Email : ' + response.email;
+      document.getElementById('gender').innerHTML = 'Gender : ' + response.gender;
+      document.getElementById('image').src = 'http://graph.facebook.com/' + response.id + '/picture?type=large';
+    });
+  }
+</script>
+
+    <div class="row">
+		<div class="col-md-4 col-md-offset-4">
+			<div class="box">
+				
+				<div class="logo">
+					<img src="http://static2.traveltek.net/images/www.travelmaker.co.uk/img/Travelmakerlogo.gif">
+				</div>
+				
+				<form role="form">
+
+					<div class="divider-form"></div>
+
+					<div class="form-group">
+						<label for="exampleInputEmail1">Email address</label>
+						<input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+					</div>
+
+					<div class="divider-form"></div>
+
+					<div class="form-group">
+						<label for="exampleInputPassword1">Password</label>
+						<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+					</div>
+
+					<div class="divider-form"></div>
+
+					<button type="submit" class="btn-block btn btn-lg btn-primary">LOG IN</button>
+
+					<div class="input-group">
+					</div>
+
+					<p class="text-center">Already have an account? <a href="joinForm.do"><b>Sign up here</b></a></p>
+					<p class="text-center">
+					<fb:login-button size="large" scope="public_profile,email" onlogin="checkLoginState();">Sign up with Facebook</fb:login-button>
+					
+					<div>
+						<div id="first_name"></div>
+						<div id="last_name"></div>
+						<div id="id"></div>
+						<div id="email"></div>
+						<div id="gender"></div>
+						<div>
+							<img id="image" />
+						</div>
+					</div>
 				</form>
 			</div>
-			</section>
-		</div>
-		<div id="powered">
-			Create you account right now&nbsp;<a href="joinForm.do">
-			<b>Join Us</b></a>
 		</div>
 	</div>
-
-
-	
 </body>
 </html>

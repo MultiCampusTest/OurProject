@@ -48,22 +48,33 @@ $(function() {
   <div class="row">
     <div class="col-md-5">
       <h2>Google Map here</h2>
-      <div id="floating-panel">
-	      <input id="address" type="textbox" value="">
-	      <input id="submit" type="button" value="Geocode">
-      </div>
+<!--       <div id="floating-panel"> -->
+<!-- 	      <input id="address" type="textbox" value=""> -->
+<!--       </div> -->
+	  <input id="pac-input" class="controls" type="text" placeholder="Enter a location">
+      <input id="submit" type="button" value="Geocode">
       <div class="mapdiv" id="map"></div>
       <script>
    	var poly;
    	var map;
+   	var i = 0;
+   	var loc = [];
+   	var lat = [];
       function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 15,
+          zoom: 17,
           center: {lat: 37.577845, lng: 126.981681}
         });
         var geocoder = new google.maps.Geocoder();
         
-        poly = new google.maps.Polyline({
+		//자동완성
+		var autoComplete = new google.maps.places.Autocomplete(document.getElementById('pac-input'));
+		autoComplete.addListener('place_changed', function() {
+// 			var place = autoComplete.getplace();
+// 			geocodeAddress(geocoder, map);
+		});
+
+       poly = new google.maps.Polyline({
          strokeColor: '#000000',
          strokeOpacity: 1.0,
          strokeWeight: 3
@@ -72,11 +83,12 @@ $(function() {
 
         document.getElementById('submit').addEventListener('click', function() {
           geocodeAddress(geocoder, map);
+          i++;
         });
       }
 
       function geocodeAddress(geocoder, resultsMap) {
-        var address = document.getElementById('address').value;
+        var address = document.getElementById('pac-input').value;
         geocoder.geocode({'address': address}, function(results, status) {
           if (status === 'OK') {
         	var path = poly.getPath();
@@ -87,8 +99,11 @@ $(function() {
               position: results[0].geometry.location
             });
             var div = document.createElement('div');
-            var loc = address;
-    	    div.innerHTML = "<span class='glyphicon glyphicon-map-marker'>"+loc+"</span>";
+            loc[i] = address;
+            lat[i] = results[0].geometry.location;
+            alert(lat[i]);
+            alert(loc[i]);
+    	    div.innerHTML = "<span class='glyphicon glyphicon-map-marker'>"+loc[i]+"</span>";
     	    document.getElementById('field').append(div);
           } else {
             alert('Geocode was not successful for the following reason: ' + status);
@@ -97,10 +112,10 @@ $(function() {
       }
     </script>
 	<div class="container" id="field"></div>
+	
     <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyArBFw8nNcgJ_mlUdagcoWxjlyIY1pnh7E&callback=initMap">
+    src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyDt288Is5VzyssIHVHJaMi-zrt71D4WJVY&callback=initMap">
     </script>
-      
     </div>
     <div class="col-md-7">
       <h2>Something Else here</h2>    
@@ -148,7 +163,7 @@ $(function() {
 	    <hr>
 	    <div class="form-group">
           <label class="control-label">CONTENT:</label>
-          <textarea class="form-control" style="resize: none;" placeholder="Insert Content "rows="10"></textarea>
+          <textarea class="form-control" placeholder="Insert Content "rows="10"></textarea>
 		</div>
 		<div class="form-group">
 			<input type="submit" value="ok" class="btn btn-primary">
@@ -160,4 +175,4 @@ $(function() {
 </div>
      
 </body>
-</html>
+</html>	

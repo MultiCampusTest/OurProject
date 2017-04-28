@@ -1,7 +1,6 @@
-
-.nation,
+select,
 input[type="text"], 
-input[type="password"], 
+input[type="password"],
 textarea, 
 textarea.form-control {
 	height: 50px;
@@ -20,8 +19,12 @@ textarea.form-control {
     -o-transition: all .3s; -moz-transition: all .3s; -webkit-transition: all .3s; -ms-transition: all .3s; transition: all .3s;
 }
 
-.nation {
+select {
 	width: 100%;
+	margin: 0;
+    padding: 0 20px;
+    vertical-align: middle;
+	border: 3px solid #ddd;
 }
   
 textarea, 
@@ -31,14 +34,14 @@ textarea.form-control {
 	line-height: 30px;
 }
 
-.nation:focus,
+select:focus,
 input[type="text"]:focus,
 input[type="password"]:focus, 
 textarea:focus, 
 textarea.form-control:focus {
 	outline: 0;
 	background: #fff;
-    border: 3px solid #ccc;
+    border: 3px solid #FF605A;
     -moz-box-shadow: none; -webkit-box-shadow: none; box-shadow: none;
 }
 

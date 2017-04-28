@@ -3,7 +3,41 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="tm.member.dao.IMemberDao">
+
+<!-- 회원정보 -->
 	<insert id="insertMember" parameterType="memberVo">
-		insert into member values(0,#{userid},#{pwd},#{name},#{email},#{birthday},#{nationality},#{gender},#{introduce},sysdate())
+		insert into member values(0, #{userid}, #{pwd}, #{name},
+		#{email}, #{birthday}, #{country}, #{gender}, #{introduce}, sysdate())
 	</insert>
+
+	<update id="updateMember" parameterType="memberVo">
+		update member set pwd = #{pwd}, email = #{email}, birthday = #{birthday},
+		country = #{country}, introduce = #{introduce} 
+		where userid = #{userid}
+	</update>
+
+	<delete id="deleteMember" parameterType="java.util.HashMap">
+		delete from member where userid = #{userid} and pwd = #{pwd}
+	</delete>
+	
+	
+<!-- 프로필 사진 정보 -->
+	<insert id="insertImage">
+	
+	</insert>
+	
+	<update id="updateImage">
+	
+	</update>
+	
+	<delete id="deleteImage">
+		delete from image where img_code = #{img_code}
+	</delete>
+	
+	
+<!-- 회원정보 + 프로필 -->
+	<select id="selectOne" parameterType="String" resultType="java.util.HashMap">
+		select * from member m natural join image i 
+		where m.userid = i.img_code and m.userid = #{userid}
+	</select>
 </mapper>

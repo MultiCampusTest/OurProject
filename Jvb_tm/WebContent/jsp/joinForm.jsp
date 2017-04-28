@@ -11,27 +11,36 @@
 <!--   커스텀CSS -->
 <link href="css/noticeView.css" rel="stylesheet">
 
+<!-- 회원가입 폼 CSS -->
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
+<link rel="stylesheet" href="css/form-elements.css">
+<link rel="stylesheet" href="css/join-style.css">
 
+
+<!-- 제이쿼리 CDN -->
+<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+<!-- 달력 관련 CDN -->
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />  
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>  
 <script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
 
 <script type="text/javascript">
-$(function() {
-    $( "#testDatepicker" ).datepicker({
-    	nextText: 'Next Month',
-        prevText: 'Previous Month' ,
-        changeMonth: true, 
-        changeYear: true,
-        closeText: "Close",
-        showButtonPanel: true, 
-        currentText: 'Today', 
-        closeText: '닫기', 
-        dateFormat: "yy-mm-dd",
-        yearRange: 'c-100:c+10'
-        
-    });
-});
+	$(function() {
+		$("#birthday").datepicker({
+			nextText : 'Next Month',
+			prevText : 'Previous Month',
+			changeMonth : true,
+			changeYear : true,
+			closeText : "Close",
+			showButtonPanel : true,
+			currentText : 'Today',
+			closeText : 'Close',
+			dateFormat : "yy-mm-dd",
+			yearRange : 'c-100:c+10'
+
+		});
+	});
 </script>
 
 <script type="text/javascript">
@@ -64,86 +73,109 @@ $(function() {
 			return true;
 		}
 	}
-</script>  
+</script>
 
-<!-- CSS -->
-<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
-<link rel="stylesheet" href="css/form-elements.css">
-<link rel="stylesheet" href="css/join-style.css">
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('#pwdVali').hide();
+		$('input[type=password]').on('keyup', function() {
+			var pw1 = $('#pwd').val();
+			var pw2 = $('#pwd2').val();
+			if(pw1 != pw2) {
+				$('#pwdVali').html('<font color="#FF605A"><b>Warning! please check your password</b></font>');
+				$('#pwdVali').show();
+			} else {
+				$('#pwdVali').hide();
+			}
+		});
+		
+		$('button[type=submit]').on('click', function(){
+			alert('테스트');
+		});
+	});
+</script>
 
 <title>Sing Up</title>
 </head>
 <body>
-        <!-- Top content -->
-        <div class="top-content">
-        	
-            <div class="inner-bg">
-                <div class="container">
-                	
-                    <div class="row">
-                        <div class="col-sm-8 col-sm-offset-2 text">
-                            <h3>where we provide pleasant travelling and exciting memories</h3>
-                            <div class="description">
-                            	<p>
-                                    <h1>Welcome to&nbsp;<b><a>Travel Maker</strong></b></a></h1>
-                            	</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="row">
-                        <div class="col-sm-8 col-sm-offset-2 text">
-                        	
-                        	<div class="form-box">
-                                <div class="form-top">
-                                    <div class="form-top-left">
-                                        <h3>Sign Up Now</h3>
-                                        <p>Fill in the form below to get instant access:</p>
-                                    </div>
-                                    <div class="form-top-right">
-                                        <i class="fa fa-pencil"></i>
-                                    </div>
-                                </div>
+	<div class="top-content">
 
-                                <div class="form-bottom">
-                                    <form action="regProc.do" method="post" class="registration-form">
-                                        <div class="form-group">
-                                            <label class="sr-only" for="form-userid">Userid</label>
-                                            <input type="text" name="form-first-name" placeholder="Account ID" class="form-first-name form-control" id="form-first-name">
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="sr-only" for="form-password">Password</label>
-                                            <input type="password" name="form-last-name" placeholder="Password" class="form-last-name form-control" id="form-password1">
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="sr-only" for="form-password-check">Password Check</label>
-                                            <input type="password" name="form-email" placeholder="Password Check" class="form-email form-control" id="form-password2">
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="sr-only" for="form-password">Name</label>
-                                            <input type="text" name="form-last-name" placeholder="Name : First Name + Last Name" class="form-last-name form-control" id="form-last-name">
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="sr-only" for="form-password">Gender</label>
-                                            <select class="nation">
-                                            	<option>Gender : Male or Female</option>
-                                            	<option value="m">Male</option>
-                                            	<option value="m">Female</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="sr-only" for="form-birthday">Name</label>
-                                        	<input type="text" id="testDatepicker" class="form-first-name form-control" placeholder="Date of Birth : pick up your birthday">
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="sr-only" for="form-birthday">Name</label>
-                                        	<input type="text" id="testDatepicker" class="form-first-name form-control" placeholder="Email : example@domain.com">
-                                        </div>
-                                        
-                                        <div class="form-group">
-                                            <label class="sr-only" for="form-nationality">Nationality</label>
-                                            <select class="nation">
-											<option value="">Country : Where you are from</option>
+		<div class="inner-bg">
+			<div class="container">
+
+				<div class="row">
+					<div class="col-sm-8 col-sm-offset-2 text">
+						<h3>where we provide pleasant travelling and exciting
+							memories</h3>
+						<div class="description">
+							<p>
+							<h1>
+								Welcome to&nbsp;<a href="main.do"><b>Travel Maker</b></a>
+							</h1>
+							</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-sm-8 col-sm-offset-2 text">
+
+						<div class="form-box">
+							<div class="form-top">
+								<div class="form-top-left">
+									<h3>Sign Up Now</h3>
+									<p>Fill in the form below to get instant access:</p>
+								</div>
+								<div class="form-top-right">
+									<i class="fa fa-pencil"></i>
+								</div>
+							</div>
+
+							<div class="form-bottom">
+								<form action="regProc.do" method="post"
+									class="registration-form">
+									<div class="form-group">
+										<label class="sr-only" for="form-userid">userid</label>
+										<input type="text" id="userid" name="userid" placeholder="Account ID" class="form-control">
+									</div>
+									<div class="form-group">
+										<label class="sr-only" for="form-pwd">pwd</label>
+										<input type="password" id="pwd" name="pwd" maxlength="12" placeholder="Password" class="form-control">
+									</div>
+									<div class="form-group">
+										<label class="sr-only" for="form-pwdChk">pwdCheck</label>
+										<input type="password" id="pwd2" name="pwd2" maxlength="12" placeholder="Check Password" class="form-control">
+										<span id="pwdVali"></span>
+									</div>
+									<div class="form-group">
+										<label class="sr-only" for="form-first-name">firstName</label>
+										<input type="text" id="f_name" name="f_name" placeholder="First Name" class="form-control">
+									</div>
+									<div class="form-group">
+										<label class="sr-only" for="form-last-name">lastName</label>
+										<input type="text" id="l_name" name="l_name" placeholder="Last Name" class="form-control">
+									</div>
+									<div class="form-group">
+										<label class="sr-only" for="form-gender">gender</label>
+										<select class="nation">
+											<option>Choose your Gender</option>
+											<option value="m">Male</option>
+											<option value="f">Female</option>
+										</select>
+									</div>
+									<div class="form-group">
+										<label class="sr-only" for="form-birthday">birthday</label>
+										<input type="text" id="birthday" name="birthday" class="form-control" placeholder="Date of Birthday">
+									</div>
+									<div class="form-group">
+										<label class="sr-only" for="form-email">email</label>
+										<input type="text" id="email" name="email" class="form-first-name form-control" placeholder="example@domain.com">
+									</div>
+
+									<div class="form-group">
+										<label class="sr-only" for="form-country">Country</label>
+										<select class="nation">
+											<option value="">Where are you from</option>
 											<optgroup label="A"></optgroup>
 											<option value="AF">Afghanistan</option>
 											<option value="AL">Albania</option>
@@ -400,44 +432,34 @@ $(function() {
 											<option value="EH">Western Sahara</option>
 											<optgroup label="Y"></optgroup>
 											<option value="YE">Yemen</option>
+											<optgroup label="Z"></optgroup>
 											<option value="ZM">Zambia</option>
 											<option value="ZW">Zimbabwe</option>
 										</select>
 									</div>
 									<div class="form-group">
-                                            <label class="sr-only" for="form-profile">Profile</label>
-                                            <img id="UploadedImg" src="img/profile.jpg" width="300" height="300"><br>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="sr-only" for="form-profile-upload">Profile Upload</label>
-                                            <input type="file" onchange="readURL(this);" name="upload" class="form-last-name form-control" id="upload">
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="sr-only" for="form-introduce">Introduce</label>
-                                            <textarea name="form-about-yourself" placeholder="About yourself" 
-                                                        class="form-about-yourself form-control" id="form-about-yourself"></textarea>
-                                        </div>
-                                          
-                                        <button type="submit" class="btn">SIGN UP</button>
-                                    </form>
-                                </div>
-                            </div>
-	                         
-                        </div>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-        </div>
+										<label class="sr-only" for="form-image">image</label>
+										<img id="UploadedImg" src="img/profile.jpg" width="300" height="300"><br>
+									</div>
+									<div class="form-group">
+										<label class="sr-only" for="form-file">file</label>
+										<input type="file" id="fileuri" name="fileuri" onchange="readURL(this);" class="form-control">
+									</div>
+									<div class="form-group">
+										<label class="sr-only" for="form-introduce">Introduce</label>
+										<textarea id="introduce" name="introduce" placeholder="About yourself" class="form-control"></textarea>
+									</div>
+									<button type="submit" class="btn">SIGN UP</button>
+								</form>
+							</div>
+						</div>
 
-        <!-- Javascript -->
-        <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-        
-        <!--[if lt IE 10]>
-            <script src="assets/js/placeholder.js"></script>
-        <![endif]-->
+					</div>
 
-    </body>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</body>
 </html>

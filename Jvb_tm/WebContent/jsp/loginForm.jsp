@@ -11,10 +11,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="css/login-style.css" rel="stylesheet">
 <link href="css/layer-style.css" rel="stylesheet">
-<script
-  src="https://code.jquery.com/jquery-2.2.4.min.js"
-  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
-  crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
 		$('.btn-example').click(function(){
@@ -131,7 +128,7 @@
 			</section>
 		</div>
 		<div id="powered">
-			Create you account right now&nbsp;<a href="joinForm.do" target="_blank">
+			Create you account right now&nbsp;<a href="joinForm.do">
 			<b>Join Us</b></a>
 		</div>
 	</div>

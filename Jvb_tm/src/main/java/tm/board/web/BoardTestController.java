@@ -16,20 +16,20 @@ import tm.board.service.BoardService;
  * for test..
  * written by jong in KIM
  */
-@Controller
+//@Controller
 public class BoardTestController {
-
-	@Autowired
-	BoardService boardService;
-	
-	/*
-	  write form test .. 
-	  add div 
-	 * */
-	@RequestMapping(value="" , method=RequestMethod.GET)
-	public String get(HttpServletRequest request
-			        , HttpServletResponse response) {
-		
-		return "";
-	}
+//
+//	@Autowired
+//	BoardService boardService;
+//	
+//	/*
+//	  write form test .. 
+//	  add div 
+//	 * */
+//	@RequestMapping(value="" , method=RequestMethod.GET)
+//	public String get(HttpServletRequest request
+//			        , HttpServletResponse response) {
+//		
+//		return "";
+//	}
 }

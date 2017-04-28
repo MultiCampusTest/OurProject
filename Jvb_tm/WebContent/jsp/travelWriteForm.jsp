@@ -10,32 +10,42 @@
 <link rel="stylesheet" href="css/travelWriteForm.css">
 <script type="text/javascript">
 	
-	function add_item(){
-	    var div = document.createElement('div');
-	    div.innerHTML = document.getElementById('pre_set').innerHTML;
-	    document.getElementById('field').appendChild(div);
-	}
+// 	function add_item(){
+// 	    var div = document.createElement('div');
+// 	    div.innerHTML = document.getElementById('pre_set').innerHTML;
+// 	    document.getElementById('field').appendChild(div);
+// 	}
 	
-	function remove_item(obj){
-	    document.getElementById('field').removeChild(obj.parentNode);
-	}
+// 	function remove_item(obj){
+// 	    document.getElementById('field').removeChild(obj.parentNode);
+// 	}
+function add_day(){
+	var text = $('.sibal > li:last-child').text();
+ 	var index = parseInt(text.substring(3));
+	$('.sibal').append('<li class="day">DAY'+(index+1)+'</li>');
+	
+}
+
+
+
 </script>
 <style type="text/css">
-	#map { 
-	 width: 400px; 
-	 height: 500px; 
-	} 
+#map { 
+ width: 400px; 
+ height: 500px; 
+} 
 	
 .hi{
- 	height:450px; 
+/*  	height:450px;  */
 
 }
 .sibal{
 list-style:none;
 /* display: block; */
-width: 167px;
 /* height:450px; */
- height:100%;
+/*  height:100%; */
+/* height:200px; */
+max-height:400px;
 border-collapse: collapse;
 overflow-y: auto;
 
@@ -45,35 +55,40 @@ overflow-y: auto;
 
 list-style:none;
 background-color:#FF605A;
- color:#ffffff;
+color:#ffffff;
+width:140px; 
+height:50px;
+/* height:50px;	 */
 
 }
 
 .day{
 padding: 15px;
 background-color:#FF605A;
-/* border-color: #f2f2f2; */
-/* border-style:solid; */
-/* border-width: 1px; */
+border-color: #D2C9C9; 
+border-style:solid; 
+border-width: 1px; 
 border-radius: 0; 
 font-size:15px;
 color:#ffffff;
-width:150px; 
-/* height:50px; */
- text-align:center;
+width:140px; 
+height:50px; 
+text-align:center;
 }
 
 .dayday{
-/* border-color:#fffff; */
-/* width:150px; */
-height:50px;
-/* line-height:20px; */
-/* border:solid 1px #fff; */
-text-align:center;
 
+line-height:20px;
+margin:0 auto;
+width:110px;
+height:30px;
+line-height:32px; 
+border:solid 1px #fff;
+text-align:center;
 cursor:pointer;
-padding-top:10px;
 }
+
+
 
 
 </style>
@@ -101,22 +116,14 @@ padding-top:10px;
 		<div class="col-md-2 hi">
 			<ul class="sibal">
 				<li class="day day1">DAY1</li>
-				<li class="day day2">DAY2</li>
-				<li class="day day3">DAY3</li>
-				<li class="day day4">DAY4</li>
-				<li class="day day5">DAY5</li>
-<!-- 				<li class="day day5">DAY5</li> -->
-<!-- 				<li class="day day5">DAY5</li> -->
-<!-- 				<li class="day day5">DAY5</li> -->
-<!-- 				<li class="day day5">DAY5</li> -->
-<!-- 				<li class="day day5">DAY5</li> -->
-<!-- 				<li class="day day5">DAY5</li> -->
-<!-- 				<li class="day day5">DAY10</li> -->
-				
+							
+							
+							
+							
 			</ul>
 	<ul class="sibal2">
-		<li class="dayday" onclick="#">
-			DAY추가
+		<li style="padding-top:10px;">
+			<div class="dayday" onclick="add_day()">DAY 추가</div>
 		</li>
 	</ul>
 		</div>

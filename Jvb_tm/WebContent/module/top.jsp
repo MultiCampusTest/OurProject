@@ -159,7 +159,7 @@
 						<li><a href="reviewList.do?sub_category=stay">stay</a></li>
 						<li><a href="reviewList.do?sub_category=tour">tour</a></li>
 					</ul></li>
-						<li><a class="page-scroll" href=""><i
+						<li><a class="page-scroll" href="loginForm.do"><i
 								class="fa fa-sign-in fa-1g" aria-hidden="true"></i>Login</a></li>
 
 				<c:choose>

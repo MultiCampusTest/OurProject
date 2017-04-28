@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -7,6 +9,7 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="css/travelWriteForm.css">
 <script type="text/javascript">
+	
 	function add_item(){
 	    var div = document.createElement('div');
 	    div.innerHTML = document.getElementById('pre_set').innerHTML;
@@ -17,19 +20,69 @@
 	    document.getElementById('field').removeChild(obj.parentNode);
 	}
 </script>
-<style>
+<style type="text/css">
 	#map { 
 	 width: 400px; 
-	 height: 500px;; 
+	 height: 500px; 
 	} 
+	
+.hi{
+ 	height:450px; 
+
+}
+.sibal{
+list-style:none;
+/* display: block; */
+width: 167px;
+/* height:450px; */
+ height:100%;
+border-collapse: collapse;
+overflow-y: auto;
+
+}
+
+.sibal2{
+
+list-style:none;
+background-color:#FF605A;
+ color:#ffffff;
+
+}
+
+.day{
+padding: 15px;
+background-color:#FF605A;
+/* border-color: #f2f2f2; */
+/* border-style:solid; */
+/* border-width: 1px; */
+border-radius: 0; 
+font-size:15px;
+color:#ffffff;
+width:150px; 
+/* height:50px; */
+ text-align:center;
+}
+
+.dayday{
+/* border-color:#fffff; */
+/* width:150px; */
+height:50px;
+/* line-height:20px; */
+/* border:solid 1px #fff; */
+text-align:center;
+
+cursor:pointer;
+padding-top:10px;
+}
+
+
 </style>
 </head>
 <body>
 <div class="container">
 	<div> <h2>여행 공유 입력</h2> </div>
-	<div class="container">
+		<br>
 		<div class="col-md-5">
-			<h2>Google Map here</h2>
 			<div id="map"></div>
 			<script>
 		      function initMap() {
@@ -45,22 +98,29 @@
 		      }
 	      </script>
 		</div>
-		<div class="col-md-7">
-			<div class="col-md-12">
-				<pre class="col-md-2"  style="text-align: center">DAY</pre>
-				<pre class="col-md-8"  style="text-align: center">여행계획</pre>
-				<button type="button" class="btn btn-primary cla-md-2" style="margin-top: 5px" onclick="add_item()">
-					<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-				</button>
-			</div>	
-			<form class="form-vertical" role="form" action="#">
-				<div class="col-md-12" id="field"></div>
-				<div id="pre_set" style="display:none">
-					<input type="text" class="col-md-8" name="" value="" style="height: 80px"> <button class="col-md-2" style="height: 80px" onclick="remove_item(this)">삭제</button>
-				</div>
-			</form>
+		<div class="col-md-2 hi">
+			<ul class="sibal">
+				<li class="day day1">DAY1</li>
+				<li class="day day2">DAY2</li>
+				<li class="day day3">DAY3</li>
+				<li class="day day4">DAY4</li>
+				<li class="day day5">DAY5</li>
+<!-- 				<li class="day day5">DAY5</li> -->
+<!-- 				<li class="day day5">DAY5</li> -->
+<!-- 				<li class="day day5">DAY5</li> -->
+<!-- 				<li class="day day5">DAY5</li> -->
+<!-- 				<li class="day day5">DAY5</li> -->
+<!-- 				<li class="day day5">DAY5</li> -->
+<!-- 				<li class="day day5">DAY10</li> -->
+				
+			</ul>
+	<ul class="sibal2">
+		<li class="dayday" onclick="#">
+			DAY추가
+		</li>
+	</ul>
 		</div>
-	</div>
+
 </div>
 
      <script async defer

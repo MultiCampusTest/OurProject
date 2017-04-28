@@ -52,20 +52,29 @@ $(function() {
 <!-- 	      <input id="address" type="textbox" value=""> -->
 <!--       </div> -->
 	  <input id="pac-input" class="controls" type="text" placeholder="Enter a location">
-      <input id="submit" type="button" value="Geocode">
+      <input id="submit" type="button" value="search">
+      <input id="delete" type="button" value="Delete Markers">
       <div class="mapdiv" id="map"></div>
       <script>
-   	var poly;
+   	var polys =[];
    	var map;
    	var i = 0;
    	var loc = [];
    	var lat = [];
+   	var markers = [];
       function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
           zoom: 17,
           center: {lat: 37.577845, lng: 126.981681}
         });
         var geocoder = new google.maps.Geocoder();
+        
+        poly = new google.maps.Polyline({
+            strokeColor: '#000000',
+            strokeOpacity: 1.0,
+            strokeWeight: 3
+          });
+        poly.setMap(map);
         
 		//자동완성
 		var autoComplete = new google.maps.places.Autocomplete(document.getElementById('pac-input'));
@@ -74,12 +83,31 @@ $(function() {
 // 			geocodeAddress(geocoder, map);
 		});
 
-       poly = new google.maps.Polyline({
-         strokeColor: '#000000',
-         strokeOpacity: 1.0,
-         strokeWeight: 3
+      
+       
+       
+       function setMapOnAll(map) {
+           for (var i = 0; i < markers.length; i++) {
+             markers[i].setMap(map);
+           }
+     	   for(var i=0; i<polys.length; i++){
+     		   polys[i].setMap(map);
+     	   }
+       }
+       
+       function clearMarkers() {
+           setMapOnAll(null);
+       }
+
+       function deleteMarkers() {
+           clearMarkers();
+           markers = [];
+           path = [];
+         }
+        
+       document.getElementById('delete').addEventListener('click', function() {
+    	  deleteMarkers(); 
        });
-       poly.setMap(map);
 
         document.getElementById('submit').addEventListener('click', function() {
           geocodeAddress(geocoder, map);
@@ -91,13 +119,19 @@ $(function() {
         var address = document.getElementById('pac-input').value;
         geocoder.geocode({'address': address}, function(results, status) {
           if (status === 'OK') {
-        	var path = poly.getPath();
-        	path.push(results[0].geometry.location);
-            resultsMap.setCenter(results[0].geometry.location);
+        	
+        	
             var marker = new google.maps.Marker({
               map: resultsMap,
               position: results[0].geometry.location
             });
+            markers.push(marker);
+           
+            polys.push(poly);
+            var path = poly.getPath();
+            path.push(results[0].geometry.location);
+            resultsMap.setCenter(results[0].geometry.location);
+            
             var div = document.createElement('div');
             loc[i] = address;
             lat[i] = results[0].geometry.location;

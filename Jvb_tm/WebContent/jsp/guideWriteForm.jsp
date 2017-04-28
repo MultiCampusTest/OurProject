@@ -116,7 +116,7 @@ $(function() {
           i++;
         });
       }
-
+	
       function geocodeAddress(geocoder, resultsMap) {
         var address = document.getElementById('pac-input').value;
         geocoder.geocode({'address': address}, function(results, status) {

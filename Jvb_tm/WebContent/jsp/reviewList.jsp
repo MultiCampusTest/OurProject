@@ -99,13 +99,13 @@
 				</div>
 			</div>
 		</div>
+		<div style="text-align: right">
+			<input type="button" class="btn btn-primary" value="Write"
+				onclick="location.href='reviewWriteForm.do'">
+		</div>
 	</div>
 
 	<hr />
-	<div style="text-align: right; padding-right: 50px">
-		<input type="button" class="btn btn-primary" value="Write"
-			onclick="location.href='reviewWriteForm.do'">
-	</div>
 	<div class="jb-center">
 		<ul class="pagination">
 			<li><a href="#"><span

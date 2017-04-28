@@ -87,7 +87,30 @@ border:solid 1px #fff;
 text-align:center;
 cursor:pointer;
 }
-
+.form-control-text {
+  display: block;
+  width: 100%;
+  height: auto;
+  padding: 6px 12px;
+  font-size: 20px;
+  line-height: 1.42857143;
+  color: #555;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+  -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+       -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+          transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+.form-control-text:focus {
+  border-color: #FF605A;
+  outline: 0;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
+          box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
+}
 
 
 
@@ -113,19 +136,20 @@ cursor:pointer;
 		      }
 	      </script>
 		</div>
-		<div class="col-md-2 hi">
+		<div class="col-md-2">
 			<ul class="sibal">
-				<li class="day day1">DAY1</li>
-							
-							
-							
-							
+				<li class="day" id="day1">DAY1</li>
+			
 			</ul>
 	<ul class="sibal2">
 		<li style="padding-top:10px;">
-			<div class="dayday" onclick="add_day()">DAY 추가</div>
+			<div class="dayday" onclick="add()">DAY 추가</div>
 		</li>
 	</ul>
+		</div>
+		
+		<div class="col-md-5">
+			 <textarea placeholder="Insert content " class="form-control-text" id="day1-content" rows="10"></textarea>
 		</div>
 
 </div>

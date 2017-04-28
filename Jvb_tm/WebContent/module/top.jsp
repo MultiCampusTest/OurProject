@@ -68,19 +68,11 @@
 </script>
 
 <style type="text/css">
-/* Bootstrap Navigation Overriding by Readiz */
-/* .navbar-default .navbar-collapse { */
-/* 	background-color: #FFFFFF !important; */
-/* 	border-color: #e7e7e7; */
-/* } */
-
-/* .navbar-default .navbar-brand { */
-/* 	color: #F05F40; */
-/* } */
 .dropdown:hover .dropdown-menu {
 	display: block;
 	margin-top: 0;
 }
+
 </style>
 
 </head>

@@ -49,43 +49,24 @@
 
 	});
 
+	// 이미지 파일 추가 함수
+	$(document).ready(function() {
+		$('.label').on('click', function() {
+			var id = $(this).attr('id');
+			var num = id.substring(5);
 
-// 	$(function() {
-// 		$("#ex_file").on('change', function() {
-// 			readURL(this);
-// 		});
-// 	});
+			readURL = function(input) {
+				if (input.files && input.files[0]) {
+					var reader = new FileReader();
 
- 	function readURL(input) {
-		if (input.files && input.files[0]) {
-			var reader = new FileReader();
-			alert(id2);
-			
-			var id = $('.label').attr('id');
-			alert("하이염");
-			alert($('.label').attr('id'));
-			var num = $('.label').attr('id').substring(5);
-			alert(num);
-			
-
-			reader.onload = function(e) {
-				$('#img' + num).attr('src', e.target.result);
+					reader.onload = function(e) {
+						$('#img' + num).attr('src', e.target.result);
+					}
+					reader.readAsDataURL(input.files[0]);
+				}
 			}
-			reader.readAsDataURL(input.files[0]);
-		}
-	} 
-	
-	$(document).ready(function(){
-		$('.label').on('click', function(){
- 			 var id2 = $(this).attr('id');		
- 			 
 		});
 	});
-	
-	
-	
-
-	
 </script>
 <style>
 .filebox label {
@@ -121,9 +102,11 @@
 }
 
 .table {
-	background-color: #eee;
+	background-color: #fff;
 	height: 500px;
 	margin-bottom: 0;
+	text-align: center;
+	vertical-align: middle;
 }
 
 .table-responsive {
@@ -142,6 +125,25 @@ div.aspect_1_1 {
 	height: 0;
 	clear: both;
 }
+
+td {
+	vertical-align: middle;
+	width: 100%;
+	height: 100%;
+	margin: auto;
+	text-align: center;
+	vertical-align: middle;
+	display: table-cell;
+	text-align: center;
+}
+
+.filebox {
+	width: 100px;
+	height: 50px;
+	display: inline-block;
+}
+
+
 </style>
 </head>
 <body>
@@ -155,24 +157,25 @@ div.aspect_1_1 {
 				<div class="col-md-5">
 					<h2>Photo</h2>
 					<div class="table-responsive" id="reviewPhoto">
-						<table border="1px" class="table table-condensed"
-							style="height: inherit; vertical-align: center">
+						<table class="table table-condensed"
+							style="height: inherit; vertical-align: middle">
 
 							<c:forEach begin="1" end="5" var="i" varStatus="status">
 								<tr class="clearfix" align="center"
 									style="vertical-align: center">
-									<td style="width: 35%; vertical-align: center">
-										<div class="filebox">
+									<td style="width: 35%; vertical-align: middle;">
+										<div class="filebox" style="padding-top: 10px">
+											
 											<label for="ex_file${status.index}" id="label${status.index}"
-												class="label">choose file</label> <input type="file"
-												id="ex_file${status.index}" onchange="readURL(this)">
+												class="label">choose file</label> 
+												<input type="file" id="ex_file${status.index}" onchange="readURL(this)">
 										</div>
 									</td>
 
 
 									<td style="width: 65%; height: 80%">
 										<div class="aspect_1_1 imgDiv">
-											<img id="img${status.index }" src="#">
+											<img id="img${status.index }" src="img/review/noimage.png">
 										</div>
 
 									</td>
@@ -188,11 +191,11 @@ div.aspect_1_1 {
 						<label class="control-label ">TITLE:</label> <input
 							class="form-control" value="제목 입력" type="text">
 					</div>
-					<div class="form-group">
-						<label class="control-label">DATE:</label><br> <input
-							class="selector" id="fromDate" type="text"> ~ <input
-							class="selector" id="toDate" type="text"><br>
-					</div>
+<!-- 					<div class="form-group"> -->
+<!-- 						<label class="control-label">DATE:</label><br> <input -->
+<!-- 							class="selector" id="fromDate" type="text"> ~ <input -->
+<!-- 							class="selector" id="toDate" type="text"><br> -->
+<!-- 					</div> -->
 					<div class="form-group">
 						<label class="control-label">CATEGORY:</label>
 						<div class="ui-select">
@@ -206,7 +209,7 @@ div.aspect_1_1 {
 					</div>
 					<div class="form-group">
 						<label class="control-label">CONTENT:</label>
-						<textarea class="form-control" rows="10"></textarea>
+						<textarea class="form-control" rows="10" style="resize: none;"></textarea>
 					</div>
 					<div class="form-group">
 						<input type="submit" value="ok" class="btn btn-primary"> <input

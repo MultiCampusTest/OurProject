@@ -148,7 +148,7 @@ $(function() {
 	    <hr>
 	    <div class="form-group">
           <label class="control-label">CONTENT:</label>
-          <textarea class="form-control" placeholder="Insert Content "rows="10"></textarea>
+          <textarea class="form-control" style="resize: none;" placeholder="Insert Content "rows="10"></textarea>
 		</div>
 		<div class="form-group">
 			<input type="submit" value="ok" class="btn btn-primary">

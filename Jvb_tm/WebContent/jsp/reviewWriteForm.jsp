@@ -8,143 +8,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>review write</title>
 
-<!-- 달력 -->
-<link rel="stylesheet"
-	href="https://unpkg.com/flatpickr/dist/flatpickr.min.css">
-<script src="https://unpkg.com/flatpickr"></script>
-<script src="https://npmcdn.com/flatpickr/dist/flatpickr.min.js"></script>
-<script src="https://npmcdn.com/flatpickr/dist/l10n/ru.js"></script>
-<link rel="stylesheet" href="css/calender.css">
+<link rel="stylesheet" href="css/review.css">
+<script src="js/review.js" ></script>
 
-<script type="text/javascript">
-	$(function() {
-		$(".selector").flatpickr({
-
-		});
-	});
-
-	$(function() {
-		var divs = document.getElementsByClassName('imgDiv');
-		for (var i = 0; i < divs.length; ++i) {
-			var div = divs[i];
-			var divAspect = div.offsetHeight / div.offsetWidth;
-			div.style.overflow = 'hidden';
-
-			var img = div.querySelector('img');
-			var imgAspect = img.height / img.width;
-
-			if (imgAspect <= divAspect) {
-				// 이미지가 div보다 납작한 경우 세로를 div에 맞추고 가로는 잘라낸다
-				var imgWidthActual = div.offsetHeight / imgAspect;
-				var imgWidthToBe = div.offsetHeight / divAspect;
-				var marginLeft = (imgWidthActual - imgWidthToBe) / 2;
-
-				img.style.cssText = 'width: auto; height: 100%; margin-left: '
-					+ marginLeft + 'px;';
-			} else {
-				// 이미지가 div보다 길쭉한 경우 가로를 div에 맞추고 세로를 잘라낸다
-				img.style.cssText = 'width: 100%; height: auto; margin-left: 0;';
-			}
-		}
-
-	});
-
-	// 이미지 파일 추가 함수
-	$(document).ready(function() {
-		$('.label').on('click', function() {
-			var id = $(this).attr('id');
-			var num = id.substring(5);
-
-			readURL = function(input) {
-				if (input.files && input.files[0]) {
-					var reader = new FileReader();
-
-					reader.onload = function(e) {
-						$('#img' + num).attr('src', e.target.result);
-					}
-					reader.readAsDataURL(input.files[0]);
-				}
-			}
-		});
-	});
-</script>
-<style>
-.filebox label {
-	display: inline-block;
-	padding: .5em .75em;
-	color: #FFFFFF;
-	font-size: inherit;
-	line-height: normal;
-	vertical-align: middle;
-	background-color: #FF605A;
-	cursor: pointer;
-	border: 1px solid #ebebeb;
-	border-bottom-color: #e2e2e2;
-	border-radius: .25em;
-}
-
-.filebox input[type="file"] { /* 파일 필드 숨기기 */
-	position: absolute;
-	width: 1px;
-	height: 1px;
-	padding: 0;
-	margin: -1px;
-	overflow: hidden;
-	clip: rect(0, 0, 0, 0);
-	border: 0;
-}
-
-.row-eq-height {
-	display: -webkit-box;
-	display: -webkit-flex;
-	display: -ms-flexbox;
-	display: flex;
-}
-
-.table {
-	background-color: #fff;
-	height: 500px;
-	margin-bottom: 0;
-	text-align: center;
-	vertical-align: middle;
-}
-
-.table-responsive {
-	height: 100%;
-}
-
-div.aspect_1_1 {
-	width: 200px;
-	height: 80px;
-}
-
-.clearfix:after {
-	content: " ";
-	visibility: hidden;
-	display: block;
-	height: 0;
-	clear: both;
-}
-
-td {
-	vertical-align: middle;
-	width: 100%;
-	height: 100%;
-	margin: auto;
-	text-align: center;
-	vertical-align: middle;
-	display: table-cell;
-	text-align: center;
-}
-
-.filebox {
-	width: 100px;
-	height: 50px;
-	display: inline-block;
-}
-
-
-</style>
 </head>
 <body>
 	<div class="container">
@@ -191,11 +57,6 @@ td {
 						<label class="control-label ">TITLE:</label> <input
 							class="form-control" value="제목 입력" type="text">
 					</div>
-<!-- 					<div class="form-group"> -->
-<!-- 						<label class="control-label">DATE:</label><br> <input -->
-<!-- 							class="selector" id="fromDate" type="text"> ~ <input -->
-<!-- 							class="selector" id="toDate" type="text"><br> -->
-<!-- 					</div> -->
 					<div class="form-group">
 						<label class="control-label">CATEGORY:</label>
 						<div class="ui-select">

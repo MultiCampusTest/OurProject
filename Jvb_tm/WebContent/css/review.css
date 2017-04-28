@@ -1,0 +1,76 @@
+@CHARSET "UTF-8";
+
+.filebox label {
+	display: inline-block;
+	padding: .5em .75em;
+	color: #FFFFFF;
+	font-size: inherit;
+	line-height: normal;
+	vertical-align: middle;
+	background-color: #FF605A;
+	cursor: pointer;
+	border: 1px solid #ebebeb;
+	border-bottom-color: #e2e2e2;
+	border-radius: .25em;
+}
+
+.filebox input[type="file"] { /* 파일 필드 숨기기 */
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	border: 0;
+}
+
+.row-eq-height {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+}
+
+.table {
+	background-color: #fff;
+	height: 500px;
+	margin-bottom: 0;
+	text-align: center;
+	vertical-align: middle;
+}
+
+.table-responsive {
+	height: 100%;
+}
+
+div.aspect_1_1 {
+	width: 200px;
+	height: 80px;
+}
+
+.clearfix:after {
+	content: " ";
+	visibility: hidden;
+	display: block;
+	height: 0;
+	clear: both;
+}
+
+td {
+	vertical-align: middle;
+	width: 100%;
+	height: 100%;
+	margin: auto;
+	text-align: center;
+	vertical-align: middle;
+	display: table-cell;
+	text-align: center;
+}
+
+.filebox {
+	width: 100px;
+	height: 50px;
+	display: inline-block;
+}
+

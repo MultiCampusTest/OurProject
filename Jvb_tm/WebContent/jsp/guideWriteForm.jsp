@@ -106,7 +106,9 @@ $(function() {
          }
         
        document.getElementById('delete').addEventListener('click', function() {
-    	  deleteMarkers(); 
+    	  deleteMarkers();
+    	  loc = [];
+    	  lat = [];
        });
 
         document.getElementById('submit').addEventListener('click', function() {

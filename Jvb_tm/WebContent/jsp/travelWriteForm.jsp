@@ -10,23 +10,46 @@
 <link rel="stylesheet" href="css/travelWriteForm.css">
 <script type="text/javascript">
 	
-// 	function add_item(){
-// 	    var div = document.createElement('div');
-// 	    div.innerHTML = document.getElementById('pre_set').innerHTML;
-// 	    document.getElementById('field').appendChild(div);
-// 	}
+function add(){
 	
-// 	function remove_item(obj){
-// 	    document.getElementById('field').removeChild(obj.parentNode);
-// 	}
-function add_day(){
-	var text = $('.sibal > li:last-child').text();
- 	var index = parseInt(text.substring(3));
-	$('.sibal').append('<li class="day">DAY'+(index+1)+'</li>');
+	var this_day = $('.sibal > li:last-child').val();
+ 	var next_day = Number(this_day)+1;
+	$('.sibal').append('<li class="day">DAY'+next_day+'</li>');
+	$('.sibal > li:last-child').val(next_day);
+
 	
+	$('#content').append('<textarea placeholder="Insert content " class="form-control-text"' 
+			 + 'id="day'+next_day+'" rows="14"></textarea>');
+	$('#content > textarea:last-child').hide();
+
 }
 
 
+
+$(document).ready(function(){
+	
+$('.sibal').on('click','li',function(){
+	var day_value = $(this).val();
+	$('.sibal li').each(function(){
+		if(day_value ==$(this).val()){
+			$(this).addClass('on');
+		}else{
+			$(this).removeClass('on');
+		}
+	});
+	
+	var new_day_value = 'day'+day_value;
+		$('#content textarea').each(function(){
+			if(new_day_value == $(this).attr('id')){
+				$('#day-content > strong').text($(this).attr('id'));
+				$(this).show(500);
+			}else{
+				$(this).hide();
+			}
+		});
+});
+
+})
 
 </script>
 <style type="text/css">
@@ -40,6 +63,7 @@ function add_day(){
 
 }
 .sibal{
+
 list-style:none;
 /* display: block; */
 /* height:450px; */
@@ -62,6 +86,10 @@ height:50px;
 
 }
 
+.sibal .on{
+background-color:#DC524D;
+}
+
 .day{
 padding: 15px;
 background-color:#FF605A;
@@ -74,10 +102,15 @@ color:#ffffff;
 width:140px; 
 height:50px; 
 text-align:center;
+cursor:pointer;
 }
 
-.dayday{
+.day:hover{
+background-color:#DC524D;
+}
 
+
+.dayday{
 line-height:20px;
 margin:0 auto;
 width:110px;
@@ -87,6 +120,7 @@ border:solid 1px #fff;
 text-align:center;
 cursor:pointer;
 }
+
 .form-control-text {
   display: block;
   width: 100%;
@@ -105,6 +139,7 @@ cursor:pointer;
        -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
           transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 }
+
 .form-control-text:focus {
   border-color: #FF605A;
   outline: 0;
@@ -112,14 +147,18 @@ cursor:pointer;
           box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
 }
 
-
+.form-group{
+	text-align:center;
+	margin-top:50px;
+	
+}
 
 </style>
 </head>
 <body>
 <div class="container">
-	<div> <h2>여행 공유 입력</h2> </div>
-		<br>
+	<div> <h2>TRAVEL PLANNING</h2> </div>
+		<hr/>
 		<div class="col-md-5">
 			<div id="map"></div>
 			<script>
@@ -138,8 +177,7 @@ cursor:pointer;
 		</div>
 		<div class="col-md-2">
 			<ul class="sibal">
-				<li class="day" id="day1">DAY1</li>
-			
+				<li type="button" class="day" value="1" >DAY1</li>
 			</ul>
 	<ul class="sibal2">
 		<li style="padding-top:10px;">
@@ -148,11 +186,19 @@ cursor:pointer;
 	</ul>
 		</div>
 		
-		<div class="col-md-5">
-			 <textarea placeholder="Insert content " class="form-control-text" id="day1-content" rows="10"></textarea>
+		<div class="col-md-5" id="content">
+			 <h2 id="day-content" style="margin-top:0;"><strong style="text-transform: uppercase;">day1</strong></h2>
+			 <hr/>
+			 <textarea placeholder="Insert content" class="form-control-text" id="day1" rows="14"></textarea>
+		</div>
+		
+</div>
+
+		<div class="form-group">
+			<input type="submit" value="ok" class="btn btn-primary">
+			<input type="button" value="list" class="btn btn-primary" onclick="location.href='travelList.do'">
 		</div>
 
-</div>
 
      <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyArBFw8nNcgJ_mlUdagcoWxjlyIY1pnh7E&callback=initMap">

@@ -102,7 +102,7 @@ $('.sibal').on('click','li',function(){
 
 list-style:none;
 max-height:400px;
-width:200px;
+width:160px;
 border-collapse: collapse;
 overflow-y: auto;
 

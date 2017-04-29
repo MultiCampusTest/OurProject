@@ -9,16 +9,54 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="css/travelWriteForm.css">
 <script type="text/javascript">
+
+function delete_check(id){
+	var msg = "Do You Really Want To Delete?"
+	if(confirm(msg)!=0){
+		delete_day_content(id);
+	}else{
+		return;
+	}
+}
+
+function delete_day_content(id){
+	var delete_day_number = id.substring(10);
+	var delete_content_day = id.substring(7);
+	$('#'+id).parents('li').remove();
+	$('#'+delete_content_day).remove();
 	
-function add(){
+	$('.sibal > li').each(function(){
+		
+		if(delete_day_number < $(this).val()){
+			var next_day_number = $(this).val()-1;
+			$(this).val(next_day_number);
+			$(this).html('DAY'+next_day_number);
+			$(this).append('<i class="fa fa-trash fa-1x" aria-hidden="true"'
+					+ 'id="delete-day'+next_day_number+'" onclick=delete_check(this.id)></i>');
+		}
+	
+	});
+	
+	$('#content > textarea').each(function(){
+		var content_number = $(this).attr('id').substring(3);
+		if(delete_day_number < content_number){
+			var next_content_number = content_number-1;
+			$(this).attr('id','day'+next_content_number);
+		}
+		
+	});
+}
+	
+function add_day_content(){
 	
 	var this_day = $('.sibal > li:last-child').val();
  	var next_day = Number(this_day)+1;
 	$('.sibal').append('<li class="day">DAY'+next_day+'</li>');
 	$('.sibal > li:last-child').val(next_day);
-
+	$('.sibal > li:last-child').append('<i class="fa fa-trash fa-1x" aria-hidden="true"'
+										+ 'id="delete-day'+next_day+'" onclick=delete_check(this.id)></i>');
 	
-	$('#content').append('<textarea placeholder="Insert content " class="form-control-text"' 
+	$('#content').append('<textarea placeholder="Write Your Travel Plan!" class="form-control-text"' 
 			 + 'id="day'+next_day+'" rows="14"></textarea>');
 	$('#content > textarea:last-child').hide();
 
@@ -30,7 +68,7 @@ $(document).ready(function(){
 	
 $('.sibal').on('click','li',function(){
 	var day_value = $(this).val();
-	$('.sibal li').each(function(){
+	$('.sibal > li').each(function(){
 		if(day_value ==$(this).val()){
 			$(this).addClass('on');
 		}else{
@@ -47,7 +85,8 @@ $('.sibal').on('click','li',function(){
 				$(this).hide();
 			}
 		});
-});
+	});
+
 
 })
 
@@ -58,18 +97,12 @@ $('.sibal').on('click','li',function(){
  height: 500px; 
 } 
 	
-.hi{
-/*  	height:450px;  */
 
-}
 .sibal{
 
 list-style:none;
-/* display: block; */
-/* height:450px; */
-/*  height:100%; */
-/* height:200px; */
 max-height:400px;
+width:200px;
 border-collapse: collapse;
 overflow-y: auto;
 
@@ -82,12 +115,13 @@ background-color:#FF605A;
 color:#ffffff;
 width:140px; 
 height:50px;
-/* height:50px;	 */
+
 
 }
 
 .sibal .on{
 background-color:#DC524D;
+
 }
 
 .day{
@@ -153,6 +187,10 @@ cursor:pointer;
 	
 }
 
+.fa-trash{ 
+ 	float:right;  
+ 	margin-top:3px;
+ }
 </style>
 </head>
 <body>
@@ -176,12 +214,14 @@ cursor:pointer;
 	      </script>
 		</div>
 		<div class="col-md-2">
+		<form action="" method="post">
 			<ul class="sibal">
-				<li type="button" class="day" value="1" >DAY1</li>
+				<li class="day" value="1" >DAY1</li>
+				
 			</ul>
 	<ul class="sibal2">
 		<li style="padding-top:10px;">
-			<div class="dayday" onclick="add()">DAY 추가</div>
+			<div class="dayday" onclick="add_day_content()">DAY 추가</div>
 		</li>
 	</ul>
 		</div>
@@ -189,16 +229,15 @@ cursor:pointer;
 		<div class="col-md-5" id="content">
 			 <h2 id="day-content" style="margin-top:0;"><strong style="text-transform: uppercase;">day1</strong></h2>
 			 <hr/>
-			 <textarea placeholder="Insert content" class="form-control-text" id="day1" rows="14"></textarea>
+			 <textarea placeholder="Write Your Travel Plan!" class="form-control-text" id="day1" rows="14"></textarea>
 		</div>
-		
 </div>
 
 		<div class="form-group">
 			<input type="submit" value="ok" class="btn btn-primary">
 			<input type="button" value="list" class="btn btn-primary" onclick="location.href='travelList.do'">
 		</div>
-
+	</form>
 
      <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyArBFw8nNcgJ_mlUdagcoWxjlyIY1pnh7E&callback=initMap">

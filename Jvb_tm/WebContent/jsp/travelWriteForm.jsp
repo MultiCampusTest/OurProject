@@ -232,12 +232,6 @@ cursor:pointer;
 	
 }
 
-.form-control{
-	width:200px;
-	font-size:20px;
-	
-}
-
 .form-control:focus {
   border-color: #FF605A;
   outline: 0;
@@ -260,7 +254,11 @@ cursor:pointer;
  	
  	text-align:center; 
  }
-  
+ 
+ .category{
+ 	width:200px;
+	font-size:20px;
+ }
 </style>
 </head> 
 <body>
@@ -313,7 +311,7 @@ cursor:pointer;
 		 <p style="font-size:20px">CATEGORY</p>
 	     <div style="float:left; margin-right:20px">
 	     <font style="font-size:20px;">DATE</font><br> 
-	      	<select class="form-control">
+	      	<select class="form-control category">
 	            <option value="5days">5DAYS</option>
 	            <option value="10days">10DAYS</option> 
 	            <option value="15days">15DAYS</option> 
@@ -321,7 +319,7 @@ cursor:pointer;
 	      </div>
 	      <div style="float:left;">
 	     	<font style="font-size:20px">LOCATION</font><br>
-	      	<select class="form-control" >
+	      	<select class="form-control category" >
 	            <option value="seoul">SEOUL</option>
 	            <option value="incheon">INCHEON</option>
 	            <option value="gyunggi">GYUNGGI</option>  

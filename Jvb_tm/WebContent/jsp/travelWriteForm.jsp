@@ -260,7 +260,7 @@ cursor:pointer;
  	
  	text-align:center; 
  }
- 
+  
 </style>
 </head>
 <body>

@@ -46,7 +46,7 @@
 									<!-- 									사진어케가져옴???? -->
 									<td style="width: 65%; height: 80%">
 										<div class="aspect_1_1 imgDiv">
-											<img id="img${status.index }" src="img/review/noimage.png">
+											<img src="${review.img_path }">
 										</div>
 
 									</td>

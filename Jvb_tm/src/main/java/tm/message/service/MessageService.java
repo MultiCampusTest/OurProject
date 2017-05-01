@@ -40,9 +40,13 @@ public class MessageService implements IMessageService {
 	}
 
 	@Override
-	public MessageVo messageOneList(String msg_receive_userid, String msg_send_userid) {
+	public HashMap<String, Object> messageOneList(String msg_receive_userid, String msg_send_userid) {
 		// TODO Auto-generated method stub
-		return null;
+		List<MessageVo> messageOne=new ArrayList<>();
+		messageOne=messageDao.messageSelectOne(msg_receive_userid, msg_send_userid);
+		HashMap<String, Object> messageOneList=new HashMap<>();
+		messageOneList.put("messageOneList", messageOne);
+		return messageOneList;
 	}
 	
 }

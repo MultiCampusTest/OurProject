@@ -32,7 +32,6 @@
 			prevText : 'Previous Month',
 			changeMonth : true,
 			changeYear : true,
-			closeText : "Close",
 			showButtonPanel : true,
 			currentText : 'Today',
 			closeText : 'Close',
@@ -135,7 +134,7 @@
 								<form action="regProc.do" method="post" class="registration-form">
 									<div class="form-group">
 										<label class="sr-only" for="form-email">email</label>
-										<input type="text" id="email" name="email" class="form-first-name form-control" placeholder="example@domain.com">
+										<input type="text" id="email" name="email" class="form-first-name form-control" placeholder="example@domain.com" value="${params.email}">
 									</div>
 									<div class="form-group">
 										<label class="sr-only" for="form-pwd">pwd</label>

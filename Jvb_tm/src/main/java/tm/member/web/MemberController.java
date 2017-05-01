@@ -25,4 +25,10 @@ public class MemberController {
 		return "joinForm";
 	}
 	
+	//비밀번호 찾기 화면
+	@RequestMapping("searchPassword")
+	public String searchPassword(){
+		return "searchPassword";
+	}
+	
 }

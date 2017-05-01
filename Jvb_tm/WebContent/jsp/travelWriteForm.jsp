@@ -262,7 +262,7 @@ cursor:pointer;
  }
   
 </style>
-</head>
+</head> 
 <body>
 <div class="container">
 	<div> <h2>TRAVEL PLANNING</h2> </div>

@@ -84,14 +84,53 @@
 
 
 
-   .btn-primary:focus,
-   .btn-info:focus{
-      background-color: #FF605A !important;
-   }
-   
-   .btn-info{
-      background-color: #FF605A !important;
-   }
-   .btn-info:hover{
-      background-color: #FF9D9A !important;
-   }
+	.btn-primary:focus,
+	.btn-info:focus{
+		background-color: #FF605A !important;
+	}
+	
+	.btn-info{
+		background-color: #FF605A !important;
+	}
+	.btn-info:hover{
+		background-color: #FF9D9A !important;
+	}
+
+
+
+.userid_img {
+		border-radius: 50em;
+		 -webkit-transition: all 0.3s ease-in-out;
+		  -moz-transition: all 0.3s ease-in-out;
+		   -o-transition: all 0.3s ease-in-out;
+		    -ms-transition: all 0.3s ease-in-out;
+		     transition: all 0.3s ease-in-out; }
+
+
+	.message_section:hover,
+	.message_section:active,
+	.matching_section:hover,
+	.matching_section:active{
+		background-color: #e5e6e8;
+		text-align: center;
+
+	}
+	
+	.panel{
+		border-color: transparent;
+		padding-bottom: 0px;
+	}
+	
+	.panel,
+	.form-control{
+		background-color: transparent;
+	}
+	
+	.tab-pane{
+		vertical-align: middle;
+	}
+	
+	.well{
+		background-color: #ffffff;
+		border-color: transparent;
+	}

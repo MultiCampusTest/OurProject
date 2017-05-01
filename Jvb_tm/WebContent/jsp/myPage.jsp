@@ -253,36 +253,40 @@
                   <h1 class="page-header">Message</h1>
 
                   <!--           sender_userid 부분 -->
-                  <div class="row" style="text-align: center">
+                  <div class="row" style="text-align: center;">
                      <c:forEach begin="1" end="5" step="1" varStatus="i">
-                        <div class="container-fluid">
+                        <div class="message_section container-fluid">
                            <div class="sender col-lg-3" id="${i.index }">
                               <input type="hidden" id="msg_condition_${i.index }" value="1">
-                              <div>
-                                 <img src="img/ex.jpg" width="50px" height="50px">
+                              <div class="col-md-4">
+                                 <img class="userid_img" src="img/ex.jpg" width="50px" height="50px">
                               </div>
-                              <div>sender_userid ${i.index }</div>
+                              <div class="col-md-8"><label class="container-fluid control-label">sender_userid ${i.index }</label></div>
                            </div>
                            <div class="message" id="message_${i.index }">
-                              <div class="msg_contents col-lg-7">sending message
-                                 ${i.index }</div>
-                              <div class="msg_date col-lg-2">sending date ${i.index }</div>
+                              <div class="msg_cosntents col-lg-7">
+                              <label class="container-fluid control-label">
+                            	  sending message${i.index }</label></div>
+                              <div class="msg_date col-lg-2">
+                              	<label class="container-fluid control-label">sending date ${i.index }</label>
+                              </div>
                            </div>
                            <div class="msg_contents_box col-lg-9" id="msg_box_${i.index }">
-                              <div class="msg_box">msg_box ${i.index }</div>
+                              <div class="msg_box">
+                             	<label class="container-fluid control-label">msg_box ${i.index }</label>
+                             </div>
                               <div class="panel panel-default">
-                            <div class="panel-body">                
-                                <form accept-charset="UTF-8" action="" method="POST">
-                                    <textarea class="form-control counted" name="message" placeholder="Type in your message" rows="5" style="margin-bottom:10px;"></textarea>
-                                    <h6 class="pull-right" id="counter">320 characters remaining</h6>
-                                    <button class="btn btn-info" type="submit">Post New Message</button>
-                                </form>
-                               </div>
-                           </div>
-                              
-                              
+	                         	   <div class="panel-body">                
+	                                <form accept-charset="UTF-8" action="" method="POST">
+	                                    <textarea class="form-control counted" name="message" placeholder="Type in your message 메시지 입력" rows="5" style="margin-bottom:10px;"></textarea>
+	                                    <h6 class="pull-right" id="counter">320 characters remaining</h6>
+	                                    <button class="btn btn-info" type="submit">Post New Message</button>
+	                                </form>
+	                               </div>
+                          	 </div>
                            </div>
                         </div>
+                        <br>
                      </c:forEach>
                   </div>
                   <br>
@@ -326,24 +330,36 @@
 
                   <div class="row" style="text-align: center">
                      <c:forEach begin="1" end="5" step="1" varStatus="i">
-                        <div class="container-fluid">
+                        <div class="matching_section container-fluid">
                            <div class="not_accept col-lg-3" id="${i.index }">
                               <input type="hidden" id="req_match_condition_${i.index }"
                                  value="1">
-                              <div>
-                                 <img src="img/ex.jpg" width="50px" height="50px">
+                              <div class="col-md-4">
+                                 <img class="userid_img" src="img/ex.jpg" width="50px" height="50px">
                               </div>
-                              <div>Matching sender_userid ${i.index }</div>
+                              <div class="col-md-8">
+                              	<label class="container-fluid control-label">
+                             		 Matching sender_userid ${i.index }</label>
+                              </div>
                            </div>
                            <div class="request_matching" id="req_matching_${i.index }">
                               <div class="request_mch_contents col-lg-7">
-                                 <a href="board.do?b_idx=">해당 게시글 제목 ${i.index }</a>
+                                 <a href="board.do?b_idx=">
+                                 	<label class="container-fluid control-label">
+                                 		해당 게시글 제목 ${i.index }</label>
+                                 </a>
                               </div>
-                              <div class="request_mch_date col-lg-2">sending date
-                                 ${i.index }</div>
+                              <div class="request_mch_date col-lg-2">
+                              	<label class="container-fluid control-label">
+                              		sending date${i.index }
+                              	</label>
+                              </div>
                            </div>
                            <div class="matching_box col-lg-9" id="matching_box_${i.index }" style="text-align: center">
-                              <div>매칭 요청을 수락하시겠습니까?</div>
+                              <div>
+                              	<label class="container-fluid control-label">
+                              		매칭 요청을 수락하시겠습니까?</label>
+                              	</div>
                               <br>           
                               <div class="matching_response"">
                              <div class="col-md-3"></div>
@@ -358,8 +374,9 @@
                                <div class="col-md-3"></div>     
                         <br><br>
                               </div>
-                           </div>
+                           </div>                 
                         </div>
+                        <br>
                      </c:forEach>
                   </div>
 
@@ -368,24 +385,33 @@
                   <h3 class="page-header">Accepted Matching</h3>
                   <div class="row" style="text-align: center">
                      <c:forEach begin="1" end="5" step="1" varStatus="i">
-                        <div class="container-fluid">
+                        <div class="matching_section container-fluid">
                            <div class="accept col-lg-3" id="${i.index }">
                               <input type="hidden" id="matched_condition_${i.index }"
                                  value="1">
-                              <div>
-                                 <img src="img/ex.jpg" width="50px" height="50px">
+                              <div class="col-md-4">
+                                 <img class="userid_img" src="img/ex.jpg" width="50px" height="50px">
                               </div>
-                              <div>Matching sender_userid ${i.index }</div>
+                              <div class="col-md-8">
+                              	<label class="container-fluid control-label">
+                             		 Matching sender_userid ${i.index }</label>
+                              </div>
                            </div>
                            <div class="accepted_matching"
                               id="accepted_matching_${i.index }">
                               <div class="accepted_mch_contents col-lg-7">
-                                 <a href="board.do?b_idx=">해당 게시글 제목 ${i.index }</a>
+                                 <a href="board.do?b_idx=">
+                                 	<label class="container-fluid control-label">
+                                 		해당 게시글 제목 ${i.index }</label>
+                                 </a>
                               </div>
-                              <div class="accepted_mch_date col-lg-2">sending date
-                                 ${i.index }</div>
+                              <div class="accepted_mch_date col-lg-2">
+                              	<label class="container-fluid control-label">
+                              		sending date${i.index }</label>
+                              </div>
                            </div>
                         </div>
+                        <br>
                      </c:forEach>
                   </div>
 

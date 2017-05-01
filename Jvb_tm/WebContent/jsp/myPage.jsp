@@ -72,7 +72,7 @@
       <div class="well">
          <div class="tab-content">
             <div class="tab-pane fade in active" id="tab1">
-               <div class="container" style="padding-top: 60px;">
+               <div class="container">
                   <h1 class="page-header">Your Profile</h1>
                   <div class="row">
                      <!-- left column -->
@@ -142,7 +142,7 @@
                </div>
             </div>
             <div class="tab-pane fade in" id="tab2">
-               <div class="container" style="padding-top: 60px;">
+               <div class="container">
                   <h1 class="page-header">Edit Profile</h1>
                   <div class="row">
                      <!-- left column -->
@@ -249,7 +249,7 @@
 
 
             <div class="tab-pane fade in" id="tab3">
-               <div class="container" style="padding-top: 60px;">
+               <div class="container">
                   <h1 class="page-header">Message</h1>
 
                   <!--           sender_userid 부분 -->
@@ -321,7 +321,7 @@
 
 
             <div class="tab-pane fade in" id="tab4">
-               <div class="container" style="padding-top: 60px;">
+               <div class="container">
                   <h1 class="page-header">Matching</h1>
 
                   <!--           Matching 부분 -->

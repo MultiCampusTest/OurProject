@@ -14,7 +14,7 @@ public class MemberVo {
 	private String gender;
 	private String introduce;
 	private Date u_date;
-	
+	 
 	public int getU_idx() {
 		return u_idx;
 	}

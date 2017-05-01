@@ -13,7 +13,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		update member set pwd = #{pwd}, email = #{email}, birthday = #{birthday},
 		country = #{country}, introduce = #{introduce} where userid = #{userid} 
 	</update>
-
+ 
 	<select id="memberSelectOne" parameterType="String" resultType="java.util.HashMap">
 		select * from member m natural join image i 
 		where m.userid = i.img_code and m.userid = #{userid}

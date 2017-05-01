@@ -8,3 +8,4 @@ public interface IMemberService {
 	public boolean checkValidation(String userid, String pwd);
 	
 }
+ 

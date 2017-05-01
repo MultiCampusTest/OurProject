@@ -11,7 +11,7 @@ public class Test {
 		IMemberDao dao = context.getBean("memberDao", IMemberDao.class);
 		
 		MemberVo m = new MemberVo();
-
+ 
 		//insert test
 //		m.setUserid("tester");
 //		m.setPwd("1234");

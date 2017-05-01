@@ -19,7 +19,7 @@ public class MemberController {
 	
 	@Autowired
 	private MemberService memberService;
-	
+	 
 	//로그인 유효성 검사
 	@RequestMapping("login.do")
 	public String loginF(HttpSession session, String userid, String pwd)

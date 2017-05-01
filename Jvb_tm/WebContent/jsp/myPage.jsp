@@ -17,12 +17,10 @@
 
 <title>Travel Maker</title>
 
-<style type="text/css">S
+<style type="text/css">
 </style>
 
-<script type="text/javascript">
 
-</script>
 
 
 

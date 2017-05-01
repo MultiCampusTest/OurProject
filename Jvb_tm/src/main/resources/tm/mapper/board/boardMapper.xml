@@ -89,12 +89,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		#{b_code}
 	</select>
 
-	<!-- notice select(no image select)-->
+	<!-- notice select(no image select) -->
 	<select id="noticeBoardSelectOne" parameterType="int"
 		resultType="boardVo">
 		select * from board where b_idx=#{b_idx}
 	</select>
-	<select id="noticeBoardSelectByCode" resultType="boardVo">
+	<select id="noticeBoardSelectByCode" resultType="java.util.HashMap">
 		select * from
 		board
 		where b_code=
@@ -102,18 +102,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		order by b_idx desc
 	</select>
 
-	<!-- other board select-->
+	<!-- other board select -->
 	<select id="otherBoardSelectOne" parameterType="int"
 		resultType="java.util.HashMap">
 		select * from board b, image i where b.b_idx=#{b_idx} and
 		b.b_idx=i.img_code;
 	</select>
-	<select id="otherBoardSelectByCode" resultType="java.util.HashMap">
+	<select id="otherBoardSelectByCode" parameterType="String"
+		resultType="java.util.HashMap">
 		select * from
 		board b, image i
 		where b.b_code=
 		#{b_code}
-		and b.b_idx=i.img_code order
+		and
+		b.b_idx=i.img_code order
 		by b.b_date desc
 	</select>
 	<select id="otherBoardSelectByLoc_Category" parameterType="String"

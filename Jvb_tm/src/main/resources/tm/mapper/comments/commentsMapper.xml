@@ -4,16 +4,33 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="tm.comments.dao.ICommentsDao">
 
-	   
-	<select id="selectCommentsByIdx" parameterType="int" resultType="java.util.HashMap">
+	<insert id="commentsInsert" parameterType="CommentsVo">
+		insert into comments
+		values(
+		0, #{b_idx}, #{userid}, #{cm_contents}, sysdate(),
+		#{parent_code}, #{group_seq}, #{group_lv})
+	</insert>
+
+	<update id="commentsUpdate" parameterType="java.util.HashMap">
+		update comments set
+		cm_contents=#{cm_contents},
+		cm_date=sysdate()
+	</update>
+
+	<delete id="commentsDelete" parameterType="int">
+		delete from comments
+		where cm_idx=#{cm_idx}
+	</delete>
+
+	<select id="commentsSelectByIdx" parameterType="int"
+		resultType="java.util.HashMap">
 		select *from tb_comments where b_idx=#{b_idx}
 	</select>
 
-<!-- 	public int insertComments(HashMap<String, Object> params); -->
-<!-- 	public int updateComments(HashMap<String, Object> params); -->
-<!-- 	public int deleteComments(int b_idx, int c_idx); -->
-<!-- 	public List<HashMap<String, Object>> selectByIdx(int b_idx); -->
-	
+	<!-- public int insertComments(HashMap<String, Object> params); -->
+	<!-- public int updateComments(HashMap<String, Object> params); -->
+	<!-- public int deleteComments(int b_idx, int c_idx); -->
+	<!-- public List<HashMap<String, Object>> selectByIdx(int b_idx); -->
 
 
 </mapper>

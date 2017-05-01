@@ -8,9 +8,9 @@ import tm.matching.vo.MatchingVo;
 
 public interface IMatchingDao {
 	
-	public int insertMatching(MatchingVo matchingVo);
-	public int updateMatching(MatchingVo matchingVo);
-	public int deleteMatching(int mch_idx);
-	public List<HashMap<String, Object>> selectMatchingByUserid(String mch_userid);
+	public int matchingInsert(MatchingVo matchingVo);
+	public int matchingUpdate(MatchingVo matchingVo);
+	public int matchingDelete(int mch_idx);
+	public List<HashMap<String, Object>> matchingSelectByUserid(String mch_g_userid);
 
 }

@@ -159,21 +159,19 @@
 						<li><a href="reviewList.do?sub_category=stay">stay</a></li>
 						<li><a href="reviewList.do?sub_category=tour">tour</a></li>
 					</ul></li>
-						<li><a class="page-scroll" href="loginForm.do"><i
-								class="fa fa-sign-in fa-1g" aria-hidden="true"></i>Login</a></li>
 
 				<c:choose>
-					<c:when test="${u_idx != null }">
+					<c:when test="${userid != null }">
+						<li><a class="page-scroll" href="myPage.do"><i class="fa fa-sign-in fa-1g" aria-hidden="true"></i>MYPAGE</a></li>
+						<li><a class="page-scroll" href="logout.do">SIGN OUT</a></li>
 					</c:when>
 					<c:otherwise>
-						<li><a class="page-scroll" href="myPage.do"><i
-								class="fa fa-sign-in fa-1g" aria-hidden="true"></i>Userid</a></li>
+						<li><a class="page-scroll" href="loginForm.do"><i class="fa fa-sign-in fa-1g" aria-hidden="true"></i>SIGN IN</a></li>						
+						<li><a class="page-scroll" href="joinForm.do">Join</a></li>
 					</c:otherwise>
 				</c:choose>
 
-				<li><a class="page-scroll" href="myPage.do">MyPage</a></li>
 
-				<li><a class="page-scroll" href="joinForm.do">Join</a></li>
 
 
 

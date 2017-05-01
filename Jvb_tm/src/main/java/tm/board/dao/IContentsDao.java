@@ -4,11 +4,18 @@ import java.util.HashMap;
 
 import tm.board.vo.ContentsVo;
 
-public interface IContentsDao {
+public interface IContentsDao {	
+	//insert
+	public int contentsInsert(ContentsVo contens);
 	
-	public int insertContents(ContentsVo contens);
-	public int updateContents(ContentsVo contents);
-	public int deleteContents(int b_idx);
-	public HashMap<String, Object> selectContentsOne(int b_idx);
+	//update
+	public int contentsUpdate(ContentsVo contents);
+	
+	//delete
+	public int contentsDelete(int b_idx);
+	
+	//select
+	public HashMap<String, Object> contentsSelectOne(int b_idx);
+	public HashMap<String, Object> contentsSelectOneOrderby(int b_idx);
 
 }

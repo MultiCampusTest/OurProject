@@ -4,15 +4,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="tm.message.dao.IMessageDao">
 
-<insert id="insertMessage" parameterType="messageVo">
-insert into message values(0, #{msg_send_userid}, #{msg_receive_userid}, #{msg_contents}, sysdate())
+<insert id="messageInsert" parameterType="messageVo">
+	insert into message values(0, #{msg_send_userid}, #{msg_receive_userid}, #{msg_contents}, sysdate())
 </insert>
  
-<delete id="deleteMessage" parameterType="int">
+<delete id="messageDelete" parameterType="int">
 	delete from message where msg_idx=#{msg_idx} 
 </delete>
   
-<select id="selectMessageByUserid" parameterType="String" resultType="messageVo">
-	select *from message where msg_send_userid=#{msg_userid} or msg_receive_userid=#{msg_userid}
+<select id="messageSelectByUserid" parameterType="String" resultType="messageVo">
+	select *from message where msg_receive_userid=#{msg_receive_userid} group by msg_send_userid order by msg_date;
 </select>
+
+<select id="messageSelectOne" parameterType="java.util.HashMap" resultType="messageVo">
+	select *from message where msg_receive_userid=#{msg_receive_userid} and msg_send_userid=#{msg_send_userid} order by msg_date;
+</select>
+
 </mapper>

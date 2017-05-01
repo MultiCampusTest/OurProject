@@ -4,20 +4,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="tm.matching.dao.IMatchingDao">
 
-<insert id="insertMatching" parameterType="matchingVo">
-	insert into matching values(0, #{mch_t_user},#{mch_g_user},#{b_idx},0,sysdate())
+<insert id="matchingInsert" parameterType="matchingVo">
+	insert into matching values(0, #{mch_t_userid}, #{mch_g_userid}, #{b_idx}, 0, sysdate())
 </insert>
 
-<update id="updateMatching" parameterType="matchingVo">
-	update matching set mch_code=#{mch_code} where mch_idx=#{mch_idx}
+<update id="matchingUpdate" parameterType="matchingVo">
+	update matching set mch_code=1 where mch_t_userid=#{mch_t_userid} and mch_g_userid=#{mch_g_userid}
 </update>
    
-<delete id="deleteMatching" parameterType="int">
+<delete id="matchingDelete" parameterType="int">
 	delete from matching where mch_idx=#{mch_idx}
 </delete>
 
-<select id="selectMatchingByUserid" parameterType="String" resultType="matchingVo">
-	select *from matching where mch_t_userid=#{mch_userid} or mch_g_userid=#{mch_userid}
+<select id="matchingSelectByUserid" parameterType="String" resultType="matchingVo">
+	select *from matching where mch_g_userid=#{mch_g_userid} order by mch_date;
 </select>
+
 
 </mapper>

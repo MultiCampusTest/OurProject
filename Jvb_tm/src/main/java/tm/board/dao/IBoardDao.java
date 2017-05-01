@@ -12,18 +12,32 @@ import tm.image.vo.ImageVo;
 
 public interface IBoardDao {
 	
-	//board
-	public int insertBoard(BoardVo boardVo);
-	public int updateBoard(BoardVo boardVo);
+	//insert board
+	public int noticeBoardInsert(BoardVo boardVo);
+	public int travelBoardInsert(BoardVo boardVo);
+	public int guideBoardInsert(BoardVo boardVo);
+	public int reviewBoardInsert(BoardVo boardVo);
+	
+	//update board	
+	public int boardUpdate(BoardVo boardVo);
+	
+	//delete board
 	public int deleteBoard(int b_idx);
-	public HashMap<String, Object> selectOne(int b_idx); 
-	public List<HashMap<String, Object>> selectBoardByCode(String code); 
-	public List<HashMap<String, Object>> selectBoardByLocCategory(String b_loc_category);
-	public List<HashMap<String, Object>> selectBoardBySubCategory(String b_sub_category);
-	public List<HashMap<String, Object>> selectBoardByLimit(HashMap<String, Object> params);
-	public int getCountBoard();
-	public List<BoardVo> selectBoardBySearch(HashMap<String, Object> params);
-
-
+	
+	//select 
+	//common board select
+	public HashMap<String, Object> boardSelectByLimit(BoardVo boardVo);
+	public int boardGetCount();
+	
+	//notice select
+	public BoardVo noticeBoardSelectOne(int b_idx); 
+	public List<HashMap<String, Object>> noticeBoardSelectByCode(String code); 
+	
+	
+	//other board select
+	public BoardVo otherBoardSelectOne(int b_idx); 
+	public List<HashMap<String, Object>> otherBoardSelectByCode(String code);
+	public List<HashMap<String, Object>> otherBoardSelectByLoc_Category(String b_loc_category);
+	public List<HashMap<String, Object>> otherBoardSelectBySub_Category(String b_sub_category);
 	
 }

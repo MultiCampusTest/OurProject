@@ -12,5 +12,4 @@ public interface IMatchingService {
 	public boolean cancelMatching(int mch_idx);
 	public HashMap<String, Object> matchingList(String mch_idx);
 
-
 }

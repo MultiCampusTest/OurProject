@@ -22,5 +22,4 @@ public class MessageController {
 		return mav;
 	}
 	
-
 }

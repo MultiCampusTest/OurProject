@@ -13,4 +13,5 @@ public interface IMatchingDao {
 	public int matchingDelete(int mch_idx);
 	public List<HashMap<String, Object>> matchingSelectByUserid(String mch_g_userid);
 
+	
 }

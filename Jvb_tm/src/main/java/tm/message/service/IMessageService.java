@@ -1,7 +1,6 @@
 package tm.message.service;
 
 import java.util.HashMap;
-import java.util.List;
 
 import tm.message.vo.MessageVo;
 

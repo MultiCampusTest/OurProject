@@ -19,4 +19,5 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <select id="messageSelectOne" parameterType="java.util.HashMap" resultType="messageVo">
 	select *from message where msg_receive_userid=#{msg_receive_userid} and msg_send_userid=#{msg_send_userid} order by msg_date;
 </select>
+
 </mapper>

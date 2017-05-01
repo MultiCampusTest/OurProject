@@ -12,7 +12,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		b_start_date,
 		b_end_date, userid)
 		values(#{b_code}, 0, 0,
-		#{b_title}, 0, 0, “admin”)
+		#{b_title}, 0, 0, "admin")
 	</insert>
 	<insert id="travelBoardInsert" parameterType="boardVo">
 		insert into board

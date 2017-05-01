@@ -36,7 +36,7 @@
 					<img alt="" src="img/header.jpg">
 				</div>
 				<div class="card-info">
-					<span class="card-title">이 름</span>
+					<span class="card-title">${f_name} + ${l_name}</span>
 
 				</div>
 			</div>

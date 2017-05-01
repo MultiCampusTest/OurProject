@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -61,7 +62,13 @@
 							</td>
 							
 							<td width="30%"> </td>
-							<td width="30%">							
+							<td width="30%">
+							<c:choose>
+								<c:when test="${userid != null}">
+									<h1>Singed as <font color="#FF605A">${userid}</font></h1>
+									<img src="http://dynamicinfluence.com/wp-content/uploads/2014/06/StephanieH-Circle-Profile-Pic.png" width="250px">
+								</c:when>
+								<c:otherwise>
 								<h1>Welcome !</h1><br>
 								<form action="login.do">
 									<div>
@@ -79,6 +86,8 @@
 										onclick="location.href='joinForm.do'">JOIN</button>
 									</div>
 								</form>							
+								</c:otherwise>
+							</c:choose>							
 							</td>
 						</tr>
 					</table>

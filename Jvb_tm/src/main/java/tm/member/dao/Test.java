@@ -8,15 +8,38 @@ import tm.member.vo.MemberVo;
 public class Test {
 	public static void main(String[] args) {
 		ApplicationContext context = new FileSystemXmlApplicationContext("WebContent/WEB-INF/rootContext.xml");
-		IMemberDao memberDao = context.getBean("memberDao", IMemberDao.class);
-		MemberVo memberVo = new MemberVo();
-		memberVo.setUserid("admin");
-		memberVo.setPwd("12345");
-		memberVo.setEmail("example@domain.com");
-		memberVo.setBirthday("2017-04-20");
-		memberVo.setNationality("KR");
-		memberVo.setGender("male");
-		memberVo.setIntroduce("Hello");
-		memberDao.insertMember(memberVo);
+		IMemberDao dao = context.getBean("memberDao", IMemberDao.class);
+		
+		MemberVo m = new MemberVo();
+
+		//insert test
+//		m.setUserid("tester");
+//		m.setPwd("1234");
+//		m.setF_name("first");
+//		m.setL_name("last");
+//		m.setEmail("example@domain.com");
+//		m.setBirthday("2015-05-01");
+//		m.setCountry("KR");
+//		m.setGender("female");
+//		m.setIntroduce("Hello");
+		
+		//update test
+//		m.setPwd("1234");
+//		m.setEmail("email");
+//		m.setBirthday("2000-02-02");
+//		m.setCountry("UK");
+//		m.setIntroduce("Hi");
+//		m.setUserid("admin");
+//		dao.memberUpdate(m);
+		
+		
+		//delete test
+//		m.setUserid("admin");
+//		m.setPwd("1234");
+//		dao.memberDelete(m);
+		
+		//selectOne test
+//		System.out.println(dao.memberSelectOne("admin"));
+		
 	}
 }

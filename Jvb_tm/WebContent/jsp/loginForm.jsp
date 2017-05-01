@@ -78,19 +78,19 @@
 					<img src="http://static2.traveltek.net/images/www.travelmaker.co.uk/img/Travelmakerlogo.gif">
 				</div>
 				
-				<form action="loginProc.do">
+				<form action="login.do">
 					<div class="divider-form"></div>
 
 					<div class="form-group">
 						<label for="exampleInputEmail1">Email address</label>
-						<input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+						<input type="text" class="form-control" id="exampleInputEmail1" name="userid" placeholder="Enter email">
 					</div>
 
 					<div class="divider-form"></div>
 
 					<div class="form-group">
 						<label for="exampleInputPassword1">Password</label>
-						<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+						<input type="password" class="form-control" id="exampleInputPassword1" name="pwd" placeholder="Password">
 					</div>
 
 					<div class="divider-form"></div>

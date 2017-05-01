@@ -3,16 +3,18 @@ package tm.member.vo;
 import java.util.Date;
 
 public class MemberVo {
-	public int u_idx;
-	public String userid;
-	public String pwd;
-	public String name;
-	public String email;
-	public String birthday;
-	public String nationality;
-	public String gender;
-	public String introduce;
-	public Date u_date;
+	private int u_idx;
+	private String userid;
+	private String pwd;
+	private String f_name;
+	private String l_name;
+	private String email;
+	private String birthday;
+	private String country;
+	private String gender;
+	private String introduce;
+	private Date u_date;
+	
 	public int getU_idx() {
 		return u_idx;
 	}
@@ -31,11 +33,17 @@ public class MemberVo {
 	public void setPwd(String pwd) {
 		this.pwd = pwd;
 	}
-	public String getName() {
-		return name;
+	public String getF_name() {
+		return f_name;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setF_name(String f_name) {
+		this.f_name = f_name;
+	}
+	public String getL_name() {
+		return l_name;
+	}
+	public void setL_name(String l_name) {
+		this.l_name = l_name;
 	}
 	public String getEmail() {
 		return email;
@@ -49,11 +57,11 @@ public class MemberVo {
 	public void setBirthday(String birthday) {
 		this.birthday = birthday;
 	}
-	public String getNationality() {
-		return nationality;
+	public String getCountry() {
+		return country;
 	}
-	public void setNationality(String nationality) {
-		this.nationality = nationality;
+	public void setCountry(String country) {
+		this.country = country;
 	}
 	public String getGender() {
 		return gender;
@@ -73,12 +81,12 @@ public class MemberVo {
 	public void setU_date(Date u_date) {
 		this.u_date = u_date;
 	}
+	
 	@Override
 	public String toString() {
-		return "MemberVo [u_idx=" + u_idx + ", userid=" + userid + ", pwd=" + pwd + ", name=" + name + ", email="
-				+ email + ", birthday=" + birthday + ", nationality=" + nationality + ", gender=" + gender
+		return "MemberVo [u_idx=" + u_idx + ", userid=" + userid + ", pwd=" + pwd + ", f_name=" + f_name + ", l_name="
+				+ l_name + ", email=" + email + ", birthday=" + birthday + ", country=" + country + ", gender=" + gender
 				+ ", introduce=" + introduce + ", u_date=" + u_date + "]";
 	}
-	
 	
 }

@@ -4,25 +4,23 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="tm.member.dao.IMemberDao">
 
-<!-- 회원정보 -->
 	<insert id="memberInsert" parameterType="memberVo">
-		insert into member values(0, #{userid}, #{pwd}, #{name}, #{email}, #{birthday}, #{country}, #{gender}, #{introduce}, sysdate())
+		insert into member values(0, #{userid}, #{pwd}, #{f_name}, #{l_name}, 
+		#{email}, #{birthday}, #{country}, #{gender}, #{introduce}, sysdate())
 	</insert>
 
 	<update id="memberUpdate" parameterType="memberVo">
 		update member set pwd = #{pwd}, email = #{email}, birthday = #{birthday},
-		country = #{country}, introduce = #{introduce} 
-		where userid = #{userid}
+		country = #{country}, introduce = #{introduce} where userid = #{userid} 
 	</update>
 
-	<delete id="memberDelete" parameterType="java.util.HashMap">
-		delete from member where userid = #{userid} and pwd = #{pwd}
-	</delete>
-	
-	
-<!-- 회원정보 + 프로필 -->
-	<select id="selectOne" parameterType="String" resultType="java.util.HashMap">
+	<select id="memberSelectOne" parameterType="String" resultType="java.util.HashMap">
 		select * from member m natural join image i 
 		where m.userid = i.img_code and m.userid = #{userid}
 	</select>
+	
+	<delete id="memberDelete" parameterType="memberVo">
+		delete from member where userid = #{userid} and pwd = #{pwd}
+	</delete>
+	
 </mapper>

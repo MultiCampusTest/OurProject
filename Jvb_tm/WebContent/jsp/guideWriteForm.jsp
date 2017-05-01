@@ -24,7 +24,7 @@ $(function() {
 <style>
         #map { 
          width: 400px; 
-         height: 500px;; 
+         height: 600px;; 
         } 
         #floating-panel {
 	        top: 10px;
@@ -38,6 +38,9 @@ $(function() {
 	        line-height: 30px;
 	        padding-left: 10px;
       }
+      #pac-input{
+      	width: 400px;
+      }
 </style>
 </head>
 <body>
@@ -48,12 +51,11 @@ $(function() {
   <div class="row">
     <div class="col-md-5">
       <h2>Google Map here</h2>
-<!--       <div id="floating-panel"> -->
-<!-- 	      <input id="address" type="textbox" value=""> -->
-<!--       </div> -->
-	  <input id="pac-input" class="controls" type="text" placeholder="Enter a location">
-      <input id="submit" type="button" value="search">
-      <input id="delete" type="button" value="Delete Markers">
+      <div >
+		  <input id="pac-input" class="form-control col-md-8" type="text" placeholder="Enter a location">
+	      <input class="btn btn-primary" id="submit" type="button" value="search">
+	      <input class="btn btn-primary" id="delete" type="button" value="Delete Markers">
+      </div>
       <div class="mapdiv" id="map"></div>
       <script>
    	var polys =[];
@@ -109,6 +111,7 @@ $(function() {
     	  deleteMarkers();
     	  loc = [];
     	  lat = [];
+    	  document.removeChild(div);
        });
 
         document.getElementById('submit').addEventListener('click', function() {
@@ -134,20 +137,20 @@ $(function() {
             path.push(results[0].geometry.location);
             resultsMap.setCenter(results[0].geometry.location);
             
-            var div = document.createElement('div');
             loc[i] = address;
             lat[i] = results[0].geometry.location;
             alert(lat[i]);
             alert(loc[i]);
-    	    div.innerHTML = "<span class='glyphicon glyphicon-map-marker'>"+loc[i]+"</span>";
-    	    document.getElementById('field').append(div);
+//             var div = document.createElement('div');
+//     	    div.innerHTML = "<span class='glyphicon glyphicon-map-marker'>"+loc[i]+"</span>";
+//     	    document.getElementById('field').append(div);
           } else {
             alert('Geocode was not successful for the following reason: ' + status);
           }
         });
       }
     </script>
-	<div class="container" id="field"></div>
+<!-- 	<div class="container" id="field"></div> -->
 	
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyDt288Is5VzyssIHVHJaMi-zrt71D4WJVY&callback=initMap">

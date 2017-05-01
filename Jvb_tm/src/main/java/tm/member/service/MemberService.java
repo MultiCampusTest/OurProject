@@ -27,5 +27,15 @@ public class MemberService implements IMemberService {
 		
 		
 	}
+
+	@Override
+	public boolean checkId(String userid) {
+		// TODO Auto-generated method stub
+		MemberVo member = memberDao.memberSelectOne(userid);
+		if(member == null)
+			return false;
+		else
+			return true;
+	}
 	
 }

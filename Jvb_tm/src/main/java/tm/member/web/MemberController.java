@@ -1,6 +1,7 @@
 package tm.member.web;
 
 import java.io.IOException;
+import java.util.HashMap;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -12,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import tm.member.service.MemberService;
 
@@ -52,6 +54,13 @@ public class MemberController {
 		return "redirect:main.do";
 	}
 	
+	//아이디 중복체크
+	@RequestMapping("idCheck.do")
+	public @ResponseBody HashMap<String, Object> idCheck(HttpServletResponse resp, String id){
+		HashMap<String, Object> response = new HashMap<>();
+		response.put("result", memberService.checkId(id));
+		return response;
+	}
 	
 	
 	

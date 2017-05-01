@@ -77,6 +77,29 @@
 
 <script type="text/javascript">
 	$(document).ready(function() {
+		$('#userid').keyup(function() {
+			alert('ㅇㅇ');
+			var input = $('#userid').val();
+			$.ajax({
+				url : 'idCheck.do',
+				type : 'GET',
+				data : 'userid=' + input,
+				dataType : json,
+				success : function(data) {
+					if(data.result)
+						alert('중복 씨발');
+					else
+						alert('사용해 씨발');
+				},
+				error : function(){
+					alert('에러 개새끼야');
+				}
+			});
+		});
+		
+		
+		
+		
 		$('#pwdVali').hide();
 		$('input[type=password]').on('keyup', function() {
 			var pw1 = $('#pwd').val();
@@ -134,8 +157,8 @@
 							<div class="form-bottom">
 								<form action="regProc.do" method="post" class="registration-form">
 									<div class="form-group">
-										<label class="sr-only" for="form-email">email</label>
-										<input type="text" id="email" name="email" class="form-first-name form-control" placeholder="example@domain.com">
+										<label class="sr-only" for="form-userid">userid</label>
+										<input type="text" id="userid" name="userid" class="form-first-name form-control" placeholder="Userid">
 									</div>
 									<div class="form-group">
 										<label class="sr-only" for="form-pwd">pwd</label>

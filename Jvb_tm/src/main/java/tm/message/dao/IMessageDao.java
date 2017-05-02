@@ -14,4 +14,5 @@ public interface IMessageDao {
 	public List<MessageVo> messageSelectByUserid(String msg_receive_userid);
 	public List<MessageVo> messageSelectOne(HashMap<String, Object> params);
 
+	
 }

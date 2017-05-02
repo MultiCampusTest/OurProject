@@ -42,10 +42,7 @@ public class MessageController {
 		messageService.sendMessage(messageVo);
 		
 		return messageService.messageOneList(msg_receive_userid, msg_send_userid);
-		
-		
-		
-//		return messageOneList(msg_receive_userid, msg_send_userid);
+
 		
 	}
 	

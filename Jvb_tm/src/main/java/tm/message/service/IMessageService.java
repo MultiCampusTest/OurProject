@@ -13,6 +13,5 @@ public interface IMessageService {
 	public List<MessageVo> messageOneList(String msg_receive_userid, String msg_send_userid);
 	
 	
-	
 
 }

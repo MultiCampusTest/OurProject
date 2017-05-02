@@ -461,7 +461,6 @@ $(document).ready(function() {
 							</div>
 
 
-
 							<h3 class="page-header">Accepted Matching</h3>
 							<div class="row" style="text-align: center">
 								<c:forEach begin="1" end="5" step="1" varStatus="i">

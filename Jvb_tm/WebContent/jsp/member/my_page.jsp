@@ -459,6 +459,7 @@ $(document).ready(function() {
 									<br>
 								</c:forEach>
 							</div>
+							
 
 
 							<h3 class="page-header">Accepted Matching</h3>

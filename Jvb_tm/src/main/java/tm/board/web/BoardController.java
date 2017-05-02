@@ -1,9 +1,19 @@
 package tm.board.web;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import tm.board.service.BoardService;
 import tm.board.vo.BoardVo;
@@ -23,8 +33,13 @@ public class BoardController {
 
 	// notice_board
 	@RequestMapping("noticeList.do")
-	public String noticeList() {
-		return "board/notice_list";
+	public ModelAndView noticeList(HttpServletRequest req, @RequestParam(defaultValue="1") int page ) {
+		String id = (String)(req.getSession().getAttribute("userid"));
+		ModelAndView mav = new ModelAndView();
+		mav.addAllObjects(boardService.getNoticeBoardList(page));
+		mav.addObject("userid", id);
+		mav.setViewName("board/notice_list");
+		return mav;
 	}
 	
 	@RequestMapping("noticeView.do")
@@ -112,4 +127,12 @@ public class BoardController {
 		return "board/review_modify_form";
 	}
 
+	
+	
+	
+	@InitBinder
+	public void initBinder(WebDataBinder binder) {
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		binder.registerCustomEditor(Date.class, new CustomDateEditor(sdf, true));
+	}
 }

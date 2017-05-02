@@ -22,15 +22,18 @@ public interface IBoardDao {
 	//delete board
 	public int deleteBoard(int b_idx);
 	
+	
+	//get_board_count
+	public int getBoardCountByCode(String code);
+	
 	//select 
 	//common board select
 	public HashMap<String, Object> boardSelectByLimit(BoardVo boardVo);
 	public int boardGetCount();
 	
-	//notice select
-	public BoardVo noticeBoardSelectOne(int b_idx); 
-	public List<HashMap<String, Object>> noticeBoardSelectByCode(String code); 
-	
+	//select NoticeBoard
+	public BoardVo selectOneNoticeBoard(int b_idx); 
+	public List<BoardVo> selectNoticeBoardLimit(HashMap<String, Object> params);
 	
 	//other board select
 	public BoardVo otherBoardSelectOne(int b_idx); 

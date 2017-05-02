@@ -1,5 +1,8 @@
 package tm.board.service;
 
+import java.util.HashMap;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -32,6 +35,39 @@ public class BoardService {
 	
 	public void writeBoard(BoardVo board, ContentsVo contents){
 		boardDao.insertBoard(board);
+	}
+	
+	//notice
+	//공지사항 리스트 얻어오기
+	public HashMap<String, Object> getNoticeBoardList(int page){
+		String code = "n";
+		//시작과 끝페이지
+		int start = (page - 1) / 10 * 10 + 1;
+		int end = ((page - 1) / 10 + 1) * 10;
 		
+		//첫페이지와 게시물 전체의 마지막 페이지
+		int first = 1;
+		int last = (boardDao.getBoardCountByCode(code) - 1) / 10 + 1;
+		
+		end = last < end ? last : end;
+		
+		int skip = (page - 1) * 10;
+		int count = 10;
+		HashMap<String, Object> params = new HashMap<>();
+		params.put("code", code);
+		params.put("skip", skip);
+		params.put("count", count);
+		List<BoardVo> list = boardDao.selectNoticeBoardLimit(params);
+
+		
+		HashMap<String, Object> result = new HashMap<>();
+		result.put("start", start);
+		result.put("first", first);
+		result.put("end", end);
+		result.put("last", last);
+		result.put("current", page);
+		result.put("noticeList", list);
+
+		return result;
 	}
 }

@@ -42,7 +42,7 @@ public class BoardService {
 	public HashMap<String, Object> getNoticeBoardList(int page){
 		String code = "n";
 		//시작과 끝페이지
-		int start = (page - 1) / 10 * 10 + 1;
+		int start = (page - 1) / 10 * 10 + 1; 
 		int end = ((page - 1) / 10 + 1) * 10;
 		
 		//첫페이지와 게시물 전체의 마지막 페이지

@@ -12,7 +12,7 @@
 <!--   커스텀 CSS, JS -->
 <link href="css/noticeList.css" rel="stylesheet">
 <!-- <script src="js/profile.js"></script> -->
-
+ 
 </head>
 <body>
 	<div class="container">

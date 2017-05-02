@@ -16,7 +16,7 @@
 	<bean class="org.springframework.web.servlet.view.tiles2.TilesViewResolver">
 		<property name="suffix" value=".tiles"></property>
 	</bean>
-
+ 
 	<mvc:resources location="/img/" mapping="/img/**" />
 	<mvc:resources location="/css/" mapping="/css/**" />
 	<mvc:resources location="/js/" mapping="/js/**" /> 

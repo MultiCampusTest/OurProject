@@ -1,4 +1,4 @@
-package tm.board.vo;
+ package tm.board.vo;
 
 import java.util.Date;
 

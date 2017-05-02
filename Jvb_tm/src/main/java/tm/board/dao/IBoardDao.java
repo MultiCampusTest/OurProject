@@ -8,7 +8,7 @@ import tm.board.vo.CommentsVo;
 import tm.board.vo.ContentsVo;
 import tm.board.vo.MapPositionVo;
 import tm.image.vo.ImageVo;
-
+ 
 
 public interface IBoardDao {
 	

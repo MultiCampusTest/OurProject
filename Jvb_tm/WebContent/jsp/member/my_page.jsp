@@ -14,22 +14,82 @@
 <script src="js/profile.js"></script>
 <!--   커스텀 CSS -->
 <link href="css/profile.css" rel="stylesheet">
+
 <title>Travel Maker</title>
-<script type="text/javascript">
-	$(document).ready(function(){
-		$('input[value=Confirm]').click(function removePwd(){
-			if($('#removePwd').val() == '') {
-				$('#removePwd').focus();
-				return false;			
-			}
-		});
-	});
-</script>
 
 <style type="text/css">
 </style>
+
+<script type="text/javascript">
+
+msg_list_load=function(){
+	var id = $('.message_section').attr('id');
+	alert(id);
+    var result= $('#name'+id).html();
+    var msg_list=$('.msg_list').html();
+
+ 		 $.ajax({
+ 			 
+ 	            url : 'messageOneList.do',
+ 	            type : 'POST',
+ 	            data : 'msg_receive_userid=black&msg_send_userid='+result,
+ 	            dataType : 'json',
+ 	            success : function(data) {
+ 	            	$('#msg_list'+id).text('MessageList');
+ 	            	
+	   	            for(var i=0; i<data.length; i++){
+	   	            	$('#msg_list'+id).append('<br>');
+	   	            	$('#msg_list'+id).append(data[i].msg_contents);
+ 	            	}   
+ 	            },
+ 	            error : function(){
+ 	               alert('에러 개새끼야');
+ 	            }
+ 	      });
+  
+}
+
+
+
+$(document).ready(function() {
+	$('.sender').on('click', function() {
+	      var id = $(this).attr('id');
+	      var result= $('#name'+id).html();
+	      var msg_list=$('.msg_list').html();
+
+	   		 $.ajax({
+	   			 
+	   	            url : 'messageOneList.do',
+	   	            type : 'POST',
+	   	            data : 'msg_receive_userid=black&msg_send_userid='+result,
+	   	            dataType : 'json',
+	   	            success : function(data) {
+	   	            	$('#msg_list'+id).text('MessageList');
+	   	            	
+		   	            for(var i=0; i<data.length; i++){
+		   	            	$('#msg_list'+id).append('<br>');
+		   	            	$('#msg_list'+id).append(data[i].msg_contents);
+	   	            	}   
+	   	            },
+	   	            error : function(){
+	   	               alert('에러 개새끼야');
+	   	            }
+	   	         });
+	  });
+		
+})
+
+
+
+	
+</script>
+  
+
+
 </head>
 <body>
+
+
 	<div class="container-fluid">
 		<div class="col-lg-12 col-sm-12">
 			<div class="card hovercard">
@@ -136,37 +196,14 @@
 												<pre class="form-control">yout introduce </pre>
 											</div>
 										</div>
-										
-									</form>
-									<div class="form-group">
+										<div class="form-group">
 											<label class="col-md-3 control-label"></label>
 											<div class="col-md-8">
-												<button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#myModal" >Delete Account</button>
-												<div class="modal fade" id="myModal" role="dialog">
-    											<div class="modal-dialog">
-    
-    											      <!-- Modal content-->
-     											     <div class="modal-content">
-     											       <div class="modal-header">
-      											        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        											      <h4 class="modal-title">Delete Account</h4>
-          											  </div>
-            											<div class="modal-body" align="center">
-          											    	<form action="removeMember.do" method="post">
-          											    		<p>
-          											    			To delete your account, please enter password<br><br>
-          											    			<input type="hidden" name="userid" value="${userid}">
-          											    			<input type="password" id="removePwd" name="pwd" placeholder="password">&nbsp;
-          											    			<input type="submit" class="btn btn-primary" value="Confirm" onClick="return removePwd();">
-          											   			</p>
-          											    	</form>
-         											   </div>
-         											 </div>
-       											 </div>
-     											 </div>
-     											 
+												<input type="submit" class="btn btn-primary" value="회원 탈퇴 ">
+												<span></span>
 											</div>
 										</div>
+									</form>
 								</div>
 							</div>
 						</div>
@@ -285,7 +322,7 @@
 							<!--           sender_userid 부분 -->
 							<div class="row" style="text-align: center;">
 								<c:forEach items="${messageList }" var="msg_List" varStatus="i">
-									<div class="message_section container-fluid">
+									<div class="message_section container-fluid" id="msg_section${i.index }">
 										<div class="sender col-lg-3" id="${i.index }">
 											<input type="hidden" id="msg_condition_${i.index }" value="1">
 											<div class="col-md-4">
@@ -293,7 +330,8 @@
 													height="50px">
 											</div>
 											<div class="col-md-8">
-												<label class="container-fluid control-label">${msg_List.msg_send_userid }</label>
+												<h6 class="sender_name" id="name${i.index }">${msg_List.msg_send_userid }</h6>
+<%-- 												<label class="sender_name container-fluid control-label" id="${msg_List.msg_send_userid }">${msg_List.msg_send_userid }</label> --%>
 											</div>
 										</div>
 										<div class="message" id="message_${i.index }">
@@ -308,18 +346,21 @@
 										<div class="msg_contents_box col-lg-9"
 											id="msg_box_${i.index }">
 											<div class="msg_box" id="msg_box_selectOne">
-												<label class="container-fluid control-label">asdf${msg_List.msg_contents }</label>
+												<label class="msg_list container-fluid control-label" id="msg_list${i.index }">MessageList</label>
 											</div>
 											<div class="panel panel-default">
 												<div class="panel-body">
-													<form accept-charset="UTF-8" action="" method="POST">
-														<textarea class="form-control counted" name="message"
+													<form accept-charset="UTF-8"
+													 action="sendMessage.do?msg_receive_userid=${msg_List.msg_receive_userid }
+													 &msg_send_userid=${msg_List.msg_send_userid }" method="POST">
+														<textarea class="form-control counted" name="msg_contents"
 															placeholder="Type in your message 메시지 입력" rows="5"
 															style="margin-bottom: 10px;"></textarea>
 														<h6 class="pull-right" id="counter">320 characters
 															remaining</h6>
-														<button class="btn btn-info" type="submit">Post
+														<button class="btn btn-info" type="submit" onclick="msg_list_load()">Post
 															New Message</button>
+															
 													</form>
 												</div>
 											</div>
@@ -483,5 +524,17 @@
 			</div>
 		</div>
 	</div>
+	
+	
+	
+	
+
+	
+	
+	
+
+	
+	
+	
 </body>
 </html>

@@ -5,47 +5,43 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class BoardController {
-
+	
+	//메인화면
 	@RequestMapping("main.do")
 	public String main() {
 		return "middle";
 	}
 
-	@RequestMapping("myPage.do")
-	public String maindo() {
-		return "myPage";
-	}
-
-	// notice
+	// notice_board
 	@RequestMapping("noticeList.do")
 	public String noticeList() {
-		return "noticeList";
+		return "board/notice_list";
 	}
-
+	
 	@RequestMapping("noticeView.do")
 	public String noticeView() {
-		return "noticeView";
+		return "board/notice_view";
 	}
 
 	@RequestMapping("noticeWriteForm.do")
 	public String noticeWriteForm() {
-		return "noticeWriteForm";
+		return "board/notice_write_form";
 	}
 
 	@RequestMapping("noticeModifyForm.do")
 	public String noticeModifyForm() {
-		return "noticeModifyForm";
+		return "board/notice_modify_form";
 	}
 
-	// travel
+	// travel_board
 	@RequestMapping("travelList.do")
 	public String travelList() {
-		return "travelList";
+		return "board/travel_list";
 	}
 
 	@RequestMapping("travelWriteForm.do")
 	public String travelWriteForm() {
-		return "travelWriteForm";
+		return "board/travel_write_form";
 	}
 
 	@RequestMapping("travelView.do")
@@ -58,46 +54,46 @@ public class BoardController {
 		return "travelList";
 	}
 
-	// guide
+	// guide_board
 	@RequestMapping("guideWriteForm.do")
 	public String guideWriteForm() {
-		return "guideWriteForm";
+		return "board/guide_write_form";
 	}
 
 	@RequestMapping("guideList.do")
 	public String guideList() {
-		return "guideList";
+		return "board/guide_list";
 	}
 
 	@RequestMapping("guideModifyForm.do")
 	public String guideModifyForm() {
-		return "guideModifyForm";
+		return "board/guide_modify_form";
 	}
 
 	@RequestMapping("guideView.do")
 	public String guideView() {
-		return "guideView";
+		return "board/guide_view";
 	}
 
-	// review
+	// review_board
 	@RequestMapping("reviewWriteForm.do")
 	public String reviewWriteForm() {
-		return "reviewWriteForm";
+		return "board/review_write_form";
 	}
 
 	@RequestMapping("reviewList.do")
 	public String reviewList() {
-		return "reviewList";
+		return "board/review_list";
 	}
 
 	@RequestMapping("reviewView.do")
 	public String reviewView() {
-		return "reviewView";
+		return "board/review_view";
 	}
 
 	@RequestMapping("reviewModifyForm.do")
 	public String reviewModifyForm() {
-		return "reviewModifyForm";
+		return "board/review_modify_form";
 	}
 
 }

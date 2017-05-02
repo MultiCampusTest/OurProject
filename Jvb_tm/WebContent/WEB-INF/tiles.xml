@@ -4,12 +4,16 @@
        "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
 
 <tiles-definitions>
-	<definition name="tiles" template="/jsp/layout.jsp">
-		<put-attribute name="top" value="/module/top.jsp"></put-attribute>
+	<definition name="tiles" template="/jsp/module/layout.jsp">
+		<put-attribute name="top" value="/jsp/module/top.jsp"></put-attribute>
 		<put-attribute name="middle" value=""></put-attribute>
-		<put-attribute name="bottom" value="/module/bottom.jsp"></put-attribute>
+		<put-attribute name="bottom" value="/jsp/module/bottom.jsp"></put-attribute>
 	</definition>
 	<definition name="*.tiles" extends="tiles">
-		<put-attribute name="middle" value="/jsp/{1}.jsp"></put-attribute>
+		<put-attribute name="middle" value="/jsp/module/{1}.jsp"></put-attribute>
 	</definition>
-</tiles-definitions>
+	<definition name="*/*.tiles" extends="tiles">
+		<put-attribute name="middle" value="/jsp/{1}/{2}.jsp"></put-attribute>
+	</definition>
+	
+</tiles-definitions> 

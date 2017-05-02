@@ -26,13 +26,19 @@ public class MemberController {
 	//로그인 페이지
 	@RequestMapping("loginForm.do")
 	public String loginForm(){
-		return "loginForm";
+		return "member/login_form";
 	}
 	
 	//회원가입 페이지
 	@RequestMapping("joinForm.do")
 	public String joinForm(){
-		return "joinForm";
+		return "member/join_form";
+	}
+	
+	//myPage
+	@RequestMapping("myPage.do")
+	public String maindo() {
+		return "member/my_page";
 	}
 
 	//로그인 유효성 검사

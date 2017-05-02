@@ -21,12 +21,12 @@
      	 </p>
 	
 		 <hr>
-		 <form class="form" action="#">
+		 <form class="form" action="noticeWrite.do" method="post">
          <!-- Title -->
          <p class="lead">
          	TITLE:
          </p>
-         <input type="text" placeholder="Insert Title " class="form-control" name="subject"/>
+         <input type="text" placeholder="Insert Title " class="form-control" name="title"/>
 
          <hr>
 
@@ -34,7 +34,7 @@
          <p class="lead">
          	CONTENT:
          </p>
-         <textarea placeholder="Insert content " class="form-control-text" rows="10"></textarea>
+         <textarea placeholder="Insert content " class="form-control-text" rows="10" name="contents"></textarea>
 
 		 <!-- Widget -->
 		 <div class="form-group">

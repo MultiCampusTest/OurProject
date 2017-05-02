@@ -13,10 +13,8 @@ import tm.image.vo.ImageVo;
 public interface IBoardDao {
 	
 	//insert board
-	public int noticeBoardInsert(BoardVo boardVo);
-	public int travelBoardInsert(BoardVo boardVo);
-	public int guideBoardInsert(BoardVo boardVo);
-	public int reviewBoardInsert(BoardVo boardVo);
+	public int insertBoard(BoardVo boardVo);
+	
 	
 	//update board	
 	public int boardUpdate(BoardVo boardVo);

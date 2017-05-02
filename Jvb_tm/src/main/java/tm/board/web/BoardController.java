@@ -1,11 +1,20 @@
 package tm.board.web;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import tm.board.service.BoardService;
+import tm.board.vo.BoardVo;
+import tm.board.vo.ContentsVo;
 
 @Controller
 public class BoardController {
-	   
+	  
+	@Autowired
+	private BoardService boardService;
+	
 	//메인화면
 	@RequestMapping("main.do")
 	public String main() {
@@ -31,6 +40,13 @@ public class BoardController {
 	@RequestMapping("noticeModifyForm.do")
 	public String noticeModifyForm() {
 		return "board/notice_modify_form";
+	}
+	
+	@RequestMapping(method=RequestMethod.POST, value="noticeWrite.do")
+	public String noticeWrite(BoardVo board, ContentsVo contents){
+		board.setUserid(userid);
+		boardService.writeBoard(board, contents);
+		return "redirect:noticeList.do";
 	}
 
 	// travel_board

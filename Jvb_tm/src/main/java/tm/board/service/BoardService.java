@@ -7,14 +7,16 @@ import tm.board.dao.IBoardDao;
 import tm.board.dao.ICommentsDao;
 import tm.board.dao.IContentsDao;
 import tm.board.dao.IMapPositionDao;
+import tm.board.vo.BoardVo;
+import tm.board.vo.ContentsVo;
 import tm.image.dao.IImageDao;
 
 @Service
 public class BoardService {
-
+	
 	//
 	@Autowired
-	private IBoardDao boardGuideDao;
+	private IBoardDao boardDao;
 	
 	@Autowired
 	private ICommentsDao commenstDao;
@@ -28,5 +30,8 @@ public class BoardService {
 	@Autowired
 	private IMapPositionDao mapPositionDao;
 	
-	
+	public void writeBoard(BoardVo board, ContentsVo contents){
+		boardDao.insertBoard(board);
+		
+	}
 }

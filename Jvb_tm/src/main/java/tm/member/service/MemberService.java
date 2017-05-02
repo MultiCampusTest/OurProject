@@ -27,14 +27,37 @@ public class MemberService implements IMemberService {
 	@Override
 	public boolean checkLogin(String userid, String pwd) {
 		// TODO Auto-generated method stub
-		MemberVo member = memberDao.memberSelectOne(userid);
+		MemberVo memberVo = memberDao.memberSelectOne(userid);
 		
-		if(member != null) {
-			if(member.getPwd().equals(pwd))
+		if(memberVo != null) {
+			if(memberVo.getPwd().equals(pwd))
 				return true;
 			else
 				return false;			
 		} else
+			return false;
+	}
+
+
+	@Override
+	public boolean checkId(String userid) {
+		// TODO Auto-generated method stub
+		MemberVo memberVo = memberDao.memberSelectOne(userid);
+		if(memberVo == null)
+			return false;
+		else
+			return true;
+	}
+
+
+	@Override
+	public boolean memberRemove(MemberVo memberVo) {
+		// TODO Auto-generated method stub
+		int result = memberDao.memberDelete(memberVo);
+		
+		if(result > 0)
+			return true;
+		else
 			return false;
 	}
 	

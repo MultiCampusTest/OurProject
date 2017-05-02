@@ -30,6 +30,12 @@ public class MemberController {
 		return "member/login_form";
 	}
 	
+	//비밀번호 찾기 페이지
+	@RequestMapping("searchPassword.do")
+	public String searchPass(){
+		return "member/search_password";
+	}
+	
 	//회원가입 페이지
 	@RequestMapping("joinForm.do")
 	public String joinForm(){
@@ -41,7 +47,7 @@ public class MemberController {
 	public String maindo() {
 		return "member/my_page";
 	}
-
+	
 	//로그인 유효성 검사 요청
 	@RequestMapping(method=RequestMethod.POST, value="login.do")
 	public String login(HttpSession session, String userid, String pwd) {
@@ -61,6 +67,13 @@ public class MemberController {
 		return "redirect:main.do";
 	}
 
+	//ID 중복체크 요청
+	@RequestMapping(method=RequestMethod.POST, value="idCheck.do")
+	public @ResponseBody HashMap<String, Object> idCheck(HttpServletResponse resp, String userid) {
+		HashMap<String, Object> response = new HashMap<>();
+		response.put("result", memberService.checkId(userid));
+		return response;
+	}
 	
 	//회원추가 요청
 	@RequestMapping(method=RequestMethod.POST, value="join.do")
@@ -69,5 +82,14 @@ public class MemberController {
 		return "redirect:main.do";
 	}
 	
-	
+	//회원탈퇴 요청
+	@RequestMapping("removeMember.do")
+	public String removeMember(HttpSession session, MemberVo memberVo){
+		if(memberService.memberRemove(memberVo)) {
+			session.removeAttribute("userid");			
+			return "redirect:main.do";
+		} else {
+			return "redirect:myPage.do";
+		}
+	}
 }

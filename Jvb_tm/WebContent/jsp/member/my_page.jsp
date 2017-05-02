@@ -14,16 +14,20 @@
 <script src="js/profile.js"></script>
 <!--   커스텀 CSS -->
 <link href="css/profile.css" rel="stylesheet">
-
 <title>Travel Maker</title>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('input[value=Confirm]').click(function removePwd(){
+			if($('#removePwd').val() == '') {
+				$('#removePwd').focus();
+				return false;			
+			}
+		});
+	});
+</script>
 
 <style type="text/css">
 </style>
-
-
-  
-
-
 </head>
 <body>
 	<div class="container-fluid">
@@ -132,14 +136,37 @@
 												<pre class="form-control">yout introduce </pre>
 											</div>
 										</div>
-										<div class="form-group">
+										
+									</form>
+									<div class="form-group">
 											<label class="col-md-3 control-label"></label>
 											<div class="col-md-8">
-												<input type="submit" class="btn btn-primary" value="회원 탈퇴 ">
-												<span></span>
+												<button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#myModal" >Delete Account</button>
+												<div class="modal fade" id="myModal" role="dialog">
+    											<div class="modal-dialog">
+    
+    											      <!-- Modal content-->
+     											     <div class="modal-content">
+     											       <div class="modal-header">
+      											        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        											      <h4 class="modal-title">Delete Account</h4>
+          											  </div>
+            											<div class="modal-body" align="center">
+          											    	<form action="removeMember.do" method="post">
+          											    		<p>
+          											    			To delete your account, please enter password<br><br>
+          											    			<input type="hidden" name="userid" value="${userid}">
+          											    			<input type="password" id="removePwd" name="pwd" placeholder="password">&nbsp;
+          											    			<input type="submit" class="btn btn-primary" value="Confirm" onClick="return removePwd();">
+          											   			</p>
+          											    	</form>
+         											   </div>
+         											 </div>
+       											 </div>
+     											 </div>
+     											 
 											</div>
 										</div>
-									</form>
 								</div>
 							</div>
 						</div>

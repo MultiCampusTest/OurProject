@@ -69,10 +69,33 @@ $(function() {
 
 <script type="text/javascript">
 	$(document).ready(function() {
+		$('#userid').blur(function() {
+			var getId = $(this).val();
+			$.ajax({
+				url : 'idCheck.do',
+				type : 'GET',
+				data : 'userid=' + getId,
+				dataType : 'json',
+				success : function(data) {
+					if(data.result)
+						$('#idMsg').html('<font color="#FF605A">Dupulicated account name</font>');
+					else
+						$('#idMsg').html('<font color="green">Good account name</font>');
+				},
+				error : function() {
+					alert('Data error');
+				}
+			});
+		});
+		
+		
 		$('#pwdVali').hide();
-		$('input[type=password]').on('keyup', function() {
+		$('input[type=password]').blur(function() {
 			var pw1 = $('#pwd').val();
 			var pw2 = $('#pwd2').val();
+			if(pw1.length < 6 && pw2.length < 6) {
+
+			}
 			if(pw1 != pw2) {
 				$('#pwdVali').html('<font color="#FF605A"><b>Warning! please check your password</b></font>');
 				$('#pwdVali').show();
@@ -128,6 +151,7 @@ $(function() {
 									<div class="form-group">
 										<label class="sr-only" for="form-userid">userid</label>
 										<input type="text" id="userid" name="userid" class="form-first-name form-control" placeholder="Userid">
+										<span id="idMsg"></span>
 									</div>
 									<div class="form-group">
 										<label class="sr-only" for="form-pwd">pwd</label>
@@ -140,11 +164,11 @@ $(function() {
 									</div>
 									<div class="form-group">
 										<label class="sr-only" for="form-first-name">firstName</label>
-										<input type="text" id="f_name" name="f_name" placeholder="First Name" class="form-control">
+										<input type="text" id="f_name" name="firstName" placeholder="First Name" class="form-control">
 									</div>
 									<div class="form-group">
 										<label class="sr-only" for="form-last-name">lastName</label>
-										<input type="text" id="l_name" name="l_name" placeholder="Last Name" class="form-control">
+										<input type="text" id="l_name" name="lastName" placeholder="Last Name" class="form-control">
 									</div>
 									<div class="form-group">
 										<label class="sr-only" for="form-email">email</label>

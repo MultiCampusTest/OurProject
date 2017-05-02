@@ -6,21 +6,22 @@ import java.util.List;
 import tm.board.vo.BoardVo;
 import tm.board.vo.CommentsVo;
 import tm.board.vo.ContentsVo;
+import tm.board.vo.MapPositionVo;
 import tm.image.vo.ImageVo;
 
 public interface IBoardService {
 	//게시글 작성
 	public void writeNotice(BoardVo board, ContentsVo contents);
-	public void writeGuide(BoardVo board, ImageVo image, ContentsVo contents);
-	public void writeTravel(BoardVo board, ImageVo image, ContentsVo contens);
-	public void wirteReview(BoardVo board, ImageVo imge, ContentsVo contents);
+	public void writeGuide(BoardVo board, ImageVo image, ContentsVo contents, MapPositionVo mapPosition);
+	public void writeTravel(BoardVo board, ImageVo image, ContentsVo contens, MapPositionVo mapPosition);
+	public void wirteReview(BoardVo board, ImageVo imge, ContentsVo contents, MapPositionVo mapPosition);
 	public void writeComments(CommentsVo comments);
 	
 	//게시글 수정
 	public void modifyNotice(BoardVo board, ContentsVo contents);
-	public void modifyGuide(BoardVo board, ImageVo image, ContentsVo contents);
-	public void modifyTravel(BoardVo board, ImageVo image, ContentsVo contents);
-	public void modifyReview(BoardVo board, ImageVo image, ContentsVo contents);
+	public void modifyGuide(BoardVo board, ImageVo image, ContentsVo contents, MapPositionVo mapPosition);
+	public void modifyTravel(BoardVo board, ImageVo image, ContentsVo contents, MapPositionVo mapPosition);
+	public void modifyReview(BoardVo board, ImageVo image, ContentsVo contents, MapPositionVo mapPosition);
 	public void modifyComments(CommentsVo comments);
 	
 	//게시글 삭제

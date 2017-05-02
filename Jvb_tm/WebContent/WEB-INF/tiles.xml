@@ -16,4 +16,4 @@
 		<put-attribute name="middle" value="/jsp/{1}/{2}.jsp"></put-attribute>
 	</definition>
 	
-</tiles-definitions> 
+</tiles-definitions>  

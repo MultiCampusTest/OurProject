@@ -22,9 +22,9 @@ public class LoginCheckInterceptor extends HandlerInterceptorAdapter{
 			throws Exception {
 		// TODO Auto-generated method stub
 //		return super.preHandle(request, response, handler);
-		if(request.getSession().getAttribute("id") == null)
-		{
-			response.sendRedirect("main.do");
+		if(request.getSession().getAttribute("userid") == null)
+		{	
+			response.sendRedirect("loginRequest.do");
 			return false;
 		}
 		else

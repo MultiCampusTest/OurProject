@@ -8,7 +8,8 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 
 	<context:component-scan base-package="tm.**.web"></context:component-scan>
-
+	<context:component-scan base-package="tm.**.log4j"></context:component-scan>
+	
 	<bean class="org.springframework.web.servlet.view.tiles2.TilesConfigurer">
 		<property name="definitions" value="/WEB-INF/tiles.xml"></property>
 	</bean>
@@ -21,6 +22,13 @@
 	<mvc:resources location="/js/" mapping="/js/**" /> 
 	<mvc:resources location="/vendor/" mapping="/vendor/**" />
 	<mvc:annotation-driven></mvc:annotation-driven>
+	
+	<mvc:interceptors> 
+		<mvc:interceptor>
+			<mvc:mapping path="/noticeList.do" />
+			<ref bean="loginCheckInterceptor" />
+		</mvc:interceptor>
+	</mvc:interceptors>
 	
 <!-- 	<mvc:interceptors> -->
 <!-- 		<mvc:interceptor> -->

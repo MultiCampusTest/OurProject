@@ -69,7 +69,7 @@
 			</tbody>
 		</table>
 		<c:choose>
-			<c:when test="${u_idx != admin }">
+			<c:when test="${userid != admin }">
 				<input type="button" class="btn btn-primary" value="등록" onclick="location.href='noticeWriteForm.do'">
 			</c:when>
 			<c:otherwise>

@@ -44,7 +44,7 @@ public class BoardController {
 	
 	@RequestMapping(method=RequestMethod.POST, value="noticeWrite.do")
 	public String noticeWrite(BoardVo board, ContentsVo contents){
-		board.setUserid(userid);
+	
 		boardService.writeBoard(board, contents);
 		return "redirect:noticeList.do";
 	}

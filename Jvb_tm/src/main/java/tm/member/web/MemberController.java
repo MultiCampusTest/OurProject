@@ -48,6 +48,12 @@ public class MemberController {
 		return "member/my_page";
 	}
 	
+	//로그인 요청페이지
+	@RequestMapping("loginRequest.do")
+	public String loginRequest(){
+		return "member/login_request";
+	}
+	
 	//로그인 유효성 검사 요청
 	@RequestMapping(method=RequestMethod.POST, value="login.do")
 	public String login(HttpSession session, String userid, String pwd) {

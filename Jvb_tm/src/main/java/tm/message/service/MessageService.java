@@ -19,6 +19,8 @@ public class MessageService implements IMessageService {
 	@Override
 	public void sendMessage(MessageVo messageVo) {
 		// TODO Auto-generated method stub
+		messageDao.messageInsert(messageVo);
+		
 		
 	}
 
@@ -40,12 +42,14 @@ public class MessageService implements IMessageService {
 	}
 
 	@Override
-	public HashMap<String, Object> messageOneList(String msg_receive_userid, String msg_send_userid) {
+	public List<MessageVo> messageOneList(String msg_receive_userid, String msg_send_userid) {
 		// TODO Auto-generated method stub
-		List<MessageVo> messageOne=new ArrayList<>();
-		messageOne=messageDao.messageSelectOne(msg_receive_userid, msg_send_userid);
-		HashMap<String, Object> messageOneList=new HashMap<>();
-		messageOneList.put("messageOneList", messageOne);
+		List<MessageVo> messageOneList=new ArrayList<>();
+		HashMap<String, Object> params=new HashMap<>();
+		params.put("msg_receive_userid", msg_receive_userid);
+		params.put("msg_send_userid", msg_send_userid);
+		messageOneList=messageDao.messageSelectOne(params);
+		
 		return messageOneList;
 	}
 	

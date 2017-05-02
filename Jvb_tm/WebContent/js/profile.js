@@ -10,9 +10,34 @@ $(document).ready(function() {
 	
 //	
 	$('.msg_contents_box').hide();//on cache par defaut les messages
+	
 	$('.sender').click(function() {
 		var id = $(this).attr('id');
 		var condition=$('#msg_condition_'+id).attr('value');
+		
+//		var params={msg_send_userid : ${messageList.msg_send_userid}};
+//		
+//		$.ajax({
+//	         url : 'messageOneList.do',
+//	         dataType : 'json',
+//	         type: 'post',
+//	         
+//	         data : params,
+//	         
+//	         success : function(data){
+//	            
+//	            var list_size = parseInt($('.add_line_btn').attr("id").replace("add_line_btn",""));
+//	            
+//	            for(var i=1; i <= list_size; i++){
+//	               if($('#category'+i).val()==""){
+//	                  $('#category'+i).val(data.category).prop("selected", true);
+//	                  $('#detail'+i).val(data.detail);
+//	                  $('#price'+i).val(data.price);
+//	                  break;
+//	               }
+//	            }
+//	         }
+//	      });
 		
 		if(condition==1){
 			$('#message_'+id).hide();
@@ -23,7 +48,8 @@ $(document).ready(function() {
 			$('#message_'+id).show();
 			$('#msg_box_'+id).hide();
 			$('#msg_condition_'+id).attr('value', '1');
-		}    
+		}
+		
 	}); 
 	
 	

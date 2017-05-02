@@ -14,10 +14,21 @@ public class MessageController {
 	private IMessageService messageService;
 	
 	@RequestMapping("messageList.do")
-	public ModelAndView messageList(String msg_receive_userid){
+	public ModelAndView messageList(String msg_receive_userid, String msg_send_userid){
 		String black="black";
 		ModelAndView mav=new ModelAndView();
 		mav.addAllObjects(messageService.messageList(black));
+//		mav.addAllObjects(messageService.messageOneList(black, msg_send_userid));
+		mav.setViewName("myPage");
+		return mav;
+	}
+	
+	@RequestMapping("messageOneList.do")
+	public ModelAndView messageOneList(String msg_receive_userid, String msg_send_userid){
+		System.out.println("dhkT");
+		String black="black";
+		ModelAndView mav=new ModelAndView();
+		mav.addAllObjects(messageService.messageOneList(black, msg_send_userid));
 		mav.setViewName("myPage");
 		return mav;
 	}

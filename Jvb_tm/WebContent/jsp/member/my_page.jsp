@@ -22,35 +22,6 @@
 
 <script type="text/javascript">
 
-msg_list_load=function(){
-	var id = $('.message_section').attr('id');
-	alert(id);
-    var result= $('#name'+id).html();
-    var msg_list=$('.msg_list').html();
-
- 		 $.ajax({
- 			 
- 	            url : 'messageOneList.do',
- 	            type : 'POST',
- 	            data : 'msg_receive_userid=black&msg_send_userid='+result,
- 	            dataType : 'json',
- 	            success : function(data) {
- 	            	$('#msg_list'+id).text('MessageList');
- 	            	
-	   	            for(var i=0; i<data.length; i++){
-	   	            	$('#msg_list'+id).append('<br>');
-	   	            	$('#msg_list'+id).append(data[i].msg_contents);
- 	            	}   
- 	            },
- 	            error : function(){
- 	               alert('에러 개새끼야');
- 	            }
- 	      });
-  
-}
-
-
-
 $(document).ready(function() {
 	$('.sender').on('click', function() {
 	      var id = $(this).attr('id');
@@ -74,8 +45,41 @@ $(document).ready(function() {
 	   	            error : function(){
 	   	               alert('에러 개새끼야');
 	   	            }
-	   	         });
+	   	      });
 	  });
+	
+	
+	$('.send_msg_button').on('click', function(){
+		var id=$(this).attr('id');
+// 		alert(id);
+		var realid=id.substring(10);
+// 		alert(realid);
+		var result= $('#name'+realid).html();
+// 		alert(result);
+		var send_msg_contents=$('#send_msg_contents'+realid).val();
+// 		alert(send_msg_contents);
+		
+		$.ajax({
+  			 
+	            url : 'sendMessage.do',
+	            type : 'POST',
+	            data : 'msg_receive_userid=black&msg_send_userid='+result+'&msg_contents='+send_msg_contents,
+	            dataType : 'json',
+	            success : function(data) {
+	            
+	            	$('#send_msg_contents'+realid).val("");
+	            	$('#msg_list'+id).text('MessageList');
+	   	           
+	   	            $('#msg_list'+realid).append('<br>');
+	   	            $('#msg_list'+realid).append(send_msg_contents);
+	            	  
+	            },
+	            error : function(){
+	               alert('에러 개새끼야');
+// 	               $('#send_msg_contents'+realid).val("");
+	            }
+	      });
+	});
 		
 })
 
@@ -326,7 +330,7 @@ $(document).ready(function() {
 										<div class="sender col-lg-3" id="${i.index }">
 											<input type="hidden" id="msg_condition_${i.index }" value="1">
 											<div class="col-md-4">
-												<img class="userid_img" src="img/ex.jpg" width="50px"
+												<img class="userid_img" src="img/profile.jpg" width="50px"
 													height="50px">
 											</div>
 											<div class="col-md-8">
@@ -350,18 +354,11 @@ $(document).ready(function() {
 											</div>
 											<div class="panel panel-default">
 												<div class="panel-body">
-													<form accept-charset="UTF-8"
-													 action="sendMessage.do?msg_receive_userid=${msg_List.msg_receive_userid }
-													 &msg_send_userid=${msg_List.msg_send_userid }" method="POST">
-														<textarea class="form-control counted" name="msg_contents"
+													 <textarea class="form-control counted" name="msg_contents" id="send_msg_contents${i.index }"
 															placeholder="Type in your message 메시지 입력" rows="5"
 															style="margin-bottom: 10px;"></textarea>
-														<h6 class="pull-right" id="counter">320 characters
-															remaining</h6>
-														<button class="btn btn-info" type="submit" onclick="msg_list_load()">Post
-															New Message</button>
-															
-													</form>
+														<h6 class="pull-right" id="counter">320 characters remaining</h6>
+													<input class="btn btn-info send_msg_button" type="submit" value="Post New Message" id="submit_msg${i.index }">										
 												</div>
 											</div>
 										</div>
@@ -447,13 +444,11 @@ $(document).ready(function() {
 											<div class="matching_response"">
 												<div class="col-md-3"></div>
 												<div class="col-md-3">
-													<input class="btn btn-info" type="button"
-														id="matcing_accept_yes" value="YES"
+													<input class="btn btn-info matcing_accept_answer" type="button" value="YES"
 														onclick="location.href='http://www.naver.com'">
 												</div>
 												<div class="col-md-3">
-													<input class="btn btn-info" type="button"
-														id="matcing_accept_no" value="NO"
+													<input class="btn btn-info matcing_accept_answer" type="button" value="NO"
 														onclick="location.href='http://www.daum.net'">
 												</div>
 												<div class="col-md-3"></div>

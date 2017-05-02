@@ -17,9 +17,15 @@ public class MessageService implements IMessageService {
 	private IMessageDao messageDao;
 
 	@Override
-	public void sendMessage(MessageVo messageVo) {
+	public boolean sendMessage(MessageVo messageVo) {
 		// TODO Auto-generated method stub
-		messageDao.messageInsert(messageVo);
+		int result=messageDao.messageInsert(messageVo);
+		if(result>0){
+			return true;
+		}
+		else{
+			return false;
+		}
 		
 		
 	}

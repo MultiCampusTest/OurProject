@@ -6,16 +6,16 @@ import tm.board.vo.ContentsVo;
 
 public interface IContentsDao {	
 	//insert
-	public int contentsInsert(ContentsVo contens);
+	public int insertContents(ContentsVo contens);
 	
 	//update
-	public int contentsUpdate(ContentsVo contents);
+	public int updateContents(ContentsVo contents);
 	
 	//delete
-	public int contentsDelete(int b_idx);
+	public int deleteContents(int b_idx);
 	
 	//select
-	public HashMap<String, Object> contentsSelectOne(int b_idx);
-	public HashMap<String, Object> contentsSelectOneOrderby(int b_idx);
+	public HashMap<String, Object> selectOneContents(int b_idx);
+	public HashMap<String, Object> selectOneOrderByContents(int b_idx);
 
 }

@@ -6,9 +6,9 @@ import tm.board.vo.MapPositionVo;
 
 public interface IMapPositionDao {
 	
-	public int mapPositionInsert(MapPositionVo mapPositionVo);
-	public int mapPositionDelete(int b_idx);
-	public List<MapPositionVo> mapPositionSelectOne(int b_idx);
+	public int insertMapPosition(MapPositionVo mapPositionVo);
+	public int deleMapPosition(int b_idx);
+	public List<MapPositionVo> selectMapPosition(int b_idx);
 	
 
 }

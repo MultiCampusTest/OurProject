@@ -36,11 +36,17 @@ public interface IBoardService {
 	//게시글 별 댓글 리스트 검색
 	public List<HashMap<String, Object>> selectComments(int b_idx);
 	
+	//게시판별 카테고리 검색
+	public List<HashMap<String, Object>> selectLocCategory(int code, int locCategory);
+	public List<HashMap<String, Object>> selectSubCategory(int code, int subCateogry);
+
+	
 	//게시판별 게시글 리스트 검색
-	public List<HashMap<String, Object>> selectAllNotice(int b_code, int b_idx, int page);
-	public List<HashMap<String, Object>> selectAllGuide(int b_code, int b_idx, int page);
-	public List<HashMap<String, Object>> selectAllTravel(int b_code, int b_idx, int page);
-	public List<HashMap<String, Object>> selectAllReview(int b_code, int b_idx, int page);
+	public List<HashMap<String, Object>> selectAllBoard(int b_code, int b_idx, int page);
+//	public List<HashMap<String, Object>> selectAllNotice(int b_code, int b_idx, int page);
+//	public List<HashMap<String, Object>> selectAllGuide(int b_code, int b_idx, int page);
+//	public List<HashMap<String, Object>> selectAllTravel(int b_code, int b_idx, int page);
+//	public List<HashMap<String, Object>> selectAllReview(int b_code, int b_idx, int page);
 	
 	//게시글 조회
 	public HashMap<String, Object> readBoard(int b_idx);

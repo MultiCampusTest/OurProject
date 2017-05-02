@@ -16,201 +16,227 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result column="b_date" 		property="date"/>
 	</resultMap>
 	
+<!-- 	<sql id="content"> -->
+<!-- <choose> -->
+<!-- 			<when test="content != null"> -->
+<!-- 				#{content} -->
+<!-- 			</when> -->
+<!-- 			<otherwise> -->
+<!-- 				"내용없음" -->
+<!-- 			</otherwise> -->
+<!-- 		</choose> -->
+<!-- </sql> -->
+	
+<!-- 	<include refid="title"></include> -->
+	
+
 	<insert id="insertBoard" parameterType="boardVo">
 		insert into board values
 		(0, #{code}, #{locCategory},#{subCategory},
 			#{title},#{startDate},#{endDate},"admin",sysdate())
 	</insert>
 	
+	<select id="getBoardCountByCode" parameterType="String" resultType="int">
+		select count(*) from board where b_code=#{code}
+	</select>
+	
+	<!-- select notice -->
+	<select id="selectNoticeBoardLimit" parameterType="java.util.HashMap"
+	resultMap="board">
+		select b_idx, b_title, userid, b_date from board 
+		where b_code=#{code} 
+		order by b_idx desc limit #{skip}, #{count}
+	</select>
+	
+	
 	<!-- insert -->
-	<insert id="noticeBoardInsert" parameterType="boardVo">
-		insert into board
-		(b_code, b_loc_category, b_sub_category,
-		b_title,
-		b_start_date,
-		b_end_date, userid)
-		values(#{b_code}, 0, 0,
-		#{b_title}, 0, 0, "admin")
-	</insert>
-	<insert id="travelBoardInsert" parameterType="boardVo">
-		insert into board
-		(b_code, b_loc_category, b_sub_category,
-		b_title,
-		b_start_date,
-		b_end_date, userid)
-		values(
-		#{b_code}
-		,
-		#{b_loc_category},
-		#{b_sub_category},
-		0, #{b_start_date},
-		#{b_end_date}, #{userid});
-	</insert>
-	<insert id="guideBoardInsert" parameterType="boardVo">
-		insert into board
-		(b_code, b_loc_category, b_sub_category, b_title,
-		b_start_date,
-		b_end_date, userid) values(
-		#{b_code}
-		, #{b_loc_category},
-		#{b_sub_category},
-		#{b_title},
-		#{b_start_date},
-		#{b_end_date},
-		#{userid})
-	</insert>
-	<insert id="reviewBoardInsert" parameterType="boardVo">
-		insert into board
-		(b_code, loc_category, sub_category, title, start_date, end_date,
-		userid)
-		values(#{b_code},
-		#{b_loc_category},
-		#{b_sub_category},
-		#{b_title},
-		#{b_start_date},
-		#{b_end_date},
-		#{userid})
-	</insert>
+<!-- 	<insert id="noticeBoardInsert" parameterType="boardVo"> -->
+<!-- 		insert into board -->
+<!-- 		(b_code, b_loc_category, b_sub_category, -->
+<!-- 		b_title, -->
+<!-- 		b_start_date, -->
+<!-- 		b_end_date, userid) -->
+<!-- 		values(#{b_code}, 0, 0, -->
+<!-- 		#{b_title}, 0, 0, "admin") -->
+<!-- 	</insert> -->
+<!-- 	<insert id="travelBoardInsert" parameterType="boardVo"> -->
+<!-- 		insert into board -->
+<!-- 		(b_code, b_loc_category, b_sub_category, -->
+<!-- 		b_title, -->
+<!-- 		b_start_date, -->
+<!-- 		b_end_date, userid) -->
+<!-- 		values( -->
+<!-- 		#{b_code} -->
+<!-- 		, -->
+<!-- 		#{b_loc_category}, -->
+<!-- 		#{b_sub_category}, -->
+<!-- 		0, #{b_start_date}, -->
+<!-- 		#{b_end_date}, #{userid}); -->
+<!-- 	</insert> -->
+<!-- 	<insert id="guideBoardInsert" parameterType="boardVo"> -->
+<!-- 		insert into board -->
+<!-- 		(b_code, b_loc_category, b_sub_category, b_title, -->
+<!-- 		b_start_date, -->
+<!-- 		b_end_date, userid) values( -->
+<!-- 		#{b_code} -->
+<!-- 		, #{b_loc_category}, -->
+<!-- 		#{b_sub_category}, -->
+<!-- 		#{b_title}, -->
+<!-- 		#{b_start_date}, -->
+<!-- 		#{b_end_date}, -->
+<!-- 		#{userid}) -->
+<!-- 	</insert> -->
+<!-- 	<insert id="reviewBoardInsert" parameterType="boardVo"> -->
+<!-- 		insert into board -->
+<!-- 		(b_code, loc_category, sub_category, title, start_date, end_date, -->
+<!-- 		userid) -->
+<!-- 		values(#{b_code}, -->
+<!-- 		#{b_loc_category}, -->
+<!-- 		#{b_sub_category}, -->
+<!-- 		#{b_title}, -->
+<!-- 		#{b_start_date}, -->
+<!-- 		#{b_end_date}, -->
+<!-- 		#{userid}) -->
+<!-- 	</insert> -->
 
 
-	<!-- update -->
-	<update id="boardUpdate" parameterType="boardVo">
-		update board set
-		b_code=#{b_code}, b_loc_category=#{b_loc_category},
-		b_sub_category=#{b_sub_category}, b_title=#{b_title},
-		b_start_date=#{b_start_date}, b_end_date=#{b_end_date},
-		userid=#{userid} where b_idx=#{b_idx}
-	</update>
+ 	<!-- update --> 
+<!-- 	<update id="boardUpdate" parameterType="boardVo"> -->
+<!-- 		update board set -->
+<!-- 		b_code=#{b_code}, b_loc_category=#{b_loc_category}, -->
+<!-- 		b_sub_category=#{b_sub_category}, b_title=#{b_title}, -->
+<!-- 		b_start_date=#{b_start_date}, b_end_date=#{b_end_date}, -->
+<!-- 		userid=#{userid} where b_idx=#{b_idx} -->
+<!-- 	</update> -->
 
 
-	<!-- delete -->
-	<delete id="boardDelete" parameterType="int">
-		delete from board
-		where
-		b_idx=#{b_idx}
-	</delete>
+ 	<!-- delete --> 
+<!-- 	<delete id="boardDelete" parameterType="int"> -->
+<!-- 		delete from board -->
+<!-- 		where -->
+<!-- 		b_idx=#{b_idx} -->
+<!-- 	</delete> -->
 
 
-	<!-- select -->
-	<!-- common board select -->
-	<select id="boardSelectByLimit" parameterType="java.util.HashMap"
-		resultType="boardVo">
-		select * from board where
-		b_code=
-		#{b_code}
-		order by b_idx
-		desc limit #{skip}, #{count}
-	</select>
-	<select id="boardGetCount" resultType="int">
-		select count(*) from board
-		where b_code=
-		#{b_code}
-	</select>
+ 	<!-- select --> 
+ 	<!-- common board select --> 
+<!-- 	<select id="boardSelectByLimit" parameterType="java.util.HashMap" -->
+<!-- 		resultType="boardVo"> -->
+<!-- 		select * from board where -->
+<!-- 		b_code= -->
+<!-- 		#{b_code} -->
+<!-- 		order by b_idx -->
+<!-- 		desc limit #{skip}, #{count} -->
+<!-- 	</select> -->
+<!-- 	<select id="boardGetCount" resultType="int"> -->
+<!-- 		select count(*) from board -->
+<!-- 		where b_code= -->
+<!-- 		#{b_code} -->
+<!-- 	</select> -->
 
-	<!-- notice select(no image select) -->
-	<select id="noticeBoardSelectOne" parameterType="int"
-		resultType="boardVo">
-		select * from board where b_idx=#{b_idx}
-	</select>
-	<select id="noticeBoardSelectByCode" resultType="java.util.HashMap">
-		select * from
-		board
-		where b_code=
-		#{b_code}
-		order by b_idx desc
-	</select>
+ 	<!-- notice select(no image select) --> 
+<!-- 	<select id="noticeBoardSelectOne" parameterType="int" -->
+<!-- 		resultType="boardVo"> -->
+<!-- 		select * from board where b_idx=#{b_idx} -->
+<!-- 	</select> -->
+<!-- 	<select id="noticeBoardSelectByCode" resultType="java.util.HashMap"> -->
+<!-- 		select * from -->
+<!-- 		board -->
+<!-- 		where b_code= -->
+<!-- 		#{b_code} -->
+<!-- 		order by b_idx desc -->
+<!-- 	</select> -->
 
-	<!-- other board select -->
-	<select id="otherBoardSelectOne" parameterType="int"
-		resultType="java.util.HashMap">
-		select * from board b, image i where b.b_idx=#{b_idx} and
-		b.b_idx=i.img_code;
-	</select>
-	<select id="otherBoardSelectByCode" parameterType="String"
-		resultType="java.util.HashMap">
-		select * from
-		board b, image i
-		where b.b_code=
-		#{b_code}
-		and
-		b.b_idx=i.img_code order
-		by b.b_date desc
-	</select>
-	<select id="otherBoardSelectByLoc_Category" parameterType="String"
-		resultType="java.util.HashMap">
-		select b.b_title, b.userid, b.b_date, i.img_path
-		from board
-		b, image i
-		where b.b_code=
-		#{b_code}
-		and
-		b.b_loc_category=#{b_loc_category} and b.b_idx=i.img_code order by
-		b.b_date desc
-	</select>
-	<select id="otherBoardSelectBySub_Category" parameterType="String"
-		resultType="java.util.HashMap">
-		select b.b_title, b.userid, b.b_date, i.img_path
-		from board
-		b, image i
-		where b.b_code=
-		#{b_code}
-		and
-		b.b_sub_category=#{b_sub_category} and b.b_idx=i.img_code order by
-		b.b_date desc
-	</select>
-
-
-	<!-- contents -->
-	<!-- insert -->
-	<insert id="contentsInsert" parameterType="contentsVo">
-		insert into
-		contents
-		values(0, #{b_idx}, #{ct_num}, #{ct_contents})
-	</insert>
-	<!-- update -->
-	<update id="contentsUpdate" parameterType="contentsVo">
-		update contents
-		set
-		ct_contents=#{ct_contents} where b_idx=#{b_idx}
-	</update>
-	<!-- delete -->
-	<delete id="contentsDelete" parameterType="int">
-		delete from
-		contents
-		where b_idx=#{b_idx}
-	</delete>
-	<!-- select -->
-	<select id="contentsSelectOne" parameterType="int" resultType="contentsVo">
-		select * from contents where b_idx=#{b_idx}
-	</select>
-	<select id="contentsSelectOneOrderby" parameterType="int"
-		resultType="java.util.HashMap">
-		select * from contents where b_idx=#{b_idx} order by ct_num
-	</select>
+ 	<!-- other board select -->
+<!-- 	<select id="otherBoardSelectOne" parameterType="int" -->
+<!-- 		resultType="java.util.HashMap"> -->
+<!-- 		select * from board b, image i where b.b_idx=#{b_idx} and -->
+<!-- 		b.b_idx=i.img_code; -->
+<!-- 	</select> -->
+<!-- 	<select id="otherBoardSelectByCode" parameterType="String" -->
+<!-- 		resultType="java.util.HashMap"> -->
+<!-- 		select * from -->
+<!-- 		board b, image i -->
+<!-- 		where b.b_code= -->
+<!-- 		#{b_code} -->
+<!-- 		and -->
+<!-- 		b.b_idx=i.img_code order -->
+<!-- 		by b.b_date desc -->
+<!-- 	</select> -->
+<!-- 	<select id="otherBoardSelectByLoc_Category" parameterType="String" -->
+<!-- 		resultType="java.util.HashMap"> -->
+<!-- 		select b.b_title, b.userid, b.b_date, i.img_path -->
+<!-- 		from board -->
+<!-- 		b, image i -->
+<!-- 		where b.b_code= -->
+<!-- 		#{b_code} -->
+<!-- 		and -->
+<!-- 		b.b_loc_category=#{b_loc_category} and b.b_idx=i.img_code order by -->
+<!-- 		b.b_date desc -->
+<!-- 	</select> -->
+<!-- 	<select id="otherBoardSelectBySub_Category" parameterType="String" -->
+<!-- 		resultType="java.util.HashMap"> -->
+<!-- 		select b.b_title, b.userid, b.b_date, i.img_path -->
+<!-- 		from board -->
+<!-- 		b, image i -->
+<!-- 		where b.b_code= -->
+<!-- 		#{b_code} -->
+<!-- 		and -->
+<!-- 		b.b_sub_category=#{b_sub_category} and b.b_idx=i.img_code order by -->
+<!-- 		b.b_date desc -->
+<!-- 	</select> -->
 
 
+ 	<!-- contents --> 
+ 	<!-- insert --> 
+<!-- 	<insert id="contentsInsert" parameterType="contentsVo"> -->
+<!-- 		insert into -->
+<!-- 		contents -->
+<!-- 		values(0, #{b_idx}, #{ct_num}, #{ct_contents}) -->
+<!-- 	</insert> -->
+ 	<!-- update --> 
+<!-- 	<update id="contentsUpdate" parameterType="contentsVo"> -->
+<!-- 		update contents -->
+<!-- 		set -->
+<!-- 		ct_contents=#{ct_contents} where b_idx=#{b_idx} -->
+<!-- 	</update> -->
+ 	<!-- delete --> 
+<!-- 	<delete id="contentsDelete" parameterType="int"> -->
+<!-- 		delete from -->
+<!-- 		contents -->
+<!-- 		where b_idx=#{b_idx} -->
+<!-- 	</delete> -->
+ 	<!-- select --> 
+<!-- 	<select id="contentsSelectOne" parameterType="int" resultType="contentsVo"> -->
+<!-- 		select * from contents where b_idx=#{b_idx} -->
+<!-- 	</select> -->
+<!-- 	<select id="contentsSelectOneOrderby" parameterType="int" -->
+<!-- 		resultType="java.util.HashMap"> -->
+<!-- 		select * from contents where b_idx=#{b_idx} order by ct_num -->
+<!-- 	</select> -->
 
-	<!-- mapposition -->
-	<!-- insert -->
-	<insert id="mapPositionInsert" parameterType="mapPositionVo">
-		insert into
-		mapposition values(0,
-		#{b_idx} ,#{map_marker},
-		#{map_lat_position},
-		#{map_loc_position})
-	</insert>
-	<!-- delete -->
-	<delete id="mapPositionDelete" parameterType="int">
-		delete from
-		mapposition where b_idx=#{b_idx}
-	</delete>
-	<!-- select -->
-	<select id="mapPositionSelectOne" parameterType="int"
-		resultType="mapPositionVo">
-		select * from mapposition where b_idx=#{b_idx}
-		order by
-		map_marker
-	</select>
+
+ 	<!-- mapposition --> 
+	<!-- insert --> 
+<!-- 	<insert id="mapPositionInsert" parameterType="mapPositionVo"> -->
+<!-- 		insert into -->
+<!-- 		mapposition values(0, -->
+<!-- 		#{b_idx} ,#{map_marker}, -->
+<!-- 		#{map_lat_position}, -->
+<!-- 		#{map_loc_position}) -->
+<!-- 	</insert> -->
+ 	<!-- delete --> 
+<!-- 	<delete id="mapPositionDelete" parameterType="int"> -->
+<!-- 		delete from -->
+<!-- 		mapposition where b_idx=#{b_idx} -->
+<!-- 	</delete> -->
+ 	<!-- select --> 
+<!-- 	<select id="mapPositionSelectOne" parameterType="int" -->
+<!-- 		resultType="mapPositionVo"> -->
+<!-- 		select * from mapposition where b_idx=#{b_idx} -->
+<!-- 		order by -->
+<!-- 		map_marker -->
+<!-- 	</select> -->
 
 
 

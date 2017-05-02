@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class BoardController {
-	  
+	   
 	//메인화면
 	@RequestMapping("main.do")
 	public String main() {

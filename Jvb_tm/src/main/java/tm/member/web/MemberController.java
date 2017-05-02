@@ -23,7 +23,7 @@ public class MemberController {
 	@Autowired
 	private MemberService memberService;
 	
-	//로그인 페이지 
+	//로그인 페이지  
 	@RequestMapping("loginForm.do")
 	public String loginForm(){
 		return "member/login_form";

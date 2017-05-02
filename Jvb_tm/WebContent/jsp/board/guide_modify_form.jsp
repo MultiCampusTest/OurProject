@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
-<body> 
+<body>  
 
 <!-- 달력 -->
 <link rel="stylesheet" href="https://unpkg.com/flatpickr/dist/flatpickr.min.css">

@@ -16,7 +16,7 @@
               cookie     : true,          // 쿠키허용
               xfbml      : true           // parse XFBML
             });
-            
+              
             FB.getLoginStatus(function(response) {
                 if (response.status === 'connected') {
                     

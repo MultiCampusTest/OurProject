@@ -21,26 +21,18 @@
 <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
  
 <!-- 달력 관련 CDN -->
-<link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />  
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>  
-<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/flatpickr/dist/flatpickr.min.css">
+<script src="https://unpkg.com/flatpickr"></script>
+<script src="https://npmcdn.com/flatpickr/dist/flatpickr.min.js"></script>
+<script src="https://npmcdn.com/flatpickr/dist/l10n/ru.js"></script>
+<link rel="stylesheet" href="css/calender.css">
+<link rel="stylesheet" href="css/guideWriteForm.css">
 
 <script type="text/javascript">
-	$(function() {
-		$("#birthday").datepicker({
-			nextText : 'Next Month',
-			prevText : 'Previous Month',
-			changeMonth : true,
-			changeYear : true,
-			closeText : "Close",
-			showButtonPanel : true,
-			currentText : 'Today',
-			closeText : 'Close',
-			dateFormat : "yy-mm-dd",
-			yearRange : 'c-100:c+10'
-
-		});
+$(function() {
+	$("#birthday").flatpickr({
 	});
+});
 </script>
 
 <script type="text/javascript">
@@ -77,29 +69,6 @@
 
 <script type="text/javascript">
 	$(document).ready(function() {
-		$('#userid').keyup(function() {
-			alert('ㅇㅇ');
-			var input = $('#userid').val();
-			$.ajax({
-				url : 'idCheck.do',
-				type : 'GET',
-				data : 'userid=' + input,
-				dataType : json,
-				success : function(data) {
-					if(data.result)
-						alert('중복 씨발');
-					else
-						alert('사용해 씨발');
-				},
-				error : function(){
-					alert('에러 개새끼야');
-				}
-			});
-		});
-		
-		
-		
-		
 		$('#pwdVali').hide();
 		$('input[type=password]').on('keyup', function() {
 			var pw1 = $('#pwd').val();
@@ -155,7 +124,7 @@
 							</div>
 
 							<div class="form-bottom">
-								<form action="regProc.do" method="post" class="registration-form">
+								<form action="join.do" method="post" class="registration-form">
 									<div class="form-group">
 										<label class="sr-only" for="form-userid">userid</label>
 										<input type="text" id="userid" name="userid" class="form-first-name form-control" placeholder="Userid">
@@ -166,7 +135,7 @@
 									</div>
 									<div class="form-group">
 										<label class="sr-only" for="form-pwdChk">pwdCheck</label>
-										<input type="password" id="pwd2" name="pwd2" maxlength="12" placeholder="Check Password" class="form-control">
+										<input type="password" id="pwd2" maxlength="12" placeholder="Check Password" class="form-control">
 										<span id="pwdVali"></span>
 									</div>
 									<div class="form-group">
@@ -178,11 +147,15 @@
 										<input type="text" id="l_name" name="l_name" placeholder="Last Name" class="form-control">
 									</div>
 									<div class="form-group">
+										<label class="sr-only" for="form-email">email</label>
+										<input type="text" id="email" name="email" placeholder="Example@domain.com" class="form-control">
+									</div>
+									<div class="form-group">
 										<label class="sr-only" for="form-gender">gender</label>
-										<select class="nation">
+										<select id="gender" name="gender" class="nation">
 											<option>Choose your Gender</option>
-											<option value="m">Male</option>
-											<option value="f">Female</option>
+											<option value="male">Male</option>
+											<option value="female">Female</option>
 										</select>
 									</div>
 									<div class="form-group">
@@ -192,7 +165,7 @@
 
 									<div class="form-group">
 										<label class="sr-only" for="form-country">Country</label>
-										<select class="nation">
+										<select name="country" class="nation">
 											<option value="">Where are you from</option>
 											<optgroup label="A"></optgroup>
 											<option value="AF">Afghanistan</option>
@@ -461,7 +434,7 @@
 									</div>
 									<div class="form-group">
 										<label class="sr-only" for="form-file">file</label>
-										<input type="file" id="fileuri" name="fileuri" onchange="readURL(this);" class="form-control">
+										<input type="file" id="fileuri" onchange="readURL(this);" class="form-control">
 									</div>
 									<div class="form-group">
 										<label class="sr-only" for="form-introduce">Introduce</label>

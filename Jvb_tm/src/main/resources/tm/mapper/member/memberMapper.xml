@@ -4,9 +4,22 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="tm.member.dao.IMemberDao">
 
-<!-- 회원정보 -->
-	<insert id="insertMember" parameterType="memberVo">
-		insert into member values(0, #{userid}, #{pwd}, #{name},
+	<resultMap type="memberVo" id="member">
+		<id column="u_idx" property="idx"/>
+		<result column="userid" property="userid"/>
+		<result column="pwd" property="pwd"/>
+		<result column="f_name" property="firstName"/>
+		<result column="l_name" property="lastName"/>
+		<result column="email" property="email"/>
+		<result column="birthday" property="birthday"/>
+		<result column="country" property="country"/>
+		<result column="gender" property="gender"/>
+		<result column="introduce" property="introduce"/>
+		<result column="u_date" property="joinDate"/>
+	</resultMap>
+
+	<insert id="memberInsert" parameterType="memberVo">
+		insert into member values(0, #{userid}, #{pwd}, #{firstName}, #{lastName},
 		#{email}, #{birthday}, #{country}, #{gender}, #{introduce}, sysdate())
 	</insert>
 

@@ -103,8 +103,11 @@ integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
 						<input type="password" class="form-control" placeholder="Password" id="pwd" name="pwd">
 						<div id="msg"></div>
 						<button type="submit" class="btn btn-lg btn-primary btn-block" onClick="return procEvent();">Sign in</button>
-						<label class="checkbox pull-left"><input type="checkbox" value="remember" id="remember">Remember me</label>
-						<a href="#" class="pull-right need-help">Forgot password</a><span class="clearfix"></span>
+						<br>
+						<div>
+							<span class="remember"><input type="checkbox" value="remember" id="remember">Remember me</span>
+							<span class="need-help"><a href="#" id="need-help">Forgot password</a></span>
+						</div>
 					</form>
 				</div>
 				<a href="joinForm.do" class="text-center new-account">Create an account</a>

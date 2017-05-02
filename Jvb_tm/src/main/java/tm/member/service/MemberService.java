@@ -13,6 +13,18 @@ public class MemberService implements IMemberService {
 	private IMemberDao memberDao;
 
 	@Override
+	public boolean memberJoin(MemberVo memberVo) {
+		// TODO Auto-generated method stub
+		int result = memberDao.memberInsert(memberVo);
+		
+		if(result > 0)
+			return true;
+		else
+			return false;
+	}
+	
+
+	@Override
 	public boolean checkLogin(String userid, String pwd) {
 		// TODO Auto-generated method stub
 		MemberVo member = memberDao.memberSelectOne(userid);
@@ -24,18 +36,6 @@ public class MemberService implements IMemberService {
 				return false;			
 		} else
 			return false;
-		
-		
-	}
-
-	@Override
-	public boolean checkId(String userid) {
-		// TODO Auto-generated method stub
-		MemberVo member = memberDao.memberSelectOne(userid);
-		if(member == null)
-			return false;
-		else
-			return true;
 	}
 	
 }

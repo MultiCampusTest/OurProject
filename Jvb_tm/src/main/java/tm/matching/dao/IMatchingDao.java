@@ -9,9 +9,9 @@ import tm.matching.vo.MatchingVo;
 public interface IMatchingDao {
 	
 	public int matchingInsert(MatchingVo matchingVo);
-	public int matchingUpdate(MatchingVo matchingVo);
+	public int matchingUpdate(HashMap<String, Object> params);
 	public int matchingDelete(int mch_idx);
-	public List<HashMap<String, Object>> matchingSelectByUserid(String mch_g_userid);
+	public List<MatchingVo> matchingSelectByUserid(String mch_g_userid);
 
 	
 }

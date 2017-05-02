@@ -8,7 +8,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	insert into matching values(0, #{mch_t_userid}, #{mch_g_userid}, #{b_idx}, 0, sysdate())
 </insert>
 
-<update id="matchingUpdate" parameterType="matchingVo">
+<update id="matchingUpdate" parameterType="java.util.HashMap">
 	update matching set mch_code=1 where mch_t_userid=#{mch_t_userid} and mch_g_userid=#{mch_g_userid}
 </update>
    
@@ -17,7 +17,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 </delete>
 
 <select id="matchingSelectByUserid" parameterType="String" resultType="matchingVo">
-	select *from matching where mch_g_userid=#{mch_g_userid} order by mch_date;
+	select * from matching where mch_g_userid=#{mch_g_userid} order by mch_date;
 </select>
 
 

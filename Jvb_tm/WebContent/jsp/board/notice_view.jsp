@@ -1,5 +1,6 @@
   <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -49,57 +50,38 @@
          <!-- Comments Form -->
          <div class="well">
              <h4>Leave a Comment:</h4>
-             <form role="form">
+             <form role="form" action="noticeWrite.do" method="post">
                  <div class="form-group">
-                     <textarea class="form-control" rows="3"></textarea>
+                 	 <input type="hidden" name="b_idx" value="${board.b_idx }">
+                     <textarea class="form-control" name="cm_content" rows="3"></textarea>
                  </div>
-                 <button type="submit" class="btn btn-primary">Submit</button>
+<!--                  <button type="submit" class="btn btn-primary">Submit</button> -->
+                 <input type="submit" value="등록" class="btn btn-primary">
              </form>
          </div>
 
          <hr>
-
-         <!-- Posted Comments -->
-
          <!-- Comment -->
-         <div class="media">
-             <a class="pull-left" href="#">
-                 <img class="media-object" src="http://placehold.it/64x64" alt="">
-             </a>
-             <div class="media-body">
-                 <h4 class="media-heading">댓글 단 사람
-                     <small>August 25, 2014 at 9:30 PM</small>
-                 </h4>
-                 	여기에 댓글
-             </div>
-         </div>
-
-         <!-- Comment -->
-         <div class="media">
-             <a class="pull-left" href="#">
-                 <img class="media-object" src="http://placehold.it/64x64" alt="">
-             </a>
-             <div class="media-body">
-                 <h4 class="media-heading">댓글 단 사람
-                     <small>August 25, 2014 at 9:30 PM</small>
-                 </h4>
-                 	여기에 댓글
-                 <!-- Nested Comment -->
-                 <div class="media">
-                     <a class="pull-left" href="#">
-                         <img class="media-object" src="http://placehold.it/64x64" alt="">
-                     </a>
-                     <div class="media-body">
-                         <h4 class="media-heading">댓글 단 사람 
-                             <small>August 25, 2014 at 9:30 PM</small>
-                         </h4>
-                         	여기에 댓글
-                     </div>
-                 </div>
-                 <!-- End Nested Comment -->
-             </div>
-         </div>
-
+        <c:choose>
+        	<c:when test="${comments ==null }">
+        		댓글이 없습니다.
+        	</c:when>
+        	<c:otherwise>
+        		<c:forEach var="comments" items="${comments}" varStatus="status">
+    			<div style="border: 1px solid gray; width: 600px; padding: 5px; margin-top: 5px; margin-left: <c:out value="${20*comments.cm_depth}"/>px; display: inline-block">    
+		       		<c:out value="${comments.cm_writer}"/> <c:out value="${comments.cm_date}"/>
+		        	<a href="#" onclick="fn_replyDelete('<c:out value="${comments.cm_idx}"/>')">삭제</a>
+		        	<a href="#" onclick="fn_replyUpdate('<c:out value="${comments.cm_idx}"/>')">수정</a>
+		        	<a href="#" onclick="fn_replyReply('<c:out value="${comments.cm_idx}"/>')">댓글</a>
+		        	<br/>
+		        	<div id="reply<c:out value="${comments.cm_idx}"/>">
+		        		<c:out value="${comments.cm_content}"/>
+		        	</div>
+		    	</div><br/>
+			</c:forEach>
+        	</c:otherwise>
+        </c:choose>
+		
      </div>
  </div>
  <!-- /.row -->

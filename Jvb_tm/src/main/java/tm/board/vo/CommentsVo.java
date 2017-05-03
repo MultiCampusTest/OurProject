@@ -2,37 +2,26 @@ package tm.board.vo;
 
 public class CommentsVo {
 
-	private int cm_idx;
-	private int b_idx;
-	private String userid;
-	private String cm_contents;
+	private String cm_idx;
+	private String cm_writer;
 	private String cm_date;
-	private int parent_code;
-	private int group_seq;
-	private int group_lv;
-	public int getCm_idx() {
+	private String b_idx;
+	private String cm_content;
+	private String cm_parent;
+	private String cm_depth;
+	private int cm_order;
+	
+	public String getCm_idx() {
 		return cm_idx;
 	}
-	public void setCm_idx(int cm_idx) {
+	public void setCm_idx(String cm_idx) {
 		this.cm_idx = cm_idx;
 	}
-	public int getB_idx() {
-		return b_idx;
+	public String getCm_writer() {
+		return cm_writer;
 	}
-	public void setB_idx(int b_idx) {
-		this.b_idx = b_idx;
-	}
-	public String getUserid() {
-		return userid;
-	}
-	public void setUserid(String userid) {
-		this.userid = userid;
-	}
-	public String getCm_contents() {
-		return cm_contents;
-	}
-	public void setCm_contents(String cm_contents) {
-		this.cm_contents = cm_contents;
+	public void setCm_writer(String cm_writer) {
+		this.cm_writer = cm_writer;
 	}
 	public String getCm_date() {
 		return cm_date;
@@ -40,31 +29,35 @@ public class CommentsVo {
 	public void setCm_date(String cm_date) {
 		this.cm_date = cm_date;
 	}
-	public int getParent_code() {
-		return parent_code;
+	public String getB_idx() {
+		return b_idx;
 	}
-	public void setParent_code(int parent_code) {
-		this.parent_code = parent_code;
+	public void setB_idx(String b_idx) {
+		this.b_idx = b_idx;
 	}
-	public int getGroup_seq() {
-		return group_seq;
+	public String getCm_content() {
+		return cm_content;
 	}
-	public void setGroup_seq(int group_seq) {
-		this.group_seq = group_seq;
+	public void setCm_content(String cm_content) {
+		this.cm_content = cm_content;
 	}
-	public int getGroup_lv() {
-		return group_lv;
+	public String getCm_parent() {
+		return cm_parent;
 	}
-	public void setGroup_lv(int group_lv) {
-		this.group_lv = group_lv;
+	public void setCm_parent(String cm_parent) {
+		this.cm_parent = cm_parent;
 	}
-	
-	@Override
-	public String toString() {
-		return "CommentsVo [cm_idx=" + cm_idx + ", b_idx=" + b_idx + ", userid=" + userid + ", cm_contents="
-				+ cm_contents + ", cm_date=" + cm_date + ", parent_code=" + parent_code + ", group_seq=" + group_seq
-				+ ", group_lv=" + group_lv + "]";
+	public String getCm_depth() {
+		return cm_depth;
 	}
-	
+	public void setCm_depth(String depth) {
+		this.cm_depth = depth;
+	}
+	public int getCm_order() {
+		return cm_order;
+	}
+	public void setCm_order(int cm_order) {
+		this.cm_order = cm_order;
+	}
 	
 }

@@ -28,8 +28,8 @@ public class MessageController {
 	
 	@RequestMapping("messageOneList.do")
 	public @ResponseBody List<MessageVo> messageOneList(String msg_receive_userid, String msg_send_userid){
-//		System.out.println(msg_receive_userid);
-//		System.out.println(msg_send_userid);
+		System.out.println(msg_receive_userid);
+		System.out.println(msg_send_userid);
 		return messageService.messageOneList(msg_receive_userid, msg_send_userid);
 	}
 	

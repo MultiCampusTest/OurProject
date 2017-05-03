@@ -1,11 +1,19 @@
 package tm.matching.web;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import tm.matching.service.MatchingService;
+import tm.matching.vo.MatchingVo;
+import tm.message.vo.MessageVo;
 
 @Controller
 public class MatchingController {
@@ -20,6 +28,22 @@ public class MatchingController {
 		mav.addAllObjects(matchingService.matchingList(black));
 		mav.setViewName("member/my_page");
 		return mav;
+	}
+	
+	@RequestMapping(value="matchingSuccess.do", method=RequestMethod.POST)
+	public @ResponseBody HashMap<String, Object> matchingSuccess(String mch_t_userid, String mch_g_userid){
+		HashMap<String, Object> params=new HashMap<>();
+		boolean result=matchingService.matchingModify(mch_t_userid, mch_g_userid);
+//		params.put("result", result);
+//		return params;
+		params.put("mch_List_Reload", matchingService.matchingList(mch_g_userid));
+	
+		if(result==true){
+			return params;
+			
+		}
+		else
+			return params;
 	}
 
 }

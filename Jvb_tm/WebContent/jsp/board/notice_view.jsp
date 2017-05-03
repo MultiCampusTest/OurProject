@@ -63,22 +63,24 @@
          <hr>
          <!-- Comment -->
         <c:choose>
-        	<c:when test="${comments ==null }">
+        	<c:when test="${comments !=null }">
         		댓글이 없습니다.
         	</c:when>
         	<c:otherwise>
-        		<c:forEach var="comments" items="${comments}" varStatus="status">
-    			<div style="border: 1px solid gray; width: 600px; padding: 5px; margin-top: 5px; margin-left: <c:out value="${20*comments.cm_depth}"/>px; display: inline-block">    
-		       		<c:out value="${comments.cm_writer}"/> <c:out value="${comments.cm_date}"/>
-		        	<a href="#" onclick="fn_replyDelete('<c:out value="${comments.cm_idx}"/>')">삭제</a>
-		        	<a href="#" onclick="fn_replyUpdate('<c:out value="${comments.cm_idx}"/>')">수정</a>
-		        	<a href="#" onclick="fn_replyReply('<c:out value="${comments.cm_idx}"/>')">댓글</a>
-		        	<br/>
-		        	<div id="reply<c:out value="${comments.cm_idx}"/>">
-		        		<c:out value="${comments.cm_content}"/>
-		        	</div>
-		    	</div><br/>
-			</c:forEach>
+<%--         		<c:forEach var="comments" items="${comments}" varStatus="status"> --%>
+        			<div class="media" style="margin-left : ${20*comments.cm_depth}px">
+           				<a class="pull-left" href="#">
+                 		<img class="media-object" src="http://placehold.it/64x64" alt="">
+            			</a>
+             			<div class="media-body">
+                 		<h4 class="media-heading">${comments.cm_writer }작성자
+                      		<small>${comments.cm_date }작성날짜</small>
+                  		</h4>
+                  			${comments.cm_content }내용
+              			</div>
+              			<a href="#"> 삭제</a>
+              			<a href="#"> 수정</a>
+          		    </div>
         	</c:otherwise>
         </c:choose>
 		

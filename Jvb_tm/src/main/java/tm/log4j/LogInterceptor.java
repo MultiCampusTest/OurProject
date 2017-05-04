@@ -14,7 +14,7 @@ public class LogInterceptor extends HandlerInterceptorAdapter {
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
 		log.info(
-				"==========           START          ==========\n");
+				"==========          START         ==========\n");
 		log.info(" Request URI \t:  " + request.getRequestURI());
 		return super.preHandle(request, response, handler);
 	}

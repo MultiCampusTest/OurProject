@@ -70,6 +70,7 @@
              <form role="form" action="commentsWrite.do" method="post">
                  <div class="form-group">
                  	 <input type="hidden" name="b_idx" value="${notice.boardIdx }">
+                 	 <input type="hidden" name="cm_writer" value="${userid}">
                      <textarea class="form-control" name="cm_content" rows="3"></textarea>
                  </div>
 <!--                  <button type="submit" class="btn btn-primary">Submit</button> -->

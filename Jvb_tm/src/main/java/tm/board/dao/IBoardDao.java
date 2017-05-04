@@ -32,7 +32,7 @@ public interface IBoardDao {
 	public int boardGetCount();
 	
 	//select NoticeBoard
-	public BoardVo selectOneNotice(int b_idx); 
+	public BoardVo selectOneNotice(int boardIdx); 
 	public List<BoardVo> selectNoticeBoardLimit(HashMap<String, Object> params);
 	
 	//other board select

@@ -17,9 +17,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		(0, #{boardIdx}, #{contentsNum}, #{contents})
 	</insert>
 	
-	<select id="selectOneContents" parameterType="Integer" resultMap="contents">
-		select * from contents 
-		where b_idx = ${boardIdx}
+	<select id="selectOneContents" parameterType="int" resultMap="contents">
+		select ct_contents from contents 
+		where b_idx = #{boardIdx}
 	</select>
 	
 <!-- 	<select id="getBoardCountByCode" parameterType="String" resultType="int"> -->

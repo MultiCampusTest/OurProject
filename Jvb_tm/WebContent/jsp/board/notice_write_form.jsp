@@ -38,6 +38,8 @@
 
 		 <!-- Widget -->
 		 <div class="form-group" style="float:right">
+		 	<input type="hidden" value="admin" name="userid">
+		 	<input type="hidden" value="n" name="code">
 			<input type="submit" value="ok" class="btn btn-primary">
 			<input type="button" value="list" class="btn btn-primary" onclick="location.href='noticeList.do'">
 		</div>

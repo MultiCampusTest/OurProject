@@ -15,7 +15,7 @@ public interface IContentsDao {
 	public int deleteContents(int b_idx);
 	
 	//select
-	public HashMap<String, Object> selectOneContents(int b_idx);
+	public ContentsVo selectOneContents(int boardIdx);
 	public HashMap<String, Object> selectOneOrderByContents(int b_idx);
 
 }

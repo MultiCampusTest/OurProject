@@ -49,7 +49,7 @@
 				<c:forEach items="${noticeList}" var="notice">
 					<tr>
 						<td>${notice.boardIdx }</td>
-						<td><a href="noticeView.do?boardIdx=${notice.boardIdx }"
+						<td><a href="noticeView.do?boardIdx=${notice.boardIdx}"
 							style="text-decoration: none">${notice.title }</a></td>
 						<td>${notice.userid}</td>
 						<td><fmt:formatDate value="${notice.writeDate}"

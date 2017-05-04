@@ -35,7 +35,8 @@ public class BoardService {
 	
 	public void insertNotice(BoardVo board, ContentsVo contents){
 		boardDao.insertBoard(board);
-		int boardIdx = board.
+		int boardIdx = board.getBoardIdx();
+		contents.setBoardIdx(boardIdx);
 		contentsDao.insertContents(contents);
 	}
 	
@@ -74,11 +75,17 @@ public class BoardService {
 	}
 	
 	//공지사항 세부글 얻어오기
-	public BoardVo readNotice(int idx){
-		BoardVo board = boardDao.selectOneNotice(idx);
+	public HashMap<String, Object> readNotice(int boardIdx){
+		BoardVo board = boardDao.selectOneNotice(boardIdx);
 		board.setReadCount(board.getReadCount()+1);
 //		boardDao.updateNotice(board);
-		return board;
+		ContentsVo contents = contentsDao.selectOneContents(boardIdx);
+		
+		HashMap<String, Object> result = new HashMap<>();
+		result.put("notice", board);
+		result.put("contents", contents);
+		
+		return result;
 				
 	}
 }

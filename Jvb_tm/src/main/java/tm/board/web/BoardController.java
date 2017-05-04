@@ -48,11 +48,11 @@ public class BoardController {
 	
 	@RequestMapping("noticeView.do")
 	public ModelAndView noticeView(HttpServletRequest req, int boardIdx) {
-//		String id = (String)(req.getSession().getAttribute("userid"));
+		String id = (String)(req.getSession().getAttribute("userid"));
 		ModelAndView mav = new ModelAndView();
-		mav.addObject("notice",boardService.readNotice(boardIdx)); 
-//		mav.addObject("userid", id);
-		mav.addObject("comments",commentsService.selectComments(boardIdx));
+		mav.addAllObjects(boardService.readNotice(boardIdx));
+		mav.addObject("userid", id);
+//		mav.addObject("comments",commentsService.selectComments(boardIdx));
 		mav.setViewName("board/notice_view");
 		
 		return mav;
@@ -64,7 +64,7 @@ public class BoardController {
 	}
 	
 	@RequestMapping("commentsWrite.do")
-	public ModelAndView noticeWrite(CommentsVo comments){
+	public ModelAndView commentsWrite(CommentsVo comments){
 		ModelAndView mav = new ModelAndView();
 		commentsService.insertComments(comments);
 		mav.setViewName("redirect:noticeView.do?idx="+comments.getB_idx());
@@ -78,8 +78,6 @@ public class BoardController {
 	
 	@RequestMapping(method=RequestMethod.POST, value="noticeWrite.do")
 	public String noticeWrite(BoardVo board, ContentsVo contents){
-		System.out.println(board.getTitle());
-		System.out.println(contents.getContents());
 		boardService.insertNotice(board, contents);
 		return "redirect:noticeList.do";
 	}

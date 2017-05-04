@@ -6,6 +6,7 @@ public class ContentsVo {
 	private int boardIdx;
 	private int contentsNum;
 	private String contents;
+	
 	public int getContentsIdx() {
 		return contentsIdx;
 	}

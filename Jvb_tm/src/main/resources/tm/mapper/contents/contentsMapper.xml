@@ -14,9 +14,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<insert id="insertContents" parameterType="contentsVo">
 		insert into contents values
-		(0, #{code}, #{locCategory},#{subCategory},
-			#{title},#{startDate},#{endDate},"admin",sysdate(),0)
+		(0, #{boardIdx}, #{contentsNum}, #{contents})
 	</insert>
+	
+	<select id="selectOneContents" parameterType="Integer" resultMap="contents">
+		select * from contents 
+		where b_idx = ${boardIdx}
+	</select>
 	
 <!-- 	<select id="getBoardCountByCode" parameterType="String" resultType="int"> -->
 <!-- 		select count(*) from board where b_code=#{code} -->

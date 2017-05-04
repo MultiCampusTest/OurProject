@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="tm.comments.dao.ICommentsDao">
+<mapper namespace="tm.board.dao.ICommentsDao">
 
 	<select id="selectOneByParent" resultType="CommentsVo" parameterType="String">
 		SELECT b_idx, cm_depth+1 cm_depth, cm_order 
@@ -23,9 +23,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </update>
     
     <insert id="insertComments" parameterType="CommentsVo">
-        <selectKey resultType="String" keyProperty="cm_idx" order="BEFORE">
-            SELECT IFNULL(MAX(cm_idx),0)+1 FROM comments
-        </selectKey>
+<!--         <selectKey resultType="String" keyProperty="cm_idx" order="BEFORE"> -->
+<!--             SELECT IFNULL(MAX(cm_idx),0)+1 FROM comments -->
+<!--         </selectKey> -->
     
         INSERT INTO comments(b_idx, cm_idx, cm_writer, cm_content, cm_order, cm_parent, cm_depth)
         VALUES (#{b_idx}, #{cm_idx}, #{cm_writer}, #{cm_content}, #{cm_depth},
@@ -35,6 +35,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
                    </choose>
                )
     </insert>
+    
+     <select id="selectByIdxComments" resultType="CommentsVo" parameterType="int">
+        SELECT b_idx, cm_idx, cm_writer, cm_content, cm_date 
+          FROM comments
+         WHERE b_idx=#{b_idx}
+         ORDER BY cm_idx
+    </select>
+    
 
 	<insert id="commentsInsert" parameterType="CommentsVo">
 		insert into comments
@@ -54,10 +62,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where cm_idx=#{cm_idx}
 	</delete>
 
-	<select id="commentsSelectByIdx" parameterType="int"
-		resultType="java.util.HashMap">
-		select *from tb_comments where b_idx=#{b_idx}
-	</select>
+<!-- 	<select id="selectByIdxComments" parameterType="int" -->
+<!-- 		resultType="CommentsVo"> -->
+<!-- 		select * from comments where b_idx=#{b_idx} -->
+<!-- 	</select> -->
 
 	<!-- public int insertComments(HashMap<String, Object> params); -->
 	<!-- public int updateComments(HashMap<String, Object> params); -->

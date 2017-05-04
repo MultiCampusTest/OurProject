@@ -16,7 +16,7 @@ public class CommentsService implements ICommentsService{
 	private ICommentsDao cDao;
 	
 	@Override
-	public int insertComments(CommentsVo comments) {
+	public void insertComments(CommentsVo comments) {
 		// TODO Auto-generated method stub
 		if(comments.getCm_idx() == null || "".equals(comments.getCm_idx())){
 			if(comments.getCm_parent() != null ){
@@ -32,8 +32,14 @@ public class CommentsService implements ICommentsService{
 		} else {
 			cDao.updateByOrder(comments);
 		}
-		return 0;
 	}
+	
+	@Override
+	public List<CommentsVo> selectComments(int b_idx) {
+		// TODO Auto-generated method stub
+		return cDao.selectByIdxComments(b_idx);
+	}
+	
 
 	@Override
 	public int updateInsertComments() {
@@ -64,6 +70,10 @@ public class CommentsService implements ICommentsService{
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+
+	
 	
 
 }
+

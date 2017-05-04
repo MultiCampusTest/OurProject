@@ -13,6 +13,9 @@ public interface ICommentsDao {
 	public int selectOneMaxOrder(String b_idx);
 	public int insertComments(CommentsVo comments);
 	
+//	select시 필요한 Dao
+	public List<CommentsVo> selectByIdxComments(int b_idx);
+	
 	
 	
 	
@@ -21,5 +24,4 @@ public interface ICommentsDao {
 	public int deleteComments(int b_idx, int c_idx);
 	
 	
-	public List<HashMap<String, Object>> selectByIdxComments(int b_idx);
 }

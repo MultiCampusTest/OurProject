@@ -6,7 +6,9 @@ import java.util.List;
 import tm.board.vo.CommentsVo;
 
 public interface ICommentsService {
-	public int insertComments(CommentsVo comments);
+	public void insertComments(CommentsVo comments);
+	
+	public List<CommentsVo> selectComments(int b_idx);
 	
 	
 	

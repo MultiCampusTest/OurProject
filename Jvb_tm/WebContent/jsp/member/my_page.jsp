@@ -113,16 +113,16 @@ $(document).ready(function() {
 	  			 
 		            url : 'matchingSuccess.do',
 		            type : 'POST',
-		            data : 'mch_g_userid=black&mch_t_userid='+id,
+		            data : 'mch_g_userid=black&mch_t_userid='+readid,
 		            dataType : 'json',
 		            success : function(data) {
 		            	
 		            		alert('매칭 성공');
-		            		$('#mathing_section'+board_idx).remove();
 		            		$('.add_img').append(add_img);
 		            		$('.add_mch_t_userid').append(readid);
 		            		$('.add_title').append('해당 게시글 번호'+board_title);
 		            		$('.add_date').append(matching_date);
+		            		$('#mathing_section'+board_idx).remove();
 		            		
 		            	  
 		            },

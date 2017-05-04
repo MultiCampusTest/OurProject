@@ -86,22 +86,26 @@ $(document).ready(function() {
 	
 	
 	$('.matcing_accept_answer').on('click', function(){
+		var m_array=new Array();
 		var id=$(this).attr('id');
-		alert(id);
+		m_array=id.split('_');
+		var readid=m_array[0];
+		var board_idx=m_array[1];
+// 		alert(bbb);
+// 		alert(id);
 		var responseValue=$(this).val();
-		alert(responseValue);
+// 		alert(responseValue);
 		
-// 		var container=$('.accpet').parent();
-// 		var instapic = '<img src="' + url + '">';
-// 		var inputHidden='<input type="hidden" id="matched_condition_100 "value="1">'
-// 		var openDiv4='<div class="col-md-4">';
-// 		var img='<img class="userid_img" src="img/profile.jpg" width="50px"height="50px">';
-// 		var closeDiv='</div>';
-// 		var openDiv8='<div class="col-md-8">';
-// 		var label='<label class="container-fluid control-label">'+responseValue+'</label>';
-
+		
+		var add_img='<img class="userid_img" src="img/profile.jpg" width="50px" height="50px">'
+		var board_title=$('.board_title').attr('id');
+// 		alert(board_title);
+		var matching_date=$('.matching_date').attr('id');
+// 		alert(matching_date);
 
 		
+		
+
 		
 		if(responseValue=='YES'){
 			$.ajax({
@@ -113,21 +117,12 @@ $(document).ready(function() {
 		            success : function(data) {
 		            	
 		            		alert('매칭 성공');
-		            		$('.accpet').append(responseValue);
-// 		            		container.append(inputHidden);
-// 		            		container.append(openDiv4);
-// 		            		container.append(img);
-// 		            		container.append(closeDiv);
-// 		            		container.append(openDiv8);
-// 		            		container.append(label);
-// 		            		container.append(closeDiv);
-		            
-		            
-// 		            	$('#send_msg_contents'+realid).val("");
-// 		            	$('#msg_list'+id).text('MessageList');
-		   	           
-// 		   	            $('#msg_list'+realid).append('<br>');
-// 		   	            $('#msg_list'+realid).append(send_msg_contents);
+		            		$('#mathing_section'+board_idx).remove();
+		            		$('.add_img').append(add_img);
+		            		$('.add_mch_t_userid').append(readid);
+		            		$('.add_title').append('해당 게시글 번호'+board_title);
+		            		$('.add_date').append(matching_date);
+		            		
 		            	  
 		            },
 		            error : function(){
@@ -468,7 +463,7 @@ $(document).ready(function() {
 							<div class="row" style="text-align: center">
 								<c:forEach varStatus="i" items="${matchingList }" var="mch_List">
 									<c:if test="${mch_List.mch_code==0 }">
-									<div class="matching_section container-fluid">
+									<div class="matching_section container-fluid" id="mathing_section${i.index }">
 										<div class="not_accept col-lg-3" id="${i.index }">
 											<input type="hidden" id="req_match_condition_${i.index }"
 												value="1">
@@ -484,12 +479,12 @@ $(document).ready(function() {
 										<div class="request_matching" id="req_matching_${i.index }">
 											<div class="request_mch_contents col-lg-7">
 												<a href="board.do?b_idx=${mch_List.b_idx }"> <label
-													class="container-fluid control-label"> 해당 게시글 제목
+													class="board_title container-fluid control-label" id="${mch_List.b_idx }"> 해당 게시글 제목
 														${mch_List.b_idx }</label>
 												</a>
 											</div>
 											<div class="request_mch_date col-lg-2">
-												<label class="container-fluid control-label">
+												<label class="matching_date container-fluid control-label" id="${mch_List.mch_date }">
 													${mch_List.mch_date } </label>
 											</div>
 										</div>
@@ -504,7 +499,7 @@ $(document).ready(function() {
 												<div class="col-md-3"></div>
 												<div class="col-md-3">
 													<input class="btn btn-info matcing_accept_answer" 
-														id="${mch_List.mch_t_userid }" type="button" value="YES">
+														id="${mch_List.mch_t_userid }_${i.index}" type="button" value="YES">
 												</div>
 												<div class="col-md-3">
 													<input class="btn btn-info matcing_accept_answer" 
@@ -552,10 +547,36 @@ $(document).ready(function() {
 													${mch_List.mch_date }</label>
 											</div>
 										</div>
-									</div>
+										</div>
 									<br>
 									</c:if>
 								</c:forEach>
+								<div class="add_matching_section container-fluid">
+										<div class="add_accept col-lg-3">
+<%-- 											<input type="hidden" id="matched_condition_${i.index }" --%>
+<!-- 												value="1"> -->
+											<div class="add_img col-md-4">
+<!-- 												<img class="userid_img" src="img/profile.jpg" width="50px" -->
+<!-- 													height="50px"> -->
+											</div>
+											<div class="col-md-8">
+												<label class="add_mch_t_userid container-fluid control-label">
+													${mch_List.mch_t_userid }</label>
+											</div>
+										</div>
+										<div class="add_accepted_matching"
+											id="accepted_matching_${i.index }">
+											<div class="add_accepted_mch_contents col-lg-7">
+												<a href="board.do?b_idx=${mch_List.b_idx }"> <label
+													class="add_title container-fluid control-label"></label>
+												</a>
+											</div>
+											<div class="accepted_mch_date col-lg-2">
+												<label class="add_date container-fluid control-label"></label>
+											</div>
+										</div>
+								</div>
+								
 							</div>
 
 							<br> <br>

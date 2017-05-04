@@ -35,6 +35,7 @@ public class BoardService {
 	
 	public void insertNotice(BoardVo board, ContentsVo contents){
 		boardDao.insertBoard(board);
+		int boardIdx = board.
 		contentsDao.insertContents(contents);
 	}
 	

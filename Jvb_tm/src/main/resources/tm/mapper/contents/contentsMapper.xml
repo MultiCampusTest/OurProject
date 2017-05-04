@@ -14,8 +14,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 insertContents
 	
 
-	<insert id="insertBoard" parameterType="boardVo">
-		insert into board values
+	<insert id="insertContents" parameterType="contentsVo">
+		insert into contents values
 		(0, #{code}, #{locCategory},#{subCategory},
 			#{title},#{startDate},#{endDate},"admin",sysdate(),0)
 	</insert>

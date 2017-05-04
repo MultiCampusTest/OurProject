@@ -11,7 +11,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result column="ct_contents" property="contents"/>
 	</resultMap>
 	
-insertContents
+<!-- insertContents -->
 	
 
 	<insert id="insertContents" parameterType="contentsVo">
@@ -20,22 +20,22 @@ insertContents
 			#{title},#{startDate},#{endDate},"admin",sysdate(),0)
 	</insert>
 	
-	<select id="getBoardCountByCode" parameterType="String" resultType="int">
-		select count(*) from board where b_code=#{code}
-	</select>
+<!-- 	<select id="getBoardCountByCode" parameterType="String" resultType="int"> -->
+<!-- 		select count(*) from board where b_code=#{code} -->
+<!-- 	</select> -->
 	
-	<!-- select notice -->
-	<select id="selectNoticeBoardLimit" parameterType="java.util.HashMap"
-	resultMap="board">
-		select b_idx, b_title, userid, b_date from board 
-		where b_code=#{code} 
-		order by b_idx desc limit #{skip}, #{count}
-	</select>
+ 	<!-- select notice --> 
+<!-- 	<select id="selectNoticeBoardLimit" parameterType="java.util.HashMap" -->
+<!-- 	resultMap="board"> -->
+<!-- 		select b_idx, b_title, userid, b_date from board  -->
+<!-- 		where b_code=#{code}  -->
+<!-- 		order by b_idx desc limit #{skip}, #{count} -->
+<!-- 	</select> -->
 	
-	<select id="selectOneNotice" parameterType="int" resultMap="board">
-		select b_idx, b_code, b_title, b_date, b_readcount from board
-		where b_idx=#{boardIdx}
-	</select>
+<!-- 	<select id="selectOneNotice" parameterType="int" resultMap="board"> -->
+<!-- 		select b_idx, b_code, b_title, b_date, b_readcount from board -->
+<!-- 		where b_idx=#{boardIdx} -->
+<!-- 	</select> -->
 	
 	
 

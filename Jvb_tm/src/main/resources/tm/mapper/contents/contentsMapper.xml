@@ -11,8 +11,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result column="ct_contents" property="contents"/>
 	</resultMap>
 	
-<!-- insertContents -->
-	
 
 	<insert id="insertContents" parameterType="contentsVo">
 		insert into contents values

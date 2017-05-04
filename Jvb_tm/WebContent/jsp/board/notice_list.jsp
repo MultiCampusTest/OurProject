@@ -52,7 +52,7 @@
 						<td><a href="noticeView.do?boardIdx=${notice.boardIdx }"
 							style="text-decoration: none">${notice.title }</a></td>
 						<td>${notice.userid}</td>
-						<td><fmt:formatDate value="${notice.wrtieDate}"
+						<td><fmt:formatDate value="${notice.writeDate}"
 								pattern="yyyy-MM-dd" /></td>
 						<td></td>
 					</tr>

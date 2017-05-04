@@ -9,13 +9,10 @@
 .form-group{
 	margin-top: 10px;
 }
-
-hr{
-	margin-left: 230px;
-	margin-top: 30px;
-	max-width: 25%;
-}
 .glyphicon{
 	color: #FF605A;
 	margin-top: 10px;
+}
+.selector{
+	width: 310px;
 }

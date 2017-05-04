@@ -47,10 +47,13 @@ public class BoardController {
 	}
 	
 	@RequestMapping("noticeView.do")
-	public ModelAndView noticeView(int idx) {
+	public ModelAndView noticeView(HttpServletRequest req, int idx) {
+		String id = (String)(req.getSession().getAttribute("userid"));
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("notice",boardService.readNotice(idx)); 
+		mav.addObject("userid", id);
 		mav.setViewName("board/notice_view");
+		
 		return mav;
 	}
 

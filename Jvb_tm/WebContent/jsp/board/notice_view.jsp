@@ -56,8 +56,15 @@
          	æ»≥Á«œªÔ æ»≥Á«œªÔ æ»≥Á«œªÔ æ»≥Á«œªÔ æ»≥Á«œªÔ æ»≥Á«œªÔ æ»≥Á«œªÔ æ»≥Á«œªÔ æ»≥Á«œªÔ æ»≥Á«œªÔ æ»≥Á«œªÔ æ»≥Á«œªÔ 
          </p>
          <hr>
+         <c:choose>
+			<c:when test="${userid != admin }">
+				<input type="button" class="btn btn-primary" value="Modify"
+						style="float:right;" onclick="location.href='noticeModifyForm.do'">
+			</c:when>
+		</c:choose>
+		<br>
+		<br>
 
-         <!-- Blog Comments -->
 
          <!-- Comments Form -->
          <div class="well">

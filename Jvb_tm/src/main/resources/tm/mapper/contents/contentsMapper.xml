@@ -5,19 +5,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="tm.board.dao.IBoardDao">
 	
 	<resultMap type="contentsVo" id="contents">
-		<id column="ct_idx" 				property="contentsIdx"/>
-		<result column="b_code" 		property="code"/>
-		<result column="b_loc_category" property="locCategory"/>
+		<id column="ct_idx" 			property="contentsIdx"/>
+		<result column="b_idx" 			property="boardIdx"/>
+		<result column="ct_num" 		property="contentsNum"/>
 		<result column="b_sub_category" property="subCategory"/>
-		<result column="b_title" 		property="title"/>
-		<result column="b_start_date" 	property="startDate"/>
-		<result column="b_end_date"		property="endDate"/>
-		<result column="userid" 		property="userid"/>
-		<result column="b_date" 		property="writeDate"/>
 		<result column="b_readcount" 	property="readCount"/>
 	</resultMap>
 	
-
+insertContents
 	
 
 	<insert id="insertBoard" parameterType="boardVo">

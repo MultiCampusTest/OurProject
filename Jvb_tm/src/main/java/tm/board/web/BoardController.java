@@ -77,8 +77,9 @@ public class BoardController {
 	
 	@RequestMapping(method=RequestMethod.POST, value="noticeWrite.do")
 	public String noticeWrite(BoardVo board, ContentsVo contents){
-	
-		boardService.writeBoard(board, contents);
+		System.out.println(board.getTitle());
+		System.out.println(contents.getContents());
+		boardService.insertNotice(board, contents);
 		return "redirect:noticeList.do";
 	}
 

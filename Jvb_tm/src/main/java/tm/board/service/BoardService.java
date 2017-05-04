@@ -33,8 +33,9 @@ public class BoardService {
 	@Autowired
 	private IMapPositionDao mapPositionDao;
 	
-	public void writeBoard(BoardVo board, ContentsVo contents){
+	public void insertNotice(BoardVo board, ContentsVo contents){
 		boardDao.insertBoard(board);
+		contentsDao.insertContents(contents);
 	}
 	
 	//notice

@@ -2,16 +2,15 @@ package tm.board.vo;
 
 public class ContentsVo {
    
-	private int contentIdx;
+	private int contentsIdx;
 	private int boardIdx;
-	private int contentNum;
+	private int contentsNum;
 	private String contents;
-	
-	public int getContentIdx() {
-		return contentIdx;
+	public int getContentsIdx() {
+		return contentsIdx;
 	}
-	public void setContentIdx(int contentIdx) {
-		this.contentIdx = contentIdx;
+	public void setContentsIdx(int contentsIdx) {
+		this.contentsIdx = contentsIdx;
 	}
 	public int getBoardIdx() {
 		return boardIdx;
@@ -19,11 +18,11 @@ public class ContentsVo {
 	public void setBoardIdx(int boardIdx) {
 		this.boardIdx = boardIdx;
 	}
-	public int getContentNum() {
-		return contentNum;
+	public int getContentsNum() {
+		return contentsNum;
 	}
-	public void setContentNum(int contentNum) {
-		this.contentNum = contentNum;
+	public void setContentsNum(int contentsNum) {
+		this.contentsNum = contentsNum;
 	}
 	public String getContents() {
 		return contents;
@@ -31,6 +30,8 @@ public class ContentsVo {
 	public void setContents(String contents) {
 		this.contents = contents;
 	}
+	
+
    
   
 

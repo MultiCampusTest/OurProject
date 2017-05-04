@@ -2,14 +2,13 @@
 <!DOCTYPE mapper
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="tm.board.dao.IBoardDao">
+<mapper namespace="tm.board.dao.IContentsDao">
 	
 	<resultMap type="contentsVo" id="contents">
 		<id column="ct_idx" 			property="contentsIdx"/>
 		<result column="b_idx" 			property="boardIdx"/>
 		<result column="ct_num" 		property="contentsNum"/>
-		<result column="b_sub_category" property="subCategory"/>
-		<result column="b_readcount" 	property="readCount"/>
+		<result column="ct_contents" property="contents"/>
 	</resultMap>
 	
 insertContents

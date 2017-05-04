@@ -31,7 +31,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <!-- 	<include refid="title"></include> -->
 	
 
-	<insert id="insertBoard" parameterType="boardVo">
+	<insert id="insertBoard" parameterType="boardVo"
+		 	useGeneratedKeys="true" keyProperty="boardIdx">
 		insert into board values
 		(0, #{code}, #{locCategory},#{subCategory},
 			#{title},#{startDate},#{endDate},"admin",sysdate(),0)

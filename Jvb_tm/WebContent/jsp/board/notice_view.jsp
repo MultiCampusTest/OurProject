@@ -51,7 +51,8 @@
          	CONTENT
          </p>
          <p class="lead">
-         	${contents.contents}
+         <textarea readonly="readonly"  class="form-control-text"
+         		rows="10" style="width:100%;">${contents.contents}</textarea>
          </p>
          <hr>
          <c:choose>

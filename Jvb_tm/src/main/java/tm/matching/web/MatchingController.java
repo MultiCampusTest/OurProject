@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,17 +23,18 @@ public class MatchingController {
 	@Autowired
 	private MatchingService matchingService;
 	
-	@RequestMapping("matchingList.do")
-	public ModelAndView matchingList(String mch_g_userid){
-		String black="black";
-		ModelAndView mav=new ModelAndView();
-		mav.addAllObjects(matchingService.matchingList(black));
-		mav.setViewName("member/my_page");
-		return mav;
-	}
+//	@RequestMapping("matchingList.do")
+//	public ModelAndView matchingList(String mch_g_userid){
+//		String black="black";
+//		ModelAndView mav=new ModelAndView();
+//		mav.addAllObjects(matchingService.matchingList(black));
+//		mav.setViewName("member/my_page");
+//		return mav;
+//	}
 	
 	@RequestMapping(value="matchingSuccess.do", method=RequestMethod.POST)
-	public @ResponseBody HashMap<String, Object> matchingSuccess(String mch_t_userid, String mch_g_userid){
+	public @ResponseBody HashMap<String, Object> matchingSuccess(HttpSession session, String mch_t_userid){
+		String mch_g_userid=(String)session.getAttribute("userid");
 		HashMap<String, Object> params=new HashMap<>();
 		boolean result=matchingService.matchingModify(mch_t_userid, mch_g_userid);
 //		params.put("result", result);

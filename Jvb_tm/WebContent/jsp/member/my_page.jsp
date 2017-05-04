@@ -33,14 +33,19 @@ $(document).ready(function() {
 	   			 
 	   	            url : 'messageOneList.do',
 	   	            type : 'POST',
-	   	            data : 'msg_receive_userid=black&msg_send_userid='+result,
+	   	            data : 'msg_send_userid='+result,
 	   	            dataType : 'json',
 	   	            success : function(data) {
-	   	            	$('#msg_list'+id).text('MessageList');
+// 					      var closeLabel='</label>';
+// 						$('#msg_box_selectOne'+id).clear();
+	   	            	$('#msg_box_selectOne'+id).text('MessageList');
 	   	            	
 		   	            for(var i=0; i<data.length; i++){
-		   	            	$('#msg_list'+id).append('<br>');
-		   	            	$('#msg_list'+id).append(data[i].msg_contents);
+					      var add_Label='<label class="msg_list message_panel message_out container-fluid control-label">'+data[i].msg_contents+'</label>';
+		   	            	$('#msg_box_selectOne'+id).append('<br>');
+		   	            	$('#msg_box_selectOne'+id).append(add_Label);
+// 		   	            	$('#msg_box_selectOne'+id).append(data[i].msg_contents);
+// 		   	            	$('#msg_box_selectOne'+id).append(closeLabel);
 	   	            	}   
 	   	            },
 	   	            error : function(){
@@ -60,19 +65,24 @@ $(document).ready(function() {
 		var send_msg_contents=$('#send_msg_contents'+realid).val();
 // 		alert(send_msg_contents);
 		
+		
 		$.ajax({
   			 
 	            url : 'sendMessage.do',
 	            type : 'POST',
-	            data : 'msg_receive_userid=black&msg_send_userid='+result+'&msg_contents='+send_msg_contents,
+	            data : 'msg_send_userid='+result+'&msg_contents='+send_msg_contents,
 	            dataType : 'json',
 	            success : function(data) {
 	            
 	            	$('#send_msg_contents'+realid).val("");
 	            	$('#msg_list'+id).text('MessageList');
 	   	           
-	   	            $('#msg_list'+realid).append('<br>');
-	   	            $('#msg_list'+realid).append(send_msg_contents);
+	            	var add_Label='<label class="msg_list message_panel message_out container-fluid control-label">'+send_msg_contents+'</label>';
+	   	            $('#msg_box_selectOne'+realid).append('<br>');
+	   	            $('#msg_box_selectOne'+realid).append(add_Label);
+	            	
+// 	   	            $('#msg_list'+realid).append('<br>');
+// 	   	            $('#msg_list'+realid).append(send_msg_contents);
 	            	  
 	            },
 	            error : function(){
@@ -113,7 +123,7 @@ $(document).ready(function() {
 	  			 
 		            url : 'matchingSuccess.do',
 		            type : 'POST',
-		            data : 'mch_g_userid=black&mch_t_userid='+readid,
+		            data : 'mch_t_userid='+readid,
 		            dataType : 'json',
 		            success : function(data) {
 		            	
@@ -122,6 +132,7 @@ $(document).ready(function() {
 		            		$('.add_mch_t_userid').append(readid);
 		            		$('.add_title').append('해당 게시글 번호'+board_title);
 		            		$('.add_date').append(matching_date);
+		            		$('.add_href_b_idx').attr('href', 'board.do?b_idx='+board_title);
 		            		$('#mathing_section'+board_idx).remove();
 		            		
 		            	  
@@ -131,6 +142,12 @@ $(document).ready(function() {
 	// 	               $('#send_msg_contents'+realid).val("");
 		            }
 		      });
+
+		}
+		
+		
+		else if(responseValue=='NO'){
+			$('#mathing_section'+board_idx).remove();
 		}
 		
 	});
@@ -403,9 +420,10 @@ $(document).ready(function() {
 										</div>
 										<div class="msg_contents_box col-lg-9"
 											id="msg_box_${i.index }">
-											<div class="msg_box" id="msg_box_selectOne">
-												<label class="msg_list container-fluid control-label" id="msg_list${i.index }">MessageList</label>
-											</div>
+												<div class="msg_box" id="msg_box_selectOne${i.index }">
+													<label class="msg_list container-fluid control-label">
+														MessageList</label>
+												</div>
 											<div class="panel panel-default">
 												<div class="panel-body">
 													 <textarea class="form-control counted" name="msg_contents" id="send_msg_contents${i.index }"
@@ -504,7 +522,7 @@ $(document).ready(function() {
 												</div>
 												<div class="col-md-3">
 													<input class="btn btn-info matcing_accept_answer" 
-														id="${mch_List.mch_t_userid }" type="button" value="NO">
+														id="${mch_List.mch_t_userid }_${i.index}" type="button" value="NO">
 												</div>
 												<div class="col-md-3"></div>
 												<br> <br>
@@ -554,11 +572,7 @@ $(document).ready(function() {
 								</c:forEach>
 								<div class="add_matching_section container-fluid">
 										<div class="add_accept col-lg-3">
-<%-- 											<input type="hidden" id="matched_condition_${i.index }" --%>
-<!-- 												value="1"> -->
 											<div class="add_img col-md-4">
-<!-- 												<img class="userid_img" src="img/profile.jpg" width="50px" -->
-<!-- 													height="50px"> -->
 											</div>
 											<div class="col-md-8">
 												<label class="add_mch_t_userid container-fluid control-label">
@@ -568,7 +582,7 @@ $(document).ready(function() {
 										<div class="add_accepted_matching"
 											id="accepted_matching_${i.index }">
 											<div class="add_accepted_mch_contents col-lg-7">
-												<a href="board.do?b_idx=${mch_List.b_idx }"> <label
+												<a class="add_href_b_idx" href="board.do?b_idx=${mch_List.b_idx }"> <label
 													class="add_title container-fluid control-label"></label>
 												</a>
 											</div>

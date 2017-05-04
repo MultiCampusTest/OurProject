@@ -107,6 +107,12 @@
 		     transition: all 0.3s ease-in-out; }
 
 
+.msg_contents_box{
+	max-height: 300px;
+	overflow: auto;
+}
+
+
 	.message_section:hover,
 	.message_section:active,
 	.matching_section:hover,
@@ -134,3 +140,28 @@
 		background-color: #ffffff;
 		border-color: transparent;
 	}
+	
+	
+	
+	.message_panel{
+    font-size: 1.2em;
+    width: auto;
+    max-width:300px;
+    border-radius: 15px;
+    padding: 10px;
+    margin-bottom: 5px;
+    color:#000000;
+}
+.message_in {
+    background-color: #E5E5EA;
+    margin-left: 20px;
+
+}
+.message_out{
+	font-size:15px;
+    background-color : #000000;
+    border:1px solid;
+    color:#000000;
+    margin-right: 20px;
+    color: #FFFFFF;
+}

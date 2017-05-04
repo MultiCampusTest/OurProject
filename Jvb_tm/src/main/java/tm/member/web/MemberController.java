@@ -14,15 +14,24 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
+import tm.matching.service.MatchingService;
 import tm.member.service.MemberService;
 import tm.member.vo.MemberVo;
+import tm.message.service.MessageService;
 
 @Controller
 public class MemberController {
 	
 	@Autowired
 	private MemberService memberService;
+	
+	@Autowired
+	private MessageService messageService;
+	
+	@Autowired
+	private MatchingService matchingService;
 	
 	//로그인 페이지  
 	@RequestMapping("loginForm.do")
@@ -44,8 +53,20 @@ public class MemberController {
 	
 	//마이페이지
 	@RequestMapping("myPage.do")
-	public String maindo() {
-		return "member/my_page";
+	public ModelAndView maindo(HttpSession session) {
+		String userid=(String)session.getAttribute("userid");
+		System.out.println(session.getAttribute("userid"));
+		HashMap<String, Object> params=new HashMap<>();
+		params.put("userid", userid);
+		
+		
+		ModelAndView mav=new ModelAndView();
+		mav.addAllObjects(messageService.messageList(userid));
+		mav.addAllObjects(matchingService.matchingList(userid));
+		mav.addAllObjects(params);
+		mav.setViewName("member/my_page");
+		return mav;
+//		return "member/my_page";
 	}
 	
 	//로그인 요청페이지
@@ -57,19 +78,19 @@ public class MemberController {
 	//로그인 유효성 검사 요청
 	@RequestMapping(method=RequestMethod.POST, value="login.do")
 	public String login(HttpSession session, String userid, String pwd) {
-//		if(memberService.checkLogin(userid, pwd)) {
-//			session.setAttribute("userid", userid);
-//			session.setAttribute("pwd", pwd);
-//			return "redirect:main.do";
-//		} else {
-//			return "redirect:loginForm.do";			
-//		}
-		if(userid.equals("admin")){
+		if(memberService.checkLogin(userid, pwd)) {
 			session.setAttribute("userid", userid);
+			session.setAttribute("pwd", pwd);
 			return "redirect:main.do";
-		}else{
-			return "redirect:loginForm.do";
+		} else {
+			return "redirect:loginForm.do";			
 		}
+//		if(userid.equals("admin")){
+//			session.setAttribute("userid", userid);
+//			return "redirect:main.do";
+//		}else{
+//			return "redirect:loginForm.do";
+//		}
 	}
 
 	//로그아웃 요청

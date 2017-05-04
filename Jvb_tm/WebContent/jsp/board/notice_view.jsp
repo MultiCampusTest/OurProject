@@ -34,7 +34,7 @@
 
          <!-- Date/Time -->
          <p><span class="glyphicon glyphicon-time"></span> 
-         <fmt:formatDate value="${notice.date}" pattern="yyyy-MM-dd" /></p>
+         <fmt:formatDate value="${notice.writeDate}" pattern="yyyy-MM-dd" /></p>
          <hr>
 		
 		<p class="lead" style="font-size:25px;">
@@ -71,7 +71,7 @@
              <h4>Leave a Comment:</h4>
              <form role="form" action="commentsWrite.do" method="post">
                  <div class="form-group">
-                 	 <input type="hidden" name="b_idx" value="${notice.idx }">
+                 	 <input type="hidden" name="b_idx" value="${notice.boardIdx }">
                      <textarea class="form-control" name="cm_content" rows="3"></textarea>
                  </div>
 <!--                  <button type="submit" class="btn btn-primary">Submit</button> -->
@@ -82,11 +82,11 @@
          <hr>
          <!-- Comment -->
         <c:choose>
-        	<c:when test="${comments !=null }">
+        	<c:when test="${comments ==null }">
         		댓글이 없습니다.
         	</c:when>
         	<c:otherwise>
-<%--         		<c:forEach var="comments" items="${comments}" varStatus="status"> --%>
+        		<c:forEach var="comments" items="${comments}" varStatus="status">
         			<div class="media" style="margin-left : ${20*comments.cm_depth}px">
            				<a class="pull-left" href="#">
                  		<img class="media-object" src="http://placehold.it/64x64" alt="">
@@ -100,6 +100,7 @@
               			<a href="#"> 삭제</a>
               			<a href="#"> 수정</a>
           		    </div>
+          		</c:forEach>
         	</c:otherwise>
         </c:choose>
 		

@@ -26,8 +26,8 @@ $(document).ready(function() {
 	$('.sender').on('click', function() {
 	      var id = $(this).attr('id');
 	      var result= $('#name'+id).html();
+// 	      alert(result);
 	      var msg_list=$('.msg_list').html();
-	      
 
 	   		 $.ajax({
 	   			 
@@ -36,16 +36,22 @@ $(document).ready(function() {
 	   	            data : 'msg_send_userid='+result,
 	   	            dataType : 'json',
 	   	            success : function(data) {
-// 					      var closeLabel='</label>';
-// 						$('#msg_box_selectOne'+id).clear();
 	   	            	$('#msg_box_selectOne'+id).text('MessageList');
 	   	            	
+	   	            	
 		   	            for(var i=0; i<data.length; i++){
-					      var add_Label='<label class="msg_list message_panel message_out container-fluid control-label">'+data[i].msg_contents+'</label>';
-		   	            	$('#msg_box_selectOne'+id).append('<br>');
-		   	            	$('#msg_box_selectOne'+id).append(add_Label);
-// 		   	            	$('#msg_box_selectOne'+id).append(data[i].msg_contents);
-// 		   	            	$('#msg_box_selectOne'+id).append(closeLabel);
+// 	   	            		alert(data[i].msg_send_userid);
+		   	            	if(data[i].msg_send_userid==result){
+						      	var add_Label='<label class="msg_list message_panel message_in container-fluid control-label">'+data[i].msg_contents+'</label>';
+			   	            	$('#msg_box_selectOne'+id).append('<br>');
+			   	            	$('#msg_box_selectOne'+id).append(add_Label);
+		   	            	}
+		   	            	else{
+		   	            		var add_Label='<label class="msg_list message_panel message_out container-fluid control-label">'+data[i].msg_contents+'</label>';
+			   	            	$('#msg_box_selectOne'+id).append('<br>');
+			   	            	$('#msg_box_selectOne'+id).append(add_Label);
+		   	            	}
+		   	            	
 	   	            	}   
 	   	            },
 	   	            error : function(){
@@ -420,8 +426,8 @@ $(document).ready(function() {
 										</div>
 										<div class="msg_contents_box col-lg-9"
 											id="msg_box_${i.index }">
-												<div class="msg_box" id="msg_box_selectOne${i.index }">
-													<label class="msg_list container-fluid control-label">
+												<div class="msg_box">
+													<label class="msg_list container-fluid control-label" id="msg_box_selectOne${i.index }" >
 														MessageList</label>
 												</div>
 											<div class="panel panel-default">

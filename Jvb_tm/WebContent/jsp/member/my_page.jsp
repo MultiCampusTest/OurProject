@@ -97,6 +97,7 @@ $(document).ready(function() {
 // 		alert(responseValue);
 		
 		
+		
 		var add_img='<img class="userid_img" src="img/profile.jpg" width="50px" height="50px">'
 		var board_title=$('.board_title').attr('id');
 // 		alert(board_title);

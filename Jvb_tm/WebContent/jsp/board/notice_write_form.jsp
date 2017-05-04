@@ -16,28 +16,28 @@
 
      <!-- Notice Input Column -->
      <div class="col-lg-12">
+		 <form class="form" action="noticeWrite.do" method="post">
      	 <p class="lead" style="font-size: 50px">
      	 	NOTICE
      	 </p>
 	
 		 <hr>
-		 <form class="form" action="noticeWrite.do" method="post">
          <!-- Title -->
-         <p class="lead">
-         	TITLE:
+         <p class="lead" style="font-size:25px;">
+         	TITLE
          </p>
          <input type="text" placeholder="Insert Title " class="form-control" name="title"/>
 
          <hr>
 
          <!-- Content -->
-         <p class="lead">
-         	CONTENT:
+         <p class="lead" style="font-size:25px;">
+         	CONTENT
          </p>
          <textarea placeholder="Insert content " class="form-control-text" rows="10" name="contents"></textarea>
 
 		 <!-- Widget -->
-		 <div class="form-group">
+		 <div class="form-group" style="float:right">
 			<input type="submit" value="ok" class="btn btn-primary">
 			<input type="button" value="list" class="btn btn-primary" onclick="location.href='noticeList.do'">
 		</div>

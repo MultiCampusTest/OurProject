@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class BoardVo {
 	
-	private int idx;
+	private int boardIdx;
 	private String code;
 	private String locCategory;
 	private String subCategory;
@@ -12,14 +12,15 @@ public class BoardVo {
 	private Date startDate;
 	private Date endDate;
 	private String userid;
-	private Date date;
+	private Date writeDate;
 	private int readCount;
 	
-	public int getIdx() {
-		return idx;
+	
+	public int getBoardIdx() {
+		return boardIdx;
 	}
-	public void setIdx(int idx) {
-		this.idx = idx;
+	public void setBoardIdx(int boardIdx) {
+		this.boardIdx = boardIdx;
 	}
 	public String getCode() {
 		return code;
@@ -63,11 +64,11 @@ public class BoardVo {
 	public void setUserid(String userid) {
 		this.userid = userid;
 	}
-	public Date getDate() {
-		return date;
+	public Date getWriteDate() {
+		return writeDate;
 	}
-	public void setDate(Date date) {
-		this.date = date;
+	public void setWriteDate(Date writeDate) {
+		this.writeDate = writeDate;
 	}
 	public int getReadCount() {
 		return readCount;
@@ -75,6 +76,10 @@ public class BoardVo {
 	public void setReadCount(int readCount) {
 		this.readCount = readCount;
 	}
+	
+	
+
+
 	
 	
 	

@@ -13,6 +13,7 @@ public class BoardVo {
 	private Date endDate;
 	private String userid;
 	private Date date;
+	private int readCount;
 	
 	public int getIdx() {
 		return idx;
@@ -68,6 +69,13 @@ public class BoardVo {
 	public void setDate(Date date) {
 		this.date = date;
 	}
+	public int getReadCount() {
+		return readCount;
+	}
+	public void setReadCount(int readCount) {
+		this.readCount = readCount;
+	}
+	
 	
 	
 	

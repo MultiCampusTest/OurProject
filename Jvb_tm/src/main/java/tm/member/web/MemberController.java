@@ -64,6 +64,12 @@ public class MemberController {
 		} else {
 			return "redirect:loginForm.do";			
 		}
+//		if(userid.equals("admin")){
+//			session.setAttribute("userid", userid);
+//			return "redirect:main.do";
+//		}else{
+//			return "redirect:loginForm.do";
+//		}
 	}
 
 	//로그아웃 요청

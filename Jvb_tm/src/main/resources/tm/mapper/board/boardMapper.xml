@@ -14,6 +14,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result column="b_end_date"		property="endDate"/>
 		<result column="userid" 		property="userid"/>
 		<result column="b_date" 		property="date"/>
+		<result column="b_readcount" 	property="readCount"/>
 	</resultMap>
 	
 <!-- 	<sql id="content"> -->
@@ -33,7 +34,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<insert id="insertBoard" parameterType="boardVo">
 		insert into board values
 		(0, #{code}, #{locCategory},#{subCategory},
-			#{title},#{startDate},#{endDate},"admin",sysdate())
+			#{title},#{startDate},#{endDate},"admin",sysdate(),0)
 	</insert>
 	
 	<select id="getBoardCountByCode" parameterType="String" resultType="int">
@@ -46,6 +47,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select b_idx, b_title, userid, b_date from board 
 		where b_code=#{code} 
 		order by b_idx desc limit #{skip}, #{count}
+	</select>
+	
+	<select id="selectOneNotice" parameterType="int" resultMap="board">
+		select b_idx, b_code, b_title, b_date, b_readcount from board
+		where b_idx=#{idx}
 	</select>
 	
 	

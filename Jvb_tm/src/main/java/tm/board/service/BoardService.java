@@ -70,4 +70,13 @@ public class BoardService {
 
 		return result;
 	}
+	
+	//공지사항 세부글 얻어오기
+	public BoardVo readNotice(int idx){
+		BoardVo board = boardDao.selectOneNotice(idx);
+		board.setReadCount(board.getReadCount()+1);
+//		boardDao.updateNotice(board);
+		return board;
+				
+	}
 }

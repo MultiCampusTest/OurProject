@@ -49,10 +49,10 @@
 				<c:forEach items="${noticeList}" var="notice">
 					<tr>
 						<td>${notice.idx }</td>
-						<td><a href="noticeView.do?num=${notice.idx }"
+						<td><a href="noticeView.do?idx=${notice.idx }"
 							style="text-decoration: none">${notice.title }</a></td>
 						<td>${notice.userid}</td>
-						<td><fmt:formatDate value="${notice.date }"
+						<td><fmt:formatDate value="${notice.date}"
 								pattern="yyyy-MM-dd" /></td>
 						<td></td>
 					</tr>
@@ -71,14 +71,41 @@
 
 		<div class="jb-center">
 			<ul class="pagination">
-				<li><a href="#"><span
-						class="glyphicon glyphicon-chevron-left"></span></a></li>
-				<c:forEach begin="1" end="10" step="1" varStatus="i">
-					<li class="paging ${i.index eq pageNum ? 'active' : '' }"><a
-						href="#">${i.index}</a></li>
-				</c:forEach>
-				<li><a href="#"><span
-						class="glyphicon glyphicon-chevron-right"></span></a></li>
+				<li>
+				 <c:choose>
+				 	<c:when test="${current != 1 }">
+				 		<a href="noticeList.do?page=${current-1}"><span
+						class="glyphicon glyphicon-chevron-left"></span></a>
+				 	</c:when>
+				 	<c:otherwise>
+				 		<a><span class="glyphicon glyphicon-chevron-left"></span></a>
+				 	</c:otherwise>
+				 </c:choose>
+				 </li>
+				 				
+				<c:forEach begin="${start }" end="${end }" var="i">
+						<c:choose>
+							<c:when test="${i == current }">
+								<li class="paging active"><a>${i }</a></li>
+							</c:when>
+							<c:otherwise>
+								<li class="paging"><a href="noticeList.do?page=${i}">${i }</a></li>
+							</c:otherwise>
+						</c:choose>
+					</c:forEach>
+					
+				<li>
+					<c:choose>
+						<c:when test="${current != last }">
+						<a href="noticeList.do?page=${current+1}"><span
+							class="glyphicon glyphicon-chevron-right"></span></a>
+						</c:when>
+						<c:otherwise>
+							<a><span
+							class="glyphicon glyphicon-chevron-right"></span></a>
+						</c:otherwise>
+					</c:choose>
+				</li>
 			</ul>
 		</div>
 

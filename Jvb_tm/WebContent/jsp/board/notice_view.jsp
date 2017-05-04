@@ -1,6 +1,7 @@
   <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>    
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -26,18 +27,29 @@
 
          <!-- Author -->
          <p class="lead">
-             by <a href="#">Admin</a>
+             by Admin
          </p>
 
          <hr>
 
          <!-- Date/Time -->
-         <p><span class="glyphicon glyphicon-time"></span> Posted on August 24, 2013 at 9:00 PM</p>
-
+         <p><span class="glyphicon glyphicon-time"></span> 
+         <fmt:formatDate value="${notice.date}" pattern="yyyy-MM-dd" /></p>
+         <hr>
+		
+		<p class="lead" style="font-size:25px;">
+         	TITLE
+         </p>
+        <p class="lead">
+        	${notice.title }
+        </p>
+         
          <hr>
 
-
          <!-- Post Content -->
+         <p class="lead" style="font-size:25px;">
+         	CONTENT
+         </p>
          <p class="lead">
          	©╘╠Б╟║ ╟ЬаЖ╩Ггвю╩ ╬╡╢б ╟Вюл╬ъ. OTL ╩О╩О╩О╩О го╩О 
          	гьаж╩О ╬хЁГго╩О ╬хЁГго╩О╬хЁГго╩О╬хЁГго╩О╬хЁГго╩О╬хЁГго╩О╬хЁГго╩О╬хЁГго╩О╬хЁГго╩О╬хЁГго╩О╬хЁГго╩О╬хЁГго╩О╬хЁГго╩О╬хЁГго╩О╬хЁГго╩О╬хЁГго╩О

@@ -47,8 +47,11 @@ public class BoardController {
 	}
 	
 	@RequestMapping("noticeView.do")
-	public String noticeView() {
-		return "board/notice_view";
+	public ModelAndView noticeView(int idx) {
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("notice",boardService.readNotice(idx)); 
+		mav.setViewName("board/notice_view");
+		return mav;
 	}
 
 	@RequestMapping("noticeWriteForm.do")

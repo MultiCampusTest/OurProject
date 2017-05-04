@@ -16,7 +16,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import tm.board.service.BoardService;
+import tm.board.service.CommentsService;
 import tm.board.vo.BoardVo;
+import tm.board.vo.CommentsVo;
 import tm.board.vo.ContentsVo;
 
 @Controller
@@ -24,6 +26,8 @@ public class BoardController {
 	  
 	@Autowired
 	private BoardService boardService;
+	@Autowired
+	private CommentsService commentsService;
 	
 	//메인화면
 	@RequestMapping("main.do")
@@ -50,6 +54,14 @@ public class BoardController {
 	@RequestMapping("noticeWriteForm.do")
 	public String noticeWriteForm() {
 		return "board/notice_write_form";
+	}
+	
+	@RequestMapping("commentsWrite.do")
+	public ModelAndView noticeWrite(CommentsVo comments){
+		ModelAndView mav = new ModelAndView();
+		commentsService.insertComments(comments);
+		mav.setViewName("board/novice_view");
+		return mav;
 	}
 
 	@RequestMapping("noticeModifyForm.do")

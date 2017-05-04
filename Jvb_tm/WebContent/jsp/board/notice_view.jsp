@@ -50,9 +50,9 @@
          <!-- Comments Form -->
          <div class="well">
              <h4>Leave a Comment:</h4>
-             <form role="form" action="noticeWrite.do" method="post">
+             <form role="form" action="commentsWrite.do" method="post">
                  <div class="form-group">
-                 	 <input type="hidden" name="b_idx" value="${board.b_idx }">
+                 	 <input type="hidden" name="b_idx" value="${notice.idx }">
                      <textarea class="form-control" name="cm_content" rows="3"></textarea>
                  </div>
 <!--                  <button type="submit" class="btn btn-primary">Submit</button> -->

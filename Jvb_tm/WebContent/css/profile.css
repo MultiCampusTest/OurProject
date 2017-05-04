@@ -108,7 +108,7 @@
 
 
 .msg_contents_box{
-	max-height: 300px;
+	max-height: 500px;
 	overflow: auto;
 }
 
@@ -142,37 +142,37 @@
 	}
 	
 	
-	.msg_box{
-		position: relative;
-	}
-	
-	
 	.message_panel{
     font-size: 1.2em;
+    text-align:left;
 /*     width: auto; */
 /*     max-width:300px; */
-	width:300px;
+	width:200px;
     border-radius: 15px;
     padding: 10px;
     margin-bottom: 5px;
-    color:#000000;
+/*     color:#000000; */
 }
 .message_in {
-/* 	position:absolute; */
-/* 	display:block; */
-	text-align:left;
 	font-size:15px;
-    background-color : #000000;
+    background-color : #FFFFFF;
     border:1px solid;
-    color:#000000;
-    margin-right: 100px;
-    color: #FFFFFF;
+    border-color:#FF9D9A;
+    color:#FF605A;
+    margin-left: 20px;
 }
 .message_out{
-	
-/*     position:absolute; */
-/* 	display:block; */
-	text-align:right;
-    background-color: #00ff00;
-    margin-left: 100px;
+    background-color: #FFFFFF;
+    border:1px solid;
+    border-color:#FF9D9A;
+    color:#757575;
+    margin-right: 20px;
 }
+
+
+.msg_time{
+	font-size: 10px;
+	text-align: left;
+	margin-right:10px; 
+}
+

@@ -42,12 +42,14 @@ $(document).ready(function() {
 		   	            for(var i=0; i<data.length; i++){
 // 	   	            		alert(data[i].msg_send_userid);
 		   	            	if(data[i].msg_send_userid==result){
-						      	var add_Label='<label class="msg_list message_panel message_in container-fluid control-label">'+data[i].msg_contents+'</label>';
+						      	var add_Label='<div class="msg_list message_panel message_in container-fluid">'+data[i].msg_contents+'<label class="msg_time container-fluid">'+data[i].msg_date+'</label></div>';
+						 
 			   	            	$('#msg_box_selectOne'+id).append('<br>');
 			   	            	$('#msg_box_selectOne'+id).append(add_Label);
+// 			   	            	$('#msg_box_selectOne'+id).append(add_time);
 		   	            	}
 		   	            	else{
-		   	            		var add_Label='<label class="msg_list message_panel message_out container-fluid control-label">'+data[i].msg_contents+'</label>';
+		   	            		var add_Label='<div class="msg_list message_panel message_out container-fluid">'+data[i].msg_contents+'<label class="msg_time container-fluid">'+data[i].msg_date+'</label></div>';
 			   	            	$('#msg_box_selectOne'+id).append('<br>');
 			   	            	$('#msg_box_selectOne'+id).append(add_Label);
 		   	            	}
@@ -81,11 +83,11 @@ $(document).ready(function() {
 	            success : function(data) {
 	            
 	            	$('#send_msg_contents'+realid).val("");
-	            	$('#msg_list'+id).text('MessageList');
-	   	           
-	            	var add_Label='<label class="msg_list message_panel message_out container-fluid control-label">'+send_msg_contents+'</label>';
-	   	            $('#msg_box_selectOne'+realid).append('<br>');
-	   	            $('#msg_box_selectOne'+realid).append(add_Label);
+// 	            	$('#msg_box_selectOne'+realid).text('MessageList');
+	   	            
+	   	       		var add_Label='<div class="msg_list message_panel message_out container-fluid">'+send_msg_contents+'<label class="msg_time container-fluid">'+data[i].msg_date+'</label></div>';
+	            	$('#msg_box_selectOne'+realid).append('<br>');
+	            	$('#msg_box_selectOne'+realid).append(add_Label);
 	            	
 // 	   	            $('#msg_list'+realid).append('<br>');
 // 	   	            $('#msg_list'+realid).append(send_msg_contents);
@@ -426,15 +428,15 @@ $(document).ready(function() {
 										</div>
 										<div class="msg_contents_box col-lg-9"
 											id="msg_box_${i.index }">
-												<div class="msg_box">
-													<label class="msg_list container-fluid control-label" id="msg_box_selectOne${i.index }" >
-														MessageList</label>
+												<div class="msg_box" id="msg_box_selectOne${i.index }">
+													<div class="msg_list container-fluid">
+														MessageList</div>
 												</div>
 											<div class="panel panel-default">
 												<div class="panel-body">
 													 <textarea class="form-control counted" name="msg_contents" id="send_msg_contents${i.index }"
 															placeholder="Type in your message 메시지 입력" rows="5"
-															style="margin-bottom: 10px;"></textarea>
+															style="margin-bottom: 10px; resize: none"></textarea>
 														<h6 class="pull-right" id="counter">320 characters remaining</h6>
 													<input class="btn btn-info send_msg_button" type="submit" value="Post New Message" id="submit_msg${i.index }">										
 												</div>

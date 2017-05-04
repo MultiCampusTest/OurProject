@@ -20,6 +20,7 @@
 			<param name="ConversionPattern"
 				value="%t> [%d{yyyy-MM-dd HH:mm}] %5p [%C{1}(%M:%L)] :%m%n%n" />
 		</layout>
+		
 	</appender>
 
 	<!-- 특정 크기마다 백업하며 로그 -->

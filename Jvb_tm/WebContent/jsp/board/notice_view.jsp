@@ -11,6 +11,28 @@
 <link href="css/noticeView.css" rel="stylesheet">
   
 <title>Insert title here</title>
+
+<script type="text/javascript">
+	function commentsInput(cm_idx){
+		var form  = document.reForm;
+		var div = document.getElementById("commentsDiv"+cm_idx);
+		var div2 = document.getElementById("reComments");
+		div2.style.display="";
+		
+		form.cm_content.value = "";
+		form.cm_parent.value=cm_idx;
+		div.appendChild(div2);
+	}
+	
+	function hideDiv(id){
+	    var div = document.getElementById(id);
+	    div.style.display = "none";
+	    document.body.appendChild(div);
+	}
+	function commentsCancel(){
+	    hideDiv("reComments");
+	} 
+</script>
 </head>
 <body>
  <div class="container">
@@ -78,9 +100,24 @@
                  <input type="submit" value="등록" class="btn btn-primary">
              </form>
          </div>
+         
+<!--         reComments input, nondisplay -->
+         <div class="well" style="display: none;" id="reComments">
+             <h4>Leave a Comment:</h4>
+             <form role="form" action="commentsWrite.do" method="post" name="reForm">
+                 <div class="form-group">
+                 	 <input type="hidden" name="b_idx" value="${notice.boardIdx }">
+                 	 <input type="hidden" name="cm_writer" value="${userid}">
+                 	 <input type="hidden" name="cm_parent" >
+                     <textarea class="form-control" name="cm_content" rows="3"></textarea>
+                 </div>
+                 <input type="submit" value="등록" class="btn btn-primary">
+                 <input type="button" value="취소" class="btn btn-primary" onclick="commentsCancel()">
+             </form>
+         </div>
 
          <hr>
-         <!-- Comment -->
+         <!-- Comment List -->
         <c:choose>
         	<c:when test="${comments ==null }">
         		댓글이 없습니다.
@@ -92,13 +129,17 @@
                  		<img class="media-object" src="http://placehold.it/64x64" alt="">
             			</a>
              			<div class="media-body">
-                 		<h4 class="media-heading">${comments.cm_writer }작성자
-                      		<small>${comments.cm_date }작성날짜</small>
+                 		<h4 class="media-heading">${comments.cm_writer }
+                 		<input type="hidden" name="cm_idx" value="${comments.cm_idx}">
+                      		<small>${comments.cm_date }</small>
                   		</h4>
-                  			${comments.cm_content }내용
+                  		<div id="commentsDiv${comments.cm_idx}">
+                  			${comments.cm_content }
+                  		</div>
               			</div>
               			<a href="#"> 삭제</a>
               			<a href="#"> 수정</a>
+              			<a onclick="commentsInput(${comments.cm_idx})"> 댓글</a>
           		    </div>
           		</c:forEach>
         	</c:otherwise>

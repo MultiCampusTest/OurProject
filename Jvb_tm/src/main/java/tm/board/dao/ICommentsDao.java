@@ -9,9 +9,11 @@ public interface ICommentsDao {
 	
 //	insert시 필요한 Dao
 	public CommentsVo selectOneByParent(String cm_parent);
-	public CommentsVo updateByOrder(CommentsVo comments);
+	public int updateByOrder(CommentsVo comments);
 	public int selectOneMaxOrder(String b_idx);
 	public int insertComments(CommentsVo comments);
+	public int selectMaxOrderToParent(CommentsVo comments);
+	public int updateOrderPlus(CommentsVo commentsVo);
 	
 //	select시 필요한 Dao
 	public List<CommentsVo> selectByIdxComments(int b_idx);

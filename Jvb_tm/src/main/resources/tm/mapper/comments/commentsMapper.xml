@@ -7,7 +7,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectOneByParent" resultType="CommentsVo" parameterType="String">
 		SELECT b_idx, cm_depth+1 cm_depth, cm_order 
     	FROM comments
-    	WHERE cm_idx=#{cm_idx}
+    	WHERE cm_idx=#{cm_parent}
 	</select>
 	
 	<select id="selectOneMaxOrder" resultType="Integer" parameterType="String">
@@ -28,7 +28,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <!--         </selectKey> -->
     
         INSERT INTO comments(b_idx, cm_idx, cm_writer, cm_content, cm_order, cm_parent, cm_depth)
-        VALUES (#{b_idx}, #{cm_idx}, #{cm_writer}, #{cm_content}, #{cm_depth},
+        VALUES (#{b_idx}, #{cm_idx}, #{cm_writer}, #{cm_content}, #{cm_order},
                    <choose>
                        <when test="cm_parent==null">#{cm_idx}, 0</when>
                        <otherwise>#{cm_parent}, #{cm_depth}</otherwise>
@@ -36,41 +36,25 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
                )
     </insert>
     
+<!--     리스트 출력 -->
      <select id="selectByIdxComments" resultType="CommentsVo" parameterType="int">
-        SELECT b_idx, cm_idx, cm_writer, cm_content, cm_date 
-          FROM comments
+        SELECT b_idx, cm_idx, cm_writer, cm_content, cm_date, cm_parent, cm_depth, cm_order
+         FROM comments
          WHERE b_idx=#{b_idx}
-         ORDER BY cm_idx
+         ORDER BY cm_order ASC 
     </select>
     
-
-	<insert id="commentsInsert" parameterType="CommentsVo">
-		insert into comments
-		values(
-		0, #{b_idx}, #{userid}, #{cm_contents}, sysdate(),
-		#{parent_code}, #{group_seq}, #{group_lv})
-	</insert>
-
-	<update id="commentsUpdate" parameterType="java.util.HashMap">
-		update comments set
-		cm_contents=#{cm_contents},
-		cm_date=sysdate()
+<!--     부모중 가장큰 order찾기 -->
+	<select id="selectMaxOrderToParent" resultType="int" parameterType="CommentsVo">
+		SELECT IFNULL(MAX(cm_order),0)
+		FROM comments
+		WHERE b_idx=#{b_idx} AND cm_parent=#{cm_parent}
+	</select>
+<!-- 	댓글이 생기면서 그 아래에 있는것들은 order+1 -->
+	<update id="updateOrderPlus" parameterType="CommentsVo">
+		UPDATE comments
+		SET	cm_order=cm_order+1
+		WHERE b_idx=#{b_idx} AND cm_order>=#{cm_order}
 	</update>
-
-	<delete id="commentsDelete" parameterType="int">
-		delete from comments
-		where cm_idx=#{cm_idx}
-	</delete>
-
-<!-- 	<select id="selectByIdxComments" parameterType="int" -->
-<!-- 		resultType="CommentsVo"> -->
-<!-- 		select * from comments where b_idx=#{b_idx} -->
-<!-- 	</select> -->
-
-	<!-- public int insertComments(HashMap<String, Object> params); -->
-	<!-- public int updateComments(HashMap<String, Object> params); -->
-	<!-- public int deleteComments(int b_idx, int c_idx); -->
-	<!-- public List<HashMap<String, Object>> selectByIdx(int b_idx); -->
-
 
 </mapper>

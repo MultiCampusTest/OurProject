@@ -53,7 +53,7 @@ public class BoardController {
 		ModelAndView mav = new ModelAndView();
 		mav.addAllObjects(boardService.readNotice(boardIdx));
 		mav.addObject("userid", id);
-		mav.addObject("comments",commentsService.selectComments(boardIdx));
+//		mav.addObject("comments",commentsService.selectComments(boardIdx));
 		mav.setViewName("board/notice_view");
 		
 		return mav;
@@ -64,6 +64,22 @@ public class BoardController {
 		return "board/notice_write_form";
 	}
 	
+	@RequestMapping(method=RequestMethod.POST, value="noticeWrite.do")
+	public String noticeWrite(BoardVo board, ContentsVo contents){
+		boardService.insertNotice(board, contents);
+		return "redirect:noticeList.do";
+	}
+	
+	@RequestMapping("noticeModifyForm.do")
+	public String noticeModifyForm() {
+		return "board/notice_modify_form";
+	}
+
+	@RequestMapping("noticeModify.do")
+	public String noticeModify(BoardVo board){
+		return "redirect:noticeView.do?boardIdx="+board.getBoardIdx();
+	}
+	
 	@RequestMapping("commentsWrite.do")
 	public ModelAndView commentsWrite(CommentsVo comments){
 		ModelAndView mav = new ModelAndView();
@@ -72,16 +88,7 @@ public class BoardController {
 		return mav;
 	}
 
-	@RequestMapping("noticeModifyForm.do")
-	public String noticeModifyForm() {
-		return "board/notice_modify_form";
-	}
 	
-	@RequestMapping(method=RequestMethod.POST, value="noticeWrite.do")
-	public String noticeWrite(BoardVo board, ContentsVo contents){
-		boardService.insertNotice(board, contents);
-		return "redirect:noticeList.do";
-	}
 
 	// travel_board
 	@RequestMapping("travelList.do")

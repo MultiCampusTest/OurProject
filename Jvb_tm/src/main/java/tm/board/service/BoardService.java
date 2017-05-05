@@ -36,6 +36,9 @@ public class BoardService {
 	public void insertNotice(BoardVo board, ContentsVo contents){
 		boardDao.insertBoard(board);
 		int boardIdx = board.getBoardIdx();
+		
+		contents.setContents(contents.getContents().replace("\r\n",	"<br>"));
+		contents.setContents(contents.getContents().replace("\u0020", "&nbsp"));
 		contents.setBoardIdx(boardIdx);
 		contentsDao.insertContents(contents);
 	}

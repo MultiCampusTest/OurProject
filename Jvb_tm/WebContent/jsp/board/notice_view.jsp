@@ -73,14 +73,13 @@
          	CONTENT
          </p>
          <p class="lead">
-         <textarea readonly="readonly"  class="form-control-text"
-         		rows="10" style="width:100%;">${contents.contents}</textarea>
+         ${contents.contents }
          </p>
          <hr>
          <c:choose>
 			<c:when test="${userid != admin }">
 				<input type="button" class="btn btn-primary" value="Modify"
-						style="float:right;" onclick="location.href='noticeModifyForm.do'">
+						style="float:left;" onclick="location.href='noticeModifyForm.do'">
 			</c:when>
 		</c:choose>
 		<br>

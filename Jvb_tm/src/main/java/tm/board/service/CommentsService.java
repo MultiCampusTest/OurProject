@@ -53,8 +53,9 @@ public class CommentsService implements ICommentsService{
 	}
 	
 	@Override
-	public boolean deleteComments(String cm_parent) {
+	public boolean deleteComments(CommentsVo comments) {
 		// TODO Auto-generated method stub
+		cDao.deleteComments(comments);
 		return true;
 	}
 	

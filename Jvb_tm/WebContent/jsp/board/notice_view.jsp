@@ -98,37 +98,6 @@
 		<br>
 		<br>
 
-
-         <!-- Comments Form -->
-         <div class="well">
-             <h4>Leave a Comment:</h4>
-             <form role="form" action="commentsWrite.do" method="post">
-                 <div class="form-group">
-                 	 <input type="hidden" name="b_idx" value="${notice.boardIdx }">
-                 	 <input type="hidden" name="cm_writer" value="${userid}">
-                     <textarea class="form-control" name="cm_content" rows="3"></textarea>
-                 </div>
-<!--                  <button type="submit" class="btn btn-primary">Submit</button> -->
-                 <input type="submit" value="등록" class="btn btn-primary">
-             </form>
-         </div>
-         
-<!--         reComments input, nondisplay -->
-         <div class="well" style="display: none;" id="reComments">
-             <h4>Leave a Comment:</h4>
-             <form role="form" action="commentsWrite.do" method="post" name="reForm">
-                 <div class="form-group">
-                 	 <input type="hidden" name="b_idx" value="${notice.boardIdx }">
-                 	 <input type="hidden" name="cm_writer" value="${userid}">
-                 	 <input type="hidden" name="cm_parent" >
-                     <textarea class="form-control" name="cm_content" rows="3"></textarea>
-                 </div>
-                 <input type="submit" value="등록" class="btn btn-primary">
-                 <input type="button" value="취소" class="btn btn-primary" onclick="commentsCancel()">
-             </form>
-         </div>
-
-         <hr>
 <!-- Comments Form -->
          <div class="well">
              <h4>Leave a Comment:</h4>
@@ -180,7 +149,7 @@
         	</c:when>
         	<c:otherwise>
         		<c:forEach var="comments" items="${comments}" varStatus="status">
-        			<div class="media" style="margin-left : ${20*comments.cm_depth}px">
+        			<div class="media" style="margin-left : ${25*comments.cm_depth}px">
            				<a class="pull-left" href="#">
                  		<img class="media-object" src="http://placehold.it/64x64" alt="">
             			</a>
@@ -193,9 +162,14 @@
                   			${comments.cm_content }
                   		</div>
               			</div>
-              			<a onclick="commentsDelete(${comments.cm_idx})"> 삭제</a>
-              			<a onclick="commentsUpdate(${comments.cm_idx})"> 수정</a>
+              			<c:if test="${comments.cm_delete == 'N' }">
+              				<a onclick="location.href='commentsDelete.do?cm_idx=${comments.cm_idx}&b_idx=${comments.b_idx }'"> 삭제</a>
+              			
+              			<c:if test="${comments.cm_writer == userid }">
+              				<a onclick="commentsUpdate(${comments.cm_idx})"> 수정</a>
+              			</c:if>
               			<a onclick="commentsInput(${comments.cm_idx})"> 댓글</a>
+              			</c:if>
           		    </div>
           		</c:forEach>
         	</c:otherwise>

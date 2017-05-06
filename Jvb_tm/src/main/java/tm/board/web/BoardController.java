@@ -98,6 +98,13 @@ public class BoardController {
 		mav.setViewName("redirect:noticeView.do?boardIdx="+comments.getB_idx());
 		return mav;
 	}
+	@RequestMapping("commentsDelete.do")
+	public ModelAndView commentsDelete(CommentsVo comments){
+		ModelAndView mav = new ModelAndView();
+		commentsService.deleteComments(comments);
+		mav.setViewName("redirect:noticeView.do?boardIdx="+comments.getB_idx());
+		return mav;
+	}
 
 	
 

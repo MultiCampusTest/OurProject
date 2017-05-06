@@ -22,8 +22,7 @@ public interface ICommentsDao {
 	public int updateComments(CommentsVo comments);
 	
 //	delete시 필요한 Dao
-	public int deleteComments(String cm_idx);
-	public int selectCommentsChild(String cm_parent);
+	public int deleteComments(CommentsVo comments);
 	
 	
 	

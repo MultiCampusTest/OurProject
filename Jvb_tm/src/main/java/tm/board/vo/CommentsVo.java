@@ -10,7 +10,14 @@ public class CommentsVo {
 	private String cm_parent;
 	private String cm_depth;
 	private int cm_order;
+	private String cm_delete;
 	
+	public String getCm_delete() {
+		return cm_delete;
+	}
+	public void setCm_delete(String cm_delete) {
+		this.cm_delete = cm_delete;
+	}
 	public String getCm_idx() {
 		return cm_idx;
 	}

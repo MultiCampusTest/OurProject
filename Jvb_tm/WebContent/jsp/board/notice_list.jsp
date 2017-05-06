@@ -6,12 +6,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-
-
 <!--   커스텀 CSS, JS -->
 <link href="css/noticeList.css" rel="stylesheet">
-<!-- <script src="js/profile.js"></script> -->
+<title>Insert title here</title>
  
 </head>
 <body>
@@ -28,7 +25,7 @@
 
 	<div class="container">
 		<h2>Notice</h2>
-		<table class="table table-hover">
+		<table class="table table-hover" >
 			<colgroup>
 				<col width="60" />
 				<col />
@@ -37,12 +34,12 @@
 				<col width="80" />
 			</colgroup>
 			<thead>
-				<tr>
+				<tr style="font-size:15px;">
 					<th>#</th>
-					<th>title</th>
-					<th>wrtier</th>
-					<th>date</th>
-					<th>views</th>
+					<th>TITLE</th>
+					<th>WRITER</th>
+					<th>DATE</th>
+					<th>VIEWS</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -54,14 +51,14 @@
 						<td>${notice.userid}</td>
 						<td><fmt:formatDate value="${notice.writeDate}"
 								pattern="yyyy-MM-dd" /></td>
-						<td></td>
+						<td >${notice.readCount }</td>
 					</tr>
 				</c:forEach>
 			</tbody>
 		</table>
 		<c:choose>
 			<c:when test="${userid != admin }">
-				<input type="button" class="btn btn-primary" value="등록" onclick="location.href='noticeWriteForm.do'">
+				<input type="button" class="btn btn-primary" value="Write" onclick="location.href='noticeWriteForm.do'">
 			</c:when>
 			<c:otherwise>
 				<input type="button" class="btn btn-primary" value="관리자가아니네?" onclick="location.href='main.do'">

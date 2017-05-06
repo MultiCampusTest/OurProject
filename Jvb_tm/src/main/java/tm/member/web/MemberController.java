@@ -78,19 +78,19 @@ public class MemberController {
 	//로그인 유효성 검사 요청
 	@RequestMapping(method=RequestMethod.POST, value="login.do")
 	public String login(HttpSession session, String userid, String pwd) {
-		if(memberService.checkLogin(userid, pwd)) {
-			session.setAttribute("userid", userid);
-			session.setAttribute("pwd", pwd);
-			return "redirect:main.do";
-		} else {
-			return "redirect:loginForm.do";			
-		}
-//		if(userid.equals("admin")){
+//		if(memberService.checkLogin(userid, pwd)) {
 //			session.setAttribute("userid", userid);
+//			session.setAttribute("pwd", pwd);
 //			return "redirect:main.do";
-//		}else{
-//			return "redirect:loginForm.do";
+//		} else {
+//			return "redirect:loginForm.do";			
 //		}
+		if(userid.equals("admin")){
+			session.setAttribute("userid", userid);
+			return "redirect:main.do";
+		}else{
+			return "redirect:loginForm.do";
+		}
 	}
 
 	//로그아웃 요청

@@ -42,10 +42,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select count(*) from board where b_code=#{code}
 	</select>
 	
+	
+	<!--  notice -->
+	<!-- update notice -->
+	<update id="updateNotice" parameterType="boardVo">
+		update board set
+		b_title=#{title}, b_readcount=#{readCount}
+		where b_idx=#{boardIdx}
+	</update>
 	<!-- select notice -->
 	<select id="selectNoticeBoardLimit" parameterType="java.util.HashMap"
 	resultMap="board">
-		select b_idx, b_title, userid, b_date from board 
+		select b_idx, b_title, userid, b_date, b_readcount from board 
 		where b_code=#{code} 
 		order by b_idx desc limit #{skip}, #{count}
 	</select>
@@ -54,6 +62,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select b_idx, b_code, b_title, b_date, b_readcount from board
 		where b_idx=#{boardIdx}
 	</select>
+
+
 	
 	
 	<!-- insert -->

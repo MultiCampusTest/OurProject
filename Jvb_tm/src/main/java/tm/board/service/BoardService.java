@@ -37,10 +37,14 @@ public class BoardService {
 		boardDao.insertBoard(board);
 		int boardIdx = board.getBoardIdx();
 		
-		contents.setContents(contents.getContents().replace("\r\n",	"<br>"));
-		contents.setContents(contents.getContents().replace("\u0020", "&nbsp"));
 		contents.setBoardIdx(boardIdx);
 		contentsDao.insertContents(contents);
+	}
+	
+	public void updateNotice(BoardVo board, ContentsVo contents){
+		boardDao.updateNotice(board);
+		contentsDao.updateContents(contents);
+		
 	}
 	
 	//notice
@@ -77,18 +81,31 @@ public class BoardService {
 		return result;
 	}
 	
-	//공지사항 세부글 얻어오기
+	//공지사항 세부글 읽기
 	public HashMap<String, Object> readNotice(int boardIdx){
 		BoardVo board = boardDao.selectOneNotice(boardIdx);
 		board.setReadCount(board.getReadCount()+1);
-//		boardDao.updateNotice(board);
+		boardDao.updateNotice(board);
 		ContentsVo contents = contentsDao.selectOneContents(boardIdx);
+		contents.setContents(contents.getContents().replace("\r\n",	"<br>"));
+		contents.setContents(contents.getContents().replace("\u0020", "&nbsp"));
 		
 		HashMap<String, Object> result = new HashMap<>();
 		result.put("notice", board);
 		result.put("contents", contents);
 		
+		return result;	
+	}
+	
+	//공지사항 세부글 가져오기(수정시)
+	public HashMap<String, Object> getNotice(int boardIdx) {
+		BoardVo board = boardDao.selectOneNotice(boardIdx);
+		ContentsVo contents = contentsDao.selectOneContents(boardIdx);		
+
+		HashMap<String, Object> result = new HashMap<>();
+		result.put("notice", board);
+		result.put("contents", contents);
+		
 		return result;
-				
 	}
 }

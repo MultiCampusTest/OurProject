@@ -22,6 +22,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where b_idx = #{boardIdx}
 	</select>
 	
+	<update id="updateContents" parameterType="contentsVo">
+		update contents set
+			ct_num = #{contentsNum},
+			ct_contents = #{contents}
+		where b_idx = #{boardIdx}
+	</update>
+	
 <!-- 	<select id="getBoardCountByCode" parameterType="String" resultType="int"> -->
 <!-- 		select count(*) from board where b_code=#{code} -->
 <!-- 	</select> -->

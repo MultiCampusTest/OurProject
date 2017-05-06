@@ -71,12 +71,16 @@ public class BoardController {
 	}
 	
 	@RequestMapping("noticeModifyForm.do")
-	public String noticeModifyForm() {
-		return "board/notice_modify_form";
+	public ModelAndView noticeModifyForm(int boardIdx) {
+		ModelAndView mav = new ModelAndView();
+		mav.addAllObjects(boardService.getNotice(boardIdx));
+		mav.setViewName("board/notice_modify_form");
+		return mav;		
 	}
 
-	@RequestMapping("noticeModify.do")
-	public String noticeModify(BoardVo board){
+	@RequestMapping(method=RequestMethod.POST, value="noticeModify.do")
+	public String noticeModify(BoardVo board, ContentsVo contents){
+		boardService.updateNotice(board, contents);
 		return "redirect:noticeView.do?boardIdx="+board.getBoardIdx();
 	}
 	

@@ -10,13 +10,14 @@ public interface ICommentsService {
 	
 	public List<CommentsVo> selectComments(int b_idx);
 	
+	public boolean updateComments(CommentsVo comments);
+	
+	public boolean deleteComments(String cm_parent);
 	
 	
 	public int updateInsertComments();
 	
-	public int updateComments();
 	
-	public int deleteComments();
 	
 	public CommentsVo selectOne();
 	public List<HashMap<String, Object>> selectListComments();

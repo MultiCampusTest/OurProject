@@ -13,9 +13,8 @@
 <title>Insert title here</title>
 
 <script type="text/javascript">
-
-
 	function commentsInput(cm_idx){
+		hideDiv("updateComments");
 		var form  = document.reForm;
 		var div = document.getElementById("commentsDiv"+cm_idx);
 		var div2 = document.getElementById("reComments");
@@ -26,6 +25,7 @@
 		div.appendChild(div2);
 	}
 	
+// 	창사라지기
 	function hideDiv(id){
 	    var div = document.getElementById(id);
 	    div.style.display = "none";
@@ -34,6 +34,23 @@
 	function commentsCancel(){
 	    hideDiv("reComments");
 	} 
+	
+// 	댓글 수정
+	function commentsUpdate(cm_idx){
+		hideDiv("reComments");
+		
+		var form  = document.updateForm;
+		var div = document.getElementById("commentsDiv"+cm_idx);
+		var div2 = document.getElementById("updateComments");
+		div2.style.display="";
+		
+		form.cm_idx.value = cm_idx;
+		form.cm_content.value = "";
+		div.appendChild(div2);
+	}
+	function commentsUpdateCancel(){
+		hideDiv("updateComments");
+	}
 </script>
 </head>
 <body>
@@ -112,6 +129,50 @@
          </div>
 
          <hr>
+<!-- Comments Form -->
+         <div class="well">
+             <h4>Leave a Comment:</h4>
+             <form role="form" action="commentsWrite.do" method="post">
+                 <div class="form-group">
+                 	 <input type="hidden" name="b_idx" value="${notice.boardIdx }">
+                 	 <input type="hidden" name="cm_writer" value="${userid}">
+                     <textarea class="form-control" name="cm_content" rows="3"></textarea>
+                 </div>
+<!--                  <button type="submit" class="btn btn-primary">Submit</button> -->
+                 <input type="submit" value="등록" class="btn btn-primary">
+             </form>
+         </div>
+         
+<!--         reComments input, nondisplay -->
+         <div class="well" style="display: none;" id="reComments">
+             <h4>Leave a Comment:</h4>
+             <form role="form" action="commentsWrite.do" method="post" name="reForm">
+                 <div class="form-group">
+                 	 <input type="hidden" name="b_idx" value="${notice.boardIdx }">
+                 	 <input type="hidden" name="cm_writer" value="${userid}">
+                 	 <input type="hidden" name="cm_parent" >
+                     <textarea class="form-control" name="cm_content" rows="3"></textarea>
+                 </div>
+                 <input type="submit" value="등록" class="btn btn-primary">
+                 <input type="button" value="취소" class="btn btn-primary" onclick="commentsCancel()">
+             </form>
+         </div>
+         
+<!--          comments update form -->
+         <div class="well" style="display: none;" id="updateComments">
+             <h4>Leave a Comment:</h4>
+             <form role="form" action="commentsUpdate.do" method="post" name="updateForm">
+                 <div class="form-group">
+                 	 <input type="hidden" name="b_idx" value="${notice.boardIdx }">
+                 	 <input type="hidden" name="cm_idx" >
+                     <textarea class="form-control" name="cm_content" rows="3"></textarea>
+                 </div>
+                 <input type="submit" value="수정" class="btn btn-primary">
+                 <input type="button" value="취소" class="btn btn-primary" onclick="commentsUpdateCancel()">
+             </form>
+         </div>		
+
+         <hr>
          <!-- Comment List -->
         <c:choose>
         	<c:when test="${comments ==null }">
@@ -132,8 +193,8 @@
                   			${comments.cm_content }
                   		</div>
               			</div>
-              			<a href="#"> 삭제</a>
-              			<a href="#"> 수정</a>
+              			<a onclick="commentsDelete(${comments.cm_idx})"> 삭제</a>
+              			<a onclick="commentsUpdate(${comments.cm_idx})"> 수정</a>
               			<a onclick="commentsInput(${comments.cm_idx})"> 댓글</a>
           		    </div>
           		</c:forEach>

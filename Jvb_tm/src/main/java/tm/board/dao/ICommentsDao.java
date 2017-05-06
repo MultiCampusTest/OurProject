@@ -18,12 +18,18 @@ public interface ICommentsDao {
 //	select시 필요한 Dao
 	public List<CommentsVo> selectByIdxComments(int b_idx);
 	
+//	업데이트시 필요한 Dao
+	public int updateComments(CommentsVo comments);
+	
+//	delete시 필요한 Dao
+	public int deleteComments(String cm_idx);
+	public int selectCommentsChild(String cm_parent);
+	
 	
 	
 	
 	
 	public int updateComments(HashMap<String, Object> params);
-	public int deleteComments(int b_idx, int c_idx);
 	
 	
 }

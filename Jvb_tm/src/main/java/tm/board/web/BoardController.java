@@ -53,7 +53,7 @@ public class BoardController {
 		ModelAndView mav = new ModelAndView();
 		mav.addAllObjects(boardService.readNotice(boardIdx));
 		mav.addObject("userid", id);
-//		mav.addObject("comments",commentsService.selectComments(boardIdx));
+		mav.addObject("comments",commentsService.selectComments(boardIdx));
 		mav.setViewName("board/notice_view");
 		
 		return mav;
@@ -88,6 +88,13 @@ public class BoardController {
 	public ModelAndView commentsWrite(CommentsVo comments){
 		ModelAndView mav = new ModelAndView();
 		commentsService.insertComments(comments);
+		mav.setViewName("redirect:noticeView.do?boardIdx="+comments.getB_idx());
+		return mav;
+	}
+	@RequestMapping("commentsUpdate.do")
+	public ModelAndView commentsUpdate(CommentsVo comments){
+		ModelAndView mav = new ModelAndView();
+		commentsService.updateComments(comments);
 		mav.setViewName("redirect:noticeView.do?boardIdx="+comments.getB_idx());
 		return mav;
 	}

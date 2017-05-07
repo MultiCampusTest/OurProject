@@ -5,6 +5,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript">
+
+</script>
 </head>
 <body>  
 <div class="container">
@@ -12,7 +15,15 @@
 		<div class="col-md-5">
       		<h2>Google Map here</h2>
 			<div >
-				<img src="http://maps.googleapis.com/maps/api/staticmap?center=37.56342748894216,126.98509297861483&size=400x500&visible=37.5609781462155,126.98567233576205&markers=color:blue%7C37.56342748894216,126.98509297861483&key=AIzaSyBX21maM7ZEhRTCF0_hB8DSrYHsKOof2m8&sensor=false">
+<!-- 				<img src="http://maps.googleapis.com/maps/api/staticmap?center=37.566535,126.97796919999996&size=400x500&visible=37.5609781462155,126.98567233576205 -->
+<!-- 							&markers=color:red%7C37.5759879,126.97796919999996&markers=color:red%7C37.6783756,126.77117739999994 -->
+<!-- 							&key=AIzaSyBX21maM7ZEhRTCF0_hB8DSrYHsKOof2m8&sensor=false"> -->
+				
+				<img src="http://maps.googleapis.com/maps/api/staticmap?size=400x500&key=AIzaSyBX21maM7ZEhRTCF0_hB8DSrYHsKOof2m8
+				&path=color:0x333333ff|weight:2|37.5759879,126.97796919999996|37.6783756,126.77117739999994|37.4562557,126.70520620000002
+				&markers=color:red|label:S|37.5759879,126.97796919999996&markers=color:red|label:E|37.4562557,126.70520620000002&sensor=false">
+			
+			
 			</div>
     	</div>
     	<div class="col-md-7">

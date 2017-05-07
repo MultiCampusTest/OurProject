@@ -1,6 +1,7 @@
-package tm.board.web;
+ package tm.board.web;
  
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
@@ -133,6 +134,14 @@ public class BoardController {
 	@RequestMapping("guideWriteForm.do")
 	public String guideWriteForm() {
 		return "board/guide_write_form";
+	}
+	
+	@RequestMapping("guideWrite.do")
+	public String guideWrite(HttpServletRequest req, BoardVo board){
+//		System.out.println(board.getLocCategory());
+//		System.out.println(board.getSubCategory());
+
+		return "board/guide_view";
 	}
 
 	@RequestMapping("guideList.do")

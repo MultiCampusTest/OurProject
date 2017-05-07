@@ -23,10 +23,10 @@ $(function() {
 	});
 });
 </script>
-<style>
+<style type="text/css">
         #map { 
          width: 400px; 
-         height: 600px;; 
+         height: 600px;
         } 
         #floating-panel {
 	        top: 10px;

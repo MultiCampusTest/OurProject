@@ -257,7 +257,7 @@ cursor:pointer;
  
  .category{
  	width:200px;
-	font-size:20px;
+	font-size:15px;
  }
 </style>
 </head> 

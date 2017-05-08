@@ -7,6 +7,7 @@ public class MapPositionVo {
    private int markerSeq;
    private String latLng;
    private String contentsSeq;
+   
 public int getMapIdx() {
 	return mapIdx;
 }

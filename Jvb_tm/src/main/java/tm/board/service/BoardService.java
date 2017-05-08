@@ -12,6 +12,7 @@ import tm.board.dao.IContentsDao;
 import tm.board.dao.IMapPositionDao;
 import tm.board.vo.BoardVo;
 import tm.board.vo.ContentsVo;
+import tm.board.vo.MapPositionVo;
 import tm.image.dao.IImageDao;
 
 @Service
@@ -112,14 +113,22 @@ public class BoardService {
 	
 	
 	//guide
-	public void insertGuide(BoardVo board, ContentsVo contents, String[] latLngArr ){
+	public void insertGuide(String userid, BoardVo board, ContentsVo contents, String[] latLngArr ){
 		
+		board.setUserid(userid);
 		boardDao.insertBoard(board);
 		int boardIdx = board.getBoardIdx();
 		
 		contents.setBoardIdx(boardIdx);
 		contentsDao.insertContents(contents);
 		
+		for(int i=0; i<latLngArr.length; i++){
+			MapPositionVo mapPosition = new MapPositionVo();
+			mapPosition.setBoardIdx(boardIdx);
+			mapPosition.setLatLng(latLngArr[i]);
+			mapPosition.setMarkerSeq(i);
+			int result = mapPositionDao.insertMapPosition(mapPosition);
+		}
 	}
 	
 	

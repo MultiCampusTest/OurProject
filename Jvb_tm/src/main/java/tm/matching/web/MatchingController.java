@@ -33,8 +33,8 @@ public class MatchingController {
 //	}
 	
 	@RequestMapping(value="matchingSuccess.do", method=RequestMethod.POST)
-	public @ResponseBody HashMap<String, Object> matchingSuccess(HttpSession session, String mch_t_userid){
-		String mch_g_userid=(String)session.getAttribute("userid");
+	public @ResponseBody HashMap<String, Object> matchingSuccess(HttpSession session, String mch_g_userid){
+		String mch_t_userid=(String)session.getAttribute("userid");
 		HashMap<String, Object> params=new HashMap<>();
 		boolean result=matchingService.matchingModify(mch_t_userid, mch_g_userid);
 //		params.put("result", result);

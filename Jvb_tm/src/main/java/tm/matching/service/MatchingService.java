@@ -67,9 +67,9 @@ public class MatchingService implements IMatchingService {
 	}
 
 	@Override
-	public HashMap<String, Object> matchingList(String mch_g_userid) {
+	public HashMap<String, Object> matchingList(String mch_t_userid) {
 		// TODO Auto-generated method stub
-		List<MatchingVo> matchingByUserid=matchingDao.matchingSelectByUserid(mch_g_userid);
+		List<MatchingVo> matchingByUserid=matchingDao.matchingSelectByUserid(mch_t_userid);
 		HashMap<String, Object> matchingList=new HashMap<>();
 		matchingList.put("matchingList", matchingByUserid);
 		return matchingList;

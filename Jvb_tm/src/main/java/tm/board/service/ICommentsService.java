@@ -6,16 +6,16 @@ import java.util.List;
 import tm.board.vo.CommentsVo;
 
 public interface ICommentsService {
-	public void insertComments(CommentsVo comments);
+	public void insertComments(CommentsVo comments, String parent_cm);
 	
 	public List<CommentsVo> selectComments(int b_idx);
 	
-	public boolean updateComments(CommentsVo comments);
+	public void updateComments(CommentsVo comments);
 	
 	public boolean deleteComments(int cm_idx);
 	
-	
 	public int updateInsertComments();
+	
 	
 	
 	

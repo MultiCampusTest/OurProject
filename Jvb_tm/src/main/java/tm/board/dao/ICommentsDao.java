@@ -22,7 +22,8 @@ public interface ICommentsDao {
 //	delete시 필요한 Dao
 	public int deleteComments(int cm_idx);
 	
-	
+//	update시 필요한 Dao	
+	public int updateCommentsContent(CommentsVo comments);
 	
 	
 	
@@ -53,7 +54,6 @@ public interface ICommentsDao {
 	
 	
 	
-	public int updateComments(HashMap<String, Object> params);
 	
 	
 }

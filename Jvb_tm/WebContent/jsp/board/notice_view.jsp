@@ -13,7 +13,7 @@
 <title>Insert title here</title>
 
 <script type="text/javascript">
-	function commentsInput(cm_idx, cm_parent){
+	function commentsInput(cm_idx, cm_parent, cm_writer){
 		hideDiv("updateComments");
 		var form  = document.reForm;
 		var div = document.getElementById("commentsDiv"+cm_idx);
@@ -21,6 +21,7 @@
 		div2.style.display="";
 		
 		form.cm_content.value = "";
+		form.parent.cm.value=cm_writer;
 		form.cm_parent.value=cm_parent;
 		div.appendChild(div2);
 	}
@@ -120,6 +121,7 @@
                  	 <input type="hidden" name="b_idx" value="${notice.boardIdx }">
                  	 <input type="hidden" name="cm_writer" value="${userid}">
                  	 <input type="hidden" name="cm_parent" >
+                 	 <input type="hidden" name="parent_cm">
                      <textarea class="form-control" name="cm_content" rows="3"></textarea>
                  </div>
                  <input type="submit" value="등록" class="btn btn-primary">
@@ -162,14 +164,15 @@
                   			${comments.cm_content }
                   		</div>
               			</div>
-              			<c:if test="${comments.cm_delete == 'N' }">
-              				<a onclick="location.href='commentsDelete.do?cm_idx=${comments.cm_idx}&b_idx=${comments.b_idx }'"> 삭제</a>
-              			
-              			<c:if test="${comments.cm_writer == userid }">
-              				<a onclick="commentsUpdate(${comments.cm_idx})"> 수정</a>
-              			</c:if>
-              			<a onclick="commentsInput(${comments.cm_idx},${comments.cm_parent })"> 댓글</a>
-              			</c:if>
+              				<c:if test="${comments.cm_delete != 'Y' }">
+	              				<c:if test="${comments.cm_writer == userid }">
+	              					<a onclick="location.href='commentsDelete.do?cm_idx=${comments.cm_idx}&b_idx=${comments.b_idx }'"> 삭제</a>
+	              					<a onclick="commentsUpdate(${comments.cm_idx})"> 수정</a>
+	              				</c:if>
+	              				<c:if test="${userid != null }">
+		              				<a onclick="commentsInput(${comments.cm_idx},${comments.cm_parent },${comments.cm_writer })"> 댓글</a>
+		              			</c:if>	
+              				</c:if>
           		    </div>
           		</c:forEach>
         	</c:otherwise>

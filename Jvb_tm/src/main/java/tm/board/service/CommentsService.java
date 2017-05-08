@@ -16,7 +16,7 @@ public class CommentsService implements ICommentsService{
 	private ICommentsDao cDao;
 	
 	@Override
-	public void insertComments(CommentsVo comments) {
+	public void insertComments(CommentsVo comments, String parent_cm) {
 		// TODO Auto-generated method stub
 		cDao.insertComments(comments);
 		if(comments.getCm_parent() == 0){
@@ -29,6 +29,7 @@ public class CommentsService implements ICommentsService{
 			CommentsVo reComments = cDao.selectOne(comments.getCm_idx());
 			int cm_parent = reComments.getCm_parent();
 			int cm_order = cDao.selectMaxOrder2(comments);
+			reComments.setCm_content("<b>"+parent_cm+"</b>" + reComments.getCm_content());
 			reComments.setCm_parent(cm_parent);
 			reComments.setCm_depth(1);
 			reComments.setCm_order(cm_order + 1);
@@ -38,8 +39,8 @@ public class CommentsService implements ICommentsService{
 	}
 	
 	@Override
-	public boolean updateComments(CommentsVo comments) {
-		return true;
+	public void updateComments(CommentsVo comments) {
+		cDao.updateCommentsContent(comments);
 	}
 	
 	@Override

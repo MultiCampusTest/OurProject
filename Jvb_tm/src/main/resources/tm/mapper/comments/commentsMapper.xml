@@ -62,6 +62,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	WHERE cm_idx=#{cm_idx}
 </update>
 
+<!-- 댓글 수정 -->
+<update id="updateCommentsContent" parameterType="CommentsVo">
+	UPDATE comments
+	SET cm_content=#{cm_content}
+	WHERE cm_idx=#{cm_idx}
+</update>
+
 
 
 

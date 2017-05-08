@@ -40,10 +40,12 @@ public class MatchingService implements IMatchingService {
 	}
 
 	@Override
-	public boolean matchingModify(String mch_t_userid, String mch_g_userid) {
+	public boolean matchingModify(int b_idx, String mch_g_userid) {
 		// TODO Auto-generated method stub
+		System.out.println(b_idx);
+		System.out.println(mch_g_userid);
 		HashMap<String, Object> params=new HashMap<>();
-		params.put("mch_t_userid", mch_t_userid);
+		params.put("b_idx", b_idx);
 		params.put("mch_g_userid", mch_g_userid);
 		int result=matchingDao.matchingUpdate(params);
 		if(result>0){
@@ -74,7 +76,24 @@ public class MatchingService implements IMatchingService {
 		matchingList.put("matchingList", matchingByUserid);
 		return matchingList;
 	}
+
+
+	@Override
+	public void matchingClose(int b_idx) {
+		// TODO Auto-generated method stub
+		List<MatchingVo> matchingFailList=matchingDao.matchingStatus(b_idx);
+
+		
+		for(int i=0; i<matchingFailList.size(); i++){
+			matchingFailList.get(i).setMch_code(2);
+		}
+		
+		
+		
+//		System.out.println("이것도 성공?");
+	}
 	
+
 	
 	
 

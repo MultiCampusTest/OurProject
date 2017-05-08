@@ -160,9 +160,10 @@ function moreList(){
 			var m_array = new Array();
 			var id = $(this).attr('id');
 			m_array = id.split('_');
-			var readid = m_array[0];
+			var realid = m_array[0];
+// 			alert(realid);
 			var board_idx = m_array[1];
-			// 		alert(bbb);
+// 					alert(board_idx);
 			// 		alert(id);
 			var responseValue = $(this).val();
 			// 		alert(responseValue);
@@ -171,7 +172,7 @@ function moreList(){
 
 			var add_img = '<img class="userid_img" src="img/profile.jpg" width="50px" height="50px">'
 			var board_title = $('.board_title').attr('id');
-			// 		alert(board_title);
+// 					alert(board_title);
 			var matching_date = $('.matching_date').attr('id');
 			// 		alert(matching_date);
 
@@ -183,23 +184,22 @@ function moreList(){
 				$.ajax({
 					url : 'matchingSuccess.do',
 					type : 'POST',
-					data : 'mch_g_userid=' + readid,
+					data : 'b_idx='+board_title+'mch_g_userid=' + realid,
 					dataType : 'json',
 					success : function(data) {
 
 						alert('매칭 성공');
 						$('.add_img').append(add_img);
-						$('.add_mch_t_userid').append(readid);
+						$('.add_mch_t_userid').append(realid);
 						$('.add_title').append('해당 게시글 번호' + board_title);
 						$('.add_date').append(matching_date);
-						$('.add_href_b_idx').attr('href', 'board.do?b_idx=' + board_title);
+						$('.add_href_b_idx').attr('href', 'guideView.do?b_idx=' + board_title);
 						$('#mathing_section' + board_idx).remove();
 
 
 					},
 					error : function() {
 						alert('에러 개새끼야');
-					// 	               $('#send_msg_contents'+realid).val("");
 					}
 				});
 

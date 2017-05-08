@@ -9,8 +9,9 @@ import tm.matching.vo.MatchingVo;
 public interface IMatchingService {
 	
 	public boolean matchingSend(MatchingVo matchingVo);
-	public boolean matchingModify(String mch_t_userid, String mch_g_userid);
+	public boolean matchingModify(int b_idx, String mch_g_userid);
 	public boolean matchingCancel(int mch_idx);
-	public HashMap<String, Object> matchingList(String mch_g_userid);
+	public HashMap<String, Object> matchingList(String mch_t_userid);
+	public void matchingClose(int b_idx);
 
 }

@@ -12,6 +12,7 @@ public interface IMatchingDao {
 	public int matchingUpdate(HashMap<String, Object> params);
 	public int matchingDelete(int mch_idx);
 	public List<MatchingVo> matchingSelectByUserid(String mch_t_userid);
+	public List<MatchingVo> matchingStatus(int b_idx);
 
 	
 }

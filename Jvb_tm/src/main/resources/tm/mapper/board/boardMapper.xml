@@ -35,7 +35,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		 	useGeneratedKeys="true" keyProperty="boardIdx">
 		insert into board values
 		(0, #{code}, #{locCategory},#{subCategory},
-			#{title},#{startDate},#{endDate},"admin",sysdate(),0)
+			#{title},#{startDate},#{endDate},#{userid},sysdate(),0)
 	</insert>
 	
 	<select id="getBoardCountByCode" parameterType="String" resultType="int">

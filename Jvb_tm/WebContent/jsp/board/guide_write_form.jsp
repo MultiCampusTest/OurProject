@@ -20,7 +20,7 @@
 	var map;
 	var i = 0;
 	var loc = [];
-	var lat = [];
+	var latLng = [];
 	var markers = [];
 	
   function initMap() {
@@ -66,7 +66,7 @@
    document.getElementById('delete').addEventListener('click', function() {
 	  deleteMarkers();
 	  loc = [];
-	  lat = [];
+	  latLng = [];
 	  document.removeChild(div);
    });
 
@@ -94,12 +94,10 @@
         resultsMap.setCenter(results[0].geometry.location);
         
         loc[i] = address;
-        lat[i] = results[0].geometry.location;
+        latLng[i] = results[0].geometry.location;
         
-        $('#test').append('<input type="hidden" name="lat" value='+lat+'>');
-        alert(lat[i]);
-        alert(lat);
-//         alert(loc[i]);
+        $('#test').append('<input type="hidden" name="latLng" value="'+latLng[i]+'">');
+
 //         var div = document.createElement('div');
 // 	    div.innerHTML = "<span class='glyphicon glyphicon-map-marker'>"+loc[i]+"</span>";
 // 	    document.getElementById('field').append(div);
@@ -116,11 +114,6 @@ $(function() {
 	});
 });
 
-$(document).ready(function(){
-	$("#test").on("click",function(){
-		request.setAttribute("lat",lat);
-	});
-})
 
 </script>
 <style>
@@ -227,7 +220,8 @@ $(document).ready(function(){
           <textarea class="form-control" placeholder="Insert Content" rows="14" name="contents"></textarea>
 		</div>
 		<div class="form-group" id="test">
-			<input type="submit" value="ok" class="btn btn-primary" id="test">
+			<input type="hidden" value="g" name="code">
+			<input type="submit" value="ok" class="btn btn-primary">
 			<input type="button" value="list" class="btn btn-primary" onclick="location.href='guideList.do'">
 		</div>
       </form>

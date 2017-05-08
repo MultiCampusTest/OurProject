@@ -4,9 +4,8 @@ public class ContentsVo {
    
 	private int contentsIdx;
 	private int boardIdx;
-	private int contentsNum;
+	private int contentsSeq;
 	private String contents;
-	
 	public int getContentsIdx() {
 		return contentsIdx;
 	}
@@ -19,11 +18,11 @@ public class ContentsVo {
 	public void setBoardIdx(int boardIdx) {
 		this.boardIdx = boardIdx;
 	}
-	public int getContentsNum() {
-		return contentsNum;
+	public int getContentsSeq() {
+		return contentsSeq;
 	}
-	public void setContentsNum(int contentsNum) {
-		this.contentsNum = contentsNum;
+	public void setContentsSeq(int contentsSeq) {
+		this.contentsSeq = contentsSeq;
 	}
 	public String getContents() {
 		return contents;
@@ -32,8 +31,11 @@ public class ContentsVo {
 		this.contents = contents;
 	}
 	
-
-   
+	@Override
+	public String toString() {
+		return "ContentsVo [contentsIdx=" + contentsIdx + ", boardIdx=" + boardIdx + ", contentsSeq=" + contentsSeq
+				+ ", contents=" + contents + "]";
+	}
   
 
 }

@@ -9,8 +9,8 @@ public class BoardVo {
 	private String locCategory;
 	private String subCategory;
 	private String title;
-	private Date startDate;
-	private Date endDate;
+	private String startDate;
+	private String endDate;
 	private String userid;
 	private Date writeDate;
 	private int readCount;
@@ -46,16 +46,16 @@ public class BoardVo {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public Date getStartDate() {
+	public String getStartDate() {
 		return startDate;
 	}
-	public void setStartDate(Date startDate) {
+	public void setStartDate(String startDate) {
 		this.startDate = startDate;
 	}
-	public Date getEndDate() {
+	public String getEndDate() {
 		return endDate;
 	}
-	public void setEndDate(Date endDate) {
+	public void setEndDate(String endDate) {
 		this.endDate = endDate;
 	}
 	public String getUserid() {
@@ -75,6 +75,13 @@ public class BoardVo {
 	}
 	public void setReadCount(int readCount) {
 		this.readCount = readCount;
+	}
+	
+	@Override
+	public String toString() {
+		return "BoardVo [boardIdx=" + boardIdx + ", code=" + code + ", locCategory=" + locCategory + ", subCategory="
+				+ subCategory + ", title=" + title + ", startDate=" + startDate + ", endDate=" + endDate + ", userid="
+				+ userid + ", writeDate=" + writeDate + ", readCount=" + readCount + "]";
 	}
 	
 	

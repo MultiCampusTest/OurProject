@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -137,11 +138,12 @@ public class BoardController {
 	}
 	
 	@RequestMapping("guideWrite.do")
-	public String guideWrite(HttpServletRequest req, BoardVo board){
-//		System.out.println(board.getLocCategory());
-//		System.out.println(board.getSubCategory());
-		String a = (String)req.getParameter("lat");
-		System.out.println(a);
+	public String guideWrite(
+			HttpServletRequest req, BoardVo board,
+			ContentsVo contents
+			){
+		String[] latLngArr = req.getParameterValues("latLng");
+		System.out.println(board);
 		return "board/guide_view";
 	}
 

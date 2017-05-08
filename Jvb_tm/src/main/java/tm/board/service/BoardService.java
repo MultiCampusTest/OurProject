@@ -33,6 +33,8 @@ public class BoardService {
 	@Autowired
 	private IMapPositionDao mapPositionDao;
 	
+	//notice
+	//공지사항 쓰기
 	public void insertNotice(BoardVo board, ContentsVo contents){
 		boardDao.insertBoard(board);
 		int boardIdx = board.getBoardIdx();
@@ -41,13 +43,12 @@ public class BoardService {
 		contentsDao.insertContents(contents);
 	}
 	
+	//공지사항 업데이트
 	public void updateNotice(BoardVo board, ContentsVo contents){
 		boardDao.updateNotice(board);
-		contentsDao.updateContents(contents);
-		
+		contentsDao.updateContents(contents);		
 	}
 	
-	//notice
 	//공지사항 리스트 얻어오기
 	public HashMap<String, Object> getNoticeBoardList(int page){
 		String code = "n";
@@ -108,4 +109,20 @@ public class BoardService {
 		
 		return result;
 	}
+	
+	
+	//guide
+	public void insertGuide(BoardVo board, ContentsVo contents, String[] latLngArr ){
+		
+		boardDao.insertBoard(board);
+		int boardIdx = board.getBoardIdx();
+		
+		contents.setBoardIdx(boardIdx);
+		contentsDao.insertContents(contents);
+		
+	}
+	
+	
+	
+	
 }

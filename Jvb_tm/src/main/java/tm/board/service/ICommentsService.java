@@ -12,7 +12,7 @@ public interface ICommentsService {
 	
 	public boolean updateComments(CommentsVo comments);
 	
-	public boolean deleteComments(CommentsVo comments);
+	public boolean deleteComments(int cm_idx);
 	
 	
 	public int updateInsertComments();

@@ -13,7 +13,7 @@
 <title>Insert title here</title>
 
 <script type="text/javascript">
-	function commentsInput(cm_idx){
+	function commentsInput(cm_idx, cm_parent){
 		hideDiv("updateComments");
 		var form  = document.reForm;
 		var div = document.getElementById("commentsDiv"+cm_idx);
@@ -21,7 +21,7 @@
 		div2.style.display="";
 		
 		form.cm_content.value = "";
-		form.cm_parent.value=cm_idx;
+		form.cm_parent.value=cm_parent;
 		div.appendChild(div2);
 	}
 	
@@ -168,7 +168,7 @@
               			<c:if test="${comments.cm_writer == userid }">
               				<a onclick="commentsUpdate(${comments.cm_idx})"> 수정</a>
               			</c:if>
-              			<a onclick="commentsInput(${comments.cm_idx})"> 댓글</a>
+              			<a onclick="commentsInput(${comments.cm_idx},${comments.cm_parent })"> 댓글</a>
               			</c:if>
           		    </div>
           		</c:forEach>

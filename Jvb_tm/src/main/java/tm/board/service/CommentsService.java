@@ -20,38 +20,32 @@ public class CommentsService implements ICommentsService{
 		// TODO Auto-generated method stub
 		cDao.insertComments(comments);
 		if(comments.getCm_parent() == 0){
-			comments.setCm_parent(comments.getB_idx());
+			comments.setCm_parent(comments.getCm_idx());
 			comments.setCm_depth(0);
-			comments.setCm_order(0);
-			cDao.updateComments(comments); 
+			System.out.println(cDao.selectMaxOrder1(comments.getB_idx())+1);
+			comments.setCm_order(cDao.selectMaxOrder1(comments.getB_idx())+1);
+			cDao.updateComments1(comments); 
 		} else {
 			CommentsVo reComments = cDao.selectOne(comments.getCm_idx());
 			int cm_parent = reComments.getCm_parent();
-			int cm_depth = reComments.getCm_depth();
-			int cm_order = cDao.selectMaxOrder(comments);
+			int cm_order = cDao.selectMaxOrder2(comments);
 			reComments.setCm_parent(cm_parent);
 			reComments.setCm_depth(1);
 			reComments.setCm_order(cm_order + 1);
 			cDao.increaseOrder(reComments);
-			cDao.updateComments(comments);
+			cDao.updateComments2(reComments);
 		}
 	}
 	
 	@Override
 	public boolean updateComments(CommentsVo comments) {
-		// TODO Auto-generated method stub
-		int result = cDao.updateComments(comments);
-		if(result > 0) {
-			return true;
-		} else {
-			return false;
-		}
+		return true;
 	}
 	
 	@Override
-	public boolean deleteComments(CommentsVo comments) {
+	public boolean deleteComments(int cm_idx) {
 		// TODO Auto-generated method stub
-		cDao.deleteComments(comments);
+		cDao.deleteComments(cm_idx);
 		return true;
 	}
 	

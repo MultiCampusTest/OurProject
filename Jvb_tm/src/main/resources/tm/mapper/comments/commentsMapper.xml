@@ -7,14 +7,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <!-- 댓글 작성 -->
 <insert id="insertComments" parameterType="CommentsVo" useGeneratedKeys="true" keyProperty="cm_idx">
 	INSERT INTO comments(cm_writer, b_idx, cm_content, cm_parent, cm_depth, cm_order, cm_delete)
-	VALUES(0, #{cm_writer}, #{b_idx}, #{cm_content}, #{cm_parent}, #{cm_depth}, #{cm_order}, "N")
+	VALUES(#{cm_writer}, #{b_idx}, #{cm_content}, #{cm_parent}, #{cm_depth}, #{cm_order}, "N")
 </insert>
 
-<update id="updateComments" parameterType="CommentsVo">
+<update id="updateComments1" parameterType="CommentsVo">
 	UPDATE comments
-	SET cm_parent=#{cm_parent}, cm_depth=#{cm_depth}, cm_order=#{cm_order},
+	SET cm_parent=#{cm_parent}, cm_order=#{cm_order}
 	WHERE cm_idx=#{cm_idx}
 </update>
+
+<update id="updateComments2" parameterType="CommentsVo">
+	UPDATE comments
+	SET cm_parent=#{cm_parent}, cm_depth=#{cm_depth}, cm_order=#{cm_order}
+	WHERE cm_idx=#{cm_idx}
+</update>
+
 
 <select id="selectOne" parameterType="int" resultType="CommentsVo">
 	SELECT *
@@ -22,7 +29,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	WHERE cm_idx=#{cm_idx}
 </select>
 
-<select id="selectMaxOrder" parameterType="CommentsVo" resultType="int">
+<select id="selectMaxOrder1" parameterType="int" resultType="int">
+	SELECT IFNULL(MAX(cm_order),0)
+	FROM comments
+	WHERE b_idx=#{b_idx}
+</select>
+
+<select id="selectMaxOrder2" parameterType="CommentsVo" resultType="int">
 	SELECT MAX(cm_order)
 	FROM comments
 	WHERE b_idx=#{b_idx} AND cm_parent=#{cm_parent}
@@ -41,6 +54,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	WHERE b_idx=#{b_idx}
 	ORDER BY cm_order ASC
 </select>
+
+<!-- 댓글 삭제 -->
+<update id="deleteComments" parameterType="int">
+	UPDATE comments
+	SET cm_delete="Y", cm_content="삭제된 댓글입니다."
+	WHERE cm_idx=#{cm_idx}
+</update>
 
 
 

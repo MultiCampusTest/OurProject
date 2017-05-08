@@ -14,4 +14,5 @@ public interface IMatchingService {
 	public HashMap<String, Object> matchingList(String mch_t_userid);
 	public void matchingClose(int b_idx);
 
+	
 }

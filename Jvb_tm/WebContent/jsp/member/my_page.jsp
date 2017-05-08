@@ -182,6 +182,7 @@ function moreList(){
 
 			if (responseValue == 'YES') {
 				$.ajax({
+					
 					url : 'matchingSuccess.do',
 					type : 'POST',
 					data : 'b_idx='+board_title+'mch_g_userid=' + realid,

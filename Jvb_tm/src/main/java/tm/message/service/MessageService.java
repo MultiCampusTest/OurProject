@@ -1,11 +1,16 @@
 package tm.message.service;
 
+import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.WebDataBinder;
 
 import tm.message.dao.IMessageDao;
 import tm.message.vo.MessageVo;
@@ -40,6 +45,8 @@ public class MessageService implements IMessageService {
 		// TODO Auto-generated method stub
 		List<MessageVo> messageByUserid=new ArrayList<>();
 		messageByUserid=messageDao.messageSelectByUserid(msg_receive_userid);
+
+		
 		HashMap<String, Object> messageList=new HashMap<>();
 		messageList.put("messageList", messageByUserid);
 		
@@ -58,4 +65,5 @@ public class MessageService implements IMessageService {
 		return messageOneList;
 	}
 	
+
 }

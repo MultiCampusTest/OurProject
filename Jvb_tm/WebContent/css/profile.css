@@ -147,7 +147,7 @@
     text-align:left;
 /*     width: auto; */
 /*     max-width:300px; */
-	width:200px;
+	width:300px;
     border-radius: 15px;
     padding: 10px;
     margin-bottom: 5px;
@@ -172,7 +172,7 @@
 
 .msg_time{
 	font-size: 10px;
-	text-align: left;
+	text-align: right;
 	margin-right:10px; 
 }
 

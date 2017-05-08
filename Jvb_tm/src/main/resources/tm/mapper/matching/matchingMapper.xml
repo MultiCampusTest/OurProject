@@ -17,7 +17,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 </delete>
 
 <select id="matchingSelectByUserid" parameterType="String" resultType="matchingVo">
-	select * from matching where mch_g_userid=#{mch_g_userid} order by mch_date;
+	select * from matching where mch_t_userid=#{mch_t_userid} order by mch_date;
+</select>
+
+<select id="matchingStatus" parameterType="int" resultType="matchingVo">
+	select * from matching where b_idx=#{b_idx} and mch_code=1
 </select>
 
 

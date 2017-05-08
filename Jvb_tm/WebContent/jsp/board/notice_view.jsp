@@ -13,7 +13,7 @@
 <title>Insert title here</title>
 
 <script type="text/javascript">
-	function commentsInput(cm_idx, cm_parent, cm_writer){
+	function commentsInput(cm_idx, cm_parent, cm_writer, cm_depth){
 		hideDiv("updateComments");
 		var form  = document.reForm;
 		var div = document.getElementById("commentsDiv"+cm_idx);
@@ -23,6 +23,7 @@
 		form.cm_content.value = "";
 		form.parent_cm.value=cm_writer;
 		form.cm_parent.value=cm_parent;
+		form.cm_depth.value=cm_depth;
 		div.appendChild(div2);
 	}
 	
@@ -122,6 +123,7 @@
                  	 <input type="hidden" name="cm_writer" value="${userid}">
                  	 <input type="hidden" name="cm_parent" >
                  	 <input type="hidden" name="parent_cm">
+                 	 <input type="hidden" name="cm_depth">
                      <textarea class="form-control" name="cm_content" rows="3"></textarea>
                  </div>
                  <input type="submit" value="등록" class="btn btn-primary">
@@ -170,7 +172,7 @@
 	              					<a onclick="commentsUpdate(${comments.cm_idx})"> 수정</a>
 	              				</c:if>
 	              				<c:if test="${userid != null }">
-		              				<a onclick="commentsInput(${comments.cm_idx},${comments.cm_parent },'${comments.cm_writer }')"> 댓글</a>
+		              				<a onclick="commentsInput(${comments.cm_idx},${comments.cm_parent },'${comments.cm_writer }',${comments.cm_depth })"> 댓글</a>
 		              			</c:if>	
               				</c:if>
           		    </div>

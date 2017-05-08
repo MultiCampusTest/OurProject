@@ -24,36 +24,4 @@ public interface ICommentsDao {
 	
 //	update시 필요한 Dao	
 	public int updateCommentsContent(CommentsVo comments);
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-//	public CommentsVo selectOneByParent(String cm_parent);
-//	public int updateByOrder(CommentsVo comments);
-//	public int selectOneMaxOrder(String b_idx);
-//	public int insertComments(CommentsVo comments);
-//	public int selectMaxOrderToParent(CommentsVo comments);
-//	public int updateOrderPlus(CommentsVo commentsVo);
-//	public int updateGroupChild(CommentsVo commentsVo);
-	
-	
-//	업데이트시 필요한 Dao
-//	public int updateComments(CommentsVo comments);
-	
-	
-	
-	
-	
-	
-	
-	
 }

@@ -10,7 +10,7 @@
   src="https://code.jquery.com/jquery-2.2.4.min.js"
   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
   crossorigin="anonymous"></script>
-<script type="text/javascript" src="js/validation.js"></script>
+<script type="text/javascript" src="js/join_validation.js"></script>
 
 <!-- 달력 관련 CDN -->
 <link rel="stylesheet" href="https://unpkg.com/flatpickr/dist/flatpickr.min.css">
@@ -19,58 +19,67 @@
 <script src="https://npmcdn.com/flatpickr/dist/l10n/ru.js"></script>
 <link rel="stylesheet" href="css/calender.css">
 <link rel="stylesheet" href="css/guideWriteForm.css">
-
 <script type="text/javascript">
-$(function() {
-    $("#file").on('change', function(){
-        readURL(this);
-    });
-});
+	$(function() {
+		$("#file").on('change', function() {
+			var ext = $(this).val().split('.').pop().toLowerCase();
+			if ($.inArray(ext, [ 'gif', 'png', 'jpg', 'jpeg' ]) == -1) {
+				$('input[type=file]').val('');
+				alert('Please upload only image files');
+			} else {
+				readURL(this);
+			}
+		});
+	});
 
-function readURL(input) {
-    if (input.files && input.files[0]) {
-    var reader = new FileReader();
+	function readURL(input) {
+		if (input.files && input.files[0]) {
+			var reader = new FileReader();
+			reader.onload = function(e) {
+				$('#profile').attr('src', e.target.result);
+				$('#imageCheck').html('<a href="javascript:fileReset();">(Delete image)</a>');
+			}
+			reader.readAsDataURL(input.files[0]);
+		}
+	}
 
-    reader.onload = function (e) {
-            $('#profile').attr('src', e.target.result);
-            $('#imageCheck').html('<a href="javascript:fileReset();">(image delete)</a>');
-        }
-
-      reader.readAsDataURL(input.files[0]);
-    }
-}
-
-function fileReset() 
-{ 
-	document.getElementById("file").value = "";
-	$('#profile').attr('src', 'img/profile.jpg');
-	$('#imageCheck').text('');
-} 
+	function fileReset() {
+		$('#file').attr('value', '');
+		$('#profile').attr('src', 'img/profile.jpg');
+		$('#imageCheck').text('(Add image)');
+	}
 </script>
 <title>Insert title here</title>
 </head>
 <body>
-<div class="margin-section-top" style="margin-top: 10%"></div>
+<div class="margin-section-top" style="margin-top: 5%"></div>
 <div class="container">
 <div class="row">
     <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
 		<form action="join.do" method="post" role="form">
 			<h2>Please Sign Up <small>It's free and always will be.</small></h2>
-			<hr class="colorgraph">
+			<hr class="colorgraph"><br>
+			<div class="form-group" style="text-align: center">
+				<img id="profile" src="img/profile.jpg" style="width: 150px; height: 150px; border-radius: 50%" onclick="document.getElementById('file').click();">
+				<div id="imageCheck">(Add image)</div>
+			</div>
+			<div class="form-group">
+				<input type="file" name="file" id="file" class="form-control input-lg" style="display:none;" onchange="document.getElementById('txt').value=this.value;">
+			</div>
 			<div class="row">
 				<div class="col-xs-12 col-sm-6 col-md-6">
 					<div class="form-group">
-                        <input type="text" name="firstName" id="firstName" class="form-control input-lg" placeholder="* First Name" >
+                        <input type="text" name="firstName" id="firstName" class="form-control input-lg" placeholder="First Name *" >
 					</div>
 				</div>
 				<div class="col-xs-12 col-sm-6 col-md-6">
 					<div class="form-group">
-						<input type="text" name="lastName" id="lastName" class="form-control input-lg" placeholder="* Last Name" >
+						<input type="text" name="lastName" id="lastName" class="form-control input-lg" placeholder="Last Name *" >
 					</div>
 				</div>
 			</div>
 			<div class="form-group">
-				<input type="text" name="userid" id="userid" class="form-control input-lg" placeholder="* Userid" >	
+				<input type="text" name="userid" id="userid" class="form-control input-lg" placeholder="Userid *" >	
 			</div>
 			<div class="form-group">	
 				<div id="idCheck" style="text-align: center"></div>
@@ -78,35 +87,35 @@ function fileReset()
 			<div class="row">
 				<div class="col-xs-12 col-sm-6 col-md-6">
 					<div class="form-group">
-						<input type="password" name="pwd" id="pwd" class="form-control input-lg" placeholder="* Password" >
+						<input type="password" name="pwd" id="pwd" class="form-control input-lg" placeholder="Password *">
 					</div>
 				</div>
 				<div class="col-xs-12 col-sm-6 col-md-6">
 					<div class="form-group">
-						<input type="password" name="pwdChk" id="pwdChk" class="form-control input-lg" placeholder="* Confirm Password" >
+						<input type="password" name="pwdChk" id="pwdChk" class="form-control input-lg" placeholder="Confirm Password *">
 					</div>
 				</div>
 				<div id="pwdCheck" style="text-align: center"></div>
 			</div>
 			<div class="form-group">
-				<input type="email" name="email" id="email" class="form-control input-lg" placeholder="* Email Address">
+				<input type="email" name="email" id="email" class="form-control input-lg" placeholder="Email Address *">
 			</div>
 			<div class="form-group">	
 				<div id="emailCheck" style="text-align: center"></div>
 			</div>
 			<div class="form-group">
-				<input type="text" name="birthday" id="birthday" class="form-control input-lg" placeholder="* Birthday" >
+				<input type="text" name="birthday" id="birthday" class="form-control input-lg" placeholder="Birthday *">
 			</div>
 			<div class="form-group">
-				<select name="gender" id="gender" class="form-control input-lg" >
-					<option value="gender">* Male or Female</option>
+				<select name="gender" id="gender" class="form-control input-lg">
+					<option value="gender">Gender *</option>
 					<option value="male">Male</option>
 					<option value="female">Female</option>
 				</select>
 			</div>
 			<div class="form-group">
-						<select name="country" id="country" class="form-control input-lg" >
-							<option value="country">* Where are you from</option>
+						<select name="country" id="country" class="form-control input-lg">
+							<option value="country">Country *</option>
 							<optgroup label="A"></optgroup>
 							<option value="AF">Afghanistan</option>
 							<option value="AL">Albania</option>
@@ -368,13 +377,6 @@ function fileReset()
 							<option value="ZW">Zimbabwe</option>
 						</select>
 					</div>
-			<div class="form-group" style="text-align: center">
-				<img id="profile" src="img/profile.jpg" style="width: 30%">
-				<div id="imageCheck"></div>
-			</div>
-			<div class="form-group">
-				<input type="file" name="file" id="file" class="form-control input-lg">
-			</div>
 			<div class="form-group">
 				<textarea class="form-control input-lg" name="introduce" placeholder="About yourself"></textarea>
 			</div>

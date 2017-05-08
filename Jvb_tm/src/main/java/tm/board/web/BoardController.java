@@ -87,9 +87,9 @@ public class BoardController {
 	}
 	
 	@RequestMapping("commentsWrite.do")
-	public ModelAndView commentsWrite(CommentsVo comments){
+	public ModelAndView commentsWrite(CommentsVo comments, String parent_cm){
 		ModelAndView mav = new ModelAndView();
-		commentsService.insertComments(comments);
+		commentsService.insertComments(comments, parent_cm);
 		mav.setViewName("redirect:noticeView.do?boardIdx="+comments.getB_idx());
 		return mav;
 	}

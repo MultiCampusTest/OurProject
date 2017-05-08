@@ -21,7 +21,7 @@
 		div2.style.display="";
 		
 		form.cm_content.value = "";
-		form.parent.cm.value=cm_writer;
+		form.parent_cm.value=cm_writer;
 		form.cm_parent.value=cm_parent;
 		div.appendChild(div2);
 	}
@@ -170,7 +170,7 @@
 	              					<a onclick="commentsUpdate(${comments.cm_idx})"> 수정</a>
 	              				</c:if>
 	              				<c:if test="${userid != null }">
-		              				<a onclick="commentsInput(${comments.cm_idx},${comments.cm_parent },${comments.cm_writer })"> 댓글</a>
+		              				<a onclick="commentsInput(${comments.cm_idx},${comments.cm_parent },'${comments.cm_writer }')"> 댓글</a>
 		              			</c:if>	
               				</c:if>
           		    </div>

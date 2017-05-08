@@ -22,14 +22,15 @@ public class CommentsService implements ICommentsService{
 		if(comments.getCm_parent() == 0){
 			comments.setCm_parent(comments.getCm_idx());
 			comments.setCm_depth(0);
-			System.out.println(cDao.selectMaxOrder1(comments.getB_idx())+1);
 			comments.setCm_order(cDao.selectMaxOrder1(comments.getB_idx())+1);
 			cDao.updateComments1(comments); 
 		} else {
 			CommentsVo reComments = cDao.selectOne(comments.getCm_idx());
 			int cm_parent = reComments.getCm_parent();
 			int cm_order = cDao.selectMaxOrder2(comments);
-			reComments.setCm_content("<b>"+parent_cm+"</b>" + reComments.getCm_content());
+			if(reComments.getCm_depth() == 1) {
+				reComments.setCm_content("<b>"+parent_cm+"</b>  " + reComments.getCm_content());				
+			}
 			reComments.setCm_parent(cm_parent);
 			reComments.setCm_depth(1);
 			reComments.setCm_order(cm_order + 1);

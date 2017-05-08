@@ -18,7 +18,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <update id="updateComments2" parameterType="CommentsVo">
 	UPDATE comments
-	SET cm_parent=#{cm_parent}, cm_depth=#{cm_depth}, cm_order=#{cm_order}
+	SET cm_parent=#{cm_parent}, cm_depth=#{cm_depth}, cm_order=#{cm_order}, cm_content=#{cm_content}
 	WHERE cm_idx=#{cm_idx}
 </update>
 

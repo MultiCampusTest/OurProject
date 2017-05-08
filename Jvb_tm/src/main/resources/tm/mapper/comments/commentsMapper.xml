@@ -4,67 +4,142 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="tm.board.dao.ICommentsDao">
 
-<!-- 	댓글 입력 -->
-	<select id="selectOneByParent" resultType="CommentsVo" parameterType="String">
-		SELECT b_idx, cm_depth+1 cm_depth, cm_order 
-    	FROM comments
-    	WHERE cm_idx=#{cm_parent}
-	</select>	
-	<select id="selectOneMaxOrder" resultType="Integer" parameterType="String">
-    	SELECT IFNULL(MAX(cm_order),0)+1
-        FROM comments
-        WHERE b_idx=#{b_idx}
-    </select>    
-    <update id="updateByOrder" parameterType="CommentsVo"> 
-    	UPDATE comments
-        SET cm_order = cm_order + 1 
-        WHERE b_idx=#{b_idx} AND cm_order>#{cm_order}       
-    </update>  
-    <insert id="insertComments" parameterType="CommentsVo">
-        INSERT INTO comments(b_idx, cm_idx, cm_writer, cm_delete, cm_content, cm_order, cm_parent, cm_depth)
-        VALUES (#{b_idx}, #{cm_idx}, #{cm_writer}, "N", #{cm_content}, #{cm_order},
-                   <choose>
-                       <when test="cm_parent==null">#{cm_idx}, 0</when>
-                       <otherwise>#{cm_parent}, #{cm_depth}</otherwise>
-                   </choose>
-               )
-    </insert>
-<!--     부모중 가장큰 order찾기 -->
-	<select id="selectMaxOrderToParent" resultType="int" parameterType="CommentsVo">
-		SELECT IFNULL(MAX(cm_order),0)
-		FROM comments
-		WHERE b_idx=#{b_idx} AND cm_parent=#{cm_parent}
-	</select>	
-	<!-- 	댓글이 생기면서 그 아래에 있는것들은 order+1 -->
-	<update id="updateOrderPlus" parameterType="CommentsVo">
-		UPDATE comments
-		SET	cm_order=cm_order+1
-		WHERE b_idx=#{b_idx} AND cm_order>=#{cm_order}
-	</update>
+<!-- 댓글 작성 -->
+<insert id="insertComments" parameterType="CommentsVo" useGeneratedKeys="true" keyProperty="cm_idx">
+	INSERT INTO comments(cm_writer, b_idx, cm_content, cm_parent, cm_depth, cm_order, cm_delete)
+	VALUES(0, #{cm_writer}, #{b_idx}, #{cm_content}, #{cm_parent}, #{cm_depth}, #{cm_order}, "N")
+</insert>
+
+<update id="updateComments" parameterType="CommentsVo">
+	UPDATE comments
+	SET cm_parent=#{cm_parent}, cm_depth=#{cm_depth}, cm_order=#{cm_order},
+	WHERE cm_idx=#{cm_idx}
+</update>
+
+<select id="selectOne" parameterType="int" resultType="CommentsVo">
+	SELECT *
+	FROM comments
+	WHERE cm_idx=#{cm_idx}
+</select>
+
+<select id="selectMaxOrder" parameterType="CommentsVo" resultType="int">
+	SELECT MAX(cm_order)
+	FROM comments
+	WHERE b_idx=#{b_idx} AND cm_parent=#{cm_parent}
+</select>
+
+<update id="increaseOrder" parameterType="CommentsVo">
+	UPDATE comments
+	SET cm_order=cm_order+1
+	WHERE b_idx=#{b_idx} AND cm_parent>#{cm_parent}
+</update>
+
+<!-- 댓글 출력 -->
+<select id="selectComments" parameterType="int" resultType="CommentsVo">
+	SELECT * 
+	FROM comments
+	WHERE b_idx=#{b_idx}
+	ORDER BY cm_order ASC
+</select>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <!-- 	댓글 입력 --> 
+<!-- 	<select id="selectOneByParent" resultType="CommentsVo" parameterType="String"> -->
+<!-- 		SELECT b_idx, cm_depth+1 cm_depth, cm_order  -->
+<!--     	FROM comments -->
+<!--     	WHERE cm_idx=#{cm_parent} -->
+<!-- 	</select>	 -->
+<!-- 	<select id="selectOneMaxOrder" resultType="Integer" parameterType="String"> -->
+<!--     	SELECT IFNULL(MAX(cm_order),0)+1 -->
+<!--         FROM comments -->
+<!--         WHERE b_idx=#{b_idx} -->
+<!--     </select>     -->
+<!--     <update id="updateByOrder" parameterType="CommentsVo">  -->
+<!--     	UPDATE comments -->
+<!--         SET cm_order = cm_order + 1  -->
+<!--         WHERE b_idx=#{b_idx} AND cm_order>#{cm_order}        -->
+<!--     </update>   -->
+<!--     <insert id="insertComments" parameterType="CommentsVo"> -->
+<!--         INSERT INTO comments(b_idx, cm_idx, cm_writer, cm_delete, cm_content, cm_order, cm_parent, cm_depth) -->
+<!--         VALUES (#{b_idx}, #{cm_idx}, #{cm_writer}, "N", #{cm_content}, #{cm_order}, -->
+<!--                    <choose> -->
+<!--                        <when test="cm_parent==null">#{cm_idx}, 0</when> -->
+<!--                        <otherwise>#{cm_parent}, #{cm_depth}</otherwise> -->
+<!--                    </choose> -->
+<!--                ) -->
+<!--     </insert> -->
+ <!--     부모중 가장큰 order찾기 -->
+<!-- 	<select id="selectMaxOrderToParent" resultType="int" parameterType="CommentsVo"> -->
+<!-- 		SELECT IFNULL(MAX(cm_order),0) -->
+<!-- 		FROM comments -->
+<!-- 		WHERE b_idx=#{b_idx} AND cm_parent=#{cm_parent} -->
+<!-- 	</select>	 -->
+ 	<!-- 	댓글이 생기면서 그 아래에 있는것들은 order+1 -->
+<!-- 	<update id="updateOrderPlus" parameterType="CommentsVo"> -->
+<!-- 		UPDATE comments -->
+<!-- 		SET	cm_order=cm_order+1 -->
+<!-- 		WHERE b_idx=#{b_idx} AND cm_order>=#{cm_order} -->
+<!-- 	</update> -->
     
-	<!--     리스트 출력 -->
-     <select id="selectByIdxComments" resultType="CommentsVo" parameterType="int">
-        SELECT *
-         FROM comments
-         WHERE b_idx=#{b_idx}
-         ORDER BY cm_order ASC 
-    </select>
+	<!--     리스트 출력 --> 
+<!--      <select id="selectByIdxComments" resultType="CommentsVo" parameterType="int"> -->
+<!--         SELECT * -->
+<!--          FROM comments -->
+<!--          WHERE b_idx=#{b_idx} -->
+<!--          ORDER BY cm_order ASC  -->
+<!--     </select> -->
     
 
 	
-<!-- 	댓글 수정 -->
-	<update id="updateComments" parameterType="CommentsVo">
-		UPDATE comments
-		SET cm_content=#{cm_content}
-		WHERE b_idx=#{b_idx} AND cm_idx=#{cm_idx}
-	</update>
+ <!-- 	댓글 수정 -->
+<!-- 	<update id="updateComments" parameterType="CommentsVo"> -->
+<!-- 		UPDATE comments -->
+<!-- 		SET cm_content=#{cm_content} -->
+<!-- 		WHERE b_idx=#{b_idx} AND cm_idx=#{cm_idx} -->
+<!-- 	</update> -->
 	
 	
 <!-- 	댓글 삭제 -->
-	<update id="deleteComments" parameterType="CommentsVo">
-		UPDATE comments
-		SET cm_content="삭제된 댓글", cm_delete="Y"
-		WHERE b_idx=#{b_idx} AND cm_idx=#{cm_idx}
-	</update>
+<!-- 	<update id="deleteComments" parameterType="CommentsVo"> -->
+<!-- 		UPDATE comments -->
+<!-- 		SET cm_content="삭제된 댓글", cm_delete="Y" -->
+<!-- 		WHERE b_idx=#{b_idx} AND cm_idx=#{cm_idx} -->
+<!-- 	</update> -->
 
 </mapper>

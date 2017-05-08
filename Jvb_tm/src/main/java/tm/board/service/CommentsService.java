@@ -18,26 +18,22 @@ public class CommentsService implements ICommentsService{
 	@Override
 	public void insertComments(CommentsVo comments) {
 		// TODO Auto-generated method stub
-		if(comments.getCm_idx() == null || "".equals(comments.getCm_idx())){
-			if(comments.getCm_parent() != null ){
-				int order = cDao.selectMaxOrderToParent(comments);
-				if(order == 0){
-					CommentsVo commentP = cDao.selectOneByParent(comments.getCm_parent());
-					order= commentP.getCm_order();
-				}
-				CommentsVo commentInfo = cDao.selectOneByParent(comments.getCm_parent());
-				comments.setCm_depth(commentInfo.getCm_depth());
-//				comments.setCm_order(commentInfo.getCm_order() + 1);
-				comments.setCm_order(order + 1);
-//				cDao.updateByOrder(commentInfo);
-				cDao.updateOrderPlus(comments);
-			} else {
-				int cm_order = cDao.selectOneMaxOrder(comments.getB_idx());
-				comments.setCm_order(cm_order);
-			}
-			cDao.insertComments(comments);
+		cDao.insertComments(comments);
+		if(comments.getCm_parent() == 0){
+			comments.setCm_parent(comments.getB_idx());
+			comments.setCm_depth(0);
+			comments.setCm_order(0);
+			cDao.updateComments(comments); 
 		} else {
-			cDao.updateByOrder(comments);
+			CommentsVo reComments = cDao.selectOne(comments.getCm_idx());
+			int cm_parent = reComments.getCm_parent();
+			int cm_depth = reComments.getCm_depth();
+			int cm_order = cDao.selectMaxOrder(comments);
+			reComments.setCm_parent(cm_parent);
+			reComments.setCm_depth(1);
+			reComments.setCm_order(cm_order + 1);
+			cDao.increaseOrder(reComments);
+			cDao.updateComments(comments);
 		}
 	}
 	
@@ -62,7 +58,7 @@ public class CommentsService implements ICommentsService{
 	@Override
 	public List<CommentsVo> selectComments(int b_idx) {
 		// TODO Auto-generated method stub
-		return cDao.selectByIdxComments(b_idx);
+		return cDao.selectComments(b_idx);
 	}
 	
 

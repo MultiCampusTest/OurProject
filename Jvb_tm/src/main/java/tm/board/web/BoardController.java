@@ -55,7 +55,7 @@ public class BoardController {
 		ModelAndView mav = new ModelAndView();
 		mav.addAllObjects(boardService.readNotice(boardIdx));
 		mav.addObject("userid", id);
-		mav.addObject("comments",commentsService.selectComments(boardIdx));
+		mav.addObject("comments",commentsService.selectComments(boardIdx)); 
 		mav.setViewName("board/notice_view");
 		
 		return mav;

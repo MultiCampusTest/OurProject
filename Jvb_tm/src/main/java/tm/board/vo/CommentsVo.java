@@ -2,26 +2,19 @@ package tm.board.vo;
 
 public class CommentsVo {
 
-	private String cm_idx;
+	private int cm_idx;
 	private String cm_writer;
 	private String cm_date;
-	private String b_idx;
+	private int b_idx;
 	private String cm_content;
-	private String cm_parent;
-	private String cm_depth;
+	private int cm_parent;
+	private int cm_depth;
 	private int cm_order;
 	private String cm_delete;
-	
-	public String getCm_delete() {
-		return cm_delete;
-	}
-	public void setCm_delete(String cm_delete) {
-		this.cm_delete = cm_delete;
-	}
-	public String getCm_idx() {
+	public int getCm_idx() {
 		return cm_idx;
 	}
-	public void setCm_idx(String cm_idx) {
+	public void setCm_idx(int cm_idx) {
 		this.cm_idx = cm_idx;
 	}
 	public String getCm_writer() {
@@ -36,10 +29,10 @@ public class CommentsVo {
 	public void setCm_date(String cm_date) {
 		this.cm_date = cm_date;
 	}
-	public String getB_idx() {
+	public int getB_idx() {
 		return b_idx;
 	}
-	public void setB_idx(String b_idx) {
+	public void setB_idx(int b_idx) {
 		this.b_idx = b_idx;
 	}
 	public String getCm_content() {
@@ -48,17 +41,17 @@ public class CommentsVo {
 	public void setCm_content(String cm_content) {
 		this.cm_content = cm_content;
 	}
-	public String getCm_parent() {
+	public int getCm_parent() {
 		return cm_parent;
 	}
-	public void setCm_parent(String cm_parent) {
+	public void setCm_parent(int cm_parent) {
 		this.cm_parent = cm_parent;
 	}
-	public String getCm_depth() {
+	public int getCm_depth() {
 		return cm_depth;
 	}
-	public void setCm_depth(String depth) {
-		this.cm_depth = depth;
+	public void setCm_depth(int cm_depth) {
+		this.cm_depth = cm_depth;
 	}
 	public int getCm_order() {
 		return cm_order;
@@ -66,5 +59,10 @@ public class CommentsVo {
 	public void setCm_order(int cm_order) {
 		this.cm_order = cm_order;
 	}
-	
+	public String getCm_delete() {
+		return cm_delete;
+	}
+	public void setCm_delete(String cm_delete) {
+		this.cm_delete = cm_delete;
+	}
 }

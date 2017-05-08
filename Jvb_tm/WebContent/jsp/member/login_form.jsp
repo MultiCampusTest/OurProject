@@ -73,11 +73,9 @@ integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
 			var id = $('#userid').val();
 			var pw = $('#pwd').val();
 			if(id == '') {
-				$('#msg').html('<font color="#FF605A">Enter account id</font>');
 				$('#userid').focus();
 				return false;
 			} else if(pw == '') {
-				$('#msg').html('<font color="#FF605A">Enter password</font>');
 				$('#pwd').focus();
 				return false;
 			}
@@ -88,6 +86,46 @@ integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
 <title>Sign in</title>
 </head>
 <body>
+<script>
+window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '534503966938051',
+      xfbml      : true,
+      version    : 'v2.9'
+    });
+    FB.AppEvents.logPageView();
+  };
+  
+  function facebook_btn() {
+	  FB.login(function(response) {
+		    if (response.authResponse) {
+		    	console.log('Welcome!  Fetching your information.... ');
+		    	FB.api('/me?fields=id,name,email,first_name,last_name,gender,locale', function(response) {
+		    	alert(response.id);
+		    	alert(response.email);
+		    	alert(response.first_name);
+		    	alert(response.last_name);
+		    	alert(response.gender);
+		    	alert(response.locale);
+		    	});
+		    } else {
+		     console.log('User cancelled login or did not fully authorize.');
+		    }
+	  }, {
+		    scope: 'public_profile, email', 
+		    return_scopes: true
+		});
+  };
+  
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+
 	<div class="margin-section-top"></div>
 	<div class="container">
 		<div class="row">
@@ -101,16 +139,17 @@ integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
 					<form action="login.do" method="post" class="form-signin">
 						<input type="text" class="form-control" placeholder="Userid" id="userid" name="userid">
 						<input type="password" class="form-control" placeholder="Password" id="pwd" name="pwd">
-						<div id="msg"></div>
-						<button type="submit" class="btn btn-lg btn-primary btn-block" onClick="return procEvent();">Sign in</button>
-						<br>
+
 						<div>
 							<span class="remember"><input type="checkbox" value="remember" id="remember">Remember me</span>
 							<span class="need-help"><a href="#" id="need-help">Forgot password</a></span>
-						</div>
+						</div><br>
+						<button type="submit" class="btn btn-lg btn-primary btn-block" onClick="return procEvent();">SIGN IN</button>
+						<button type="button" class="btn btn-lg btn-primary btn-block" onClick="facebook_btn();"><i class="fa fa-facebook-official" aria-hidden="true"></i>&nbsp;SIGN UP WITH FACEBOOK</button>
 					</form>
+<!-- 				<a href="joinForm.do" class="text-center new-account">Create an account</a> -->
 				</div>
-				<a href="joinForm.do" class="text-center new-account">Create an account</a>
+				<br>
 			</div>
 		</div>
 	</div>

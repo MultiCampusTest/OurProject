@@ -37,12 +37,6 @@ public class MemberController {
 		return "member/login_form";
 	}
 	
-	//비밀번호 찾기 페이지
-	@RequestMapping("searchPassword.do")
-	public String searchPass(){
-		return "member/search_password";
-	}
-	
 	//회원가입 페이지
 	@RequestMapping("joinForm.do")
 	public String joinForm(){
@@ -73,7 +67,7 @@ public class MemberController {
 //		return "member/my_page";
 	}
 	
-	//로그인 요청페이지
+	//로그인 요청 페이지
 	@RequestMapping("loginRequest.do")
 	public String loginRequest(){
 		return "member/login_request";
@@ -113,7 +107,7 @@ public class MemberController {
 		return response;
 	}
 	
-	//회원추가 요청
+	//회원가입 요청
 	@RequestMapping(method=RequestMethod.POST, value="join.do")
 	public ModelAndView join(MemberVo memberVo) {
 		ModelAndView mav = new ModelAndView();

@@ -140,7 +140,8 @@ public class BoardController {
 	public String guideWrite(HttpServletRequest req, BoardVo board){
 //		System.out.println(board.getLocCategory());
 //		System.out.println(board.getSubCategory());
-
+		String a = (String)req.getParameter("lat");
+		System.out.println(a);
 		return "board/guide_view";
 	}
 

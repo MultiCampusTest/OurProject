@@ -141,6 +141,9 @@ $(function() {
             
             loc[i] = address;
             lat[i] = results[0].geometry.location;
+            
+            
+            
             alert(lat[i]);
             alert(loc[i]);
 //             var div = document.createElement('div');

@@ -85,7 +85,7 @@ public class BoardService {
 	
 	//공지사항 세부글 읽기
 	public HashMap<String, Object> readNotice(int boardIdx){
-		BoardVo board = boardDao.selectOneNotice(boardIdx);
+		BoardVo board = boardDao.selectOneBoard(boardIdx);
 		board.setReadCount(board.getReadCount()+1);
 		boardDao.updateNotice(board);
 		ContentsVo contents = contentsDao.selectOneContents(boardIdx);
@@ -101,7 +101,7 @@ public class BoardService {
 	
 	//공지사항 세부글 가져오기(수정시)
 	public HashMap<String, Object> getNotice(int boardIdx) {
-		BoardVo board = boardDao.selectOneNotice(boardIdx);
+		BoardVo board = boardDao.selectOneBoard(boardIdx);
 		ContentsVo contents = contentsDao.selectOneContents(boardIdx);		
 
 		HashMap<String, Object> result = new HashMap<>();
@@ -127,8 +127,24 @@ public class BoardService {
 			mapPosition.setBoardIdx(boardIdx);
 			mapPosition.setLatLng(latLngArr[i]);
 			mapPosition.setMarkerSeq(i);
-			int result = mapPositionDao.insertMapPosition(mapPosition);
+			mapPositionDao.insertMapPosition(mapPosition);
 		}
+	}
+	
+	public HashMap<String, Object> readGuide(int boardIdx){
+		BoardVo board = boardDao.selectOneBoard(boardIdx);
+		board.setReadCount(board.getReadCount()+1);
+		boardDao.updateGuide(board);
+		ContentsVo contents = contentsDao.selectOneContents(boardIdx);
+		List<MapPositionVo> mapPositionArr = mapPositionDao.selectGuideMapPosition(boardIdx);
+		
+		
+		
+		HashMap<String, Object> result = new HashMap<>();
+		result.put("guide", board);
+		result.put("contents", contents);
+		result.put("mapPosition", mapPositionArr);
+		return result;	
 	}
 	
 	

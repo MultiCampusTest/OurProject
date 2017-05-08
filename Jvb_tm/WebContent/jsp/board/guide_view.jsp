@@ -6,7 +6,17 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript">
+$(document).ready(function(){
+	
+// 	var list = new Array(); 
+// 	<c:foreach items="${mapPosition}" var="loc">
+// 	list.push("${loc.latLng}");
+// 	alert(${loc.latLng});
+// 	</c:foreach>
 
+	var list = ${mapPosition[0].latLng};
+	alert(list);
+})
 </script>
 </head>
 <body>  
@@ -14,7 +24,7 @@
 	<div class="row">
 		<div class="col-md-5">
       		<h2>Google Map here</h2>
-			<div >
+			<div id="map" >
 <!-- 				<img src="http://maps.googleapis.com/maps/api/staticmap?center=37.566535,126.97796919999996&size=400x500&visible=37.5609781462155,126.98567233576205 -->
 <!-- 							&markers=color:red%7C37.5759879,126.97796919999996&markers=color:red%7C37.6783756,126.77117739999994 -->
 <!-- 							&key=AIzaSyBX21maM7ZEhRTCF0_hB8DSrYHsKOof2m8&sensor=false"> -->

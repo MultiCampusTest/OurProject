@@ -12,15 +12,22 @@ import tm.image.vo.ImageVo;
 
 public interface IBoardDao {
 	
-	//insert board
+	//공통부문
 	public int insertBoard(BoardVo boardVo);
+	public BoardVo selectOneBoard(int boardIdx); 
 	
 	
-	//update board	
+	
+	//update 	
 	public int updateNotice(BoardVo board);
+	public int updateGuide(BoardVo board);
 	
-	//delete board
+	//delete
 	public int deleteBoard(int b_idx);
+	
+	//select
+	
+	
 	
 	
 	//get_board_count
@@ -32,7 +39,6 @@ public interface IBoardDao {
 	public int boardGetCount();
 	
 	//select NoticeBoard
-	public BoardVo selectOneNotice(int boardIdx); 
 	public List<BoardVo> selectNoticeBoardLimit(HashMap<String, Object> params);
 	
 	//other board select

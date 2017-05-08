@@ -26,10 +26,8 @@ public class MemberController {
 	
 	@Autowired
 	private MemberService memberService;
-	
 	@Autowired
 	private MessageService messageService;
-	
 	@Autowired
 	private MatchingService matchingService;
 	
@@ -49,6 +47,12 @@ public class MemberController {
 	@RequestMapping("joinForm.do")
 	public String joinForm(){
 		return "member/join_form";
+	}
+	
+	//가입완료 페이지
+	@RequestMapping("joinSuccess.do")
+	public String joinSuccess() {
+		return "member/join_success";
 	}
 	
 	//마이페이지
@@ -105,14 +109,18 @@ public class MemberController {
 	public @ResponseBody HashMap<String, Object> idCheck(HttpServletResponse resp, String userid) {
 		HashMap<String, Object> response = new HashMap<>();
 		response.put("result", memberService.checkId(userid));
+		System.out.println(response.get("result"));
 		return response;
 	}
 	
 	//회원추가 요청
 	@RequestMapping(method=RequestMethod.POST, value="join.do")
-	public String join(MemberVo memberVo) {
+	public ModelAndView join(MemberVo memberVo) {
+		ModelAndView mav = new ModelAndView();
 		memberService.memberJoin(memberVo);
-		return "redirect:main.do";
+		mav.addObject("f_name", memberVo.getFirstName());
+		mav.setViewName("member/join_success");
+		return mav;
 	}
 	
 	//회원탈퇴 요청

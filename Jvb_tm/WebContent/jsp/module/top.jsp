@@ -99,8 +99,7 @@
 
 				<li><a href="noticeList.do">Notice</a></li>
 
-				<li class="dropdown"><a class="dropdown-toggle"
-					data-toggle="dropdown" href="#">Travel</a>
+				<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Travel</a>
 					<ul class="dropdown-menu">
 						<li><a href="travelList.do">All List</a></li>
 						<li><a href="travelList.do?sub_category=five">5 days</a></li>
@@ -122,8 +121,7 @@
 						<li><a href="travelList.do?loc_category=kyeongsang">kyeongsang</a></li>
 					</ul></li>
 
-				<li class="dropdown"><a class="dropdown-toggle"
-					data-toggle="dropdown" href="#">Guide</a>
+				<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Guide</a>
 					<ul class="dropdown-menu">
 						<li><a href="guideList.do">All List</a></li>
 						<li><a href="guideList.do?sub_category=five">5 days</a></li>
@@ -145,8 +143,7 @@
 						<li><a href="guideList.do?loc_category=kyeongsang">kyeongsang</a></li>
 					</ul></li>
 
-				<li class="dropdown"><a class="dropdown-toggle"
-					data-toggle="dropdown" href="reviewList.do">Review</a>
+				<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="reviewList.do">Review</a>
 					<ul class="dropdown-menu">
 						<li><a href="reviewList.do">All List</a></li>
 						<li><a href="reviewList.do?sub_category=five">5 days</a></li>
@@ -162,17 +159,52 @@
 
 				<c:choose>
 					<c:when test="${userid != null }">
-						<li><a class="page-scroll" href="myPage.do"><i class="fa fa-user" aria-hidden="true"></i> MYPAGE</a></li>
-						<li><a class="page-scroll" href="logout.do"><i class="fa fa-times" aria-hidden="true"></i> SIGN OUT</a></li>
+						<li><a class="page-scroll" href="myPage.do">MYPAGE &nbsp;<i class="fa fa-cog" aria-hidden="true"></i></a></li>
+						<li><a class="page-scroll" href="logout.do">SIGN OUT&nbsp;<i class="fa fa-times-circle" aria-hidden="true"></i></a></li>
 					</c:when>
 					<c:otherwise>
-						<li><a class="page-scroll" href="loginForm.do"><i class="fa fa-plane" aria-hidden="true"></i> &nbsp;SIGN IN</a></li>						
-						<li><a class="page-scroll" href="joinForm.do"><i class="fa fa-user-plus" aria-hidden="true"></i> &nbsp;SIGN UP</a></li>
+						<li><a class="page-scroll" href="joinForm.do">SIGN UP &nbsp;<i class="fa fa-angle-double-right" aria-hidden="true"></i></a></li>
+						<ul class="nav navbar-nav navbar-right">
+							<li class="dropdown"><a href="loginForm.do" class="dropdown-toggle" data-toggle="dropdown">Sign in <b class="caret"></b></a>
+								<ul class="dropdown-menu"
+									style="padding: 15px; min-width: 250px;">
+									<li>
+										<div class="row">
+											<div class="col-md-12">
+												<form class="form" role="form" method="post" action="login.do"
+													accept-charset="UTF-8" id="login-nav">
+													<div class="form-group">
+														<label class="sr-only" for="exampleInputEmail2">Username</label>
+														<input type="userid" class="form-control" id="userid" name="userid" placeholder="Username">
+													</div>
+													<div class="form-group">
+														<label class="sr-only" for="exampleInputPassword2">Password</label>
+														<input type="password" class="form-control"
+															id="pwd" name="pwd" placeholder="Password">
+													</div>
+													<div class="checkbox">
+														<label><input type="checkbox"> Remember me</label>
+													</div>
+													<div class="form-group">
+														<button type="submit" class="btn btn-primary btn-block">Sign in</button>
+													</div>
+												</form>
+											</div>
+										</div>
+									</li>
+									<li class="divider"></li>
+									<li>
+									<div class="row">
+										<div class="social-buttons col-md-12">
+										<a href="javascript:facebook_btn();" class="btn btn-fb"><i class="fa fa-facebook"></i> Facebook</a>
+										<a href="javascript:twitter_btn()" class="btn btn-tw"><i class="fa fa-twitter"></i> Twitter</a>
+										</div>
+									</div>
+									</ul>
+							</li>
+						</ul>
 					</c:otherwise>
 				</c:choose>
-
-
-
 
 
 			</ul>

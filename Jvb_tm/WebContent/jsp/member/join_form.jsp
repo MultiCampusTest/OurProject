@@ -56,7 +56,7 @@
 <div class="container">
 <div class="row">
     <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
-		<form action="join.do" method="post" role="form">
+		<form action="joinProc.do" method="post" role="form">
 			<h1>Sign Up <small>It's free and always will be.</small></h2>
 			<hr class="colorgraph"><br>
 			<div class="form-group" style="text-align: center">
@@ -69,17 +69,17 @@
 			<div class="row">
 				<div class="col-xs-12 col-sm-6 col-md-6">
 					<div class="form-group">
-                        <input type="text" name="firstName" id="firstName" class="form-control input-lg" placeholder="First Name *" >
+                        <input type="text" name="firstName" id="firstName" class="form-control input-lg" placeholder="First Name *" value="${external.firstName}">
 					</div>
 				</div>
 				<div class="col-xs-12 col-sm-6 col-md-6">
 					<div class="form-group">
-						<input type="text" name="lastName" id="lastName" class="form-control input-lg" placeholder="Last Name *" >
+						<input type="text" name="lastName" id="lastName" class="form-control input-lg" placeholder="Last Name *" value="${external.lastName}">
 					</div>
 				</div>
 			</div>
 			<div class="form-group">
-				<input type="text" name="userid" id="userid" class="form-control input-lg" placeholder="Userid *">	
+				<input type="text" name="userid" id="userid" class="form-control input-lg" placeholder="Userid *" value="${external.userid}">	
 			</div>
 			<div class="form-group">	
 				<div id="idCheck" style="text-align: center"></div>
@@ -98,7 +98,7 @@
 				<div id="pwdCheck" style="text-align: center"></div>
 			</div>
 			<div class="form-group">
-				<input type="email" name="email" id="email" class="form-control input-lg" placeholder="Email Address *">
+				<input type="email" name="email" id="email" class="form-control input-lg" placeholder="Email Address *" value="${external.email}">
 			</div>
 			<div class="form-group">	
 				<div id="emailCheck" style="text-align: center"></div>

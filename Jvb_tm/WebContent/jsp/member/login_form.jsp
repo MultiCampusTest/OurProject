@@ -4,18 +4,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" href="css/login-style.css">
-<script src="https://code.jquery.com/jquery-2.2.4.min.js"
-integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
-  crossorigin="anonymous"></script>
+<link rel="stylesheet" href="css/loginForm.css">
 <script type="text/javascript">
 	$(document).ready(function(){
-		
-		//아이디 쿠키 저장
 	    var userid = getCookie("userid");
 	    $("input[type=text]").val(userid); 
 	     
-	    if($("input[type=text]").val() != ""){
+	    if($("input[type=text]").val() != "") {
 	        $("#remember").attr("checked", true);
 	    }
 	     
@@ -61,26 +56,6 @@ integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
 	    	}
 	    	return unescape(cookieValue);
 		}
-		
-
-		
-		$('input[type]').on('blur', function(){
-			if($(this).val() != '')
-				$('#msg').text('');
-		});
-		
-		$('#loginform_sumnit').on('click', function procEvent(){
-			var id = $('#userid').val();
-			var pw = $('#pwd').val();
-			if(id == '') {
-				$('#userid').focus();
-				return false;
-			} else if(pw == '') {
-				$('#pwd').focus();
-				return false;
-			}
-			$('msg').remove();
-		});
 	});
 </script>
 <title>Sign in</title>
@@ -129,16 +104,13 @@ window.fbAsyncInit = function() {
 	  FB.login(function(response) {
 		    if (response.authResponse) {
 		    	console.log('Welcome!  Fetching your information.... ');
-		    	FB.api('/me?fields=id,name,email,first_name,last_name,gender,locale', function(response) {
+		    	FB.api('/me?fields=id,email,first_name,last_name,gender', function(response) {
 		    		fbAjaxRequest(response);
 		    	});
 		    } else {
 		     console.log('User cancelled login or did not fully authorize.');
 		    }
-	  }, {
-		    scope: 'public_profile, email', 
-		    return_scopes: true
-		});
+	  }, { scope: 'public_profile, email',  return_scopes: true });
   };
   
   (function(d, s, id){
@@ -160,7 +132,7 @@ window.fbAsyncInit = function() {
 			<div class="col-sm-6 col-md-4 col-md-offset-4">
 				<div class="account-wall">
 					<img class="profile-img" src="img/profile.jpg">
-					<form action="login.do" method="post" class="form-signin">
+					<form action="loginProc.do" method="post" class="form-signin">
 						<input type="text" class="form-control" placeholder="Userid" id="userid" name="userid">
 						<input type="password" class="form-control" placeholder="Password" id="pwd" name="pwd">
 

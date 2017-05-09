@@ -41,6 +41,9 @@
 <!-- Theme CSS -->
 <link href="css/creative.css" rel="stylesheet">
 
+<!-- Facebook API -->
+<script type="text/javascript" src="js/facebookAPI.js"></script>
+
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>
@@ -64,15 +67,64 @@
 			}
 		});
 		
-		$('#menu_submit').on('click', function(){
-			if($('#menu_userid').val() == '') {
-				$('#menu_userid').focus();
+		var userid = getCookie("userid");
+	    $('#top_userid').val(userid); 
+	     
+	    if($('#top_userid').val() != "") {
+	        $('#top_checkbox').attr("checked", true);
+	    }
+	     
+	    $('#top_checkbox').change(function(){
+	        if($('#top_checkbox').is(":checked")){
+	            var userid = $('#top_userid').val();
+	            setCookie("userid", userid, 7);
+	        }else{
+	            deleteCookie("userid");
+	        }
+	    });
+	     
+	    $('#top_userid').keyup(function(){
+	        if($('#top_checkbox').is(":checked")){
+	            var userid = $('#top_userid').val();
+	            setCookie("userid", userid, 7);
+	        }
+	    });
+	 
+		function setCookie(cookieName, value, exdays){
+	   		var exdate = new Date();
+	  		exdate.setDate(exdate.getDate() + exdays);
+	    	var cookieValue = escape(value) + ((exdays==null) ? "" : "; expires=" + exdate.toGMTString());
+	    	document.cookie = cookieName + "=" + cookieValue;
+		}
+	 
+		function deleteCookie(cookieName){
+	    	var expireDate = new Date();
+	    	expireDate.setDate(expireDate.getDate() - 1);
+	    	document.cookie = cookieName + "= " + "; expires=" + expireDate.toGMTString();
+		}
+	 
+		function getCookie(cookieName) {
+	    	cookieName = cookieName + '=';
+	    	var cookieData = document.cookie;
+	    	var start = cookieData.indexOf(cookieName);
+	    	var cookieValue = '';
+	    	if(start != -1){
+	        	start += cookieName.length;
+	        	var end = cookieData.indexOf(';', start);
+	        	if(end == -1)end = cookieData.length;
+	        	cookieValue = cookieData.substring(start, end);
+	    	}
+	    	return unescape(cookieValue);
+		}
+		
+		$('#top_submit').on('click', function(){
+			if($('#top_userid').val() == '') {
+				$('#top_userid').focus();
 				return false;
-			} else if($('#menu_pwd').val() == '') {
-				$('#menu_pwd').focus();				
+			} else if($('#top_pwd').val() == '') {
+				$('#top_pwd').focus();				
 				return false;
 			}
-			return true;
 		});
 
 	});
@@ -174,7 +226,7 @@
 						<li><a class="page-scroll" href="logout.do">SIGN OUT&nbsp;<i class="fa fa-times-circle" aria-hidden="true"></i></a></li>
 					</c:when>
 					<c:otherwise>
-						<li><a class="page-scroll" href="joinForm.do">SIGN UP &nbsp;<i class="fa fa-angle-double-right" aria-hidden="true"></i></a></li>
+						<li><a class="page-scroll" href="joinForm.do">SIGN UP</a></li>
 						<ul class="nav navbar-nav navbar-right">
 							<li class="dropdown"><a href="loginForm.do" class="dropdown-toggle" data-toggle="dropdown">Sign in <b class="caret"></b></a>
 								<ul class="dropdown-menu"
@@ -182,21 +234,24 @@
 									<li>
 										<div class="row">
 											<div class="col-md-12">
-												<form class="form" role="form" method="post" action="login.do"
-													accept-charset="UTF-8" id="login-nav">
+												<form action="loginProc.do" method="post" class="form" role="form" accept-charset="UTF-8">
 													<div class="form-group">
 														<label class="sr-only" for="exampleInputEmail2">Username</label>
-														<input type="userid" class="form-control" id="menu_userid" name="userid" placeholder="Username">
+														<input type="text" class="form-control" id="top_userid" name="userid" placeholder="Username">
 													</div>
 													<div class="form-group">
 														<label class="sr-only" for="exampleInputPassword2">Password</label>
-														<input type="password" class="form-control" id="menu_pwd" name="pwd" placeholder="Password">
+														<input type="password" class="form-control" id="top_pwd" name="pwd" placeholder="Password">
 													</div>
 													<div class="checkbox">
-														<label><input type="checkbox"> Remember me</label>
+														<label><input type="checkbox" id="top_checkbox"> Remember me</label>
 													</div>
-													<div class="form-group">
-														<button type="submit" id="menu_submit" class="btn btn-primary btn-block">Sign in</button>
+													<div class="checkbox">
+														<a href="#">Forgot your username?</a><br>
+														<a href="#">Forgot your password?</a>
+													</div>
+													<div class="form-group" style="text-align: center">
+														<button type="submit" id="top_submit" class="btn btn-primary btn-block">Sign in</button>
 													</div>
 												</form>
 											</div>

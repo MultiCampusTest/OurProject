@@ -62,9 +62,20 @@
 				$(this).removeClass('open').trigger('hidden.bs.dropdown', relatedTarget)
 				return false;
 			}
-		})
+		});
+		
+		$('#menu_submit').on('click', function(){
+			if($('#menu_userid').val() == '') {
+				$('#menu_userid').focus();
+				return false;
+			} else if($('#menu_pwd').val() == '') {
+				$('#menu_pwd').focus();				
+				return false;
+			}
+			return true;
+		});
 
-	})
+	});
 </script>
 
 <style type="text/css">
@@ -175,18 +186,17 @@
 													accept-charset="UTF-8" id="login-nav">
 													<div class="form-group">
 														<label class="sr-only" for="exampleInputEmail2">Username</label>
-														<input type="userid" class="form-control" id="userid" name="userid" placeholder="Username">
+														<input type="userid" class="form-control" id="menu_userid" name="userid" placeholder="Username">
 													</div>
 													<div class="form-group">
 														<label class="sr-only" for="exampleInputPassword2">Password</label>
-														<input type="password" class="form-control"
-															id="pwd" name="pwd" placeholder="Password">
+														<input type="password" class="form-control" id="menu_pwd" name="pwd" placeholder="Password">
 													</div>
 													<div class="checkbox">
 														<label><input type="checkbox"> Remember me</label>
 													</div>
 													<div class="form-group">
-														<button type="submit" class="btn btn-primary btn-block">Sign in</button>
+														<button type="submit" id="menu_submit" class="btn btn-primary btn-block">Sign in</button>
 													</div>
 												</form>
 											</div>

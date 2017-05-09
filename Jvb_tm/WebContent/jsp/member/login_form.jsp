@@ -69,7 +69,7 @@ integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
 				$('#msg').text('');
 		});
 		
-		$('button[type=submit]').on('click', function procEvent(){
+		$('#loginform_sumnit').on('click', function procEvent(){
 			var id = $('#userid').val();
 			var pw = $('#pwd').val();
 			if(id == '') {
@@ -168,7 +168,7 @@ window.fbAsyncInit = function() {
 							<span class="remember"><input type="checkbox" value="remember" id="remember">Remember me</span>
 							<span class="need-help"><a href="#" id="need-help">Forgot password</a></span>
 						</div><br>
-						<button type="submit" class="btn btn-lg btn-primary btn-block" onClick="return procEvent();">SIGN IN</button>
+						<button type="submit"  id="loginform_submit" class="btn btn-lg btn-primary btn-block" onClick="return procEvent();">SIGN IN</button>
 						<button type="button" class="btn btn-lg btn-primary btn-block" onClick="facebook_btn();"><i class="fa fa-facebook-official" aria-hidden="true"></i>&nbsp;SIGN UP WITH FACEBOOK</button>
 					</form>
 <!-- 				<a href="joinForm.do" class="text-center new-account">Create an account</a> -->

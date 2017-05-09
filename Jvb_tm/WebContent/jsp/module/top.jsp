@@ -246,7 +246,7 @@
 													<div class="checkbox">
 														<label><input type="checkbox" id="top_checkbox"> Remember me</label>
 													</div>
-													<div class="checkbox">
+													<div class="form-group">
 														<a href="#">Forgot your username?</a><br>
 														<a href="#">Forgot your password?</a>
 													</div>

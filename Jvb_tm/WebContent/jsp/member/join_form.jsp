@@ -10,7 +10,7 @@
   src="https://code.jquery.com/jquery-2.2.4.min.js"
   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
   crossorigin="anonymous"></script>
-<script type="text/javascript" src="js/join_validation.js"></script>
+<script type="text/javascript" src="js/validation.js"></script>
 
 <!-- 달력 관련 CDN -->
 <link rel="stylesheet" href="https://unpkg.com/flatpickr/dist/flatpickr.min.css">
@@ -46,7 +46,7 @@
 	function fileReset() {
 		$('#file').attr('value', '');
 		$('#profile').attr('src', 'img/profile.jpg');
-		$('#imageCheck').text('(Add image)');
+		$('#imageCheck').text('');
 	}
 </script>
 <title>Insert title here</title>
@@ -57,11 +57,11 @@
 <div class="row">
     <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
 		<form action="join.do" method="post" role="form">
-			<h2>Please Sign Up <small>It's free and always will be.</small></h2>
+			<h1>Sign Up <small>It's free and always will be.</small></h2>
 			<hr class="colorgraph"><br>
 			<div class="form-group" style="text-align: center">
 				<img id="profile" src="img/profile.jpg" style="width: 150px; height: 150px; border-radius: 50%" onclick="document.getElementById('file').click();">
-				<div id="imageCheck">(Add image)</div>
+				<div id="imageCheck"></div>
 			</div>
 			<div class="form-group">
 				<input type="file" name="file" id="file" class="form-control input-lg" style="display:none;" onchange="document.getElementById('txt').value=this.value;">
@@ -79,7 +79,7 @@
 				</div>
 			</div>
 			<div class="form-group">
-				<input type="text" name="userid" id="userid" class="form-control input-lg" placeholder="Userid *" >	
+				<input type="text" name="userid" id="userid" class="form-control input-lg" placeholder="Userid *">	
 			</div>
 			<div class="form-group">	
 				<div id="idCheck" style="text-align: center"></div>
@@ -87,12 +87,12 @@
 			<div class="row">
 				<div class="col-xs-12 col-sm-6 col-md-6">
 					<div class="form-group">
-						<input type="password" name="pwd" id="pwd" class="form-control input-lg" placeholder="Password *">
+						<input type="password" name="pwd" id="pwd" class="form-control input-lg" placeholder="Password *" maxlength="20">
 					</div>
 				</div>
 				<div class="col-xs-12 col-sm-6 col-md-6">
 					<div class="form-group">
-						<input type="password" name="pwdChk" id="pwdChk" class="form-control input-lg" placeholder="Confirm Password *">
+						<input type="password" name="pwdChk" id="pwdChk" class="form-control input-lg" placeholder="Confirm Password *" maxlength="20">
 					</div>
 				</div>
 				<div id="pwdCheck" style="text-align: center"></div>
@@ -104,7 +104,7 @@
 				<div id="emailCheck" style="text-align: center"></div>
 			</div>
 			<div class="form-group">
-				<input type="text" name="birthday" id="birthday" class="form-control input-lg" placeholder="Birthday *">
+				<input type="text" name="birthday" id="birthday" class="form-control input-lg"  style="background: white" placeholder="Birthday *">
 			</div>
 			<div class="form-group">
 				<select name="gender" id="gender" class="form-control input-lg">
@@ -388,14 +388,21 @@
 					</span>
 				</div>
 				<div class="col-xs-8 col-sm-9 col-md-9">
-					 By clicking <strong class="label label-primary" style="background: #FF605A">Register</strong>, you agree to the <a href="#" data-toggle="modal" data-target="#t_and_c_m">Terms and Conditions</a> set out by this site, including our Cookie Use.
+					 By clicking <strong class="label label-primary" style="background: #FF605A">Submit</strong>, you agree to the <a href="#" data-toggle="modal" data-target="#t_and_c_m">Terms and Conditions</a> set out by this site, including our Cookie Use.
 				</div>
 			</div>
 			
 			<hr class="colorgraph">
 			<div class="row">
-				<div class="col-xs-12 col-md-6"><input type="submit" value="SUBMIT" class="btn btn-primary btn-block btn-lg" tabindex="7"></div>
-				<div class="col-xs-12 col-md-6"><a href="main.do" class="btn btn-success btn-block btn-lg">CANCEL</a></div>
+				<div class="col-xs-12 col-md-6">
+				<div class="form-group">
+				<input type="submit" value="SUBMIT" class="btn btn-primary btn-block btn-lg"></div>
+				</div>
+				<div class="col-xs-12 col-md-6">
+				<div class="form-group">
+				<button type="button" class="btn btn-primary btn-block btn-lg" onclick="location.href='main.do'">CANCEL</button></div>
+				</div>
+				</div>
 			</div>
 		</form>
 	</div>

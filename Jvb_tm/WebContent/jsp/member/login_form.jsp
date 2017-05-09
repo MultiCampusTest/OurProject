@@ -96,17 +96,41 @@ window.fbAsyncInit = function() {
     FB.AppEvents.logPageView();
   };
   
+  function fbAjaxRequest(response) {
+	  $.ajax({
+		 url : 'idCheck.do',
+		 type : 'POST',
+		 data : {userid : response.id},
+		 dataType : 'json',
+		 success : function(data) {
+			if(data.result)
+				alert('이미 가입한 아이디');
+			else
+				alert('가입 가능');
+				var form = document.createElement("form");
+				form.setAttribute("method", "get");
+				form.setAttribute("action", "joinForm.do");
+				for(var key in response) {
+					var hiddenField = document.createElement("input");
+					hiddenField.setAttribute("type", "hidden");
+					hiddenField.setAttribute("name", key);
+					hiddenField.setAttribute("value", response[key]);
+					form.appendChild(hiddenField);
+				}
+				document.body.appendChild(form);
+				form.submit();
+		}, error : function() {
+			alert('data error');
+		}
+	});
+  }
+  
   function facebook_btn() {
 	  FB.login(function(response) {
 		    if (response.authResponse) {
 		    	console.log('Welcome!  Fetching your information.... ');
 		    	FB.api('/me?fields=id,name,email,first_name,last_name,gender,locale', function(response) {
-		    	alert(response.id);
-		    	alert(response.email);
-		    	alert(response.first_name);
-		    	alert(response.last_name);
-		    	alert(response.gender);
-		    	alert(response.locale);
+		    		fbAjaxRequest(response);
 		    	});
 		    } else {
 		     console.log('User cancelled login or did not fully authorize.');

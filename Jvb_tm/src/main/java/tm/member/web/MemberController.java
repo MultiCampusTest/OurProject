@@ -52,19 +52,19 @@ public class MemberController {
 	//마이페이지
 	@RequestMapping("myPage.do")
 	public ModelAndView maindo(HttpSession session) {
-		String userid=(String)session.getAttribute("userid");
+		String userid = (String) session.getAttribute("userid");
 		System.out.println(session.getAttribute("userid"));
 		HashMap<String, Object> params=new HashMap<>();
 		params.put("userid", userid);
-		
-		
 		ModelAndView mav=new ModelAndView();
+		mav.addObject("member", memberService.memberSelectOne(userid));
 		mav.addAllObjects(messageService.messageList(userid));
 		mav.addAllObjects(matchingService.matchingList(userid));
 		mav.addAllObjects(params);
 		mav.setViewName("member/my_page");
+		System.out.println(memberService.memberSelectOne(userid).getFirstName());
+		System.out.println(memberService.memberSelectOne(userid).getLastName());
 		return mav;
-//		return "member/my_page";
 	}
 	
 	//로그인 요청 페이지
@@ -78,7 +78,6 @@ public class MemberController {
 	public String login(HttpSession session, String userid, String pwd) {
 //		if(memberService.checkLogin(userid, pwd)) {
 //			session.setAttribute("userid", userid);
-//			session.setAttribute("pwd", pwd);
 //			return "redirect:main.do";
 //		} else {
 //			return "redirect:loginForm.do";			

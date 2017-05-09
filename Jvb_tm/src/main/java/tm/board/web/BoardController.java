@@ -40,10 +40,12 @@ public class BoardController {
 
 	// notice_board
 	@RequestMapping("noticeList.do")
-	public ModelAndView noticeList(HttpServletRequest req, @RequestParam(defaultValue="1") int page ) {
+	public ModelAndView noticeList(HttpServletRequest req,
+								   @RequestParam(defaultValue="1") int page ) {
+		String code = "n";
 		String userid = (String)(req.getSession().getAttribute("userid"));
 		ModelAndView mav = new ModelAndView();
-		mav.addAllObjects(boardService.getNoticeBoardList(page));
+		mav.addAllObjects(boardService.getNoticeBoardList(code, page));
 		mav.addObject("userid", userid);
 		mav.setViewName("board/notice_list");
 		return mav;
@@ -54,7 +56,7 @@ public class BoardController {
 		return "board/notice_write_form";
 	}
 	
-	@RequestMapping(method=RequestMethod.POST, value="noticeWrite.do")
+	@RequestMapping(value="noticeWrite.do", method=RequestMethod.POST)
 	public String noticeWrite(BoardVo board, ContentsVo contents){
 		boardService.insertNotice(board, contents);
 		return "redirect:noticeView.do?boardIdx="+board.getBoardIdx();
@@ -80,7 +82,7 @@ public class BoardController {
 		return mav;		
 	}
 	
-	@RequestMapping(method=RequestMethod.POST, value="noticeModify.do")
+	@RequestMapping(value="noticeModify.do", method=RequestMethod.POST)
 	public String noticeModify(BoardVo board, ContentsVo contents){
 		boardService.updateNotice(board, contents);
 		return "redirect:noticeView.do?boardIdx="+board.getBoardIdx();
@@ -114,10 +116,20 @@ public class BoardController {
 		return "travelList";
 	}
 
+	
+	
 	// guide_board
-	@RequestMapping("guideList.do")
-	public String guideList() {
-		return "board/guide_list";
+	@RequestMapping(value="guideList.do")
+	public ModelAndView guideList(
+		 @RequestParam(defaultValue="1") int page,
+		 @RequestParam(defaultValue="") String locCategory,
+		 @RequestParam(defaultValue="") String subCategory
+		 ){
+		String code = "g";
+		ModelAndView mav = new ModelAndView();
+		mav.addAllObjects(boardService.getCommonBoardList(code, page, locCategory, subCategory));
+		mav.setViewName("board/guide_list");
+		return mav;
 	}
 	
 	@RequestMapping("guideWriteForm.do")
@@ -134,10 +146,7 @@ public class BoardController {
 		String[] latLngArr = req.getParameterValues("latLng");
 		String userid = (String)(req.getSession().getAttribute("userid"));
 		
-		latLngArr[0] = latLngArr[0].replace("(", "");
-		latLngArr[0] = latLngArr[0].replace(")", "");
-		System.out.println(latLngArr[0]);
-//		boardService.insertGuide(userid, board, contents, latLngArr);
+		boardService.insertGuide(userid, board, contents, latLngArr);
 		return "redirect:guideView.do?boardIdx="+board.getBoardIdx();
 		
 	}

@@ -51,8 +51,7 @@ public class BoardService {
 	}
 	
 	//공지사항 리스트 얻어오기
-	public HashMap<String, Object> getNoticeBoardList(int page){
-		String code = "n";
+	public HashMap<String, Object> getNoticeBoardList(String code, int page){
 		//시작과 끝페이지
 		int start = (page - 1) / 10 * 10 + 1; 
 		int end = ((page - 1) / 10 + 1) * 10;
@@ -110,6 +109,38 @@ public class BoardService {
 		
 		return result;
 	}
+
+	//guide, travel 리스트 얻어오기
+	public HashMap<String, Object> getCommonBoardList(String code, int page, String locCategory, String subategory){
+		//시작과 끝페이지
+		int start = (page - 1) / 10 * 10 + 1; 
+		int end = ((page - 1) / 10 + 1) * 10;
+		
+		//첫페이지와 게시물 전체의 마지막 페이지
+		int first = 1;
+		int last = (boardDao.getBoardCountByCode(code) - 1) / 10 + 1;
+		
+		end = last < end ? last : end;
+		
+		int skip = (page - 1) * 10;
+		int count = 10;
+		HashMap<String, Object> params = new HashMap<>();
+		params.put("code", code);
+		params.put("skip", skip);
+		params.put("count", count);
+		List<BoardVo> list = boardDao.selectNoticeBoardLimit(params);
+
+		
+		HashMap<String, Object> result = new HashMap<>();
+		result.put("start", start);
+		result.put("first", first);
+		result.put("end", end);
+		result.put("last", last);
+		result.put("current", page);
+		result.put("noticeList", list);
+
+		return result;
+	}
 	
 	
 	//guide
@@ -136,9 +167,15 @@ public class BoardService {
 		board.setReadCount(board.getReadCount()+1);
 		boardDao.updateGuide(board);
 		ContentsVo contents = contentsDao.selectOneContents(boardIdx);
-		List<MapPositionVo> mapPositionArr = mapPositionDao.selectGuideMapPosition(boardIdx);
+		List<String> mapPositionArr = mapPositionDao.selectGuideMapPosition(boardIdx);
 		
-		
+		for(int i=0; i<mapPositionArr.size();i++){
+			String loc  = mapPositionArr.get(i);
+			loc = loc.replace("(", "");
+			loc = loc.replace(")", "");
+			mapPositionArr.remove(i);
+			mapPositionArr.add(i, loc);
+		}
 		
 		HashMap<String, Object> result = new HashMap<>();
 		result.put("guide", board);

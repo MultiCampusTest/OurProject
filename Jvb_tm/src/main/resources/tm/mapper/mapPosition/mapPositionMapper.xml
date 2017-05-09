@@ -20,8 +20,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		VALUES(0, #{boardIdx}, #{markerSeq}, #{latLng}, #{contentsSeq})
 	</insert>
 	
-	<select id="selectGuideMapPosition" parameterType="int" resultMap="mapPosition">
-		SELECT b_idx, map_marker_seq, map_lat_lng FROM mapposition
+	<select id="selectGuideMapPosition" parameterType="int" resultType="String">
+		SELECT map_lat_lng FROM mapposition
 		WHERE b_idx=#{boardIdx}
 		ORDER BY map_marker_seq
 	</select>

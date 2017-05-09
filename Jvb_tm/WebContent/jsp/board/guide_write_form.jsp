@@ -61,13 +61,14 @@
        clearMarkers();
        markers = [];
        path = [];
+       polys = [];
      }
     
    document.getElementById('delete').addEventListener('click', function() {
 	  deleteMarkers();
 	  loc = [];
 	  latLng = [];
-	  document.removeChild(div);
+// 	  document.removeChild(div);
    });
 
     document.getElementById('submit').addEventListener('click', function() {
@@ -95,6 +96,7 @@
         
         loc[i] = address;
         latLng[i] = results[0].geometry.location;
+        
         
         $('#test').append('<input type="hidden" name="latLng" value="'+latLng[i]+'">');
 

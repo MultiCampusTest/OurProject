@@ -40,36 +40,38 @@ public class BoardController {
 
 	// notice_board
 	@RequestMapping("noticeList.do")
-	public ModelAndView noticeList(HttpServletRequest req, @RequestParam(defaultValue="1") int page ) {
-		String id = (String)(req.getSession().getAttribute("userid"));
+	public ModelAndView noticeList(HttpServletRequest req,
+								   @RequestParam(defaultValue="1") int page ) {
+		String code = "n";
+		String userid = (String)(req.getSession().getAttribute("userid"));
 		ModelAndView mav = new ModelAndView();
-		mav.addAllObjects(boardService.getNoticeBoardList(page));
-		mav.addObject("userid", id);
+		mav.addAllObjects(boardService.getNoticeBoardList(code, page));
+		mav.addObject("userid", userid);
 		mav.setViewName("board/notice_list");
 		return mav;
 	}
 	
-	@RequestMapping("noticeView.do")
-	public ModelAndView noticeView(HttpServletRequest req, int boardIdx) {
-		String id = (String)(req.getSession().getAttribute("userid"));
-		ModelAndView mav = new ModelAndView();
-		mav.addAllObjects(boardService.readNotice(boardIdx));
-		mav.addObject("userid", id);
-		mav.addObject("comments",commentsService.selectComments(boardIdx)); 
-		mav.setViewName("board/notice_view");
-		
-		return mav;
-	}
-
 	@RequestMapping("noticeWriteForm.do")
 	public String noticeWriteForm() {
 		return "board/notice_write_form";
 	}
 	
-	@RequestMapping(method=RequestMethod.POST, value="noticeWrite.do")
+	@RequestMapping(value="noticeWrite.do", method=RequestMethod.POST)
 	public String noticeWrite(BoardVo board, ContentsVo contents){
 		boardService.insertNotice(board, contents);
-		return "redirect:noticeList.do";
+		return "redirect:noticeView.do?boardIdx="+board.getBoardIdx();
+	}
+	
+	@RequestMapping("noticeView.do")
+	public ModelAndView noticeView(HttpServletRequest req, int boardIdx) {
+		String userid = (String)(req.getSession().getAttribute("userid"));
+		ModelAndView mav = new ModelAndView();
+		mav.addAllObjects(boardService.readNotice(boardIdx));
+		mav.addObject("userid", userid);
+//		mav.addObject("comments",commentsService.selectComments(boardIdx)); 
+		mav.setViewName("board/notice_view");
+		
+		return mav;
 	}
 	
 	@RequestMapping("noticeModifyForm.do")
@@ -79,34 +81,17 @@ public class BoardController {
 		mav.setViewName("board/notice_modify_form");
 		return mav;		
 	}
-
-	@RequestMapping(method=RequestMethod.POST, value="noticeModify.do")
+	
+	@RequestMapping(value="noticeModify.do", method=RequestMethod.POST)
 	public String noticeModify(BoardVo board, ContentsVo contents){
 		boardService.updateNotice(board, contents);
 		return "redirect:noticeView.do?boardIdx="+board.getBoardIdx();
 	}
 	
-	@RequestMapping("commentsWrite.do")
-	public ModelAndView commentsWrite(CommentsVo comments, String parent_cm){
-		ModelAndView mav = new ModelAndView();
-		commentsService.insertComments(comments, parent_cm);
-		mav.setViewName("redirect:noticeView.do?boardIdx="+comments.getB_idx());
-		return mav;
-	}
-	@RequestMapping("commentsUpdate.do")
-	public ModelAndView commentsUpdate(CommentsVo comments){
-		ModelAndView mav = new ModelAndView();
-		commentsService.updateComments(comments);
-		mav.setViewName("redirect:noticeView.do?boardIdx="+comments.getB_idx());
-		return mav;
-	}
-	@RequestMapping("commentsDelete.do")
-	public ModelAndView commentsDelete(CommentsVo comments){
-		ModelAndView mav = new ModelAndView();
-		commentsService.deleteComments(comments.getCm_idx());
-		mav.setViewName("redirect:noticeView.do?boardIdx="+comments.getB_idx());
-		return mav;
-	}
+	
+
+	
+	
 
 	
 
@@ -131,7 +116,22 @@ public class BoardController {
 		return "travelList";
 	}
 
+	
+	
 	// guide_board
+	@RequestMapping(value="guideList.do")
+	public ModelAndView guideList(
+		 @RequestParam(defaultValue="1") int page,
+		 @RequestParam(defaultValue="") String locCategory,
+		 @RequestParam(defaultValue="") String subCategory
+		 ){
+		String code = "g";
+		ModelAndView mav = new ModelAndView();
+		mav.addAllObjects(boardService.getCommonBoardList(code, page, locCategory, subCategory));
+		mav.setViewName("board/guide_list");
+		return mav;
+	}
+	
 	@RequestMapping("guideWriteForm.do")
 	public String guideWriteForm() {
 		return "board/guide_write_form";
@@ -142,14 +142,26 @@ public class BoardController {
 			HttpServletRequest req, BoardVo board,
 			ContentsVo contents
 			){
+		
 		String[] latLngArr = req.getParameterValues("latLng");
-		System.out.println(board);
-		return "board/guide_view";
+		String userid = (String)(req.getSession().getAttribute("userid"));
+		
+		boardService.insertGuide(userid, board, contents, latLngArr);
+		return "redirect:guideView.do?boardIdx="+board.getBoardIdx();
+		
 	}
 
-	@RequestMapping("guideList.do")
-	public String guideList() {
-		return "board/guide_list";
+	@RequestMapping("guideView.do")
+	public ModelAndView guideView(HttpServletRequest req, int boardIdx) {
+		
+		String userid = (String)(req.getSession().getAttribute("userid"));
+		ModelAndView mav = new ModelAndView();
+		mav.addAllObjects(boardService.readGuide(boardIdx));
+		mav.addObject("userid", userid);
+//		mav.addObject("comments",commentsService.selectComments(boardIdx)); 
+		mav.setViewName("board/guide_view");
+
+		return mav;
 	}
 
 	@RequestMapping("guideModifyForm.do")
@@ -157,10 +169,6 @@ public class BoardController {
 		return "board/guide_modify_form";
 	}
 
-	@RequestMapping("guideView.do")
-	public String guideView() {
-		return "board/guide_view";
-	}
 
 	// review_board
 	@RequestMapping("reviewWriteForm.do")
@@ -183,7 +191,28 @@ public class BoardController {
 		return "board/review_modify_form";
 	}
 
-	
+
+	@RequestMapping("commentsWrite.do")
+	public ModelAndView commentsWrite(CommentsVo comments, String parent_cm){
+		ModelAndView mav = new ModelAndView();
+		commentsService.insertComments(comments, parent_cm);
+		mav.setViewName("redirect:noticeView.do?boardIdx="+comments.getB_idx());
+		return mav;
+	}
+	@RequestMapping("commentsUpdate.do")
+	public ModelAndView commentsUpdate(CommentsVo comments){
+		ModelAndView mav = new ModelAndView();
+		commentsService.updateComments(comments);
+		mav.setViewName("redirect:noticeView.do?boardIdx="+comments.getB_idx());
+		return mav;
+	}
+	@RequestMapping("commentsDelete.do")
+	public ModelAndView commentsDelete(CommentsVo comments){
+		ModelAndView mav = new ModelAndView();
+		commentsService.deleteComments(comments.getCm_idx());
+		mav.setViewName("redirect:noticeView.do?boardIdx="+comments.getB_idx());
+		return mav;
+	}
 	
 	
 	@InitBinder

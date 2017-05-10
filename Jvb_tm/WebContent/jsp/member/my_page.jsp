@@ -276,7 +276,7 @@ function moreList(){
 									<div class="text-center">
 										<img src="http://lorempixel.com/200/200/people/9/"
 											class="avatar img-circle img-thumbnail" alt="avatar">
-										<h3>Your Name</h3>
+										<h3>aa</h3>
 									</div>
 								</div>
 								<!-- right column -->
@@ -286,31 +286,31 @@ function moreList(){
 										<div class="form-group">
 											<label class="col-lg-3 control-label">First name:</label>
 											<div class="col-lg-8">
-												<pre class="form-control">your first name</pre>
+												<pre class="form-control">${member.firstName}</pre>
 											</div>
 										</div>
 										<div class="form-group">
 											<label class="col-lg-3 control-label">Last name:</label>
 											<div class="col-lg-8">
-												<pre class="form-control">your last name</pre>
+												<pre class="form-control">${member.lastName }</pre>
 											</div>
 										</div>
 										<div class="form-group">
 											<label class="col-lg-3 control-label">Contury:</label>
 											<div class="col-lg-8">
-												<pre class="form-control">your contury</pre>
+												<pre class="form-control">${member.country}</pre>
 											</div>
 										</div>
 										<div class="form-group">
 											<label class="col-lg-3 control-label">Email:</label>
 											<div class="col-lg-8">
-												<pre class="form-control">your email</pre>
+												<pre class="form-control">${member.email }</pre>
 											</div>
 										</div>
 										<div class="form-group">
 											<label class="col-lg-3 control-label">Birth:</label>
 											<div class="col-lg-8">
-												<pre class="form-control">your birth</pre>
+												<pre class="form-control">${member.birthday }</pre>
 											</div>
 										</div>
 										<div class="form-group">
@@ -322,7 +322,7 @@ function moreList(){
 										<div class="form-group">
 											<label class="col-md-3 control-label">introduce:</label>
 											<div class="col-md-8">
-												<pre class="form-control">yout introduce </pre>
+												<pre class="form-control">${member.introduce }</pre>
 											</div>
 										</div>
 										<div class="form-group">

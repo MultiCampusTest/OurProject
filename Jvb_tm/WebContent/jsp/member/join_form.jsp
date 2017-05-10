@@ -10,6 +10,7 @@
   src="https://code.jquery.com/jquery-2.2.4.min.js"
   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
   crossorigin="anonymous"></script>
+<script type="text/javascript" src="js/validation.js"></script>
 
 <!-- 달력 관련 CDN -->
 <link rel="stylesheet" href="https://unpkg.com/flatpickr/dist/flatpickr.min.css">
@@ -18,117 +19,67 @@
 <script src="https://npmcdn.com/flatpickr/dist/l10n/ru.js"></script>
 <link rel="stylesheet" href="css/calender.css">
 <link rel="stylesheet" href="css/guideWriteForm.css">
-
-<title>Insert title here</title>
-
 <script type="text/javascript">
-	$(document).ready(function() {
-		$(function() {
-			$("#birthday").flatpickr({});
-		});
-		
-		$('#disagree').on('click', function() {
-			alert("You can't sign up without agreement to Terms and Conditions.");
-		});
-		
-		var jsonFalse = null;
-		$('#userid').on('keyup', function() {
-			var inputId = $(this).val();
-			$.ajax({
-				url : 'idCheck.do',
-				type : 'POST',
-				data : {userid : inputId},
-				dataType: 'json',
-				success : function(data) {
-					if(data.result) {
-						$('#idCheck').html('<font color="red">Duplicated account</font>');					
-					}
-					else
-						$('#idCheck').html('<font color="green">Available account</font>');
-						jsonFalse = data.result;
-				}, error : function() {
-					alert('data error');
-				}
-			});
-		}).on('blur', function(){
-			if(jsonFalse == false) {
-				$('#idCheck').text('');
-			}
-		});
-		
-		var pwd, pwdChk = null;
-		$('input[type=password]').on('keyup', function(){
-			pwd = $('#pwd').val();
-			pwdChk = $('#pwdChk').val();
-			if(pwd != pwdChk) {
-				$('#pwdCheck').html('<font color="red">Please reenter your password</font>');			
-			} else
-				$('#pwdCheck').text('');	
-		});
-		
-		var email = null;
-		$('#email').on('keyup', function() {
-			var regEmail = /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
-			if( !regEmail.test($('#email').val()) ) {
-				$('#emailCheck').html('<font color="red">Invalid email address</font>');
-				email = false;
+	$(function() {
+		$("#file").on('change', function() {
+			var ext = $(this).val().split('.').pop().toLowerCase();
+			if ($.inArray(ext, [ 'gif', 'png', 'jpg', 'jpeg' ]) == -1) {
+				$('input[type=file]').val('');
+				alert('Please upload only image files');
 			} else {
-				email = true;
-			}
-		}).on('blur', function() {
-			if(email == true) {
-				$('#emailCheck').text('');
+				readURL(this);
 			}
 		});
-		
-		$('input[type=submit]').on('click', function() {
-			if(jsonFalse != false) {
-				$('#userid').focus();
-				return false;
-			}
-			
-			if(pwd != pwdChk) {
-				$('#pwdChk').focus();
-				return false;
-			}
-			
-			if($('#birthday').val() == '') {
-				$('#birthday').focus();
-				return false;
-			}
-			
-			if(!$('#agree').is(':checked')) {
-				alert('You have to agree our Terms & Conditions');
-				return false;				
-			}
-		});
-		
 	});
-</script>
 
+	function readURL(input) {
+		if (input.files && input.files[0]) {
+			var reader = new FileReader();
+			reader.onload = function(e) {
+				$('#profile').attr('src', e.target.result);
+				$('#imageCheck').html('<a href="javascript:fileReset();">(Delete image)</a>');
+			}
+			reader.readAsDataURL(input.files[0]);
+		}
+	}
+
+	function fileReset() {
+		$('#file').attr('value', '');
+		$('#profile').attr('src', 'img/profile.jpg');
+		$('#imageCheck').text('');
+	}
+</script>
+<title>Insert title here</title>
 </head>
 <body>
-<div class="margin-section-top" style="margin-top: 10%"></div>
+<div class="margin-section-top" style="margin-top: 5%"></div>
 <div class="container">
 <div class="row">
     <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
-		<form action="join.do" method="post" role="form">
-			<h2>Please Sign Up <small>It's free and always will be.</small></h2>
-			<hr class="colorgraph">
+		<form action="joinProc.do" method="post" role="form">
+			<h1>Sign Up <small>It's free and always will be.</small></h2>
+			<hr class="colorgraph"><br>
+			<div class="form-group" style="text-align: center">
+				<img id="profile" src="img/profile.jpg" style="width: 150px; height: 150px; border-radius: 50%" onclick="document.getElementById('file').click();">
+				<div id="imageCheck"></div>
+			</div>
+			<div class="form-group">
+				<input type="file" name="file" id="file" class="form-control input-lg" style="display:none;" onchange="document.getElementById('txt').value=this.value;">
+			</div>
 			<div class="row">
 				<div class="col-xs-12 col-sm-6 col-md-6">
 					<div class="form-group">
-                        <input type="text" name="firstName" id="firstName" class="form-control input-lg" placeholder="* First Name" required="">
+                        <input type="text" name="firstName" id="firstName" class="form-control input-lg" placeholder="First Name *" value="${external.firstName}">
 					</div>
 				</div>
 				<div class="col-xs-12 col-sm-6 col-md-6">
 					<div class="form-group">
-						<input type="text" name="lastName" id="lastName" class="form-control input-lg" placeholder="* Last Name" required="">
+						<input type="text" name="lastName" id="lastName" class="form-control input-lg" placeholder="Last Name *" value="${external.lastName}">
 					</div>
 				</div>
 			</div>
 			<div class="form-group">
-				<input type="text" name="userid" id="userid" class="form-control input-lg" placeholder="* Userid" required="">	
+				<input type="text" name="userid" id="userid" class="form-control input-lg" placeholder="Userid *" value="${external.userid}">	
 			</div>
 			<div class="form-group">	
 				<div id="idCheck" style="text-align: center"></div>
@@ -136,35 +87,35 @@
 			<div class="row">
 				<div class="col-xs-12 col-sm-6 col-md-6">
 					<div class="form-group">
-						<input type="password" name="pwd" id="pwd" class="form-control input-lg" placeholder="* Password" required="">
+						<input type="password" name="pwd" id="pwd" class="form-control input-lg" placeholder="Password *" maxlength="20">
 					</div>
 				</div>
 				<div class="col-xs-12 col-sm-6 col-md-6">
 					<div class="form-group">
-						<input type="password" name="pwdChk" id="pwdChk" class="form-control input-lg" placeholder="* Confirm Password" required="">
+						<input type="password" name="pwdChk" id="pwdChk" class="form-control input-lg" placeholder="Confirm Password *" maxlength="20">
 					</div>
 				</div>
 				<div id="pwdCheck" style="text-align: center"></div>
 			</div>
 			<div class="form-group">
-				<input type="email" name="email" id="email" class="form-control input-lg" placeholder="* Email Address">
+				<input type="email" name="email" id="email" class="form-control input-lg" placeholder="Email Address *" value="${external.email}">
 			</div>
 			<div class="form-group">	
 				<div id="emailCheck" style="text-align: center"></div>
 			</div>
 			<div class="form-group">
-				<input type="text" name="birthday" id="birthday" class="form-control input-lg" placeholder="* Birthday" required="">
+				<input type="text" name="birthday" id="birthday" class="form-control input-lg"  style="background: white" placeholder="Birthday *">
 			</div>
 			<div class="form-group">
-				<select name="gender" class="form-control input-lg" required="">
-					<option value="">* Gender</option>
+				<select name="gender" id="gender" class="form-control input-lg">
+					<option value="gender">Gender *</option>
 					<option value="male">Male</option>
 					<option value="female">Female</option>
 				</select>
 			</div>
 			<div class="form-group">
-						<select name="country" class="form-control input-lg" required="">
-							<option value="">* Country</option>
+						<select name="country" id="country" class="form-control input-lg">
+							<option value="country">Country *</option>
 							<optgroup label="A"></optgroup>
 							<option value="AF">Afghanistan</option>
 							<option value="AL">Albania</option>
@@ -426,12 +377,6 @@
 							<option value="ZW">Zimbabwe</option>
 						</select>
 					</div>
-			<div class="form-group" style="text-align: center">
-				<img src="img/profile.jpg" style="width: 20%">
-			</div>
-			<div class="form-group">
-				<input type="file" name="file" id="display_name" class="form-control input-lg">
-			</div>
 			<div class="form-group">
 				<textarea class="form-control input-lg" name="introduce" placeholder="About yourself"></textarea>
 			</div>
@@ -443,14 +388,21 @@
 					</span>
 				</div>
 				<div class="col-xs-8 col-sm-9 col-md-9">
-					 By clicking <strong class="label label-primary" style="background: #FF605A">Register</strong>, you agree to the <a href="#" data-toggle="modal" data-target="#t_and_c_m">Terms and Conditions</a> set out by this site, including our Cookie Use.
+					 By clicking <strong class="label label-primary" style="background: #FF605A">Submit</strong>, you agree to the <a href="#" data-toggle="modal" data-target="#t_and_c_m">Terms and Conditions</a> set out by this site, including our Cookie Use.
 				</div>
 			</div>
 			
 			<hr class="colorgraph">
 			<div class="row">
-				<div class="col-xs-12 col-md-6"><input type="submit" value="SUBMIT" class="btn btn-primary btn-block btn-lg" tabindex="7"></div>
-				<div class="col-xs-12 col-md-6"><a href="main.do" class="btn btn-success btn-block btn-lg">CANCEL</a></div>
+				<div class="col-xs-12 col-md-6">
+				<div class="form-group">
+				<input type="submit" value="SUBMIT" class="btn btn-primary btn-block btn-lg"></div>
+				</div>
+				<div class="col-xs-12 col-md-6">
+				<div class="form-group">
+				<button type="button" class="btn btn-primary btn-block btn-lg" onclick="location.href='main.do'">CANCEL</button></div>
+				</div>
+				</div>
 			</div>
 		</form>
 	</div>
@@ -469,7 +421,7 @@
 				</p>
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-primary" data-dismiss="modal"> CLOSE</button>
+				<button type="button" class="btn btn-primary" data-dismiss="modal">AGREE</button>
 			</div>
 		</div><!-- /.modal-content -->
 	</div><!-- /.modal-dialog -->

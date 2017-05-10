@@ -28,7 +28,6 @@ public class MemberService implements IMemberService {
 	public boolean checkLogin(String userid, String pwd) {
 		// TODO Auto-generated method stub
 		MemberVo memberVo = memberDao.memberSelectOne(userid);
-		
 		if(memberVo != null) {
 			if(memberVo.getPwd().equals(pwd))
 				return true;
@@ -59,6 +58,14 @@ public class MemberService implements IMemberService {
 			return true;
 		else
 			return false;
+	}
+
+
+	@Override
+	public MemberVo memberSelectOne(String userid) {
+		// TODO Auto-generated method stub
+		MemberVo memberVo = memberDao.memberSelectOne(userid);
+		return memberVo;
 	}
 	
 }

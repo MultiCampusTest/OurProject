@@ -27,7 +27,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		delete from member where userid = #{userid} and pwd = #{pwd}
 	</delete>
 
-	<select id="memberSelectOne" parameterType="String" resultType="memberVo">
+	<select id="memberSelectOne" parameterType="String" resultMap="member">
 		select * from member where userid = #{userid}
 	</select>
 </mapper>

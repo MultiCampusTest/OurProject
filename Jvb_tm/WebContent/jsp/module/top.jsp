@@ -41,6 +41,9 @@
 <!-- Theme CSS -->
 <link href="css/creative.css" rel="stylesheet">
 
+<!-- Facebook API -->
+<script type="text/javascript" src="js/facebookAPI.js"></script>
+
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>
@@ -62,9 +65,69 @@
 				$(this).removeClass('open').trigger('hidden.bs.dropdown', relatedTarget)
 				return false;
 			}
-		})
+		});
+		
+		var userid = getCookie("userid");
+	    $('#top_userid').val(userid); 
+	     
+	    if($('#top_userid').val() != "") {
+	        $('#top_checkbox').attr("checked", true);
+	    }
+	     
+	    $('#top_checkbox').change(function(){
+	        if($('#top_checkbox').is(":checked")){
+	            var userid = $('#top_userid').val();
+	            setCookie("userid", userid, 7);
+	        }else{
+	            deleteCookie("userid");
+	        }
+	    });
+	     
+	    $('#top_userid').keyup(function(){
+	        if($('#top_checkbox').is(":checked")){
+	            var userid = $('#top_userid').val();
+	            setCookie("userid", userid, 7);
+	        }
+	    });
+	 
+		function setCookie(cookieName, value, exdays){
+	   		var exdate = new Date();
+	  		exdate.setDate(exdate.getDate() + exdays);
+	    	var cookieValue = escape(value) + ((exdays==null) ? "" : "; expires=" + exdate.toGMTString());
+	    	document.cookie = cookieName + "=" + cookieValue;
+		}
+	 
+		function deleteCookie(cookieName){
+	    	var expireDate = new Date();
+	    	expireDate.setDate(expireDate.getDate() - 1);
+	    	document.cookie = cookieName + "= " + "; expires=" + expireDate.toGMTString();
+		}
+	 
+		function getCookie(cookieName) {
+	    	cookieName = cookieName + '=';
+	    	var cookieData = document.cookie;
+	    	var start = cookieData.indexOf(cookieName);
+	    	var cookieValue = '';
+	    	if(start != -1){
+	        	start += cookieName.length;
+	        	var end = cookieData.indexOf(';', start);
+	        	if(end == -1)end = cookieData.length;
+	        	cookieValue = cookieData.substring(start, end);
+	    	}
+	    	return unescape(cookieValue);
+		}
+		
+		$('#top_submit').on('click', function(){
+			if($('#top_userid').val() == '') {
+				$('#top_userid').focus();
+				return false;
+			} else if($('#top_pwd').val() == '') {
+				$('#top_pwd').focus();				
+				return false;
+			}
+		});
 
-	})
+	});
 </script>
 
 <style type="text/css">
@@ -99,8 +162,7 @@
 
 				<li><a href="noticeList.do">Notice</a></li>
 
-				<li class="dropdown"><a class="dropdown-toggle"
-					data-toggle="dropdown" href="#">Travel</a>
+				<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Travel</a>
 					<ul class="dropdown-menu">
 						<li><a href="travelList.do">All List</a></li>
 						<li><a href="travelList.do?sub_category=five">5 days</a></li>
@@ -122,8 +184,7 @@
 						<li><a href="travelList.do?loc_category=kyeongsang">kyeongsang</a></li>
 					</ul></li>
 
-				<li class="dropdown"><a class="dropdown-toggle"
-					data-toggle="dropdown" href="#">Guide</a>
+				<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Guide</a>
 					<ul class="dropdown-menu">
 						<li><a href="guideList.do">All List</a></li>
 						<li><a href="guideList.do?sub_category=five">5 days</a></li>
@@ -145,8 +206,7 @@
 						<li><a href="guideList.do?loc_category=kyeongsang">kyeongsang</a></li>
 					</ul></li>
 
-				<li class="dropdown"><a class="dropdown-toggle"
-					data-toggle="dropdown" href="reviewList.do">Review</a>
+				<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="reviewList.do">Review</a>
 					<ul class="dropdown-menu">
 						<li><a href="reviewList.do">All List</a></li>
 						<li><a href="reviewList.do?sub_category=five">5 days</a></li>
@@ -162,17 +222,54 @@
 
 				<c:choose>
 					<c:when test="${userid != null }">
-						<li><a class="page-scroll" href="myPage.do"><i class="fa fa-user" aria-hidden="true"></i> MYPAGE</a></li>
-						<li><a class="page-scroll" href="logout.do"><i class="fa fa-times" aria-hidden="true"></i> SIGN OUT</a></li>
+						<li><a class="page-scroll" href="myPage.do">MYPAGE &nbsp;<i class="fa fa-cog" aria-hidden="true"></i></a></li>
+						<li><a class="page-scroll" href="logout.do">SIGN OUT&nbsp;<i class="fa fa-times-circle" aria-hidden="true"></i></a></li>
 					</c:when>
 					<c:otherwise>
-						<li><a class="page-scroll" href="loginForm.do"><i class="fa fa-plane" aria-hidden="true"></i> &nbsp;SIGN IN</a></li>						
-						<li><a class="page-scroll" href="joinForm.do"><i class="fa fa-user-plus" aria-hidden="true"></i> &nbsp;SIGN UP</a></li>
+						<li><a class="page-scroll" href="joinForm.do">SIGN UP</a></li>
+						<ul class="nav navbar-nav navbar-right">
+							<li class="dropdown"><a href="loginForm.do" class="dropdown-toggle" data-toggle="dropdown">Sign in <b class="caret"></b></a>
+								<ul class="dropdown-menu"
+									style="padding: 15px; min-width: 250px;">
+									<li>
+										<div class="row">
+											<div class="col-md-12">
+												<form action="loginProc.do" method="post" class="form" role="form" accept-charset="UTF-8">
+													<div class="form-group">
+														<label class="sr-only" for="exampleInputEmail2">Username</label>
+														<input type="text" class="form-control" id="top_userid" name="userid" placeholder="Username">
+													</div>
+													<div class="form-group">
+														<label class="sr-only" for="exampleInputPassword2">Password</label>
+														<input type="password" class="form-control" id="top_pwd" name="pwd" placeholder="Password">
+													</div>
+													<div class="checkbox">
+														<label><input type="checkbox" id="top_checkbox"> Remember me</label>
+													</div>
+													<div class="form-group">
+														<a href="#">Forgot your username?</a><br>
+														<a href="#">Forgot your password?</a>
+													</div>
+													<div class="form-group" style="text-align: center">
+														<button type="submit" id="top_submit" class="btn btn-primary btn-block">Sign in</button>
+													</div>
+												</form>
+											</div>
+										</div>
+									</li>
+									<li class="divider"></li>
+									<li>
+									<div class="row">
+										<div class="social-buttons col-md-12">
+										<a href="javascript:facebook_btn();" class="btn btn-fb"><i class="fa fa-facebook"></i> Facebook</a>
+										<a href="javascript:twitter_btn()" class="btn btn-tw"><i class="fa fa-twitter"></i> Twitter</a>
+										</div>
+									</div>
+									</ul>
+							</li>
+						</ul>
 					</c:otherwise>
 				</c:choose>
-
-
-
 
 
 			</ul>

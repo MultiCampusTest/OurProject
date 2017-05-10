@@ -51,8 +51,7 @@ public class BoardService {
 	}
 	
 	//공지사항 리스트 얻어오기
-	public HashMap<String, Object> getNoticeBoardList(int page){
-		String code = "n";
+	public HashMap<String, Object> getNoticeBoardList(String code, int page){
 		//시작과 끝페이지
 		int start = (page - 1) / 10 * 10 + 1; 
 		int end = ((page - 1) / 10 + 1) * 10;
@@ -85,7 +84,7 @@ public class BoardService {
 	
 	//공지사항 세부글 읽기
 	public HashMap<String, Object> readNotice(int boardIdx){
-		BoardVo board = boardDao.selectOneNotice(boardIdx);
+		BoardVo board = boardDao.selectOneBoard(boardIdx);
 		board.setReadCount(board.getReadCount()+1);
 		boardDao.updateNotice(board);
 		ContentsVo contents = contentsDao.selectOneContents(boardIdx);
@@ -101,13 +100,52 @@ public class BoardService {
 	
 	//공지사항 세부글 가져오기(수정시)
 	public HashMap<String, Object> getNotice(int boardIdx) {
-		BoardVo board = boardDao.selectOneNotice(boardIdx);
+		BoardVo board = boardDao.selectOneBoard(boardIdx);
 		ContentsVo contents = contentsDao.selectOneContents(boardIdx);		
 
 		HashMap<String, Object> result = new HashMap<>();
 		result.put("notice", board);
 		result.put("contents", contents);
 		
+		return result;
+	}
+
+	//guide, travel 리스트 얻어오기
+	public HashMap<String, Object> getCommonBoardList(String code, int page, String locCategory, String subategory){
+		//시작과 끝페이지
+		int start = (page - 1) / 10 * 10 + 1; 
+		int end = ((page - 1) / 10 + 1) * 10;
+		
+		//첫페이지와 게시물 전체의 마지막 페이지
+		int first = 1;
+		int last = (boardDao.getBoardCountByCode(code) - 1) / 10 + 1;
+		
+		end = last < end ? last : end;
+		
+		int skip = (page - 1) * 6;
+		int count = 6;
+		HashMap<String, Object> params = new HashMap<>();
+		params.put("code", code);
+		params.put("skip", skip);
+		params.put("count", count);
+		List<BoardVo> list = boardDao.selectCommonBoardLimit(params);
+		
+		for(int i=0; i<list.size(); i++){
+			int idx = list.get(i).getBoardIdx();
+			List<MapPositionVo> mapPositionArr = mapPositionDao.selectMapPosition(idx);
+			list.get(i).setMapPosition(mapPositionArr);
+		}
+		
+		
+		
+		HashMap<String, Object> result = new HashMap<>();
+		result.put("start", start);
+		result.put("first", first);
+		result.put("end", end);
+		result.put("last", last);
+		result.put("current", page);
+		result.put("list", list);
+
 		return result;
 	}
 	
@@ -127,8 +165,29 @@ public class BoardService {
 			mapPosition.setBoardIdx(boardIdx);
 			mapPosition.setLatLng(latLngArr[i]);
 			mapPosition.setMarkerSeq(i);
-			int result = mapPositionDao.insertMapPosition(mapPosition);
+			mapPositionDao.insertMapPosition(mapPosition);
 		}
+	}
+	
+	public HashMap<String, Object> readGuide(int boardIdx){
+		BoardVo board = boardDao.selectOneBoard(boardIdx);
+		board.setReadCount(board.getReadCount()+1);
+		boardDao.updateGuide(board);
+		ContentsVo contents = contentsDao.selectOneContents(boardIdx);
+		List<MapPositionVo> mapPositionArr = mapPositionDao.selectMapPosition(boardIdx);
+		
+		for(int i=0; i<mapPositionArr.size();i++){
+			String loc  = mapPositionArr.get(i).getLatLng();
+			loc = loc.replace("(", "");
+			loc = loc.replace(")", "");
+			mapPositionArr.get(i).setLatLng(loc);
+		}
+
+		HashMap<String, Object> result = new HashMap<>();
+		result.put("guide", board);
+		result.put("contents", contents);
+		result.put("mapPosition", mapPositionArr);
+		return result;	
 	}
 	
 	

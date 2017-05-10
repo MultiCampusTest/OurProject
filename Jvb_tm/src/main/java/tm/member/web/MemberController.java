@@ -11,8 +11,10 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -23,79 +25,75 @@ import tm.message.service.MessageService;
 
 @Controller
 public class MemberController {
-	
 	@Autowired
 	private MemberService memberService;
 	@Autowired
+	
 	private MessageService messageService;
 	@Autowired
+	
 	private MatchingService matchingService;
 	
-	//로그인 페이지  
 	@RequestMapping("loginForm.do")
 	public String loginForm(){
 		return "member/login_form";
 	}
 	
-	//비밀번호 찾기 페이지
-	@RequestMapping("searchPassword.do")
-	public String searchPass(){
-		return "member/search_password";
-	}
-	
-	//회원가입 페이지
 	@RequestMapping("joinForm.do")
 	public String joinForm(){
 		return "member/join_form";
 	}
 	
-	//가입완료 페이지
-	@RequestMapping("joinSuccess.do")
-	public String joinSuccess() {
-		return "member/join_success";
+	@RequestMapping(method=RequestMethod.POST, value="fbJoinForm.do")
+	public ModelAndView fbJoinForm(MemberVo memberVo) {
+		System.out.println(memberVo.getUserid());
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("external", memberVo);
+		mav.setViewName("member/join_form");
+		return mav;
 	}
 	
-	//마이페이지
+	@RequestMapping("joinResult.do")
+	public String joinResult() {
+		return "member/join_result";
+	}
+	
 	@RequestMapping("myPage.do")
 	public ModelAndView maindo(HttpSession session) {
-		String userid=(String)session.getAttribute("userid");
+		String userid = (String) session.getAttribute("userid");
 		System.out.println(session.getAttribute("userid"));
 		HashMap<String, Object> params=new HashMap<>();
 		params.put("userid", userid);
-		
-		
 		ModelAndView mav=new ModelAndView();
+		mav.addObject("member", memberService.memberSelectOne(userid));
 		mav.addAllObjects(messageService.messageList(userid));
 		mav.addAllObjects(matchingService.matchingList(userid));
 		mav.addAllObjects(params);
 		mav.setViewName("member/my_page");
 		return mav;
-//		return "member/my_page";
 	}
 	
-	//로그인 요청페이지
 	@RequestMapping("loginRequest.do")
 	public String loginRequest(){
 		return "member/login_request";
 	}
 	
-	//로그인 유효성 검사 요청
-	@RequestMapping(method=RequestMethod.POST, value="login.do")
-	public String login(HttpSession session, String userid, String pwd) {
-//		if(memberService.checkLogin(userid, pwd)) {
-//			session.setAttribute("userid", userid);
-//			session.setAttribute("pwd", pwd);
-//			return "redirect:main.do";
-//		} else {
-//			return "redirect:loginForm.do";			
-//		}
-		if(userid.equals("admin")){
+	@RequestMapping(method=RequestMethod.POST, value="loginProc.do")
+	public String loginProc(HttpSession session, String userid, String pwd) {
+		if(memberService.checkLogin(userid, pwd)) {
 			session.setAttribute("userid", userid);
 			return "redirect:main.do";
-		}else{
-			return "redirect:loginForm.do";
+		} else {
+			return "redirect:loginForm.do";			
 		}
 	}
+//		if(userid.equals("admin")){
+//			session.setAttribute("userid", userid);
+//			return "redirect:main.do";
+//		}else{
+//			return "redirect:loginForm.do";
+//		}
+//	}
 
 	//로그아웃 요청
 	@RequestMapping("logout.do")
@@ -113,13 +111,13 @@ public class MemberController {
 		return response;
 	}
 	
-	//회원추가 요청
-	@RequestMapping(method=RequestMethod.POST, value="join.do")
-	public ModelAndView join(MemberVo memberVo) {
+	//회원가입 요청
+	@RequestMapping(method=RequestMethod.POST, value="joinProc.do")
+	public ModelAndView joinProc(MemberVo memberVo) {
 		ModelAndView mav = new ModelAndView();
 		memberService.memberJoin(memberVo);
 		mav.addObject("f_name", memberVo.getFirstName());
-		mav.setViewName("member/join_success");
+		mav.setViewName("member/join_result");
 		return mav;
 	}
 	

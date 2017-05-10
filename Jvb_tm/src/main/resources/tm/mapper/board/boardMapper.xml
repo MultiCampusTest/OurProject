@@ -33,37 +33,50 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<insert id="insertBoard" parameterType="boardVo"
 		 	useGeneratedKeys="true" keyProperty="boardIdx">
-		insert into board values
+		INSERT INTO board VALUES
 		(0, #{code}, #{locCategory},#{subCategory},
 			#{title},#{startDate},#{endDate},#{userid},sysdate(),0)
 	</insert>
 	
+	<select id="selectOneBoard" parameterType="int" resultMap="board">
+		SELECT * FROM board
+		WHERE b_idx=#{boardIdx}
+	</select>
+	
 	<select id="getBoardCountByCode" parameterType="String" resultType="int">
-		select count(*) from board where b_code=#{code}
+		SELECT count(*) FROM board
+		WHERE b_code=#{code}
 	</select>
 	
 	
 	<!--  notice -->
 	<!-- update notice -->
 	<update id="updateNotice" parameterType="boardVo">
-		update board set
+		UPDATE board SET
 		b_title=#{title}, b_readcount=#{readCount}
-		where b_idx=#{boardIdx}
+		WHERE b_idx=#{boardIdx}
 	</update>
 	<!-- select notice -->
 	<select id="selectNoticeBoardLimit" parameterType="java.util.HashMap"
 	resultMap="board">
-		select b_idx, b_title, userid, b_date, b_readcount from board 
-		where b_code=#{code} 
-		order by b_idx desc limit #{skip}, #{count}
+		SELECT b_idx, b_title, userid, b_date, b_readcount FROM board 
+		WHERE b_code=#{code} 
+		ORDER BY b_idx desc limit #{skip}, #{count}
 	</select>
 	
-	<select id="selectOneNotice" parameterType="int" resultMap="board">
-		select b_idx, b_code, b_title, b_date, b_readcount from board
-		where b_idx=#{boardIdx}
-	</select>
-
-
+	
+	<!--  guide -->
+	<!--  update guide -->
+	<update id="updateGuide" parameterType="boardVo">
+		UPDATE board SET
+		b_loc_category=#{locCategory}, 
+		b_sub_category=#{subCategory},
+		b_title=#{title},
+		b_start_date=#{startDate}, 
+		b_end_date=#{endDate},
+		b_readcount=#{readCount}
+		WHERE b_idx=#{boardIdx}
+	</update>
 	
 	
 	<!-- insert -->

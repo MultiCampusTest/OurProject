@@ -16,10 +16,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 
 	<insert id="insertMapPosition" parameterType="mapPositionVo">
-		insert into mapposition
-		values(0, #{boardIdx}, #{markerSeq}, #{latLng}, #{contentsSeq})
+		INSERT INTO mapposition
+		VALUES(0, #{boardIdx}, #{markerSeq}, #{latLng}, #{contentsSeq})
 	</insert>
-
+	
+	<select id="selectMapPosition" parameterType="int" resultMap="mapPosition">
+		SELECT b_idx, map_lat_lng, ct_seq FROM mapposition
+		WHERE b_idx=#{boardIdx}
+		ORDER BY map_marker_seq
+	</select>
 <!-- 	<update id="imageUpdate" parameterType="imageVo"> -->
 <!-- 		update image set -->
 <!-- 		img_phy_name=#{img_phy_name}, img_ori_name=#{img_ori_name}, -->

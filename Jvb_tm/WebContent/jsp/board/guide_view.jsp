@@ -9,9 +9,9 @@
 <script type="text/javascript">
 $(document).ready(function(){
 	
-	var list = new Array();
+	var list = [];
 	<c:forEach items="${mapPosition}" var="latLng">
-		list.push("${latLng}");
+		list.push("${latLng.latLng}");
 	</c:forEach>
 	
 	var start_latLng = list[0];

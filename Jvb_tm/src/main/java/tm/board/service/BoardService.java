@@ -122,14 +122,21 @@ public class BoardService {
 		
 		end = last < end ? last : end;
 		
-		int skip = (page - 1) * 10;
-		int count = 10;
+		int skip = (page - 1) * 6;
+		int count = 6;
 		HashMap<String, Object> params = new HashMap<>();
 		params.put("code", code);
 		params.put("skip", skip);
 		params.put("count", count);
-		List<BoardVo> list = boardDao.selectNoticeBoardLimit(params);
-
+		List<BoardVo> list = boardDao.selectCommonBoardLimit(params);
+		
+		for(int i=0; i<list.size(); i++){
+			int idx = list.get(i).getBoardIdx();
+			List<MapPositionVo> mapPositionArr = mapPositionDao.selectMapPosition(idx);
+			list.get(i).setMapPosition(mapPositionArr);
+		}
+		
+		
 		
 		HashMap<String, Object> result = new HashMap<>();
 		result.put("start", start);
@@ -137,7 +144,7 @@ public class BoardService {
 		result.put("end", end);
 		result.put("last", last);
 		result.put("current", page);
-		result.put("noticeList", list);
+		result.put("list", list);
 
 		return result;
 	}
@@ -167,16 +174,15 @@ public class BoardService {
 		board.setReadCount(board.getReadCount()+1);
 		boardDao.updateGuide(board);
 		ContentsVo contents = contentsDao.selectOneContents(boardIdx);
-		List<String> mapPositionArr = mapPositionDao.selectGuideMapPosition(boardIdx);
+		List<MapPositionVo> mapPositionArr = mapPositionDao.selectMapPosition(boardIdx);
 		
 		for(int i=0; i<mapPositionArr.size();i++){
-			String loc  = mapPositionArr.get(i);
+			String loc  = mapPositionArr.get(i).getLatLng();
 			loc = loc.replace("(", "");
 			loc = loc.replace(")", "");
-			mapPositionArr.remove(i);
-			mapPositionArr.add(i, loc);
+			mapPositionArr.get(i).setLatLng(loc);
 		}
-		
+
 		HashMap<String, Object> result = new HashMap<>();
 		result.put("guide", board);
 		result.put("contents", contents);

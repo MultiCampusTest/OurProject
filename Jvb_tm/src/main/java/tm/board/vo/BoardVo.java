@@ -1,6 +1,7 @@
  package tm.board.vo;
 
 import java.util.Date;
+import java.util.List;
 
 public class BoardVo {
 	
@@ -15,7 +16,15 @@ public class BoardVo {
 	private Date writeDate;
 	private int readCount;
 	
+	private List<MapPositionVo> mapPosition;
 	
+	
+	public List<MapPositionVo> getMapPosition() {
+		return mapPosition;
+	}
+	public void setMapPosition(List<MapPositionVo> mapPosition) {
+		this.mapPosition = mapPosition;
+	}
 	public int getBoardIdx() {
 		return boardIdx;
 	}

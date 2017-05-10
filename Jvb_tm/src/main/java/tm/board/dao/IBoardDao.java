@@ -35,7 +35,8 @@ public interface IBoardDao {
 	
 	//select 
 	//common board select
-	public HashMap<String, Object> boardSelectByLimit(BoardVo boardVo);
+	public List<BoardVo> selectCommonBoardLimit (HashMap<String, Object> params); 
+	
 	public int boardGetCount();
 	
 	//select NoticeBoard

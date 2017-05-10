@@ -247,11 +247,10 @@
 														<label><input type="checkbox" id="top_checkbox"> Remember me</label>
 													</div>
 													<div class="form-group">
-														<a href="#">Forgot your username?</a><br>
-														<a href="#">Forgot your password?</a>
+														<button type="submit" id="top_submit" class="btn btn-primary btn-block">Sign in</button>
 													</div>
 													<div class="form-group" style="text-align: center">
-														<button type="submit" id="top_submit" class="btn btn-primary btn-block">Sign in</button>
+														<a>Forgot? </a><a href="#">username | </a><a href="#">password</a>
 													</div>
 												</form>
 											</div>
@@ -262,7 +261,7 @@
 									<div class="row">
 										<div class="social-buttons col-md-12">
 										<a href="javascript:facebook_btn();" class="btn btn-fb"><i class="fa fa-facebook"></i> Facebook</a>
-										<a href="javascript:twitter_btn()" class="btn btn-tw"><i class="fa fa-twitter"></i> Twitter</a>
+										<a href="javascript:twitter_btn()" class="btn btn-google"><i class="fa fa-google"></i> Google</a>
 										</div>
 									</div>
 									</ul>

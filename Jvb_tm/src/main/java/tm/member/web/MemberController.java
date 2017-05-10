@@ -44,6 +44,11 @@ public class MemberController {
 		return "member/join_form";
 	}
 	
+	@RequestMapping("certiForm.do")
+	public String certifiForm() {
+		return "member/certi_form";
+	}
+	
 	@RequestMapping(method=RequestMethod.POST, value="fbJoinForm.do")
 	public ModelAndView fbJoinForm(MemberVo memberVo) {
 		System.out.println(memberVo.getUserid());

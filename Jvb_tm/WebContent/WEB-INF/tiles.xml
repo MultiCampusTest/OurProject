@@ -15,5 +15,5 @@
 	<definition name="*/*.tiles" extends="tiles">
 		<put-attribute name="middle" value="/jsp/{1}/{2}.jsp"></put-attribute>
 	</definition>
-	
+
 </tiles-definitions>   

@@ -151,6 +151,10 @@ public class BoardService {
 			strLatLng = strLatLng.substring(0, strLatLng.length()-1);
 			String startLatLng = mapPositionArr.get(0).getLatLng();
 			String endLatLng = mapPositionArr.get(mapPositionArr.size()-1).getLatLng();
+			
+			list.get(i).setStrLatLng(strLatLng);
+			list.get(i).setStartLatLng(startLatLng);
+			list.get(i).setEndLatLng(endLatLng);
 //			System.out.println(strLatLng);
 //			System.out.println(startLatLng);
 //			System.out.println(endLatLng);

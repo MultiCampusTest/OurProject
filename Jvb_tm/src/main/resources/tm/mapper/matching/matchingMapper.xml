@@ -9,7 +9,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 </insert>
 
 <update id="matchingUpdate" parameterType="java.util.HashMap">
-	update matching set mch_code=1 where b_idx=#{b_idx} and mch_g_userid=#{mch_g_userid}
+	update matching set mch_code=#{mch_code} where b_idx=#{b_idx} and mch_g_userid=#{mch_g_userid}
+</update>
+
+<update id="matchingFail" parameterType="int">
+	update matching set mch_code=2 where b_idx=#{b_idx} and mch_code=0
 </update>
    
 <delete id="matchingDelete" parameterType="int">
@@ -20,8 +24,5 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	select * from matching where mch_t_userid=#{mch_t_userid} order by mch_date;
 </select>
 
-<select id="matchingStatus" parameterType="int" resultType="matchingVo">
-	select * from matching where b_idx=#{b_idx} and mch_code=0
-</select>
 
 </mapper>

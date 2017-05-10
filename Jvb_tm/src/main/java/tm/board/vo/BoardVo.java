@@ -16,14 +16,29 @@ public class BoardVo {
 	private Date writeDate;
 	private int readCount;
 	
-	private List<MapPositionVo> mapPosition;
+	private String strLatLng;
+	private String startLatLng;
+	private String endLatLng;
 	
 	
-	public List<MapPositionVo> getMapPosition() {
-		return mapPosition;
+	
+	public String getStrLatLng() {
+		return strLatLng;
 	}
-	public void setMapPosition(List<MapPositionVo> mapPosition) {
-		this.mapPosition = mapPosition;
+	public void setStrLatLng(String strLatLng) {
+		this.strLatLng = strLatLng;
+	}
+	public String getStartLatLng() {
+		return startLatLng;
+	}
+	public void setStartLatLng(String startLatLng) {
+		this.startLatLng = startLatLng;
+	}
+	public String getEndLatLng() {
+		return endLatLng;
+	}
+	public void setEndLatLng(String endLatLng) {
+		this.endLatLng = endLatLng;
 	}
 	public int getBoardIdx() {
 		return boardIdx;

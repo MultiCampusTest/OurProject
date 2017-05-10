@@ -10,6 +10,14 @@
 
 <link rel="stylesheet" href="css/review.css">
 <script src="js/review.js"></script>
+<script type="text/javascript">
+function addFile(){
+	$('[name=form1] [name=tr_attach_file]:last').after( $('#preset tr').clone() );
+	// $('#preset tr').clone() : id=preset 에서 tr 요소 셀렉트 하여 복제 !!
+	// form1 안에 이름이 tr_attach_file 인것 중 마지막 것 다음에 추가합니다.
+	// 이렇게 하면 실행때 마다 동적으로 하나씩 추가됩니다.
+}
+</script>
 
 </head>
 <body>
@@ -18,23 +26,19 @@
 			<h3>후기게시판</h3>
 		</div>
 		<div class="row">
-			<form action="reviewWrite.do" method="post"
-				enctype="multipart/form-data">
 				<div class="col-md-5">
 					<h2>Photo</h2>
 					<div class="table-responsive" id="reviewPhoto">
-						<table class="table table-condensed"
-							style="height: inherit; vertical-align: middle">
-
+					<button class="btn btn-primary" onclick="addFile()">파일 추가</button>
+					<form action="reviewWrite.do" method="post" enctype="multipart/form-data">
+						<table id="preset" class="table table-condensed" style="height: inherit; vertical-align: middle;">
 							<c:forEach begin="1" end="5" var="i" varStatus="status">
-								<tr class="clearfix" align="center"
-									style="vertical-align: center">
+								<tr class="clearfix" align="center" style="vertical-align: center">
 									<td style="width: 35%; vertical-align: middle;">
 										<div class="filebox" style="padding-top: 10px">
 
-											<label for="ex_file${status.index}" id="label${status.index}"
-												class="label">choose file</label> <input type="file"
-												id="ex_file${status.index}" onchange="readURL(this)">
+											<label for="ex_file${status.index}" id="label${status.index}" class="label">choose file</label> 
+												<input type="file" name="file" id="ex_file${status.index}" onchange="readURL(this)">
 										</div>
 									</td>
 
@@ -47,20 +51,19 @@
 									</td>
 								</tr>
 							</c:forEach>
-
 						</table>
 					</div>
 				</div>
 				<div class="col-md-7">
 					<h2>Something Else here</h2>
 					<div class="form-group">
-						<label class="control-label ">TITLE:</label> <input
-							class="form-control" value="" type="text">
+						<label class="control-label ">TITLE:</label> 
+						<input class="form-control" name="b_title" type="text">
 					</div>
 					<div class="form-group">
 						<label class="control-label">CATEGORY:</label>
 						<div class="ui-select">
-							<select id="review_category" class="form-control">
+							<select name="b_sub_category" id="review_category" class="form-control">
 								<option value="select">select</option>
 								<option value="food" id="food">food</option>
 								<option value="shopping" id="shopping">shopping</option>
@@ -71,13 +74,13 @@
 					</div>
 					<div class="form-group">
 						<label class="control-label">CONTENT:</label>
-						<textarea class="form-control" rows="10" style="resize: none;"></textarea>
+						<textarea class="form-control" name="b_content" rows="10" style="resize: none;"></textarea>
 					</div>
+					<input type="hidden" name="code" value="r"> 
 					<div class="form-group">
-						<input type="submit" value="ok" class="btn btn-primary"> <input
-							type="reset" value="reset" class="btn btn-primary"> <input
-							type="button" value="list" class="btn btn-primary"
-							onclick="location.href='reviewList.do'">
+						<input type="submit" value="ok" class="btn btn-primary"> 
+						<input type="reset" value="reset" class="btn btn-primary"> 
+						<input type="button" value="list" class="btn btn-primary" onclick="location.href='reviewList.do'">
 					</div>
 				</div>
 			</form>

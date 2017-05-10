@@ -1,10 +1,14 @@
 package tm.board.service;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import tm.board.dao.IBoardDao;
 import tm.board.dao.ICommentsDao;
@@ -14,6 +18,7 @@ import tm.board.vo.BoardVo;
 import tm.board.vo.ContentsVo;
 import tm.board.vo.MapPositionVo;
 import tm.image.dao.IImageDao;
+import tm.image.vo.ImageVo;
 
 @Service
 public class BoardService {
@@ -111,14 +116,14 @@ public class BoardService {
 	}
 
 	//guide, travel 리스트 얻어오기
-	public HashMap<String, Object> getCommonBoardList(String code, int page, String locCategory, String subategory){
+	public HashMap<String, Object> getCommonBoardList(String code, int page){
 		//시작과 끝페이지
 		int start = (page - 1) / 10 * 10 + 1; 
 		int end = ((page - 1) / 10 + 1) * 10;
 		
 		//첫페이지와 게시물 전체의 마지막 페이지
 		int first = 1;
-		int last = (boardDao.getBoardCountByCode(code) - 1) / 10 + 1;
+		int last = (boardDao.getBoardCountByCode(code) - 1) / 6 + 1;
 		
 		end = last < end ? last : end;
 		
@@ -133,7 +138,26 @@ public class BoardService {
 		for(int i=0; i<list.size(); i++){
 			int idx = list.get(i).getBoardIdx();
 			List<MapPositionVo> mapPositionArr = mapPositionDao.selectMapPosition(idx);
-			list.get(i).setMapPosition(mapPositionArr);
+			
+			String strLatLng = "";
+			for(int j=0; j<mapPositionArr.size(); j++){
+					String latLng = mapPositionArr.get(j).getLatLng();
+						   latLng = latLng.replace("(", "");
+						   latLng = latLng.replace(")", "");
+					strLatLng += latLng + "|";	   
+				    mapPositionArr.get(j).setLatLng(latLng);
+			}
+			
+			strLatLng = strLatLng.substring(0, strLatLng.length()-1);
+			String startLatLng = mapPositionArr.get(0).getLatLng();
+			String endLatLng = mapPositionArr.get(mapPositionArr.size()-1).getLatLng();
+			
+			list.get(i).setStrLatLng(strLatLng);
+			list.get(i).setStartLatLng(startLatLng);
+			list.get(i).setEndLatLng(endLatLng);
+//			System.out.println(strLatLng);
+//			System.out.println(startLatLng);
+//			System.out.println(endLatLng);
 		}
 		
 		
@@ -188,6 +212,41 @@ public class BoardService {
 		result.put("contents", contents);
 		result.put("mapPosition", mapPositionArr);
 		return result;	
+	}
+	
+	//review insert
+	public void insertReview(BoardVo board, ContentsVo contents, MultipartFile file){
+		boardDao.insertBoard(board);
+		int boardIdx = board.getBoardIdx();
+
+		contents.setBoardIdx(boardIdx);
+		contentsDao.insertContents(contents);
+		
+		String path= "Upload/";
+		File folder = new File(path);
+		if(!folder.exists())
+			folder.mkdirs();
+		UUID uuid = UUID.randomUUID();
+		String fileName = file.getOriginalFilename();
+		int fileSize = (int)file.getSize();
+		String fileuri = path + uuid;
+
+		ImageVo image = new ImageVo();
+		image.setImg_ori_name(fileName);
+		image.setImg_code(boardIdx);
+		image.setImg_path(fileuri);
+
+		File localFile = new File(fileuri);
+		try{
+			file.transferTo(localFile);
+		} catch(IllegalStateException e) {
+			e.printStackTrace();
+		}  catch(IOException e) {
+			e.printStackTrace();
+		} 
+
+		imageDao.insertImage(image);
+		boardDao.insertBoard(board);	
 	}
 	
 	

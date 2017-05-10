@@ -70,7 +70,7 @@
 								</c:when>
 								<c:otherwise>
 								<h1>Welcome !</h1><br>
-								<form action="login.do" method="post">
+								<form action="loginProc.do" method="post">
 									<div>
 										<input type="text" class="form-control" name="userid" id="userid"
 											placeholder="Username">

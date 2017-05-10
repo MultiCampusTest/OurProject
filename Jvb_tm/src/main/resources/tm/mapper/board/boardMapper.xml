@@ -49,6 +49,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	
+	<!-- select guide,travel -->
+	<select id="selectCommonBoardLimit" parameterType="java.util.HashMap"
+	resultMap="board">
+		SELECT b_idx, b_title, userid, b_date, b_readcount FROM board 
+		WHERE b_code=#{code} 
+		ORDER BY b_idx desc limit #{skip}, #{count}
+	</select>
+	
+	
 	<!--  notice -->
 	<!-- update notice -->
 	<update id="updateNotice" parameterType="boardVo">

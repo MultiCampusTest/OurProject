@@ -102,19 +102,19 @@
                         </div>
                     </div>
                      
-<!--                     <div class="col-sm-2 col-lg-2 col-md-2"> -->
-<!--                         <div class="thumbnail"> -->
-<!--                         <a href="#" title="자세히보기"> -->
-<!--                             <img src="http://placehold.it/300x400" alt=""> -->
-<!--                          </a> -->
-<!--                             <div class="caption"> -->
-<!--                                 <font style="font-size:12pt">USER_ID</font><br> -->
-<!--                                 <font style="font-size:12pt">DATE</font><br> -->
-<!--                                 <font style="font-size:12pt">REVIEWS</font> -->
-<!--                             </div> -->
+                    <div class="col-sm-2 col-lg-2 col-md-2">
+                        <div class="thumbnail">
+                        <a href="#" title="자세히보기">
+                            <img src="http://placehold.it/300x400" alt="">
+                         </a>
+                            <div class="caption">
+                                <font style="font-size:12pt">USER_ID</font><br>
+                                <font style="font-size:12pt">DATE</font><br>
+                                <font style="font-size:12pt">REVIEWS</font>
+                            </div>
                           
-<!--                         </div> -->
-<!--                     </div> -->
+                        </div>
+                    </div>
 				</div>
 				</div>
 				

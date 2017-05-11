@@ -10,7 +10,6 @@
   src="https://code.jquery.com/jquery-2.2.4.min.js"
   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
   crossorigin="anonymous"></script>
-<script type="text/javascript" src="js/validation.js"></script>
 
 <!-- 달력 관련 CDN -->
 <link rel="stylesheet" href="https://unpkg.com/flatpickr/dist/flatpickr.min.css">
@@ -123,14 +122,12 @@
 			</div>
 			<div class="form-group">
 				<select name="gender" id="gender" class="form-control input-lg">
-					<option value="gender">Gender</option>
 					<option value="male">Male</option>
 					<option value="female">Female</option>
 				</select>
 			</div>
 			<div class="form-group">
 						<select name="country" id="country" class="form-control input-lg">
-							<option value="country">Country</option>
 							<optgroup label="A"></optgroup>
 							<option value="AF">Afghanistan</option>
 							<option value="AL">Albania</option>

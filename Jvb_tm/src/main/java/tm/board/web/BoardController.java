@@ -1,22 +1,20 @@
  package tm.board.web;
  
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import tm.board.service.BoardService;
@@ -178,8 +176,9 @@ public class BoardController {
 	}
 	
 	@RequestMapping("reviewWrite.do")
-	public ModelAndView reviewWrite(BoardVo board, ContentsVo contents, @RequestParam("file") MultipartFile file) {
-		boardService.insertReview(board, contents, file);
+	@ResponseBody
+	public ModelAndView reviewWrite(BoardVo board, ContentsVo contents, MultipartHttpServletRequest req) {
+		boardService.insertReview(board, contents, req);
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("redirect:reviewView.do?boardIdx="+board.getBoardIdx());
 		return mav;

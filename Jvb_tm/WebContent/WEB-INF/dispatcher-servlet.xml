@@ -16,6 +16,7 @@
 		<property name="suffix" value=".tiles"></property>
 	</bean>
 	
+<!-- 	파일업로드관련 -->
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"></bean>
 
 	<mvc:resources location="/img/" mapping="/img/**" />

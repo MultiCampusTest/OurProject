@@ -9,6 +9,7 @@ import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import tm.board.dao.IBoardDao;
 import tm.board.dao.ICommentsDao;
@@ -215,7 +216,7 @@ public class BoardService {
 	}
 	
 	//review insert
-	public void insertReview(BoardVo board, ContentsVo contents, MultipartFile file){
+	public void insertReview(BoardVo board, ContentsVo contents, MultipartHttpServletRequest req){
 		boardDao.insertBoard(board);
 		int boardIdx = board.getBoardIdx();
 
@@ -226,27 +227,52 @@ public class BoardService {
 		File folder = new File(path);
 		if(!folder.exists())
 			folder.mkdirs();
-		UUID uuid = UUID.randomUUID();
-		String fileName = file.getOriginalFilename();
-		int fileSize = (int)file.getSize();
-		String fileuri = path + uuid;
-
-		ImageVo image = new ImageVo();
-		image.setImg_ori_name(fileName);
-		image.setImg_code(boardIdx);
-		image.setImg_path(fileuri);
-
-		File localFile = new File(fileuri);
-		try{
-			file.transferTo(localFile);
-		} catch(IllegalStateException e) {
-			e.printStackTrace();
-		}  catch(IOException e) {
-			e.printStackTrace();
-		} 
-
-		imageDao.insertImage(image);
-		boardDao.insertBoard(board);	
+		
+		List<MultipartFile> files = req.getFiles("file");
+		
+		for(int i=0; i<files.size(); i++){
+			UUID uuid = UUID.randomUUID();
+			String fileName = files.get(i).getOriginalFilename();
+			int fileSize = (int) files.get(i).getSize();
+			String fileuri = path + uuid;
+			
+			ImageVo image = new ImageVo();
+			image.setImg_ori_name(fileName);
+			image.setImg_code(boardIdx);
+			image.setImg_path(fileuri);
+			
+			File localFile = new File(fileuri);
+			try{
+				files.get(i).transferTo(localFile);
+			} catch (IllegalStateException e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			}
+			imageDao.insertImage(image);
+		}
+		
+//		String fileName = file.getOriginalFilename();
+//		int fileSize = (int)file.getSize();
+//		String fileuri = path + uuid;
+//
+//		ImageVo image = new ImageVo();
+//		image.setImg_ori_name(fileName);
+//		image.setImg_code(boardIdx);
+//		image.setImg_path(fileuri);
+//
+//		File localFile = new File(fileuri);
+//		try{
+//			file.transferTo(localFile);
+//		} catch(IllegalStateException e) {
+//			e.printStackTrace();
+//		}  catch(IOException e) {
+//			e.printStackTrace();
+//		} 
+//
+//		imageDao.insertImage(image);	
 	}
 	
 	

@@ -12,5 +12,4 @@ public interface IMessageService {
 	public HashMap<String, Object> messageList(String msg_receive_userid);
 	public List<MessageVo> messageOneList(String msg_receive_userid, String msg_send_userid);
 	
-
 }

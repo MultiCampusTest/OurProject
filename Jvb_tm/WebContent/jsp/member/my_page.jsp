@@ -229,8 +229,7 @@ function moreList(){
 			var board_idx = m_array[1];
 			var board_title=m_array[2];
 			var matching_date=m_array[3];
-			var responseValue = $(this).val();
-			
+			var responseValue = $(this).val();	
 			
 			
 			$.ajax({

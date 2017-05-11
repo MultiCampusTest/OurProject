@@ -7,6 +7,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<insert id="messageInsert" parameterType="messageVo">
 		insert into message values(0, #{msg_send_userid}, #{msg_receive_userid},
 		#{msg_contents}, sysdate())
+<!-- 		insert into message values(0, #{msg_send_userid}, #{msg_receive_userid}, -->
+<!-- 		#{msg_contents}, date_format(sysdate(), '%b %d %Y %h:%i %p')) -->
 	</insert>
 
 	<delete id="messageDelete" parameterType="int">

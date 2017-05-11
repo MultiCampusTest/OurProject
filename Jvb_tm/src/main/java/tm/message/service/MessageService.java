@@ -48,7 +48,6 @@ public class MessageService implements IMessageService {
 		params.put("msg_receive_userid", msg_receive_userid);
 		params.put("msg_send_userid", msg_receive_userid);
 		messageByUserid=messageDao.messageSelectByUserid(params);
-
 		
 		HashMap<String, Object> messageList=new HashMap<>();
 		messageList.put("messageList", messageByUserid);

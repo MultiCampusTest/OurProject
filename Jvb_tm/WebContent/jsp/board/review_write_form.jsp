@@ -10,15 +10,7 @@
 
 <link rel="stylesheet" href="css/review.css">
 <script src="js/review.js"></script>
-<script type="text/javascript">
-	$(document).ready(function(){
-		$('#fileAdd').click(function(){
-			type : 'post',
-			url : 'reviewWrite.do',
-			data : 
-		});
-	})
-</script>
+<script src="js/jqueryform.js"></script>
 
 </head>
 <body>
@@ -31,8 +23,8 @@
 					<h2>Photo</h2>
 					<div class="table-responsive" id="reviewPhoto">
 					<button class="btn btn-primary" id="fileAdd">파일 추가</button>
-					<form action="reviewWrite.do" method="post" enctype="multipart/form-data">
-						<table id="preset" class="table table-condensed" style="height: inherit; vertical-align: middle;">
+					<form id="reviewForm" name="reviewForm" action="reviewWrite.do" method="post" enctype="multipart/form-data">
+						<table class="table table-condensed" style="height: inherit; vertical-align: middle;">
 							<c:forEach begin="1" end="5" var="i" varStatus="status">
 								<tr class="clearfix" align="center" style="vertical-align: center">
 									<td style="width: 35%; vertical-align: middle;">

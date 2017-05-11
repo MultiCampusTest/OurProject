@@ -120,13 +120,13 @@ public class BoardController {
 	// guide_board
 	@RequestMapping(value="guideList.do")
 	public ModelAndView guideList(
-		 @RequestParam(defaultValue="1") int page
-//		 @RequestParam(defaultValue="") String locCategory,
-//		 @RequestParam(defaultValue="") String subCategory
+		 @RequestParam(defaultValue="1") int page,
+		 String locCategory,
+		 String subCategory
 		 ){
 		String code = "g";
 		ModelAndView mav = new ModelAndView();
-		mav.addAllObjects(boardService.getCommonBoardList(code, page));
+		mav.addAllObjects(boardService.getCommonBoardList(code, page, locCategory, subCategory));
 		mav.setViewName("board/guide_list");
 		return mav;
 	}

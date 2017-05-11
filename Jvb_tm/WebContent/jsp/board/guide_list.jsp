@@ -59,74 +59,15 @@
 							&markers=color:red|label:E|${guide.endLatLng}&sensor=false">
                 </a>
                          <div class="caption">                
-                            <font style="font-size:12pt">${guide.userid }</font><br>
-                             <font style="font-size:12pt">dd</font><br>
-                             <font style="font-size:12pt">REVIEWS</font>
+                            <font style="font-size:12pt"><fmt:formatDate value="${guide.writeDate}"
+								pattern="yyyy-MM-dd"/></font><br>
+                             <font style="font-size:12pt"></font><br>
                          </div>
                      </div>
                  </div>
 		</c:forEach>
-				
-<!--                     <div class="col-sm-2 col-lg-2 col-md-2"> -->
-<!--                         <div class="thumbnail"> -->
-<!--                             <img src="http://placehold.it/300x400" alt=""> -->
-<!--                             <div class="caption"> -->
-<!--                                <font style="font-size:12pt">USER_ID</font><br> -->
-<!--                                 <font style="font-size:12pt">DATE</font><br> -->
-<!--                                 <font style="font-size:12pt">REVIEWS</font> -->
-<!--                             </div> -->
-                          
-<!--                         </div> -->
-<!--                     </div> -->
-<!--                     <div class="col-sm-2 col-lg-2 col-md-2"> -->
-<!--                         <div class="thumbnail"> -->
-<!--                             <img src="http://placehold.it/300x400" alt=""> -->
-<!--                             <div class="caption"> -->
-<!--                                <font style="font-size:12pt">USER_ID</font><br> -->
-<!--                                 <font style="font-size:12pt">DATE</font><br> -->
-<!--                                 <font style="font-size:12pt">REVIEWS</font> -->
-<!--                             </div> -->
-                          
-<!--                         </div> -->
-<!--                     </div> -->
-<!--                     <div class="col-sm-2 col-lg-2 col-md-2"> -->
-<!--                         <div class="thumbnail"> -->
-<!--                             <img src="http://placehold.it/300x400" alt=""> -->
-<!--                             <div class="caption"> -->
-<!--                               <font style="font-size:12pt">USER_ID</font><br> -->
-<!--                                 <font style="font-size:12pt">DATE</font><br> -->
-<!--                                 <font style="font-size:12pt">REVIEWS</font> -->
-<!--                             </div> -->
-                          
-<!--                         </div> -->
-<!--                     </div> -->
-<!--                     <div class="col-sm-2 col-lg-2 col-md-2"> -->
-<!--                         <div class="thumbnail"> -->
-<!--                             <img src="http://placehold.it/300x400" alt=""> -->
-<!--                             <div class="caption"> -->
-<!--                                <font style="font-size:12pt">USER_ID</font><br> -->
-<!--                                 <font style="font-size:12pt">DATE</font><br> -->
-<!--                                 <font style="font-size:12pt">REVIEWS</font> -->
-<!--                             </div> -->
-                          
-<!--                         </div> -->
-<!--                     </div> -->
-                     
-<!--                     <div class="col-sm-2 col-lg-2 col-md-2"> -->
-<!--                         <div class="thumbnail"> -->
-<!--                         <a href="#" title="자세히보기"> -->
-<!--                             <img src="http://placehold.it/300x400" alt=""> -->
-<!--                          </a> -->
-<!--                             <div class="caption"> -->
-<!--                                 <font style="font-size:12pt">USER_ID</font><br> -->
-<!--                                 <font style="font-size:12pt">DATE</font><br> -->
-<!--                                 <font style="font-size:12pt">REVIEWS</font> -->
-<!--                             </div> -->
-                          
-<!--                         </div> -->
-<!--                     </div> -->
-				</div>
-			</div>
+	</div>
+</div>
 				
 		<hr/>
 		
@@ -135,8 +76,10 @@
 				<li>
 				 <c:choose>
 				 	<c:when test="${current != 1 }">
-				 		<a href="noticeList.do?page=${current-1}"><span
-						class="glyphicon glyphicon-chevron-left"></span></a>
+				 		<a href="guideList.do?page=${current-1}
+				 				&locCategory=${locCategory}&subCategory=${subCategory}">
+				 		<span class="glyphicon glyphicon-chevron-left"></span>
+				 		</a>
 				 	</c:when>
 				 	<c:otherwise>
 				 		<a><span class="glyphicon glyphicon-chevron-left"></span></a>
@@ -150,7 +93,8 @@
 								<li class="paging active"><a>${i }</a></li>
 							</c:when>
 							<c:otherwise>
-								<li class="paging"><a href="noticeList.do?page=${i}">${i }</a></li>
+								<li class="paging"><a href="guideList.do?page=${i}
+									&locCategory=${locCategory}&subCategory=${subCategory}">${i }</a></li>
 							</c:otherwise>
 						</c:choose>
 					</c:forEach>
@@ -158,8 +102,10 @@
 				<li>
 					<c:choose>
 						<c:when test="${current != last }">
-						<a href="noticeList.do?page=${current+1}"><span
-							class="glyphicon glyphicon-chevron-right"></span></a>
+						<a href="guideList.do?page=${current+1}
+								&locCategory=${locCategory}&subCategory=${subCategory}">
+						<span class="glyphicon glyphicon-chevron-right"></span>
+						</a>
 						</c:when>
 						<c:otherwise>
 							<a><span

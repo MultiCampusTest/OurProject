@@ -17,18 +17,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result column="b_readcount" 	property="readCount"/>
 	</resultMap>
 	
-<!-- 	<sql id="content"> -->
-<!-- <choose> -->
-<!-- 			<when test="content != null"> -->
-<!-- 				#{content} -->
-<!-- 			</when> -->
-<!-- 			<otherwise> -->
-<!-- 				"내용없음" -->
-<!-- 			</otherwise> -->
-<!-- 		</choose> -->
-<!-- </sql> -->
+<sql id="category">
+	<choose>
+		<when test="locCategory != null">
+			AND b_loc_category = #{locCategory}
+		</when>
+		<when test="subCategory != null">
+			AND b_sub_category = #{subCategory}
+		</when>
+	</choose>
+</sql>
 	
-<!-- 	<include refid="title"></include> -->
+
 	
 
 	<insert id="insertBoard" parameterType="boardVo"
@@ -47,13 +47,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT count(*) FROM board
 		WHERE b_code=#{code}
 	</select>
-	
-	
+
 	<!-- select guide,travel -->
 	<select id="selectCommonBoardLimit" parameterType="java.util.HashMap"
 	resultMap="board">
-		SELECT b_idx, b_title, userid, b_date, b_readcount FROM board 
-		WHERE b_code=#{code} 
+		SELECT b_idx, b_title, b_loc_category, b_sub_category, userid, b_date, b_readcount FROM board 
+		WHERE b_code=#{code} <include refid="category"></include>
 		ORDER BY b_idx desc limit #{skip}, #{count}
 	</select>
 	

@@ -30,6 +30,8 @@
     });
     var geocoder = new google.maps.Geocoder();
     
+    
+    //이걸 옮겨라
     poly = new google.maps.Polyline({
         strokeColor: '#000000',
         strokeOpacity: 1.0,
@@ -192,9 +194,11 @@ $(function() {
 	     <div style="float:left; margin-right:20px">
 	     <font style="font-size:20px;">DATE</font><br> 
 	      	<select class="form-control category" name="subCategory">
-	            <option value="five">5DAYS</option>
-	            <option value="ten">10DAYS</option> 
-	            <option value="more">15DAYS+</option> 
+	            <option value="one">1DAY</option>
+	            <option value="two">2DAYS</option> 
+	            <option value="three">3DAYS</option>
+	            <option value="four">4DAYS</option>
+	            <option value="more2">5DAYS+</option> 
 	        </select>
 	      </div>
 	      <div style="float:left;">

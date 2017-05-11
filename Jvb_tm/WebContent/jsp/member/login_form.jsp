@@ -141,9 +141,8 @@ window.fbAsyncInit = function() {
 							<span class="need-help"><a href="#" id="need-help">Forgot password</a></span>
 						</div><br>
 						<button type="submit"  id="loginform_submit" class="btn btn-lg btn-primary btn-block" onClick="return procEvent();">SIGN IN</button>
-						<button type="button" class="btn btn-lg btn-primary btn-block" onClick="facebook_btn();"><i class="fa fa-facebook-official" aria-hidden="true"></i>&nbsp;SIGN UP WITH FACEBOOK</button>
 					</form>
-<!-- 				<a href="joinForm.do" class="text-center new-account">Create an account</a> -->
+				<a href="joinForm.do" class="text-center new-account">Create an account</a>
 				</div>
 				<br>
 			</div>

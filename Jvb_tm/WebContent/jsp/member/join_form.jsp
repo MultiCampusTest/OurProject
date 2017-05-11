@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
+<link rel="stylesheet" href="css/stepwizard.css">
 <!-- jQuery CDN -->
 <script
   src="https://code.jquery.com/jquery-2.2.4.min.js"
@@ -49,16 +49,37 @@
 		$('#imageCheck').text('');
 	}
 </script>
+<script type="text/javascript">
+	var getGender = "${external.gender}";
+	if(getGender == 'male') {
+		$("#gender").val("male").prop("selected", true);
+	}
+</script>
 <title>Insert title here</title>
 </head>
 <body>
 <div class="margin-section-top" style="margin-top: 5%"></div>
+<div class="stepwizard">
+    <div class="stepwizard-row">
+        <div class="stepwizard-step">
+            <button type="button" class="btn btn-default btn-circle">1</button>
+            <p>Step 1</p>
+        </div>
+        <div class="stepwizard-step">
+            <button type="button" class="btn btn-primary btn-circle">2</button>
+            <p>Step 2</p>
+        </div>
+        <div class="stepwizard-step">
+            <button type="button" class="btn btn-default btn-circle">3</button>
+            <p>Step 3</p>
+        </div> 
+    </div>
+</div>
 <div class="container">
 <div class="row">
     <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
 		<form action="joinProc.do" method="post" role="form">
-			<h1>Sign Up <small>It's free and always will be.</small></h2>
-			<hr class="colorgraph"><br>
+			<h1 style="text-align: center">Sign Up&nbsp;<small>It's free and always will be.</small></h1><br>
 			<div class="form-group" style="text-align: center">
 				<img id="profile" src="img/profile.jpg" style="width: 150px; height: 150px; border-radius: 50%" onclick="document.getElementById('file').click();">
 				<div id="imageCheck"></div>
@@ -66,20 +87,20 @@
 			<div class="form-group">
 				<input type="file" name="file" id="file" class="form-control input-lg" style="display:none;" onchange="document.getElementById('txt').value=this.value;">
 			</div>
+			<div class="form-group">
+				<input type="email" name="userid" id="userid" class="form-control input-lg"  style="background: white" placeholder="Email" value="${external.userid}">
+			</div>
 			<div class="row">
 				<div class="col-xs-12 col-sm-6 col-md-6">
 					<div class="form-group">
-                        <input type="text" name="firstName" id="firstName" class="form-control input-lg" placeholder="First Name *" value="${external.firstName}">
+                        <input type="text" name="firstName" id="firstName" class="form-control input-lg" placeholder="First Name" value="${external.firstName}">
 					</div>
 				</div>
 				<div class="col-xs-12 col-sm-6 col-md-6">
 					<div class="form-group">
-						<input type="text" name="lastName" id="lastName" class="form-control input-lg" placeholder="Last Name *" value="${external.lastName}">
+						<input type="text" name="lastName" id="lastName" class="form-control input-lg" placeholder="Last Name" value="${external.lastName}">
 					</div>
 				</div>
-			</div>
-			<div class="form-group">
-				<input type="text" name="userid" id="userid" class="form-control input-lg" placeholder="Userid *" value="${external.userid}">	
 			</div>
 			<div class="form-group">	
 				<div id="idCheck" style="text-align: center"></div>
@@ -87,35 +108,29 @@
 			<div class="row">
 				<div class="col-xs-12 col-sm-6 col-md-6">
 					<div class="form-group">
-						<input type="password" name="pwd" id="pwd" class="form-control input-lg" placeholder="Password *" maxlength="20">
+						<input type="password" name="pwd" id="pwd" class="form-control input-lg" placeholder="Password" maxlength="20">
 					</div>
 				</div>
 				<div class="col-xs-12 col-sm-6 col-md-6">
 					<div class="form-group">
-						<input type="password" name="pwdChk" id="pwdChk" class="form-control input-lg" placeholder="Confirm Password *" maxlength="20">
+						<input type="password" name="pwdChk" id="pwdChk" class="form-control input-lg" placeholder="Confirm Password" maxlength="20">
 					</div>
 				</div>
 				<div id="pwdCheck" style="text-align: center"></div>
 			</div>
 			<div class="form-group">
-				<input type="email" name="email" id="email" class="form-control input-lg" placeholder="Email Address *" value="${external.email}">
-			</div>
-			<div class="form-group">	
-				<div id="emailCheck" style="text-align: center"></div>
-			</div>
-			<div class="form-group">
-				<input type="text" name="birthday" id="birthday" class="form-control input-lg"  style="background: white" placeholder="Birthday *">
+				<input type="text" name="birthday" id="birthday" class="form-control input-lg"  style="background: white" placeholder="Birthday">
 			</div>
 			<div class="form-group">
 				<select name="gender" id="gender" class="form-control input-lg">
-					<option value="gender">Gender *</option>
+					<option value="gender">Gender</option>
 					<option value="male">Male</option>
 					<option value="female">Female</option>
 				</select>
 			</div>
 			<div class="form-group">
 						<select name="country" id="country" class="form-control input-lg">
-							<option value="country">Country *</option>
+							<option value="country">Country</option>
 							<optgroup label="A"></optgroup>
 							<option value="AF">Afghanistan</option>
 							<option value="AL">Albania</option>
@@ -378,7 +393,7 @@
 						</select>
 					</div>
 			<div class="form-group">
-				<textarea class="form-control input-lg" name="introduce" placeholder="About yourself"></textarea>
+				<textarea class="form-control input-lg" name="introduce" placeholder="(Option) About yourself"></textarea>
 			</div>
 			<div class="row">
 				<div class="col-xs-4 col-sm-3 col-md-3">
@@ -392,7 +407,6 @@
 				</div>
 			</div>
 			
-			<hr class="colorgraph">
 			<div class="row">
 				<div class="col-xs-12 col-md-6">
 				<div class="form-group">

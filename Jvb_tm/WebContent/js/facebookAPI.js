@@ -11,13 +11,14 @@ function fbAjaxRequest(response) {
 	$.ajax({
 		url : 'idCheck.do',
 		type : 'POST',
-		data : { userid : response.id },
+		data : { userid : response.email },
 		dataType : 'json',
 		success : function(data) {
 			if (data.result) {
-				alert('이미 가입하셨습니다.');
+				alert('Already registered');
+				location.href="loginForm.do";
 			} else {
-				alert('회원가입이 가능합니다.');
+				alert('Verified successfully');
 				var form = document.createElement("form");
 				form.setAttribute("method", "post");
 				form.setAttribute("action", "fbJoinForm.do");
@@ -25,7 +26,7 @@ function fbAjaxRequest(response) {
 					var hiddenField = document.createElement("input");
 					hiddenField.setAttribute("type", "hidden");
 					hiddenField.setAttribute("value", response[key]);
-					if(key == 'id') {
+					if(key == 'email') {
 						key = 'userid';						
 					} else if(key == 'first_name') {
 						key = 'firstName';						
@@ -48,7 +49,7 @@ function facebook_btn() {
 	FB.login(function(response) {
 		if (response.authResponse) {
 			console.log('Welcome!  Fetching your information.');
-			FB.api('/me?fields=id,email,first_name,last_name,gender,birthday', function(response) {
+			FB.api('/me?fields=email,first_name,last_name,gender', function(response) {
 				fbAjaxRequest(response);
 			});
 		} else {

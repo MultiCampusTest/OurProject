@@ -8,13 +8,11 @@ public class MemberVo {
 	private String pwd;
 	private String firstName;
 	private String lastName;
-	private String email;
 	private String birthday;
 	private String country;
 	private String gender;
 	private String introduce;
 	private Date joinDate;
-	
 	public int getIdx() {
 		return idx;
 	}
@@ -44,12 +42,6 @@ public class MemberVo {
 	}
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
-	}
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
 	}
 	public String getBirthday() {
 		return birthday;
@@ -81,12 +73,11 @@ public class MemberVo {
 	public void setJoinDate(Date joinDate) {
 		this.joinDate = joinDate;
 	}
-	
 	@Override
 	public String toString() {
 		return "MemberVo [idx=" + idx + ", userid=" + userid + ", pwd=" + pwd + ", firstName=" + firstName
-				+ ", lastName=" + lastName + ", email=" + email + ", birthday=" + birthday + ", country=" + country
-				+ ", gender=" + gender + ", introduce=" + introduce + ", joinDate=" + joinDate + "]";
+				+ ", lastName=" + lastName + ", birthday=" + birthday + ", country=" + country + ", gender=" + gender
+				+ ", introduce=" + introduce + ", joinDate=" + joinDate + "]";
 	}
 	
 }

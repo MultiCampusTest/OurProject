@@ -226,7 +226,7 @@
 						<li><a class="page-scroll" href="logout.do">SIGN OUT&nbsp;<i class="fa fa-times-circle" aria-hidden="true"></i></a></li>
 					</c:when>
 					<c:otherwise>
-						<li><a class="page-scroll" href="joinForm.do">SIGN UP</a></li>
+						<li><a class="page-scroll" href="certiForm.do">SIGN UP</a></li>
 						<ul class="nav navbar-nav navbar-right">
 							<li class="dropdown"><a href="loginForm.do" class="dropdown-toggle" data-toggle="dropdown">Sign in <b class="caret"></b></a>
 								<ul class="dropdown-menu"

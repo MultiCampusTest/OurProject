@@ -44,7 +44,10 @@ public class MessageService implements IMessageService {
 	public HashMap<String, Object> messageList(String msg_receive_userid) {
 		// TODO Auto-generated method stub
 		List<MessageVo> messageByUserid=new ArrayList<>();
-		messageByUserid=messageDao.messageSelectByUserid(msg_receive_userid);
+		HashMap<String, Object> params=new HashMap<>();
+		params.put("msg_receive_userid", msg_receive_userid);
+		params.put("msg_send_userid", msg_receive_userid);
+		messageByUserid=messageDao.messageSelectByUserid(params);
 
 		
 		HashMap<String, Object> messageList=new HashMap<>();

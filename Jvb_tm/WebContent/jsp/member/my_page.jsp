@@ -76,7 +76,7 @@ function moreList(){
 		$('.sender').on('click', function() {
 			var id = $(this).attr('id');
 			var result = $('#name' + id).html();
-			// 	      alert(result);
+// 				      alert(result);
 			var msg_list = $('.msg_list').html();
 
 
@@ -161,9 +161,9 @@ function moreList(){
 			var id = $(this).attr('id');
 			m_array = id.split('_');
 			var realid = m_array[0];
-			alert(realid);
+// 			alert(realid);
 			var board_idx = m_array[1];
-					alert(board_idx);
+// 					alert(board_idx);
 			// 		alert(id);
 			var board_title=m_array[2];
 // 			alert(board_title);
@@ -172,17 +172,8 @@ function moreList(){
 			var responseValue = $(this).val();
 			// 		alert(responseValue);
 			
-// 			var aaa=$('#mathing_section' + board_idx+'_'+board_title).attr('id');
 
-// 			var check=aaa.indexOf(board_title);
-// 			for(int i=0; i<board_idx; i++){
-// 				if(check!=-1){
-// 					count++
-// 				}
-				
-// 			}
-			
-// 			alert(count);
+			alert(responseValue);
 			
 
 
@@ -210,7 +201,12 @@ function moreList(){
 
 						alert('매칭 성공');
 						$('.add_matching_section').append(add_section);
-						$('#mathing_section' + board_idx+'_'+board_title).remove();
+// 						$('#mathing_section' + board_idx+'_'+board_title).remove();
+						for(var i=0; i<20; i++){
+							$('#mathing_section' + i+'_'+board_title).remove();
+							$('#br_mathing_section' + i+'_'+board_title).remove();
+						}
+// 						$('#delete_matching_section' + board_title).remove();S
 
 
 					},
@@ -429,6 +425,7 @@ function moreList(){
                                     <div class="ui-select">
                                        <select id="user_time_zone" class="form-control">
                                              <option value="country">Country *</option>
+                                             <option selected="${member.country }">${member.country }</option>
                                              <optgroup label="A"></optgroup>
                                              <option value="AF">Afghanistan</option>
                                              <option value="AL">Albania</option>
@@ -760,7 +757,12 @@ function moreList(){
 													height="50px">
 											</div>
 											<div class="col-md-8">
-												<h6 class="sender_name" id="name${i.index }">${msg_List.msg_send_userid }</h6>
+												<c:if test="${msg_List.msg_send_userid == userid}">
+													<h6 class="sender_name" id="name${i.index }">${msg_List.msg_receive_userid }</h6>
+												</c:if>
+												<c:if test="${msg_List.msg_send_userid != userid}">
+													<h6 class="sender_name" id="name${i.index }">${msg_List.msg_send_userid }</h6>
+												</c:if>
 												<%-- 												<label class="sender_name container-fluid control-label" id="${msg_List.msg_send_userid }">${msg_List.msg_send_userid }</label> --%>
 											</div>
 										</div>
@@ -841,7 +843,7 @@ function moreList(){
 								<c:forEach varStatus="i" items="${matchingList }" var="mch_List">
 									<c:if test="${mch_List.mch_code==0 }">
 										<div class="matching_section container-fluid"
-											id="mathing_section${i.index }_${mch_List.b_idx}">
+											id="mathing_section${i.index }_${mch_List.b_idx }">
 											<div class="not_accept col-lg-3" id="${i.index }">
 												<input type="hidden" id="req_match_condition_${i.index }"
 													value="1">
@@ -892,7 +894,7 @@ function moreList(){
 												</div>
 											</div>
 										</div>
-										<br>
+										<br id="br_mathing_section${i.index }_${mch_List.b_idx }">
 									</c:if>
 								</c:forEach>
 							</div>

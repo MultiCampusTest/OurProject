@@ -6,17 +6,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<insert id="messageInsert" parameterType="messageVo">
 		insert into message values(0, #{msg_send_userid}, #{msg_receive_userid},
-		#{msg_contents}, date_format(sysdate(), '%b %d %Y %h:%i %p'))
+		#{msg_contents}, sysdate())
 	</insert>
 
 	<delete id="messageDelete" parameterType="int">
 		delete from message where msg_idx=#{msg_idx}
 	</delete>
 
-	<select id="messageSelectByUserid" parameterType="String"
+	<select id="messageSelectByUserid" parameterType="java.util.HashMap"
 		resultType="messageVo">
-		select * from message where msg_receive_userid=#{msg_receive_userid} group
-		by msg_send_userid order by msg_date
+		select * from message where msg_receive_userid=#{msg_receive_userid}
+		 or msg_send_userid=#{msg_send_userid} group by msg_send_userid order by msg_date
 	</select>
 
 	<select id="messageSelectOne" parameterType="java.util.HashMap"
@@ -28,6 +28,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		msg_send_userid=#{msg_receive_userid}) order by msg_date;
 	</select>
 
-	<select id=""></select>
+
 
 </mapper>

@@ -5,9 +5,15 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="css/stepwizard.css">
+
+<!-- 페이스북 -->
 <script type="text/javascript" src="js/facebookAPI.js"></script>
+
+<!-- 구글 -->
 <script type="text/javascript" src="js/googleAPI.js"></script>
 <script src="https://apis.google.com/js/api:client.js"></script>
+
+<!-- 카카오 -->
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 <script type="text/javascript" src="js/kakaoAPI.js"></script>
 <title>Insert title here</title>
@@ -36,7 +42,7 @@
 				<h1 style="text-align: center; font-style: bold;">Verify your identification :)</h1>
 				<br>
 				<p style="text-align: center; font-style: bold;">
-					We require you to log in social serive for checking your identification
+					We require you to log in social service for checking your identification
 				</p>
 				<div style="margin-top: 10%"></div>
 
@@ -46,7 +52,7 @@
 						<div class="form-group">
 							<div id="gSignInWrapper">
 								<div id="customBtn" class="customGPlusSignIn">
-									<span class="buttonText"><a class="btn btn-block btn-social btn-google-plus"> <i class="fa fa-google-plus"></i> &nbsp;Connect with Google</a></span>
+									<span class="buttonText"><a class="btn btn-block btn-social btn-google-plus"> <i class="fa fa-google-plus"></i> &nbsp;Log in with Google</a></span>
 								</div>
 							</div>
 							<script>startApp();</script>
@@ -54,12 +60,12 @@
 					</div>
 					<div class="col-xs-12 col-md-6">
 						<div class="form-group">
-							<a href="javascript:facebook_btn()" class="btn btn-block btn-social btn-facebook"><i class="fa fa-facebook"></i> &nbsp;Connect with Facebook</a>
+							<a href="javascript:facebook_btn()" class="btn btn-block btn-social btn-facebook"><i class="fa fa-facebook"></i> &nbsp;Log in with Facebook</a>
 						</div>
 					</div>
 					<div class="col-xs-12 col-md-6">
 						<div class="form-group">
-							<a id="custom-login-btn" href="javascript:loginWithKakao()" class="btn btn-block btn-social"><i class="fa fa-comment"></i> &nbsp;Connect with Kakaotalk</a>
+							<a id="custom-login-btn" href="javascript:loginWithKakao()" class="btn btn-block btn-social"><i class="fa fa-comment"></i> &nbsp;Log in with Kakaotalk</a>
 						</div>
 					</div>
 					

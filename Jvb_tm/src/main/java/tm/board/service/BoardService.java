@@ -245,8 +245,7 @@ public class BoardService {
 			e.printStackTrace();
 		} 
 
-		imageDao.insertImage(image);
-		boardDao.insertBoard(board);	
+		imageDao.insertImage(image);	
 	}
 	
 	

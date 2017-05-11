@@ -11,12 +11,13 @@
 <link rel="stylesheet" href="css/review.css">
 <script src="js/review.js"></script>
 <script type="text/javascript">
-function addFile(){
-	$('[name=form1] [name=tr_attach_file]:last').after( $('#preset tr').clone() );
-	// $('#preset tr').clone() : id=preset 에서 tr 요소 셀렉트 하여 복제 !!
-	// form1 안에 이름이 tr_attach_file 인것 중 마지막 것 다음에 추가합니다.
-	// 이렇게 하면 실행때 마다 동적으로 하나씩 추가됩니다.
-}
+	$(document).ready(function(){
+		$('#fileAdd').click(function(){
+			type : 'post',
+			url : 'reviewWrite.do',
+			data : 
+		});
+	})
 </script>
 
 </head>
@@ -29,7 +30,7 @@ function addFile(){
 				<div class="col-md-5">
 					<h2>Photo</h2>
 					<div class="table-responsive" id="reviewPhoto">
-					<button class="btn btn-primary" onclick="addFile()">파일 추가</button>
+					<button class="btn btn-primary" id="fileAdd">파일 추가</button>
 					<form action="reviewWrite.do" method="post" enctype="multipart/form-data">
 						<table id="preset" class="table table-condensed" style="height: inherit; vertical-align: middle;">
 							<c:forEach begin="1" end="5" var="i" varStatus="status">
@@ -58,12 +59,12 @@ function addFile(){
 					<h2>Something Else here</h2>
 					<div class="form-group">
 						<label class="control-label ">TITLE:</label> 
-						<input class="form-control" name="b_title" type="text">
+						<input class="form-control" name="title" type="text">
 					</div>
 					<div class="form-group">
 						<label class="control-label">CATEGORY:</label>
 						<div class="ui-select">
-							<select name="b_sub_category" id="review_category" class="form-control">
+							<select name="subCategory" id="review_category" class="form-control">
 								<option value="select">select</option>
 								<option value="food" id="food">food</option>
 								<option value="shopping" id="shopping">shopping</option>
@@ -74,7 +75,7 @@ function addFile(){
 					</div>
 					<div class="form-group">
 						<label class="control-label">CONTENT:</label>
-						<textarea class="form-control" name="b_content" rows="10" style="resize: none;"></textarea>
+						<textarea class="form-control" name="contents" rows="10" style="resize: none;"></textarea>
 					</div>
 					<input type="hidden" name="code" value="r"> 
 					<div class="form-group">

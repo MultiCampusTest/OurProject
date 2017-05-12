@@ -119,7 +119,8 @@ public class BoardService {
 	//guide, travel 리스트 얻어오기
 	public HashMap<String, Object> getCommonBoardList(String code, int page, String locCategory, String subCategory){
 		
-		
+		System.out.println(locCategory);
+		System.out.println(subCategory);
 		//시작과 끝페이지
 		int start = (page - 1) / 10 * 10 + 1; 
 		int end = ((page - 1) / 10 + 1) * 10;
@@ -127,8 +128,10 @@ public class BoardService {
 		//첫페이지와 게시물 전체의 마지막 페이지
 		int first = 1;
 		HashMap<String, Object> boardCountParams = new HashMap<>();
-		
-		int last = (boardDao.getBoardCountByCode(code) - 1) / 6 + 1;
+		boardCountParams.put("code", code);
+		boardCountParams.put("locCategory", locCategory);
+		boardCountParams.put("subCategory", subCategory);
+		int last = (boardDao.getBoardCount(boardCountParams) - 1) / 6 + 1;
 		
 		end = last < end ? last : end;
 		
@@ -171,7 +174,7 @@ public class BoardService {
 		result.put("end", end);
 		result.put("last", last);
 		result.put("current", page);
-//		result.put("count", boardCount);
+		result.put("count", boardDao.getBoardCount(boardCountParams));
 		result.put("locCategory", locCategory);
 		result.put("subCategory", subCategory);
 		result.put("list", list);

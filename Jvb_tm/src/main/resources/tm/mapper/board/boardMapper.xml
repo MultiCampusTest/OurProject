@@ -19,10 +19,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 <sql id="category">
 	<choose>
-		<when test="locCategory != null">
+		<when test="locCategory != null and locCategory != '' ">
 			AND b_loc_category = #{locCategory}
 		</when>
-		<when test="subCategory != null">
+		<when test="subCategory != null and subCategory != '' ">
 			AND b_sub_category = #{subCategory}
 		</when>
 	</choose>
@@ -46,6 +46,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="getBoardCountByCode" parameterType="String" resultType="int">
 		SELECT count(*) FROM board
 		WHERE b_code=#{code}
+	</select>
+	
+	<select id="getBoardCount" parameterType="java.util.HashMap" resultType="int">
+		SELECT count(*) FROM board
+		WHERE b_code=#{code} <include refid="category"></include>
 	</select>
 
 	<!-- select guide,travel -->

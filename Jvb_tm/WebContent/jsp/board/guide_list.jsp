@@ -44,7 +44,7 @@
 <hr/>
 
 <div class="container">
-<p>A Total of 10 Travel Plans Have Been Searched</p>
+<p>A Total of ${count}  Travel Plans Have Been Searched</p>
    	<div class="row">
          
 				

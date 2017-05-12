@@ -2,6 +2,7 @@ package tm.member.service;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
 
@@ -102,10 +103,12 @@ public class MemberService implements IMemberService {
 
 
 	@Override
-	public MemberVo memberSelectOne(String userid) {
+	public HashMap<String, Object> memberSelectOne(String userid) {
 		// TODO Auto-generated method stub
 		MemberVo memberVo = memberDao.memberSelectOne(userid);
-		return memberVo;
+		HashMap<String, Object> memberInfo=new HashMap<>();
+		memberInfo.put("member", memberVo);
+		return memberInfo;
 	}
 	
 }

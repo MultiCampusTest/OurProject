@@ -358,12 +358,12 @@ function moreList(){
                                     <pre class="form-control">${member.country}</pre>
                                  </div>
                               </div>
-                              <div class="form-group">
-                                 <label class="col-lg-3 control-label">Email:</label>
-                                 <div class="col-lg-8">
-                                    <pre class="form-control">${member.email }</pre>
-                                 </div>
-                              </div>
+<!--                               <div class="form-group"> -->
+<!--                                  <label class="col-lg-3 control-label">Email:</label> -->
+<!--                                  <div class="col-lg-8"> -->
+<%--                                     <pre class="form-control">${member.email }</pre> --%>
+<!--                                  </div> -->
+<!--                               </div> -->
                               <div class="form-group">
                                  <label class="col-lg-3 control-label">Birth:</label>
                                  <div class="col-lg-8">
@@ -703,13 +703,13 @@ function moreList(){
                                     </div>
                                  </div>
                               </div>
-                              <div class="form-group">
-                                 <label class="col-lg-3 control-label">Email:</label>
-                                 <div class="col-lg-8">
-                                    <input class="form-control" value="${member.email }"
-                                       type="text">
-                                 </div>
-                              </div>
+<!--                               <div class="form-group"> -->
+<!--                                  <label class="col-lg-3 control-label">Email:</label> -->
+<!--                                  <div class="col-lg-8"> -->
+<%--                                     <input class="form-control" value="${member.email }" --%>
+<!--                                        type="text"> -->
+<!--                                  </div> -->
+<!--                               </div> -->
                               <div class="form-group">
                                  <label class="col-md-3 control-label">Username:</label>
                                  <div class="col-md-8">

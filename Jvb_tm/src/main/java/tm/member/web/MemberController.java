@@ -85,6 +85,7 @@ public class MemberController {
 		HashMap<String, Object> params=new HashMap<>();
 		params.put("userid", userid);
 		ModelAndView mav=new ModelAndView();
+		mav.addAllObjects(memberService.memberSelectOne(userid));
 		mav.addAllObjects(messageService.messageList(userid));
 		mav.addAllObjects(matchingService.matchingList(userid));
 		mav.addAllObjects(params);

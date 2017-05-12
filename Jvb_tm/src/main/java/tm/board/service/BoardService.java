@@ -231,7 +231,7 @@ public class BoardService {
 		contents.setBoardIdx(boardIdx);
 		contentsDao.insertContents(contents);
 		
-		String path= "Upload/";
+		String path= "/Upload/";
 		File folder = new File(path);
 		if(!folder.exists())
 			folder.mkdirs();

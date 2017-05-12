@@ -73,11 +73,11 @@ function moreList(){
 		
 		
 		
-		$('.sending_msg_form').on('keyup', function() {
+// 		$('.sending_msg_form').on('keyup', function() {
 			
-			alert('애');
+// 			alert('애');
 			
-		});
+// 		});
 
 
 

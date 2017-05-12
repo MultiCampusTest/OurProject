@@ -32,6 +32,7 @@ public class MessageController {
 //		return mav;
 //	}
 	
+	
 	@RequestMapping("messageOneList.do")
 	public @ResponseBody List<MessageVo> messageOneList(HttpSession session, String msg_send_userid){
 		String msg_receive_userid=(String)session.getAttribute("userid");

@@ -32,7 +32,6 @@ public class MatchingController {
 //		return mav;
 //	}
 	
-	
 	 @RequestMapping(value="matchingSuccess.do", method=RequestMethod.POST)
 	   public @ResponseBody HashMap<String, Object> matchingSuccess(HttpSession session, int b_idx, String mch_g_userid){
 		 System.out.println("야");

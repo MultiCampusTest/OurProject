@@ -6,6 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="css/stepwizard.css">
 
+<title>Insert title here</title>
 <!-- 페이스북 -->
 <script type="text/javascript" src="js/facebookAPI.js"></script>
 
@@ -16,7 +17,10 @@
 <!-- 카카오 -->
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 <script type="text/javascript" src="js/kakaoAPI.js"></script>
-<title>Insert title here</title>
+
+<!-- 네이버 -->
+<script type="text/javascript"	src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js"	charset="utf-8"></script>
+
 </head>
 <body>
 <div class="margin-section-top" style="margin-top: 5%"></div>
@@ -45,34 +49,32 @@
 					We require you to log in social service for checking your identification
 				</p>
 				<div style="margin-top: 10%"></div>
-
-
-				<div class="row">
-					<div class="col-xs-12 col-md-6">
-						<div class="form-group">
-							<div id="gSignInWrapper">
-								<div id="customBtn" class="customGPlusSignIn">
-									<span class="buttonText"><a class="btn btn-block btn-social btn-google-plus"> <i class="fa fa-google-plus"></i> &nbsp;Log in with Google</a></span>
-								</div>
-							</div>
+				<div class="form-group" style="text-align: center">
+					<div id="gSignInWrapper">
+						<div id="customBtn" class="customGPlusSignIn">
+							<span class="buttonText"><img id="profile"
+								src="img/google.jpg"></span><br>
 							<script>startApp();</script>
 						</div>
 					</div>
-					<div class="col-xs-12 col-md-6">
-						<div class="form-group">
-							<a href="javascript:facebook_btn()" class="btn btn-block btn-social btn-facebook"><i class="fa fa-facebook"></i> &nbsp;Log in with Facebook</a>
-						</div>
-					</div>
-					<div class="col-xs-12 col-md-6">
-						<div class="form-group">
-							<a id="custom-login-btn" href="javascript:loginWithKakao()" class="btn btn-block btn-social"><i class="fa fa-comment"></i> &nbsp;Log in with Kakaotalk</a>
-						</div>
-					</div>
-					
+					<span onclick="javascript:facebook_btn()"><img id="profile" src="img/facebook.jpg"></span><br> 
+					<span onclick="javascript:loginWithKakao()"><img id="profile" src="img/kakaotalk.jpg"></span><br> 
+					<div id="naver_id_login" style="display: none"></div>
+					<span onclick="document.getElementById('naver_id_login_anchor').click();"><img src="img/naver.jpg"></span>
 				</div>
 			</div>
 		</div>
 	</div>
 	<div style="margin-top: 10%"></div>
+	<!-- //네이버아이디로로그인 버튼 노출 영역 -->
+	<script type="text/javascript">
+		var naver_id_login = new naver_id_login("qWsYFF9T4cuKU1gpSWN1","http://localhost:8080/Jvb_tm/jsp/member/callback.jsp");
+		var state = naver_id_login.getUniqState();
+		naver_id_login.setButton("green", 3, 40);
+		naver_id_login.setDomain("http://localhost:8080/Wawa/");
+		naver_id_login.setState(state);
+		naver_id_login.setPopup();
+		naver_id_login.init_naver_id_login();
+	</script>
 </body>
 </html>

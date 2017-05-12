@@ -1,8 +1,17 @@
 package tm.member.service;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.List;
+import java.util.UUID;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import tm.image.dao.IImageDao;
+import tm.image.vo.ImageVo;
 import tm.member.dao.IMemberDao;
 import tm.member.vo.MemberVo;
 
@@ -11,16 +20,47 @@ public class MemberService implements IMemberService {
 	
 	@Autowired
 	private IMemberDao memberDao;
+	
+	@Autowired
+	private IImageDao imageDao;
 
 	@Override
-	public boolean memberJoin(MemberVo memberVo) {
-		// TODO Auto-generated method stub
-		int result = memberDao.memberInsert(memberVo);
+	public void memberJoin(MemberVo memberVo, MultipartHttpServletRequest req) {
+		memberDao.memberInsert(memberVo);
+		String userid = memberVo.getUserid();
 		
-		if(result > 0)
-			return true;
-		else
-			return false;
+		String path = "/Users/student/Upload/";
+		File folder = new File(path);
+		if( !folder.exists() ) {
+			folder.mkdirs();			
+		}
+		
+		List<MultipartFile> files = req.getFiles("file");
+		
+		
+		for(int i=0; i<files.size(); i++) {
+			UUID uuid = UUID.randomUUID();
+			String fileName = files.get(i).getOriginalFilename();
+			int fileSize = (int) files.get(i).getSize();
+			String ext = fileName.substring(fileName.lastIndexOf('.'));
+			String fileuri = path + uuid + ext;
+			ImageVo image = new ImageVo();
+			image.setImg_ori_name(fileName);
+			image.setImg_code(1);
+			image.setImg_path(fileuri);
+		
+			File localFile = new File(fileuri);
+			try{
+				files.get(i).transferTo(localFile);
+			} catch (IllegalStateException e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			}
+			imageDao.insertImage(image);
+		}
 	}
 	
 

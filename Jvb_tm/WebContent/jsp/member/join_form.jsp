@@ -77,7 +77,7 @@
 <div class="container">
 <div class="row">
     <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
-		<form action="joinProc.do" method="post" role="form">
+		<form action="joinProc.do" method="post" role="form" enctype="multipart/form-data">
 			<h1 style="text-align: center">Sign Up&nbsp;<small>It's free and always will be.</small></h1><br>
 			<div class="form-group" style="text-align: center">
 				<img id="profile" src="img/profile.jpg" style="width: 150px; height: 150px; border-radius: 50%" onclick="document.getElementById('file').click();">

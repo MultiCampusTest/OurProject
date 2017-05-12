@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import tm.matching.service.MatchingService;
@@ -58,6 +59,20 @@ public class MemberController {
 		return mav;
 	}
 	
+	@RequestMapping(method=RequestMethod.POST, value="naverLogin.do")
+	public ModelAndView naverLogin(HttpSession session, String id, String nickname, String email, String sex, String birthday, String name){
+		ModelAndView mav = new ModelAndView();
+		
+		//파라미터값을 모델에 셋팅
+		MemberVo memberVo = new MemberVo();
+		memberVo.setUserid(email);
+		memberVo.setFirstName(name);
+		memberVo.setBirthday(birthday);
+		//네이버는 연령 이메일 별명 생일 
+		mav.addObject("external", memberVo);
+		mav.setViewName("member/join_form");
+		return mav;
+	}
 	@RequestMapping("joinResult.do")
 	public String joinResult() {
 		return "member/join_result";
@@ -70,7 +85,6 @@ public class MemberController {
 		HashMap<String, Object> params=new HashMap<>();
 		params.put("userid", userid);
 		ModelAndView mav=new ModelAndView();
-		mav.addObject("member", memberService.memberSelectOne(userid));
 		mav.addAllObjects(messageService.messageList(userid));
 		mav.addAllObjects(matchingService.matchingList(userid));
 		mav.addAllObjects(params);
@@ -118,9 +132,9 @@ public class MemberController {
 	
 	//회원가입 요청
 	@RequestMapping(method=RequestMethod.POST, value="joinProc.do")
-	public ModelAndView joinProc(MemberVo memberVo) {
+	public ModelAndView joinProc(MemberVo memberVo, MultipartHttpServletRequest req) {
 		ModelAndView mav = new ModelAndView();
-		memberService.memberJoin(memberVo);
+		memberService.memberJoin(memberVo, req);
 		mav.addObject("f_name", memberVo.getFirstName());
 		mav.setViewName("member/join_result");
 		return mav;

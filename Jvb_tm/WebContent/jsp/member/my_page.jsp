@@ -73,11 +73,22 @@ function moreList(){
 		
 		
 		
-// 		$('.sending_msg_form').on('keyup', function() {
+		$('.sending_msg_form').on('keyup', function() {
 			
+			var id=$(this).attr('id');
+// 			alert(id);
+			var realid=id.substr(17);
+// 			alert(realid);
 // 			alert('애');
+			var inputLength=$(this).val().length;
+// 			alert(inputLength);
+			var remain=1000-inputLength;
+			$('#remain_sending_msg'+realid).html(remain+" characters remaining");
+			 if(inputLength > 1000) {
+		            $(this).val($(this).val().substring(0, 1000));
+		        }
 			
-// 		});
+		});
 
 
 
@@ -799,8 +810,8 @@ function moreList(){
 														id="send_msg_contents${i.index }"
 														placeholder="Type in your message 메시지 입력" rows="5"
 														style="margin-bottom: 10px; resize: none"></textarea>
-													<h6 class="remain_sending_msg pull-right" id="remain_sending_msg">320 characters
-														remaining</h6>
+													<span class="remain_sending_msg pull-right" id="remain_sending_msg${i.index }">1000 characters
+														remaining</span>
 													<input class="btn btn-info send_msg_button" type="submit"
 														value="Post New Message" id="submit_msg${i.index }">
 												</div>

@@ -1,8 +1,6 @@
 /**
  * 
  */
-
-
 $(function() {
 	var divs = document.getElementsByClassName('imgDiv');
 	for (var i = 0; i < divs.length; ++i) {
@@ -29,21 +27,18 @@ $(function() {
 
 });
 
-// 이미지 파일 추가 함수
-$(document).ready(function() {
-	$('.label').on('click', function() {
-		var id = $(this).attr('id');
-		var num = id.substring(5);
+//이미지 추가 and 미리보기
+function readURL(input) {
+	alert($(input).attr('id'));
+	var id = $(input).attr('id');
+	var num = id.substring(6);
+	
+	if (input.files && input.files[0]) {
+		var reader = new FileReader();
 
-		readURL = function(input) {
-			if (input.files && input.files[0]) {
-				var reader = new FileReader();
-
-				reader.onload = function(e) {
-					$('#img' + num).attr('src', e.target.result);
-				}
-				reader.readAsDataURL(input.files[0]);
-			}
+		reader.onload = function(e) {
+			$('#img' + num).attr('src', e.target.result);
 		}
-	});
-});
+		reader.readAsDataURL(input.files[0]);
+	}
+}

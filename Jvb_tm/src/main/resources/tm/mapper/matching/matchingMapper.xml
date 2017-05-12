@@ -4,25 +4,24 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="tm.matching.dao.IMatchingDao">
 
-<insert id="matchingInsert" parameterType="matchingVo">
-	insert into matching values(0, #{mch_t_userid}, #{mch_g_userid}, #{b_idx}, 0, sysdate())
-</insert>
-
-<update id="matchingUpdate" parameterType="java.util.HashMap">
-	update matching set mch_code=#{mch_code} where b_idx=#{b_idx} and mch_g_userid=#{mch_g_userid}
-</update>
-
-<update id="matchingFail" parameterType="int">
-	update matching set mch_code=2 where b_idx=#{b_idx} and mch_code=0
-</update>
-   
-<delete id="matchingDelete" parameterType="int">
-	delete from matching where mch_idx=#{mch_idx}
-</delete>
-
-<select id="matchingSelectByUserid" parameterType="java.util.HashMap" resultType="matchingVo">
-	select * from matching where mch_code=#{mch_code} and mch_t_userid=#{mch_t_userid} order by mch_date;
-</select>
-
+	<insert id="matchingInsert" parameterType="matchingVo">
+		insert into matching values(0, #{mch_t_userid}, #{mch_g_userid}, #{b_idx}, 0, sysdate())
+	</insert>
+	
+	<update id="matchingUpdate" parameterType="java.util.HashMap">
+		update matching set mch_code=#{mch_code} where b_idx=#{b_idx} and mch_g_userid=#{mch_g_userid}
+	</update>
+	
+	<update id="matchingFail" parameterType="int">
+		update matching set mch_code=2 where b_idx=#{b_idx} and mch_code=0
+	</update>
+	   
+	<delete id="matchingDelete" parameterType="int">
+		delete from matching where mch_idx=#{mch_idx}
+	</delete>
+	
+	<select id="matchingSelectByUserid" parameterType="java.util.HashMap" resultType="matchingVo">
+		select * from matching where mch_code=#{mch_code} and mch_t_userid=#{mch_t_userid} order by mch_date;
+	</select>
 
 </mapper>

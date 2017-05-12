@@ -31,8 +31,8 @@ public interface IBoardDao {
 	
 	
 	//get_board_count
-	public int getBoardCountByCode(String code);
-	public int getBoardCount(HashMap<String, Object> params);
+	public int getNoticeBoardCount(HashMap<String, Object> params);
+	public int getCommonBoardCount(HashMap<String, Object> params);
 	
 	//select 
 	//common board select

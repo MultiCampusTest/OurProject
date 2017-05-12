@@ -27,7 +27,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		</when>
 	</choose>
 </sql>
-	
+
+<sql id="search">
+	<choose>
+		<when test="searchValue != null and searchValue != '' ">
+			AND b_title LIKE CONCAT('%',#{searchValue},'%')
+		</when>
+	</choose>
+</sql>
 
 	
 
@@ -43,12 +50,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE b_idx=#{boardIdx}
 	</select>
 	
-	<select id="getBoardCountByCode" parameterType="String" resultType="int">
+	<select id="getNoticeBoardCount" parameterType="java.util.HashMap" resultType="int">
 		SELECT count(*) FROM board
-		WHERE b_code=#{code}
+		WHERE b_code=#{code} <include refid="search"></include>
 	</select>
 	
-	<select id="getBoardCount" parameterType="java.util.HashMap" resultType="int">
+	<select id="getCommonBoardCount" parameterType="java.util.HashMap" resultType="int">
 		SELECT count(*) FROM board
 		WHERE b_code=#{code} <include refid="category"></include>
 	</select>
@@ -73,7 +80,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectNoticeBoardLimit" parameterType="java.util.HashMap"
 	resultMap="board">
 		SELECT b_idx, b_title, userid, b_date, b_readcount FROM board 
-		WHERE b_code=#{code} 
+		WHERE b_code=#{code} <include refid="search"></include>
 		ORDER BY b_idx desc limit #{skip}, #{count}
 	</select>
 	

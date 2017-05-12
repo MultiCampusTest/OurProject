@@ -40,11 +40,12 @@ public class BoardController {
 	// notice_board
 	@RequestMapping("noticeList.do")
 	public ModelAndView noticeList(HttpServletRequest req,
-								   @RequestParam(defaultValue="1") int page ) {
+								   @RequestParam(defaultValue="1") int page, 
+								   String searchValue) {
 		String code = "n";
 		String userid = (String)(req.getSession().getAttribute("userid"));
 		ModelAndView mav = new ModelAndView();
-		mav.addAllObjects(boardService.getNoticeBoardList(code, page));
+		mav.addAllObjects(boardService.getNoticeBoardList(code, page, searchValue));
 		mav.addObject("userid", userid);
 		mav.setViewName("board/notice_list");
 		return mav;

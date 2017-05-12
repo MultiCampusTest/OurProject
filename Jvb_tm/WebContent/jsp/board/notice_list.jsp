@@ -9,7 +9,36 @@
 <!--   커스텀 CSS, JS -->
 <link href="css/noticeList.css" rel="stylesheet">
 <title>Insert title here</title>
- 
+ <style>
+/* .green_window { */
+/* 	display: inline-block; */
+/* 	width: 366px; height: 34px; */
+/* 	border: 3px solid #2db400; */
+/* 	background: white; */
+/* } */
+.input_text {
+display: inline-block;
+	width: 348px; height: 40px;
+/* 	margin: 6px 0 0 9px; */
+	padding-left: 6px; 
+	padding-right: 6px;
+	border: 3px solid #FF605A;
+	line-height: 21px;
+	font-weight: bold;
+	font-size: 16px;
+	outline: none;
+}
+.sch_smit {
+	width: 54px; height: 40px;
+	margin: 0; border: 0;
+	vertical-align: top;
+	background: #FF605A;
+	color: white;
+	font-weight: bold;
+	border-radius: 1px;
+	cursor: pointer;
+}
+</style>
 </head>
 <body>
 	<div class="container">
@@ -24,7 +53,12 @@
 	<br>
 
 	<div class="container">
-		<h2>Notice</h2>
+
+	<form action="noticeList.do" style="text-align:center;">
+		<input type='text' class='input_text' name="searchValue">
+		<button type='submit' class='sch_smit'><i class="fa fa-search fa-2x" aria-hidden="true"></i></button>
+	</form>
+		
 		<table class="table table-hover" >
 			<colgroup>
 				<col width="60" />
@@ -71,7 +105,7 @@
 				<li>
 				 <c:choose>
 				 	<c:when test="${current != 1 }">
-				 		<a href="noticeList.do?page=${current-1}"><span
+				 		<a href="noticeList.do?page=${current-1}&searchValue=${searchValue}"><span
 						class="glyphicon glyphicon-chevron-left"></span></a>
 				 	</c:when>
 				 	<c:otherwise>
@@ -86,7 +120,7 @@
 								<li class="paging active"><a>${i }</a></li>
 							</c:when>
 							<c:otherwise>
-								<li class="paging"><a href="noticeList.do?page=${i}">${i }</a></li>
+								<li class="paging"><a href="noticeList.do?page=${i}&searchValue=${searchValue}">${i }</a></li>
 							</c:otherwise>
 						</c:choose>
 					</c:forEach>
@@ -94,7 +128,7 @@
 				<li>
 					<c:choose>
 						<c:when test="${current != last }">
-						<a href="noticeList.do?page=${current+1}"><span
+						<a href="noticeList.do?page=${current+1}&searchValue=${searchValue}"><span
 							class="glyphicon glyphicon-chevron-right"></span></a>
 						</c:when>
 						<c:otherwise>

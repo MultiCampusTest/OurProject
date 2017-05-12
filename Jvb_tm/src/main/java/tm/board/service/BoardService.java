@@ -57,14 +57,20 @@ public class BoardService {
 	}
 	
 	//공지사항 리스트 얻어오기
-	public HashMap<String, Object> getNoticeBoardList(String code, int page){
+	public HashMap<String, Object> getNoticeBoardList(String code, int page, String searchValue){
+		
+		System.out.println(searchValue);
 		//시작과 끝페이지
 		int start = (page - 1) / 10 * 10 + 1; 
 		int end = ((page - 1) / 10 + 1) * 10;
 		
 		//첫페이지와 게시물 전체의 마지막 페이지
 		int first = 1;
-		int last = (boardDao.getBoardCountByCode(code) - 1) / 10 + 1;
+		
+		HashMap<String, Object> boardCountParams = new HashMap<>();
+		boardCountParams.put("code", code);
+		boardCountParams.put("searchValue", searchValue);
+		int last = (boardDao.getNoticeBoardCount(boardCountParams) - 1) / 10 + 1;
 		
 		end = last < end ? last : end;
 		
@@ -72,6 +78,7 @@ public class BoardService {
 		int count = 10;
 		HashMap<String, Object> params = new HashMap<>();
 		params.put("code", code);
+		params.put("searchValue", searchValue);
 		params.put("skip", skip);
 		params.put("count", count);
 		List<BoardVo> list = boardDao.selectNoticeBoardLimit(params);
@@ -83,6 +90,7 @@ public class BoardService {
 		result.put("end", end);
 		result.put("last", last);
 		result.put("current", page);
+		result.put("searchValue", searchValue);
 		result.put("noticeList", list);
 
 		return result;
@@ -119,8 +127,6 @@ public class BoardService {
 	//guide, travel 리스트 얻어오기
 	public HashMap<String, Object> getCommonBoardList(String code, int page, String locCategory, String subCategory){
 		
-		System.out.println(locCategory);
-		System.out.println(subCategory);
 		//시작과 끝페이지
 		int start = (page - 1) / 10 * 10 + 1; 
 		int end = ((page - 1) / 10 + 1) * 10;
@@ -131,7 +137,7 @@ public class BoardService {
 		boardCountParams.put("code", code);
 		boardCountParams.put("locCategory", locCategory);
 		boardCountParams.put("subCategory", subCategory);
-		int last = (boardDao.getBoardCount(boardCountParams) - 1) / 6 + 1;
+		int last = (boardDao.getCommonBoardCount(boardCountParams) - 1) / 6 + 1;
 		
 		end = last < end ? last : end;
 		
@@ -174,7 +180,7 @@ public class BoardService {
 		result.put("end", end);
 		result.put("last", last);
 		result.put("current", page);
-		result.put("count", boardDao.getBoardCount(boardCountParams));
+		result.put("count", boardDao.getCommonBoardCount(boardCountParams));
 		result.put("locCategory", locCategory);
 		result.put("subCategory", subCategory);
 		result.put("list", list);

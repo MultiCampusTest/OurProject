@@ -76,9 +76,23 @@ public class MatchingService implements IMatchingService {
 	@Override
 	public HashMap<String, Object> matchingList(String mch_t_userid) {
 		// TODO Auto-generated method stub
-		List<MatchingVo> matchingByUserid=matchingDao.matchingSelectByUserid(mch_t_userid);
+		HashMap<String, Object> res_params=new HashMap<>();
+		res_params.put("mch_t_userid", mch_t_userid);
+		res_params.put("mch_code", 0);
+		
+		HashMap<String, Object> acc_params=new HashMap<>();
+		acc_params.put("mch_t_userid", mch_t_userid);
+		acc_params.put("mch_code", 1);
+		
+		
+		List<MatchingVo> res_matchingByUserid=matchingDao.matchingSelectByUserid(res_params);
+		List<MatchingVo> acc_matchingByUserid=matchingDao.matchingSelectByUserid(acc_params);
+		
 		HashMap<String, Object> matchingList=new HashMap<>();
-		matchingList.put("matchingList", matchingByUserid);
+		matchingList.put("res_matchingList", res_matchingByUserid);
+		matchingList.put("res_matchingListSize", res_matchingByUserid.size());
+		matchingList.put("acc_matchingList", acc_matchingByUserid);
+		matchingList.put("acc_matchingListSize", acc_matchingByUserid.size());
 		return matchingList;
 	}
 

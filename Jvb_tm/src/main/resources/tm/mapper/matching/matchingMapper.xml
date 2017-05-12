@@ -20,8 +20,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	delete from matching where mch_idx=#{mch_idx}
 </delete>
 
-<select id="matchingSelectByUserid" parameterType="String" resultType="matchingVo">
-	select * from matching where mch_t_userid=#{mch_t_userid} order by mch_date;
+<select id="matchingSelectByUserid" parameterType="java.util.HashMap" resultType="matchingVo">
+	select * from matching where mch_code=#{mch_code} and mch_t_userid=#{mch_t_userid} order by mch_date;
 </select>
 
 

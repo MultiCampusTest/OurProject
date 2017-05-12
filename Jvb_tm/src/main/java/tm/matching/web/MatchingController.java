@@ -36,14 +36,12 @@ public class MatchingController {
 	   public @ResponseBody HashMap<String, Object> matchingSuccess(HttpSession session, int b_idx, String mch_g_userid){
 		 System.out.println("야");
 	      String mch_t_userid=(String)session.getAttribute("userid");
-	      HashMap<String, Object> params=new HashMap<>();
 	      boolean result=matchingService.matchingModify(b_idx, mch_g_userid, 1);
-	      params.put("mch_List_Reload", matchingService.matchingList(mch_t_userid));
 	      if(result==true){
-	    		 return params;
+	    		 return matchingService.matchingList(mch_t_userid);
 	      }
 	      else
-	         return params;
+	         return matchingService.matchingList(mch_t_userid);
 	   }
 	 
 	 

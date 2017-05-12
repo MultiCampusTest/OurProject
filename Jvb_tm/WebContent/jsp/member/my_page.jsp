@@ -68,11 +68,23 @@ function moreList(){
 
 
 
-
-
-
-
 	$(document).ready(function() {
+		
+		
+		
+		
+		$('.sending_msg_form').on('keyup', function() {
+			
+			alert('애');
+			
+		});
+
+
+
+
+		
+		
+		
 		$('.sender').on('click', function() {
 			var id = $(this).attr('id');
 			var result = $('#name' + id).html();
@@ -87,7 +99,8 @@ function moreList(){
 				dataType : 'json',
 				success : function(data) {
 					$('#msg_box_selectOne' + id).text('MessageList');
-
+					
+					
 					for (var i = 0; i < data.length; i++) {
 
 						//alert(data[i].msg_send_userid);
@@ -173,8 +186,6 @@ function moreList(){
 			// 		alert(responseValue);
 			
 
-			alert(responseValue);
-			
 
 
 			var add_section='<div class="add_mch_section container-fluid">'
@@ -200,13 +211,14 @@ function moreList(){
 					success : function(data) {
 
 						alert('매칭 성공');
+						alert(data.res_matchingListSize);
 						$('.add_matching_section').append(add_section);
 // 						$('#mathing_section' + board_idx+'_'+board_title).remove();
-						for(var i=0; i<20; i++){
+						for(var i=0; i<data.res_matchingListSize; i++){
 							$('#mathing_section' + i+'_'+board_title).remove();
 							$('#br_mathing_section' + i+'_'+board_title).remove();
 						}
-// 						$('#delete_matching_section' + board_title).remove();S
+// 						$('#delete_matching_section' + board_title).remove();
 
 
 					},
@@ -242,6 +254,7 @@ function moreList(){
 
 					alert('매칭 거절');
 					$('#mathing_section' + board_idx+'_'+board_title).remove();
+					$('#br_mathing_section' + board_idx+'_'+board_title).remove();
 
 
 				},
@@ -782,11 +795,11 @@ function moreList(){
 											</div>
 											<div class="panel panel-default">
 												<div class="panel-body">
-													<textarea class="form-control counted" name="msg_contents"
+													<textarea class="sending_msg_form form-control counted" name="msg_contents"
 														id="send_msg_contents${i.index }"
 														placeholder="Type in your message 메시지 입력" rows="5"
 														style="margin-bottom: 10px; resize: none"></textarea>
-													<h6 class="pull-right" id="counter">320 characters
+													<h6 class="remain_sending_msg pull-right" id="remain_sending_msg">320 characters
 														remaining</h6>
 													<input class="btn btn-info send_msg_button" type="submit"
 														value="Post New Message" id="submit_msg${i.index }">
@@ -839,10 +852,9 @@ function moreList(){
 							<h3 class="page-header">Request Matching</h3>
 
 							<div class="row" style="text-align: center">
-								<c:forEach varStatus="i" items="${matchingList }" var="mch_List">
-									<c:if test="${mch_List.mch_code==0 }">
+								<c:forEach varStatus="i" items="${res_matchingList }" var="res_mch_List">
 										<div class="matching_section container-fluid"
-											id="mathing_section${i.index }_${mch_List.b_idx }">
+											id="mathing_section${i.index }_${res_mch_List.b_idx }">
 											<div class="not_accept col-lg-3" id="${i.index }">
 												<input type="hidden" id="req_match_condition_${i.index }"
 													value="1">
@@ -852,20 +864,20 @@ function moreList(){
 												</div>
 												<div class="col-md-8">
 													<label class="container-fluid control-label">
-														${mch_List.mch_g_userid }</label>
+														${res_mch_List.mch_g_userid }</label>
 												</div>
 											</div>
 											<div class="request_matching" id="req_matching_${i.index }">
 												<div class="request_mch_contents col-lg-7">
-													<a href="guideView.do?b_idx=${mch_List.b_idx }"> <label
+													<a href="guideView.do?b_idx=${res_mch_List.b_idx }"> <label
 														class="board_title container-fluid control-label"
-														id="${mch_List.b_idx }"> 해당 게시글 제목
-															${mch_List.b_idx }</label>
+														id="${res_mch_List.b_idx }"> 해당 게시글 제목
+															${res_mch_List.b_idx }</label>
 													</a>
 												</div>
 												<div class="request_mch_date col-lg-2">
 													<label class="matching_date container-fluid control-label"
-														id="${mch_List.mch_date }"> ${mch_List.mch_date }
+														id="${res_mch_List.mch_date }"> ${res_mch_List.mch_date }
 													</label>
 												</div>
 											</div>
@@ -880,12 +892,12 @@ function moreList(){
 													<div class="col-md-3"></div>
 													<div class="col-md-3">
 														<input class="btn btn-info matcing_accept_answer_yes"
-															id="${mch_List.mch_g_userid }_${i.index}_${mch_List.b_idx}_${mch_List.mch_date}" type="button"
+															id="${res_mch_List.mch_g_userid }_${i.index}_${res_mch_List.b_idx}_${res_mch_List.mch_date}" type="button"
 															value="YES">
 													</div>
 													<div class="col-md-3">
 														<input class="btn btn-info matcing_accept_answer_no"
-															id="${mch_List.mch_g_userid }_${i.index}_${mch_List.b_idx}_${mch_List.mch_date}" type="button"
+															id="${res_mch_List.mch_g_userid }_${i.index}_${res_mch_List.b_idx}_${res_mch_List.mch_date}" type="button"
 															value="NO">
 													</div>
 													<div class="col-md-3"></div>
@@ -893,8 +905,7 @@ function moreList(){
 												</div>
 											</div>
 										</div>
-										<br id="br_mathing_section${i.index }_${mch_List.b_idx }">
-									</c:if>
+										<br id="br_mathing_section${i.index }_${res_mch_List.b_idx }">
 								</c:forEach>
 							</div>
 
@@ -902,8 +913,7 @@ function moreList(){
 
 							<h3 class="page-header">Accepted Matching</h3>
 							<div class="row" style="text-align: center">
-								<c:forEach varStatus="i" items="${matchingList }" var="mch_List">
-									<c:if test="${mch_List.mch_code==1 }">
+								<c:forEach varStatus="i" items="${acc_matchingList }" var="acc_mch_List">
 										<div class="matching_section container-fluid">
 											<div class="accept col-lg-3" id="${i.index }">
 												<input type="hidden" id="matched_condition_${i.index }"
@@ -914,25 +924,24 @@ function moreList(){
 												</div>
 												<div class="col-md-8">
 													<label class="container-fluid control-label">
-														${mch_List.mch_g_userid }</label>
+														${acc_mch_List.mch_g_userid }</label>
 												</div>
 											</div>
 											<div class="accepted_matching"
 												id="accepted_matching_${i.index }">
 												<div class="accepted_mch_contents col-lg-7">
-													<a href="guideView.do?b_idx=${mch_List.b_idx }"> <label
+													<a href="guideView.do?b_idx=${acc_mch_List.b_idx }"> <label
 														class="container-fluid control-label"> 해당 게시글 제목
-															${mch_List.b_idx }</label>
+															${acc_mch_List.b_idx }</label>
 													</a>
 												</div>
 												<div class="accepted_mch_date col-lg-2">
 													<label class="container-fluid control-label">
-														${mch_List.mch_date }</label>
+														${acc_mch_List.mch_date }</label>
 												</div>
 											</div>
 										</div>
 										<br>
-									</c:if>
 								</c:forEach>
 							</div>
 							<div class="row add_matching_section" style="text-align: center">

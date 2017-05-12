@@ -21,4 +21,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where img_idx=#{img_idx}
 	</delete>
 
+	<select id="selectReivewImage" parameterType="java.util.HashMap" resultType="ImageVo">
+	SELECT *
+	FROM Image
+	WHERE img_code=#{img_code} AND MIN(img_idx)
+</select>
 </mapper>

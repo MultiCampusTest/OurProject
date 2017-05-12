@@ -33,6 +33,7 @@ public interface IBoardDao {
 	//get_board_count
 	public int getNoticeBoardCount(HashMap<String, Object> params);
 	public int getCommonBoardCount(HashMap<String, Object> params);
+	public int getReviewBoardCount(HashMap<String, Object> params);
 	
 	//select 
 	//common board select
@@ -42,6 +43,9 @@ public interface IBoardDao {
 	
 	//select NoticeBoard
 	public List<BoardVo> selectNoticeBoardLimit(HashMap<String, Object> params);
+	
+	//select ReivewBoard
+	public List<BoardVo> selectReviewBoardLimit(HashMap<String, Object> params);
 	
 	//other board select
 	public BoardVo otherBoardSelectOne(int b_idx); 

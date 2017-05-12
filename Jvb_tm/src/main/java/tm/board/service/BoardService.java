@@ -267,27 +267,50 @@ public class BoardService {
 			}
 			imageDao.insertImage(image);
 		}
-		
-//		String fileName = file.getOriginalFilename();
-//		int fileSize = (int)file.getSize();
-//		String fileuri = path + uuid;
-//
-//		ImageVo image = new ImageVo();
-//		image.setImg_ori_name(fileName);
-//		image.setImg_code(boardIdx);
-//		image.setImg_path(fileuri);
-//
-//		File localFile = new File(fileuri);
-//		try{
-//			file.transferTo(localFile);
-//		} catch(IllegalStateException e) {
-//			e.printStackTrace();
-//		}  catch(IOException e) {
-//			e.printStackTrace();
-//		} 
-//
-//		imageDao.insertImage(image);	
 	}
+	
+	//리뷰 리스트 불러오기
+	public HashMap<String, Object> getReviewBoardList(String code, int page, String searchValue){
+		
+		System.out.println(searchValue);
+		//시작과 끝페이지
+		int start = (page - 1) / 10 * 10 + 1; 
+		int end = ((page - 1) / 10 + 1) * 10;
+		
+		//첫페이지와 게시물 전체의 마지막 페이지
+		int first = 1;
+		
+		HashMap<String, Object> boardCountParams = new HashMap<>();
+		boardCountParams.put("code", code);
+		boardCountParams.put("searchValue", searchValue);
+		int last = (boardDao.getReviewBoardCount(boardCountParams) - 1) / 10 + 1;
+		
+		end = last < end ? last : end;
+		
+		int skip = (page - 1) * 10;
+		int count = 10;
+		HashMap<String, Object> params = new HashMap<>();
+		params.put("code", code);
+		params.put("searchValue", searchValue);
+		params.put("skip", skip);
+		params.put("count", count);
+		List<BoardVo> list = boardDao.selectReviewBoardLimit(params);
+		
+		List<ImageVo> imgList = imageDao.selectImageList(params);
+
+		
+		HashMap<String, Object> result = new HashMap<>();
+		result.put("start", start);
+		result.put("first", first);
+		result.put("end", end);
+		result.put("last", last);
+		result.put("current", page);
+		result.put("searchValue", searchValue);
+		result.put("reviewList", list);
+
+		return result;
+	}
+	
 	
 	
 	

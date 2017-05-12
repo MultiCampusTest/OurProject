@@ -1,5 +1,8 @@
 package tm.image.dao;
 
+import java.util.HashMap;
+import java.util.List;
+
 import tm.image.vo.ImageVo;
 
 public interface IImageDao {
@@ -8,4 +11,5 @@ public interface IImageDao {
 	public int updateImage(ImageVo imageVo);
 	public int deleteImageTravel(int img_idx);
 	public ImageVo selectImageOne(int b_idx);
+	public List<ImageVo> selectImageList(HashMap<String, Object> params);
 }

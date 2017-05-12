@@ -84,6 +84,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		ORDER BY b_idx desc limit #{skip}, #{count}
 	</select>
 	
+	<!-- review -->
+	<select id="getReviewBoardCount" parameterType="java.util.HashMap" resultType="int">
+		SELECT count(*) FROM board
+		WHERE b_code=#{code} <include refid="search"></include>
+	</select>
+	
+<!-- 	select review -->
+	<select id="selectReviewBoardLimit" parameterType="java.util.HashMap" resultMap="board">
+		SELECT b_idx, b_title, userid, b_readcount
+		FROM board
+		WHERE b_code=#{code} <include refid="search"></include>
+		ORDER BY b_idx desc limit #{skip}, #{count}
+	</select>
+		
 	
 	<!--  guide -->
 	<!--  update guide -->

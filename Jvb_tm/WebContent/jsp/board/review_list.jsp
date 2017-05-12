@@ -28,77 +28,91 @@
 		<p>
 			<strong>총 Sibal개의 여행계획이 검색되었습니다.</strong>
 		</p>
-		<div class="row">
-			<div class="col-sm-2 col-lg-2 col-md-2">
-				<div class="thumbnail">
-					<img src="http://placehold.it/300x400" alt="">
-					<div class="caption">
-						<font style="font-size: 12pt">USER_ID</font><br> <font
-							style="font-size: 12pt">DATE</font><br> <font
-							style="font-size: 12pt">REVIEWS</font>
+	 	<div class="row">
+			<c:forEach items="${list}">
+		 		<div class="col-sm-2 col-lg-2 col-md-2">
+					<div class="thumbnail">
+						<img src="${image.imgPath }" onclick="reviewView.do?boardIdx=${review.boardIdx}">
+						<div class="caption">
+							<font style="font-size: 12pt">${review.userid }</font><br> 
+							<font style="font-size: 12pt">${review.writeDate }</font><br>
+							<font style="font-size: 12pt">${review.title }</font>
+						</div>
 					</div>
-
 				</div>
-			</div>
-			<div class="col-sm-2 col-lg-2 col-md-2">
-				<div class="thumbnail">
-					<img src="http://placehold.it/300x400" alt="">
-					<div class="caption">
-						<font style="font-size: 12pt">USER_ID</font><br> <font
-							style="font-size: 12pt">DATE</font><br> <font
-							style="font-size: 12pt">REVIEWS</font>
-					</div>
+			</c:forEach>
+	 	</div>
+<!-- 		<div class="row"> -->
+<!-- 			<div class="col-sm-2 col-lg-2 col-md-2"> -->
+<!-- 				<div class="thumbnail"> -->
+<!-- 					<img src="http://placehold.it/300x400" alt=""> -->
+<!-- 					<div class="caption"> -->
+<!-- 						<font style="font-size: 12pt">USER_ID</font><br> <font -->
+<!-- 							style="font-size: 12pt">DATE</font><br> <font -->
+<!-- 							style="font-size: 12pt">REVIEWS</font> -->
+<!-- 					</div> -->
 
-				</div>
-			</div>
-			<div class="col-sm-2 col-lg-2 col-md-2">
-				<div class="thumbnail">
-					<img src="http://placehold.it/300x400" alt="">
-					<div class="caption">
-						<font style="font-size: 12pt">USER_ID</font><br> <font
-							style="font-size: 12pt">DATE</font><br> <font
-							style="font-size: 12pt">REVIEWS</font>
-					</div>
+<!-- 				</div> -->
+<!-- 			</div> -->
+<!-- 			<div class="col-sm-2 col-lg-2 col-md-2"> -->
+<!-- 				<div class="thumbnail"> -->
+<!-- 					<img src="http://placehold.it/300x400" alt=""> -->
+<!-- 					<div class="caption"> -->
+<!-- 						<font style="font-size: 12pt">USER_ID</font><br> <font -->
+<!-- 							style="font-size: 12pt">DATE</font><br> <font -->
+<!-- 							style="font-size: 12pt">REVIEWS</font> -->
+<!-- 					</div> -->
 
-				</div>
-			</div>
-			<div class="col-sm-2 col-lg-2 col-md-2">
-				<div class="thumbnail">
-					<img src="http://placehold.it/300x400" alt="">
-					<div class="caption">
-						<font style="font-size: 12pt">USER_ID</font><br> <font
-							style="font-size: 12pt">DATE</font><br> <font
-							style="font-size: 12pt">REVIEWS</font>
-					</div>
+<!-- 				</div> -->
+<!-- 			</div> -->
+<!-- 			<div class="col-sm-2 col-lg-2 col-md-2"> -->
+<!-- 				<div class="thumbnail"> -->
+<!-- 					<img src="http://placehold.it/300x400" alt=""> -->
+<!-- 					<div class="caption"> -->
+<!-- 						<font style="font-size: 12pt">USER_ID</font><br> <font -->
+<!-- 							style="font-size: 12pt">DATE</font><br> <font -->
+<!-- 							style="font-size: 12pt">REVIEWS</font> -->
+<!-- 					</div> -->
 
-				</div>
-			</div>
-			<div class="col-sm-2 col-lg-2 col-md-2">
-				<div class="thumbnail">
-					<img src="http://placehold.it/300x400" alt="">
-					<div class="caption">
-						<font style="font-size: 12pt">USER_ID</font><br> <font
-							style="font-size: 12pt">DATE</font><br> <font
-							style="font-size: 12pt">REVIEWS</font>
-					</div>
+<!-- 				</div> -->
+<!-- 			</div> -->
+<!-- 			<div class="col-sm-2 col-lg-2 col-md-2"> -->
+<!-- 				<div class="thumbnail"> -->
+<!-- 					<img src="http://placehold.it/300x400" alt=""> -->
+<!-- 					<div class="caption"> -->
+<!-- 						<font style="font-size: 12pt">USER_ID</font><br> <font -->
+<!-- 							style="font-size: 12pt">DATE</font><br> <font -->
+<!-- 							style="font-size: 12pt">REVIEWS</font> -->
+<!-- 					</div> -->
 
-				</div>
-			</div>
+<!-- 				</div> -->
+<!-- 			</div> -->
+<!-- 			<div class="col-sm-2 col-lg-2 col-md-2"> -->
+<!-- 				<div class="thumbnail"> -->
+<!-- 					<img src="http://placehold.it/300x400" alt=""> -->
+<!-- 					<div class="caption"> -->
+<!-- 						<font style="font-size: 12pt">USER_ID</font><br> <font -->
+<!-- 							style="font-size: 12pt">DATE</font><br> <font -->
+<!-- 							style="font-size: 12pt">REVIEWS</font> -->
+<!-- 					</div> -->
 
-			<div class="col-sm-2 col-lg-2 col-md-2">
-				<div class="thumbnail">
-					<a href="#" title="자세히보기"> <img
-						src="http://placehold.it/300x400" alt="">
-					</a>
-					<div class="caption">
-						<font style="font-size: 12pt">USER_ID</font><br> <font
-							style="font-size: 12pt">DATE</font><br> <font
-							style="font-size: 12pt">REVIEWS</font>
-					</div>
+<!-- 				</div> -->
+<!-- 			</div> -->
 
-				</div>
-			</div>
-		</div>
+<!-- 			<div class="col-sm-2 col-lg-2 col-md-2"> -->
+<!-- 				<div class="thumbnail"> -->
+<!-- 					<a href="#" title="자세히보기"> <img -->
+<!-- 						src="http://placehold.it/300x400" alt=""> -->
+<!-- 					</a> -->
+<!-- 					<div class="caption"> -->
+<!-- 						<font style="font-size: 12pt">USER_ID</font><br> <font -->
+<!-- 							style="font-size: 12pt">DATE</font><br> <font -->
+<!-- 							style="font-size: 12pt">REVIEWS</font> -->
+<!-- 					</div> -->
+
+<!-- 				</div> -->
+<!-- 			</div> -->
+<!-- 		</div> -->
 		<div style="text-align: right">
 			<input type="button" class="btn btn-primary" value="Write"
 				onclick="location.href='reviewWriteForm.do'">

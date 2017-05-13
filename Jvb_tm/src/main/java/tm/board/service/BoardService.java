@@ -2,6 +2,8 @@ package tm.board.service;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
@@ -188,11 +190,48 @@ public class BoardService {
 		return result;
 	}
 	
+	//날짜 차이 계산
+	public int getDiffOfDate(String start, String end){	     
+		
+		int result = 0;
+		try {
+	        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+	        Date beginDate = formatter.parse(start);
+	        Date endDate = formatter.parse(end);
+	         
+	        long diff = endDate.getTime() - beginDate.getTime();
+	        long diffDays = diff / (24 * 60 * 60 * 1000);
+	        
+	        result = (int)(diffDays+1);
+	        
+	         
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+	    
+		return result;
+	}
+
+	
 	
 	//guide
 	public void insertGuide(String userid, BoardVo board, ContentsVo contents, String[] latLngArr ){
 		
 		board.setUserid(userid);
+		int diffDays = getDiffOfDate(board.getStartDate(), board.getEndDate());
+		
+		if(diffDays == 1){
+			board.setSubCategory("one");
+		}else if(diffDays == 2){
+			board.setSubCategory("two");
+		}else if(diffDays == 3){
+			board.setSubCategory("three");
+		}else if(diffDays == 4){
+			board.setSubCategory("four");
+		}else{
+			board.setSubCategory("guide_more");
+		}
+		
 		boardDao.insertBoard(board);
 		int boardIdx = board.getBoardIdx();
 		
@@ -207,6 +246,9 @@ public class BoardService {
 			mapPositionDao.insertMapPosition(mapPosition);
 		}
 	}
+	
+	
+
 	
 	public HashMap<String, Object> readGuide(int boardIdx){
 		BoardVo board = boardDao.selectOneBoard(boardIdx);

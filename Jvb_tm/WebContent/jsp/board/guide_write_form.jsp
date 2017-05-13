@@ -30,20 +30,18 @@
     });
     var geocoder = new google.maps.Geocoder();
     
-    
-    //이걸 옮겨라
-    poly = new google.maps.Polyline({
-        strokeColor: '#000000',
-        strokeOpacity: 1.0,
-        strokeWeight: 3
-      });
+	  poly = new google.maps.Polyline({
+	        strokeColor: '#000000',
+	        strokeOpacity: 1.0,
+	        strokeWeight: 3
+	      });
     poly.setMap(map);
     
 	//자동완성
 	var autoComplete = new google.maps.places.Autocomplete(document.getElementById('pac-input'));
 	autoComplete.addListener('place_changed', function() {
-//			var place = autoComplete.getplace();
-//			geocodeAddress(geocoder, map);
+			var place = autoComplete.getplace();
+			geocodeAddress(geocoder, map);
 	});
 
    function setMapOnAll(map) {
@@ -83,7 +81,8 @@
     var address = document.getElementById('pac-input').value;
     geocoder.geocode({'address': address}, function(results, status) {
       if (status === 'OK') {
-    	
+    
+    	   
     	
         var marker = new google.maps.Marker({
           map: resultsMap,
@@ -191,16 +190,6 @@ $(function() {
    
         <div>
 		 <p style="font-size:20px">CATEGORY</p>
-	     <div style="float:left; margin-right:20px">
-	     <font style="font-size:20px;">DATE</font><br> 
-	      	<select class="form-control category" name="subCategory">
-	            <option value="one">1DAY</option>
-	            <option value="two">2DAYS</option> 
-	            <option value="three">3DAYS</option>
-	            <option value="four">4DAYS</option>
-	            <option value="more2">5DAYS+</option> 
-	        </select>
-	      </div>
 	      <div style="float:left;">
 	     	<font style="font-size:20px">LOCATION</font><br>
 	      	<select class="form-control category" name="locCategory" >

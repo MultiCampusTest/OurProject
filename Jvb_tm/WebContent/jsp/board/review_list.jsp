@@ -9,7 +9,6 @@
 <title>Insert title here</title>
 
 <link rel="stylesheet" href="css/travelList.css">
-
 </head>
 <body>
 	<div class="content container" style="padding-top: 90px">
@@ -29,10 +28,10 @@
 			<strong>총 Sibal개의 여행계획이 검색되었습니다.</strong>
 		</p>
 	 	<div class="row">
-			<c:forEach items="${list}">
+			<c:forEach var="review" items="${list}">
 		 		<div class="col-sm-2 col-lg-2 col-md-2">
 					<div class="thumbnail">
-						<img src="${image.imgPath }" onclick="reviewView.do?boardIdx=${review.boardIdx}">
+						<img src="/imageShow.do?img_code=${review.boardIdx}" onclick="reviewView.do?boardIdx=${review.boardIdx}">
 						<div class="caption">
 							<font style="font-size: 12pt">${review.userid }</font><br> 
 							<font style="font-size: 12pt">${review.writeDate }</font><br>

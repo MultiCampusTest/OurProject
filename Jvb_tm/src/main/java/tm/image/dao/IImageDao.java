@@ -10,6 +10,6 @@ public interface IImageDao {
 	public int insertImage(ImageVo imageVo);
 	public int updateImage(ImageVo imageVo);
 	public int deleteImageTravel(int img_idx);
-	public ImageVo selectImageOne(int b_idx);
+	public ImageVo selectImageOne(String img_code);
 	public List<ImageVo> selectImageList(HashMap<String, Object> params);
 }

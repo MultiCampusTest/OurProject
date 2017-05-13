@@ -23,7 +23,7 @@ public class MemberService implements IMemberService {
 	private IMemberDao memberDao;
 	
 	@Autowired
-	private IImageDao imageDao;
+	private IImageDao imageDao; 
 
 	@Override
 	public void memberJoin(MemberVo memberVo, MultipartHttpServletRequest req) {

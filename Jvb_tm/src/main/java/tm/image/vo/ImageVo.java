@@ -25,7 +25,7 @@ public class ImageVo {
    public void setImg_ori_name(String img_ori_name) {
       this.img_ori_name = img_ori_name;
    }
-   public String getImg_code() {
+   public String getImg_code() { 
 	  return img_code;
    }
    public void setImg_code(String img_code) {

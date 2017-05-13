@@ -5,7 +5,7 @@ public class ImageVo {
    private int img_idx;
    private String img_phy_name;
    private String img_ori_name;
-   private int img_code;
+   private String img_code;
    private String img_path;
    public int getImg_idx() {
       return img_idx;
@@ -25,11 +25,11 @@ public class ImageVo {
    public void setImg_ori_name(String img_ori_name) {
       this.img_ori_name = img_ori_name;
    }
-   public int getImg_code() {
-      return img_code;
+   public String getImg_code() {
+	  return img_code;
    }
-   public void setImg_code(int img_code) {
-      this.img_code = img_code;
+   public void setImg_code(String img_code) {
+	  this.img_code = img_code;
    }
    public String getImg_path() {
       return img_path;

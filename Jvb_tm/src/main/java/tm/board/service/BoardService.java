@@ -294,7 +294,7 @@ public class BoardService {
 			
 			ImageVo image = new ImageVo();
 			image.setImg_ori_name(fileName);
-			image.setImg_code(boardIdx);
+			image.setImg_code(Integer.toString(boardIdx));
 			image.setImg_path(fileuri);
 			
 			File localFile = new File(fileuri);

@@ -5,11 +5,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="css/stepwizard.css">
-<!-- jQuery CDN -->
-<script
-  src="https://code.jquery.com/jquery-2.2.4.min.js"
-  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
-  crossorigin="anonymous"></script>
 
 <!-- 달력 관련 CDN -->
 <link rel="stylesheet" href="https://unpkg.com/flatpickr/dist/flatpickr.min.css">
@@ -17,8 +12,13 @@
 <script src="https://npmcdn.com/flatpickr/dist/flatpickr.min.js"></script>
 <script src="https://npmcdn.com/flatpickr/dist/l10n/ru.js"></script>
 <link rel="stylesheet" href="css/calender.css">
-<link rel="stylesheet" href="css/guideWriteForm.css">
 <script type="text/javascript">
+	$(function() {
+		$("#birthday").flatpickr({
+
+		});
+	});
+	
 	$(function() {
 		$("#file").on('change', function() {
 			var ext = $(this).val().split('.').pop().toLowerCase();
@@ -36,7 +36,8 @@
 			var reader = new FileReader();
 			reader.onload = function(e) {
 				$('#profile').attr('src', e.target.result);
-				$('#imageCheck').html('<a href="javascript:fileReset();">(Delete image)</a>');
+				$('#imageCheck').html(
+						'<a href="javascript:fileReset();">(Delete image)</a>');
 			}
 			reader.readAsDataURL(input.files[0]);
 		}
@@ -46,12 +47,6 @@
 		$('#file').attr('value', '');
 		$('#profile').attr('src', 'img/profile.jpg');
 		$('#imageCheck').text('');
-	}
-</script>
-<script type="text/javascript">
-	var getGender = "${external.gender}";
-	if(getGender == 'male') {
-		$("#gender").val("male").prop("selected", true);
 	}
 </script>
 <title>Insert title here</title>
@@ -101,9 +96,6 @@
 					</div>
 				</div>
 			</div>
-			<div class="form-group">	
-				<div id="idCheck" style="text-align: center"></div>
-			</div>
 			<div class="row">
 				<div class="col-xs-12 col-sm-6 col-md-6">
 					<div class="form-group">
@@ -115,7 +107,6 @@
 						<input type="password" name="pwdChk" id="pwdChk" class="form-control input-lg" placeholder="Confirm Password" maxlength="20">
 					</div>
 				</div>
-				<div id="pwdCheck" style="text-align: center"></div>
 			</div>
 			<div class="form-group">
 				<input type="text" name="birthday" id="birthday" class="form-control input-lg"  style="background: white" placeholder="Birthday">

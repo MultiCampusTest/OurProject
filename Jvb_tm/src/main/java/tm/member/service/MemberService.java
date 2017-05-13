@@ -47,7 +47,7 @@ public class MemberService implements IMemberService {
 			String fileuri = path + uuid + ext;
 			ImageVo image = new ImageVo();
 			image.setImg_ori_name(fileName);
-			image.setImg_code(1);
+			image.setImg_code(memberVo.getUserid());
 			image.setImg_path(fileuri);
 		
 			File localFile = new File(fileuri);

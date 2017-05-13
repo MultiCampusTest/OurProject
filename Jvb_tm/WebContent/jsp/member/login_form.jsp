@@ -65,18 +65,18 @@
 	<div class="container">
 		<div class="row">
 			<div class="text-title">
-				<h1>Travel Maker</h1>
+				<h1>Sign in</h1>
 			</div>
 			<div class="col-sm-6 col-md-4 col-md-offset-4">
 				<div class="account-wall">
 					<img class="profile-img" src="img/profile.jpg">
 					<form action="loginProc.do" method="post" class="form-signin">
-						<input type="email" class="form-control" placeholder="Userid" id="userid" name="userid" required="">
+						<input type="email" class="form-control" placeholder="Email" id="userid" name="userid" required="">
 						<input type="password" class="form-control" placeholder="Password" id="pwd" name="pwd" required="">
 
 						<div>
 							<span class="remember"><input type="checkbox" value="remember" id="remember">Remember me</span>
-							<span><a href="#">Forgot password</a></span>
+							<span style="float: right"><a href="#">Forgot password</a></span>
 						</div><br>
 						<button type="submit"  id="loginform_submit" class="btn btn-lg btn-primary btn-block">SIGN IN</button>
 					</form>

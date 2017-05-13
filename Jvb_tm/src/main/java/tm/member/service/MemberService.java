@@ -110,5 +110,17 @@ public class MemberService implements IMemberService {
 		memberInfo.put("member", memberVo);
 		return memberInfo;
 	}
+
+
+	@Override
+	public boolean memberModify(MemberVo memberVo) {
+		int result=memberDao.memberUpdate(memberVo);
+		if(result>0)
+			return true;
+		else
+			return false;
+			
+	}
+	
 	
 }

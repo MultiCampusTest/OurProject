@@ -21,7 +21,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		insert into member values(0, #{userid}, #{pwd}, #{firstName}, #{lastName},
 		#{birthday}, #{country}, #{gender}, #{introduce}, sysdate())
 	</insert>
-
+	
+	<update id="memberUpdate" parameterType="memberVo">
+		update member set firstName=#{firstName}, lastName=#{lastName}, country=#{country},
+		 introduce=#{introduce}, pwd=#{pwd} where userid=#{userid}
+	</update>
+	
 	<delete id="memberDelete" parameterType="memberVo">
 		delete from member where userid = #{userid} and pwd = #{pwd}
 	</delete>

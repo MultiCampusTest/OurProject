@@ -93,6 +93,18 @@ public class MemberController {
 		return mav;
 	}
 	
+	
+	@RequestMapping("updateMember.do")
+	public String updateMember(MemberVo memberVo){
+		boolean result=memberService.memberModify(memberVo);
+		if(result==true){
+			return "redirect:myPage.do";			
+		}
+		else{
+			return "redirect:myPage.do";
+		}
+	}
+	
 	@RequestMapping("loginRequest.do")
 	public String loginRequest(){
 		return "member/login_request";

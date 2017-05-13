@@ -13,5 +13,6 @@ public interface IMemberService {
 	public boolean checkId(String userid);
 	
 	public HashMap<String, Object> memberSelectOne(String userid);
+	public boolean memberModify(MemberVo memberVo);
 	
 }

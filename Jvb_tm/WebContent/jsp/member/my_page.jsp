@@ -427,18 +427,18 @@ function moreList(){
                               Use this to show important messages to the user.
                            </div>
                            <h3>Personal info</h3>
-                           <form class="form-horizontal" role="form" action="#">
+                           <form class="form-horizontal" role="form" action="updateMember.do">
                               <div class="form-group">
                                  <label class="col-lg-3 control-label">First name:</label>
                                  <div class="col-lg-8">
-                                    <input class="form-control" value="${member.firstName}"
+                                    <input class="form-control" value="${member.firstName}" name="fisrtName"
                                        type="text">
                                  </div>
                               </div>
                               <div class="form-group">
                                  <label class="col-lg-3 control-label">Last name:</label>
                                  <div class="col-lg-8">
-                                    <input class="form-control" value="${member.lastName }"
+                                    <input class="form-control" value="${member.lastName }" name="lastName"
                                        type="text">
                                  </div>
                               </div>
@@ -446,7 +446,7 @@ function moreList(){
                                  <label class="col-lg-3 control-label">Contury:</label>
                                  <div class="col-lg-8">
                                     <div class="ui-select">
-                                       <select id="user_time_zone" class="form-control">
+                                       <select id="user_time_zone" class="form-control" name="country">
                                              <option value="country">Country *</option>
                                              <option selected="${member.country }">${member.country }</option>
                                              <optgroup label="A"></optgroup>
@@ -730,14 +730,14 @@ function moreList(){
                               <div class="form-group">
                                  <label class="col-md-3 control-label">introduce:</label>
                                  <div class="col-md-8">
-                                    <input class="form-control" value="${member.introduce }"
+                                    <input class="form-control" value="${member.introduce }" name="introduce"
                                        type="text">
                                  </div>
                               </div>
                               <div class="form-group">
                                  <label class="col-md-3 control-label">Password:</label>
                                  <div class="col-md-8">
-                                    <input class="form-control" value="aaa@1234" type="password"
+                                    <input class="form-control" value="aaa@1234" type="password" name="pwd"
                                        onfocus="this.value='';return true;">
                                  </div>
                               </div>

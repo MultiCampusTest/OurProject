@@ -31,7 +31,7 @@ public class BoardService {
 	private IBoardDao boardDao;
 	
 	@Autowired
-	private ICommentsDao commenstDao;
+	private ICommentsDao commenstDao; 
 	
 	@Autowired
 	private IContentsDao contentsDao;  

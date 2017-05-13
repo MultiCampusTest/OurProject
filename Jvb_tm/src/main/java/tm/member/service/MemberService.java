@@ -39,7 +39,7 @@ public class MemberService implements IMemberService {
 		List<MultipartFile> files = req.getFiles("file");
 		
 		
-		for(int i=0; i<files.size(); i++) {
+		for(int i=0; i<files.size(); i++) { 
 			UUID uuid = UUID.randomUUID();
 			String fileName = files.get(i).getOriginalFilename();
 			int fileSize = (int) files.get(i).getSize();

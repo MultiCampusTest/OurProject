@@ -287,17 +287,14 @@ public class BoardService {
 		
 		end = last < end ? last : end;
 		
-		int skip = (page - 1) * 10;
-		int count = 10;
+		int skip = (page - 1) * 6;
+		int count = 6;
 		HashMap<String, Object> params = new HashMap<>();
 		params.put("code", code);
 		params.put("searchValue", searchValue);
 		params.put("skip", skip);
 		params.put("count", count);
 		List<BoardVo> list = boardDao.selectReviewBoardLimit(params);
-		
-		List<ImageVo> imgList = imageDao.selectImageList(params);
-
 		
 		HashMap<String, Object> result = new HashMap<>();
 		result.put("start", start);
@@ -306,7 +303,7 @@ public class BoardService {
 		result.put("last", last);
 		result.put("current", page);
 		result.put("searchValue", searchValue);
-		result.put("reviewList", list);
+		result.put("list", list);
 
 		return result;
 	}

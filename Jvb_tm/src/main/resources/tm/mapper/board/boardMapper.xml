@@ -97,6 +97,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE b_code=#{code} <include refid="search"></include>
 		ORDER BY b_idx desc limit #{skip}, #{count}
 	</select>
+	
+	<update id="readReview" parameterType="int">
+		UPDATE board
+		SET b_readcount=#{readCount}
+		WHERE b_idx=#{boardIdx}
+	</update>
 		
 	
 	<!--  guide -->

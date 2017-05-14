@@ -91,6 +91,17 @@ $(document).ready(function(){
 						</div>
 					</div>
 					<div class="form-group">
+						<label class="control-label">DAYS:</label>
+						<div class="ui-select">
+							<select name="subCategory" id="review_category" class="form-control">
+								<option value="select">select</option>
+								<option value="food" id="5">5DAY</option>
+								<option value="shopping" id="10">10DAY</option>
+								<option value="stay" id="15">+15DAY</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
 						<label class="control-label">CONTENT:</label>
 						<textarea class="form-control" name="contents" rows="10" style="resize: none;"></textarea>
 					</div>

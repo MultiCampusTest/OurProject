@@ -46,6 +46,8 @@ public interface IBoardDao {
 	
 	//select ReivewBoard
 	public List<BoardVo> selectReviewBoardLimit(HashMap<String, Object> params);
+	//update ReviewBoard
+	public int readReview(int boardIdx);
 	
 	//other board select
 	public BoardVo otherBoardSelectOne(int b_idx); 

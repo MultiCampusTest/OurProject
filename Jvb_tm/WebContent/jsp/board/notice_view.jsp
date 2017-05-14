@@ -11,49 +11,7 @@
 <link href="css/noticeView.css" rel="stylesheet">
   
 <title>Insert title here</title>
-
-<script type="text/javascript">
-	function commentsInput(cm_idx, cm_parent, cm_writer, cm_depth){
-		hideDiv("updateComments");
-		var form  = document.reForm;
-		var div = document.getElementById("commentsDiv"+cm_idx);
-		var div2 = document.getElementById("reComments");
-		div2.style.display="";
-		
-		form.cm_content.value = "";
-		form.parent_cm.value=cm_writer;
-		form.cm_parent.value=cm_parent;
-		form.cm_depth.value=cm_depth;
-		div.appendChild(div2);
-	}
-	
-// 	창사라지기
-	function hideDiv(id){
-	    var div = document.getElementById(id);
-	    div.style.display = "none";
-	    document.body.appendChild(div);
-	}
-	function commentsCancel(){
-	    hideDiv("reComments");
-	} 
-	
-// 	댓글 수정
-	function commentsUpdate(cm_idx){
-		hideDiv("reComments");
-		
-		var form  = document.updateForm;
-		var div = document.getElementById("commentsDiv"+cm_idx);
-		var div2 = document.getElementById("updateComments");
-		div2.style.display="";
-		
-		form.cm_idx.value = cm_idx;
-		form.cm_content.value = "";
-		div.appendChild(div2);
-	}
-	function commentsUpdateCancel(){
-		hideDiv("updateComments");
-	}
-</script>
+<script src="js/comments.js"></script>
 </head>
 <body>
  <div class="container">
@@ -107,6 +65,7 @@
                  <div class="form-group">
                  	 <input type="hidden" name="b_idx" value="${notice.boardIdx }">
                  	 <input type="hidden" name="cm_writer" value="${userid}">
+                 	 <input type="hidden" name="site" value="notice">
                      <textarea class="form-control" name="cm_content" rows="3"></textarea>
                  </div>
 <!--                  <button type="submit" class="btn btn-primary">Submit</button> -->
@@ -124,6 +83,7 @@
                  	 <input type="hidden" name="cm_parent" >
                  	 <input type="hidden" name="parent_cm">
                  	 <input type="hidden" name="cm_depth">
+                 	 <input type="hidden" name="site" value="notice">
                      <textarea class="form-control" name="cm_content" rows="3"></textarea>
                  </div>
                  <input type="submit" value="등록" class="btn btn-primary">
@@ -138,6 +98,7 @@
                  <div class="form-group">
                  	 <input type="hidden" name="b_idx" value="${notice.boardIdx }">
                  	 <input type="hidden" name="cm_idx" >
+                 	 <input type="hidden" name="site" value="notice">
                      <textarea class="form-control" name="cm_content" rows="3"></textarea>
                  </div>
                  <input type="submit" value="수정" class="btn btn-primary">
@@ -168,7 +129,7 @@
               			</div>
               				<c:if test="${comments.cm_delete != 'Y' }">
 	              				<c:if test="${comments.cm_writer == userid }">
-	              					<a onclick="location.href='commentsDelete.do?cm_idx=${comments.cm_idx}&b_idx=${comments.b_idx }'"> 삭제</a>
+	              					<a onclick="location.href='commentsDelete.do?cm_idx=${comments.cm_idx}&b_idx=${comments.b_idx }&site=notice'"> 삭제</a>
 	              					<a onclick="commentsUpdate(${comments.cm_idx})"> 수정</a>
 	              				</c:if>
 	              				<c:if test="${userid != null }">

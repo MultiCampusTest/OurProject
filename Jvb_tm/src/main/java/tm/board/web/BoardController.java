@@ -2,6 +2,7 @@
  
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -22,6 +23,8 @@ import tm.board.service.CommentsService;
 import tm.board.vo.BoardVo;
 import tm.board.vo.CommentsVo;
 import tm.board.vo.ContentsVo;
+import tm.image.service.ImageService;
+import tm.image.vo.ImageVo;
 
 @Controller
 public class BoardController {
@@ -30,6 +33,8 @@ public class BoardController {
 	private BoardService boardService;
 	@Autowired
 	private CommentsService commentsService;
+	@Autowired
+	private ImageService imageService;
 	
 	//메인화면
 	@RequestMapping("main.do")
@@ -68,7 +73,7 @@ public class BoardController {
 		ModelAndView mav = new ModelAndView();
 		mav.addAllObjects(boardService.readNotice(boardIdx));
 		mav.addObject("userid", userid);
-//		mav.addObject("comments",commentsService.selectComments(boardIdx)); 
+		mav.addObject("comments",commentsService.selectComments(boardIdx)); 
 		mav.setViewName("board/notice_view");
 		
 		return mav;
@@ -158,7 +163,7 @@ public class BoardController {
 		ModelAndView mav = new ModelAndView();
 		mav.addAllObjects(boardService.readGuide(boardIdx));
 		mav.addObject("userid", userid);
-//		mav.addObject("comments",commentsService.selectComments(boardIdx)); 
+		mav.addObject("comments",commentsService.selectComments(boardIdx)); 
 		mav.setViewName("board/guide_view");
 
 		return mav;
@@ -197,8 +202,18 @@ public class BoardController {
 	}
 
 	@RequestMapping("reviewView.do")
-	public String reviewView() {
-		return "board/review_view";
+	public ModelAndView reviewView(HttpServletRequest req, int boardIdx) {
+		String userid = (String)(req.getSession().getAttribute("userid"));
+		ModelAndView mav = new ModelAndView();
+		List<ImageVo> list = imageService.selectView(boardIdx);
+
+		mav.addObject("userid", userid);
+		mav.addAllObjects(boardService.readReview(boardIdx));
+		mav.addObject("reviewImage", list);
+		mav.addObject("comments",commentsService.selectComments(boardIdx)); 
+		mav.setViewName("board/review_view");
+		
+		return mav;
 	}
 
 	@RequestMapping("reviewModifyForm.do")
@@ -208,24 +223,24 @@ public class BoardController {
 
 
 	@RequestMapping("commentsWrite.do")
-	public ModelAndView commentsWrite(CommentsVo comments, String parent_cm){
+	public ModelAndView commentsWrite(CommentsVo comments, String parent_cm, String site){
 		ModelAndView mav = new ModelAndView();
 		commentsService.insertComments(comments, parent_cm);
-		mav.setViewName("redirect:noticeView.do?boardIdx="+comments.getB_idx());
+		mav.setViewName("redirect:"+site+"View.do?boardIdx="+comments.getB_idx());
 		return mav;
 	}
 	@RequestMapping("commentsUpdate.do")
-	public ModelAndView commentsUpdate(CommentsVo comments){
+	public ModelAndView commentsUpdate(CommentsVo comments, String site){
 		ModelAndView mav = new ModelAndView();
 		commentsService.updateComments(comments);
-		mav.setViewName("redirect:noticeView.do?boardIdx="+comments.getB_idx());
+		mav.setViewName("redirect:"+site+"View.do?boardIdx="+comments.getB_idx());
 		return mav;
 	}
 	@RequestMapping("commentsDelete.do")
-	public ModelAndView commentsDelete(CommentsVo comments){
+	public ModelAndView commentsDelete(CommentsVo comments, String site){
 		ModelAndView mav = new ModelAndView();
 		commentsService.deleteComments(comments.getCm_idx());
-		mav.setViewName("redirect:noticeView.do?boardIdx="+comments.getB_idx());
+		mav.setViewName("redirect:"+site+"View.do?boardIdx="+comments.getB_idx());
 		return mav;
 	}
 	

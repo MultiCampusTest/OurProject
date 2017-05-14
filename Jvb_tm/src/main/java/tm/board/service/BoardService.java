@@ -350,6 +350,20 @@ public class BoardService {
 		return result;
 	}
 	
+	//리뷰 세부글 일기 
+	public HashMap<String, Object> readReview(int boardIdx){
+		BoardVo board = boardDao.selectOneBoard(boardIdx);
+		board.setReadCount(board.getReadCount() + 1);
+		boardDao.readReview(boardIdx);
+		
+		ContentsVo contents = contentsDao.selectOneContents(boardIdx);
+		
+		HashMap<String, Object> result = new HashMap<>();
+		result.put("review", board);
+		result.put("contents", contents);
+		return result;
+	}
+	
 	
 	
 	

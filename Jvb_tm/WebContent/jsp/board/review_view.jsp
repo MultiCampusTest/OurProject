@@ -1,6 +1,4 @@
-  <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
@@ -9,10 +7,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-
-<link rel="stylesheet" href="css/review.css">
-<script src="js/review.js"></script>
-
+<!-- <link rel="stylesheet" href="css/review.css"> -->
+<script src="js/comments.js"></script>
 </head>
 <body>
 	<div class="container">
@@ -23,34 +19,30 @@
 				<div class="col-md-5">
 					<h2>Photo</h2>
 					<div class="table-responsive" id="reviewPhoto">
-						<table class="table table-condensed"
-							style="height: inherit; vertical-align: middle">
-								<tr class="clearfix" align="center"
-									style="vertical-align: center">
-									<c:forEach var="image" items="${reviewImage}">
-										<td style="width: 65%; height: 80%">
-											<div class="aspect_1_1 imgDiv">
-												<img src="imageView.do?img_code=${image.img_idx }">
-											</div>
-										</td>
-									</c:forEach>
+						<table class="table table-condensed" style="height: inherit; vertical-align: middle">
+							<c:forEach var="image" items="${reviewImage}">
+								<tr class="clearfix" align="center" style="vertical-align: center">
+									<td style="width: 65%; height: 80%">
+											<img src="imageView.do?img_idx=${image.img_idx }" style="width: 200px">
+									</td>
 								</tr>
+							</c:forEach>
 						</table>
 					</div>
 				</div>
 				<div class="col-md-7">
-					<h2>Something Else here</h2>
+					<h2>내용</h2>
 					<div class="form-group">
 						<label class="control-label ">TITLE:</label> 
-						<p class="form-control" value="${review.title }" type="text"/>
+						<p class="form-control" type="text">${review.title }</p>
 					</div>
 					<div class="form-group">
 						<label class="control-label">CATEGORY:</label>
-						<p class="form-control" value="${review.sub_category }"/>
+						<p class="form-control">${review.subCategory }</p>
 					</div>
 					<div class="form-group">
 						<label class="control-label">CONTENT:</label>
-						<pre class="form-control" rows="10" style="resize: none;" value="${review.contents }"></pre>
+						<pre class="form-control" rows="10" style="resize: none;">${contents.contents }</pre>
 					</div>
 					<div class="form-group">
 						<input type="button" value="modify" class="btn btn-primary" onclick="#">
@@ -66,8 +58,9 @@
              <h4>Leave a Comment:</h4>
              <form role="form" action="commentsWrite.do" method="post">
                  <div class="form-group">
-                 	 <input type="hidden" name="b_idx" value="${notice.boardIdx }">
+                 	 <input type="hidden" name="b_idx" value="${review.boardIdx }">
                  	 <input type="hidden" name="cm_writer" value="${userid}">
+                 	 <input type="hidden" name="site" value="review">
                      <textarea class="form-control" name="cm_content" rows="3"></textarea>
                  </div>
 <!--                  <button type="submit" class="btn btn-primary">Submit</button> -->
@@ -80,11 +73,12 @@
              <h4>Leave a Comment:</h4>
              <form role="form" action="commentsWrite.do" method="post" name="reForm">
                  <div class="form-group">
-                 	 <input type="hidden" name="b_idx" value="${notice.boardIdx }">
+                 	 <input type="hidden" name="b_idx" value="${review.boardIdx }">
                  	 <input type="hidden" name="cm_writer" value="${userid}">
                  	 <input type="hidden" name="cm_parent" >
                  	 <input type="hidden" name="parent_cm">
                  	 <input type="hidden" name="cm_depth">
+                 	 <input type="hidden" name="site" value="review">
                      <textarea class="form-control" name="cm_content" rows="3"></textarea>
                  </div>
                  <input type="submit" value="등록" class="btn btn-primary">
@@ -97,8 +91,9 @@
              <h4>Leave a Comment:</h4>
              <form role="form" action="commentsUpdate.do" method="post" name="updateForm">
                  <div class="form-group">
-                 	 <input type="hidden" name="b_idx" value="${notice.boardIdx }">
+                 	 <input type="hidden" name="b_idx" value="${review.boardIdx }">
                  	 <input type="hidden" name="cm_idx" >
+                 	 <input type="hidden" name="site" value="review">
                      <textarea class="form-control" name="cm_content" rows="3"></textarea>
                  </div>
                  <input type="submit" value="수정" class="btn btn-primary">
@@ -129,7 +124,7 @@
               			</div>
               				<c:if test="${comments.cm_delete != 'Y' }">
 	              				<c:if test="${comments.cm_writer == userid }">
-	              					<a onclick="location.href='commentsDelete.do?cm_idx=${comments.cm_idx}&b_idx=${comments.b_idx }'"> 삭제</a>
+	              					<a onclick="location.href='commentsDelete.do?cm_idx=${comments.cm_idx}&b_idx=${comments.b_idx }&site=review'"> 삭제</a>
 	              					<a onclick="commentsUpdate(${comments.cm_idx})"> 수정</a>
 	              				</c:if>
 	              				<c:if test="${userid != null }">

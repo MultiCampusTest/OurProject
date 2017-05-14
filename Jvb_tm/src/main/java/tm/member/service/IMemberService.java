@@ -15,4 +15,7 @@ public interface IMemberService {
 	public HashMap<String, Object> memberSelectOne(String userid);
 	public boolean memberModify(MemberVo memberVo);
 	
+	
+	public boolean searchPassword(MemberVo memberVo);
+	
 }

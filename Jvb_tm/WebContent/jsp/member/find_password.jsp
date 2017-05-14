@@ -15,13 +15,13 @@
 		<div class="col-md-4 col-md-offset-4">
     		<div class="panel panel-default">
 			  	<div class="panel-body">
-			    	<form accept-charset="UTF-8" role="form">
+			    	<form action="getPassword.do" method="post" role="form">
                     <fieldset>
 			    	  	<div class="form-group">
 			    	  		<p>
 			    	  			Enter your email address and we will send you a link to reset your password.
 			    	  		</p>
-			    		    <input type="email" name="email" class="form-control" placeholder="Enter your email">
+			    		    <input type="email" name="userid" class="form-control" placeholder="Enter your email">
 			    		</div>
 			    		<input class="btn btn-primary btn-block" type="submit" value="Check">
 			    	</fieldset>

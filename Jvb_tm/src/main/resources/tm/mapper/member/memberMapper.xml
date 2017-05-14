@@ -27,6 +27,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		 introduce=#{introduce}, pwd=#{pwd} where userid=#{userid}
 	</update>
 	
+	<update id="passwordReset" parameterType="memberVo">
+		update member set pwd = #{pwd} where userid = #{userid}
+	</update>
+	
 	<delete id="memberDelete" parameterType="memberVo">
 		delete from member where userid = #{userid} and pwd = #{pwd}
 	</delete>

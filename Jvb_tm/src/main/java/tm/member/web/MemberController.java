@@ -170,4 +170,19 @@ public class MemberController {
 			return "redirect:myPage.do";
 		}
 	}
+	
+	
+	//비밀번호 초기화 + 메일발송
+	@RequestMapping(method=RequestMethod.POST, value="getPassword.do")
+	public ModelAndView getPassword(String userid) {
+		ModelAndView mav = new ModelAndView();
+		MemberVo m = new MemberVo();
+		m.setUserid(userid);
+		m.setPwd(Integer.toString((int)(Math.random() * 999999999) + 1000000000));
+		
+		if(memberService.searchPassword(m)) {
+			mav.setViewName("member/certi_form");			
+		}
+		return mav;
+	}
 }

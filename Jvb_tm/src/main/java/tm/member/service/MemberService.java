@@ -121,6 +121,17 @@ public class MemberService implements IMemberService {
 			return false;
 			
 	}
+
+
+	@Override
+	public boolean searchPassword(MemberVo memberVo) {
+		// TODO Auto-generated method stub
+		int result = memberDao.passwordReset(memberVo);
+		if(result > 0)
+			return true;
+		else
+			return false;
+	}
 	
 	
 }

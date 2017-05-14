@@ -7,7 +7,7 @@
 	<alias name="dataSource" alias="dataSource" />
 	
 	<context:component-scan base-package="tm.**.service"></context:component-scan>
-	
+	 
 	 
 	<bean class="org.springframework.jdbc.datasource.DriverManagerDataSource" id="dataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>

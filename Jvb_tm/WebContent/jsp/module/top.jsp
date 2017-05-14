@@ -246,7 +246,7 @@
 									<li>
 									<div class="row">
 										<div class="col-md-12" style="text-align: center"> 
-											<a href="#">forgot your password?</a>
+											<a href="findPassword.do">forgot your password?</a>
 <!-- 										<div class="social-buttons col-md-12"> -->
 <!-- 										<a href="javascript:facebook_btn();" class="btn btn-fb"><i class="fa fa-facebook"></i> Facebook</a> -->
 <!-- 										<a href="javascript:twitter_btn()" class="btn btn-google"><i class="fa fa-google"></i> Google</a> -->

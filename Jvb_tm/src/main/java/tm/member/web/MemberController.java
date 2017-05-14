@@ -12,9 +12,11 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
@@ -48,6 +50,11 @@ public class MemberController {
 	@RequestMapping("certiForm.do")
 	public String certifiForm() {
 		return "member/certi_form";
+	}
+	
+	@RequestMapping("findPassword")
+	public String findPassword() {
+		return "member/find_password";
 	}
 	
 	@RequestMapping(method=RequestMethod.POST, value="fbJoinForm.do")
@@ -145,7 +152,7 @@ public class MemberController {
 	
 	//회원가입 요청
 	@RequestMapping(method=RequestMethod.POST, value="joinProc.do")
-	public ModelAndView joinProc(MemberVo memberVo, MultipartHttpServletRequest req) {
+	public ModelAndView joinProc(MemberVo memberVo, MultipartHttpServletRequest req) throws Exception {
 		ModelAndView mav = new ModelAndView();
 		memberService.memberJoin(memberVo, req);
 		mav.addObject("f_name", memberVo.getFirstName());

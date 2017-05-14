@@ -48,6 +48,26 @@
 		$('#profile').attr('src', 'img/profile.jpg');
 		$('#imageCheck').text('');
 	}
+		
+	
+	$(document).ready(function(){
+		$('#userid').click(function(){
+			alert("You can't change verified email");
+		});
+		
+		var pwd, pwdChk = "";
+		$('input[type=password').keyup(function(){
+			pwd = $('#pwd').val();
+			pwdChk = $('#pwdChk').val();
+			if(pwd != pwdChk) {
+				$('#checkMsg').html('<font color="#FF605A">reenter password</font>');
+			} else {
+				$('#checkMsg').text('');
+			}
+		});
+		
+		
+	});
 </script>
 <title>Insert title here</title>
 </head>
@@ -82,7 +102,7 @@
 				<input type="file" name="file" id="file" class="form-control input-lg" style="display:none;" onchange="document.getElementById('txt').value=this.value;">
 			</div>
 			<div class="form-group">
-				<input type="email" name="userid" id="userid" class="form-control input-lg"  style="background: white" placeholder="Email" value="${external.userid}">
+				<input type="email" name="userid" id="userid" class="form-control input-lg"  style="background: white" placeholder="Email" value="${external.userid}" readonly="readonly">
 			</div>
 			<div class="row">
 				<div class="col-xs-12 col-sm-6 col-md-6">
@@ -109,16 +129,21 @@
 				</div>
 			</div>
 			<div class="form-group">
+				<span id="checkMsg">aaa</span>
+			</div>
+			<div class="form-group">
 				<input type="text" name="birthday" id="birthday" class="form-control input-lg"  style="background: white" placeholder="Birthday">
 			</div>
 			<div class="form-group">
 				<select name="gender" id="gender" class="form-control input-lg">
+					<option value="">Male or Female</option>
 					<option value="male">Male</option>
 					<option value="female">Female</option>
 				</select>
 			</div>
 			<div class="form-group">
 						<select name="country" id="country" class="form-control input-lg">
+							<option value="">Country</option>
 							<optgroup label="A"></optgroup>
 							<option value="AF">Afghanistan</option>
 							<option value="AL">Albania</option>

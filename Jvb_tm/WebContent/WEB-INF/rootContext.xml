@@ -16,6 +16,18 @@
 		<property name="password" value="mysql"></property>
 	</bean>
 	 
+	<!-- 	메일발송 -->
+	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+        <property name="host" value="smtp.gmail.com" />
+        <property name="port" value="587" />
+        <property name="username" value="javakim051@gmail.com" />
+        <property name="password" value="wkqkwhgdk" />
+        <property name="javaMailProperties">
+            <props>
+                <prop key="mail.smtp.starttls.enable">true</prop>
+            </props>
+        </property>
+    </bean>
 	
 	<bean class="org.mybatis.spring.SqlSessionFactoryBean" id="sqlSessionFactory">
 		<property name="mapperLocations" value="classpath*:tm/mapper/**/*.xml"></property>

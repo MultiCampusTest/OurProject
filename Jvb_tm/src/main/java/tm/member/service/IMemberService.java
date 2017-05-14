@@ -4,6 +4,7 @@ import java.util.HashMap;
 
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import tm.member.vo.EmailVo;
 import tm.member.vo.MemberVo;
 
 public interface IMemberService {
@@ -17,5 +18,5 @@ public interface IMemberService {
 	
 	
 	public boolean searchPassword(MemberVo memberVo);
-	
+	public void sendEmail(EmailVo emailVo) throws Exception;
 }

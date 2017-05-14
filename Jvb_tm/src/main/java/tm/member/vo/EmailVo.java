@@ -1,7 +1,7 @@
 package tm.member.vo;
 
 public class EmailVo {
-
+	 
     private String subject;
     private String content;
     private String regdate;
@@ -13,7 +13,7 @@ public class EmailVo {
     public void setReciver(String reciver) {
         this.reciver = reciver;
     }
-
+ 
     public String getSubject() {
         return subject;
     }
@@ -32,5 +32,5 @@ public class EmailVo {
     public void setRegdate(String regdate) {
         this.regdate = regdate;
     }
-       
+     
 }

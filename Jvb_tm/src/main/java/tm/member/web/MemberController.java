@@ -1,40 +1,34 @@
 package tm.member.web;
  
-import java.io.IOException;
 import java.util.HashMap;
 
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import tm.matching.service.MatchingService;
 import tm.member.service.MemberService;
+import tm.member.vo.EmailVo;
 import tm.member.vo.MemberVo;
 import tm.message.service.MessageService;
 
 @Controller
 public class MemberController {
+	
 	@Autowired
 	private MemberService memberService;
-	@Autowired
 	
+	@Autowired
 	private MessageService messageService;
-	@Autowired
 	
+	@Autowired
 	private MatchingService matchingService;
 	
 	@RequestMapping("loginForm.do")
@@ -171,17 +165,24 @@ public class MemberController {
 		}
 	}
 	
-	
 	//비밀번호 초기화 + 메일발송
-	@RequestMapping(method=RequestMethod.POST, value="getPassword.do")
-	public ModelAndView getPassword(String userid) {
+	@RequestMapping("getPassword.do")
+	public ModelAndView getPassword(String userid) throws Exception {
 		ModelAndView mav = new ModelAndView();
 		MemberVo m = new MemberVo();
+		EmailVo email = new EmailVo();
 		m.setUserid(userid);
 		m.setPwd(Integer.toString((int)(Math.random() * 999999999) + 1000000000));
 		
 		if(memberService.searchPassword(m)) {
-			mav.setViewName("member/certi_form");			
+			email.setReciver(userid);
+			email.setSubject("[Travel Maker] Forgot your password?");
+			email.setContent("New password : " + m.getPwd());
+			memberService.sendEmail(email);
+			mav.addObject("receiver", m.getUserid());
+	        mav.setViewName("member/find_result");
+		} else {
+			mav.setViewName("redirect:getPassword.do");
 		}
 		return mav;
 	}

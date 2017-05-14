@@ -104,6 +104,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE b_idx=#{boardIdx}
 	</update>
 		
+<!-- review update -->
+	<update id="updateReview" parameterType="boardVo">
+		UPDATE board
+		SET b_title=#{title}, b_sub_category=#{subCategory}
+		WHERE b_idx=#{boardIdx}
+	</update>
 	
 	<!--  guide -->
 	<!--  update guide -->

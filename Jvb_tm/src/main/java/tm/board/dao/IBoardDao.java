@@ -21,6 +21,7 @@ public interface IBoardDao {
 	//update 	
 	public int updateNotice(BoardVo board);
 	public int updateGuide(BoardVo board);
+	public int updateReview(BoardVo board);
 	
 	//delete
 	public int deleteBoard(int b_idx);

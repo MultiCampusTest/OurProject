@@ -12,7 +12,6 @@
 
 <link rel="stylesheet" href="css/review.css">
 <script src="js/review.js"></script>
-
 </head>
 <body>
 	<div class="container">
@@ -20,61 +19,32 @@
 			<h3>후기게시판</h3>
 		</div>
 		<div class="row">
-			<form action="reviewModify.do" method="post"
-				enctype="multipart/form-data">
-
-
-
+			<form action="reviewUpdate.do" method="post" enctype="multipart/form-data">
 				<div class="col-md-5">
 					<h2>Photo</h2>
+					<input type="hidden" name="boardIdx" value="${review.boardIdx }">
 					<div class="table-responsive" id="reviewPhoto">
-						<table class="table table-condensed"
-							style="height: inherit; vertical-align: middle">
-
-							<c:forEach begin="1" end="5" var="i" varStatus="status">
-								<tr class="clearfix" align="center"
-									style="vertical-align: center">
-									<td style="width: 35%; vertical-align: middle;">
-										<div class="filebox" style="padding-top: 10px">
-
-											<label for="ex_file${status.index}" id="label${status.index}"
-												class="label">choose file</label> <input type="file"
-												id="ex_file${status.index}" onchange="readURL(this)">
-										</div>
-									</td>
-
-
-
-
-									<!-- 									사진어케가져옴???? -->
+						<table class="table table-condensed" style="height: inherit; vertical-align: middle">
+							<c:forEach var="image" items="${reviewImage}">
+								<tr class="clearfix" align="center" style="vertical-align: center">
 									<td style="width: 65%; height: 80%">
-										<div class="aspect_1_1 imgDiv">
-											<img src="${review.img_path }">
-										</div>
-
+											<img src="imageView.do?img_idx=${image.img_idx }" style="width: 200px">
 									</td>
-
-
-
-
-
-
 								</tr>
 							</c:forEach>
-
 						</table>
 					</div>
 				</div>
 				<div class="col-md-7">
-					<h2>Something Else here</h2>
+					<h2>게시글을 수정하시오</h2>
 					<div class="form-group">
-						<label class="control-label ">TITLE:</label> <input
-							class="form-control" value="${review.title }" type="text">
+						<label class="control-label ">TITLE:</label> 
+						<input class="form-control" name="title" value="${review.title }" type="text">
 					</div>
 					<div class="form-group">
 						<label class="control-label">CATEGORY:</label>
 						<div class="ui-select">
-							<select id="review_category" class="form-control">
+							<select name="subCategory" id="review_category" class="form-control">
 								<option value="select">select</option>
 								<option value="food" id="food">food</option>
 								<option value="shopping" id="shopping">shopping</option>
@@ -85,7 +55,7 @@
 					</div>
 					<div class="form-group">
 						<label class="control-label">CONTENT:</label>
-						<textarea class="form-control" rows="10" style="resize: none;">${review.contents }</textarea>
+						<textarea  name="contents" class="form-control" rows="10" style="resize: none;">${contents.contents }</textarea>
 					</div>
 					<div class="form-group">
 						<input type="submit" value="modify" class="btn btn-primary">

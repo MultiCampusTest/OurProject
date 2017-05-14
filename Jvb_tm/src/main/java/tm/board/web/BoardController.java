@@ -2,6 +2,7 @@
  
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -217,8 +218,30 @@ public class BoardController {
 	}
 
 	@RequestMapping("reviewModifyForm.do")
-	public String reviewModifyForm() {
-		return "board/review_modify_form";
+	public ModelAndView reviewModifyForm(int boardIdx) {
+		ModelAndView mav = new ModelAndView();
+		List<ImageVo> list = imageService.selectView(boardIdx);
+		
+		mav.addAllObjects(boardService.getReview(boardIdx));
+		mav.addObject("reviewImage", list);
+		mav.setViewName("board/review_modify_form");
+		return mav;
+	}
+	
+	@RequestMapping("reviewUpdate.do")
+	public ModelAndView reviewUpdate(BoardVo board, ContentsVo contents){
+		ModelAndView mav = new ModelAndView();
+		
+		BoardVo board2 = board;
+		ContentsVo contents2 = contents;
+		
+		boardService.updateReview(board2, contents2);
+		
+		mav.addObject("review",board2);
+		mav.addObject("contents",contents2);
+		mav.setViewName("redirect:reviewView.do?boardIdx="+board.getBoardIdx());
+		
+		return mav;
 	}
 
 

@@ -45,7 +45,7 @@
 						<pre class="form-control" rows="10" style="resize: none;">${contents.contents }</pre>
 					</div>
 					<div class="form-group">
-						<input type="button" value="modify" class="btn btn-primary" onclick="#">
+						<input type="button" value="modify" class="btn btn-primary" onclick="location.href='reviewModifyForm.do?boardIdx=${review.boardIdx}'">
 						<input type="button" value="delete" class="btn btn-primary">
 						<input type="button" value="list" class="btn btn-primary" onclick="location.href='reviewList.do'">
 					</div>

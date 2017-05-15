@@ -403,8 +403,14 @@ function moreList(){
                         <!-- left column -->
                         <div class="col-md-4 col-sm-6 col-xs-12">
                            <div class="text-center">
+                           <c:if test="${userImage.img_path==null }">
                               <img src=${userImage.img_path }
                                  class="avatar img-circle img-thumbnail" alt="avatar">
+                           </c:if>
+                           <c:otherwise>
+                           		<img src="img/profile.jpg"
+                                 class="avatar img-circle img-thumbnail" alt="avatar">
+                           </c:otherwise>
                               <h3>${member.userid }</h3>
                            </div>
                         </div>

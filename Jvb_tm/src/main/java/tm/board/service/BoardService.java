@@ -23,7 +23,7 @@ import tm.board.vo.MapPositionVo;
 import tm.image.dao.IImageDao;
 import tm.image.service.ImageService;
 import tm.image.vo.ImageVo;
-
+ 
 @Service
 public class BoardService {
 	
@@ -273,6 +273,20 @@ public class BoardService {
 		result.put("contents", contents);
 		result.put("mapPosition", mapPositionArr);
 		return result;	
+	}
+	
+	
+	public HashMap<String, Object> getGuide(int boardIdx) {
+		BoardVo board = boardDao.selectOneBoard(boardIdx);
+		ContentsVo contents = contentsDao.selectOneContents(boardIdx);		
+		List<MapPositionVo> mapPositionArr = mapPositionDao.selectMapPosition(boardIdx);
+		
+		HashMap<String, Object> result = new HashMap<>();
+		result.put("guide", board);
+		result.put("contents", contents);
+		result.put("mapPosition", mapPositionArr);
+		
+		return result;
 	}
 	
 	//review insert

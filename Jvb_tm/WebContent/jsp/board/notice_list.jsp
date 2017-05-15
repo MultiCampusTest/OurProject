@@ -16,7 +16,7 @@
 /* 	border: 3px solid #2db400; */
 /* 	background: white; */
 /* } */
-.input_text {
+.input_text { 
 display: inline-block;
 	width: 348px; height: 40px;
 /* 	margin: 6px 0 0 9px; */
@@ -42,8 +42,7 @@ display: inline-block;
 </head>
 <body>
 	<div class="container">
-		<div class="col-md-15">
-
+		<div class="col-md-12">
 			<div class="row">
 					<img class="notice_slide" src="img/notice/notice_img.jpg" alt="">
 			</div>

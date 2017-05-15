@@ -105,10 +105,10 @@ public class MemberController {
 	
 	
 	@RequestMapping(value="updateMember.do", method=RequestMethod.POST)
-	public String updateMember(HttpSession session, MemberVo memberVo){
+	public String updateMember(HttpSession session, MemberVo memberVo, MultipartHttpServletRequest req){
 		String userid=(String)session.getAttribute("userid");
 		memberVo.setUserid(userid);
-		boolean result=memberService.memberModify(memberVo);
+		boolean result=memberService.memberModify(memberVo, userid, req);
 		if(result==true){
 			return "redirect:myPage.do";			
 		}

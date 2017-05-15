@@ -17,6 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import tm.image.dao.IImageDao;
+import tm.image.service.ImageService;
 import tm.image.vo.ImageVo;
 import tm.member.dao.IMemberDao;
 import tm.member.vo.EmailVo;
@@ -33,6 +34,9 @@ public class MemberService implements IMemberService {
 	
 	@Autowired
 	private JavaMailSender mailSender;
+	
+	@Autowired
+	private ImageService imageService;
 
 	@Override
 	public void memberJoin(MemberVo memberVo, MultipartHttpServletRequest req) {
@@ -122,7 +126,10 @@ public class MemberService implements IMemberService {
 
 
 	@Override
-	public boolean memberModify(MemberVo memberVo) {
+	public boolean memberModify(MemberVo memberVo, String userid, MultipartHttpServletRequest req) {
+		ImageVo imageVo = new ImageVo();
+		imageVo.setImg_code(userid);
+		imageService.updateImg(imageVo, userid, req);
 		int result=memberDao.memberUpdate(memberVo);
 		if(result>0)
 			return true;

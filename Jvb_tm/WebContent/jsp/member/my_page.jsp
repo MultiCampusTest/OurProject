@@ -404,13 +404,13 @@ function moreList(){
                         <div class="col-md-4 col-sm-6 col-xs-12">
                            <div class="text-center">
                            <c:if test="${userImage.img_path==null }">
-                              <img src=${userImage.img_path }
-                                 class="avatar img-circle img-thumbnail" alt="avatar">
+                           		<img src="img/profile/user.png"
+                                 class="avatar img-circle img-thumbnail profile_img" alt="avatar">
                            </c:if>
-                           <c:otherwise>
-                           		<img src="img/profile.jpg"
-                                 class="avatar img-circle img-thumbnail" alt="avatar">
-                           </c:otherwise>
+                           <c:if test="${userImage.img_idx!=null }">
+                              <img src="imageView.do?img_idx=${userImage.img_idx }"
+                                 class="avatar img-circle img-thumbnail profile_img" alt="avatar">
+                           </c:if>
                               <h3>${member.userid }</h3>
                            </div>
                         </div>
@@ -478,12 +478,21 @@ function moreList(){
                      <h1 class="page-header">Edit Profile</h1>
                      <div class="row">
                         <!-- left column -->
+                        <form class="form-horizontal" role="form" action="updateMember.do" method="POST" enctype="multipart/form-data">
                         <div class="col-md-4 col-sm-6 col-xs-12">
                            <div class="text-center">
-                              <img src="http://lorempixel.com/200/200/people/9/"
-                                 class="avatar img-circle img-thumbnail" alt="avatar">
+<!--                               <img src="http://lorempixel.com/200/200/people/9/" -->
+<!--                                  class="avatar img-circle img-thumbnail" alt="avatar"> -->
+                              <c:if test="${userImage.img_path==null }">
+	                           		<img src="img/profile/user.png"
+	                                 class="avatar img-circle img-thumbnail profile_img" alt="avatar">
+	                           </c:if>
+	                           <c:if test="${userImage.img_idx!=null }">
+	                              <img src="imageView.do?img_idx=${userImage.img_idx }"
+	                                 class="avatar img-circle img-thumbnail profile_img" alt="avatar">
+	                           </c:if>
                               <h6>Upload a different photo...</h6>
-                              <input type="file"
+                              <input type="file" name="file"
                                  class="text-center center-block well well-sm">
                            </div>
                         </div>
@@ -495,7 +504,7 @@ function moreList(){
                               Use this to show important messages to the user.
                            </div>
                            <h3>Personal info</h3>
-                           <form class="form-horizontal" role="form" action="updateMember.do" method="POST">
+                           
                               <div class="form-group">
                                  <label class="col-lg-3 control-label">First name:</label>
                                  <div class="col-lg-8">
@@ -827,8 +836,8 @@ function moreList(){
                                        class="btn btn-default" value="Cancel" type="reset">
                                  </div>
                               </div>
-                           </form>
                         </div>
+                           </form>
                      </div>
                   </div>
                </div>

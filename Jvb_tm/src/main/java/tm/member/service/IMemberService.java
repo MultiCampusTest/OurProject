@@ -14,7 +14,7 @@ public interface IMemberService {
 	public boolean checkId(String userid);
 	
 	public HashMap<String, Object> memberSelectOne(String userid);
-	public boolean memberModify(MemberVo memberVo);
+	public boolean memberModify(MemberVo memberVo, String userid, MultipartHttpServletRequest req);
 	
 	
 	public boolean searchPassword(MemberVo memberVo);

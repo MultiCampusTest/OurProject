@@ -17,7 +17,7 @@ var startApp = function() {
     				userid : googleUser.getBasicProfile().getEmail(),
     				firstName : googleUser.getBasicProfile().getGivenName(),
     				lastName : googleUser.getBasicProfile().getFamilyName(),
-    				fileuri : googleUser.getBasicProfile().getImageUrl()
+    				img_code : googleUser.getBasicProfile().getImageUrl(),
     		}
     		$.ajax({
     			url : 'idCheck.do',

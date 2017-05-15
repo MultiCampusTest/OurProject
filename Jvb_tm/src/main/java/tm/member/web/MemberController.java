@@ -16,6 +16,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import tm.image.service.ImageService;
+import tm.image.vo.ImageVo;
 import tm.matching.service.MatchingService;
 import tm.member.service.MemberService;
 import tm.member.vo.EmailVo;
@@ -58,10 +59,10 @@ public class MemberController {
 	}
 	
 	@RequestMapping(method=RequestMethod.POST, value="fbJoinForm.do")
-	public ModelAndView fbJoinForm(MemberVo memberVo) {
-		System.out.println(memberVo.getUserid());
+	public ModelAndView fbJoinForm(MemberVo memberVo, ImageVo imageVo) {
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("external", memberVo);
+		mav.addObject("extImage", imageVo);
 		mav.setViewName("member/join_form");
 		return mav;
 	}

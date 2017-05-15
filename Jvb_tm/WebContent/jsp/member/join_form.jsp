@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -95,8 +96,15 @@
 		<form action="joinProc.do" method="post" role="form" enctype="multipart/form-data">
 			<h1 style="text-align: center">Sign Up&nbsp;<small>It's free and always will be.</small></h1><br>
 			<div class="form-group" style="text-align: center">
-				<img id="profile" src="img/profile.jpg" style="width: 150px; height: 150px; border-radius: 50%" onclick="document.getElementById('file').click();">
-				<div id="imageCheck"></div>
+				<c:choose>
+					<c:when test="${ extImage.img_code != null }">
+						<img id="profile" src="${extImage.img_code}" style="width: 150px; height: 150px; border-radius: 50%" onclick="document.getElementById('file').click();">				
+					</c:when>
+					<c:otherwise>
+						<img id="profile" src="img/profile.jpg" style="width: 150px; height: 150px; border-radius: 50%" onclick="document.getElementById('file').click();">
+					</c:otherwise>
+				</c:choose>
+				<div id="imageCheck">(Add image)</div>
 			</div>
 			<div class="form-group">
 				<input type="file" name="file" id="file" class="form-control input-lg" style="display:none;" onchange="document.getElementById('txt').value=this.value;">
@@ -337,7 +345,7 @@
 							<option value="RU">Russia</option>
 							<option value="RW">Rwanda</option>
 							<optgroup label="S"></optgroup>
-							<option value="BL">Saint Barthélemy</option>
+							<option value="BL">Saint Barthelemy</option>
 							<option value="SH">Saint Helena</option>
 							<option value="KN">Saint Kitts and Nevis</option>
 							<option value="LC">Saint Lucia</option>

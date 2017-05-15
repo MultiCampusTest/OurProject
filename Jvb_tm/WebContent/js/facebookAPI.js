@@ -25,7 +25,14 @@ function fbAjaxRequest(response) {
 				for(var key in response) {
 					var hiddenField = document.createElement("input");
 					hiddenField.setAttribute("type", "hidden");
-					hiddenField.setAttribute("value", response[key]);
+					if(key == 'id')
+					{
+						hiddenField.setAttribute("value", "https://graph.facebook.com/" + response[key] + "/picture?type=large");
+						key = 'img_code';
+					} else {
+						hiddenField.setAttribute("value", response[key]);						
+					}
+					
 					if(key == 'email') {
 						key = 'userid';						
 					} else if(key == 'first_name') {
@@ -36,6 +43,9 @@ function fbAjaxRequest(response) {
 					hiddenField.setAttribute("name", key);
 					form.appendChild(hiddenField);
 				}
+				FB.logout(function(response) {
+					  // user is now logged out
+				});
 				document.body.appendChild(form);
 				form.submit();
 			}
@@ -49,7 +59,7 @@ function facebook_btn() {
 	FB.login(function(response) {
 		if (response.authResponse) {
 			console.log('Welcome!  Fetching your information.');
-			FB.api('/me?fields=email,first_name,last_name,gender', function(response) {
+			FB.api('/me?fields=id,email,first_name,last_name,gender', function(response) {
 				fbAjaxRequest(response);
 			});
 		} else {

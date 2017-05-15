@@ -51,6 +51,7 @@ public class MessageController {
 		return messageService.messageList(msg_receive_userid, count);
 	}
 	
+	
 	@RequestMapping("sendMessage.do")
 	public @ResponseBody List<MessageVo> writeMessage(HttpSession session, String msg_send_userid, String msg_contents){
 		String msg_receive_userid=(String)session.getAttribute("userid");

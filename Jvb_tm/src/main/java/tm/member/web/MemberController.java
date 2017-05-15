@@ -99,6 +99,7 @@ public class MemberController {
 		mav.addAllObjects(params);
 		mav.setViewName("member/my_page");
 		return mav;
+		
 	}
 	
 	

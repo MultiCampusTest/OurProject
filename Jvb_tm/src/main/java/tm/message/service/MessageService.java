@@ -54,7 +54,6 @@ public class MessageService implements IMessageService {
 //		messageBySendUserid=messageDao.messageSelectBySendUserid(msg_receive_userid);
 		
 	
-		
 		HashMap<String, Object> messageList=new HashMap<>();
 		messageList.put("messageList", messageByUserid);
 		messageList.put("msg_pre_count", count);

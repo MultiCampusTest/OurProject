@@ -66,9 +66,6 @@ function moreList(){
 
 
 
-
-
-
 	$(document).ready(function() {
 		
 		

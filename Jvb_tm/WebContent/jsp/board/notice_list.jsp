@@ -16,7 +16,7 @@
 /* 	border: 3px solid #2db400; */
 /* 	background: white; */
 /* } */
-.input_text {
+.input_text { 
 display: inline-block;
 	width: 348px; height: 40px;
 /* 	margin: 6px 0 0 9px; */

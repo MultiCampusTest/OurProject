@@ -205,7 +205,7 @@ $(function() {
 	            <option value="gyeongsang">GYEONGSANG-DO</option>
 	        </select>
 	       </div> 
-	     </div>
+	     </div> 
 		<br><br><br>	    
 	    <hr>
 	    <div class="form-group">

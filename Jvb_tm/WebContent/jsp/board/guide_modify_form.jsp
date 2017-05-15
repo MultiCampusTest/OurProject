@@ -207,7 +207,7 @@ $(function() {
 	       </div> 
 	     </div>
 		<br><br><br>	    
-	    <hr>
+	    <hr> 
 	    <div class="form-group">
           <font style="font-size:20px">CONTENT</font>	 
           <textarea class="form-control" placeholder="Insert Content" rows="14" name="contents">${contents.contents }</textarea>

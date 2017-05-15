@@ -23,7 +23,7 @@ import tm.board.vo.MapPositionVo;
 import tm.image.dao.IImageDao;
 import tm.image.service.ImageService;
 import tm.image.vo.ImageVo;
-
+ 
 @Service
 public class BoardService {
 	

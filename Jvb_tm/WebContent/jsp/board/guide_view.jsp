@@ -20,7 +20,7 @@ $(document).ready(function(){
     var str_latLng = "";
 	for (var i = 0; i < list.length; i++) {
     	str_latLng += list[i] +"|";
-	}
+	} 
 	
 	str_latLng = str_latLng.slice(0,-1);
 	

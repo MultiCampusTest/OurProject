@@ -41,7 +41,7 @@ public class BoardController {
 	@RequestMapping("main.do")
 	public String main() {
 		return "middle";
-	}
+	} 
 
 	// notice_board
 	@RequestMapping("noticeList.do")

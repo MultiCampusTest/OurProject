@@ -70,17 +70,28 @@ function moreList(){
 
 	$(document).ready(function() {
 		
-		
+		$('#pwd').on('keyup', function(){
+// 			alert($(this).val().length);
+			if($(this).val().length<8){
+// 				alert("비밀번호는 8자리 이상이어야 합니다.");
+				$('#pwdCorrectly').html("비밀번호는 8자리 이상이어야 합니다.");
+				
+			}
+			else{
+				$('#pwdCorrectly').html("적합한 비밀번호입니다.");
+			}
+			
+		});
 		
 		$('#checkPwd').on('keyup', function(){
 			var pwd=$('#pwd').val();
 // 			alert(pwd);
 // 			alert($(this).val());
 			if($(this).val()!=pwd){
-				$('#checkPwdCorrectly').html("일치하지 않습니다.");
+				$('#checkPwdCorrectly').html("reenter password");
 			}
 			if($(this).val()==pwd){
-				$('#checkPwdCorrectly').html("일치함");
+				$('#checkPwdCorrectly').html("");
 			}
 		});
 		
@@ -352,7 +363,7 @@ function moreList(){
                         <!-- left column -->
                         <div class="col-md-4 col-sm-6 col-xs-12">
                            <div class="text-center">
-                              <img src="http://lorempixel.com/200/200/people/9/"
+                              <img src=${userImage.img_path }
                                  class="avatar img-circle img-thumbnail" alt="avatar">
                               <h3>${member.userid }</h3>
                            </div>
@@ -748,17 +759,18 @@ function moreList(){
                               <div class="form-group">
                                  <label class="col-md-3 control-label">Password:</label>
                                  <div class="col-md-8">
-                                    <input class="form-control" value="aaa@1234" type="password" name="pwd" id="pwd"
+                                    <input class="form-control" placeholder="Password" type="password" name="pwd" id="pwd"
                                        onfocus="this.value='';return true;">
+                                    <span id="pwdCorrectly">Password Check</span>
                                  </div>
                               </div>
                               <div class="form-group">
                                  <label class="col-md-3 control-label">Confirm
                                     password:</label>
                                  <div class="col-md-8">
-                                    <input class="form-control" value="aaa@1234" type="password" id="checkPwd"
+                                    <input class="form-control" placeholder="Confirm Password" type="password" id="checkPwd"
                                        onfocus="this.value='';return true;">
-                                    <span id="checkPwdCorrectly">Password Check</span>
+                                    <span id="checkPwdCorrectly"></span>
                                  </div>
                               </div>
                               <div class="form-group">

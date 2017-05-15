@@ -2,6 +2,7 @@ package tm.member.web;
  
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
+import tm.image.service.ImageService;
 import tm.matching.service.MatchingService;
 import tm.member.service.MemberService;
 import tm.member.vo.EmailVo;
@@ -31,6 +33,9 @@ public class MemberController {
 	
 	@Autowired
 	private MatchingService matchingService;
+	
+	@Autowired
+	private ImageService imageService;
 	
 	@RequestMapping("loginForm.do")
 	public String loginForm(){
@@ -87,6 +92,7 @@ public class MemberController {
 		HashMap<String, Object> params=new HashMap<>();
 		params.put("userid", userid);
 		ModelAndView mav=new ModelAndView();
+		mav.addObject("userImage", imageService.selectOne(userid));
 		mav.addAllObjects(memberService.memberSelectOne(userid));
 		mav.addAllObjects(messageService.messageList(userid));
 		mav.addAllObjects(matchingService.matchingList(userid));

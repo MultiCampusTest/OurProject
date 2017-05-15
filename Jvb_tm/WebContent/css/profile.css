@@ -176,3 +176,8 @@
 	margin-right:10px; 
 }
 
+
+#checkPwdCorrectly, #pwdCorrectly{
+	color: #FF605A;
+}
+

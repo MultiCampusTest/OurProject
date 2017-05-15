@@ -44,12 +44,12 @@ public class MessageController {
 	}
 	
 	
-	@RequestMapping(value="moreMessageList.do", method=RequestMethod.POST)
-	public @ResponseBody HashMap<String, Object> moreMessageList(HttpSession session, int count){
-		System.out.println("더 보기까지 오느냐");
-		String msg_receive_userid=(String)session.getAttribute("userid");
-		return messageService.messageList(msg_receive_userid, count);
-	}
+//	@RequestMapping(value="moreMessageList.do", method=RequestMethod.POST)
+//	public @ResponseBody HashMap<String, Object> moreMessageList(HttpSession session, int count){
+//		System.out.println("더 보기까지 오느냐");
+//		String msg_receive_userid=(String)session.getAttribute("userid");
+//		return messageService.messageList(msg_receive_userid);
+//	}
 	
 	
 	@RequestMapping("sendMessage.do")

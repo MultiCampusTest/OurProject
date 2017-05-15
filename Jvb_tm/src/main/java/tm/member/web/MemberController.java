@@ -95,7 +95,7 @@ public class MemberController {
 		ModelAndView mav=new ModelAndView();
 		mav.addObject("userImage", imageService.selectOne(userid));
 		mav.addAllObjects(memberService.memberSelectOne(userid));
-		mav.addAllObjects(messageService.messageList(userid, 5));
+		mav.addAllObjects(messageService.messageList(userid));
 		mav.addAllObjects(matchingService.matchingList(userid));
 		mav.addAllObjects(params);
 		mav.setViewName("member/my_page");

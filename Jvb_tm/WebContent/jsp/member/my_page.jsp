@@ -358,7 +358,7 @@ function moreList(){
                <img alt="" src="img/header.jpg">
             </div>
             <div class="card-info">
-               <span class="card-title">${f_name} + ${l_name}</span>
+               <span class="card-title">${member.firstName} + ${member.lastName}</span>
 
             </div>
          </div>

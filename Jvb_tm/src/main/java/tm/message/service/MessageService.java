@@ -12,6 +12,10 @@ import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.WebDataBinder;
 
+import com.mysql.fabric.xmlrpc.base.Array;
+
+import tm.image.dao.IImageDao;
+import tm.image.vo.ImageVo;
 import tm.message.dao.IMessageDao;
 import tm.message.vo.MessageVo;
 
@@ -20,6 +24,9 @@ public class MessageService implements IMessageService {
 
 	@Autowired
 	private IMessageDao messageDao;
+	
+	@Autowired
+	private IImageDao imageDao;
 
 	@Override
 	public boolean sendMessage(MessageVo messageVo) {
@@ -41,7 +48,7 @@ public class MessageService implements IMessageService {
 	}
 
 	@Override
-	public HashMap<String, Object> messageList(String msg_receive_userid, int count) {
+	public HashMap<String, Object> messageList(String msg_receive_userid) {
 		// TODO Auto-generated method stub
 		System.out.println("이거 제대로 받아오냐?"+msg_receive_userid);
 		List<MessageVo> messageByUserid=new ArrayList<>();
@@ -49,14 +56,14 @@ public class MessageService implements IMessageService {
 		HashMap<String, Object> params=new HashMap<>();
 		params.put("msg_receive_userid", msg_receive_userid);
 		params.put("msg_send_userid", msg_receive_userid);
-		params.put("count", count);
 		messageByUserid=messageDao.messageSelectByUserid(params);
 //		messageBySendUserid=messageDao.messageSelectBySendUserid(msg_receive_userid);
 		
 	
+		
+	
 		HashMap<String, Object> messageList=new HashMap<>();
 		messageList.put("messageList", messageByUserid);
-		messageList.put("msg_pre_count", count);
 		
 		return messageList;
 	}

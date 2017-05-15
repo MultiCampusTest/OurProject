@@ -72,6 +72,19 @@ function moreList(){
 		
 		
 		
+		$('#checkPwd').on('keyup', function(){
+			var pwd=$('#pwd').val();
+// 			alert(pwd);
+// 			alert($(this).val());
+			if($(this).val()!=pwd){
+				$('#checkPwdCorrectly').html("일치하지 않습니다.");
+			}
+			if($(this).val()==pwd){
+				$('#checkPwdCorrectly').html("일치함");
+			}
+		});
+		
+		
 		
 		$('.sending_msg_form').on('keyup', function() {
 			
@@ -89,8 +102,6 @@ function moreList(){
 		        }
 			
 		});
-
-
 
 
 		
@@ -427,11 +438,11 @@ function moreList(){
                               Use this to show important messages to the user.
                            </div>
                            <h3>Personal info</h3>
-                           <form class="form-horizontal" role="form" action="updateMember.do">
+                           <form class="form-horizontal" role="form" action="updateMember.do" method="POST">
                               <div class="form-group">
                                  <label class="col-lg-3 control-label">First name:</label>
                                  <div class="col-lg-8">
-                                    <input class="form-control" value="${member.firstName}" name="fisrtName"
+                                    <input class="form-control" value="${member.firstName}" name="firstName"
                                        type="text">
                                  </div>
                               </div>
@@ -737,7 +748,7 @@ function moreList(){
                               <div class="form-group">
                                  <label class="col-md-3 control-label">Password:</label>
                                  <div class="col-md-8">
-                                    <input class="form-control" value="aaa@1234" type="password" name="pwd"
+                                    <input class="form-control" value="aaa@1234" type="password" name="pwd" id="pwd"
                                        onfocus="this.value='';return true;">
                                  </div>
                               </div>
@@ -745,8 +756,9 @@ function moreList(){
                                  <label class="col-md-3 control-label">Confirm
                                     password:</label>
                                  <div class="col-md-8">
-                                    <input class="form-control" value="aaa@1234" type="password"
+                                    <input class="form-control" value="aaa@1234" type="password" id="checkPwd"
                                        onfocus="this.value='';return true;">
+                                    <span id="checkPwdCorrectly">Password Check</span>
                                  </div>
                               </div>
                               <div class="form-group">

@@ -23,7 +23,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</insert>
 	
 	<update id="memberUpdate" parameterType="memberVo">
-		update member set firstName=#{firstName}, lastName=#{lastName}, country=#{country},
+		update member set f_name=#{firstName}, l_name=#{lastName}, country=#{country},
 		 introduce=#{introduce}, pwd=#{pwd} where userid=#{userid}
 	</update>
 	

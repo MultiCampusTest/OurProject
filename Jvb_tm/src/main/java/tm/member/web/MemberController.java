@@ -1,6 +1,7 @@
 package tm.member.web;
  
 import java.util.HashMap;
+import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -95,8 +96,10 @@ public class MemberController {
 	}
 	
 	
-	@RequestMapping("updateMember.do")
-	public String updateMember(MemberVo memberVo){
+	@RequestMapping(value="updateMember.do", method=RequestMethod.POST)
+	public String updateMember(HttpSession session, MemberVo memberVo){
+		String userid=(String)session.getAttribute("userid");
+		memberVo.setUserid(userid);
 		boolean result=memberService.memberModify(memberVo);
 		if(result==true){
 			return "redirect:myPage.do";			

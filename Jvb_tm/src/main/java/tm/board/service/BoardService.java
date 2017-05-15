@@ -21,6 +21,7 @@ import tm.board.vo.BoardVo;
 import tm.board.vo.ContentsVo;
 import tm.board.vo.MapPositionVo;
 import tm.image.dao.IImageDao;
+import tm.image.service.ImageService;
 import tm.image.vo.ImageVo;
 
 @Service
@@ -41,6 +42,9 @@ public class BoardService {
 	
 	@Autowired
 	private IMapPositionDao mapPositionDao;
+	
+	@Autowired
+	private ImageService imageService;
 	
 	//notice
 	//공지사항 쓰기
@@ -279,36 +283,39 @@ public class BoardService {
 		contents.setBoardIdx(boardIdx);
 		contentsDao.insertContents(contents);
 		
-		String path= "/Users/LeeGilSun/upload/";
-		File folder = new File(path);
-		if(!folder.exists())
-			folder.mkdirs();
+		ImageVo imageVo = new ImageVo();
+		imageService.insertImg(imageVo, Integer.toString(boardIdx), req);
 		
-		List<MultipartFile> files = req.getFiles("file");
-		
-		for(int i=0; i<files.size(); i++){
-			UUID uuid = UUID.randomUUID();
-			String fileName = files.get(i).getOriginalFilename();
-			int fileSize = (int) files.get(i).getSize();
-			String fileuri = path + uuid;
-			
-			ImageVo image = new ImageVo();
-			image.setImg_ori_name(fileName);
-			image.setImg_code(Integer.toString(boardIdx));
-			image.setImg_path(fileuri);
-			
-			File localFile = new File(fileuri);
-			try{
-				files.get(i).transferTo(localFile);
-			} catch (IllegalStateException e) {
-				// TODO: handle exception
-				e.printStackTrace();
-			} catch (IOException e) {
-				// TODO: handle exception
-				e.printStackTrace();
-			}
-			imageDao.insertImage(image);
-		}
+//		String path= "/Users/LeeGilSun/upload/";
+//		File folder = new File(path);
+//		if(!folder.exists())
+//			folder.mkdirs();
+//		
+//		List<MultipartFile> files = req.getFiles("file");
+//		
+//		for(int i=0; i<files.size(); i++){
+//			UUID uuid = UUID.randomUUID();
+//			String fileName = files.get(i).getOriginalFilename();
+//			int fileSize = (int) files.get(i).getSize();
+//			String fileuri = path + uuid;
+//			
+//			ImageVo image = new ImageVo();
+//			image.setImg_ori_name(fileName);
+//			image.setImg_code(Integer.toString(boardIdx));
+//			image.setImg_path(fileuri);
+//			
+//			File localFile = new File(fileuri);
+//			try{
+//				files.get(i).transferTo(localFile);
+//			} catch (IllegalStateException e) {
+//				// TODO: handle exception
+//				e.printStackTrace();
+//			} catch (IOException e) {
+//				// TODO: handle exception
+//				e.printStackTrace();
+//			}
+//			imageDao.insertImage(image);
+//		}
 	}
 	
 	//리뷰 리스트 불러오기

@@ -20,16 +20,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		 union select * from (select * from message where msg_send_userid=#{msg_send_userid}  and
 		  msg_receive_userid not in
 		   (select msg_send_userid from message where msg_receive_userid=#{msg_receive_userid}  group by msg_send_userid)
-		   group by msg_receive_userid) as aliasTable order by msg_date
+		   group by msg_receive_userid) as aliasTable order by msg_date limit 0, #{count}
 	</select>
 	
-	<select id="messageSelectBySendUserid" parameterType="String" resultType="messageVo">
-		select * from message where msg_send_userid=#{msg_send_userid} group by msg_receive_userid order by msg_date
-	</select>
+<!-- 	<select id="messageSelectBySendUserid" parameterType="String" resultType="messageVo"> -->
+<!-- 		select * from message where msg_send_userid=#{msg_send_userid} group by msg_receive_userid order by msg_date -->
+<!-- 	</select> -->
 	
-	<select id="messageSelectByReceiveUserid" parameterType="String" resultType="messageVo">
-		select * from message where msg_receive_userid=#{msg_receive_userid} group by msg_send_userid order by msg_date
-	</select>
+<!-- 	<select id="messageSelectByReceiveUserid" parameterType="String" resultType="messageVo"> -->
+<!-- 		select * from message where msg_receive_userid=#{msg_receive_userid} group by msg_send_userid order by msg_date -->
+<!-- 	</select> -->
 
 	<select id="messageSelectOne" parameterType="java.util.HashMap"
 		resultType="messageVo">

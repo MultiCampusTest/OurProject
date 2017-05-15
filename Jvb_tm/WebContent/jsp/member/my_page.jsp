@@ -25,31 +25,32 @@
 
 
 function moreList(){
-    $.ajax({
-        url : "/admin/jsonlist",
-        type : "POST",
-        cache : false,
-        dataType: 'json',
-        data : "conectType="+conectType +"&eDate="+eDate+"&sDate="+sDate+"&codeId="+codeId+"&limit="+limit,
-        success : function(data){
-            //console.log(data);
-            var content="";
-            for(var i=0; i<data.hashMapList.length; i++){
-                content +=
-                "<tr>"+
-                    "<td>"+data.hashMapList[i].area+"</td>"+
-                    "<td>"+data.hashMapList[i].name+"</td>"+
-                    "<td>"+data.hashMapList[i].gubun+"</td>"+
-                    "<td>"+data.hashMapList[i].cnt+"</td>"+
-                "</tr>";
-            }
-            content+="<tr id='addbtn'><td colspan='5'><div class='btns'><a href='javascript:moreList();' class='btn'>더보기</a></div>  </td></tr>";
-            $('#addbtn').remove();//remove btn
-            $(content).appendTo("#table");
-        }, error:function(request,status,error){
-            alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-           }
-    });
+	alert($(this).attr('id'));
+//     $.ajax({
+//         url : 'moreMessageList',
+//         type : "POST",
+//         cache : false,
+//         dataType: 'json',
+//         data : 'count'+,
+//         success : function(data){
+//             //console.log(data);
+//             var content="";
+//             for(var i=0; i<data.hashMapList.length; i++){
+//                 content +=
+//                 "<tr>"+
+//                     "<td>"+data.hashMapList[i].area+"</td>"+
+//                     "<td>"+data.hashMapList[i].name+"</td>"+
+//                     "<td>"+data.hashMapList[i].gubun+"</td>"+
+//                     "<td>"+data.hashMapList[i].cnt+"</td>"+
+//                 "</tr>";
+//             }
+//             content+="<tr id='addbtn'><td colspan='5'><div class='btns'><a href='javascript:moreList();' class='btn'>더보기</a></div>  </td></tr>";
+//             $('#addbtn').remove();//remove btn
+//             $(content).appendTo("#table");
+//         }, error:function(request,status,error){
+//             alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+//            }
+//     });
 };
 
 
@@ -69,6 +70,48 @@ function moreList(){
 
 
 	$(document).ready(function() {
+		
+		
+		$('.more_msg_list').on('click', function(){
+			alert($(this).attr('id'));
+			var id=$(this).attr('id');
+			var count=parseInt(id.substr(6));
+			alert(count);
+			var update_count=count+5;
+			var new_count=parseInt(update_count);
+			alert(update_count);
+			
+			$.ajax({
+		         url : 'moreMessageList.do',
+		         type : "POST",
+		         dataType: 'json',
+		         data : 'count='+new_count,
+		         success : function(data){
+		             //console.log(data);
+// 		             var content="";
+// 		             for(var i=0; i<data.hashMapList.length; i++){
+// 		                 content +=
+// 		                 "<tr>"+
+// 		                     "<td>"+data.hashMapList[i].area+"</td>"+
+// 		                     "<td>"+data.hashMapList[i].name+"</td>"+
+// 		                     "<td>"+data.hashMapList[i].gubun+"</td>"+
+// 		                     "<td>"+data.hashMapList[i].cnt+"</td>"+
+// 		                 "</tr>";
+// 		             }
+// 		             content+="<tr id='addbtn'><td colspan='5'><div class='btns'><a href='javascript:moreList();' class='btn'>더보기</a></div>  </td></tr>";
+// 		             $('#addbtn').remove();//remove btn
+// 		             $(content).appendTo("#table");
+						alert("성공?");
+		         }, error:function(){
+// 		             alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+		        	 alert("에러다?");
+		            }
+		     });
+			
+		})
+		
+		
+		
 		
 		$('#pwd').on('keyup', function(){
 // 			alert($(this).val().length);
@@ -847,18 +890,25 @@ function moreList(){
 							</div>
 							<br> <br>
 
-							<div class="jb-center">
-								<ul class="pagination">
-									<li><a href="#"><span
-											class="glyphicon glyphicon-chevron-left"></span></a></li>
-									<c:forEach begin="1" end="10" step="1" varStatus="i">
-										<li class="message default" id="paging_msg_${i.index }"><a
-											href="#">${i.index}</a></li>
-									</c:forEach>
-									<li><a href="#"><span
-											class="glyphicon glyphicon-chevron-right"></span></a></li>
-								</ul>
+<!-- 							<div class="jb-center"> -->
+<!-- 								<ul class="pagination"> -->
+<!-- 									<li><a href="#"><span -->
+<!-- 											class="glyphicon glyphicon-chevron-left"></span></a></li> -->
+<%-- 									<c:forEach begin="1" end="10" step="1" varStatus="i"> --%>
+<%-- 										<li class="message default" id="paging_msg_${i.index }"><a --%>
+<%-- 											href="#">${i.index}</a></li> --%>
+<%-- 									</c:forEach> --%>
+<!-- 									<li><a href="#"><span -->
+<!-- 											class="glyphicon glyphicon-chevron-right"></span></a></li> -->
+<!-- 								</ul> -->
+<!-- 							</div> -->
+							<div class="row" style="text-align: center" id='addbtn'>
+								<div class="btns">
+<%-- 									<a href="javascript:moreList();" class="btn btn-primary more_msg" id='addbtn${msg_pre_count }'>MORE</a> --%>
+									<div class="btn btn-primary more_msg_list" id='addbtn${msg_pre_count }'>MORE</div>
+								</div>
 							</div>
+
 
 
 						</div>

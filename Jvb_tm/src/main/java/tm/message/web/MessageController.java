@@ -2,6 +2,7 @@ package tm.message.web;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import tm.message.service.IMessageService;
@@ -41,6 +43,14 @@ public class MessageController {
 		return messageService.messageOneList(msg_receive_userid, msg_send_userid);
 	}
 	
+	
+	@RequestMapping(value="moreMessageList.do", method=RequestMethod.POST)
+	public @ResponseBody HashMap<String, Object> moreMessageList(HttpSession session, int count){
+		System.out.println("더 보기까지 오느냐");
+		String msg_receive_userid=(String)session.getAttribute("userid");
+		return messageService.messageList(msg_receive_userid, count);
+	}
+	
 	@RequestMapping("sendMessage.do")
 	public @ResponseBody List<MessageVo> writeMessage(HttpSession session, String msg_send_userid, String msg_contents){
 		String msg_receive_userid=(String)session.getAttribute("userid");
@@ -55,11 +65,12 @@ public class MessageController {
 	}
 	
 	
-	  @InitBinder
-	   public void initBinder(WebDataBinder binder){
-	      SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-	      binder.registerCustomEditor(Date.class, new CustomDateEditor(sdf, true));
-	   }
+	
+//	  @InitBinder
+//	   public void initBinder(WebDataBinder binder){
+//	      SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+//	      binder.registerCustomEditor(Date.class, new CustomDateEditor(sdf, true));
+//	   }
 	
 	
 }

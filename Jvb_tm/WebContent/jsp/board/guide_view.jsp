@@ -24,7 +24,7 @@ $(document).ready(function(){
 	
 	str_latLng = str_latLng.slice(0,-1);
 	
-	$('#map_location').append('<img src="http://maps.googleapis.com/maps/api/staticmap?size=400x500&key=AIzaSyBX21maM7ZEhRTCF0_hB8DSrYHsKOof2m8'+
+	$('#map_location').append('<img src="http://maps.googleapis.com/maps/api/staticmap?size=500x400&key=AIzaSyBX21maM7ZEhRTCF0_hB8DSrYHsKOof2m8'+
 			'&path=color:0x333333ff|weight:2|'+str_latLng+'&markers=color:red|label:S|'+start_latLng+
 			'&markers=color:red|label:E|'+end_latLng+'&sensor=false">');
 
@@ -39,51 +39,40 @@ $("#message").click(function(){
 </head>
 <body>  
 <div class="container">
+	<div> <h2>I'm Looking For a Guide</h2> </div>
+	<hr>
 	<div class="row">
-		<div class="col-md-5">
-			<div id="map_location">
-			
-		</div>
+		<div class="col-md-6">
+			<p class="lead">
+        	${guide.title }
+           </p>
+           <div style="font-size:17px;">
+            <i class="fa fa-calendar" aria-hidden="true"></i> ${guide.startDate } ~ ${guide.endDate }
+           </div>
+			<div id="map_location"></div>
     	</div>
-    	<div class="col-md-7">
-	      	<div class="form-group">
-	          <label class="control-label">TITLE</label>
-	          <pre class="form-control">${guide.title}</pre>
-		  	</div>
-		  	
-		  	<hr>
-		  	
-		  	<div class="form-group">
-	          <label class="control-label">DATE:</label><br>
-	          <pre class="form-control col-md-6">${guide.startDate }</pre> 
-	          ~
-	          <pre class="form-control col-md-6">${guide.endDate }</pre>
-	        </div>
-	        
-	        <hr>
-	        
-		  	<div class="form-group">
-			  <label class="control-label">DATE CATEGORY:</label>
-		      <pre class="form-control">category</pre>
-		    </div>
-		    
-		    <hr>
-		    
+    	<div class="col-md-6">
 		    <div class="form-group">
-			  <label class="control-label"> LOC CATEGORY:</label>
-		      <pre class="form-control">location</pre>
-		    </div>
-		    
-		    <hr>
-		    <div class="form-group">
-	          <label class="control-label">CONTENT:</label>
-	          <pre class="form-control">${contents.contents }</pre>
-			</div>
+	          <p class="lead" style="font-size:25px;">
+         		CONTENT
+         	  </p>
+         	  <hr>
+	          <textarea readonly="readonly" rows="19" cols="75" name="contents">${contents.contents }</textarea>
+			</div> 
 			<div class="form-group">
+				<c:choose>
+					<c:when test="${userid eq guide.userid }">
+						<input type="button" value="Modify" class="btn btn-primary" 
+								onclick="location.href='guideModifyForm.do?boardIdx=${guide.boardIdx}'">
+					</c:when>
+				</c:choose>
 				<input type="button" value="list" class="btn btn-primary" onclick="location.href='guideList.do'">
 			</div>
 	    </div>
   </div>
+  <br><br>
+  
+  
 <!-- Comments Form -->
          <div class="well">
              <h4>Leave a Comment:</h4>

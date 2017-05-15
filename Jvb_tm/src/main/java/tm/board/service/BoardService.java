@@ -275,6 +275,20 @@ public class BoardService {
 		return result;	
 	}
 	
+	
+	public HashMap<String, Object> getGuide(int boardIdx) {
+		BoardVo board = boardDao.selectOneBoard(boardIdx);
+		ContentsVo contents = contentsDao.selectOneContents(boardIdx);		
+		List<MapPositionVo> mapPositionArr = mapPositionDao.selectMapPosition(boardIdx);
+		
+		HashMap<String, Object> result = new HashMap<>();
+		result.put("guide", board);
+		result.put("contents", contents);
+		result.put("mapPosition", mapPositionArr);
+		
+		return result;
+	}
+	
 	//review insert
 	public void insertReview(BoardVo board, ContentsVo contents, MultipartHttpServletRequest req){
 		boardDao.insertBoard(board);

@@ -164,15 +164,19 @@ public class BoardController {
 		ModelAndView mav = new ModelAndView();
 		mav.addAllObjects(boardService.readGuide(boardIdx));
 		mav.addObject("userid", userid);
-		mav.addObject("comments",commentsService.selectComments(boardIdx)); 
+//		mav.addObject("comments",commentsService.selectComments(boardIdx)); 
 		mav.setViewName("board/guide_view");
 
 		return mav;
 	}
 
 	@RequestMapping("guideModifyForm.do")
-	public String guideModifyForm() {
-		return "board/guide_modify_form";
+	public ModelAndView guideModifyForm(int boardIdx) {
+		
+		ModelAndView mav = new ModelAndView();
+		mav.addAllObjects(boardService.getGuide(boardIdx));
+		mav.setViewName("board/guide_modify_form");
+		return mav;		
 	}
 
 

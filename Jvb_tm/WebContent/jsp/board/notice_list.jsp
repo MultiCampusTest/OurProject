@@ -42,8 +42,7 @@ display: inline-block;
 </head>
 <body>
 	<div class="container">
-		<div class="col-md-15">
-
+		<div class="col-md-12">
 			<div class="row">
 					<img class="notice_slide" src="img/notice/notice_img.jpg" alt="">
 			</div>

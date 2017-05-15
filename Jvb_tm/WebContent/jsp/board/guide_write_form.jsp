@@ -101,9 +101,7 @@
         
         $('#test').append('<input type="hidden" name="latLng" value="'+latLng[i]+'">');
 
-//         var div = document.createElement('div');
-// 	    div.innerHTML = "<span class='glyphicon glyphicon-map-marker'>"+loc[i]+"</span>";
-// 	    document.getElementById('field').append(div);
+
       } else {
         alert('Geocode was not successful for the following reason: ' + status);
       }

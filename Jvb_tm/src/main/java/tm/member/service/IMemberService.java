@@ -16,7 +16,6 @@ public interface IMemberService {
 	public HashMap<String, Object> memberSelectOne(String userid);
 	public boolean memberModify(MemberVo memberVo, String userid, MultipartHttpServletRequest req);
 	
-	
 	public boolean searchPassword(MemberVo memberVo);
 	public void sendEmail(EmailVo emailVo) throws Exception;
 }

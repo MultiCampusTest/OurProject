@@ -25,7 +25,7 @@ public class ImageService implements IImageService {
 		// int result = imageDao.insertImage(imageVo);
 
 		// if (result > 0) {
-		String path = "/Users/Amalia/Upload/";
+		String path = "/Users/LeeGilSun/Upload/";
 		File folder = new File(path);
 		if (!folder.exists()) {
 			folder.mkdirs();

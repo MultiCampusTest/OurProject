@@ -5,42 +5,49 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="tm.image.dao.IImageDao">
 
-	<insert id="insertImage" parameterType="imageVo">
-		insert into image(img_ori_name, img_code, img_path)
-		values(#{img_ori_name}, #{img_code}, #{img_path})
-	</insert>
+   <insert id="insertImage" parameterType="imageVo">
+      insert into image(img_ori_name, img_code, img_path)
+      values(#{img_ori_name}, #{img_code}, #{img_path})
+   </insert>
 
-	<update id="updateImage" parameterType="imageVo">
-		update image set
-		img_phy_name=#{img_phy_name}, img_ori_name=#{img_ori_name},
-		 img_path=#{img_path} where img_code=#{img_code}
-	</update>
+   <update id="updateImage" parameterType="imageVo">
+      update image set
+      img_phy_name=#{img_phy_name}, img_ori_name=#{img_ori_name},
+       img_path=#{img_path} where img_code=#{img_code}
+   </update>
 
-	<delete id="deleteImageTravel" parameterType="int">
-		delete from image
-		where img_idx=#{img_idx}
-	</delete>
+   <delete id="deleteImageTravel" parameterType="int">
+      delete from image
+      where img_idx=#{img_idx}
+   </delete>
 
-<!-- 	이미지코드조건으로 그룹바이를 통해 가장 첫번째 사진 VO 가져오기 -->
-	<select id="selectImageOne" parameterType="String" resultType="ImageVo">
-		SELECT *
-		FROM image
-		GROUP BY img_code
-		HAVING img_code = #{img_code}
-	</select>
-	
-<!-- 	이미지 코드로 게시물에 포함한 모든 이미지 VO 불러오기 -->
-	<select id="selectImageView" parameterType="int" resultType="ImageVo">
-		SELECT *
-		FROM image
-		WHERE img_code=#{img_code}
-	</select>
-	
-<!-- 	이미지 idx로 사진 하나하나 가져오기 -->
-	<select id="selectImageOnce" parameterType="int" resultType="ImageVo">
-		SELECT *
-		FROM image
-		WHERE img_idx=#{img_idx}
-	</select>
-	
+<!--    이미지코드조건으로 그룹바이를 통해 가장 첫번째 사진 VO 가져오기 -->
+   <select id="selectImageOne" parameterType="String" resultType="ImageVo">
+      SELECT *
+      FROM image
+      GROUP BY img_code
+      HAVING img_code = #{img_code}
+   </select>
+   
+<!--    이미지 코드로 게시물에 포함한 모든 이미지 VO 불러오기 -->
+   <select id="selectImageView" parameterType="int" resultType="ImageVo">
+      SELECT *
+      FROM image
+      WHERE img_code=#{img_code}
+   </select>
+   
+<!--    이미지 idx로 사진 하나하나 가져오기 -->
+   <select id="selectImageOnce" parameterType="int" resultType="ImageVo">
+      SELECT *
+      FROM image
+      WHERE img_idx=#{img_idx}
+   </select>
+   
+<!--    프로필 이미지 사진 하나 가져오기 -->
+   <select id="selectProfileImageOne" parameterType="String" resultType="ImageVo">
+      select * from image where img_code=#{img_code}
+   </select>
+   
+   
+   
 </mapper>

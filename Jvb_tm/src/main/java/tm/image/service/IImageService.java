@@ -8,16 +8,20 @@ import tm.image.vo.ImageVo;
 
 public interface IImageService {
 
-	public void insertImg(ImageVo imageVo, String img_code, MultipartHttpServletRequest req);
+   public void insertImg(ImageVo imageVo, String img_code, MultipartHttpServletRequest req);
 
-	public boolean deleteImg(int img_idx);
+   public boolean deleteImg(int img_idx);
 
-	public void updateImg(ImageVo imageVo, String img_code, MultipartHttpServletRequest req);
+   public void updateImg(ImageVo imageVo, String img_code, MultipartHttpServletRequest req);
 
-	public ImageVo selectOne(String img_code);
+   public ImageVo selectOne(String img_code);
 
-	public List<ImageVo> selectView(int img_idx);
+   public List<ImageVo> selectView(int img_idx);
 
-	public ImageVo selectOnce(int img_idx);
+   public ImageVo selectOnce(int img_idx);
+   
+   public ImageVo selectProfileOne(String img_code);
+   
+   
 
 }

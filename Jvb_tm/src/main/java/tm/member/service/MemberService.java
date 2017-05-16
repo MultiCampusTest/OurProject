@@ -41,40 +41,8 @@ public class MemberService implements IMemberService {
 	@Override
 	public void memberJoin(MemberVo memberVo, MultipartHttpServletRequest req) {
 		memberDao.memberInsert(memberVo);
-		String userid = memberVo.getUserid();
-		
-		String path = "/Users/student/Upload/";
-		File folder = new File(path);
-		if( !folder.exists() ) {
-			folder.mkdirs();			
-		}
-		
-		List<MultipartFile> files = req.getFiles("file");
-		
-		
-		for(int i=0; i<files.size(); i++) { 
-			UUID uuid = UUID.randomUUID();
-			String fileName = files.get(i).getOriginalFilename();
-			int fileSize = (int) files.get(i).getSize();
-			String ext = fileName.substring(fileName.lastIndexOf('.'));
-			String fileuri = path + uuid + ext;
-			ImageVo image = new ImageVo();
-			image.setImg_ori_name(fileName);
-			image.setImg_code(memberVo.getUserid());
-			image.setImg_path(fileuri);
-		
-			File localFile = new File(fileuri);
-			try{
-				files.get(i).transferTo(localFile);
-			} catch (IllegalStateException e) {
-				// TODO: handle exception
-				e.printStackTrace();
-			} catch (IOException e) {
-				// TODO: handle exception
-				e.printStackTrace();
-			}
-			imageDao.insertImage(image);
-		}
+		ImageVo imageVo = new ImageVo();
+		imageService.insertImg(imageVo, memberVo.getUserid(), req);
 	}
 	
 

@@ -15,10 +15,10 @@ function fbAjaxRequest(response) {
 		dataType : 'json',
 		success : function(data) {
 			if (data.result) {
-				alert('Already registered');
+				alert('Fail : alreay verified email');
 				location.href="loginForm.do";
 			} else {
-				alert('Verified successfully');
+				alert('Success : continue to sign up');
 				var form = document.createElement("form");
 				form.setAttribute("method", "post");
 				form.setAttribute("action", "fbJoinForm.do");

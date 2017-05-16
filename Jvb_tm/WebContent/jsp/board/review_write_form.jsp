@@ -47,7 +47,6 @@ $(document).ready(function(){
 				<form id="reviewForm" name="reviewForm" action="reviewWrite.do" method="post" enctype="multipart/form-data">
 						<div  id="preDiv" class="table-responsive" id="reviewPhoto">
 							<table id="preTable" class="table table-condensed" style="height: inherit; vertical-align: middle;">
-	<%-- 							<c:forEach begin="1" end="5" var="i" varStatus="status"> --%>
 									<tr  id="preset" class="clearfix" align="center" style="vertical-align: center">
 										<td style="width: 35%; vertical-align: middle;">
 											<div class="filebox" style="padding-top: 10px">
@@ -65,7 +64,6 @@ $(document).ready(function(){
 	
 										</td>
 									</tr>
-	<%-- 							</c:forEach> --%>
 							</table>
 						</div>
 						<div id="container">

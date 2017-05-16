@@ -11,7 +11,24 @@
 <title>Insert title here</title>
 
 <link rel="stylesheet" href="css/review.css">
-<script src="js/review.js"></script>
+<!-- <script src="js/review.js"></script> -->
+<script type="text/javascript">
+function readURL(input) {
+	alert($(input).attr('id'));
+	var id = $(input).attr('id');
+	var num = id.substring(6);
+	
+	if (input.files && input.files[0]) {
+		var reader = new FileReader();
+
+		reader.onload = function(e) {
+			$('#image' + id).attr('src', e.target.result);
+		}
+		reader.readAsDataURL(input.files[0]);
+	}
+}
+</script>
+
 </head>
 <body>
 	<div class="container">
@@ -27,8 +44,15 @@
 						<table class="table table-condensed" style="height: inherit; vertical-align: middle">
 							<c:forEach var="image" items="${reviewImage}">
 								<tr class="clearfix" align="center" style="vertical-align: center">
+									<td style="width: 35%; vertical-align: middle;">
+										<div class="filebox" style="padding-top: 10px">
+											<label for="${image.img_idx }" id="label" class="label">choose file</label> 
+											<input type="file" id="${image.img_idx }" name="file" class="ex_file" onchange="readURL(this)">
+										</div>
+									</td>
 									<td style="width: 65%; height: 80%">
-											<img src="imageView.do?img_idx=${image.img_idx }" style="width: 200px">
+										<input type="hidden" value="${image.img_idx }">
+										<img id="image${image.img_idx }" src="imageView.do?img_idx=${image.img_idx }" style="width: 200px">
 									</td>
 								</tr>
 							</c:forEach>

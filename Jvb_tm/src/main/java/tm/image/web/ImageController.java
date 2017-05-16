@@ -33,8 +33,9 @@ public class ImageController {
       System.out.println(img_code);
       ImageVo image = imageService.selectOne(img_code);
       
-      resp.setContentType("images/jpg; utf-8");
+       resp.setContentType("images/jpg; utf-8");
        String originFile = (String)image.getImg_ori_name();
+       
        String filename = new String(originFile.getBytes("UTF-8"),"ISO-8859-1");
        resp.setHeader("Content-Disposition", "inline;filename=\"" + filename + "\";");
        resp.setHeader("Content-Transfer-Encoding", "binary");

@@ -92,7 +92,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 <!-- 	select review -->
 	<select id="selectReviewBoardLimit" parameterType="java.util.HashMap" resultMap="board">
-		SELECT b_idx, b_title, userid, b_readcount
+		SELECT b_idx, b_title, userid, b_readcount, b_date
 		FROM board
 		WHERE b_code=#{code} <include refid="search"></include>
 		ORDER BY b_idx desc limit #{skip}, #{count}
@@ -100,7 +100,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<update id="readReview" parameterType="int">
 		UPDATE board
-		SET b_readcount=#{readCount}
+		SET b_readcount= b_readcount+1
 		WHERE b_idx=#{boardIdx}
 	</update>
 		

@@ -11,7 +11,6 @@ public interface IImageService {
 
    public void insertImg(ImageVo imageVo, String img_code, MultipartHttpServletRequest req);
    
-   public void insertReviewImg(BoardVo board, MultipartHttpServletRequest req);
 
    public boolean deleteImg(int img_idx);
 
@@ -24,6 +23,10 @@ public interface IImageService {
    public ImageVo selectOnce(int img_idx);
    
    public ImageVo selectProfileOne(String img_code);
+   
+   //review관련
+   public void insertReviewImg(BoardVo board, MultipartHttpServletRequest req);
+   public void updateReviewImg(BoardVo board, MultipartHttpServletRequest req);
    
    
 

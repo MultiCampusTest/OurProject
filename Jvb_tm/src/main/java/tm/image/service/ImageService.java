@@ -178,8 +178,41 @@ public class ImageService implements IImageService {
                e.printStackTrace();
             }
             
-            imageDao.updateImage(image);
+            imageDao.insertImage(image);
          }
+	}
+
+	@Override
+	public void updateReviewImg(BoardVo board, MultipartHttpServletRequest req) {
+		// TODO Auto-generated method stub
+//		String path = "/Users/LeeGilSun/Upload/";
+//		
+//        
+//        List<MultipartFile> files = req.getFiles("file");
+//        for (int i = 0; i < files.size(); i++) {
+//            UUID uuid = UUID.randomUUID();
+//
+//            String fileName = files.get(i).getOriginalFilename();
+//            int fileSize = (int) files.get(i).getSize();
+//            String fileuri = path + uuid;
+//            
+//            ImageVo image = new ImageVo();
+//            image.setImg_ori_name(fileName);
+//            image.setImg_code(Integer.toString(board.getBoardIdx()));
+//            image.setImg_path(fileuri);
+//
+//            File localFile = new File(fileuri);
+//
+//            try {
+//               files.get(i).transferTo(localFile);
+//            } catch (IllegalStateException e) {
+//               e.printStackTrace();
+//            } catch (IOException e) {
+//               e.printStackTrace();
+//            }
+//            
+//            imageDao.updateImage(image);
+//         }
 	} 
    
    

@@ -34,9 +34,9 @@
 							<img src="imageShow.do?img_code=${review.boardIdx }" style="width: 200px; height: 100px">
 
 						<div class="caption">
+							<font style="font-size: 12pt">${review.title }</font>
 							<font style="font-size: 12pt">${review.userid }</font><br> 
 							<font style="font-size: 12pt"><fmt:formatDate value="${review.writeDate}" pattern="yyyy-MM-dd"/></font><br>
-							<font style="font-size: 12pt">${review.title }</font>
 						</div>
 						</a>
 					</div>

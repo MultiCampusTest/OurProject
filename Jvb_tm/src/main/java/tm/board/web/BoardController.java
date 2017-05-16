@@ -236,13 +236,14 @@ public class BoardController {
 	}
 	
 	@RequestMapping("reviewUpdate.do")
-	public ModelAndView reviewUpdate(BoardVo board, ContentsVo contents){
+	public ModelAndView reviewUpdate(BoardVo board, ContentsVo contents, MultipartHttpServletRequest req){
 		ModelAndView mav = new ModelAndView();
 		
 		BoardVo board2 = board;
 		ContentsVo contents2 = contents;
 		
 		boardService.updateReview(board2, contents2);
+		imageService.updateReviewImg(board, req);
 		
 		mav.addObject("review",board2);
 		mav.addObject("contents",contents2);

@@ -404,7 +404,7 @@ function moreList(){
                         <!-- left column -->
                         <div class="col-md-4 col-sm-6 col-xs-12">
                            <div class="text-center">
-                           <c:if test="${userImage.img_path==null }">
+                           <c:if test="${userImage.img_idx==null }">
                            		<img src="img/profile/user.png"
                                  class="avatar img-circle img-thumbnail profile_img" alt="avatar">
                            </c:if>
@@ -982,7 +982,7 @@ function moreList(){
 											</div>
 											<div class="request_matching" id="req_matching_${i.index }">
 												<div class="request_mch_contents col-lg-7">
-													<a href="guideView.do?b_idx=${res_mch_List.b_idx }"> <label
+													<a href="guideView.do?boardIdx=${res_mch_List.b_idx }"> <label
 														class="board_title container-fluid control-label"
 														id="${res_mch_List.b_idx }"> 해당 게시글 제목
 															${res_mch_List.b_idx }</label>
@@ -1045,7 +1045,7 @@ function moreList(){
 											<div class="accepted_matching"
 												id="accepted_matching_${i.index }">
 												<div class="accepted_mch_contents col-lg-7">
-													<a href="guideView.do?b_idx=${acc_mch_List.b_idx }"> <label
+													<a href="guideView.do?boardIdx=${acc_mch_List.b_idx }"> <label
 														class="container-fluid control-label"> 해당 게시글 제목
 															${acc_mch_List.b_idx }</label>
 													</a>

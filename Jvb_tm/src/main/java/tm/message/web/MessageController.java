@@ -65,6 +65,17 @@ public class MessageController {
 		
 	}
 	
+	@RequestMapping("sendMessageAtGuide.do")
+	public String sendMessageAtGuide(HttpSession session, String msg_receive_userid, String msg_contents, int boardIdx){
+		String msg_send_userid=(String)session.getAttribute("userid");
+		MessageVo messageVo=new MessageVo();
+		messageVo.setMsg_receive_userid(msg_receive_userid);
+		messageVo.setMsg_send_userid(msg_send_userid);
+		messageVo.setMsg_contents(msg_contents);
+		messageService.sendMessage(messageVo);
+		return "redirect:guideView.do?boardIdx="+boardIdx;
+	}
+	
 	
 	
 //	  @InitBinder

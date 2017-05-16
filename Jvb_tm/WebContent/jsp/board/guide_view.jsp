@@ -91,7 +91,7 @@ $(document).ready(function(){
 	<div class="row">
 		<div class="col-md-6">
 			<p class="lead">
-        	${guide.title }
+        	${guide.title }asdf${guide.code }${guide.userid }
            </p>
            <div style="font-size:17px;">
             <i class="fa fa-calendar" aria-hidden="true"></i> ${guide.startDate } ~ ${guide.endDate }
@@ -140,9 +140,8 @@ $(document).ready(function(){
              <h4>Leave a Comment:</h4>
              <form role="form" action="commentsWrite.do" method="post" name="reForm">
                  <div class="form-group">
-                 	 <input type="hidden" name="b_code" value="${guide.code }">
-                 	 <input type="hidden" name="b_writer" value="${guide.userid }">
-                 	 <input type="hidden" name="b_idx" value="${guide.boardIdx }">
+                 	 <input type="hidden" name="board_code" value="${guide.code }">
+                 	 <input type="hidden" name="board_writer" value="${guide.userid }">
                  	 <input type="hidden" name="cm_writer" value="${userid}">
                  	 <input type="hidden" name="cm_parent" >
                  	 <input type="hidden" name="parent_cm">

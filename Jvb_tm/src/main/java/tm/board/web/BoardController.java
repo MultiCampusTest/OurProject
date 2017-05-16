@@ -263,11 +263,13 @@ public class BoardController {
 
 
 	@RequestMapping("commentsWrite.do")
-	public ModelAndView commentsWrite(HttpSession session, CommentsVo comments, String parent_cm, String site, String b_code, String b_writer){
+	public ModelAndView commentsWrite(HttpSession session, CommentsVo comments, String parent_cm, String site, String board_code, String board_writer){
 		ModelAndView mav = new ModelAndView();
 //		String mch_g_userid = (String) session.getAttribute("userid");
 		commentsService.insertComments(comments, parent_cm);
-//		System.out.println(b_code);
+		System.out.println("글 작성자? : "+board_writer);
+		System.out.println(site);
+		System.out.println("댓글이다 보드 코드 받아오니 : "+board_code);
 		mav.setViewName("redirect:"+site+"View.do?boardIdx="+comments.getB_idx());
 //		if(b_code.equals('g')){
 //			MatchingVo matchingVo=new MatchingVo();

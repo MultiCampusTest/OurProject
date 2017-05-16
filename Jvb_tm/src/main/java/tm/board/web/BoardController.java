@@ -191,7 +191,8 @@ public class BoardController {
 	@RequestMapping("reviewWrite.do")
 	@ResponseBody
 	public ModelAndView reviewWrite(BoardVo board, ContentsVo contents, MultipartHttpServletRequest req) {
-		boardService.insertReview(board, contents, req);
+		boardService.insertReview(board, contents);
+		imageService.insertReviewImg(board, req);
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("redirect:reviewView.do?boardIdx="+board.getBoardIdx());
 		return mav;

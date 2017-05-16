@@ -290,15 +290,15 @@ public class BoardService {
 	}
 	
 	//review insert
-	public void insertReview(BoardVo board, ContentsVo contents, MultipartHttpServletRequest req){
+	public void insertReview(BoardVo board, ContentsVo contents){
 		boardDao.insertBoard(board);
 		int boardIdx = board.getBoardIdx();
 
 		contents.setBoardIdx(boardIdx);
 		contentsDao.insertContents(contents);
 		
-		ImageVo imageVo = new ImageVo();
-		imageService.insertImg(imageVo, Integer.toString(boardIdx), req);
+//		ImageVo imageVo = new ImageVo();
+//		imageService.insertImg(imageVo, Integer.toString(boardIdx), req);
 		
 //		String path= "/Users/LeeGilSun/upload/";
 //		File folder = new File(path);

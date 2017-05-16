@@ -4,11 +4,14 @@ import java.util.List;
 
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import tm.board.vo.BoardVo;
 import tm.image.vo.ImageVo;
 
 public interface IImageService {
 
    public void insertImg(ImageVo imageVo, String img_code, MultipartHttpServletRequest req);
+   
+   public void insertReviewImg(BoardVo board, MultipartHttpServletRequest req);
 
    public boolean deleteImg(int img_idx);
 

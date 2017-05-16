@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import tm.board.vo.BoardVo;
 import tm.image.dao.IImageDao;
 import tm.image.vo.ImageVo;
 import tm.member.vo.MemberVo;
@@ -25,7 +26,7 @@ public class ImageService implements IImageService {
       // int result = imageDao.insertImage(imageVo);
 
       // if (result > 0) {
-      String path = "/Users/KYS/Upload/";
+      String path = "/Users/LeeGilSun/Upload/";
       File folder = new File(path);
       if (!folder.exists()) {
          folder.mkdirs();
@@ -141,6 +142,45 @@ public class ImageService implements IImageService {
       ImageVo image=imageDao.selectProfileImageOne(img_code);
       return image;
    }
+
+	@Override
+	public void insertReviewImg(BoardVo board, MultipartHttpServletRequest req) {
+		// TODO Auto-generated method stub
+		String path = "/Users/LeeGilSun/Upload/";
+        File folder = new File(path);
+        if (!folder.exists()) {
+        	folder.mkdirs();
+        }
+        
+        List<MultipartFile> files = req.getFiles("file");
+        
+        for (int i = 0; i < files.size(); i++) {
+            UUID uuid = UUID.randomUUID();
+
+            String fileName = files.get(i).getOriginalFilename();
+            int fileSize = (int) files.get(i).getSize();
+
+//            String ext = fileName.substring(fileName.lastIndexOf('.'));
+            String fileuri = path + uuid;
+            
+            ImageVo image = new ImageVo();
+            image.setImg_ori_name(fileName);
+            image.setImg_code(Integer.toString(board.getBoardIdx()));
+            image.setImg_path(fileuri);
+
+            File localFile = new File(fileuri);
+
+            try {
+               files.get(i).transferTo(localFile);
+            } catch (IllegalStateException e) {
+               e.printStackTrace();
+            } catch (IOException e) {
+               e.printStackTrace();
+            }
+            
+            imageDao.updateImage(image);
+         }
+	} 
    
    
    

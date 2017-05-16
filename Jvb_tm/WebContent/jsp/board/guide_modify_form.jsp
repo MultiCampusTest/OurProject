@@ -16,6 +16,7 @@
 <link rel="stylesheet" href="css/guideWriteForm.css">
 <script type="text/javascript">
 
+
 	var polys =[];
 	var map;
 	var i = 0;
@@ -68,7 +69,7 @@
 	  deleteMarkers();
 	  loc = [];
 	  latLng = [];
-// 	  document.removeChild(div);
+	  $('#input_latLng').empty();
    });
 
     document.getElementById('submit').addEventListener('click', function() {
@@ -99,7 +100,7 @@
         latLng[i] = results[0].geometry.location;
         
         
-        $('#test').append('<input type="hidden" name="latLng" value="'+latLng[i]+'">');
+        $('#input_latLng').append('<input type="hidden" name="latLng" value="'+latLng[i]+'">');
 
 
       } else {
@@ -116,6 +117,31 @@ $(function() {
 });
 
 
+$(document).ready(function(){
+	
+	var loc = "${guide.locCategory}";
+
+	$('.category > option').each(function(){
+		if(loc == $(this).val()){
+			$(this).attr('selected','selected');
+		}	
+	});
+	
+	
+	var list = [];
+	
+	<c:forEach items="${mapPosition}" var="latLng">
+		list.push("${latLng.latLng}");
+	</c:forEach>
+	
+	for(var i=0; i<list.length; i++){
+		
+	
+		
+	}
+	
+	
+})
 </script>
 <style>
         #map { 
@@ -212,19 +238,21 @@ $(function() {
           <font style="font-size:20px">CONTENT</font>	 
           <textarea class="form-control" placeholder="Insert Content" rows="14" name="contents">${contents.contents }</textarea>
 		</div>
-		<div class="form-group" id="test">
+		<div class="form-group">
 			<input type="hidden" value="g" name="code">
 			<input type="submit" value="ok" class="btn btn-primary">
 			<input type="button" value="list" class="btn btn-primary" onclick="location.href='guideList.do'">
 		</div>
 		
 		<div class="form-group" style="float:right">
-		 	<input type="hidden" value="${notice.readCount }" name="readCount">
-			<input type="hidden" value="${notice.boardIdx }" name="boardIdx">
+		 	<input type="hidden" value="${guide.readCount }" name="readCount">
+			<input type="hidden" value="${guide.boardIdx }" name="boardIdx">
 			<input type="submit" value="ok" class="btn btn-primary">
 			<input type="button" value="cancel" class="btn btn-primary" 
-								onclick="location.href='noticeView.do?boardIdx=${notice.boardIdx}'">
+								onclick="location.href='noticeView.do?boardIdx=${guide.boardIdx}'">
 		</div>
+		
+		<div id="input_latLng"> </div>
       </form>
     </div>
   </div>

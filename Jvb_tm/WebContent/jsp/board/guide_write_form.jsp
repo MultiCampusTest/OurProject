@@ -68,7 +68,8 @@
 	  deleteMarkers();
 	  loc = [];
 	  latLng = [];
-// 	  document.removeChild(div);
+	  $('#input_latLng').empty();
+	  
    });
 
     document.getElementById('submit').addEventListener('click', function() {
@@ -99,7 +100,7 @@
         latLng[i] = results[0].geometry.location;
         
         
-        $('#test').append('<input type="hidden" name="latLng" value="'+latLng[i]+'">');
+        $('#input_latLng').append('<input type="hidden" name="latLng" value="'+latLng[i]+'">');
 
 
       } else {
@@ -212,10 +213,12 @@ $(function() {
           <font style="font-size:20px">CONTENT</font>	 
           <textarea class="form-control" placeholder="Insert Content" rows="14" name="contents"></textarea>
 		</div>
-		<div class="form-group" id="test">
+		<div class="form-group">
 			<input type="hidden" value="g" name="code">
 			<input type="submit" value="ok" class="btn btn-primary">
 			<input type="button" value="list" class="btn btn-primary" onclick="location.href='guideList.do'">
+		</div>
+		<div id="input_latLng">
 		</div>
       </form>
     </div>

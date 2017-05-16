@@ -22,6 +22,7 @@
 	
 	$(function() {
 		$("#file").on('change', function() {
+			$('#img_code').val('');
 			var ext = $(this).val().split('.').pop().toLowerCase();
 			if ($.inArray(ext, [ 'gif', 'png', 'jpg', 'jpeg' ]) == -1) {
 				$('input[type=file]').val('');
@@ -45,32 +46,146 @@
 	}
 
 	function fileReset() {
+		$('#img_code').val('');
 		$('#file').attr('value', '');
 		$('#profile').attr('src', 'img/profile.jpg');
-		$('#imageCheck').text('');
+		$('#imageCheck').html('(Add Image)');
 	}
 		
 	
 	$(document).ready(function(){
-		
-		//정보입력 예외 처리
+		//아이디
 		$('#userid').click(function(){
 			alert("You can't change verified email");
 		});
 		
-		$('input[type=password]').keyup(function () {
-			if($('#pwd').val() != $('#pwdChk').val()) {
-				$('#pwd_msg').html('<font color="#FF605A">not matched password</font>');
-			} else {
-				$('#pwd_msg').text('');
+		//성
+		$('#firstName').focus(function(){
+			if($(this).val() == '') {
+				$('#fname_msg').html('<font color="#FF605A">enter first name</font>');
+			}
+		}).blur(function(){
+			if($(this).val() != '') {
+				$('#fname_msg').text('');
+			}
+		}).keyup(function(){
+			if($(this).val() == '') {
+				$('#fname_msg').html('<font color="#FF605A">enter first name</font>');
+			} else {				
+				$('#fname_msg').text('');
 			}
 		});
 		
-		//제출버튼 예외 처리
-		$('#join_submit').click(function(){
-			
+		//이름
+		$('#lastName').focus(function(){
+			if($('#lastName').val() == '') {
+				$('#lname_msg').html('<font color="#FF605A">enter last name</font>');
+			}
+		}).blur(function(){
+			if($('#lastName').val() != '') {
+				$('#lname_msg').text('');
+			}
+		}).keyup(function(){
+			if($('#lastName').val() == '') {
+				$('#lname_msg').html('<font color="#FF605A">enter last name</font>');
+			} else {				
+				$('#lname_msg').text('');
+			}
 		});
 		
+		//비밀번호
+		var regPass = /^.*(?=^.{8,15}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/;
+		$('input[type=password]').focus(function () {
+			if($('#pwd').val() == '' || $('#pwdChk').val() == '') {
+				$('#pwd_msg').html('<font color="#FF605A">enter 8-20 password</font>');
+			} else if($('#pwd').val().length < 8 || $('#pwdChk').val().length < 8) {
+				$('#pwd_msg').html('<font color="#FF605A">input 8-20 characters</font>');
+			}
+		}).blur(function() {
+			if($('#pwd').val() == '' || $('#pwdChk').val() == '') {
+				$('#pwd_msg').html('<font color="#FF605A">enter 8-20 password</font>');
+			} else if($('#pwd').val().length < 8 || $('#pwdChk').val().length < 8) {
+				$('#pwd_msg').html('<font color="#FF605A">input 8-20 characters</font>');
+			} else if($('#pwd').val() == $('#pwdChk').val()) {
+				$('#pwd_msg').text('');
+			}
+		}).keyup(function(){
+			if($('#pwd').val() == '' || $('#pwdChk').val() == '') {
+				$('#pwd_msg').html('<font color="#FF605A">enter 8-20 password</font>');
+			} else if($('#pwd').val().length < 8 || $('#pwdChk').val().length < 8) {
+				$('#pwd_msg').html('<font color="#FF605A">input 8-20 characters</font>');
+			} else if($('#pwd').val() != $('#pwdChk').val()) {
+				$('#pwd_msg').html('<font color="#FF605A">not matched password</font>');
+			} else {
+				$('#pwd_msg').text('');
+			}			
+		});
+		
+		//생년월일
+		$('#birthday').focus(function(){
+			if($(this).val() == '') {
+				$('#birthday_msg').html('<font color="#FF605A">select birthday</font>');
+			}
+		}).blur(function(){
+			if($(this).val() != '') {
+				$('#birthday_msg').text('');
+			}
+		});
+		
+		//성별
+		$('#gender').focus(function(){
+			if($(this).val() == 'list' || $(this).val() == 'list') {
+				$('#gender_msg').html('<font color="#FF605A">select gender</font>');
+			}
+		}).blur(function(){
+			if($(this).val() == 'list') {
+				$('#gender_msg').html('<font color="#FF605A">select gender</font>');
+			} else {
+				$('#gender_msg').text('');				
+			}
+		});
+		
+		//국가
+		$('#country').focus(function(){
+			if($(this).val() == 'list' || $(this).val() == 'list') {
+				$('#country_msg').html('<font color="#FF605A">select country</font>');
+			}
+		}).blur(function(){
+			if($(this).val() == 'list') {
+				$('#country_msg').html('<font color="#FF605A">select country</font>');
+			} else {
+				$('#country_msg').text('');				
+			}
+		});
+		
+		
+		//버튼클릭
+		$('#join_submit').click(function(){
+			var confirm = false;
+			if($('#firstName').val() == '')
+				$('#firstName').focus();
+			else if($('#lastName').val() == '')
+				$('#lastName').focus();
+			else if($('#pwd').val() == '')
+				$('#pwd').focus();
+			else if($('#pwd').val() == '' || 
+					$('#pwd').val() != $('#pwdChk').val() || 
+					($('#pwd').val().length < 8 || $('#pwdChk').val().length < 8))
+				$('#pwdChk').focus();
+			else if($('#birthday').val() == '')
+				$('#birthday').focus();
+			else if($('#gender').val() == 'list')
+				$('#gender').focus();
+			else if($('#country').val() == 'list')
+				$('#country').focus();
+			else if($('input:checkbox[id=agree]').is(':checked') != true) {
+				alert("You should agree with Terms and Conditions.")
+				$('input:checkbox[id=agree]').focus();				
+			}
+			else
+				confirm = true;
+			return confirm;
+		});
 	});
 </script>
 <title>Insert title here</title>
@@ -101,16 +216,19 @@
 			<div class="form-group" style="text-align: center">
 				<c:choose>
 					<c:when test="${ extImage.img_code != null }">
-						<img id="profile" src="${extImage.img_code}" style="width: 150px; height: 150px; border-radius: 50%" onclick="document.getElementById('file').click();">				
+						<a href="javascript:document.getElementById('file').click();"><img id="profile" src="${extImage.img_code}" style="width: 150px; height: 150px; border-radius: 50%"></a>				
 					</c:when>
 					<c:otherwise>
-						<img id="profile" src="img/profile.jpg" style="width: 150px; height: 150px; border-radius: 50%" onclick="document.getElementById('file').click();">
+						<a href="javascript:document.getElementById('file').click();"><img id="profile" src="img/profile.jpg" style="width: 150px; height: 150px; border-radius: 50%"></a>
 					</c:otherwise>
 				</c:choose>
-				<div id="imageCheck">(Add image)</div>
+				<div id="imageCheck"><a href="javascript:fileReset();">(Delete image)</a></div>
 			</div>
 			<div class="form-group">
 				<input type="file" name="file" id="file" class="form-control input-lg" style="display:none;" onchange="document.getElementById('txt').value=this.value;">
+			</div>
+			<div class="form-group" style="text-align: center">
+				<input type="hidden" id="img_code" name="img_code" value="${extImage.img_code}">
 			</div>
 			<br>
 			<div class="form-group">
@@ -118,29 +236,35 @@
 				<div style="color: red; float: right">* required fields</div>
 			</div>
 			<div class="form-group">
-				<input type="text" name="userid" id="userid" class="form-control input-lg"  style="background: white" placeholder="Email" value="${external.userid}" readonly="readonly">
+				<input type="text" name="userid" id="userid" class="form-control input-lg"  style="background: white" placeholder="Email *" value="${external.userid}" readonly="readonly">
 			</div>
 			<div class="row">
 				<div class="col-xs-12 col-sm-6 col-md-6">
 					<div class="form-group">
-                        <input type="text" name="firstName" id="firstName" class="form-control input-lg" placeholder="First Name" value="${external.firstName}">
+                        <input type="text" name="firstName" id="firstName" class="form-control input-lg" placeholder="First Name *" value="${external.firstName}">
+					</div>
+					<div class="form-group">
+						<div id="fname_msg" style="text-align: center"></div>
 					</div>
 				</div>
 				<div class="col-xs-12 col-sm-6 col-md-6">
 					<div class="form-group">
-						<input type="text" name="lastName" id="lastName" class="form-control input-lg" placeholder="Last Name" value="${external.lastName}">
+						<input type="text" name="lastName" id="lastName" class="form-control input-lg" placeholder="Last Name *" value="${external.lastName}">
+					</div>
+					<div class="form-group">
+						<div id="lname_msg" style="text-align: center"></div>
 					</div>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-xs-12 col-sm-6 col-md-6">
 					<div class="form-group">
-						<input type="password" name="pwd" id="pwd" class="form-control input-lg" placeholder="Password" maxlength="20">
+						<input type="password" name="pwd" id="pwd" class="form-control input-lg" placeholder="Password *" maxlength="20">
 					</div>
 				</div>
 				<div class="col-xs-12 col-sm-6 col-md-6">
 					<div class="form-group">
-						<input type="password" name="pwdChk" id="pwdChk" class="form-control input-lg" placeholder="Confirm Password" maxlength="20">
+						<input type="password" name="pwdChk" id="pwdChk" class="form-control input-lg" placeholder="Confirm Password *" maxlength="20">
 					</div>
 				</div>
 			</div>
@@ -148,21 +272,27 @@
 				<div id="pwd_msg" style="text-align: center"></div>			
 			</div>
 			<div class="form-group">
-				<div style="color: #FF605A; font-size: 20px; font-style: bold; float: left">Basic Info</div>
+				<div style="color: #FF605A; font-size: 20px; font-style: bold; float: left">Additional Info</div>
 			</div>
 			<div class="form-group">
-				<input type="text" name="birthday" id="birthday" class="form-control input-lg"  style="background: white" placeholder="Birthday">
+				<input type="text" name="birthday" id="birthday" class="form-control input-lg"  style="background: white" placeholder="Birthday *">
+			</div>
+			<div class="form-group">
+				<div id="birthday_msg" style="text-align: center"></div>			
 			</div>
 			<div class="form-group">
 				<select name="gender" id="gender" class="form-control input-lg">
-					<option value="">Male or Female</option>
+					<option value="list">Gender *</option>
 					<option value="male">Male</option>
 					<option value="female">Female</option>
 				</select>
 			</div>
 			<div class="form-group">
+				<div id="gender_msg" style="text-align: center"></div>			
+			</div>
+			<div class="form-group">
 						<select name="country" id="country" class="form-control input-lg">
-							<option value="">Country</option>
+							<option value="list">Country *</option>
 							<optgroup label="A"></optgroup>
 							<option value="AF">Afghanistan</option>
 							<option value="AL">Albania</option>
@@ -424,8 +554,11 @@
 							<option value="ZW">Zimbabwe</option>
 						</select>
 					</div>
+				<div class="form-group">
+					<div id="country_msg" style="text-align: center"></div>			
+				</div>
 			<div class="form-group">
-				<textarea class="form-control input-lg" name="introduce" placeholder="(Option) About yourself"></textarea>
+				<textarea class="form-control input-lg" name="introduce" placeholder="Introduce"></textarea>
 			</div>
 			<div class="row">
 				<div class="col-xs-4 col-sm-3 col-md-3">

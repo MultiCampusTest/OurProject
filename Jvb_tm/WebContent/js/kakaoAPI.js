@@ -12,10 +12,10 @@ function loginWithKakao() {
 		    			dataType : 'json',
 		    			success : function(data) {
 		    				if (data.result) {
-		    					alert('Already registered');
+		    					alert('Fail : alreay verified email');
 		    					location.href="loginForm.do";
 		    				} else {
-		    					alert('Verified successfully');
+		    					alert('Success : continue to sign up');
 		    					var form = document.createElement("form");
 		    					form.setAttribute("method", "post");
 		    					form.setAttribute("action", "fbJoinForm.do");
@@ -24,6 +24,7 @@ function loginWithKakao() {
 		    					hiddenField.setAttribute("value", res.kaccount_email);
 		    					hiddenField.setAttribute("name", "userid");
 		    					form.appendChild(hiddenField);
+		    					Kakao.Auth.logout();
 		    					document.body.appendChild(form);
 		    					form.submit();
 		    				}

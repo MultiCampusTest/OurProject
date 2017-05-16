@@ -5,6 +5,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('')
+	});
+</script>
 </head>
 <body>
 <div style="text-align: center; margin-top: 5%; margin-bottom: 5%">
@@ -21,7 +26,7 @@
 			    	  		<p>
 			    	  			Enter your email address and we will send you a link to reset your password.
 			    	  		</p>
-			    		    <input type="email" name="userid" class="form-control" placeholder="Enter your email">
+			    		    <input type="email" name="userid" class="form-control" placeholder="Enter your email" required="">
 			    		</div>
 			    		<input class="btn btn-primary btn-block" type="submit" value="Check">
 			    	</fieldset>

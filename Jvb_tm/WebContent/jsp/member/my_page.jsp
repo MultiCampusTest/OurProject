@@ -350,18 +350,18 @@ function moreList(){
 
 	<div class="container-fluid">
       <div class="col-lg-12 col-sm-12">
-         <div class="card hovercard">
-            <div class="card-background">
-               <img class="card-bkimg" alt="" src="img/header.jpg">
-            </div>
-            <div class="useravatar">
-               <img alt="" src="img/header.jpg">
-            </div>
-            <div class="card-info">
-               <span class="card-title">${member.firstName} + ${member.lastName}</span>
+<!--          <div class="card hovercard"> -->
+<!--             <div class="card-background"> -->
+<!--                <img class="card-bkimg" alt="" src="img/header.jpg"> -->
+<!--             </div> -->
+<!--             <div class="useravatar"> -->
+<!--                <img alt="" src="img/header.jpg"> -->
+<!--             </div> -->
+<!--             <div class="card-info"> -->
+<%--                <span class="card-title">${member.firstName} + ${member.lastName}</span> --%>
 
-            </div>
-         </div>
+<!--             </div> -->
+<!--          </div> -->
          <div class="btn-pref btn-group btn-group-justified btn-group-lg"
             role="group" aria-label="...">
             <div class="btn-group" role="group">
@@ -499,11 +499,11 @@ function moreList(){
                         </div>
                         <!-- edit form column -->
                         <div class="col-md-8 col-sm-6 col-xs-12 personal-info">
-                           <div class="alert alert-info alert-dismissable">
-                              <a class="panel-close close" data-dismiss="alert">×</a> <i
-                                 class="fa fa-coffee"></i> This is an <strong>.alert</strong>.
-                              Use this to show important messages to the user.
-                           </div>
+<!--                            <div class="alert alert-info alert-dismissable"> -->
+<!--                               <a class="panel-close close" data-dismiss="alert">×</a> <i -->
+<!--                                  class="fa fa-coffee"></i> This is an <strong>.alert</strong>. -->
+<!--                               Use this to show important messages to the user. -->
+<!--                            </div> -->
                            <h3>Personal info</h3>
                            
                               <div class="form-group">
@@ -856,8 +856,15 @@ function moreList(){
 										<div class="sender col-lg-3" id="${i.index }">
 											<input type="hidden" id="msg_condition_${i.index }" value="1">
 											<div class="col-md-4">
-												<img class="userid_img" src="img/profile.jpg" width="50px"
+											<c:if test="${msg_List.msg_send_userid == userid}">
+												<img class="userid_img" src="imageProfileView.do?img_code=${msg_List.msg_receive_userid }" width="50px"
 													height="50px">
+											</c:if>
+											<c:if test="${msg_List.msg_send_userid != userid}">
+												<img class="userid_img" src="imageProfileView.do?img_code=${msg_List.msg_send_userid }" width="50px"
+													height="50px">
+											</c:if>
+											
 											</div>
 											<div class="col-md-8">
 												<c:if test="${msg_List.msg_send_userid == userid}">
@@ -957,8 +964,16 @@ function moreList(){
 												<input type="hidden" id="req_match_condition_${i.index }"
 													value="1">
 												<div class="col-md-4">
-													<img class="userid_img" src="img/profile.jpg" width="50px"
-														height="50px">
+													
+														<img class="userid_img" src="imageProfileView.do?img_code=${res_mch_List.mch_g_userid }" width="50px"
+															height="50px">
+													
+<%-- 													<c:if test="${msg_List.msg_send_userid != userid}"> --%>
+<%-- 														<img class="userid_img" src="imageProfileView.do?img_code=${msg_List.msg_send_userid }" width="50px" --%>
+<!-- 															height="50px"> -->
+<%-- 													</c:if> --%>
+<!-- 													<img class="userid_img" src="img/profile.jpg" width="50px" -->
+<!-- 														height="50px"> -->
 												</div>
 												<div class="col-md-8">
 													<label class="container-fluid control-label">
@@ -1017,8 +1032,10 @@ function moreList(){
 												<input type="hidden" id="matched_condition_${i.index }"
 													value="1">
 												<div class="col-md-4">
-													<img class="userid_img" src="img/profile.jpg" width="50px"
-														height="50px">
+													<img class="userid_img" src="imageProfileView.do?img_code=${acc_mch_List.mch_g_userid }" width="50px"
+															height="50px">
+<!-- 													<img class="userid_img" src="img/profile.jpg" width="50px" -->
+<!-- 														height="50px"> -->
 												</div>
 												<div class="col-md-8">
 													<label class="container-fluid control-label">

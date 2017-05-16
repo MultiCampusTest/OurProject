@@ -7,25 +7,25 @@
 <link rel="stylesheet" href="css/loginForm.css">
 <script type="text/javascript">
 	$(document).ready(function(){
-	    var userid = getCookie("userid");
-	    $('#userid').val(userid); 
+		var userid = getCookie("userid");
+	    $('#form_userid').val(userid); 
 	     
-	    if($('#userid').val() != "") {
-	        $("#remember").attr("checked", true);
+	    if($('#form_userid').val() != "") {
+	        $('#form_checkbox').attr("checked", true);
 	    }
 	     
-	    $("#remember").change(function(){
-	        if($("#remember").is(":checked")){
-	            var userid = $('#userid').val();
+	    $('#form_checkbox').change(function(){
+	        if($('#form_checkbox').is(":checked")){
+	            var userid = $('#form_userid').val();
 	            setCookie("userid", userid, 7);
 	        }else{
 	            deleteCookie("userid");
 	        }
 	    });
 	     
-	    $('#userid').keyup(function(){
-	        if($("#remember").is(":checked")){
-	            var userid = $('#userid').val();
+	    $('#form_userid').keyup(function(){
+	        if($('#form_checkbox').is(":checked")){
+	            var userid = $('#form_userid').val();
 	            setCookie("userid", userid, 7);
 	        }
 	    });
@@ -56,6 +56,28 @@
 	    	}
 	    	return unescape(cookieValue);
 		}
+		
+		
+		
+		
+		$('#form_submit').click(function(){
+			var logEmail = /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+			if($('#form_userid').val() == '') {
+				$('#form_msg').html('<font color="#FF605A">enter email</font>');
+				$('#form_userid').focus();
+				return false;
+			} else if( !logEmail.test($('#form_userid').val()) ) {
+				$('#form_msg').html('<font color="#FF605A">wrong email</font>');
+				$('#form_userid').focus();
+				return false;
+			} else if($('#form_pwd').val() == '') {
+				$('#form_msg').html('<font color="#FF605A">enter password</font>');
+				$('#form_pwd').focus();
+				return false;
+			} else {
+				$('#form_msg').text('');
+			}
+		});
 	});
 </script>
 <title>Sign in</title>
@@ -71,14 +93,15 @@
 				<div class="account-wall">
 					<img class="profile-img" src="img/profile.jpg">
 					<form action="loginProc.do" method="post" class="form-signin">
-						<input type="email" class="form-control" placeholder="Email" id="userid" name="userid" required="">
-						<input type="password" class="form-control" placeholder="Password" id="pwd" name="pwd" required="">
+						<input type="text" class="form-control" placeholder="Email" id="form_userid" name="userid">
+						<input type="password" class="form-control" placeholder="Password" id="form_pwd" name="pwd">
 
 						<div>
-							<span class="remember"><input type="checkbox" value="remember" id="remember">Remember me</span>
+							<span class="remember"><input type="checkbox" value="remember" id="form_checkbox">Remember me</span>
 							<span style="float: right"><a href="findPassword.do">Forgot password</a></span>
 						</div><br>
-						<button type="submit"  id="loginform_submit" class="btn btn-lg btn-primary btn-block">SIGN IN</button>
+						<button type="submit"  id="form_submit" class="btn btn-lg btn-primary btn-block">SIGN IN</button>
+						<div id="form_msg" style="text-align: center"></div>
 					</form>
 				<a href="certiForm.do" class="text-center new-account">Create an account</a>
 				</div>

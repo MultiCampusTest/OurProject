@@ -118,10 +118,22 @@
 		}
 		
 		$('#top_submit').click(function(){
+			var logEmail = /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
 			if($('#top_userid').val() == '') {
 				$('#top_msg').html('<font color="#FF605A">enter email</font>');
+				$('#top_userid').focus();
 				return false;
-			} else if()
+			} else if( !logEmail.test($('#top_userid').val()) ) {
+				$('#top_msg').html('<font color="#FF605A">wrong email</font>');
+				$('#top_userid').focus();
+				return false;
+			} else if($('#top_pwd').val() == '') {
+				$('#top_msg').html('<font color="#FF605A">enter password</font>');
+				$('#top_pwd').focus();
+				return false;
+			} else {
+				$('#top_msg').text('');
+			}
 		});
 	});
 </script>

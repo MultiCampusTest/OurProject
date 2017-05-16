@@ -26,7 +26,7 @@ public class ImageService implements IImageService {
       // int result = imageDao.insertImage(imageVo);
 
       // if (result > 0) {
-      String path = "/Users/LeeGilSun/Upload/";
+      String path = "/Users/student/Upload/";
       File folder = new File(path);
       if (!folder.exists()) {
          folder.mkdirs();
@@ -40,8 +40,7 @@ public class ImageService implements IImageService {
          String fileName = files.get(i).getOriginalFilename();
          int fileSize = (int) files.get(i).getSize();
 
-         String ext = fileName.substring(fileName.lastIndexOf('.'));
-         String fileuri = path + uuid + ext;
+         String fileuri = path + uuid;
 
 //         ImageVo image = new ImageVo();
 

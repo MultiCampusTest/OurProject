@@ -52,8 +52,23 @@
 		
 	
 	$(document).ready(function(){
+		
+		//정보입력 예외 처리
 		$('#userid').click(function(){
 			alert("You can't change verified email");
+		});
+		
+		$('input[type=password]').keyup(function () {
+			if($('#pwd').val() != $('#pwdChk').val()) {
+				$('#pwd_msg').html('<font color="#FF605A">not matched password</font>');
+			} else {
+				$('#pwd_msg').text('');
+			}
+		});
+		
+		//제출버튼 예외 처리
+		$('#join_submit').click(function(){
+			
 		});
 		
 	});
@@ -82,7 +97,7 @@
 <div class="row">
     <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
 		<form action="joinProc.do" method="post" role="form" enctype="multipart/form-data">
-			<h1 style="text-align: center">Sign Up&nbsp;<small>It's free and always will be.</small></h1><br>
+			<h1 style="text-align: center">Sign Up</h1><br>
 			<div class="form-group" style="text-align: center">
 				<c:choose>
 					<c:when test="${ extImage.img_code != null }">
@@ -97,8 +112,13 @@
 			<div class="form-group">
 				<input type="file" name="file" id="file" class="form-control input-lg" style="display:none;" onchange="document.getElementById('txt').value=this.value;">
 			</div>
+			<br>
 			<div class="form-group">
-				<input type="email" name="userid" id="userid" class="form-control input-lg"  style="background: white" placeholder="Email" value="${external.userid}" readonly="readonly">
+				<div style="color: #FF605A; font-size: 20px; font-style: bold; float: left">Basic Info</div>
+				<div style="color: red; float: right">* required fields</div>
+			</div>
+			<div class="form-group">
+				<input type="text" name="userid" id="userid" class="form-control input-lg"  style="background: white" placeholder="Email" value="${external.userid}" readonly="readonly">
 			</div>
 			<div class="row">
 				<div class="col-xs-12 col-sm-6 col-md-6">
@@ -123,6 +143,12 @@
 						<input type="password" name="pwdChk" id="pwdChk" class="form-control input-lg" placeholder="Confirm Password" maxlength="20">
 					</div>
 				</div>
+			</div>
+			<div class="form-group">
+				<div id="pwd_msg" style="text-align: center"></div>			
+			</div>
+			<div class="form-group">
+				<div style="color: #FF605A; font-size: 20px; font-style: bold; float: left">Basic Info</div>
 			</div>
 			<div class="form-group">
 				<input type="text" name="birthday" id="birthday" class="form-control input-lg"  style="background: white" placeholder="Birthday">
@@ -411,12 +437,12 @@
 				<div class="col-xs-8 col-sm-9 col-md-9">
 					 By clicking <strong class="label label-primary" style="background: #FF605A">Submit</strong>, you agree to the <a href="#" data-toggle="modal" data-target="#t_and_c_m">Terms and Conditions</a> set out by this site, including our Cookie Use.
 				</div>
-			</div>
+			</div><br>
 			
 			<div class="row">
 				<div class="col-xs-12 col-md-6">
 				<div class="form-group">
-				<input type="submit" value="SUBMIT" class="btn btn-primary btn-block btn-lg"></div>
+				<input type="submit" id="join_submit" value="SUBMIT" class="btn btn-primary btn-block btn-lg"></div>
 				</div>
 				<div class="col-xs-12 col-md-6">
 				<div class="form-group">

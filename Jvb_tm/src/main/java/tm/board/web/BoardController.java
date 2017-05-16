@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
@@ -26,6 +27,8 @@ import tm.board.vo.CommentsVo;
 import tm.board.vo.ContentsVo;
 import tm.image.service.ImageService;
 import tm.image.vo.ImageVo;
+import tm.matching.service.IMatchingService;
+import tm.matching.vo.MatchingVo;
 
 @Controller
 public class BoardController {
@@ -36,6 +39,8 @@ public class BoardController {
 	private CommentsService commentsService;
 	@Autowired
 	private ImageService imageService;
+	@Autowired
+	private IMatchingService matchingService;
 	
 	//메인화면
 	@RequestMapping("main.do")
@@ -258,10 +263,20 @@ public class BoardController {
 
 
 	@RequestMapping("commentsWrite.do")
-	public ModelAndView commentsWrite(CommentsVo comments, String parent_cm, String site){
+	public ModelAndView commentsWrite(HttpSession session, CommentsVo comments, String parent_cm, String site, String b_code, String b_writer){
 		ModelAndView mav = new ModelAndView();
+//		String mch_g_userid = (String) session.getAttribute("userid");
 		commentsService.insertComments(comments, parent_cm);
+//		System.out.println(b_code);
 		mav.setViewName("redirect:"+site+"View.do?boardIdx="+comments.getB_idx());
+//		if(b_code.equals('g')){
+//			MatchingVo matchingVo=new MatchingVo();
+//			matchingVo.setMch_t_userid(b_writer);
+//			matchingVo.setMch_g_userid(mch_g_userid);
+//			matchingVo.setB_idx(comments.getB_idx());
+//			boolean result=matchingService.matchingSend(matchingVo);
+//			
+//		}
 		return mav;
 	}
 	@RequestMapping("commentsUpdate.do")

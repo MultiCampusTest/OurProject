@@ -50,7 +50,7 @@
          
          <hr>
          <c:choose>
-			<c:when test="${userid != admin }">
+			<c:when test="${userid == admin }">
 				<input type="button" class="btn btn-primary" value="Modify"
 						style="float:left;" onclick="location.href='noticeModifyForm.do?boardIdx=${notice.boardIdx}'">
 			</c:when>

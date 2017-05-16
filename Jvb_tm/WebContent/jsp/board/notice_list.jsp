@@ -90,7 +90,7 @@ display: inline-block;
 			</tbody>
 		</table>
 		<c:choose>
-			<c:when test="${userid != admin }">
+			<c:when test="${userid == admin }">
 				<input type="button" class="btn btn-primary" value="Write" onclick="location.href='noticeWriteForm.do'">
 			</c:when>
 			<c:otherwise>

@@ -35,7 +35,7 @@ public class MemberController {
 	
 	@Autowired
 	private MatchingService matchingService;
-	
+	 
 	@Autowired
 	private ImageService imageService;
 	

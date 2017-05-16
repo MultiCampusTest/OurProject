@@ -8,6 +8,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <!-- <link rel="stylesheet" href="css/review.css"> -->
+<style type="text/css">
+	.userid_img {
+		border-radius: 50em;
+		 -webkit-transition: all 0.3s ease-in-out;
+		  -moz-transition: all 0.3s ease-in-out;
+		   -o-transition: all 0.3s ease-in-out;
+		    -ms-transition: all 0.3s ease-in-out;
+		     transition: all 0.3s ease-in-out; }
+</style>
+
 <script src="js/comments.js"></script>
 </head>
 <body>
@@ -111,7 +121,9 @@
         		<c:forEach var="comments" items="${comments}" varStatus="status">
         			<div class="media" style="margin-left : ${25*comments.cm_depth}px">
            				<a class="pull-left" href="#">
-                 		<img class="media-object" src="http://placehold.it/64x64" alt="">
+           					<img class="userid_img" src="imageProfileView.do?img_code=${comments.cm_writer }"
+                              	 width="50px" height="50px">
+<!--                  			<img class="media-object" src="http://placehold.it/64x64" alt=""> -->
             			</a>
              			<div class="media-body">
                  		<h4 class="media-heading">${comments.cm_writer }

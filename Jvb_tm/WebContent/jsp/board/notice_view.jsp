@@ -120,7 +120,9 @@
         		<c:forEach var="comments" items="${comments}" varStatus="status">
         			<div class="media" style="margin-left : ${25*comments.cm_depth}px">
            				<a class="pull-left" href="#">
-                 		<img class="media-object" src="http://placehold.it/64x64" alt="">
+           						<img class="userid_img" src="imageProfileView.do?img_code=${comments.cm_writer }"
+                              	 width="50px" height="50px">
+<!--                  			<img class="media-object" src="http://placehold.it/64x64" alt=""> -->
             			</a>
              			<div class="media-body">
                  		<h4 class="media-heading">${comments.cm_writer }

@@ -159,9 +159,11 @@ public class MemberController {
 	
 	//회원가입 요청
 	@RequestMapping(method=RequestMethod.POST, value="joinProc.do")
-	public ModelAndView joinProc(MemberVo memberVo, MultipartHttpServletRequest file) throws Exception {
+	public ModelAndView joinProc(MemberVo memberVo, MultipartHttpServletRequest req) throws Exception {
 		ModelAndView mav = new ModelAndView();
-		memberService.memberJoin(memberVo, file);
+		memberService.memberJoin(memberVo);
+		ImageVo imageVo = new ImageVo();
+		imageService.insertImg(imageVo, memberVo.getUserid(), req);
 		mav.addObject("f_name", memberVo.getFirstName());
 		mav.setViewName("member/join_result");
 		return mav;

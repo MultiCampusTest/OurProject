@@ -39,10 +39,8 @@ public class MemberService implements IMemberService {
 	private ImageService imageService;
 
 	@Override
-	public void memberJoin(MemberVo memberVo, MultipartHttpServletRequest req) {
+	public void memberJoin(MemberVo memberVo) {
 		memberDao.memberInsert(memberVo);
-		ImageVo imageVo = new ImageVo();
-		imageService.insertImg(imageVo, memberVo.getUserid(), req);
 	}
 	
 

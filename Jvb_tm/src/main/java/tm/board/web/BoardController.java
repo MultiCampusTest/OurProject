@@ -58,8 +58,12 @@ public class BoardController {
 	}
 	
 	@RequestMapping("noticeWriteForm.do")
-	public String noticeWriteForm() {
-		return "board/notice_write_form";
+	public String noticeWriteForm(String userid) {
+		if(userid.equals("admin")){
+			return "board/notice_write_form"; 
+		} else {
+			return "board/notice_list";
+		}
 	}
 	
 	@RequestMapping(value="noticeWrite.do", method=RequestMethod.POST)

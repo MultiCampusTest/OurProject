@@ -90,11 +90,11 @@ display: inline-block;
 			</tbody>
 		</table>
 		<c:choose>
-			<c:when test="${userid == admin }">
-				<input type="button" class="btn btn-primary" value="Write" onclick="location.href='noticeWriteForm.do'">
+			<c:when test="${userid != admin || userid==null }">
+				<input type="button" class="btn btn-primary" value="관리자가아니네?" onclick="location.href='main.do'">
 			</c:when>
 			<c:otherwise>
-				<input type="button" class="btn btn-primary" value="관리자가아니네?" onclick="location.href='main.do'">
+				<input type="button" class="btn btn-primary" value="Write" onclick="location.href='noticeWriteForm.do'">
 			</c:otherwise>
 		</c:choose>
 		<br>

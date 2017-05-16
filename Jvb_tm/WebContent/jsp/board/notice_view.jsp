@@ -49,12 +49,16 @@
          </p>
          
          <hr>
-         <c:choose>
-			<c:when test="${userid == admin }">
-				<input type="button" class="btn btn-primary" value="Modify"
-						style="float:left;" onclick="location.href='noticeModifyForm.do?boardIdx=${notice.boardIdx}'">
-			</c:when>
-		</c:choose>
+<%--          <c:choose> --%>
+<%-- 			<c:when test="${userid == admin}"> --%>
+<!-- 				<input type="button" class="btn btn-primary" value="Modify" -->
+<%-- 						style="float:left;" onclick="location.href='noticeModifyForm.do?boardIdx=${notice.boardIdx}'"> --%>
+<%-- 			</c:when> --%>
+<%-- 		</c:choose> --%>
+		 <c:if test="${userid == notice.userid}">
+		 	<input type="button" class="btn btn-primary" value="Modify" style="float:left;" onclick="location.href='noticeModifyForm.do?boardIdx=${notice.boardIdx}'">
+		 </c:if>
+			<input type="button" class="btn btn-primary" value="LIST" onclick="location.href='noticeList.do?userid=${userid}'">
 		<br>
 		<br>
 

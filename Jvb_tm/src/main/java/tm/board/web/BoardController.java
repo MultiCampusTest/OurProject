@@ -152,6 +152,8 @@ public class BoardController {
 		String[] latLngArr = req.getParameterValues("latLng");
 		String userid = (String)(req.getSession().getAttribute("userid"));
 		
+	
+		
 		boardService.insertGuide(userid, board, contents, latLngArr);
 		return "redirect:guideView.do?boardIdx="+board.getBoardIdx();
 		

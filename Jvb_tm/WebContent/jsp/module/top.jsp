@@ -116,6 +116,13 @@
 	    	}
 	    	return unescape(cookieValue);
 		}
+		
+		$('#top_submit').click(function(){
+			if($('#top_userid').val() == '') {
+				$('#top_msg').html('<font color="#FF605A">enter email</font>');
+				return false;
+			} else if()
+		});
 	});
 </script>
 
@@ -226,17 +233,18 @@
 												<form action="loginProc.do" method="post" class="form" role="form" accept-charset="UTF-8">
 													<div class="form-group">
 														<label class="sr-only" for="exampleInputEmail2">Email</label>
-														<input type="email" class="form-control" id="top_userid" name="userid" placeholder="Email" required="">
+														<input type="text" class="form-control" id="top_userid" name="userid" placeholder="Email">
 													</div>
 													<div class="form-group">
 														<label class="sr-only" for="exampleInputPassword2">Password</label>
-														<input type="password" class="form-control" id="top_pwd" name="pwd" placeholder="Password" required="">
+														<input type="password" class="form-control" id="top_pwd" name="pwd" placeholder="Password">
 													</div>
 													<div class="checkbox">
 														<label><input type="checkbox" id="top_checkbox"> Remember me</label>
 													</div>
 													<div class="form-group">
 														<button type="submit" id="top_submit" class="btn btn-primary btn-block">Sign in</button>
+														<div id="top_msg" style="text-align: center"></div>
 													</div>
 												</form>
 											</div>
@@ -247,9 +255,6 @@
 									<div class="row">
 										<div class="col-md-12" style="text-align: center"> 
 											<a href="findPassword.do">forgot your password?</a>
-<!-- 										<div class="social-buttons col-md-12"> -->
-<!-- 										<a href="javascript:facebook_btn();" class="btn btn-fb"><i class="fa fa-facebook"></i> Facebook</a> -->
-<!-- 										<a href="javascript:twitter_btn()" class="btn btn-google"><i class="fa fa-google"></i> Google</a> -->
 										</div>
 									</div>
 									</ul>

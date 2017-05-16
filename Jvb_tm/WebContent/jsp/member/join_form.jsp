@@ -56,18 +56,6 @@
 			alert("You can't change verified email");
 		});
 		
-		var pwd, pwdChk = "";
-		$('input[type=password').keyup(function(){
-			pwd = $('#pwd').val();
-			pwdChk = $('#pwdChk').val();
-			if(pwd != pwdChk) {
-				$('#checkMsg').html('<font color="#FF605A">reenter password</font>');
-			} else {
-				$('#checkMsg').text('');
-			}
-		});
-		
-		
 	});
 </script>
 <title>Insert title here</title>
@@ -135,9 +123,6 @@
 						<input type="password" name="pwdChk" id="pwdChk" class="form-control input-lg" placeholder="Confirm Password" maxlength="20">
 					</div>
 				</div>
-			</div>
-			<div class="form-group">
-				<span id="checkMsg">aaa</span>
 			</div>
 			<div class="form-group">
 				<input type="text" name="birthday" id="birthday" class="form-control input-lg"  style="background: white" placeholder="Birthday">

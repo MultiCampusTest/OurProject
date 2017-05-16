@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
@@ -158,9 +159,9 @@ public class MemberController {
 	
 	//회원가입 요청
 	@RequestMapping(method=RequestMethod.POST, value="joinProc.do")
-	public ModelAndView joinProc(MemberVo memberVo, MultipartHttpServletRequest req) throws Exception {
+	public ModelAndView joinProc(MemberVo memberVo, MultipartHttpServletRequest file) throws Exception {
 		ModelAndView mav = new ModelAndView();
-		memberService.memberJoin(memberVo, req);
+		memberService.memberJoin(memberVo, file);
 		mav.addObject("f_name", memberVo.getFirstName());
 		mav.setViewName("member/join_result");
 		return mav;

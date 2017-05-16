@@ -16,6 +16,7 @@ function fbAjaxRequest(response) {
 		success : function(data) {
 			if (data.result) {
 				alert('Fail : alreay verified email');
+				logout();
 				location.href="loginForm.do";
 			} else {
 				alert('Success : continue to sign up');
@@ -43,10 +44,8 @@ function fbAjaxRequest(response) {
 					hiddenField.setAttribute("name", key);
 					form.appendChild(hiddenField);
 				}
-				FB.logout(function(response) {
-					  // user is now logged out
-				});
 				document.body.appendChild(form);
+				logout();
 				form.submit();
 			}
 		}, error : function() {
@@ -67,6 +66,12 @@ function facebook_btn() {
 		}
 	}, { scope : 'public_profile, email', return_scopes : true });
 };
+
+function logout() {
+	FB.logout(function(response) {
+		  // user is now logged out
+	});
+}
 
 (function(d, s, id) {
 	var js, fjs = d.getElementsByTagName(s)[0];

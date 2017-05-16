@@ -167,7 +167,7 @@ $("#message").click(function(){
               			</div>
               				<c:if test="${comments.cm_delete != 'Y' }">
 	              				<c:if test="${comments.cm_writer == userid }">
-	              					<a onclick="location.href='commentsDelete.do?cm_idx=${comments.cm_idx}&b_idx=${comments.b_idx }&site=notice'"> 삭제</a>
+	              					<a onclick="location.href='commentsDelete.do?cm_idx=${comments.cm_idx}&b_idx=${comments.b_idx }&site=guide'"> 삭제</a>
 	              					<a onclick="commentsUpdate(${comments.cm_idx})"> 수정</a>
 	              				</c:if>
 	              				<c:if test="${userid != null }">

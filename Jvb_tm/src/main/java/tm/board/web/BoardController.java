@@ -170,7 +170,7 @@ public class BoardController {
 		ModelAndView mav = new ModelAndView();
 		mav.addAllObjects(boardService.readGuide(boardIdx));
 		mav.addObject("userid", userid);
-//		mav.addObject("comments",commentsService.selectComments(boardIdx)); 
+		mav.addObject("comments",commentsService.selectComments(boardIdx)); 
 		mav.setViewName("board/guide_view");
 
 		return mav;

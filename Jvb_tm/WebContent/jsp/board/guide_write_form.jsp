@@ -40,36 +40,35 @@
 	//자동완성
 	var autoComplete = new google.maps.places.Autocomplete(document.getElementById('pac-input'));
 	autoComplete.addListener('place_changed', function() {
-			var place = autoComplete.getplace();
-			geocodeAddress(geocoder, map);
+// 			var place = autoComplete.getplace();
+// 			geocodeAddress(geocoder, map);
 	});
 
-   function setMapOnAll(map) {
-       for (var i = 0; i < markers.length; i++) {
-         markers[i].setMap(map);
-       }
- 	   for(var i=0; i<polys.length; i++){
- 		   polys[i].setMap(map);
- 	   }
-   }
-   
-   function clearMarkers() {
-       setMapOnAll(null);
-   }
-
-   function deleteMarkers() {
-       clearMarkers();
-       markers = [];
-       path = [];
-       polys = [];
-     }
+	function deleteMarkers() {
+		   
+		   for(var i = 0; i < markers.length; i++) {
+		         markers[i].setMap(null);
+		       }
+		   for(var i=0; i<polys.length; i++){
+		 		   polys[i].setMap(null);
+		 	   }
+		   
+	       markers = [];
+	       path = [];
+	       polys = [];
+	       poly = new google.maps.Polyline({
+		        strokeColor: '#000000',
+		        strokeOpacity: 1.0,
+		        strokeWeight: 3
+		      });
+	   	   poly.setMap(map);
+	     }
     
    document.getElementById('delete').addEventListener('click', function() {
 	  deleteMarkers();
 	  loc = [];
 	  latLng = [];
 	  $('#input_latLng').empty();
-	  
    });
 
     document.getElementById('submit').addEventListener('click', function() {
@@ -211,7 +210,8 @@ $(function() {
 	    <hr>
 	    <div class="form-group">
           <font style="font-size:20px">CONTENT</font>	 
-          <textarea class="form-control" placeholder="Insert Content" rows="14" name="contents"></textarea>
+          <textarea class="form-control" placeholder="Insert Content" rows="14"
+          		name="contents" style="resize:none;"></textarea>
 		</div>
 		<div class="form-group">
 			<input type="hidden" value="g" name="code">

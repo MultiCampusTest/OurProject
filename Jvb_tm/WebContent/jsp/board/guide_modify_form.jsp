@@ -18,19 +18,17 @@
 
 	var polys =[];
 	var map;
-	var i = 0;
-	var loc = [];
 	var latLng = [];
 	var markers = [];
 	var cnt = 0;
-	var cnt2 = 0;
 	var list = [];
 
   function initMap() {
-	var count = 0;
+	var latLng_count = 0;
 	<c:forEach items="${mapPosition}" var="latLng" >
-		list[count] = new google.maps.LatLng ${latLng.latLng};
-		count++;
+		list[latLng_count] = new google.maps.LatLng ${latLng.latLng};
+		$('#input_latLng').append('<input type="hidden" name="latLng" value="${latLng.latLng}">');
+		latLng_count++;
 	</c:forEach>
 	  
     map = new google.maps.Map(document.getElementById('map'), {
@@ -56,25 +54,20 @@
 	//자동완성
 	var autoComplete = new google.maps.places.Autocomplete(document.getElementById('pac-input'));
 	autoComplete.addListener('place_changed', function() {
-			var place = autoComplete.getplace();
-			geocodeAddress(geocoder, map);
+// 			var place = autoComplete.getplace();
+// 			geocodeAddress(geocoder, map);
 	});
 
-   function setMapOnAll(map) {
-       for (var i = 0; i < markers.length; i++) {
-         markers[i].setMap(map);
-       }
- 	   for(var i=0; i<polys.length; i++){
- 		   polys[i].setMap(map);
- 	   }
-   }
-   
-   function clearMarkers() {
-       setMapOnAll(null);
-   }
 
    function deleteMarkers() {
-       clearMarkers();
+	   
+	   for(var i = 0; i < markers.length; i++) {
+	         markers[i].setMap(null);
+	       }
+	   for(var i=0; i<polys.length; i++){
+	 		   polys[i].setMap(null);
+	 	   }
+	   
        markers = [];
        path = [];
        polys = [];
@@ -88,14 +81,12 @@
     
    document.getElementById('delete').addEventListener('click', function() {
 	  deleteMarkers();
-	  loc = [];
 	  latLng = [];
 	  $('#input_latLng').empty();
    });
 
     document.getElementById('submit').addEventListener('click', function() {
       geocodeAddress(geocoder, map);
-      i++;
     });
   }
   
@@ -133,14 +124,13 @@
         polys.push(poly);
         
         resultsMap.setCenter(results[0].geometry.location);
-        
-        loc[i] = address;
-        latLng[i] = results[0].geometry.location;
-        
-        
-        $('#input_latLng').append('<input type="hidden" name="latLng" value="'+latLng[i]+'">');
 
-
+        latLng[cnt] = results[0].geometry.location;
+        $('#input_latLng').append('<input type="hidden" name="latLng" value="'+latLng[cnt]+'">');
+		cnt++;
+		
+		
+		
       } else {
         alert('Geocode was not successful for the following reason: ' + status);
       }
@@ -164,20 +154,6 @@ $(document).ready(function(){
 			$(this).attr('selected','selected');
 		}	
 	});
-	
-	
-	var list = [];
-	
-	<c:forEach items="${mapPosition}" var="latLng">
-		list.push("${latLng.latLng}");
-	</c:forEach>
-	
-	for(var i=0; i<list.length; i++){
-		
-	
-		
-	}
-	
 	
 })
 </script>
@@ -274,7 +250,8 @@ $(document).ready(function(){
 	    <hr> 
 	    <div class="form-group">
           <font style="font-size:20px">CONTENT</font>	 
-          <textarea class="form-control" placeholder="Insert Content" rows="14" name="contents">${contents.contents }</textarea>
+          <textarea class="form-control" placeholder="Insert Content" rows="14" 
+          			name="contents" style="resize:none;">${contents.contents }</textarea>
 		</div>
 		<div class="form-group">
 			<input type="hidden" value="g" name="code">

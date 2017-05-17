@@ -161,8 +161,6 @@ public class BoardController {
 		String[] latLngArr = req.getParameterValues("latLng");
 		String userid = (String)(req.getSession().getAttribute("userid"));
 		
-	
-		
 		boardService.insertGuide(userid, board, contents, latLngArr);
 		return "redirect:guideView.do?boardIdx="+board.getBoardIdx();
 		
@@ -175,8 +173,8 @@ public class BoardController {
 		ModelAndView mav = new ModelAndView();
 		mav.addAllObjects(boardService.readGuide(boardIdx));
 		mav.addObject("userid", userid);
-		mav.addObject("comments",commentsService.selectComments(boardIdx)); 
-		mav.addObject("matchingComplete", matchingService.matchingComplete(boardIdx));
+//		mav.addObject("comments",commentsService.selectComments(boardIdx)); 
+//		mav.addObject("matchingComplete", matchingService.matchingComplete(boardIdx));
 		mav.setViewName("board/guide_view");
 
 		
@@ -191,6 +189,24 @@ public class BoardController {
 		mav.setViewName("board/guide_modify_form");
 		return mav;		
 	}
+	
+	@RequestMapping(value="guideModify.do", method=RequestMethod.POST)
+	public String guideModify(HttpServletRequest req,
+							  BoardVo board,
+							  ContentsVo contents){
+				String[] latLngArr = req.getParameterValues("latLng");
+		
+				boardService.updateGuide(board, contents, latLngArr);
+				return "redirect:guideView.do?boardIdx="+board.getBoardIdx();
+	}
+	
+	@RequestMapping(value="guideDelete.do", method=RequestMethod.GET)
+	public String guideDelete(int boardIdx){
+				boardService.deleteGuide(boardIdx);
+				return "redirect:guideList.do";
+	}
+	
+
 
 
 	// review_board
@@ -246,7 +262,7 @@ public class BoardController {
 		return mav;
 	}
 	
-	@RequestMapping("reviewUpdate.do")
+		@RequestMapping("reviewUpdate.do")
 	public ModelAndView reviewUpdate(BoardVo board, ContentsVo contents, MultipartHttpServletRequest req){
 		ModelAndView mav = new ModelAndView();
 		
@@ -255,7 +271,7 @@ public class BoardController {
 		
 		//게시판은 update, 이미지는 delete
 		boardService.updateReview(board2, contents2);
-		imageService.deleteReviewImg(Integer.toString(board.getBoardIdx()));
+//		imageService.deleteReviewImg(Integer.toString(board.getBoardIdx()));
 		
 		//이미지는 다시 insert
 		imageService.insertReviewImg(board2, req);

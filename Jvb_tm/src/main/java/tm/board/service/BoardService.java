@@ -250,8 +250,29 @@ public class BoardService {
 			mapPositionDao.insertMapPosition(mapPosition);
 		}
 	}
+
+
+	public void updateGuide(BoardVo board, ContentsVo contents, String[] latLngArr){
+		boardDao.updateNotice(board);
+		contentsDao.updateContents(contents);
+		mapPositionDao.deleteMapPosition(board.getBoardIdx());
+		
+		for(int i=0; i<latLngArr.length; i++){
+			MapPositionVo mapPosition = new MapPositionVo();
+			mapPosition.setBoardIdx(board.getBoardIdx());
+			mapPosition.setLatLng(latLngArr[i]);
+			mapPosition.setMarkerSeq(i);
+			mapPositionDao.insertMapPosition(mapPosition);
+		}
+		
+	}
 	
-	
+	public void deleteGuide(int boardIdx){
+		boardDao.deleteBoard(boardIdx);
+		contentsDao.deleteContents(boardIdx);
+		mapPositionDao.deleteMapPosition(boardIdx);
+		
+	}
 
 	
 	public HashMap<String, Object> readGuide(int boardIdx){

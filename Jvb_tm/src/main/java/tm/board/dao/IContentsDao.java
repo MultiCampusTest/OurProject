@@ -12,7 +12,7 @@ public interface IContentsDao {
 	public int updateContents(ContentsVo contents);
 	
 	//delete
-	public int deleteContents(int b_idx);
+	public int deleteContents(int boardIdx);
 	
 	//select
 	public ContentsVo selectOneContents(int boardIdx);

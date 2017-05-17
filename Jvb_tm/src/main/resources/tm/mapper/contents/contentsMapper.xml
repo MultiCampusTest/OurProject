@@ -29,6 +29,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where b_idx = #{boardIdx}
 	</update>
 	
+	<delete id="deleteContents" parameterType="int">
+		DELETE FROM contents
+		WHERE b_idx = #{boardIdx}
+	</delete>
+	
+	
 <!-- 	<select id="getBoardCountByCode" parameterType="String" resultType="int"> -->
 <!-- 		select count(*) from board where b_code=#{code} -->
 <!-- 	</select> -->

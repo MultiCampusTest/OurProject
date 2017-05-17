@@ -22,7 +22,7 @@ public interface IBoardDao {
 	public int updateReview(BoardVo board);
 	
 	//delete
-	public int deleteBoard(int b_idx);
+	public int deleteBoard(int boardIdx);
 	
 	//select
 	public BoardVo selectOneBoard(int boardIdx);

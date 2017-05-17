@@ -45,6 +45,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			#{title},#{startDate},#{endDate},#{userid},sysdate(),0)
 	</insert>
 	
+	<delete id="deleteBoard" parameterType="int">
+		DELETE FROM board
+		WHERE b_idx = #{boardIdx}
+	</delete>
+	
 	<select id="selectOneBoard" parameterType="int" resultMap="board">
 		SELECT * FROM board
 		WHERE b_idx=#{boardIdx}
@@ -186,12 +191,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <!-- 	</update> -->
 
 
- 	<!-- delete --> 
-<!-- 	<delete id="boardDelete" parameterType="int"> -->
-<!-- 		delete from board -->
-<!-- 		where -->
-<!-- 		b_idx=#{b_idx} -->
-<!-- 	</delete> -->
+
 
 
  	<!-- select --> 

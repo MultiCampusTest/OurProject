@@ -94,6 +94,14 @@ public class MatchingService implements IMatchingService {
 		matchingList.put("acc_matchingList", acc_matchingByUserid);
 		matchingList.put("acc_matchingListSize", acc_matchingByUserid.size());
 		return matchingList;
+		
+	}
+
+
+	@Override
+	public MatchingVo matchingComplete(int b_idx) {
+		MatchingVo matchingVo=matchingDao.matchingSelectComplete(b_idx);
+		return matchingVo;
 	}
 
 

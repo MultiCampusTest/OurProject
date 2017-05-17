@@ -132,6 +132,7 @@ $(document).ready(function(){
   
   
 <!-- Comments Form -->
+	<c:if test="${matchingComplete==null }">
          <div class="well">
              <h4>Leave a Comment:</h4>
              <form role="form" action="commentsWrite.do" method="post">
@@ -179,7 +180,12 @@ $(document).ready(function(){
                  <input type="submit" value="수정" class="btn btn-primary">
                  <input type="button" value="취소" class="btn btn-primary" onclick="commentsUpdateCancel()">
              </form>
-         </div>		
+         </div>	
+     </c:if>
+     <c:if test="${matchingComplete!=null }">
+     	안녕 매칭 됐어 댓글 못 써
+     
+     </c:if>	
 
          <hr>
          <!-- Comment List -->

@@ -13,5 +13,7 @@ public interface IMatchingDao {
 	public void matchingFail(int b_idx);
 	public int matchingDelete(int mch_idx);
 	public List<MatchingVo> matchingSelectByUserid(HashMap<String, Object> params);
+	public MatchingVo matchingSelectComplete(int b_idx);
+	
 	
 }

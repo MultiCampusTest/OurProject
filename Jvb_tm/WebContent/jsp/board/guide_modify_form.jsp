@@ -16,27 +16,42 @@
 <link rel="stylesheet" href="css/guideWriteForm.css">
 <script type="text/javascript">
 
-
 	var polys =[];
 	var map;
 	var i = 0;
 	var loc = [];
 	var latLng = [];
 	var markers = [];
-	
+	var cnt = 0;
+	var cnt2 = 0;
+	var list = [];
+
   function initMap() {
+	var count = 0;
+	<c:forEach items="${mapPosition}" var="latLng" >
+		list[count] = new google.maps.LatLng ${latLng.latLng};
+		count++;
+	</c:forEach>
+	  
     map = new google.maps.Map(document.getElementById('map'), {
       zoom: 15,
-      center: {lat: 37.566535, lng: 126.97796919999996}
+      center: list[cnt]
     });
+    
+	
     var geocoder = new google.maps.Geocoder();
     
-	  poly = new google.maps.Polyline({
+	poly = new google.maps.Polyline({
 	        strokeColor: '#000000',
 	        strokeOpacity: 1.0,
 	        strokeWeight: 3
 	      });
     poly.setMap(map);
+    
+    //마커 찍기
+    for (var i = 0; i < list.length; i++) {
+		addMarker();
+	}
     
 	//자동완성
 	var autoComplete = new google.maps.places.Autocomplete(document.getElementById('pac-input'));
@@ -77,6 +92,20 @@
       i++;
     });
   }
+  
+  function addMarker() {
+
+		var marker = new google.maps.Marker({
+			position: list[cnt],
+			map: map
+		});
+		markers.push(marker);
+		
+		path = poly.getPath();
+		path.push(list[cnt]);
+
+		cnt++;
+	}
 
   function geocodeAddress(geocoder, resultsMap) {
     var address = document.getElementById('pac-input').value;

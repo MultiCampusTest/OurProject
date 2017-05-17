@@ -66,7 +66,13 @@
 							<c:choose>
 								<c:when test="${userid != null}">
 									<h1>Singed as <font color="#FF605A">${userid}</font></h1>
-									<img src="http://dynamicinfluence.com/wp-content/uploads/2014/06/StephanieH-Circle-Profile-Pic.png" width="250px">
+									
+										
+											<img src="imageProfileView.do?img_code=${userid } "
+												class="avatar img-circle img-thumbnail profile_img"
+												alt="avatar" style="width: 250px; height: 250px">
+										
+<%-- 									<img src="imageView.do?img_code=${userid }" class="avatar img-circle profile_img"width="250px"> --%>
 								</c:when>
 								<c:otherwise>
 								<h1>Welcome !</h1><br>

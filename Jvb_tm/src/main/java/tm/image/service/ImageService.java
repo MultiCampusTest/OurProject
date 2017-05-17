@@ -177,8 +177,9 @@ public class ImageService implements IImageService {
             } catch (IOException e) {
                e.printStackTrace();
             }
-            
-            imageDao.insertImage(image);
+            if(!fileName.equals("")){
+            	imageDao.insertImage(image);            	
+            }
          }
 	}
 
@@ -222,9 +223,15 @@ public class ImageService implements IImageService {
 	} 
 	
 	@Override
-	public void deleteReviewImg(String img_code) {
+	public void deleteReviewImg(String img_code, MultipartHttpServletRequest req) {
 		// TODO Auto-generated method stub
-		imageDao.deleteByImageCode(img_code);
+		List<MultipartFile> files = req.getFiles("file");
+		for(int i=0; i<files.size(); i++){
+			String filename = files.get(i).getOriginalFilename();
+			if(!filename.equals("")){
+				imageDao.deleteByImageCode(img_code);				
+			}
+		}
 	} 
    
    

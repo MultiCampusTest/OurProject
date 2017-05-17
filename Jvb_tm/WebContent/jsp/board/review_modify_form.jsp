@@ -9,8 +9,31 @@
 <title>Insert title here</title>
 
 <link rel="stylesheet" href="css/review.css">
-<!-- <script src="js/review.js"></script> -->
+<script src="js/review.js"></script>
 <script type="text/javascript">
+$(document).ready(function(){
+	var cnt = 0;
+	$('#fileAdd').click(function(){
+		var div = document.getElementById('preDiv');
+		$('#container').append( $(div).html() );
+		$('.ex_file').each(function(index){
+			$(this).attr('id', 'idtest'+index);
+		});
+		$('.label').each(function(index) {
+			$(this).attr('id', 'labelid'+index);
+			$(this).attr('for', 'idtest'+index);
+			
+		})
+		$('.ex_image').each(function(index){
+			$(this).attr('id', 'img'+index);
+			if($(this).attr('id').substring(3) > cnt){
+				$(this).attr('src', 'img/review/noimage.png');
+			}
+		})
+		cnt++;
+	})
+});
+
 function readURL(input) {
 	alert($(input).attr('id'));
 	var id = $(input).attr('id');
@@ -26,7 +49,6 @@ function readURL(input) {
 	}
 }
 </script>
-
 </head>
 <body>
 	<div class="container">
@@ -34,6 +56,22 @@ function readURL(input) {
 			<h3>후기게시판</h3>
 		</div>
 		<div class="row">
+			<button class="btn btn-primary" id="fileAdd">파일 추가</button>
+			<div  id="preDiv" class="table-responsive" id="reviewPhoto" style="display: none;">
+				<table id="preTable" class="table table-condensed" style="height: inherit; vertical-align: middle;">
+						<tr class="clearfix" align="center" style="vertical-align: center">
+							<td style="width: 35%; vertical-align: middle;">
+								<div class="filebox" style="padding-top: 10px">
+									<label for="idtestfirst" id="label" class="label">choose file</label> 
+									<input type="file" id="idtestfirst" name="file" class="ex_file" onchange="readURL(this)">
+								</div>
+							</td>
+							<td style="width: 65%; height: 80%">
+								<img id="imgfirst" class="ex_image" src="img/review/noimage.png">
+							</td>
+						</tr>
+				</table>
+			</div>
 			<form action="reviewUpdate.do" method="post" enctype="multipart/form-data">
 				<div class="col-md-5">
 					<h2>Photo</h2>
@@ -49,12 +87,13 @@ function readURL(input) {
 										</div>
 									</td>
 									<td style="width: 65%; height: 80%">
-										<input type="hidden" value="${image.img_idx }">
-										<img id="image${image.img_idx }" src="imageView.do?img_idx=${image.img_idx }" style="width: 200px">
+										<img  class="ex_image" id="image${image.img_idx }" src="imageView.do?img_idx=${image.img_idx }" style="width: 200px">
 									</td>
 								</tr>
 							</c:forEach>
 						</table>
+					</div>
+					<div id="container">
 					</div>
 				</div>
 				<div class="col-md-7">

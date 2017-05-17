@@ -29,7 +29,7 @@ public interface IImageService {
    //review관련
    public void insertReviewImg(BoardVo board, MultipartHttpServletRequest req);
    public void updateReviewImg(BoardVo board, MultipartHttpServletRequest req);
-   public void deleteReviewImg(String img_code);
+   public void deleteReviewImg(String img_code, MultipartHttpServletRequest req);
    
    
 

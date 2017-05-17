@@ -136,6 +136,8 @@ $(document).ready(function(){
              <h4>Leave a Comment:</h4>
              <form role="form" action="commentsWrite.do" method="post">
                  <div class="form-group">
+                	 <input type="hidden" name="b_writer" value="${guide.userid }">
+                	 <input type="hidden" name="b_code" value="${guide.code }">
                  	 <input type="hidden" name="b_idx" value="${guide.boardIdx }">
                  	 <input type="hidden" name="cm_writer" value="${userid}">
                  	 <input type="hidden" name="site" value="guide">
@@ -149,14 +151,14 @@ $(document).ready(function(){
 <!--         reComments input, nondisplay -->
          <div class="well" style="display: none;" id="reComments">
              <h4>Leave a Comment:</h4>
-             <form role="form" action="commentsWrite.do" method="get" name="reForm">
+             <form role="form" action="commentsWrite.do" method="post" name="reForm">
                  <div class="form-group">
-                 	 
+                 	 <input type="hidden" name="b_idx" value="${guide.boardIdx }">
+                 	 <input type="hidden" name="cm_writer" value="${userid}">
                  	 <input type="hidden" name="cm_parent" >
                  	 <input type="hidden" name="parent_cm">
                  	 <input type="hidden" name="cm_depth">
                  	 <input type="hidden" name="site" value="guide">
-                 	 <input type="hidden" name="kimyiseul" value="a">
                      <textarea class="form-control" name="cm_content" rows="3"></textarea>
                  </div>
                  <input type="submit" value="등록" class="btn btn-primary">

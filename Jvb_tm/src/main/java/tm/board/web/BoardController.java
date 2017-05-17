@@ -263,22 +263,27 @@ public class BoardController {
 
 
 	@RequestMapping(value="commentsWrite.do")
-	public ModelAndView commentsWrite(HttpSession session, CommentsVo comments, String parent_cm, String site, String kimyiseul){
+	public ModelAndView commentsWrite(HttpSession session, CommentsVo comments, String parent_cm, String site, String b_writer, String b_code){
 		ModelAndView mav = new ModelAndView();
-//		String mch_g_userid = (String) session.getAttribute("userid");
+		String mch_g_userid = (String) session.getAttribute("userid");
 		commentsService.insertComments(comments, parent_cm);
-		System.out.println("글 작성자? : "+kimyiseul);
+		System.out.println("글 작성자? : "+b_writer+comments.getB_idx()+b_code);
 		System.out.println(site);
 //		System.out.println("댓글이다 보드 코드 받아오니 : "+board_code);
+		if(b_code.equals('g')){
+			System.out.println("????askdjfl;skadjfkljsad");
+			MatchingVo matchingVo=new MatchingVo();
+			matchingVo.setMch_t_userid(b_writer);
+			matchingVo.setMch_g_userid(mch_g_userid);
+			matchingVo.setB_idx(comments.getB_idx());
+			System.out.println(matchingVo.toString());
+			boolean result=matchingService.matchingSend(matchingVo);
+			if(result==true){
+				return mav;
+			}
+			
+		}
 		mav.setViewName("redirect:"+site+"View.do?boardIdx="+comments.getB_idx());
-//		if(b_code.equals('g')){
-//			MatchingVo matchingVo=new MatchingVo();
-//			matchingVo.setMch_t_userid(b_writer);
-//			matchingVo.setMch_g_userid(mch_g_userid);
-//			matchingVo.setB_idx(comments.getB_idx());
-//			boolean result=matchingService.matchingSend(matchingVo);
-//			
-//		}
 		return mav;
 	}
 	@RequestMapping("commentsUpdate.do")

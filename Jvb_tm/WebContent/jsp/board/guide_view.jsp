@@ -25,6 +25,15 @@
 </style>
 
 <script type="text/javascript">
+
+function delete_event(){
+	if(confirm("Are you Serious?") == true){
+		location.href='guideDelete.do?boardIdx=${guide.boardIdx}';
+	}else{
+		return;
+	}
+}
+
 $(document).ready(function(){
 	
 	var list = [];
@@ -102,7 +111,7 @@ $(document).ready(function(){
 	<div class="row">
 		<div class="col-md-6">
 			<p class="lead">
-        	${guide.title }asdf${guide.code }${guide.userid }
+        	 By ${guide.userid }
            </p>
            <div style="font-size:17px;">
             <i class="fa fa-calendar" aria-hidden="true"></i> ${guide.startDate } ~ ${guide.endDate }
@@ -112,16 +121,23 @@ $(document).ready(function(){
     	<div class="col-md-6">
 		    <div class="form-group">
 	          <p class="lead" style="font-size:25px;">
-         		CONTENT
+	          ${guide.title }
          	  </p>
          	  <hr>
-	          <textarea readonly="readonly" rows="19" cols="75" name="contents">${contents.contents }</textarea>
+	          <font class="lead" style="font-size:25px;">
+         		CONTENT
+         	  </font>
+         	  <br>
+	          <textarea class="form-control" placeholder="Insert Content" rows="17" 
+          			name="contents" style="resize:none; background-color:#FFFFFF" readonly="readonly">${contents.contents }</textarea>
 			</div> 
-			<div class="form-group">
+			<div class="form-group"> 
 				<c:choose>
 					<c:when test="${userid eq guide.userid }">
 						<input type="button" value="Modify" class="btn btn-primary" 
 								onclick="location.href='guideModifyForm.do?boardIdx=${guide.boardIdx}'">
+						<input type="button" value="delete" class="btn btn-primary" 
+								onclick="delete_event()">
 					</c:when>
 				</c:choose>
 				<input type="button" value="list" class="btn btn-primary" onclick="location.href='guideList.do'">

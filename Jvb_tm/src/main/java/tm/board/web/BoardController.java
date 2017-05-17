@@ -176,6 +176,7 @@ public class BoardController {
 		mav.addAllObjects(boardService.readGuide(boardIdx));
 		mav.addObject("userid", userid);
 		mav.addObject("comments",commentsService.selectComments(boardIdx)); 
+		mav.addObject("matchingComplete", matchingService.matchingComplete(boardIdx));
 		mav.setViewName("board/guide_view");
 
 		return mav;
@@ -270,22 +271,25 @@ public class BoardController {
 		System.out.println("글 작성자? : "+b_writer+comments.getB_idx()+b_code);
 		System.out.println(site);
 //		System.out.println("댓글이다 보드 코드 받아오니 : "+board_code);
-		if(b_code.equals('g')){
-			System.out.println("????askdjfl;skadjfkljsad");
+		if(b_code.equals("g")){
+			System.out.println("매칭 신청 됩니다.");
 			MatchingVo matchingVo=new MatchingVo();
 			matchingVo.setMch_t_userid(b_writer);
 			matchingVo.setMch_g_userid(mch_g_userid);
 			matchingVo.setB_idx(comments.getB_idx());
 			System.out.println(matchingVo.toString());
-			boolean result=matchingService.matchingSend(matchingVo);
-			if(result==true){
-				return mav;
-			}
-			
+			matchingService.matchingSend(matchingVo);
+
 		}
+		
 		mav.setViewName("redirect:"+site+"View.do?boardIdx="+comments.getB_idx());
 		return mav;
+		
 	}
+	
+	
+	
+	
 	@RequestMapping("commentsUpdate.do")
 	public ModelAndView commentsUpdate(CommentsVo comments, String site){
 		ModelAndView mav = new ModelAndView();

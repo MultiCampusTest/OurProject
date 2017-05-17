@@ -23,6 +23,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="matchingSelectByUserid" parameterType="java.util.HashMap" resultType="matchingVo">
 		select * from matching where mch_code=#{mch_code} and mch_t_userid=#{mch_t_userid} order by mch_date;
 	</select>
+	
+	<select id="matchingSelectComplete" parameterType="int" resultType="matchingVo">
+		select * from matching where mch_code=1 and b_idx=#{b_idx}
+	</select>
 
 
 </mapper>

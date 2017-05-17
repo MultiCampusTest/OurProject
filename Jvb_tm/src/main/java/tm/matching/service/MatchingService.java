@@ -97,6 +97,13 @@ public class MatchingService implements IMatchingService {
 	}
 
 
+	@Override
+	public MatchingVo matchingComplete(int b_idx) {
+		MatchingVo matchingVo=matchingDao.matchingSelectComplete(b_idx);
+		return matchingVo;
+	}
+
+
 	
 
 	

@@ -304,10 +304,13 @@
 					//	                   alert(data.res_matchingListSize);
 					$('.add_matching_section').append(add_section);
 					//	                   $('#mathing_section' + board_idx+'_'+board_title).remove();
-					for (var i = 0; i < res_mchList_size; i++) {
-						$('#mathing_section' + i + '_' + board_title).remove();
-						$('#br_mathing_section' + i + '_' + board_title).remove();
-					}
+					$('#mathing_section' + board_idx + '_' + board_title).remove();
+					
+					
+// 					for (var i = 0; i < res_mchList_size; i++) {
+// 						$('#mathing_section' + i + '_' + board_title).remove();
+// 						$('#br_mathing_section' + i + '_' + board_title).remove();
+// 					}
 					//	                   $('#delete_matching_section' + board_title).remove();
 
 
@@ -1204,20 +1207,21 @@
 							<div class="row" style="text-align: center">
 								<c:forEach varStatus="i" items="${acc_matchingList }"
 									var="acc_mch_List">
+									<c:if test="${acc_mch_List.mch_g_userid==userid }">
 									<div class="guide_matching_section container-fluid">
 										<div class="guide_accept col-lg-3" id="${i.index }">
 											<input type="hidden" id="guide_matched_condition_${i.index }"
 												value="1">
 											<div class="col-md-4">
 												<img class="userid_img"
-													src="imageProfileView.do?img_code=${acc_mch_List.mch_g_userid }"
+													src="imageProfileView.do?img_code=${acc_mch_List.mch_t_userid }"
 													width="50px" height="50px">
 												<!-- 													<img class="userid_img" src="img/profile.jpg" width="50px" -->
 												<!-- 														height="50px"> -->
 											</div>
 											<div class="col-md-8">
 												<label class="container-fluid control-label">
-													${acc_mch_List.mch_g_userid }</label>
+													${acc_mch_List.mch_t_userid }</label>
 											</div>
 										</div>
 										<div class="guide_accepted_matching"
@@ -1234,6 +1238,7 @@
 											</div>
 										</div>
 									</div>
+									</c:if>
 									<br>
 								</c:forEach>
 							</div>
@@ -1405,6 +1410,7 @@
 							<div class="row" style="text-align: center">
 								<c:forEach varStatus="i" items="${acc_matchingList }"
 									var="acc_mch_List">
+									<c:if test="${acc_mch_List.mch_t_userid==userid }">
 									<div class="matching_section container-fluid">
 										<div class="accept col-lg-3" id="${i.index }">
 											<input type="hidden" id="matched_condition_${i.index }"
@@ -1435,6 +1441,7 @@
 											</div>
 										</div>
 									</div>
+									</c:if>
 									<br>
 								</c:forEach>
 							</div>

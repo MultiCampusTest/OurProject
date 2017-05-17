@@ -13,7 +13,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</update>
 	
 	<update id="matchingFail" parameterType="int">
-		update matching set mch_code=3 where b_idx=#{b_idx} and mch_code=0
+		update matching set mch_code=3 where b_idx=#{b_idx} and mch_code=0 or mch_code=2
 	</update>
 	   
 	<delete id="matchingDelete" parameterType="int">

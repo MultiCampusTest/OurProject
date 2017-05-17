@@ -173,8 +173,8 @@ public class BoardController {
 		ModelAndView mav = new ModelAndView();
 		mav.addAllObjects(boardService.readGuide(boardIdx));
 		mav.addObject("userid", userid);
-//		mav.addObject("comments",commentsService.selectComments(boardIdx)); 
-//		mav.addObject("matchingComplete", matchingService.matchingComplete(boardIdx));
+		mav.addObject("comments",commentsService.selectComments(boardIdx)); 
+		mav.addObject("matchingComplete", matchingService.matchingComplete(boardIdx));
 		mav.setViewName("board/guide_view");
 
 		
@@ -285,14 +285,17 @@ public class BoardController {
 
 
 	@RequestMapping(value="commentsWrite.do")
-	public ModelAndView commentsWrite(HttpSession session, CommentsVo comments, String parent_cm, String site, String b_writer, String b_code){
+	public ModelAndView commentsWrite(HttpSession session, CommentsVo comments,
+										String parent_cm, String site, String b_writer,
+											String b_code, int comment_pre_depth){
 		ModelAndView mav = new ModelAndView();
 		String mch_g_userid = (String) session.getAttribute("userid");
 		commentsService.insertComments(comments, parent_cm);
 		System.out.println("글 작성자? : "+b_writer+comments.getB_idx()+b_code);
 		System.out.println(site);
+		System.out.println(comment_pre_depth);
 //		System.out.println("댓글이다 보드 코드 받아오니 : "+board_code);
-		if(b_code.equals("g")){
+		if(b_code.equals("g") && comment_pre_depth==0){
 			System.out.println("매칭 신청 됩니다.");
 			MatchingVo matchingVo=new MatchingVo();
 			matchingVo.setMch_t_userid(b_writer);

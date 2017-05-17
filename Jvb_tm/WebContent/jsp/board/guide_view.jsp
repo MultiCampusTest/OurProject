@@ -155,6 +155,7 @@ $(document).ready(function(){
                  <div class="form-group">
                 	 <input type="hidden" name="b_writer" value="${guide.userid }">
                 	 <input type="hidden" name="b_code" value="${guide.code }">
+                	 <input type="hidden" name="comment_pre_depth" value="0">
                  	 <input type="hidden" name="b_idx" value="${guide.boardIdx }">
                  	 <input type="hidden" name="cm_writer" value="${userid}">
                  	 <input type="hidden" name="site" value="guide">
@@ -170,6 +171,9 @@ $(document).ready(function(){
              <h4>Leave a Comment:</h4>
              <form role="form" action="commentsWrite.do" method="post" name="reForm">
                  <div class="form-group">
+                 	 <input type="hidden" name="b_writer" value="${guide.userid }">
+                	 <input type="hidden" name="b_code" value="${guide.code }">
+                	 <input type="hidden" name="comment_pre_depth" value="1">
                  	 <input type="hidden" name="b_idx" value="${guide.boardIdx }">
                  	 <input type="hidden" name="cm_writer" value="${userid}">
                  	 <input type="hidden" name="cm_parent" >

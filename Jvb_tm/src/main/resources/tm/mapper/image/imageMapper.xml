@@ -52,6 +52,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
       select * from image where img_code=#{img_code}
    </select>
    
+<!--    이미지 코드로 이미지 데이터 삭제 -->
+	<delete id="deleteByImageCode" parameterType="String">
+		DELETE
+		FROM image
+		WHERE img_code=${img_code}
+	</delete>   
+   
    
    
 </mapper>

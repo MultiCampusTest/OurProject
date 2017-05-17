@@ -23,6 +23,8 @@ public interface IImageDao {
    
    public ImageVo selectProfileImageOne(String img_code);
    
+   public int deleteByImageCode(String img_code);
+   
    
    
 }

@@ -220,6 +220,12 @@ public class ImageService implements IImageService {
 		imageDao.insertUrl(params);
 		
 	} 
+	
+	@Override
+	public void deleteReviewImg(String img_code) {
+		// TODO Auto-generated method stub
+		imageDao.deleteByImageCode(img_code);
+	} 
    
    
    

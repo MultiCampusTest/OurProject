@@ -253,8 +253,12 @@ public class BoardController {
 		BoardVo board2 = board;
 		ContentsVo contents2 = contents;
 		
+		//게시판은 update, 이미지는 delete
 		boardService.updateReview(board2, contents2);
-		imageService.updateReviewImg(board, req);
+		imageService.deleteReviewImg(Integer.toString(board.getBoardIdx()));
+		
+		//이미지는 다시 insert
+		imageService.insertReviewImg(board2, req);
 		
 		mav.addObject("review",board2);
 		mav.addObject("contents",contents2);

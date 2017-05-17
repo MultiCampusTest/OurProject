@@ -75,6 +75,17 @@ $(document).ready(function(){
 	});
 	
 	
+// 		var board_code=$('.send_board_code').attr('id');
+// 		$('.send_board_code').attr('value', board_code);
+// 		var board_writer=$('.send_board_writer').attr('id');
+// 		alert(board_writer);
+// 		$('.send_board_writer').attr('value', board_writer);
+// 		var board_aaa=$('.send_board_writer').attr('value');
+// 		alert(board_aaa);
+	
+	
+	
+	
 });
 
 // $("#message").click(function(){
@@ -138,15 +149,14 @@ $(document).ready(function(){
 <!--         reComments input, nondisplay -->
          <div class="well" style="display: none;" id="reComments">
              <h4>Leave a Comment:</h4>
-             <form role="form" action="commentsWrite.do" method="post" name="reForm">
+             <form role="form" action="commentsWrite.do" method="get" name="reForm">
                  <div class="form-group">
-                 	 <input type="hidden" name="board_code" value="${guide.code }">
-                 	 <input type="hidden" name="board_writer" value="${guide.userid }">
-                 	 <input type="hidden" name="cm_writer" value="${userid}">
+                 	 
                  	 <input type="hidden" name="cm_parent" >
                  	 <input type="hidden" name="parent_cm">
                  	 <input type="hidden" name="cm_depth">
                  	 <input type="hidden" name="site" value="guide">
+                 	 <input type="hidden" name="kimyiseul" value="a">
                      <textarea class="form-control" name="cm_content" rows="3"></textarea>
                  </div>
                  <input type="submit" value="등록" class="btn btn-primary">

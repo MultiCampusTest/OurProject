@@ -105,8 +105,6 @@ public class MemberController {
 		
 	}
 	
-	
-	
 	@RequestMapping(value="updateMember.do", method=RequestMethod.POST)
 	public String updateMember(HttpSession session, MemberVo memberVo, MultipartHttpServletRequest req){
 		String userid=(String)session.getAttribute("userid");

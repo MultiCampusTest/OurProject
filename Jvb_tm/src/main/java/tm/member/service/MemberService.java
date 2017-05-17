@@ -41,20 +41,17 @@ public class MemberService implements IMemberService {
 	private ImageService imageService;
 
 	@Override
-	public void memberJoin(MemberVo memberVo, String img_code, MultipartHttpServletRequest req) {
+	public void memberJoin(MemberVo memberVo, String img_url, MultipartHttpServletRequest req) {
 		memberDao.memberInsert(memberVo);
-		System.out.println(img_code);
-		System.out.println(req);
-		if(img_code.equals("defualt")) {
+		if(img_url.equals("default")) {
 			ImageVo imageVo = new ImageVo();
 			imageService.insertImg(imageVo, memberVo.getUserid(), req);
 		} else {
 			HashMap<String, Object> params = new HashMap<>();
 			params.put("userid", memberVo.getUserid());
-			params.put("img_code", img_code);
+			params.put("img_code", img_url);
 			imageService.insertUrl(params);
 		}
-
 	}
 	
 

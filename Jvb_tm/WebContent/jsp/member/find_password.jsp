@@ -7,7 +7,40 @@
 <title>Insert title here</title>
 <script type="text/javascript">
 	$(document).ready(function(){
-		$('')
+		$('#userid').keyup(function(){
+			if($(this).val() != '') {
+				$('#findEmailMsg').text('');
+			}
+		}).blur(function() {
+			if($(this).val() == '') {
+				$('#findEmailMsg').html('<font color="#FF605A">enter email</font>');
+			}
+		});
+		
+		$('#find').click(function(){
+			var email = $('#userid').val();
+			
+			if(email == '') {
+				$('#findEmailMsg').html('<font color="#FF605A">enter email</font>');
+				$('#userid').focus();
+			} else {
+				$.ajax({
+					url : 'idCheck.do',
+					type : 'POST',
+					data : { userid : email },
+					dataType : 'json',
+					success : function(data) {
+						if(data.result) {
+							location.href="getPassword.do?userid=" + email;
+						} else {
+							alert("Email doesn't exist.");
+						}
+					}, error : function(data) {
+						alert('Data Error');
+					}
+				});
+			}
+		});
 	});
 </script>
 </head>
@@ -20,17 +53,18 @@
 		<div class="col-md-4 col-md-offset-4">
     		<div class="panel panel-default">
 			  	<div class="panel-body">
-			    	<form action="getPassword.do" method="get" role="form">
+<!-- 			    <form action="getPassword.do" method="get" role="form"> -->
                     <fieldset>
 			    	  	<div class="form-group">
 			    	  		<p>
 			    	  			Enter your email address and we will send you a link to reset your password.
 			    	  		</p>
-			    		    <input type="email" name="userid" class="form-control" placeholder="Enter your email" required="">
+			    		    <input type="text" id="userid" name="userid" class="form-control" placeholder="Enter your email">
 			    		</div>
-			    		<input class="btn btn-primary btn-block" type="submit" value="Check">
+			    		<button class="btn btn-primary btn-block" type="button" id="find">Confirm</button>
+			    		<div id="findEmailMsg" style="text-align: center"></div>
 			    	</fieldset>
-			      	</form>
+<!-- 			    </form> -->
 			    </div>
 			</div>
 		</div>

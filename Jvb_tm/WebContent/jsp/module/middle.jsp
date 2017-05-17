@@ -9,8 +9,8 @@
 
 <link href="css/mainSlide.css" rel="stylesheet" />
 
-<script type="text/javascript">
-	$('.carousel').carousel();
+<script type="text/javascript">		
+			$('.carousel').carousel();
 </script>
 
 </head>
@@ -65,7 +65,7 @@
 							<td width="30%">
 							<c:choose>
 								<c:when test="${userid != null}">
-									<h1>Singed as <font color="#FF605A">${userid}</font></h1>
+									<h1>Singed as <font id="user" color="#FF605A">${userid}</font></h1>
 									
 										
 											<img src="imageProfileView.do?img_code=${userid } "

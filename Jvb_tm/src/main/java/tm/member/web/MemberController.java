@@ -191,7 +191,7 @@ public class MemberController {
 			mav.addObject("receiver", m.getUserid());
 	        mav.setViewName("member/find_result");
 		} else {
-			mav.setViewName("redirect:getPassword.do");
+			mav.setViewName("redirect:loginForm.do");
 		}
 		return mav;
 	}

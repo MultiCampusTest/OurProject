@@ -115,8 +115,6 @@ public class MemberService implements IMemberService {
 			
 	}
 	
-
-
 	@Override
 	public boolean searchPassword(MemberVo memberVo) {
 		// TODO Auto-generated method stub

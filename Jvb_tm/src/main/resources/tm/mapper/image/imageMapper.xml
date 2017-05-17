@@ -9,6 +9,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
       insert into image(img_ori_name, img_code, img_path)
       values(#{img_ori_name}, #{img_code}, #{img_path})
    </insert>
+   
+   <insert id="insertUrl" parameterType="java.util.HashMap">
+   	  insert into image(img_idx, img_code, img_path) values(0, #{userid}, #{img_code})
+   </insert>
 
    <update id="updateImage" parameterType="imageVo">
       update image set

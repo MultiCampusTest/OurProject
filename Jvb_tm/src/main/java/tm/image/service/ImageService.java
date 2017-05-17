@@ -2,6 +2,7 @@ package tm.image.service;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
 
@@ -212,6 +213,12 @@ public class ImageService implements IImageService {
 //            
 //            imageDao.updateImage(image);
 //         }
+	}
+
+	@Override
+	public void insertUrl(HashMap<String, Object> params) {
+		imageDao.insertUrl(params);
+		
 	} 
    
    

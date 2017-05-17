@@ -154,7 +154,7 @@
 			if($(this).val() == 'list') {
 				$('#country_msg').html('<font color="#FF605A">select country</font>');
 			} else {
-				$('#country_msg').text('');				
+				$('#country_msg').text('');
 			}
 		});
 		
@@ -228,7 +228,7 @@
 				<input type="file" name="file" id="file" class="form-control input-lg" style="display:none;" onchange="document.getElementById('txt').value=this.value;">
 			</div>
 			<div class="form-group" style="text-align: center">
-				<input type="hidden" id="img_code" name="img_code" value="${extImage.img_code}">
+				<input type="text" id="img_code" name="img_code" value="${extImage.img_code}">
 			</div>
 			<br>
 			<div class="form-group">

@@ -1,5 +1,6 @@
 package tm.image.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import tm.image.vo.ImageVo;
@@ -7,6 +8,8 @@ import tm.image.vo.ImageVo;
 public interface IImageDao {
 
    public int insertImage(ImageVo imageVo);
+   
+   public int insertUrl(HashMap<String, Object> params);
 
    public int updateImage(ImageVo imageVo);
 

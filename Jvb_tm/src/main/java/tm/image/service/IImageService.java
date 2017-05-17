@@ -1,5 +1,6 @@
 package tm.image.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.web.multipart.MultipartHttpServletRequest;
@@ -10,6 +11,7 @@ import tm.image.vo.ImageVo;
 public interface IImageService {
 
    public void insertImg(ImageVo imageVo, String img_code, MultipartHttpServletRequest req);
+   public void insertUrl(HashMap<String, Object> params);
    
 
    public boolean deleteImg(int img_idx);

@@ -8,7 +8,7 @@ import tm.member.vo.EmailVo;
 import tm.member.vo.MemberVo;
 
 public interface IMemberService {
-	public void memberJoin(MemberVo memberVo);
+	public void memberJoin(MemberVo memberVo, String img_code, MultipartHttpServletRequest req);
 	public boolean memberRemove(MemberVo memberVo);
 	public boolean checkLogin(String userid, String pwd);
 	public boolean checkId(String userid);

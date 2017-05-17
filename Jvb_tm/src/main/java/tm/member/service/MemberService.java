@@ -10,9 +10,11 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMessage.RecipientType;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
@@ -39,8 +41,20 @@ public class MemberService implements IMemberService {
 	private ImageService imageService;
 
 	@Override
-	public void memberJoin(MemberVo memberVo) {
+	public void memberJoin(MemberVo memberVo, String img_code, MultipartHttpServletRequest req) {
 		memberDao.memberInsert(memberVo);
+		System.out.println(img_code);
+		System.out.println(req);
+		if(img_code.equals("defualt")) {
+			ImageVo imageVo = new ImageVo();
+			imageService.insertImg(imageVo, memberVo.getUserid(), req);
+		} else {
+			HashMap<String, Object> params = new HashMap<>();
+			params.put("userid", memberVo.getUserid());
+			params.put("img_code", img_code);
+			imageService.insertUrl(params);
+		}
+
 	}
 	
 

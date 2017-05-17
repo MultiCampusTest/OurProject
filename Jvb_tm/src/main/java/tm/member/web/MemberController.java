@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
@@ -141,14 +142,12 @@ public class MemberController {
 //		}
 //	}
 
-	//로그아웃 요청
 	@RequestMapping("logout.do")
 	public String logout(HttpSession session){
 		session.removeAttribute("userid");
 		return "redirect:main.do";
 	}
 
-	//ID 중복체크 요청
 	@RequestMapping(method=RequestMethod.POST, value="idCheck.do")
 	public @ResponseBody HashMap<String, Object> idCheck(HttpServletResponse resp, String userid) {
 		HashMap<String, Object> response = new HashMap<>();
@@ -157,19 +156,17 @@ public class MemberController {
 		return response;
 	}
 	
-	//회원가입 요청
 	@RequestMapping(method=RequestMethod.POST, value="joinProc.do")
-	public ModelAndView joinProc(MemberVo memberVo, MultipartHttpServletRequest req) throws Exception {
+	public ModelAndView joinProc(MemberVo memberVo, @RequestParam(required=false, defaultValue="default") String img_code, MultipartHttpServletRequest req) throws Exception {
 		ModelAndView mav = new ModelAndView();
-		memberService.memberJoin(memberVo);
-		ImageVo imageVo = new ImageVo();
-		imageService.insertImg(imageVo, memberVo.getUserid(), req);
+		System.out.println("req : " + req);
+		System.out.println("img_code : " + img_code);
+		memberService.memberJoin(memberVo, img_code, req);
 		mav.addObject("f_name", memberVo.getFirstName());
 		mav.setViewName("member/join_result");
 		return mav;
 	}
 	
-	//회원탈퇴 요청
 	@RequestMapping("removeMember.do")
 	public String removeMember(HttpSession session, MemberVo memberVo){
 		if(memberService.memberRemove(memberVo)) {
@@ -180,7 +177,6 @@ public class MemberController {
 		}
 	}
 	
-	//비밀번호 초기화 + 메일발송
 	@RequestMapping("getPassword.do")
 	public ModelAndView getPassword(String userid) throws Exception {
 		ModelAndView mav = new ModelAndView();

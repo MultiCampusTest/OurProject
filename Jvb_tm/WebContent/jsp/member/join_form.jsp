@@ -334,7 +334,7 @@
 							<option value="Solomon Islands">Solomon Islands</option>
 							<option value="Somaila">Somalia</option>
 							<option value="South Africa">South Africa</option>
-							<option value="South Korea♥">South Korea</option>
+							<option value="South Korea♥">South Korea♥</option>
 							<option value="Spain">Spain</option>
 							<option value="Sri Lanka">Sri Lanka</option>
 							<option value="Sudan">Sudan</option>

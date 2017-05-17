@@ -71,8 +71,7 @@ public class MemberController {
 	
 	@RequestMapping(method=RequestMethod.POST, value="naverLogin.do")
 	public ModelAndView naverLogin(HttpSession session, String id, String nickname, String email, String sex, String birthday, String name){
-		ModelAndView mav = new ModelAndView();
-		
+		ModelAndView mav = new ModelAndView();	
 		//파라미터값을 모델에 셋팅
 		MemberVo memberVo = new MemberVo();
 		memberVo.setUserid(email);
@@ -83,6 +82,7 @@ public class MemberController {
 		mav.setViewName("member/join_form");
 		return mav;
 	}
+	
 	@RequestMapping("joinResult.do")
 	public String joinResult() {
 		return "member/join_result";

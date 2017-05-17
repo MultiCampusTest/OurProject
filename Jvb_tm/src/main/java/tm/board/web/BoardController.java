@@ -179,6 +179,7 @@ public class BoardController {
 		mav.addObject("matchingComplete", matchingService.matchingComplete(boardIdx));
 		mav.setViewName("board/guide_view");
 
+		
 		return mav;
 	}
 

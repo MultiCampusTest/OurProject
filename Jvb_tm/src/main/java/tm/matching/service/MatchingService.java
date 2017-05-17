@@ -94,6 +94,7 @@ public class MatchingService implements IMatchingService {
 		matchingList.put("acc_matchingList", acc_matchingByUserid);
 		matchingList.put("acc_matchingListSize", acc_matchingByUserid.size());
 		return matchingList;
+		
 	}
 
 

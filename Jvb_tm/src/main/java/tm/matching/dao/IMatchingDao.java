@@ -15,4 +15,5 @@ public interface IMatchingDao {
 	public List<MatchingVo> matchingSelectByUserid(HashMap<String, Object> params);
 	public MatchingVo matchingSelectComplete(int b_idx);
 	
+	
 }

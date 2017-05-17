@@ -184,6 +184,7 @@ $(document).ready(function(){
      </c:if>
      <c:if test="${matchingComplete!=null }">
      	안녕 매칭 됐어 댓글 못 써
+     
      </c:if>	
 
          <hr>

@@ -75,6 +75,23 @@ $(document).ready(function() {
 	}); 
 	
 	
+	$('.guide_matching_box').hide();//on cache par defaut les messages
+	$('.guide_not_accept').click(function() {
+		var id = $(this).attr('id');
+		var condition=$('#guide_req_match_condition_'+id).attr('value');
+		
+		if(condition==1){
+			$('#guide_req_matching_'+id).hide();
+			$('#guide_matching_box_'+id).show();
+			$('#guide_req_match_condition_'+id).attr('value', '2');
+		}
+		if(condition==2){
+			$('#guide_req_matching_'+id).show();
+			$('#guide_matching_box_'+id).hide();
+			$('#guide_req_match_condition_'+id).attr('value', '1');
+		}    
+	}); 
+	
 	
 	
 	

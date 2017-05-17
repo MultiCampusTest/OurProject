@@ -13,7 +13,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</update>
 	
 	<update id="matchingFail" parameterType="int">
-		update matching set mch_code=2 where b_idx=#{b_idx} and mch_code=0
+		update matching set mch_code=3 where b_idx=#{b_idx} and mch_code=0
 	</update>
 	   
 	<delete id="matchingDelete" parameterType="int">
@@ -21,7 +21,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</delete>
 	
 	<select id="matchingSelectByUserid" parameterType="java.util.HashMap" resultType="matchingVo">
-		select * from matching where mch_code=#{mch_code} and mch_t_userid=#{mch_t_userid} order by mch_date;
+		select * from matching where mch_code=#{mch_code} and (mch_t_userid=#{mch_t_userid} or mch_g_userid=#{mch_g_userid} ) order by mch_date
 	</select>
 	
 	<select id="matchingSelectComplete" parameterType="int" resultType="matchingVo">

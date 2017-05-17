@@ -32,11 +32,23 @@ public class MatchingController {
 //		return mav;
 //	}
 	
+	
+	@RequestMapping(value="matchingHolding.do", method=RequestMethod.POST)
+	public @ResponseBody HashMap<String, Object> matchingHolding(HttpSession session, int b_idx, String mch_g_userid){
+		 String mch_t_userid=(String)session.getAttribute("userid");
+	      boolean result=matchingService.matchingModify(b_idx, mch_g_userid, 2);
+	      if(result==true){
+	    		 return matchingService.matchingList(mch_t_userid);
+	      }
+	      else
+	         return matchingService.matchingList(mch_t_userid);
+	}
+	
 	 @RequestMapping(value="matchingSuccess.do", method=RequestMethod.POST)
 	   public @ResponseBody HashMap<String, Object> matchingSuccess(HttpSession session, int b_idx, String mch_g_userid){
 		 System.out.println("야");
 	      String mch_t_userid=(String)session.getAttribute("userid");
-	      boolean result=matchingService.matchingModify(b_idx, mch_g_userid, 1);
+	      boolean result=matchingService.matchingModify(b_idx, mch_t_userid, 1);
 	      if(result==true){
 	    		 return matchingService.matchingList(mch_t_userid);
 	      }

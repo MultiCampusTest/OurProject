@@ -78,21 +78,31 @@ public class MatchingService implements IMatchingService {
 		// TODO Auto-generated method stub
 		HashMap<String, Object> res_params=new HashMap<>();
 		res_params.put("mch_t_userid", mch_t_userid);
+		res_params.put("mch_g_userid", mch_t_userid);
 		res_params.put("mch_code", 0);
 		
 		HashMap<String, Object> acc_params=new HashMap<>();
 		acc_params.put("mch_t_userid", mch_t_userid);
+		acc_params.put("mch_g_userid", mch_t_userid);
 		acc_params.put("mch_code", 1);
+		
+		HashMap<String, Object> hold_params=new HashMap<>();
+		hold_params.put("mch_t_userid", mch_t_userid);
+		hold_params.put("mch_g_userid", mch_t_userid);
+		hold_params.put("mch_code", 2);
 		
 		
 		List<MatchingVo> res_matchingByUserid=matchingDao.matchingSelectByUserid(res_params);
 		List<MatchingVo> acc_matchingByUserid=matchingDao.matchingSelectByUserid(acc_params);
+		List<MatchingVo> hold_matchingByUserid=matchingDao.matchingSelectByUserid(hold_params);
 		
 		HashMap<String, Object> matchingList=new HashMap<>();
 		matchingList.put("res_matchingList", res_matchingByUserid);
 		matchingList.put("res_matchingListSize", res_matchingByUserid.size());
 		matchingList.put("acc_matchingList", acc_matchingByUserid);
 		matchingList.put("acc_matchingListSize", acc_matchingByUserid.size());
+		matchingList.put("hold_matchingList", hold_matchingByUserid);
+		matchingList.put("hold_matchingListSize", hold_matchingByUserid.size());
 		return matchingList;
 		
 	}

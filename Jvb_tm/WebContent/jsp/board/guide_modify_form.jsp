@@ -78,6 +78,12 @@
        markers = [];
        path = [];
        polys = [];
+       poly = new google.maps.Polyline({
+	        strokeColor: '#000000',
+	        strokeOpacity: 1.0,
+	        strokeWeight: 3
+	      });
+   	   poly.setMap(map);
      }
     
    document.getElementById('delete').addEventListener('click', function() {
@@ -103,6 +109,7 @@
 		
 		path = poly.getPath();
 		path.push(list[cnt]);
+		polys.push(poly);
 
 		cnt++;
 	}
@@ -120,9 +127,11 @@
         });
         markers.push(marker);
        
-        polys.push(poly);
-        var path = poly.getPath();
+        path = poly.getPath();
         path.push(results[0].geometry.location);
+        
+        polys.push(poly);
+        
         resultsMap.setCenter(results[0].geometry.location);
         
         loc[i] = address;

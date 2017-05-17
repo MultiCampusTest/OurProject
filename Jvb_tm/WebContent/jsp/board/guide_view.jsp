@@ -75,6 +75,17 @@ $(document).ready(function(){
 	});
 	
 	
+// 		var board_code=$('.send_board_code').attr('id');
+// 		$('.send_board_code').attr('value', board_code);
+// 		var board_writer=$('.send_board_writer').attr('id');
+// 		alert(board_writer);
+// 		$('.send_board_writer').attr('value', board_writer);
+// 		var board_aaa=$('.send_board_writer').attr('value');
+// 		alert(board_aaa);
+	
+	
+	
+	
 });
 
 // $("#message").click(function(){
@@ -125,6 +136,8 @@ $(document).ready(function(){
              <h4>Leave a Comment:</h4>
              <form role="form" action="commentsWrite.do" method="post">
                  <div class="form-group">
+                	 <input type="hidden" name="b_writer" value="${guide.userid }">
+                	 <input type="hidden" name="b_code" value="${guide.code }">
                  	 <input type="hidden" name="b_idx" value="${guide.boardIdx }">
                  	 <input type="hidden" name="cm_writer" value="${userid}">
                  	 <input type="hidden" name="site" value="guide">
@@ -140,8 +153,7 @@ $(document).ready(function(){
              <h4>Leave a Comment:</h4>
              <form role="form" action="commentsWrite.do" method="post" name="reForm">
                  <div class="form-group">
-                 	 <input type="hidden" name="board_code" value="${guide.code }">
-                 	 <input type="hidden" name="board_writer" value="${guide.userid }">
+                 	 <input type="hidden" name="b_idx" value="${guide.boardIdx }">
                  	 <input type="hidden" name="cm_writer" value="${userid}">
                  	 <input type="hidden" name="cm_parent" >
                  	 <input type="hidden" name="parent_cm">

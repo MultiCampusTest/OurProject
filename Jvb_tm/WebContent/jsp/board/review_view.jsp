@@ -68,6 +68,8 @@
              <h4>Leave a Comment:</h4>
              <form role="form" action="commentsWrite.do" method="post">
                  <div class="form-group">
+                 	 <input type="hidden" name="b_writer" value="${review.userid }">
+                	 <input type="hidden" name="b_code" value="${review.code }">
                  	 <input type="hidden" name="b_idx" value="${review.boardIdx }">
                  	 <input type="hidden" name="cm_writer" value="${userid}">
                  	 <input type="hidden" name="site" value="review">
@@ -83,8 +85,7 @@
              <h4>Leave a Comment:</h4>
              <form role="form" action="commentsWrite.do" method="post" name="reForm">
                  <div class="form-group">
-                 	 <input type="hidden" name="board_code" value="${review.code }">
-                 	 <input type="hidden" name="board_writer" value="${review.userid }">
+                 	 <input type="hidden" name="b_idx" value="${review.boardIdx }">
                  	 <input type="hidden" name="cm_writer" value="${userid}">
                  	 <input type="hidden" name="cm_parent" >
                  	 <input type="hidden" name="parent_cm">

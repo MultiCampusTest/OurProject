@@ -7,6 +7,29 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+ <style>
+.input_text { 
+display: inline-block;
+	width: 348px; height: 40px;
+	padding-left: 6px; 
+	padding-right: 6px;
+	border: 3px solid #FF605A;
+	line-height: 21px;
+	font-weight: bold;
+	font-size: 16px;
+	outline: none;
+}
+.sch_smit {
+	width: 54px; height: 40px;
+	margin: 0; border: 0;
+	vertical-align: top;
+	background: #FF605A;
+	color: white;
+	font-weight: bold;
+	border-radius: 1px;
+	cursor: pointer;
+}
+</style>
 <link rel="stylesheet" href="css/travelList.css">
 
 <script type="text/javascript">
@@ -42,6 +65,10 @@ $(document).ready(function(){
 	<hr />
 
 	<div class="container">
+			<form action="reviewList.do" style="text-align:center;">
+				<input type='text' class='input_text' name="searchValue">
+				<button type='submit' class='sch_smit'><i class="fa fa-search fa-2x" aria-hidden="true"></i></button>
+			</form>
 		<p>A Total of ${count} Travel Plans Have Been Searched</p>
 	 	<div class="row">
 			<c:forEach var="review" items="${list}">
@@ -60,77 +87,6 @@ $(document).ready(function(){
 				</div>
 			</c:forEach>
 	 	</div>
-<!-- 		<div class="row"> -->
-<!-- 			<div class="col-sm-2 col-lg-2 col-md-2"> -->
-<!-- 				<div class="thumbnail"> -->
-<!-- 					<img src="http://placehold.it/300x400" alt=""> -->
-<!-- 					<div class="caption"> -->
-<!-- 						<font style="font-size: 12pt">USER_ID</font><br> <font -->
-<!-- 							style="font-size: 12pt">DATE</font><br> <font -->
-<!-- 							style="font-size: 12pt">REVIEWS</font> -->
-<!-- 					</div> -->
-
-<!-- 				</div> -->
-<!-- 			</div> -->
-<!-- 			<div class="col-sm-2 col-lg-2 col-md-2"> -->
-<!-- 				<div class="thumbnail"> -->
-<!-- 					<img src="http://placehold.it/300x400" alt=""> -->
-<!-- 					<div class="caption"> -->
-<!-- 						<font style="font-size: 12pt">USER_ID</font><br> <font -->
-<!-- 							style="font-size: 12pt">DATE</font><br> <font -->
-<!-- 							style="font-size: 12pt">REVIEWS</font> -->
-<!-- 					</div> -->
-
-<!-- 				</div> -->
-<!-- 			</div> -->
-<!-- 			<div class="col-sm-2 col-lg-2 col-md-2"> -->
-<!-- 				<div class="thumbnail"> -->
-<!-- 					<img src="http://placehold.it/300x400" alt=""> -->
-<!-- 					<div class="caption"> -->
-<!-- 						<font style="font-size: 12pt">USER_ID</font><br> <font -->
-<!-- 							style="font-size: 12pt">DATE</font><br> <font -->
-<!-- 							style="font-size: 12pt">REVIEWS</font> -->
-<!-- 					</div> -->
-
-<!-- 				</div> -->
-<!-- 			</div> -->
-<!-- 			<div class="col-sm-2 col-lg-2 col-md-2"> -->
-<!-- 				<div class="thumbnail"> -->
-<!-- 					<img src="http://placehold.it/300x400" alt=""> -->
-<!-- 					<div class="caption"> -->
-<!-- 						<font style="font-size: 12pt">USER_ID</font><br> <font -->
-<!-- 							style="font-size: 12pt">DATE</font><br> <font -->
-<!-- 							style="font-size: 12pt">REVIEWS</font> -->
-<!-- 					</div> -->
-
-<!-- 				</div> -->
-<!-- 			</div> -->
-<!-- 			<div class="col-sm-2 col-lg-2 col-md-2"> -->
-<!-- 				<div class="thumbnail"> -->
-<!-- 					<img src="http://placehold.it/300x400" alt=""> -->
-<!-- 					<div class="caption"> -->
-<!-- 						<font style="font-size: 12pt">USER_ID</font><br> <font -->
-<!-- 							style="font-size: 12pt">DATE</font><br> <font -->
-<!-- 							style="font-size: 12pt">REVIEWS</font> -->
-<!-- 					</div> -->
-
-<!-- 				</div> -->
-<!-- 			</div> -->
-
-<!-- 			<div class="col-sm-2 col-lg-2 col-md-2"> -->
-<!-- 				<div class="thumbnail"> -->
-<!-- 					<a href="#" title="자세히보기"> <img -->
-<!-- 						src="http://placehold.it/300x400" alt=""> -->
-<!-- 					</a> -->
-<!-- 					<div class="caption"> -->
-<!-- 						<font style="font-size: 12pt">USER_ID</font><br> <font -->
-<!-- 							style="font-size: 12pt">DATE</font><br> <font -->
-<!-- 							style="font-size: 12pt">REVIEWS</font> -->
-<!-- 					</div> -->
-
-<!-- 				</div> -->
-<!-- 			</div> -->
-<!-- 		</div> -->
 		<div style="text-align: right">
 			<input type="button" class="btn btn-primary" value="Write"
 				onclick="location.href='reviewWriteForm.do'">
@@ -143,9 +99,8 @@ $(document).ready(function(){
 				<li>
 				 <c:choose>
 				 	<c:when test="${current != 1 }">
-				 		<a href="reviewList.do?page=${current-1}&subCategory=${subCategory}">
-				 		<span class="glyphicon glyphicon-chevron-left"></span>
-				 		</a>
+				 		<a href="reviewList.do?page=${current-1}&searchValue=${searchValue}"><span
+						class="glyphicon glyphicon-chevron-left"></span></a>
 				 	</c:when>
 				 	<c:otherwise>
 				 		<a><span class="glyphicon glyphicon-chevron-left"></span></a>
@@ -159,7 +114,7 @@ $(document).ready(function(){
 								<li class="paging active"><a>${i }</a></li>
 							</c:when>
 							<c:otherwise>
-								<li class="paging"><a href="reviewList.do?page=${i}&subCategory=${subCategory}">${i }</a></li>
+								<li class="paging"><a href="reviewList.do?page=${i}&searchValue=${searchValue}">${i }</a></li>
 							</c:otherwise>
 						</c:choose>
 					</c:forEach>
@@ -167,20 +122,16 @@ $(document).ready(function(){
 				<li>
 					<c:choose>
 						<c:when test="${current != last }">
-						<a href="reviewList.do?page=${current+1}&subCategory=${subCategory}">
-						<span class="glyphicon glyphicon-chevron-right"></span>
-						</a>
-						
+						<a href="reviewList.do?page=${current+1}&searchValue=${searchValue}"><span
+							class="glyphicon glyphicon-chevron-right"></span></a>
 						</c:when>
 						<c:otherwise>
 							<a><span
 							class="glyphicon glyphicon-chevron-right"></span></a>
 						</c:otherwise>
 					</c:choose>
-					
-					
 				</li>
 			</ul>
-		</div> 
+		</div>
 </body>
 </html>

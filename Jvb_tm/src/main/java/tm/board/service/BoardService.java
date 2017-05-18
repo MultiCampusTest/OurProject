@@ -441,7 +441,7 @@ public class BoardService {
 	//리뷰 리스트 불러오기
 public HashMap<String, Object> getReviewBoardList(String code, int page, String searchValue, String subCategory){
 		
-		System.out.println(searchValue);
+		System.out.println("카테고리"+subCategory);
 		//시작과 끝페이지
 		int start = (page - 1) / 6 * 6 + 1; 
 		int end = ((page - 1) / 6 + 1) * 6;
@@ -452,6 +452,7 @@ public HashMap<String, Object> getReviewBoardList(String code, int page, String 
 		HashMap<String, Object> boardCountParams = new HashMap<>();
 		boardCountParams.put("code", code);
 		boardCountParams.put("searchValue", searchValue);
+		boardCountParams.put("subCategory", subCategory);
 		int last = (boardDao.getReviewBoardCount(boardCountParams) - 1) / 6 + 1;
 		
 		end = last < end ? last : end;
@@ -463,7 +464,6 @@ public HashMap<String, Object> getReviewBoardList(String code, int page, String 
 		params.put("searchValue", searchValue);
 		params.put("skip", skip);
 		params.put("count", count);
-		params.put("subCategory", subCategory);
 		List<BoardVo> list = boardDao.selectReviewBoardLimit(params);
 		
 		HashMap<String, Object> result = new HashMap<>();

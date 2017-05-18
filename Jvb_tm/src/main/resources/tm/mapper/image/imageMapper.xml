@@ -15,9 +15,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    </insert>
 
    <update id="updateImage" parameterType="imageVo">
-      update image set
-      img_phy_name=#{img_phy_name}, img_ori_name=#{img_ori_name},
-       img_path=#{img_path} where img_code=#{img_code}
+      UPDATE image
+      SET img_ori_name=#{img_ori_name}, img_path=#{img_path}
+      WHERE img_idx=#{img_idx}
    </update>
 
    <delete id="deleteImageTravel" parameterType="int">

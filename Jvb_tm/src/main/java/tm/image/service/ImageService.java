@@ -147,6 +147,7 @@ public class ImageService implements IImageService {
 	public void insertReviewImg(BoardVo board, MultipartHttpServletRequest req) {
 		// TODO Auto-generated method stub
 		String path = "/Users/LeeGilSun/Upload/";
+		
         File folder = new File(path);
         if (!folder.exists()) {
         	folder.mkdirs();
@@ -159,8 +160,7 @@ public class ImageService implements IImageService {
 
             String fileName = files.get(i).getOriginalFilename();
             int fileSize = (int) files.get(i).getSize();
-
-//            String ext = fileName.substring(fileName.lastIndexOf('.'));
+            System.out.println(fileName+"파일 이름 총 몇개 들어왔나?");
             String fileuri = path + uuid;
             
             ImageVo image = new ImageVo();
@@ -184,42 +184,56 @@ public class ImageService implements IImageService {
 	}
 
 	@Override
-	public void updateReviewImg(BoardVo board, MultipartHttpServletRequest req) {
+	public void updateReviewImg(BoardVo board, MultipartHttpServletRequest req, String[] img_idx) {
 		// TODO Auto-generated method stub
-//		String path = "/Users/LeeGilSun/Upload/";
-//		
-//        
-//        List<MultipartFile> files = req.getFiles("file");
-//        for (int i = 0; i < files.size(); i++) {
-//            UUID uuid = UUID.randomUUID();
-//
-//            String fileName = files.get(i).getOriginalFilename();
-//            int fileSize = (int) files.get(i).getSize();
-//            String fileuri = path + uuid;
-//            
-//            ImageVo image = new ImageVo();
-//            image.setImg_ori_name(fileName);
-//            image.setImg_code(Integer.toString(board.getBoardIdx()));
-//            image.setImg_path(fileuri);
-//
-//            File localFile = new File(fileuri);
-//
-//            try {
-//               files.get(i).transferTo(localFile);
-//            } catch (IllegalStateException e) {
-//               e.printStackTrace();
-//            } catch (IOException e) {
-//               e.printStackTrace();
-//            }
-//            
-//            imageDao.updateImage(image);
-//         }
+		String path = "/Users/LeeGilSun/Upload/";
+		
+        File folder = new File(path);
+        if (!folder.exists()) {
+        	folder.mkdirs();
+        }
+        
+        List<MultipartFile> files = req.getFiles("file");
+        
+        for (int i = 0; i < files.size(); i++) {
+            UUID uuid = UUID.randomUUID();
+
+            String fileName = files.get(i).getOriginalFilename();
+            int fileSize = (int) files.get(i).getSize();
+            String fileuri = path + uuid;
+            
+            System.out.println(fileName+"파일 이름 총 몇개 들어왔나?");
+            
+            ImageVo image = new ImageVo();
+            int img_idxInt = Integer.parseInt(img_idx[i]);
+            image.setImg_idx(img_idxInt);
+            image.setImg_ori_name(fileName);
+            image.setImg_code(Integer.toString(board.getBoardIdx()));
+            image.setImg_path(fileuri);
+
+            File localFile = new File(fileuri);
+
+            try {
+               files.get(i).transferTo(localFile);
+            } catch (IllegalStateException e) {
+               e.printStackTrace();
+            } catch (IOException e) {
+               e.printStackTrace();
+            }
+            
+            if(!fileName.equals("")){
+            	if(image.getImg_idx() == 0){
+            		imageDao.insertImage(image);
+            	} else {
+            		imageDao.updateImage(image);            	            		
+            	}
+            }
+         }
 	}
 
 	@Override
 	public void insertUrl(HashMap<String, Object> params) {
 		imageDao.insertUrl(params);
-		
 	} 
 	
 	@Override

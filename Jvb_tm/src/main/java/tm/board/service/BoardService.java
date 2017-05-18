@@ -380,7 +380,7 @@ public class BoardService {
 		
 		return result;
 	}
-	
+	 
 	
 	//review insert
 	public void insertReview(BoardVo board, ContentsVo contents){

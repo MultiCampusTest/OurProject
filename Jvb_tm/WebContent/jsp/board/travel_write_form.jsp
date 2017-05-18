@@ -154,7 +154,7 @@ function delete_day_content(id){
 			$(this).attr('id','day'+next_content_number);
 		}
 		
-	}); 
+	});  
   }
 	
 function add_day_content(){

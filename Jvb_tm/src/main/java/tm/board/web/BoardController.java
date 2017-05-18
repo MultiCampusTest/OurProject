@@ -301,9 +301,11 @@ public class BoardController {
 		BoardVo board2 = board;
 		ContentsVo contents2 = contents;
 		
+		String[] img_idx = req.getParameterValues("img_idx");
+		
 		//게시판은 update, 이미지는 delete
 		boardService.updateReview(board2, contents2);
-//		imageService.deleteReviewImg(Integer.toString(board.getBoardIdx()));
+		imageService.deleteReviewImg( Integer.toString(board.getBoardIdx()),req, img_idx);
 		
 		//이미지는 다시 insert
 		imageService.insertReviewImg(board2, req);

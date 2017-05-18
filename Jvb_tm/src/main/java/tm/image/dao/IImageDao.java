@@ -25,7 +25,7 @@ public interface IImageDao {
    
    public int deleteByImageCode(String img_code);
    
-   public int deleteByImageIdx(int img_idx);
+   public int deleteByImageIdx(String img_idx);
    
    
    

@@ -40,13 +40,14 @@ $(document).ready(function(){
 <p style="line-height:100%">
 <font style="font-size:12pt"><strong>LOCAITON</strong></font>
 <a href="guideList.do?locCategory=seoul"><span class="category" id="seoul">SEOUL</span></a>
-<a href="guideList.do?locCategory=gyeonggi"><span class="category" id="gyeonggi">GYEONGGI-DO</span></a>
+<a href="guideList.do?locCategory=incheon"><span class="category" id="gyeonggi">INCHEON</span></a>
 <a href="guideList.do?locCategory=daejeon"><span class="category" id="daejeon">DAEJEON</span></a>
 <a href="guideList.do?locCategory=gwangju"><span class="category" id="gwangju">GWANGJU</span></a>
 <a href="guideList.do?locCategory=daegu"><span class="category" id="daegu">DAEGU</span></a>
 <a href="guideList.do?locCategory=busan"><span class="category" id="busan">BUSAN</span></a>
-<a href="guideList.do?locCategory=jeju"><span class="category" id="jeju">JEJU</span></a>
+<a href="guideList.do?locCategory=jeju"><span class="category" id="jeju">JEJU-DO</span></a>
 <a href="guideList.do?locCategory=gangwon"><span class="category" id="gangwon">GANGWON-DO</span></a>
+<a href="guideList.do?locCategory=gyeonggi"><span class="category" id="gyeonggi">GYEONGGI-DO</span></a>
 <a href="guideList.do?locCategory=chungcheong"><span class="category" id="chungcheong">CHUNGCHEONG-DO</span></a>
 <a href="guideList.do?locCategory=jeolla"><span class="category" id="jeolla">JEOLLA-DO</span></a>
 <a href="guideList.do?locCategory=gyeongsang"><span class="category" id="gyeongsang">GYEONGSANG-DO</span></a>

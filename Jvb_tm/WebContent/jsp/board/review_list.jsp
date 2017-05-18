@@ -12,10 +12,11 @@
 <body>
 	<div class="content container" style="padding-top: 90px">
 		<p style="line-height: 100%">
-			<font style="font-size: 12pt">CATEGORY</font> <a href="#"><span
-				class="category active">Food</span></a> <a href="#"><span
-				class="category">Shopping</span></a> <a href="#"><span
-				class="category">Stay</span></a> <a href="#"><span class="category">Tour</span></a>
+			<font style="font-size: 12pt">CATEGORY</font> 
+			<a href="reviewList.do?subCategory=food"><span class="category active">Food</span></a> 
+			<a href="reviewList.do?subCategory=shopping"><span class="category">Shopping</span></a> 
+			<a href="reviewList.do?subCategory=stay"><span class="category">Stay</span></a> 
+			<a href="reviewList.do?subCategory=tour"><span class="category">Tour</span></a>
 		</p>
 
 	</div>

@@ -173,59 +173,65 @@
 				<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Travel</a>
 					<ul class="dropdown-menu">
 						<li><a href="travelList.do">All List</a></li>
-						<li><a href="travelList.do?sub_category=five">5 days</a></li>
-						<li><a href="travelList.do?sub_category=ten">10 days</a></li>
-						<li><a href="travelList.do?sub_category=more">15 days</a></li>
+						<li><a href="travelList.do?subCategory=one">1 Day</a></li>
+						<li><a href="travelList.do?subCategory=two">2 Days</a></li>
+						<li><a href="travelList.do?subCategory=three">3 Days</a></li>
+						<li><a href="travelList.do?subCategory=four">4 Days</a></li>
+						<li><a href="travelList.do?subCategory=guide_more">5 Days+</a></li>
 						<li class="divider"></li>
 						<!-- 						<li class="dropdown-header">네비게이션 헤더</li> -->
-						<li><a href="travelList.do?loc_category=seoul">seoul</a></li>
-						<li><a href="travelList.do?loc_category=incheon">incheon</a></li>
-						<li><a href="travelList.do?loc_category=daejeon">daejeon</a></li>
-						<li><a href="travelList.do?loc_category=gwangju">gwangju</a></li>
-						<li><a href="travelList.do?loc_category=daegu">daegu</a></li>
-						<li><a href="travelList.do?loc_category=busan">busan</a></li>
-						<li><a href="travelList.do?loc_category=jeju">jeju</a></li>
-						<li><a href="travelList.do?loc_category=gangwon">gangwon</a></li>
-						<li><a href="travelList.do?loc_category=gyeonggi">gyeonggi</a></li>
-						<li><a href="travelList.do?loc_category=chungcheong">chungcheong</a></li>
-						<li><a href="travelList.do?loc_category=jeonla">jeonla</a></li>
-						<li><a href="travelList.do?loc_category=kyeongsang">kyeongsang</a></li>
+						<li><a href="travelList.do?locCategory=seoul">SEOUL</a></li>
+						<li><a href="travelList.do?locCategory=incheon">INCHEON</a></li>
+						<li><a href="travelList.do?locCategory=daejeon">DAEJEON</a></li>
+						<li><a href="travelList.do?locCategory=gwangju">GWANGJU</a></li>
+						<li><a href="travelList.do?locCategory=daegu">DAEGU</a></li>
+						<li><a href="travelList.do?locCategory=busan">BUSAN</a></li>
+						<li><a href="travelList.do?locCategory=jeju">JEJU-DO</a></li>
+						<li><a href="travelList.do?locCategory=gangwon">GANGWON-DO</a></li>
+						<li><a href="travelList.do?locCategory=gyeonggi">GYEONGGI-DO</a></li>
+						<li><a href="travelList.do?locCategory=chungcheong">HUNGCHEONG-DO</a></li>
+						<li><a href="travelList.do?locCategory=jeonla">JEOLLA-DO</a></li>
+						<li><a href="travelList.do?locCategory=kyeongsang">GYEONGSANG-DO</a></li>
 					</ul></li>
 
 				<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Guide</a>
 					<ul class="dropdown-menu">
 						<li><a href="guideList.do">All List</a></li>
-						<li><a href="guideList.do?sub_category=five">5 days</a></li>
-						<li><a href="guideList.do?sub_category=ten">10 days</a></li>
-						<li><a href="guideList.do?sub_category=more">15 days</a></li>
+						<li><a href="guideList.do?subCategory=one">1 Day</a></li>
+						<li><a href="guideList.do?subCategory=two">2 Days</a></li>
+						<li><a href="guideList.do?subCategory=three">3 Days</a></li>
+						<li><a href="guideList.do?subCategory=four">4 Days</a></li>
+						<li><a href="guideList.do?subCategory=guide_more">5 Days+</a></li>
 						<li class="divider"></li>
 						<!-- 						<li class="dropdown-header">네비게이션 헤더</li> -->
-						<li><a href="guideList.do?loc_category=seoul">seoul</a></li>
-						<li><a href="guideList.do?loc_category=incheon">incheon</a></li>
-						<li><a href="guideList.do?loc_category=daejeon">daejeon</a></li>
-						<li><a href="guideList.do?loc_category=gwangju">gwangju</a></li>
-						<li><a href="guideList.do?loc_category=daegu">daegu</a></li>
-						<li><a href="guideList.do?loc_category=busan">busan</a></li>
-						<li><a href="guideList.do?loc_category=jeju">jeju</a></li>
-						<li><a href="guideList.do?loc_category=gangwon">gangwon</a></li>
-						<li><a href="guideList.do?loc_category=gyeonggi">gyeonggi</a></li>
-						<li><a href="guideList.do?loc_category=chungcheong">chungcheong</a></li>
-						<li><a href="guideList.do?loc_category=jeonla">jeonla</a></li>
-						<li><a href="guideList.do?loc_category=kyeongsang">kyeongsang</a></li>
+						<li><a href="guideList.do?locCategory=seoul">SEOUL</a></li>
+						<li><a href="guideList.do?locCategory=incheon">INCHEON</a></li>
+						<li><a href="guideList.do?locCategory=daejeon">DAEJEON</a></li>
+						<li><a href="guideList.do?locCategory=gwangju">GWANGJU</a></li>
+						<li><a href="guideList.do?locCategory=daegu">DAEGU</a></li>
+						<li><a href="guideList.do?locCategory=busan">BUSAN</a></li>
+						<li><a href="guideList.do?locCategory=jeju">JEJU-DO</a></li>
+						<li><a href="guideList.do?locCategory=gangwon">GANGWON-DO</a></li>
+						<li><a href="guideList.do?locCategory=gyeonggi">GYEONGGI-DO</a></li>
+						<li><a href="guideList.do?locCategory=chungcheong">CHUNGCHEONG-DO</a></li>
+						<li><a href="guideList.do?locCategory=jeolla">JEOLLA-DO</a></li>
+						<li><a href="guideList.do?locCategory=gyeongsang">GYEONGSANG-DO</a></li>
 					</ul></li>
 
 				<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="reviewList.do">Review</a>
 					<ul class="dropdown-menu">
 						<li><a href="reviewList.do">All List</a></li>
-						<li><a href="reviewList.do?sub_category=five">5 days</a></li>
-						<li><a href="reviewList.do?sub_category=ten">10 days</a></li>
-						<li><a href="reviewList.do?sub_category=more">15 days</a></li>
-						<li class="divider"></li>
+<!-- 						<li><a href="guideList.do?subCategory=one">1 Day</a></li> -->
+<!-- 						<li><a href="guideList.do?subCategory=two">2 Days</a></li> -->
+<!-- 						<li><a href="guideList.do?subCategory=three">3 Days</a></li> -->
+<!-- 						<li><a href="guideList.do?subCategory=four">4 Days</a></li> -->
+<!-- 						<li><a href="guideList.do?subCategory=guide_more">5 Days+</a></li> -->
+<!-- 						<li class="divider"></li> -->
 						<!-- 						<li class="dropdown-header">네비게이션 헤더</li> -->
-						<li><a href="reviewList.do?sub_category=food">food</a></li>
-						<li><a href="reviewList.do?sub_category=shopping">shopping</a></li>
-						<li><a href="reviewList.do?sub_category=stay">stay</a></li>
-						<li><a href="reviewList.do?sub_category=tour">tour</a></li>
+						<li><a href="reviewList.do?subCategory=food">Food</a></li>
+						<li><a href="reviewList.do?subCategory=shopping">Shopping</a></li>
+						<li><a href="reviewList.do?subCategory=stay">Stay</a></li>
+						<li><a href="reviewList.do?subCategory=tour">Tour</a></li>
 					</ul></li>
 
 				<c:choose>

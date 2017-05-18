@@ -29,24 +29,25 @@ $(document).ready(function(){
 <div class="content container" style="padding-top:90px">
 <p style="line-height:200%">
 <font style="font-size:12pt"><strong>D A Y S</strong></font>
-<a href="guideList.do?subCategory=five"><span class="category" id="five">5 Days</span></a>
-<a href="guideList.do?subCategory=ten"><span class="category" id="ten">10 Days</span></a>
-<a href="guideList.do?subCategory=travel_more"><span class="category" id="travel_more">10 Days+</span></a>
+<a href="travelList.do?subCategory=five"><span class="category" id="five">5 Day</span></a>
+<a href="travelList.do?subCategory=ten"><span class="category" id="ten">10 Days</span></a>
+<a href="travelList.do?subCategory=travel_more"><span class="category" id="travel_more">10 Days+</span></a>
 </p>
 
 <p style="line-height:100%">
 <font style="font-size:12pt"><strong>LOCAITON</strong></font>
-<a href="guideList.do?locCategory=seoul"><span class="category" id="seoul">SEOUL</span></a>
-<a href="guideList.do?locCategory=gyeonggi"><span class="category" id="gyeonggi">GYEONGGI-DO</span></a>
-<a href="guideList.do?locCategory=daejeon"><span class="category" id="daejeon">DAEJEON</span></a>
-<a href="guideList.do?locCategory=gwangju"><span class="category" id="gwangju">GWANGJU</span></a>
-<a href="guideList.do?locCategory=daegu"><span class="category" id="daegu">DAEGU</span></a>
-<a href="guideList.do?locCategory=busan"><span class="category" id="busan">BUSAN</span></a>
-<a href="guideList.do?locCategory=jeju"><span class="category" id="jeju">JEJU</span></a>
-<a href="guideList.do?locCategory=gangwon"><span class="category" id="gangwon">GANGWON-DO</span></a>
-<a href="guideList.do?locCategory=chungcheong"><span class="category" id="chungcheong">CHUNGCHEONG-DO</span></a>
-<a href="guideList.do?locCategory=jeolla"><span class="category" id="jeolla">JEOLLA-DO</span></a>
-<a href="guideList.do?locCategory=gyeongsang"><span class="category" id="gyeongsang">GYEONGSANG-DO</span></a>
+<a href="travelList.do?locCategory=seoul"><span class="category" id="seoul">SEOUL</span></a>
+<a href="travelList.do?locCategory=incheon"><span class="category" id="gyeonggi">INCHEON</span></a>
+<a href="travelList.do?locCategory=daejeon"><span class="category" id="daejeon">DAEJEON</span></a>
+<a href="travelList.do?locCategory=gwangju"><span class="category" id="gwangju">GWANGJU</span></a>
+<a href="travelList.do?locCategory=daegu"><span class="category" id="daegu">DAEGU</span></a>
+<a href="travelList.do?locCategory=busan"><span class="category" id="busan">BUSAN</span></a>
+<a href="travelList.do?locCategory=jeju"><span class="category" id="jeju">JEJU-DO</span></a>
+<a href="travelList.do?locCategory=gangwon"><span class="category" id="gangwon">GANGWON-DO</span></a>
+<a href="travelList.do?locCategory=gyeonggi"><span class="category" id="gyeonggi">GYEONGGI-DO</span></a>
+<a href="travelList.do?locCategory=chungcheong"><span class="category" id="chungcheong">CHUNGCHEONG-DO</span></a>
+<a href="travelList.do?locCategory=jeolla"><span class="category" id="jeolla">JEOLLA-DO</span></a>
+<a href="travelList.do?locCategory=gyeongsang"><span class="category" id="gyeongsang">GYEONGSANG-DO</span></a>
 </p>
 </div>
 

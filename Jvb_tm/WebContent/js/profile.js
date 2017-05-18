@@ -614,7 +614,6 @@ $(document).ready(function() {
 	
 	
 	
-	
 	//성
 			$('#firstName').focus(function(){
 				if($(this).val() == '') {

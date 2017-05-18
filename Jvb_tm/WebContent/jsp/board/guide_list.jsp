@@ -22,6 +22,10 @@ $(document).ready(function(){
 	})
 	
 	
+	
+	$()
+	
+	
 })
 </script>
 </head>
@@ -80,6 +84,15 @@ $(document).ready(function(){
                  </div>
 		</c:forEach>
 	</div>
+	
+	
+	<div style="text-align: right">
+	         <input type="button" class="btn btn-primary" value="Write"
+	            onclick="location.href='guideWriteForm.do'">
+     	 </div>
+	
+	
+	
 </div>
 				
 		<hr/>
@@ -127,7 +140,11 @@ $(document).ready(function(){
 					</c:choose>
 				</li>
 			</ul>
+			
 		</div> 
+		
+		
+		
 
           
                 

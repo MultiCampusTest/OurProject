@@ -56,12 +56,20 @@ $(document).ready(function(){
 
 	
 	$('.msg_send_btn').click(function(){
-		$('div.modal').modal({
-            remote : 'modal.html'
-      	});
+		
 		var id=$(this).attr('id');
+		var m_array = new Array();
+		m_array = id.split('_');
+		var index = m_array[0];
+		var msg_receive_userid=m_array[1];
+		
+		$('div.modal'+index).modal({
+            remote : 'modal'+index+'.html'
+      	});
+		
+		
 		$('.msg_address').html(id);
-		$('.msg_send_address_userid').attr('value', id);
+		$('.msg_send_address_userid').attr('value', msg_receive_userid);
 // 		alert(id);
 	});
 	
@@ -82,6 +90,12 @@ $(document).ready(function(){
 	        }
 		
 	});
+	
+	$('.msg_close_btn').on('click', function(){
+		$('.sending_msg_form').val("");
+		$('.remain_sending_msg').html("1000 characters remaining");
+	})
+	
 	
 	
 // 		var board_code=$('.send_board_code').attr('id');
@@ -238,19 +252,51 @@ $(document).ready(function(){
 	                  		<c:if test="${comments.cm_depth == 0 }">
 	                  			<div class="row col-md-12 pull-right" style="text-align: right">
 		                  			<button type="button" class="btn btn-primary btn-lg msg_send_btn glyphicon glyphicon-envelope"
-		                  				id="${comments.cm_writer }"
-		                  				 data-toggle="modal" data-target="#myModal"></button>
+		                  				id="${status_index }_${comments.cm_writer }"
+		                  				 data-toggle="modal" data-target="#myModal${status.index }"></button>
 	                  			</div>
-	                  			<div id="myModal" class="modal fade" role="dialog">
+	                  			
+<!-- 								<hr id="board_commentsLine"> -->
+	                  		</c:if>
+	                  		
+              			</div>
+	                  		<hr id="board_commentsLine">
+              				<c:if test="${comments.cm_delete != 'Y' }">
+	              				<c:if test="${comments.cm_writer == userid }">
+	              					<a onclick="location.href='commentsDelete.do?cm_idx=${comments.cm_idx}&b_idx=${comments.b_idx }&site=guide'"> 삭제</a>
+	              					<a onclick="commentsUpdate(${comments.cm_idx})"> 수정</a>
+	              				</c:if>
+	              				<c:if test="${userid != null }">
+		              				<a onclick="commentsInput(${comments.cm_idx},${comments.cm_parent },'${comments.cm_writer }',${comments.cm_depth })"> 댓글</a>
+		              			</c:if>	
+              				</c:if>
+<!--           		    <hr id="board_commentsLine"> -->
+          		    </div>
+          		</c:forEach>
+        	</c:otherwise>
+        </c:choose>
+        
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <div id="myModal${status.index }" class="modal fade" role="dialog">
 								  <div class="modal-dialog">
 								
 								    Modal content
-								    <div class="modal-content">
+								    <div class="modal-content" id="modal_msg_${status.index }">
 								      <div class="modal-header">
-								        <button type="button" class="close" data-dismiss="modal">&times;</button>
+<%-- 								        <button type="button" class="close" data-dismiss="modal${status.index }">&times;</button> --%>
 <%-- 								        <h4 class="modal-title ">To.${comments.cm_writer }</h4> --%>
 										<span class="modal-title msg_address"></span>
 								      </div>
+								      
 <!-- 								      <div class="modal-body"> -->
 <!-- 								        <textarea rows="10" cols="75"></textarea> -->
 <!-- 								      </div> -->
@@ -271,32 +317,13 @@ $(document).ready(function(){
 									      <div class="modal-footer">
 												<input class="btn btn-primary send_msg_button" type="submit"
 													value="Post New Message" id="submit_msg${status.index }">
-									        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+									        <button type="button" class="btn btn-default msg_close_btn" data-dismiss="modal">Close</button>
 									      </div>
 									</form>
 								    </div>
 								
 								  </div>
 								</div>
-<!-- 								<hr id="board_commentsLine"> -->
-	                  		</c:if>
-	                  		
-              			</div>
-	                  		<hr id="board_commentsLine">
-              				<c:if test="${comments.cm_delete != 'Y' }">
-	              				<c:if test="${comments.cm_writer == userid }">
-	              					<a onclick="location.href='commentsDelete.do?cm_idx=${comments.cm_idx}&b_idx=${comments.b_idx }&site=guide'"> 삭제</a>
-	              					<a onclick="commentsUpdate(${comments.cm_idx})"> 수정</a>
-	              				</c:if>
-	              				<c:if test="${userid != null }">
-		              				<a onclick="commentsInput(${comments.cm_idx},${comments.cm_parent },'${comments.cm_writer }',${comments.cm_depth })"> 댓글</a>
-		              			</c:if>	
-              				</c:if>
-<!--           		    <hr id="board_commentsLine"> -->
-          		    </div>
-          		</c:forEach>
-        	</c:otherwise>
-        </c:choose>
 </div>
 </body>
 </html>

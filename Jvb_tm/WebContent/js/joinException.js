@@ -78,28 +78,34 @@
 		});
 		
 		//비밀번호
-		var regPass = /^.*(?=^.{8,15}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/;
+		var regPass = /^.*(?=^.{8,20}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/;
 		$('input[type=password]').focus(function () {
 			if($('#pwd').val() == '' || $('#pwdChk').val() == '') {
-				$('#pwd_msg').html('<font color="#FF605A">enter 8-20 password</font>');
+				$('#pwd_msg').html('<font color="#FF605A">password can be 3 combinations of upper, lower, number and special key</font>');
 			} else if($('#pwd').val().length < 8 || $('#pwdChk').val().length < 8) {
-				$('#pwd_msg').html('<font color="#FF605A">input 8-20 characters</font>');
+				$('#pwd_msg').html('<font color="#FF605A">make password over 8 size</font>');
+			} else if(!regPass.test($('#pwd').val()) || !regPass.test($('#pwdChk').val())) {
+				$('#pwd_msg').html('<font color="#FF605A">combinate at least 3 types of upper, lower, number, special key</font>');
 			}
 		}).blur(function() {
 			if($('#pwd').val() == '' || $('#pwdChk').val() == '') {
-				$('#pwd_msg').html('<font color="#FF605A">enter 8-20 password</font>');
+				$('#pwd_msg').html('<font color="#FF605A">password can be 3 combinations of upper, lower, number and special key</font>');
 			} else if($('#pwd').val().length < 8 || $('#pwdChk').val().length < 8) {
-				$('#pwd_msg').html('<font color="#FF605A">input 8-20 characters</font>');
+				$('#pwd_msg').html('<font color="#FF605A">make password over 8 size</font>');
+			} else if(!regPass.test($('#pwd').val()) || !regPass.test($('#pwdChk').val())) {
+				$('#pwd_msg').html('<font color="#FF605A">combinate at least 3 types of upper, lower, number, special key</font>');
 			} else if($('#pwd').val() == $('#pwdChk').val()) {
 				$('#pwd_msg').text('');
 			}
 		}).keyup(function(){
 			if($('#pwd').val() == '' || $('#pwdChk').val() == '') {
-				$('#pwd_msg').html('<font color="#FF605A">enter 8-20 password</font>');
+				$('#pwd_msg').html('<font color="#FF605A">password can be 3 combinations of upper, lower, number and special key</font>');
 			} else if($('#pwd').val().length < 8 || $('#pwdChk').val().length < 8) {
-				$('#pwd_msg').html('<font color="#FF605A">input 8-20 characters</font>');
+				$('#pwd_msg').html('<font color="#FF605A">make password over 8 size</font>');
 			} else if($('#pwd').val() != $('#pwdChk').val()) {
-				$('#pwd_msg').html('<font color="#FF605A">not matched password</font>');
+				$('#pwd_msg').html('<font color="#FF605A">not matched</font>');
+			} else if(!regPass.test($('#pwd').val()) || !regPass.test($('#pwdChk').val())) {
+				$('#pwd_msg').html('<font color="#FF605A">combinate at least 3 types of upper, lower, number, special key</font>');
 			} else {
 				$('#pwd_msg').text('');
 			}			
@@ -146,7 +152,9 @@
 		//버튼클릭
 		$('#join_submit').click(function(){
 			var confirm = false;
-			if($('#firstName').val() == '')
+			if($('#file').val() == '')
+				alert('Upload your profile image');
+			else if($('#firstName').val() == '')
 				$('#firstName').focus();
 			else if($('#lastName').val() == '')
 				$('#lastName').focus();

@@ -89,7 +89,7 @@
 										<button type="submit" class="form-control btn btn-primary">LOGIN</button>
 										<br><br>
 										<button type="button" class="form-control btn btn-primary"
-										onclick="location.href='joinForm.do'">JOIN</button>
+										onclick="location.href='certiForm.do'">JOIN</button>
 									</div>
 								</form>							
 								</c:otherwise>

@@ -19,9 +19,12 @@
 		
 		$('#find').click(function(){
 			var email = $('#userid').val();
-			
+			var searchEmail = /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
 			if(email == '') {
 				$('#findEmailMsg').html('<font color="#FF605A">enter email</font>');
+				$('#userid').focus();
+			} else if(!searchEmail.test($('#userid').val())) {
+				$('#findEmailMsg').html('<font color="#FF605A">wrong email</font>');
 				$('#userid').focus();
 			} else {
 				$.ajax({
@@ -53,18 +56,14 @@
 		<div class="col-md-4 col-md-offset-4">
     		<div class="panel panel-default">
 			  	<div class="panel-body">
-<!-- 			    <form action="getPassword.do" method="get" role="form"> -->
                     <fieldset>
 			    	  	<div class="form-group">
-			    	  		<p>
-			    	  			Enter your email address and we will send you a link to reset your password.
-			    	  		</p>
+			    	  		<p>Enter your email address and we will send you a link to reset your password.</p>
 			    		    <input type="text" id="userid" name="userid" class="form-control" placeholder="Enter your email">
 			    		</div>
 			    		<button class="btn btn-primary btn-block" type="button" id="find">Confirm</button>
 			    		<div id="findEmailMsg" style="text-align: center"></div>
 			    	</fieldset>
-<!-- 			    </form> -->
 			    </div>
 			</div>
 		</div>

@@ -124,8 +124,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		b_sub_category=#{subCategory},
 		b_title=#{title},
 		b_start_date=#{startDate}, 
-		b_end_date=#{endDate},
-		b_readcount=#{readCount}
+		b_end_date=#{endDate}
 		WHERE b_idx=#{boardIdx}
 	</update>
 	

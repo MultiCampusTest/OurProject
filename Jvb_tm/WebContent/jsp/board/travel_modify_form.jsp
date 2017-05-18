@@ -416,8 +416,8 @@ cursor:pointer;
 	</ul>
 		</div>
 		
-	<form action="travelModify.do" method="post">
 	  <div class="col-md-5">
+		<form action="travelModify.do" method="post">
 		<div>
 		<font style="font-size:20px">TITLE</font>
          	<input type="text" class="form-control title" value="${travel.title }" name="title"/>
@@ -455,21 +455,22 @@ cursor:pointer;
 	  
 	    <hr> 
 	    
-		<div id="content">
+		<div id="content" style="margin-bottom:0;">
 		<font style="font-size:20px">CONTENT</font>	 
 			  <c:forEach items="${contents}" var="contents">
 					<textarea class="form-control-text" id="day${contents.contentsSeq+1}"
 						 name="contents" rows="10" style="resize:none;" >${contents.contents }</textarea>
 			  </c:forEach>		
 		</div>
-			
-		<div class="form-group">
+		<div class="form-group" style="float:left;">
+			<input type="hidden" value="${travel.boardIdx }" name="boardIdx">
 			<input type="submit" value="ok" class="btn btn-primary">
-			<input type="button" value="list" class="btn btn-primary" onclick="location.href='travelList.do'">
-		</div>
+			<input type="button" value="cancel" class="btn btn-primary"
+											onclick="location.href='travelView.do?boardIdx=${travel.boardIdx}'">
+		</div>	
 		<div id="input_latLng"></div>
-		</div>
 	 </form>	
+		</div>
 	</div>
 </div>  
 </body>

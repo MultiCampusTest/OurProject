@@ -253,7 +253,7 @@ public class BoardService {
 
 
 	public void updateGuide(BoardVo board, ContentsVo contents, String[] latLngArr){
-		boardDao.updateNotice(board);
+		boardDao.updateGuide(board);
 		contentsDao.updateContents(contents);
 		mapPositionDao.deleteMapPosition(board.getBoardIdx());
 		
@@ -264,7 +264,6 @@ public class BoardService {
 			mapPosition.setMarkerSeq(i);
 			mapPositionDao.insertMapPosition(mapPosition);
 		}
-		
 	}
 	
 	public void deleteGuide(int boardIdx){
@@ -381,6 +380,20 @@ public class BoardService {
 		return result;
 	}
 	 
+	
+	public void updateTravel(BoardVo board, String[] contentsArr, String[] latLngArr){
+		boardDao.updateNotice(board);
+//		contentsDao.updateContents(contents);
+		mapPositionDao.deleteMapPosition(board.getBoardIdx());
+		
+		for(int i=0; i<latLngArr.length; i++){
+			MapPositionVo mapPosition = new MapPositionVo();
+			mapPosition.setBoardIdx(board.getBoardIdx());
+			mapPosition.setLatLng(latLngArr[i]);
+			mapPosition.setMarkerSeq(i);
+			mapPositionDao.insertMapPosition(mapPosition);
+		}
+	}
 	
 	//review insert
 	public void insertReview(BoardVo board, ContentsVo contents){

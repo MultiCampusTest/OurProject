@@ -254,19 +254,11 @@ $(document).ready(function(){
           			name="contents" style="resize:none;">${contents.contents }</textarea>
 		</div>
 		<div class="form-group">
-			<input type="hidden" value="g" name="code">
-			<input type="submit" value="ok" class="btn btn-primary">
-			<input type="button" value="list" class="btn btn-primary" onclick="location.href='guideList.do'">
-		</div>
-		
-		<div class="form-group" style="float:right">
-		 	<input type="hidden" value="${guide.readCount }" name="readCount">
 			<input type="hidden" value="${guide.boardIdx }" name="boardIdx">
 			<input type="submit" value="ok" class="btn btn-primary">
-			<input type="button" value="cancel" class="btn btn-primary" 
-								onclick="location.href='noticeView.do?boardIdx=${guide.boardIdx}'">
+			<input type="button" value="cancel" class="btn btn-primary"
+											onclick="location.href='guideView.do?boardIdx=${guide.boardIdx}'">
 		</div>
-		
 		<div id="input_latLng"> </div>
       </form>
     </div>

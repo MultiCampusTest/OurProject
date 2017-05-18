@@ -167,6 +167,16 @@ public class BoardController {
 		return mav;
 	}
 
+	@RequestMapping(value="travelModify.do", method=RequestMethod.POST)
+	public String travelModify(HttpServletRequest req,
+							   BoardVo board){
+				
+				String[] contentsArr =req.getParameterValues("contents");
+				String[] latLngArr = req.getParameterValues("latLng");
+					
+				boardService.updateTravel(board, contentsArr, latLngArr);
+				return "redirect:travelView.do?boardIdx="+board.getBoardIdx();
+	}
 	
 	
 	// guide_board

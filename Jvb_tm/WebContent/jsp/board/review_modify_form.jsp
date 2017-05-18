@@ -63,6 +63,10 @@ function read(input) {
 		}
 		reader.readAsDataURL(input.files[0]);
 	}
+	
+	function hidden(){
+		
+	}
 }
 </script>
 </head>

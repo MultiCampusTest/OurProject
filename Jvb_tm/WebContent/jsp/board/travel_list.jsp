@@ -60,7 +60,7 @@ $(document).ready(function(){
 	 	<c:forEach items="${list}" var="travel">
 			<div class="col-sm-2 col-lg-2 col-md-2">
                <div class="thumbnail">
-                <a href="guideView.do?boardIdx=${travel.boardIdx }">
+                <a href="travelView.do?boardIdx=${travel.boardIdx }">
                   <img src="http://maps.googleapis.com/maps/api/staticmap?size=300x400
                         	&key=AIzaSyBX21maM7ZEhRTCF0_hB8DSrYHsKOof2m8
 							&path=color:0x333333ff|weight:2|${travel.strLatLng}

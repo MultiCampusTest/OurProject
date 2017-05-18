@@ -153,14 +153,18 @@ public class BoardController {
 //		mav.addObject("comments",commentsService.selectComments(boardIdx)); 
 //		mav.addObject("matchingComplete", matchingService.matchingComplete(boardIdx));
 		mav.setViewName("board/travel_view");
-
 		
 		return mav;
 	}
 
+	
 	@RequestMapping("travelModifyForm.do")
-	public String travelModifyForm() {
-		return "travelList";
+	public ModelAndView travelModifyForm(int boardIdx) {
+		
+		ModelAndView mav = new ModelAndView();
+		mav.addAllObjects(boardService.getTravel(boardIdx));
+		mav.setViewName("board/travel_modify_form");
+		return mav;
 	}
 
 	

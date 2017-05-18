@@ -18,65 +18,94 @@
 <link rel="stylesheet" href="css/travelWriteForm.css">
 <script type="text/javascript">
 
+
 	var polys =[];
 	var map;
-	var i = 0;
-	var loc = [];
 	var latLng = [];
 	var markers = [];
+	var cnt = 0;
+	var list = [];
 	
 	function initMap() {
+	var latLng_count = 0;
+	<c:forEach items="${mapPosition}" var="latLng" >
+		list[latLng_count] = new google.maps.LatLng ${latLng.latLng};
+		$('#input_latLng').append('<input type="hidden" name="latLng" value="${latLng.latLng}">');
+		latLng_count++;
+	</c:forEach>
+	  
 	map = new google.maps.Map(document.getElementById('map'), {
 	  zoom: 15,
-	  center: {lat: 37.566535, lng: 126.97796919999996}
+	  center: list[cnt]
 	});
+	
+	
 	var geocoder = new google.maps.Geocoder();
 	
-	  poly = new google.maps.Polyline({
+	poly = new google.maps.Polyline({
 	        strokeColor: '#000000',
 	        strokeOpacity: 1.0,
 	        strokeWeight: 3
 	      });
-		poly.setMap(map);
+	poly.setMap(map);
+	
+	//마커 찍기
+	for (var i = 0; i < list.length; i++) {
+		addMarker();
+	}
 	
 	//자동완성
 	var autoComplete = new google.maps.places.Autocomplete(document.getElementById('pac-input'));
 	autoComplete.addListener('place_changed', function() {
-// 				var place = autoComplete.getplace();
-// 				geocodeAddress(geocoder, map);
+	//			var place = autoComplete.getplace();
+	//			geocodeAddress(geocoder, map);
 	});
 	
+	
 	function deleteMarkers() {
-		   
-		   for(var i = 0; i < markers.length; i++) {
-		         markers[i].setMap(null);
-		       }
-		   for(var i=0; i<polys.length; i++){
-		 		   polys[i].setMap(null);
-		 	   }
-		   
-	       markers = [];
-	       path = [];
-	       polys = [];
-	       poly = new google.maps.Polyline({
-		        strokeColor: '#000000',
-		        strokeOpacity: 1.0,
-		        strokeWeight: 3
-		      });
-	   	   poly.setMap(map);
-	     }
+	   
+	   for(var i = 0; i < markers.length; i++) {
+	         markers[i].setMap(null);
+	       }
+	   for(var i=0; i<polys.length; i++){
+	 		   polys[i].setMap(null);
+	 	   }
+	   
+	   markers = [];
+	   path = [];
+	   polys = [];
+	   poly = new google.maps.Polyline({
+	        strokeColor: '#000000',
+	        strokeOpacity: 1.0,
+	        strokeWeight: 3
+	      });
+		   poly.setMap(map);
+	 }
 	
 	document.getElementById('delete').addEventListener('click', function() {
 	  deleteMarkers();
-	  loc = [];
 	  latLng = [];
 	  $('#input_latLng').empty();
 	});
 	
 	document.getElementById('submit').addEventListener('click', function() {
 	  geocodeAddress(geocoder, map);
-	  i++;
 	});
+	}
+	
+	function addMarker() {
+	
+		var marker = new google.maps.Marker({
+			position: list[cnt],
+			map: map
+		});
+		markers.push(marker);
+		
+		path = poly.getPath();
+		path.push(list[cnt]);
+		polys.push(poly);
+	
+		cnt++;
 	}
 	
 	function geocodeAddress(geocoder, resultsMap) {
@@ -92,24 +121,24 @@
 	    });
 	    markers.push(marker);
 	   
-	    polys.push(poly);
-	    var path = poly.getPath();
+	    path = poly.getPath();
 	    path.push(results[0].geometry.location);
+	    
+	    polys.push(poly);
+	    
 	    resultsMap.setCenter(results[0].geometry.location);
-	    
-	    loc[i] = address;
-	    latLng[i] = results[0].geometry.location;
-	    
-	    
-	    $('#input_latLng').append('<input type="hidden" name="latLng" value="'+latLng[i]+'">');
 	
-	
+	    latLng[cnt] = results[0].geometry.location;
+	    $('#input_latLng').append('<input type="hidden" name="latLng" value="'+latLng[cnt]+'">');
+		cnt++;
+		
+		
+		
 	  } else {
 	    alert('Geocode was not successful for the following reason: ' + status);
 	  }
 	});
 	}
-
 
 
 $(function() {
@@ -155,7 +184,7 @@ function delete_day_content(id){
 		}
 		
 	});
-  }
+}
 	
 function add_day_content(){
 	
@@ -221,7 +250,7 @@ margin-top:10px;
 .sibal{
 
 list-style:none;
-max-height:400px;
+max-height:550px;
 width:160px;
 border-collapse: collapse;
 overflow-y: auto;
@@ -366,7 +395,7 @@ cursor:pointer;
 	</ul>
 		</div>
 		
-	<form action="travelWrite.do" method="post">
+	<form action="travelModify.do" method="post">
 	  <div class="col-md-5">
 		<div>
 		<font style="font-size:20px">TITLE</font>

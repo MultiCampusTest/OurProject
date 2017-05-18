@@ -213,7 +213,7 @@
 					}
 				},
 				error : function() {
-					alert('에러 개새끼야');
+					alert('에러 ');
 				}
 			});
 		});
@@ -249,7 +249,7 @@
 
 				},
 				error : function() {
-					alert('에러 개새끼야');
+					alert('에러 ');
 				// 	               $('#send_msg_contents'+realid).val("");
 				}
 			});
@@ -316,7 +316,7 @@
 
 				},
 				error : function() {
-					alert('에러 개새끼야');
+					alert('에러 ');
 				}
 			});
 
@@ -351,7 +351,7 @@
 
 				},
 				error : function() {
-					alert('매칭 거절 에러 개새끼야');
+					alert('매칭 거절 에러 ');
 				}
 			});
 
@@ -420,7 +420,7 @@
 
 				},
 				error : function() {
-					alert('에러 개새끼야');
+					alert('에러 ');
 				}
 			});
 
@@ -455,31 +455,42 @@
 
 				},
 				error : function() {
-					alert('매칭 거절 에러 개새끼야');
+					alert('매칭 거절 에러 ');
 				}
 			});
 
 		});
 			
 		$('#deleteBtn').click(function(){
-			var email = $('#mypage_userid').val();
-			var password = $('#mypage_pwd').val();
-			$.ajax({
-				url : 'removeMember.do',
-				type : 'POST',
-				data : { userid : email, pwd : password },
-				dataType : 'json',
-				success : function(data) {
-					if(data.response == true) {
-						alert('password error');
-					} else {
-						alert('Thank you for that time.');
-						location.href="main.do";
+			if($('#mypage_pwd').val() == '')
+			{
+				$('#mypage_pwd').focus();
+				$('#mypage_pwd_msg').html('<font color="#FF605A">enter password</font>');
+				return false;
+			} 
+			else
+			{
+				var email = $('#mypage_userid').val();
+				var password = $('#mypage_pwd').val();
+				$.ajax({
+					url : 'removeMember.do',
+					type : 'POST',
+					data : { userid : email, pwd : password },
+					dataType : 'json',
+					success : function(data) {
+						if(data.result) {
+							alert('Thank you for that time.');
+							location.href="main.do";
+						} else {
+							$('#mypage_pwd').val('');
+							alert('password error');
+						}
+					}, error : function(data) {
+						alert('data error');
 					}
-				}, error : function(data) {
-					alert('data error');
-				}
-			});
+				});
+			}
+			
 		});
 	})
 </script>
@@ -631,10 +642,10 @@
 <!--          						 								<form action="removeMember.do"> -->
          						 										<p style="text-align: center">
          						 											To delete your account, enter password.
-         						 										<input type="hidden" class="form-control input-lg" id="mypage_userid" name="userid" value="${userid}">
-         						 										<input type="password" class="form-control input-lg" name="pwd" id="mypage_pwd"
-         						 											style="width: auto">
-         						 										</p>
+         						 										<p>
+         						 											<input type="hidden" class="form-control input-lg" id="mypage_userid" name="userid" value="${userid}">
+         						 											<input type="password" class="form-control input-lg" name="pwd" id="mypage_pwd">
+         						 											<div id="mypage_pwd_msg"></div>
 																	</div>
          						 								</p>
         													</div>

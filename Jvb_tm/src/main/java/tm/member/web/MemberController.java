@@ -168,9 +168,12 @@ public class MemberController {
 	@RequestMapping("removeMember.do")
 	public @ResponseBody HashMap<String, Object> removeMember(HttpSession session, MemberVo memberVo){
 		HashMap<String, Object> response = new HashMap<>();
-		response.put("result", memberService.memberRemove(memberVo));
-		System.err.println(response.get("result"));
-		session.removeAttribute("userid");
+		boolean delete = memberService.memberRemove(memberVo);
+		if(delete) {
+			session.removeAttribute("userid");			
+		}
+		response.put("result", delete);
+		System.out.println("true인지 false인지? " + response.get("result"));
 		return response;
 	}
 	

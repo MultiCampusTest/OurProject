@@ -30,5 +30,5 @@ public interface IImageDao {
    public int updateReviewImage(ImageVo imageVo);
    
    
-   
+
 }

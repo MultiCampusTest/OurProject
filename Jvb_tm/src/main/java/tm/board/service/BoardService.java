@@ -495,6 +495,12 @@ public class BoardService {
 		contentsDao.updateContents(contents);
 	}
 	
+	//리뷰 삭제
+		public void deleteReview(String boardIdx, String contentsIdx){
+			boardDao.deleteBoard(Integer.parseInt(boardIdx));
+			contentsDao.deleteContents(Integer.parseInt(contentsIdx));
+		}
+	
 	
 	
 	

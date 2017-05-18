@@ -320,6 +320,19 @@ public class BoardController {
 		
 		return mav;
 	}
+		
+		//review delete
+	@RequestMapping("reviewDelete")
+	public ModelAndView reviewDelete(String boardIdx, String contentsIdx){
+		ModelAndView mav = new ModelAndView();
+		
+		boardService.deleteReview(boardIdx, contentsIdx);
+		imageService.deleteReview(boardIdx);
+		
+		mav.setViewName("redirect:reviewList.do");
+		return mav;
+	}
+
 
 
 	@RequestMapping(value="commentsWrite.do")

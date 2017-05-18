@@ -133,6 +133,25 @@
 				return false;
 			} else {
 				$('#top_msg').text('');
+				
+				var id = $('#top_userid').val();
+				var pass = $('#top_pwd').val();
+				$.ajax({
+					url : 'loginProc.do',
+					type : 'POST',
+					data : { userid : id, pwd : pass },
+					dataType : 'json',
+					success : function(data) {
+						if(data.result) {
+							location.href="main.do";
+						} else {
+							alert("you typed email or password wrong");
+							location.href="loginForm.do"
+						}
+					}, error : function(){
+						alert('data error');
+					}
+				});
 			}
 		});
 	});
@@ -248,7 +267,7 @@
 									<li>
 										<div class="row">
 											<div class="col-md-12">
-												<form action="loginProc.do" method="post" class="form" role="form" accept-charset="UTF-8">
+<!-- 												<form action="loginProc.do" method="post" class="form" role="form" accept-charset="UTF-8"> -->
 													<div class="form-group">
 														<label class="sr-only" for="exampleInputEmail2">Email</label>
 														<input type="text" class="form-control" id="top_userid" name="userid" placeholder="Email">
@@ -261,10 +280,10 @@
 														<label><input type="checkbox" id="top_checkbox"> Remember me</label>
 													</div>
 													<div class="form-group">
-														<button type="submit" id="top_submit" class="btn btn-primary btn-block">Sign in</button>
+														<button type="button" id="top_submit" class="btn btn-primary btn-block">Sign in</button>
 														<div id="top_msg" style="text-align: center"></div>
 													</div>
-												</form>
+<!-- 												</form> -->
 											</div>
 										</div>
 									</li>

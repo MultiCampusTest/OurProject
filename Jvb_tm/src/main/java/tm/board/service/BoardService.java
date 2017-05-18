@@ -464,6 +464,7 @@ public HashMap<String, Object> getReviewBoardList(String code, int page, String 
 		params.put("searchValue", searchValue);
 		params.put("skip", skip);
 		params.put("count", count);
+		params.put("subCategory", subCategory);
 		List<BoardVo> list = boardDao.selectReviewBoardLimit(params);
 		
 		HashMap<String, Object> result = new HashMap<>();

@@ -463,6 +463,7 @@ cursor:pointer;
 			  </c:forEach>		
 		</div>
 		<div class="form-group" style="float:left;">
+			<input type="hidden" value="${travel.readCount }" name="readCount">
 			<input type="hidden" value="${travel.boardIdx }" name="boardIdx">
 			<input type="submit" value="ok" class="btn btn-primary">
 			<input type="button" value="cancel" class="btn btn-primary"

@@ -31,7 +31,7 @@ $(document).ready(function(){
 <font style="font-size:12pt"><strong>D A Y S</strong></font>
 <a href="travelList.do?subCategory=five"><span class="category" id="five">5 Day</span></a>
 <a href="travelList.do?subCategory=ten"><span class="category" id="ten">10 Days</span></a>
-<a href="travelList.do?subCategory=travel_more"><span class="category" id="travel_more">10 Days+</span></a>
+<a href="travelList.do?subCategory=t_more"><span class="category" id="t_more">10 Days+</span></a>
 </p>
 
 <p style="line-height:100%">
@@ -76,7 +76,12 @@ $(document).ready(function(){
                  </div>
 		</c:forEach>
 	</div>
+	<div style="text-align: right">
+	         <input type="button" class="btn btn-primary" value="Write"
+	            onclick="location.href='travelWriteForm.do'">
+     	 </div>
 </div>
+
 				
 		<hr/>
 		

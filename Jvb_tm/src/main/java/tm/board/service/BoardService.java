@@ -233,7 +233,7 @@ public class BoardService {
 		}else if(diffDays == 4){
 			board.setSubCategory("four");
 		}else{
-			board.setSubCategory("guide_more");
+			board.setSubCategory("g_more");
 		}
 		
 		boardDao.insertBoard(board);
@@ -253,7 +253,22 @@ public class BoardService {
 
 
 	public void updateGuide(BoardVo board, ContentsVo contents, String[] latLngArr){
-		boardDao.updateGuide(board);
+		
+		int diffDays = getDiffOfDate(board.getStartDate(), board.getEndDate());
+		
+		if(diffDays == 1){
+			board.setSubCategory("one");
+		}else if(diffDays == 2){
+			board.setSubCategory("two");
+		}else if(diffDays == 3){
+			board.setSubCategory("three");
+		}else if(diffDays == 4){
+			board.setSubCategory("four");
+		}else{
+			board.setSubCategory("g_more");
+		}
+		
+		boardDao.updateCommonBoard(board);
 		contentsDao.updateContents(contents);
 		mapPositionDao.deleteMapPosition(board.getBoardIdx());
 		
@@ -277,7 +292,7 @@ public class BoardService {
 	public HashMap<String, Object> readGuide(int boardIdx){
 		BoardVo board = boardDao.selectOneBoard(boardIdx);
 		board.setReadCount(board.getReadCount()+1);
-		boardDao.updateGuide(board);
+		boardDao.updateCommonBoard(board);
 		ContentsVo contents = contentsDao.selectOneContents(boardIdx);
 		List<MapPositionVo> mapPositionArr = mapPositionDao.selectMapPosition(boardIdx);
 		
@@ -321,7 +336,7 @@ public class BoardService {
 		}else if(diffDays <= 10){
 			board.setSubCategory("ten");
 		}else{
-			board.setSubCategory("travel_more");
+			board.setSubCategory("t_more");
 		}
 		
 		boardDao.insertBoard(board);
@@ -345,11 +360,54 @@ public class BoardService {
 		}
 	}
 	
+	public void updateTravel(BoardVo board, String[] contentsArr, String[] latLngArr){
+		
+		int diffDays = getDiffOfDate(board.getStartDate(), board.getEndDate());
+		
+		if(diffDays <= 5){
+			board.setSubCategory("five");
+		}else if(diffDays <= 10){
+			board.setSubCategory("ten");
+		}else{
+			board.setSubCategory("t_more");
+		}
+		
+		
+		boardDao.updateCommonBoard(board);
+		contentsDao.deleteContents(board.getBoardIdx());
+		mapPositionDao.deleteMapPosition(board.getBoardIdx());
+		
+		for(int i=0; i<contentsArr.length; i++){
+			ContentsVo contents = new ContentsVo();
+			contents.setBoardIdx(board.getBoardIdx());
+			contents.setContents(contentsArr[i]);
+			contents.setContentsSeq(i);
+			contentsDao.insertContents(contents);
+		}
+		
+		
+		for(int i=0; i<latLngArr.length; i++){
+			MapPositionVo mapPosition = new MapPositionVo();
+			mapPosition.setBoardIdx(board.getBoardIdx());
+			mapPosition.setLatLng(latLngArr[i]);
+			mapPosition.setMarkerSeq(i);
+			mapPositionDao.insertMapPosition(mapPosition);
+		}
+	}
+	
+	
+	public void deleteTravel(int boardIdx){
+		boardDao.deleteBoard(boardIdx);
+		contentsDao.deleteContents(boardIdx);
+		mapPositionDao.deleteMapPosition(boardIdx);
+		
+	}
+	
 	
 	public HashMap<String, Object> readTravel(int boardIdx){
 		BoardVo board = boardDao.selectOneBoard(boardIdx);
 		board.setReadCount(board.getReadCount()+1);
-		boardDao.updateGuide(board);
+		boardDao.updateCommonBoard(board);
 		List<ContentsVo> contentsArr = contentsDao.selectContents(boardIdx);
 		List<MapPositionVo> mapPositionArr = mapPositionDao.selectMapPosition(boardIdx);
 		
@@ -381,19 +439,7 @@ public class BoardService {
 	}
 	 
 	
-	public void updateTravel(BoardVo board, String[] contentsArr, String[] latLngArr){
-		boardDao.updateNotice(board);
-//		contentsDao.updateContents(contents);
-		mapPositionDao.deleteMapPosition(board.getBoardIdx());
-		
-		for(int i=0; i<latLngArr.length; i++){
-			MapPositionVo mapPosition = new MapPositionVo();
-			mapPosition.setBoardIdx(board.getBoardIdx());
-			mapPosition.setLatLng(latLngArr[i]);
-			mapPosition.setMarkerSeq(i);
-			mapPositionDao.insertMapPosition(mapPosition);
-		}
-	}
+	
 	
 	//review insert
 	public void insertReview(BoardVo board, ContentsVo contents){

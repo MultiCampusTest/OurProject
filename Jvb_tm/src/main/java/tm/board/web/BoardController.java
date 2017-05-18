@@ -43,13 +43,13 @@ public class BoardController {
 	private IMatchingService matchingService;
 	
 	//메인화면
-	@RequestMapping("main.do")
+	@RequestMapping(value="main.do")
 	public String main() {
 		return "middle";
 	} 
 
 	// notice_board
-	@RequestMapping("noticeList.do")
+	@RequestMapping(value="noticeList.do")
 	public ModelAndView noticeList(HttpServletRequest req,
 								   @RequestParam(defaultValue="1") int page, 
 								   String searchValue) {
@@ -62,7 +62,7 @@ public class BoardController {
 		return mav;
 	}
 	
-	@RequestMapping("noticeWriteForm.do")
+	@RequestMapping(value="noticeWriteForm.do")
 	public String noticeWriteForm(String userid) {
 		if(userid.equals("admin")){
 			return "board/notice_write_form"; 
@@ -77,7 +77,7 @@ public class BoardController {
 		return "redirect:noticeView.do?boardIdx="+board.getBoardIdx();
 	}
 	
-	@RequestMapping("noticeView.do")
+	@RequestMapping(value="noticeView.do")
 	public ModelAndView noticeView(HttpServletRequest req, int boardIdx) {
 		String userid = (String)(req.getSession().getAttribute("userid"));
 		ModelAndView mav = new ModelAndView();
@@ -89,7 +89,7 @@ public class BoardController {
 		return mav;
 	}
 	
-	@RequestMapping("noticeModifyForm.do")
+	@RequestMapping(value="noticeModifyForm.do")
 	public ModelAndView noticeModifyForm(int boardIdx) {
 		ModelAndView mav = new ModelAndView();
 		mav.addAllObjects(boardService.getNotice(boardIdx));
@@ -111,7 +111,7 @@ public class BoardController {
 	
 
 	// travel_board
-	@RequestMapping("travelList.do")
+	@RequestMapping(value="travelList.do")
 	public ModelAndView travelList(
 			@RequestParam(defaultValue="1") int page,
 			 String locCategory,
@@ -125,12 +125,12 @@ public class BoardController {
 		return mav;
 	}
 
-	@RequestMapping("travelWriteForm.do")
+	@RequestMapping(value="travelWriteForm.do")
 	public String travelWriteForm() {
 		return "board/travel_write_form";
 	}
 	
-	@RequestMapping("travelWrite.do")
+	@RequestMapping(value="travelWrite.do", method=RequestMethod.POST)
 	public String travelWrite(
 			HttpServletRequest req,
 			BoardVo board){
@@ -150,8 +150,8 @@ public class BoardController {
 		ModelAndView mav = new ModelAndView();
 		mav.addAllObjects(boardService.readTravel(boardIdx));
 		mav.addObject("userid", userid);
-//		mav.addObject("comments",commentsService.selectComments(boardIdx)); 
-//		mav.addObject("matchingComplete", matchingService.matchingComplete(boardIdx));
+		mav.addObject("comments",commentsService.selectComments(boardIdx)); 
+		mav.addObject("matchingComplete", matchingService.matchingComplete(boardIdx));
 		mav.setViewName("board/travel_view");
 		
 		return mav;
@@ -178,6 +178,12 @@ public class BoardController {
 				return "redirect:travelView.do?boardIdx="+board.getBoardIdx();
 	}
 	
+	@RequestMapping(value="travelDelete.do", method=RequestMethod.GET)
+	public String travelDelete(int boardIdx){
+				boardService.deleteTravel(boardIdx);
+				return "redirect:travelList.do";
+	}
+	
 	
 	// guide_board
 	@RequestMapping(value="guideList.do")
@@ -198,7 +204,7 @@ public class BoardController {
 		return "board/guide_write_form";
 	}
 	
-	@RequestMapping("guideWrite.do")
+	@RequestMapping(value="guideWrite.do", method=RequestMethod.POST)
 	public String guideWrite(
 			HttpServletRequest req,
 			BoardVo board,
@@ -256,12 +262,24 @@ public class BoardController {
 
 
 	// review_board
+	@RequestMapping("reviewList.do")
+	public ModelAndView reviewList(
+			@RequestParam(defaultValue="1") int page,
+			String searchValue,
+			String subCategory) {
+		String code = "r";
+		ModelAndView mav = new ModelAndView();
+		mav.addAllObjects(boardService.getReviewBoardList(code, page, searchValue, subCategory));
+		mav.setViewName("board/review_list");
+		return mav;
+	}
+	
 	@RequestMapping("reviewWriteForm.do")
 	public String reviewWriteForm() {
 		return "board/review_write_form";
 	}
 	
-	@RequestMapping("reviewWrite.do")
+	@RequestMapping(value="reviewWrite.do")
 	@ResponseBody
 	public ModelAndView reviewWrite(BoardVo board, ContentsVo contents, MultipartHttpServletRequest req) {
 		boardService.insertReview(board, contents);
@@ -271,16 +289,6 @@ public class BoardController {
 		return mav;
 	}
 
-	@RequestMapping("reviewList.do")
-	public ModelAndView reviewList(HttpServletRequest req, @RequestParam(defaultValue="1") int page, String searchValue, String subCategory) {
-		String code = "r";
-		String userid = (String)(req.getSession().getAttribute("userid"));
-		ModelAndView mav = new ModelAndView();
-		mav.addAllObjects(boardService.getReviewBoardList(code, page, searchValue, subCategory));
-		mav.addObject("userid", userid);
-		mav.setViewName("board/review_list");
-		return mav;
-	}
 
 	@RequestMapping("reviewView.do")
 	public ModelAndView reviewView(HttpServletRequest req, int boardIdx) {
@@ -372,7 +380,7 @@ public class BoardController {
 		
 	}
 	
-	
+	 
 	
 	
 	@RequestMapping("commentsUpdate.do")

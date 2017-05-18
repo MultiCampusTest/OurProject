@@ -8,6 +8,15 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript">
+
+function delete_event(){
+	if(confirm("Are you Serious?") == true){
+		location.href='travelDelete.do?boardIdx=${travel.boardIdx}';
+	}else{
+		return;
+	}
+}
+
 $(document).ready(function(){
 	
 	//좌표값 받기
@@ -202,7 +211,7 @@ background-color:#DC524D;
 				<c:choose>
 					<c:when test="${userid eq travel.userid }">
 						<input type="button" value="Modify" class="btn btn-primary" 
-								onclick="location.href='guideModifyForm.do?boardIdx=${guide.boardIdx}'">
+								onclick="location.href='travelModifyForm.do?boardIdx=${travel.boardIdx}'">
 						<input type="button" value="delete" class="btn btn-primary" 
 								onclick="delete_event()">
 					</c:when>

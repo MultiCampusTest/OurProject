@@ -44,6 +44,8 @@
 <!-- Facebook API -->
 <script type="text/javascript" src="js/facebookAPI.js"></script>
 
+<script src="vendor/scrollreveal/scrollreveal.min.js"></script>
+
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>
@@ -192,11 +194,9 @@
 				<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Travel</a>
 					<ul class="dropdown-menu">
 						<li><a href="travelList.do">All List</a></li>
-						<li><a href="travelList.do?subCategory=one">1 Day</a></li>
-						<li><a href="travelList.do?subCategory=two">2 Days</a></li>
-						<li><a href="travelList.do?subCategory=three">3 Days</a></li>
-						<li><a href="travelList.do?subCategory=four">4 Days</a></li>
-						<li><a href="travelList.do?subCategory=guide_more">5 Days+</a></li>
+						<li><a href="travelList.do?subCategory=five">5 Day</a></li>
+						<li><a href="travelList.do?subCategory=ten">10 Days</a></li>
+						<li><a href="travelList.do?subCategory=t_more">10 Days+</a></li>
 						<li class="divider"></li>
 						<!-- 						<li class="dropdown-header">네비게이션 헤더</li> -->
 						<li><a href="travelList.do?locCategory=seoul">SEOUL</a></li>
@@ -220,7 +220,7 @@
 						<li><a href="guideList.do?subCategory=two">2 Days</a></li>
 						<li><a href="guideList.do?subCategory=three">3 Days</a></li>
 						<li><a href="guideList.do?subCategory=four">4 Days</a></li>
-						<li><a href="guideList.do?subCategory=guide_more">5 Days+</a></li>
+						<li><a href="guideList.do?subCategory=g_more">5 Days+</a></li>
 						<li class="divider"></li>
 						<!-- 						<li class="dropdown-header">네비게이션 헤더</li> -->
 						<li><a href="guideList.do?locCategory=seoul">SEOUL</a></li>

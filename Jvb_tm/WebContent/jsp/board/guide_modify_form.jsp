@@ -254,6 +254,7 @@ $(document).ready(function(){
           			name="contents" style="resize:none;">${contents.contents }</textarea>
 		</div>
 		<div class="form-group">
+			<input type="hidden" value="${guide.readCount }" name="readCount">
 			<input type="hidden" value="${guide.boardIdx }" name="boardIdx">
 			<input type="submit" value="ok" class="btn btn-primary">
 			<input type="button" value="cancel" class="btn btn-primary"

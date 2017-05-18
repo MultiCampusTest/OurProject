@@ -36,6 +36,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</choose>
 </sql>
 
+<sql id="reviewCategory">
+	<choose>
+		<when test="subCategory != null and subCategory != '' ">
+			AND b_sub_category = #{subCategory}
+		</when>
+	</choose>
+
+</sql>
 	
 
 	<insert id="insertBoard" parameterType="boardVo"
@@ -99,7 +107,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectReviewBoardLimit" parameterType="java.util.HashMap" resultMap="board">
 		SELECT b_idx, b_title, userid, b_readcount, b_date
 		FROM board
-		WHERE b_code=#{code} <include refid="search"></include> <include refid="category"></include>
+		WHERE b_code=#{code} 
+		<include refid="search"></include> 
+		<include refid="reviewCategory"></include>
 		ORDER BY b_idx desc limit #{skip}, #{count}
 	</select>
 	
@@ -118,13 +128,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!--  guide -->
 	<!--  update guide -->
-	<update id="updateGuide" parameterType="boardVo">
+	<update id="updateCommonBoard" parameterType="boardVo">
 		UPDATE board SET
 		b_loc_category=#{locCategory}, 
 		b_sub_category=#{subCategory},
 		b_title=#{title},
 		b_start_date=#{startDate}, 
-		b_end_date=#{endDate}
+		b_end_date=#{endDate},
+		b_readcount=#{readCount}
 		WHERE b_idx=#{boardIdx}
 	</update>
 	

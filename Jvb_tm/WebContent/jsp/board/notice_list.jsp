@@ -10,16 +10,10 @@
 <link href="css/noticeList.css" rel="stylesheet">
 <title>Insert title here</title>
  <style>
-/* .green_window { */
-/* 	display: inline-block; */
-/* 	width: 366px; height: 34px; */
-/* 	border: 3px solid #2db400; */
-/* 	background: white; */
-/* } */
+
 .input_text { 
 display: inline-block;
 	width: 348px; height: 40px;
-/* 	margin: 6px 0 0 9px; */
 	padding-left: 6px; 
 	padding-right: 6px;
 	border: 3px solid #FF605A;
@@ -38,6 +32,13 @@ display: inline-block;
 	border-radius: 1px;
 	cursor: pointer;
 }
+
+.t{
+width: 1200px; 
+margin: auto; 
+margin-left: expression(((document.body.clientWidth>1200) ? ((document.body.clientWidth-1200)/2) : 0) + "px"); 
+}
+
 </style>
 </head>
 <body>
@@ -58,7 +59,7 @@ display: inline-block;
 		<button type='submit' class='sch_smit'><i class="fa fa-search fa-2x" aria-hidden="true"></i></button>
 	</form>
 		
-		<table class="table table-hover" >
+		<table class="table table-hover t">
 			<colgroup>
 				<col width="60" />
 				<col />
@@ -89,9 +90,10 @@ display: inline-block;
 				</c:forEach>
 			</tbody>
 		</table>
+		<br>
 		<c:choose>
 			<c:when test="${userid != admin || userid==null }">
-				<input type="button" class="btn btn-primary" value="관리자가아니네?" onclick="location.href='main.do'">
+				<input type="button" class="btn btn-primary" value="관리자 아닌 쉐키가 감히??" onclick="location.href='main.do'">
 			</c:when>
 			<c:otherwise>
 				<input type="button" class="btn btn-primary" value="Write" onclick="location.href='noticeWriteForm.do'">

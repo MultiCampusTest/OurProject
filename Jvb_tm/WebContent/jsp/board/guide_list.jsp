@@ -21,11 +21,6 @@ $(document).ready(function(){
 		}
 	})
 	
-	
-	
-	$()
-	
-	
 })
 </script>
 </head>
@@ -38,7 +33,7 @@ $(document).ready(function(){
 <a href="guideList.do?subCategory=two"><span class="category" id="two">2 Days</span></a>
 <a href="guideList.do?subCategory=three"><span class="category" id="three">3 Days</span></a>
 <a href="guideList.do?subCategory=four"><span class="category" id="four">4 Days</span></a>
-<a href="guideList.do?subCategory=guide_more"><span class="category" id="guide_more">5 Days+</span></a>
+<a href="guideList.do?subCategory=g_more"><span class="category" id="g_more">5 Days+</span></a>
 </p>
 
 <p style="line-height:100%">
@@ -61,7 +56,7 @@ $(document).ready(function(){
 <hr/>
 
 <div class="container">
-<p>A Total of ${count}  Travel Plans Have Been Searched</p>
+<p>A Total of ${count} Travel Plans Have Been Searched</p>
    	<div class="row">
          
 				
@@ -90,8 +85,6 @@ $(document).ready(function(){
 	         <input type="button" class="btn btn-primary" value="Write"
 	            onclick="location.href='guideWriteForm.do'">
      	 </div>
-	
-	
 	
 </div>
 				

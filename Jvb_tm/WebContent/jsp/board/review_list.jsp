@@ -76,13 +76,12 @@ $(document).ready(function(){
 					<div class="thumbnail">
 							<a href="reviewView.do?boardIdx=${review.boardIdx }">
 							<img src="imageShow.do?img_code=${review.boardIdx }" style="width: 200px; height: 100px">
-
+							</a>
 						<div class="caption" style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis">
 							<font style="font-size: 12pt">${review.title }</font><br>
 							<font style="font-size: 12pt">${review.userid }</font><br> 
 							<font style="font-size: 12pt"><fmt:formatDate value="${review.writeDate}" pattern="yyyy-MM-dd"/></font><br>
 						</div>
-						</a>
 					</div>					
 				</div>
 			</c:forEach>
@@ -99,7 +98,8 @@ $(document).ready(function(){
 				<li>
 				 <c:choose>
 				 	<c:when test="${current != 1 }">
-				 		<a href="reviewList.do?page=${current-1}&searchValue=${searchValue}"><span
+				 		<a href="reviewList.do?page=${current-1}
+				 					&searchValue=${searchValue}&subCategory=${subCategory}"><span
 						class="glyphicon glyphicon-chevron-left"></span></a>
 				 	</c:when>
 				 	<c:otherwise>
@@ -114,7 +114,8 @@ $(document).ready(function(){
 								<li class="paging active"><a>${i }</a></li>
 							</c:when>
 							<c:otherwise>
-								<li class="paging"><a href="reviewList.do?page=${i}&searchValue=${searchValue}">${i }</a></li>
+								<li class="paging"><a href="reviewList.do?page=${i}
+										&searchValue=${searchValue}&subCategory=${subCategory}">${i }</a></li>
 							</c:otherwise>
 						</c:choose>
 					</c:forEach>
@@ -122,7 +123,8 @@ $(document).ready(function(){
 				<li>
 					<c:choose>
 						<c:when test="${current != last }">
-						<a href="reviewList.do?page=${current+1}&searchValue=${searchValue}"><span
+						<a href="reviewList.do?page=${current+1}
+								&searchValue=${searchValue}&subCategory=${subCategory}"><span
 							class="glyphicon glyphicon-chevron-right"></span></a>
 						</c:when>
 						<c:otherwise>

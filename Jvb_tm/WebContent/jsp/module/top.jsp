@@ -146,7 +146,7 @@
 							location.href="main.do";
 						} else {
 							alert("you typed email or password wrong");
-							$('#top_pwd').focus();
+							location.href="loginForm.do"
 						}
 					}, error : function(){
 						alert('data error');

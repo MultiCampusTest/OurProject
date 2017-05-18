@@ -14,11 +14,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    	  insert into image(img_idx, img_code, img_path) values(0, #{userid}, #{img_code})
    </insert>
 
-   <update id="updateImage" parameterType="imageVo">
-      UPDATE image
-      SET img_ori_name=#{img_ori_name}, img_path=#{img_path}
-      WHERE img_idx=#{img_idx}
-   </update>
 
    <delete id="deleteImageTravel" parameterType="int">
       delete from image
@@ -64,6 +59,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		FROM image
 		WHERE img_idx=#{img_idx}
 	</delete>
+<!-- 	이미지 삭제하기  -->
+	<update id="updateReviewImage" parameterType="imageVo">
+      UPDATE image
+      SET img_ori_name=#{img_ori_name}, img_path=#{img_path}
+      WHERE img_idx=#{img_idx}
+   </update>
    
    
    

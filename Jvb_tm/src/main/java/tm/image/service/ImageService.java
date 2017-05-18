@@ -225,7 +225,7 @@ public class ImageService implements IImageService {
             	if(image.getImg_idx() == 0){
             		imageDao.insertImage(image);
             	} else {
-            		imageDao.updateImage(image);            	            		
+            		imageDao.updateReviewImage(image);            	            		
             	}
             }
          }
@@ -247,6 +247,12 @@ public class ImageService implements IImageService {
 				imageDao.deleteByImageIdx(img_idx[i]);			
 			}
 		}
+	}
+
+	@Override
+	public void deleteReview(String img_code) {
+		// TODO Auto-generated method stub
+		imageDao.deleteByImageCode(img_code);
 	} 
    
    

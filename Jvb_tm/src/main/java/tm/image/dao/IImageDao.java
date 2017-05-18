@@ -27,6 +27,8 @@ public interface IImageDao {
    
    public int deleteByImageIdx(String img_idx);
    
+   public int updateReviewImage(ImageVo imageVo);
+   
    
    
 }

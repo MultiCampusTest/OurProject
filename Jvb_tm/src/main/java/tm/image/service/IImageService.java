@@ -30,7 +30,6 @@ public interface IImageService {
    public void insertReviewImg(BoardVo board, MultipartHttpServletRequest req);
    public void updateReviewImg(BoardVo board, MultipartHttpServletRequest req, String[] img_idx);
    public void deleteReviewImg(String img_code, MultipartHttpServletRequest req, String[] img_idx);
-   
-   
+   public void deleteReview(String img_code);
 
 }

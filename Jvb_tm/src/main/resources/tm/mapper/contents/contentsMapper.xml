@@ -18,7 +18,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</insert>
 	
 	<select id="selectOneContents" parameterType="int" resultMap="contents">
-		select ct_contents from contents 
+		select ct_idx, ct_contents from contents 
 		where b_idx = #{boardIdx}
 	</select>
 	

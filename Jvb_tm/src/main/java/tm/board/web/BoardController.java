@@ -323,10 +323,10 @@ public class BoardController {
 		
 		//review delete
 	@RequestMapping("reviewDelete")
-	public ModelAndView reviewDelete(String boardIdx, String contentsIdx){
+	public ModelAndView reviewDelete(String boardIdx){
 		ModelAndView mav = new ModelAndView();
 		
-		boardService.deleteReview(boardIdx, contentsIdx);
+		boardService.deleteReview(boardIdx);
 		imageService.deleteReview(boardIdx);
 		
 		mav.setViewName("redirect:reviewList.do");

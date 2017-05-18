@@ -27,7 +27,7 @@ public class ImageService implements IImageService {
       // int result = imageDao.insertImage(imageVo);
 
       // if (result > 0) {
-      String path = "/Users/LeeGilSun/Upload/";
+      String path = "/Users/KYS/Upload/";
       File folder = new File(path);
       if (!folder.exists()) {
          folder.mkdirs();
@@ -81,7 +81,7 @@ public class ImageService implements IImageService {
 
    @Override
    public void updateImg(ImageVo imageVo, String img_code, MultipartHttpServletRequest req) {
-      String path = "/Users/LeeGilSun/Upload/";
+      String path = "/Users/KYS/Upload/";
       File folder = new File(path);
       if (!folder.exists()) {
          folder.mkdirs();
@@ -95,8 +95,8 @@ public class ImageService implements IImageService {
          String fileName = files.get(i).getOriginalFilename();
          int fileSize = (int) files.get(i).getSize();
 
-         String ext = fileName.substring(fileName.lastIndexOf('.'));
-         String fileuri = path + uuid + ext;
+//         String ext = fileName.substring(fileName.lastIndexOf('.'));
+         String fileuri = path + uuid;
 
          imageVo.setImg_ori_name(fileName);
          imageVo.setImg_code(img_code);
@@ -112,7 +112,10 @@ public class ImageService implements IImageService {
             e.printStackTrace();
          }
          
-         imageDao.updateProfileImage(imageVo);
+         if(!fileName.equals("")){
+        	 imageDao.updateProfileImage(imageVo);
+        	 
+         }
       }
 
    }
@@ -147,7 +150,7 @@ public class ImageService implements IImageService {
 	@Override
 	public void insertReviewImg(BoardVo board, MultipartHttpServletRequest req) {
 		// TODO Auto-generated method stub
-		String path = "/Users/LeeGilSun/Upload/";
+		String path = "/Users/KYS/Upload/";
 		
         File folder = new File(path);
         if (!folder.exists()) {
@@ -187,7 +190,7 @@ public class ImageService implements IImageService {
 	@Override
 	public void updateReviewImg(BoardVo board, MultipartHttpServletRequest req, String[] img_idx) {
 		// TODO Auto-generated method stub
-		String path = "/Users/LeeGilSun/Upload/";
+		String path = "/Users/KYS/Upload/";
 		
         File folder = new File(path);
         if (!folder.exists()) {

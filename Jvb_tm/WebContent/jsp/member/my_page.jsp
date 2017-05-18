@@ -19,7 +19,11 @@
 
 <title>Travel Maker</title>
 
+<script type="text/javascript">
 
+
+
+</script>
 
 </head>
 <body>
@@ -217,7 +221,8 @@
 										<div class="text-center filebox">
 											<label for="idtestfirst" id="label" class="label">choose
 												file</label> <input type="file" id="idtestfirst" name="file"
-												class="ex_file" onchange="readURL(this)">
+												class="ex_file" onchange="readURL(this)"
+												>
 										</div>
 									</div>
 									<!-- edit form column -->

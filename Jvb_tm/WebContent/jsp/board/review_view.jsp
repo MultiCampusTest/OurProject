@@ -52,7 +52,9 @@
 					</div>
 					<div class="form-group">
 						<label class="control-label">CONTENT:</label>
-						<pre class="form-control" rows="10" style="resize: none;">${contents.contents }</pre>
+						<textarea class="form-control" placeholder="Insert Content" rows="17" 
+          			name="contents" style="resize:none; background-color:#FFFFFF" readonly="readonly">${contents.contents }</textarea>
+			</div>
 					</div>
 					<div class="form-group">
 						<input type="button" value="modify" class="btn btn-primary" onclick="location.href='reviewModifyForm.do?boardIdx=${review.boardIdx}'">

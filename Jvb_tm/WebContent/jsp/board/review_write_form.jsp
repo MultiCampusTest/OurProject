@@ -45,6 +45,7 @@ $(document).ready(function(){
 					<h2>Photo</h2>
 						<button class="btn btn-primary" id="fileAdd">파일 추가</button>
 				<form id="reviewForm" name="reviewForm" action="reviewWrite.do" method="post" enctype="multipart/form-data">
+						<input type="hidden" name="boardType" value="review">
 						<div  id="preDiv" class="table-responsive" id="reviewPhoto">
 							<table id="preTable" class="table table-condensed" style="height: inherit; vertical-align: middle;">
 									<tr  id="preset" class="clearfix" align="center" style="vertical-align: center">

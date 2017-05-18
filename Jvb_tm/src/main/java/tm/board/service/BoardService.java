@@ -368,6 +368,19 @@ public class BoardService {
 		return result;	
 	}
 	
+	public HashMap<String, Object> getTravel(int boardIdx) {
+		BoardVo board = boardDao.selectOneBoard(boardIdx);
+		List<ContentsVo> contentsArr = contentsDao.selectContents(boardIdx);
+		List<MapPositionVo> mapPositionArr = mapPositionDao.selectMapPosition(boardIdx);
+		
+		HashMap<String, Object> result = new HashMap<>();
+		result.put("guide", board);
+		result.put("contents", contentsArr);
+		result.put("mapPosition", mapPositionArr);
+		
+		return result;
+	}
+	
 	
 	//review insert
 	public void insertReview(BoardVo board, ContentsVo contents){

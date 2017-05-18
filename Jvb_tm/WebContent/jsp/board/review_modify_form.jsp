@@ -9,33 +9,32 @@
 <title>Insert title here</title>
 
 <link rel="stylesheet" href="css/review.css">
-<script src="js/review.js"></script>
+<!-- <script src="js/review.js"></script> -->
 <script type="text/javascript">
+
 $(document).ready(function(){
 	var cnt = 0;
 	$('#fileAdd').click(function(){
 		var div = document.getElementById('preDiv');
 		$('#container').append( $(div).html() );
-		$('.ex_file').each(function(index){
+		$('.file').each(function(index){
 			$(this).attr('id', 'idtest'+index);
+			$(this).attr('name','file');
 		});
-		$('.label').each(function(index) {
-			$(this).attr('id', 'labelid'+index);
+		$('.inputLabel').each(function(index) {
 			$(this).attr('for', 'idtest'+index);
-			
 		})
-		$('.ex_image').each(function(index){
-			$(this).attr('id', 'img'+index);
-			if($(this).attr('id').substring(3) > cnt){
+		$('.inputImage').each(function(index){
+			$(this).attr('id', 'inputImage'+index);
+			if($(this).attr('id') > cnt)
 				$(this).attr('src', 'img/review/noimage.png');
-			}
 		})
 		cnt++;
 	})
 });
 
 function readURL(input) {
-	alert($(input).attr('id'));
+// 	alert($(input).attr('id'));
 	var id = $(input).attr('id');
 	var num = id.substring(6);
 	
@@ -44,6 +43,23 @@ function readURL(input) {
 
 		reader.onload = function(e) {
 			$('#image' + id).attr('src', e.target.result);
+		}
+		
+		reader.readAsDataURL(input.files[0]);
+		
+	}
+}
+
+function read(input) {
+// 	alert($(input).attr('id'));
+	var id = $(input).attr('id');
+	var num = id.substring(6);
+	
+	if (input.files && input.files[0]) {
+		var reader = new FileReader();
+		
+		reader.onload = function(e) {
+			$('#inputImage' + num).attr('src', e.target.result);
 		}
 		reader.readAsDataURL(input.files[0]);
 	}
@@ -56,25 +72,11 @@ function readURL(input) {
 			<h3>후기게시판</h3>
 		</div>
 		<div class="row">
-			<button class="btn btn-primary" id="fileAdd">파일 추가</button>
-			<div  id="preDiv" class="table-responsive" id="reviewPhoto" style="display: none;">
-				<table id="preTable" class="table table-condensed" style="height: inherit; vertical-align: middle;">
-						<tr class="clearfix" align="center" style="vertical-align: center">
-							<td style="width: 35%; vertical-align: middle;">
-								<div class="filebox" style="padding-top: 10px">
-									<label for="idtestfirst" id="label" class="label">choose file</label> 
-									<input type="file" id="idtestfirst" name="file" class="ex_file" onchange="readURL(this)">
-								</div>
-							</td>
-							<td style="width: 65%; height: 80%">
-								<img id="imgfirst" class="ex_image" src="img/review/noimage.png">
-							</td>
-						</tr>
-				</table>
-			</div>
-			<form action="reviewUpdate.do" method="post" enctype="multipart/form-data">
+		<form action="reviewUpdate.do" method="post" enctype="multipart/form-data">
 				<div class="col-md-5">
 					<h2>Photo</h2>
+					<button class="btn btn-primary" id="fileAdd" onclick='return false;'>파일 추가</button>
+					<!-- 사진 목록 -->
 					<input type="hidden" name="boardIdx" value="${review.boardIdx }">
 					<div class="table-responsive" id="reviewPhoto">
 						<table class="table table-condensed" style="height: inherit; vertical-align: middle">
@@ -94,6 +96,23 @@ function readURL(input) {
 							</c:forEach>
 						</table>
 					</div>
+						<!-- 사진 추가 폼 -->
+						<div  id="preDiv" class="table-responsive" id="reviewPhoto">
+							<table id="preTable" class="table table-condensed" style="height: inherit; vertical-align: middle;">
+									<tr class="clearfix" align="center" style="vertical-align: center">
+										<td style="width: 35%; vertical-align: middle;">
+											<div class="filebox" style="padding-top: 10px">
+												<input type="hidden" name="img_idx" value="0">
+												<label for="first" class="inputLabel">choose file</label> 
+												<input type="file" id="first" class="file" onchange="read(this)">
+											</div>
+										</td>
+										<td style="width: 65%; height: 80%">
+											<img class="inputImage" id="inputImage" src="img/review/noimage.png" style="width: 200px">
+										</td>
+									</tr>
+							</table>
+						</div>
 					<div id="container">
 					</div>
 				</div>

@@ -82,6 +82,7 @@ function readURL(input) {
 								<tr class="clearfix" align="center" style="vertical-align: center">
 									<td style="width: 35%; vertical-align: middle;">
 										<div class="filebox" style="padding-top: 10px">
+											<input type="hidden" name="img_idx">
 											<label for="${image.img_idx }" id="label" class="label">choose file</label> 
 											<input type="file" id="${image.img_idx }" name="file" class="ex_file" onchange="readURL(this)">
 										</div>

@@ -58,6 +58,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		FROM image
 		WHERE img_code=#{img_code}
 	</delete>   
+<!-- 	이미지 아이디로 이미지 데이터 삭제 -->
+	<delete id="deleteByImageIdx" parameterType="int">
+		DELETE
+		FROM image
+		WHERE img_idx=#{img_idx}
+	</delete>
    
    
    

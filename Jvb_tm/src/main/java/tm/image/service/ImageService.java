@@ -226,10 +226,17 @@ public class ImageService implements IImageService {
 	public void deleteReviewImg(String img_code, MultipartHttpServletRequest req) {
 		// TODO Auto-generated method stub
 		List<MultipartFile> files = req.getFiles("file");
+		String[] img_idx_str = req.getParameterValues("img_idx");
+		int[] img_idx = null;
+		for(int j=0; j<img_idx_str.length; j++){
+			img_idx[j] = Integer.parseInt(img_idx_str[j]);
+			System.out.println(img_idx[j]);
+		}
+
 		for(int i=0; i<files.size(); i++){
 			String filename = files.get(i).getOriginalFilename();
 			if(!filename.equals("")){
-				imageDao.deleteByImageCode(img_code);				
+				imageDao.deleteByImageIdx(img_idx[i]);			
 			}
 		}
 	} 

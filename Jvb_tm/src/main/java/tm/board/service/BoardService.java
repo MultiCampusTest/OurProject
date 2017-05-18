@@ -310,6 +310,65 @@ public class BoardService {
 		return result;
 	}
 	
+
+	//travel
+	public void insertTravel(String userid, BoardVo board, String[] contentsArr, String[] latLngArr){
+		
+		board.setUserid(userid);
+		int diffDays = getDiffOfDate(board.getStartDate(), board.getEndDate());
+		
+		if(diffDays <= 5){
+			board.setSubCategory("five");
+		}else if(diffDays <= 10){
+			board.setSubCategory("ten");
+		}else{
+			board.setSubCategory("travel_more");
+		}
+		
+		boardDao.insertBoard(board);
+		int boardIdx = board.getBoardIdx();
+		
+		for(int i=0; i<contentsArr.length; i++){
+			ContentsVo contents = new ContentsVo();
+			contents.setBoardIdx(boardIdx);
+			contents.setContents(contentsArr[i]);
+			contents.setContentsSeq(i);
+			contentsDao.insertContents(contents);
+		}
+		
+		
+		for(int i=0; i<latLngArr.length; i++){
+			MapPositionVo mapPosition = new MapPositionVo();
+			mapPosition.setBoardIdx(boardIdx);
+			mapPosition.setLatLng(latLngArr[i]);
+			mapPosition.setMarkerSeq(i);
+			mapPositionDao.insertMapPosition(mapPosition);
+		}
+	}
+	
+	
+	public HashMap<String, Object> readTravel(int boardIdx){
+		BoardVo board = boardDao.selectOneBoard(boardIdx);
+		board.setReadCount(board.getReadCount()+1);
+		boardDao.updateGuide(board);
+		List<ContentsVo> contentsArr = contentsDao.selectContents(boardIdx);
+		List<MapPositionVo> mapPositionArr = mapPositionDao.selectMapPosition(boardIdx);
+		
+		for(int i=0; i<mapPositionArr.size();i++){
+			String loc  = mapPositionArr.get(i).getLatLng();
+			loc = loc.replace("(", "");
+			loc = loc.replace(")", "");
+			mapPositionArr.get(i).setLatLng(loc);
+		}
+
+		HashMap<String, Object> result = new HashMap<>();
+		result.put("travel", board);
+		result.put("contents", contentsArr);
+		result.put("mapPosition", mapPositionArr);
+		return result;	
+	}
+	
+	
 	//review insert
 	public void insertReview(BoardVo board, ContentsVo contents){
 		boardDao.insertBoard(board);

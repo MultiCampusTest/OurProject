@@ -22,6 +22,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where b_idx = #{boardIdx}
 	</select>
 	
+	<select id="selectContents" parameterType="int" resultMap="contents">
+		SELECT b_idx, ct_num, ct_contents
+		FROM contents
+		WHERE b_idx = #{boardIdx}
+		ORDER BY ct_num
+	</select>
+	
 	<update id="updateContents" parameterType="contentsVo">
 		update contents set
 			ct_num = #{contentsSeq},

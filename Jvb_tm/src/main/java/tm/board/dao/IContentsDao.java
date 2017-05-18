@@ -1,6 +1,7 @@
 package tm.board.dao;
 
 import java.util.HashMap;
+import java.util.List;
 
 import tm.board.vo.ContentsVo;
 
@@ -16,6 +17,6 @@ public interface IContentsDao {
 	
 	//select
 	public ContentsVo selectOneContents(int boardIdx);
-	public HashMap<String, Object> selectOneOrderByContents(int b_idx);
+	public List<ContentsVo> selectContents(int boardIdx);
 
 }

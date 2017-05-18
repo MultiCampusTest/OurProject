@@ -18,31 +18,106 @@
 <link rel="stylesheet" href="css/travelWriteForm.css">
 <script type="text/javascript">
 
-var contents = [];
+	var polys =[];
+	var map;
+	var i = 0;
+	var loc = [];
+	var latLng = [];
+	var markers = [];
+	
+	function initMap() {
+	map = new google.maps.Map(document.getElementById('map'), {
+	  zoom: 15,
+	  center: {lat: 37.566535, lng: 126.97796919999996}
+	});
+	var geocoder = new google.maps.Geocoder();
+	
+	  poly = new google.maps.Polyline({
+	        strokeColor: '#000000',
+	        strokeOpacity: 1.0,
+	        strokeWeight: 3
+	      });
+		poly.setMap(map);
+	
+	//자동완성
+	var autoComplete = new google.maps.places.Autocomplete(document.getElementById('pac-input'));
+	autoComplete.addListener('place_changed', function() {
+// 				var place = autoComplete.getplace();
+// 				geocodeAddress(geocoder, map);
+	});
+	
+	function deleteMarkers() {
+		   
+		   for(var i = 0; i < markers.length; i++) {
+		         markers[i].setMap(null);
+		       }
+		   for(var i=0; i<polys.length; i++){
+		 		   polys[i].setMap(null);
+		 	   }
+		   
+	       markers = [];
+	       path = [];
+	       polys = [];
+	       poly = new google.maps.Polyline({
+		        strokeColor: '#000000',
+		        strokeOpacity: 1.0,
+		        strokeWeight: 3
+		      });
+	   	   poly.setMap(map);
+	     }
+	
+	document.getElementById('delete').addEventListener('click', function() {
+	  deleteMarkers();
+	  loc = [];
+	  latLng = [];
+	  $('#input_latLng').empty();
+	});
+	
+	document.getElementById('submit').addEventListener('click', function() {
+	  geocodeAddress(geocoder, map);
+	  i++;
+	});
+	}
+	
+	function geocodeAddress(geocoder, resultsMap) {
+	var address = document.getElementById('pac-input').value;
+	geocoder.geocode({'address': address}, function(results, status) {
+	  if (status === 'OK') {
+	
+		   
+		
+	    var marker = new google.maps.Marker({
+	      map: resultsMap,
+	      position: results[0].geometry.location
+	    });
+	    markers.push(marker);
+	   
+	    polys.push(poly);
+	    var path = poly.getPath();
+	    path.push(results[0].geometry.location);
+	    resultsMap.setCenter(results[0].geometry.location);
+	    
+	    loc[i] = address;
+	    latLng[i] = results[0].geometry.location;
+	    
+	    
+	    $('#input_latLng').append('<input type="hidden" name="latLng" value="'+latLng[i]+'">');
+	
+	
+	  } else {
+	    alert('Geocode was not successful for the following reason: ' + status);
+	  }
+	});
+	}
+
+
 
 $(function() {
 	$(".selector").flatpickr({
 
 	});
 });
-// function form_submit(){
-// 	$('#btn_submit').click( function() {
-// 	     var $form = $('<form></form>');
-// 	     $form.attr('action', 'board_write.do');
-// 	     $form.attr('method', 'post');
-// 	     $form.appendTo('body');
-	     
-<%-- 	     var idx = $('<input type="hidden" value="<%=idx%>" name="idx">'); --%>
-<%-- 	     var page = $('<input type="hidden" value="<%=page%>" name="page">'); --%>
-<%-- 	     var category = $('<input type="hidden" value="<%=category%>" name="category">'); --%>
-<%-- 	     var keyfield = $('<input type="hidden" value="<%=keyfield%>" name="keyfield">'); --%>
-<%-- 	     var keyword = $('<input type="hidden" value="<%=keyword%>" name="keyword">'); --%>
-	 
-// 	     $form.append(idx).append(page).append(category).append(keyfield).append(keyword);
-// 	     $form.submit();
-// 	});
 
-// }
 
 
 function delete_check(id){
@@ -69,7 +144,7 @@ function delete_day_content(id){
 			$(this).append('<i class="fa fa-trash fa-1x" aria-hidden="true"'
 					+ 'id="delete-day'+next_day_number+'" onclick=delete_check(this.id)></i>');
 		}
-	
+		
 	});
 	
 	$('#content > textarea').each(function(){
@@ -92,7 +167,7 @@ function add_day_content(){
 										+ 'id="delete-day'+next_day+'" onclick=delete_check(this.id)></i>');
 	
 	$('#content').append('<textarea placeholder="Write Your Travel Plan!" class="form-control-text"' 
-			 + 'id="day'+next_day+'" rows="10"></textarea>');
+			 + 'id="day'+next_day+'" name="contents" rows="10" style="resize:none;"></textarea>');
 	$('#content > textarea:last-child').hide();
 
 }
@@ -114,7 +189,6 @@ $('.sibal').on('click','li',function(){
 	var new_day_value = 'day'+day_value;
 		$('#content textarea').each(function(){
 			if(new_day_value == $(this).attr('id')){
-				$('#day-content > strong').text($(this).attr('id'));
 				$(this).show(500);
 			}else{
 				$(this).hide();
@@ -123,16 +197,13 @@ $('.sibal').on('click','li',function(){
 	});
 
 
-	$('#submit').on('click',function(){
-		$('#content > textarea').each(function(){
-			contents.push($(this).val());
-		});
+// 	$('#submit').on('click',function(){
+// 		$('#content > textarea').each(function(){
+// 			contents.push($(this).val());
+// 		});
 		
-		form_submit();
-	});
-	
-	
-	
+// 		form_submit();
+// 	});
 })
 
 </script>
@@ -140,20 +211,24 @@ $('.sibal').on('click','li',function(){
 #map { 
 width: 400px; 
 height: 600px;
+margin-top:10px; 
 } 
-	
+
+ #pac-input{
+      	width: 400px;
+      }
 
 .sibal{
 
 list-style:none;
-max-height:400px;
+max-height:550px;
 width:160px;
 border-collapse: collapse;
 overflow-y: auto;
 
 }
 
-.sibal2{
+.ssibal{
 
 list-style:none;
 background-color:#FF605A;
@@ -263,23 +338,20 @@ cursor:pointer;
 </head> 
 <body>
 <div class="container">
+  
 	<div> <h2>TRAVEL PLANNING</h2> </div>
-		<hr> 
+	 <hr>
+	 <div class="row"> 
 		<div class="col-md-5">
+		<div>
+		  <input id="pac-input" class="form-control" type="text" placeholder="Enter a location" style="margin-bottom:10px;" >
+	      <input class="btn btn-primary" id="submit" type="button" value="search">
+	      <input class="btn btn-primary" id="delete" type="button" value="Delete Markers">
+      </div>
 			<div id="map"></div>
-			<script>
-		      function initMap() {
-		        var uluru = {lat: -25.363, lng: 131.044};
-		        var map = new google.maps.Map(document.getElementById('map'), {
-		          zoom: 4,
-		          center: uluru
-		        });
-		        var marker = new google.maps.Marker({
-		          position: uluru,
-		          map: map
-		        });
-		      }
-	      </script>
+			<script async defer
+    		src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyDt288Is5VzyssIHVHJaMi-zrt71D4WJVY&callback=initMap">
+   			</script>
 		</div>
 		<div class="col-md-2">
 
@@ -287,42 +359,45 @@ cursor:pointer;
 				<li class="day" value="1" >DAY1</li>
 				
 			</ul>
-	<ul class="sibal2">
+	<ul class="ssibal">
 		<li style="padding-top:10px;">
 			<div class="add-day-button" onclick="add_day_content()">DAY 추가</div>
 		</li>
 	</ul>
 		</div>
 		
-	<div class="col-md-5">
+	<form action="travelWrite.do" method="post">
+	  <div class="col-md-5">
 		<div>
 		<font style="font-size:20px">TITLE</font>
-         	<input type="text" placeholder="Insert Title " class="form-control title" name="subject"/>
+         	<input type="text" placeholder="Insert Title " class="form-control title" name="title"/>
 		<hr/>
 		</div>
+		
 		<div>
         <font style="font-size:20px">DATE</font><br>
-          <input class="selector" id="fromDate" type="text"> 
+          <input class="selector" id="fromDate" name="startDate" type="text"> 
           ~
-          <input class="selector" id="toDate" type="text">
+          <input class="selector" id="toDate" name="endDate" type="text">
         </div>
 	    <hr>
 	    <div>
 		 <p style="font-size:20px">CATEGORY</p>
-	     <div style="float:left; margin-right:20px">
-	     <font style="font-size:20px;">DATE</font><br> 
-	      	<select class="form-control category">
-	            <option value="5days">5DAYS</option>
-	            <option value="10days">10DAYS</option> 
-	            <option value="15days">15DAYS</option> 
-	        </select>
-	      </div>
 	      <div style="float:left;">
 	     	<font style="font-size:20px">LOCATION</font><br>
-	      	<select class="form-control category" >
+	      	<select class="form-control category" name="locCategory" >
 	            <option value="seoul">SEOUL</option>
 	            <option value="incheon">INCHEON</option>
-	            <option value="gyunggi">GYUNGGI</option>  
+	            <option value="gyeonggi">GYEONGGI-DO</option>
+	            <option value="daejeon">DAEJEON</option>
+	            <option value="gwangju">GWANGJU</option>
+	            <option value="daegu">DAEGU</option>
+	            <option value="busan">BUSAN</option>
+	            <option value="jeju">JEJU</option>
+	            <option value="gangwon">GANGWON-DO</option>
+	            <option value="chungcheong">CHUNGCHEONG-DO</option>
+	            <option value="jeolla">JEOLLA-DO</option>
+	            <option value="gyeongsang">GYEONGSANG-DO</option>
 	        </select>
 	       </div> 
 	     </div>
@@ -332,17 +407,18 @@ cursor:pointer;
 	    
 		<div id="content">
 		<font style="font-size:20px">CONTENT</font>	 
-			<textarea placeholder="Write Your Travel Plan!" class="form-control-text" id="day1" rows="10"></textarea>		
-		</div>
-		</div>
-</div>
-
+			<textarea placeholder="Write Your Travel Plan!" class="form-control-text" name="contents"
+							id="day1" rows="10" style="resize:none;"></textarea>		
+			</div>
 		<div class="form-group">
-			<input type="button" value="ok" class="btn btn-primary" id="submit">
+			<input type="hidden" value="t" name="code">
+			<input type="submit" value="ok" class="btn btn-primary">
 			<input type="button" value="list" class="btn btn-primary" onclick="location.href='travelList.do'">
 		</div>
-     <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyArBFw8nNcgJ_mlUdagcoWxjlyIY1pnh7E&callback=initMap">
-    </script>
+		<div id="input_latLng"></div>
+		</div>
+	 </form>	
+	</div>
+</div>  
 </body>
 </html>

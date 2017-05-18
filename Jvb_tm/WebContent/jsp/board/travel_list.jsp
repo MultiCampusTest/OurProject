@@ -7,144 +7,121 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-
 <link rel="stylesheet" href="css/travelList.css">
-
+<script type="text/javascript">
+$(document).ready(function(){
+	
+	var locCategory = "${locCategory}";
+	var subCategory = "${subCategory}";
+	
+	$('.category').each(function(){
+		if(locCategory == $(this).attr('id') || subCategory == $(this).attr('id')){
+			$(this).attr('class', 'category active');
+		}
+	})
+	
+	
+})
+</script>
 </head>
 <body>
 
 <div class="content container" style="padding-top:90px">
 <p style="line-height:200%">
-<font style="font-size:12pt">D A Y S</font>
-<a href="#"><span class="category active">5Days</span></a>
-<a href="#"><span class="category">10Days</span></a>
-<a href="#"><span class="category">15Days</span></a>
-<a href="#"><span class="category">YaHo</span></a>
-<a href="#"><span class="category">YaHoHo</span></a>
+<font style="font-size:12pt"><strong>D A Y S</strong></font>
+<a href="guideList.do?subCategory=five"><span class="category" id="five">5 Days</span></a>
+<a href="guideList.do?subCategory=ten"><span class="category" id="ten">10 Days</span></a>
+<a href="guideList.do?subCategory=travel_more"><span class="category" id="travel_more">10 Days+</span></a>
 </p>
 
 <p style="line-height:100%">
-<font style="font-size:12pt">LOCAITON</font>
-<a href="#"><span class="category active">Seoul</span></a>
-<a href="#"><span class="category">Gangwon</span></a>
-<a href="#"><span class="category">Incheon</span></a>
-<a href="#"><span class="category">Gyeonggi</span></a>
-<a href="#"><span class="category">Sejong</span></a>
-<a href="#"><span class="category">Chungbuk</span></a>
-<a href="#"><span class="category">Chungnam</span></a>
-<a href="#"><span class="category">Daejeon</span></a>
+<font style="font-size:12pt"><strong>LOCAITON</strong></font>
+<a href="guideList.do?locCategory=seoul"><span class="category" id="seoul">SEOUL</span></a>
+<a href="guideList.do?locCategory=gyeonggi"><span class="category" id="gyeonggi">GYEONGGI-DO</span></a>
+<a href="guideList.do?locCategory=daejeon"><span class="category" id="daejeon">DAEJEON</span></a>
+<a href="guideList.do?locCategory=gwangju"><span class="category" id="gwangju">GWANGJU</span></a>
+<a href="guideList.do?locCategory=daegu"><span class="category" id="daegu">DAEGU</span></a>
+<a href="guideList.do?locCategory=busan"><span class="category" id="busan">BUSAN</span></a>
+<a href="guideList.do?locCategory=jeju"><span class="category" id="jeju">JEJU</span></a>
+<a href="guideList.do?locCategory=gangwon"><span class="category" id="gangwon">GANGWON-DO</span></a>
+<a href="guideList.do?locCategory=chungcheong"><span class="category" id="chungcheong">CHUNGCHEONG-DO</span></a>
+<a href="guideList.do?locCategory=jeolla"><span class="category" id="jeolla">JEOLLA-DO</span></a>
+<a href="guideList.do?locCategory=gyeongsang"><span class="category" id="gyeongsang">GYEONGSANG-DO</span></a>
 </p>
-
-<p style="line-height:100%">
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<a href="#"><span class="category">Jeonbuk</span></a>
-<a href="#"><span class="category">Jeonnam</span></a>
-<a href="#"><span class="category">Gwangju</span></a>
-<a href="#"><span class="category">Kyeongnam</span></a>
-<a href="#"><span class="category">Kyeongbuk</span></a>
-<a href="#"><span class="category">Daegu</span></a>
-<a href="#"><span class="category">Busan</span></a>
-<a href="#"><span class="category">Ulsan</span></a>
-<a href="#"><span class="category">Jeju</span></a>
-</p>
-
-
 </div>
 
 <hr/>
 
 <div class="container">
-<p><strong>총 Sibal개의 여행계획이 검색되었습니다.</strong></p>
-   	<div class="row">
-                       <div class="col-sm-2 col-lg-2 col-md-2">
-                        <div class="thumbnail">
-                            <img src="http://placehold.it/300x400" alt="">
-                            <div class="caption">
-                                <font style="font-size:12pt">USER_ID</font><br>
-                                <font style="font-size:12pt">DATE</font><br>
-                                <font style="font-size:12pt">REVIEWS</font>
-                            </div>
-                          
-                        </div>
-                    </div>
-                    <div class="col-sm-2 col-lg-2 col-md-2">
-                        <div class="thumbnail">
-                            <img src="http://placehold.it/300x400" alt="">
-                            <div class="caption">
-                               <font style="font-size:12pt">USER_ID</font><br>
-                                <font style="font-size:12pt">DATE</font><br>
-                                <font style="font-size:12pt">REVIEWS</font>
-                            </div>
-                          
-                        </div>
-                    </div>
-                    <div class="col-sm-2 col-lg-2 col-md-2">
-                        <div class="thumbnail">
-                            <img src="http://placehold.it/300x400" alt="">
-                            <div class="caption">
-                               <font style="font-size:12pt">USER_ID</font><br>
-                                <font style="font-size:12pt">DATE</font><br>
-                                <font style="font-size:12pt">REVIEWS</font>
-                            </div>
-                          
-                        </div>
-                    </div>
-                    <div class="col-sm-2 col-lg-2 col-md-2">
-                        <div class="thumbnail">
-                            <img src="http://placehold.it/300x400" alt="">
-                            <div class="caption">
-                              <font style="font-size:12pt">USER_ID</font><br>
-                                <font style="font-size:12pt">DATE</font><br>
-                                <font style="font-size:12pt">REVIEWS</font>
-                            </div>
-                          
-                        </div>
-                    </div>
-                    <div class="col-sm-2 col-lg-2 col-md-2">
-                        <div class="thumbnail">
-                            <img src="http://placehold.it/300x400" alt="">
-                            <div class="caption">
-                               <font style="font-size:12pt">USER_ID</font><br>
-                                <font style="font-size:12pt">DATE</font><br>
-                                <font style="font-size:12pt">REVIEWS</font>
-                            </div>
-                          
-                        </div>
-                    </div>
-                     
-<!--                     <div class="col-sm-2 col-lg-2 col-md-2"> -->
-<!--                         <div class="thumbnail"> -->
-<!--                         <a href="#" title="자세히보기"> -->
-<!--                             <img src="http://placehold.it/300x400" alt=""> -->
-<!--                          </a> -->
-<!--                             <div class="caption"> -->
-<!--                                 <font style="font-size:12pt">USER_ID</font><br> -->
-<!--                                 <font style="font-size:12pt">DATE</font><br> -->
-<!--                                 <font style="font-size:12pt">REVIEWS</font> -->
-<!--                             </div> -->
-                          
-<!--                         </div> -->
-<!--                     </div> -->
-				</div>
-				</div>
+<p>A Total of ${count}  Travel Plans Have Been Searched</p>
+   	
+   	<div class="row">	
+	 	<c:forEach items="${list}" var="travel">
+			<div class="col-sm-2 col-lg-2 col-md-2">
+               <div class="thumbnail">
+                <a href="guideView.do?boardIdx=${travel.boardIdx }">
+                  <img src="http://maps.googleapis.com/maps/api/staticmap?size=300x400
+                        	&key=AIzaSyBX21maM7ZEhRTCF0_hB8DSrYHsKOof2m8
+							&path=color:0x333333ff|weight:2|${travel.strLatLng}
+							&markers=color:red|label:S|${travel.startLatLng}
+							&markers=color:red|label:E|${travel.endLatLng}&sensor=false">
+                </a>
+                         <div class="caption">                
+                            <font style="font-size:12pt"><fmt:formatDate value="${travel.writeDate}"
+								pattern="yyyy-MM-dd"/></font><br>
+                             <font style="font-size:12pt"></font><br>
+                         </div>
+                     </div>
+                 </div>
+		</c:forEach>
+	</div>
+</div>
 				
 		<hr/>
 		
 	<div class="jb-center">
 			<ul class="pagination">
-				<li><a href="#"><span
-						class="glyphicon glyphicon-chevron-left"></span></a></li>
-				<c:forEach begin="1" end="10" step="1" varStatus="i">
-					<li class="paging ${i.index eq pageNum ? 'active' : '' }"><a
-						href="#">${i.index}</a></li>
-				</c:forEach>
-				<li><a href="#"><span
-						class="glyphicon glyphicon-chevron-right"></span></a></li>
+				<li>
+				 <c:choose>
+				 	<c:when test="${current != 1 }">
+				 		<a href="travelList.do?page=${current-1}
+				 				&locCategory=${locCategory}&subCategory=${subCategory}">
+				 		<span class="glyphicon glyphicon-chevron-left"></span>
+				 		</a>
+				 	</c:when>
+				 	<c:otherwise>
+				 		<a><span class="glyphicon glyphicon-chevron-left"></span></a>
+				 	</c:otherwise>
+				 </c:choose>
+				 </li>
+				 				
+				<c:forEach begin="${start }" end="${end }" var="i">
+						<c:choose>
+							<c:when test="${i == current }">
+								<li class="paging active"><a>${i }</a></li>
+							</c:when>
+							<c:otherwise>
+								<li class="paging"><a href="travelList.do?page=${i}
+									&locCategory=${locCategory}&subCategory=${subCategory}">${i }</a></li>
+							</c:otherwise>
+						</c:choose>
+					</c:forEach>
+					
+				<li>
+					<c:choose>
+						<c:when test="${current != last }">
+						<a href="travelList.do?page=${current+1}
+								&locCategory=${locCategory}&subCategory=${subCategory}">
+						<span class="glyphicon glyphicon-chevron-right"></span>
+						</a>
+						</c:when>
+						<c:otherwise>
+							<a><span
+							class="glyphicon glyphicon-chevron-right"></span></a>
+						</c:otherwise>
+					</c:choose>
+				</li>
 			</ul>
-		</div>  
-
-          
-                
-    
+		</div> 
 </body>
 </html>

@@ -112,18 +112,50 @@ public class BoardController {
 
 	// travel_board
 	@RequestMapping("travelList.do")
-	public String travelList() {
-		return "board/travel_list";
+	public ModelAndView travelList(
+			@RequestParam(defaultValue="1") int page,
+			 String locCategory,
+			 String subCategory
+			) {
+		
+		String code = "t";
+		ModelAndView mav = new ModelAndView();
+		mav.addAllObjects(boardService.getCommonBoardList(code, page, locCategory, subCategory));
+		mav.setViewName("board/travel_list");
+		return mav;
 	}
 
 	@RequestMapping("travelWriteForm.do")
 	public String travelWriteForm() {
 		return "board/travel_write_form";
 	}
-
+	
+	@RequestMapping("travelWrite.do")
+	public String travelWrite(
+			HttpServletRequest req,
+			BoardVo board){
+		String[] contentsArr =req.getParameterValues("contents");
+		String[] latLngArr = req.getParameterValues("latLng");
+		String userid = (String)(req.getSession().getAttribute("userid"));
+		
+		boardService.insertTravel(userid, board, contentsArr, latLngArr);
+		return "redirect:travelView.do?boardIdx="+board.getBoardIdx();
+				
+	}
+	
 	@RequestMapping("travelView.do")
-	public String travelView() {
-		return "travelList";
+	public ModelAndView travelView(HttpServletRequest req, int boardIdx) {
+		
+		String userid = (String)(req.getSession().getAttribute("userid"));
+		ModelAndView mav = new ModelAndView();
+		mav.addAllObjects(boardService.readTravel(boardIdx));
+		mav.addObject("userid", userid);
+//		mav.addObject("comments",commentsService.selectComments(boardIdx)); 
+//		mav.addObject("matchingComplete", matchingService.matchingComplete(boardIdx));
+		mav.setViewName("board/travel_view");
+
+		
+		return mav;
 	}
 
 	@RequestMapping("travelModifyForm.do")
@@ -154,9 +186,9 @@ public class BoardController {
 	
 	@RequestMapping("guideWrite.do")
 	public String guideWrite(
-			HttpServletRequest req, BoardVo board,
-			ContentsVo contents
-			){
+			HttpServletRequest req,
+			BoardVo board,
+			ContentsVo contents){
 		
 		String[] latLngArr = req.getParameterValues("latLng");
 		String userid = (String)(req.getSession().getAttribute("userid"));

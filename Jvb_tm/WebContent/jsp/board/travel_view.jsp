@@ -29,7 +29,7 @@ $(document).ready(function(){
 			'&path=color:0x333333ff|weight:2|'+str_latLng+'&markers=color:red|label:S|'+start_latLng+
 			'&markers=color:red|label:E|'+end_latLng+'&sensor=false">');
 	
-		
+		 
 		$('.sibal > li').each(function(){
 			if(1 == $(this).val()){
 				$(this).addClass('on');

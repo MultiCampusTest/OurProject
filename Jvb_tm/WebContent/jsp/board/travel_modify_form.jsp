@@ -387,7 +387,7 @@ cursor:pointer;
 <div class="container">
   
 	<div> <h2>TRAVEL PLANNING</h2> </div>
-	 <hr>
+	 <hr> 
 	 <div class="row"> 
 		<div class="col-md-5">
 		<div>

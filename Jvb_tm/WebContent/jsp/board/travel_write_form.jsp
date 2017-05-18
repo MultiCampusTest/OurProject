@@ -197,13 +197,6 @@ $('.sibal').on('click','li',function(){
 	});
 
 
-// 	$('#submit').on('click',function(){
-// 		$('#content > textarea').each(function(){
-// 			contents.push($(this).val());
-// 		});
-		
-// 		form_submit();
-// 	});
 })
 
 </script>
@@ -410,6 +403,7 @@ cursor:pointer;
 			<textarea placeholder="Write Your Travel Plan!" class="form-control-text" name="contents"
 							id="day1" rows="10" style="resize:none;"></textarea>		
 			</div>
+			
 		<div class="form-group">
 			<input type="hidden" value="t" name="code">
 			<input type="submit" value="ok" class="btn btn-primary">

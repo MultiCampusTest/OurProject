@@ -374,7 +374,7 @@ public class BoardService {
 		List<MapPositionVo> mapPositionArr = mapPositionDao.selectMapPosition(boardIdx);
 		
 		HashMap<String, Object> result = new HashMap<>();
-		result.put("guide", board);
+		result.put("travel", board);
 		result.put("contents", contentsArr);
 		result.put("mapPosition", mapPositionArr);
 		

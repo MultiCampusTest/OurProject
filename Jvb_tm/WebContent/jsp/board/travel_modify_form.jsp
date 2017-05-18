@@ -205,34 +205,52 @@ function add_day_content(){
 
 $(document).ready(function(){
 	
-$('.sibal').on('click','li',function(){
-	var day_value = $(this).val();
+	
 	$('.sibal > li').each(function(){
-		if(day_value ==$(this).val()){
+		if(1 == $(this).val()){
 			$(this).addClass('on');
 		}else{
 			$(this).removeClass('on');
 		}
 	});
 	
-	var new_day_value = 'day'+day_value;
-		$('#content textarea').each(function(){
-			if(new_day_value == $(this).attr('id')){
-				$(this).show(500);
+	$('#content textarea').each(function(){
+		if('day1' == $(this).attr('id')){
+			$(this).show();
+		}else{
+			$(this).hide();
+		}
+	});
+	
+	
+	$('.sibal').on('click','li',function(){
+		var day_value = $(this).val();
+		$('.sibal > li').each(function(){
+			if(day_value ==$(this).val()){
+				$(this).addClass('on');
 			}else{
-				$(this).hide();
+				$(this).removeClass('on');
 			}
 		});
+		
+		var new_day_value = 'day'+day_value;
+			$('#content textarea').each(function(){
+				if(new_day_value == $(this).attr('id')){
+					$(this).show(500);
+				}else{
+					$(this).hide();
+				}
+			});
+		});
+	
+	var loc = "${travel.locCategory}";
+
+	$('.category > option').each(function(){
+		if(loc == $(this).val()){
+			$(this).attr('selected','selected');
+		}	
 	});
 
-
-// 	$('#submit').on('click',function(){
-// 		$('#content > textarea').each(function(){
-// 			contents.push($(this).val());
-// 		});
-		
-// 		form_submit();
-// 	});
 })
 
 </script>
@@ -250,7 +268,7 @@ margin-top:10px;
 .sibal{
 
 list-style:none;
-max-height:550px;
+max-height:400px;
 width:160px;
 border-collapse: collapse;
 overflow-y: auto;
@@ -385,8 +403,11 @@ cursor:pointer;
 		<div class="col-md-2">
 
 			<ul class="sibal">
-				<li class="day" value="1" >DAY1</li>
-				
+				<c:forEach items="${contents}" var="contents">
+					<li class="day" value="${contents.contentsSeq + 1}" >
+							DAY${contents.contentsSeq+1}<i class="fa fa-trash fa-1x" aria-hidden="true"
+								id="delete-day${contents.contentsSeq+1}" onclick=delete_check(this.id)></i></li>
+				</c:forEach>
 			</ul>
 	<ul class="ssibal">
 		<li style="padding-top:10px;">
@@ -399,15 +420,15 @@ cursor:pointer;
 	  <div class="col-md-5">
 		<div>
 		<font style="font-size:20px">TITLE</font>
-         	<input type="text" placeholder="Insert Title " class="form-control title" name="title"/>
+         	<input type="text" class="form-control title" value="${travel.title }" name="title"/>
 		<hr/>
 		</div>
 		
 		<div>
         <font style="font-size:20px">DATE</font><br>
-          <input class="selector" id="fromDate" name="startDate" type="text"> 
+          <input class="selector" id="fromDate" name="startDate" type="text" value="${travel.startDate }"> 
           ~
-          <input class="selector" id="toDate" name="endDate" type="text">
+          <input class="selector" id="toDate" name="endDate" type="text" value="${travel.endDate }">
         </div>
 	    <hr>
 	    <div>
@@ -436,11 +457,13 @@ cursor:pointer;
 	    
 		<div id="content">
 		<font style="font-size:20px">CONTENT</font>	 
-			<textarea placeholder="Write Your Travel Plan!" class="form-control-text" name="contents"
-							id="day1" rows="10" style="resize:none;"></textarea>		
-			</div>
+			  <c:forEach items="${contents}" var="contents">
+					<textarea class="form-control-text" id="day${contents.contentsSeq+1}"
+						 name="contents" rows="10" style="resize:none;" >${contents.contents }</textarea>
+			  </c:forEach>		
+		</div>
+			
 		<div class="form-group">
-			<input type="hidden" value="t" name="code">
 			<input type="submit" value="ok" class="btn btn-primary">
 			<input type="button" value="list" class="btn btn-primary" onclick="location.href='travelList.do'">
 		</div>

@@ -272,11 +272,11 @@ public class BoardController {
 	}
 
 	@RequestMapping("reviewList.do")
-	public ModelAndView reviewList(HttpServletRequest req, @RequestParam(defaultValue="1") int page, String searchValue) {
+	public ModelAndView reviewList(HttpServletRequest req, @RequestParam(defaultValue="1") int page, String searchValue, String subCategory) {
 		String code = "r";
 		String userid = (String)(req.getSession().getAttribute("userid"));
 		ModelAndView mav = new ModelAndView();
-		mav.addAllObjects(boardService.getReviewBoardList(code, page, searchValue));
+		mav.addAllObjects(boardService.getReviewBoardList(code, page, searchValue, subCategory));
 		mav.addObject("userid", userid);
 		mav.setViewName("board/review_list");
 		return mav;

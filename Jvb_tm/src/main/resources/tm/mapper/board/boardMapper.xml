@@ -99,7 +99,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectReviewBoardLimit" parameterType="java.util.HashMap" resultMap="board">
 		SELECT b_idx, b_title, userid, b_readcount, b_date
 		FROM board
-		WHERE b_code=#{code} <include refid="search"></include>
+		WHERE b_code=#{code} <include refid="search"></include> <include refid="category"></include>
 		ORDER BY b_idx desc limit #{skip}, #{count}
 	</select>
 	

@@ -112,7 +112,7 @@ public class ImageService implements IImageService {
             e.printStackTrace();
          }
          
-         imageDao.updateImage(imageVo);
+         imageDao.updateProfileImage(imageVo);
       }
 
    }

@@ -11,7 +11,7 @@ public interface IImageDao {
    
    public int insertUrl(HashMap<String, Object> params);
 
-   public int updateImage(ImageVo imageVo);
+   public int updateProfileImage(ImageVo imageVo);
 
    public int deleteImageTravel(int img_idx);
 

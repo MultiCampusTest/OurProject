@@ -124,13 +124,14 @@ public class MemberController {
 	}
 	
 	@RequestMapping(method=RequestMethod.POST, value="loginProc.do")
-	public String loginProc(HttpSession session, String userid, String pwd) {
-		if(memberService.checkLogin(userid, pwd)) {
+	public @ResponseBody HashMap<String, Object> loginProc(HttpSession session, String userid, String pwd) {
+		HashMap<String, Object> response = new HashMap<>();
+		boolean insert = memberService.checkLogin(userid, pwd);
+		if(insert) {
 			session.setAttribute("userid", userid);
-			return "redirect:main.do";
-		} else {
-			return "redirect:loginForm.do";			
 		}
+		response.put("result", insert);
+		return response;
 	}
 //		if(userid.equals("admin")){
 //			session.setAttribute("userid", userid);

@@ -49,22 +49,37 @@
 	    	return unescape(cookieValue);
 		}
 		
-		$('#form_submit').click(function(){
+		$('#form_submit').click(function(){	
 			var logEmail = /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
 			if($('#form_userid').val() == '') {
 				$('#form_msg').html('<font color="#FF605A">enter email</font>');
 				$('#form_userid').focus();
-				return false;
 			} else if( !logEmail.test($('#form_userid').val()) ) {
 				$('#form_msg').html('<font color="#FF605A">wrong email</font>');
 				$('#form_userid').focus();
-				return false;
 			} else if($('#form_pwd').val() == '') {
 				$('#form_msg').html('<font color="#FF605A">enter password</font>');
 				$('#form_pwd').focus();
-				return false;
 			} else {
 				$('#form_msg').text('');
+				var id = $('#form_userid').val();
+				var pass = $('#form_pwd').val();
+				$.ajax({
+					url : 'loginProc.do',
+					type : 'POST',
+					data : { userid : id, pwd : pass },
+					dataType : 'json',
+					success : function(data) {
+						if(data.result) {
+							location.href="main.do";
+						} else {
+							alert("you typed email or password wrong");
+							$('#form_pwd').focus();
+						}
+					}, error : function(){
+						alert('data error');
+					}
+				});
 			}
 		});
 	});

@@ -20,7 +20,7 @@
 			<div class="col-sm-6 col-md-4 col-md-offset-4">
 				<div class="account-wall">
 					<img class="profile-img" src="img/profile.jpg">
-					<form action="loginProc.do" method="post" class="form-signin">
+<!-- 					<form action="loginProc.do" method="post" class="form-signin"> -->
 						<input type="text" class="form-control" placeholder="Email" id="form_userid" name="userid">
 						<input type="password" class="form-control" placeholder="Password" id="form_pwd" name="pwd">
 						<div>
@@ -30,9 +30,9 @@
 							<span style="float: right"><a href="findPassword.do">Forgot password</a></span>
 						</div>
 						<br>
-						<button type="submit" id="form_submit" class="btn btn-lg btn-primary btn-block">SIGN IN</button>
+						<button type="button" id="form_submit" class="btn btn-lg btn-primary btn-block">SIGN IN</button>
 						<div id="form_msg" style="text-align: center"></div>
-					</form>
+<!-- 					</form> -->
 					<a href="certiForm.do" class="text-center new-account">Create an account</a>
 				</div>
 				<br>

@@ -112,7 +112,7 @@ public class ImageService implements IImageService {
             e.printStackTrace();
          }
          
-         imageDao.updateImage(imageVo);
+         imageDao.updateProfileImage(imageVo);
       }
 
    }
@@ -135,6 +135,7 @@ public class ImageService implements IImageService {
       return image;
    }
 
+ 
    
    
    @Override

@@ -370,12 +370,12 @@ public class BoardService {
 	
 	public HashMap<String, Object> getTravel(int boardIdx) {
 		BoardVo board = boardDao.selectOneBoard(boardIdx);
-		ContentsVo contents = contentsDao.selectOneContents(boardIdx);		
+		List<ContentsVo> contentsArr = contentsDao.selectContents(boardIdx);		
 		List<MapPositionVo> mapPositionArr = mapPositionDao.selectMapPosition(boardIdx);
 		
 		HashMap<String, Object> result = new HashMap<>();
 		result.put("travel", board);
-		result.put("contents", contents);
+		result.put("contents", contentsArr);
 		result.put("mapPosition", mapPositionArr);
 		
 		return result;

@@ -18,11 +18,10 @@ $(document).ready(function(){
 		var div = document.getElementById('preDiv');
 		$('#container').append( $(div).html() );
 		$('.file').each(function(index){
-			$('.file').attr('id', 'idtest'+index);
-			$('.file').attr('name','file');
+			$(this).attr('id', 'idtest'+index);
+			$(this).attr('name','file');
 		});
 		$('.inputLabel').each(function(index) {
-			$(this).attr('id', 'labelid'+index);
 			$(this).attr('for', 'idtest'+index);
 		})
 		$('.inputImage').each(function(index){
@@ -97,7 +96,6 @@ function read(input) {
 							</c:forEach>
 						</table>
 					</div>
-					<div id="container">
 						<!-- 사진 추가 폼 -->
 						<div  id="preDiv" class="table-responsive" id="reviewPhoto">
 							<table id="preTable" class="table table-condensed" style="height: inherit; vertical-align: middle;">
@@ -115,6 +113,7 @@ function read(input) {
 									</tr>
 							</table>
 						</div>
+					<div id="container">
 					</div>
 				</div>
 				<div class="col-md-7">

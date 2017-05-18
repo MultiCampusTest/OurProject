@@ -460,8 +460,27 @@
 			});
 
 		});
-		
-
+			
+		$('#deleteBtn').click(function(){
+			var email = $('#mypage_userid').val();
+			var password = $('#mypage_pwd').val();
+			$.ajax({
+				url : 'removeMember.do',
+				type : 'POST',
+				data : { userid : email, pwd : password },
+				dataType : 'json',
+				success : function(data) {
+					if(data.response == true) {
+						alert('password error');
+					} else {
+						alert('Thank you for that time.');
+						location.href="main.do";
+					}
+				}, error : function(data) {
+					alert('data error');
+				}
+			});
+		});
 	})
 </script>
 
@@ -608,17 +627,21 @@
         													</div>
         													<div class="modal-body">
          						 								<p>
-         						 									<div class="form-group">
-         						 								<form action="removeMember.do">
-         						 										<input type="hidden" class="form-control input-lg" name="userid" value="${userid}">
-         						 										<input type="password" class="form-control input-lg" name="pwd" id="pwd">
+         						 									<div class="form-group" >
+<!--          						 								<form action="removeMember.do"> -->
+         						 										<p style="text-align: center">
+         						 											To delete your account, enter password.
+         						 										<input type="hidden" class="form-control input-lg" id="mypage_userid" name="userid" value="${userid}">
+         						 										<input type="password" class="form-control input-lg" name="pwd" id="mypage_pwd"
+         						 											style="width: auto">
+         						 										</p>
 																	</div>
          						 								</p>
         													</div>
         													<div class="modal-footer">
-        														<button type="submit" class="btn btn-default" data-dismiss="modal">Confirm</button>
-          														<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-																</form>
+        														<button type="button" id="deleteBtn" class="btn btn-primary" data-dismiss="modal">Confirm</button>
+          														<button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
+<!-- 																</form> -->
         													</div>
      													</div>
     												</div>

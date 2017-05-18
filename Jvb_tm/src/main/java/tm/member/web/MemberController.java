@@ -166,13 +166,12 @@ public class MemberController {
 	}
 	
 	@RequestMapping("removeMember.do")
-	public String removeMember(HttpSession session, MemberVo memberVo){
-		if(memberService.memberRemove(memberVo)) {
-			session.removeAttribute("userid");			
-			return "redirect:main.do";
-		} else {
-			return "redirect:myPage.do";
-		}
+	public @ResponseBody HashMap<String, Object> removeMember(HttpSession session, MemberVo memberVo){
+		HashMap<String, Object> response = new HashMap<>();
+		response.put("result", memberService.memberRemove(memberVo));
+		System.err.println(response.get("result"));
+		session.removeAttribute("userid");
+		return response;
 	}
 	
 	@RequestMapping("getPassword.do")

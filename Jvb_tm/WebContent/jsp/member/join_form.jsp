@@ -63,7 +63,7 @@
 				<div style="color: red; float: right">* required fields</div>
 			</div>
 			<div class="form-group">
-				<input type="text" name="userid" id="userid" class="form-control input-lg"  style="background: white" placeholder="Email *" value="${external.userid}" readonly="readonly">
+				<input type="text" name="userid" class="form-control input-lg"  style="background: white" placeholder="Email *" value="${external.userid}" readonly="readonly">
 			</div>
 			<div class="row">
 				<div class="col-xs-12 col-sm-6 col-md-6">

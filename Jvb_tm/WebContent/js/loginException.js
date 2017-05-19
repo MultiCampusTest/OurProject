@@ -19,7 +19,7 @@
 	        if($('#form_checkbox').is(":checked")){
 	            var userid = $('#form_userid').val();
 	            setCookie("userid", userid, 7);
-	        } 
+	        }
 	    });
 	 
 		function setCookie(cookieName, value, exdays){

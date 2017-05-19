@@ -13,6 +13,48 @@
 			$('.carousel').carousel();
 </script>
 
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('#main_submit').click(function(){
+			var logEmail = /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+			if($('#main_userid').val() == '') {
+				$('#main_msg').html('<font color="#FF605A">enter email</font>');
+				$('#main_userid').focus();
+				return false;
+			} else if( !logEmail.test($('#main_userid').val()) ) {
+				$('#main_msg').html('<font color="#FF605A">wrong email</font>');
+				$('#main_userid').focus();
+				return false;
+			} else if($('#main_pwd').val() == '') {
+				$('#main_msg').html('<font color="#FF605A">enter password</font>');
+				$('#main_pwd').focus();
+				return false;
+			} else {
+				$('#main_msg').text('');
+				
+				var id = $('#main_userid').val();
+				var pass = $('#main_pwd').val();
+				$.ajax({
+					url : 'loginProc.do',
+					type : 'POST',
+					data : { userid : id, pwd : pass },
+					dataType : 'json',
+					success : function(data) {
+						if(data.result) {
+							location.href="main.do";
+						} else {
+							alert("you typed email or password wrong");
+							location.href="loginForm.do"
+						}
+					}, error : function(){
+						alert('data error');
+					}
+				});
+			}
+		});
+	});
+</script>
+
 </head>
 
 <body>
@@ -76,18 +118,19 @@
 								</c:when>
 								<c:otherwise>
 								<h1>Welcome !</h1><br>
-								<form action="loginProc.do" method="post">
+<!-- 								<form action="loginProc.do" method="post"> -->
 									<div>
-										<input type="text" class="form-control" name="userid" id="userid"
+										<input type="text" class="form-control" name="userid" id="main_userid"
 											placeholder="Username">
 									</div> <br><br>
 									<div>
-										<input type="password" class="form-control" name="pwd" id="pwd"
+										<input type="password" class="form-control" name="pwd" id="main_pwd"
 											placeholder="Password">
+										<div id="main_msg"></div>
 									</div> <br><br>
 									<div>
-										<button type="submit" class="form-control btn btn-primary">LOGIN</button>
-										<br><br>
+										<button type="button" id="main_submit" class="form-control btn btn-primary">LOGIN</button>
+										<div style="margin-bottom: 5%""></div>
 										<button type="button" class="form-control btn btn-primary"
 										onclick="location.href='certiForm.do'">JOIN</button>
 									</div>

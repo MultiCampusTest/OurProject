@@ -63,10 +63,10 @@
 				<div class="form-group" style="text-align: center">
 					<div id="gSignInWrapper">
 						<a href="javascript:facebook_btn()"><img id="profile" src="img/facebook.png"></a>
-							<a href="#" id="customBtn" class="customGPlusSignIn">
+							<a href="#" id="customBtn" class="customGPlusSignIn" style="display: none">
 								<img id="profile" src="img/google.png"><script>startApp();</script></a>
-							<a href="javascript:loginWithKakao()"><img id="profile" src="img/kakaotalk.png"></a>
-							<a href="javascript:document.getElementById('naver_id_login_anchor').click();">
+							<a href="javascript:loginWithKakao()"><img id="profile" src="img/kakaotalk.png" style="display: none"></a>
+							<a href="javascript:document.getElementById('naver_id_login_anchor').click();" style="display: none">
 								<img src="img/naver.png"></a>
 							<div id="naver_id_login" style="display: none"></div>
 					</div>

@@ -220,6 +220,97 @@ background-color:#DC524D;
 			</div>
 		</div>
 	</div>
+		<!-- Comments Form -->
+         <div class="well">
+             <h4>Leave a Comment:</h4>
+             <form role="form" action="commentsWrite.do" method="post">
+                 <div class="form-group">
+                 	 <input type="hidden" name="b_writer" value="${travel.userid }">
+                	 <input type="hidden" name="b_code" value="${travel.code }">
+                	 <input type="hidden" name="comment_pre_depth" value="0">
+                 	 <input type="hidden" name="b_idx" value="${travel.boardIdx }">
+                 	 <input type="hidden" name="cm_writer" value="${userid}">
+                 	 <input type="hidden" name="site" value="travel">
+                     <textarea class="form-control" name="cm_content" rows="3"></textarea>
+                 </div>
+<!--                  <button type="submit" class="btn btn-primary">Submit</button> -->
+                 <input type="submit" value="등록" class="btn btn-primary">
+             </form>
+         </div>
+         
+         
+<!--         reComments input, nondisplay -->
+         <div class="well" style="display: none;" id="reComments">
+             <h4>Leave a Comment:</h4>
+             <form role="form" action="commentsWrite.do" method="post" name="reForm">
+                 <div class="form-group">
+                 	 <input type="hidden" name="b_writer" value="${travel.userid }">
+                	 <input type="hidden" name="b_code" value="${travel.code }">
+                	 <input type="hidden" name="comment_pre_depth" value="1">
+                 	 <input type="hidden" name="b_idx" value="${travel.boardIdx }">
+                 	 <input type="hidden" name="cm_writer" value="${userid}">
+                 	 <input type="hidden" name="cm_parent" >
+                 	 <input type="hidden" name="parent_cm">
+                 	 <input type="hidden" name="cm_depth">
+                 	 <input type="hidden" name="site" value="travel">
+                     <textarea class="form-control" name="cm_content" rows="3"></textarea>
+                 </div>
+                 <input type="submit" value="등록" class="btn btn-primary">
+                 <input type="button" value="취소" class="btn btn-primary" onclick="commentsCancel()">
+             </form>
+         </div>
+         
+<!--          comments update form -->
+         <div class="well" style="display: none;" id="updateComments">
+             <h4>Leave a Comment:</h4>
+             <form role="form" action="commentsUpdate.do" method="post" name="updateForm">
+                 <div class="form-group">
+                 	 <input type="hidden" name="b_idx" value="${travel.boardIdx }">
+                 	 <input type="hidden" name="cm_idx" >
+                 	 <input type="hidden" name="site" value="travel">
+                     <textarea class="form-control" name="cm_content" rows="3"></textarea>
+                 </div>
+                 <input type="submit" value="수정" class="btn btn-primary">
+                 <input type="button" value="취소" class="btn btn-primary" onclick="commentsUpdateCancel()">
+             </form>
+         </div>		
+
+         <hr>
+         <!-- Comment List -->
+        <c:choose>
+        	<c:when test="${comments ==null }">
+        		댓글이 없습니다.
+        	</c:when>
+        	<c:otherwise>
+        		<c:forEach var="comments" items="${comments}" varStatus="status">
+        			<div class="media" style="margin-left : ${25*comments.cm_depth}px">
+           				<a class="pull-left" href="#">
+           					<img class="userid_img" src="imageProfileView.do?img_code=${comments.cm_writer }"
+                              	 width="50px" height="50px">
+<!--                  			<img class="media-object" src="http://placehold.it/64x64" alt=""> -->
+            			</a>
+             			<div class="media-body">
+                 		<h4 class="media-heading">${comments.cm_writer }
+                 		<input type="hidden" name="cm_idx" value="${comments.cm_idx}">
+                      		<small>${comments.cm_date }</small>
+                  		</h4>
+                  		<div id="commentsDiv${comments.cm_idx}">
+                  			${comments.cm_content }
+                  		</div>
+              			</div>
+              				<c:if test="${comments.cm_delete != 'Y' }">
+	              				<c:if test="${comments.cm_writer == userid }">
+	              					<a onclick="location.href='commentsDelete.do?cm_idx=${comments.cm_idx}&b_idx=${comments.b_idx }&site=travel'"> 삭제</a>
+	              					<a onclick="commentsUpdate(${comments.cm_idx})"> 수정</a>
+	              				</c:if>
+	              				<c:if test="${userid != null }">
+		              				<a onclick="commentsInput(${comments.cm_idx},${comments.cm_parent },'${comments.cm_writer }',${comments.cm_depth })"> 댓글</a>
+		              			</c:if>	
+              				</c:if>
+          		    </div>
+          		</c:forEach>
+        	</c:otherwise>
+        </c:choose>
 </div>
 
 </body>

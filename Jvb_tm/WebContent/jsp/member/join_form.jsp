@@ -69,7 +69,7 @@
 				<div class="col-xs-12 col-sm-6 col-md-6">
 					<div class="form-group">
                         <input type="text" name="firstName" id="firstName" class="form-control input-lg" placeholder="First Name *" value="${external.firstName}">
-					</div>
+					</div> 
 					<div class="form-group">
 						<div id="fname_msg" style="text-align: center"></div>
 					</div>

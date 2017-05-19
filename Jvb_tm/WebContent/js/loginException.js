@@ -48,7 +48,7 @@
 	    	}
 	    	return unescape(cookieValue);
 		}
-		
+		 
 		$('#form_submit').click(function(){	
 			if($('#form_userid').val() == '') {
 				$('#form_msg').html('<font color="#FF605A">enter email</font>');

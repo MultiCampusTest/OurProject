@@ -98,7 +98,7 @@
 												alt="avatar">
 										</c:if>
 										<c:if test="${userImage.img_idx!=null }">
-											<img src="imageView.do?img_idx=${userImage.img_idx }"
+											<img src="imageProfileView.do?img_code=${userid }"
 												class="avatar img-circle img-thumbnail profile_img"
 												alt="avatar">
 										</c:if>
@@ -155,8 +155,7 @@
 										<div class="form-group">
 											<label class="col-md-3 control-label"></label>
 											<div class="col-md-8">
-												<input type="submit" class="btn btn-primary" value="unsubscribe">
-												<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Delete Account</button>
+												<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">unsubscribe</button>
 												<div class="modal fade" id="myModal" role="dialog">
     												<div class="modal-dialog modal-sm">
       													<div class="modal-content">
@@ -205,13 +204,13 @@
 										<div class="text-center">
 											<!--                               <img src="http://lorempixel.com/200/200/people/9/" -->
 											<!--                                  class="avatar img-circle img-thumbnail" alt="avatar"> -->
-											<c:if test="${userImage.img_path==null }">
+											<c:if test="${userImage.img_idx==null }">
 												<img src="img/profile/user.png"
 													class="avatar img-circle img-thumbnail profile_img"
 													alt="avatar">
 											</c:if>
 											<c:if test="${userImage.img_idx!=null }">
-												<img src="imageView.do?img_idx=${userImage.img_idx }"
+												<img src="imageProfileView.do?img_code=${userid }"
 													id="img_change"
 													class="avatar img-circle img-thumbnail profile_img"
 													alt="avatar">

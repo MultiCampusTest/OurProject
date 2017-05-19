@@ -51,6 +51,16 @@ $(document).ready(function(){
 
 </head>
 <body>
+	<div class="container">
+      <div class="col-md-12">
+         <div class="row">
+               <img class="notice_slide" src="img/review/review_img.jpg" alt="">
+         </div>
+
+      </div>
+   </div>
+   <br>
+
 	<div class="content container" style="padding-top: 90px">
 		<p style="line-height: 100%">
 			<font style="font-size: 12pt">CATEGORY</font> 

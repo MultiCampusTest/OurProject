@@ -42,6 +42,12 @@ public class BoardController {
 	@Autowired
 	private IMatchingService matchingService;
 	
+	
+	@RequestMapping(value = "/", method = RequestMethod.GET)
+	public String maindo(){
+		System.out.println("???");
+		return "redirect:main.do";
+	}
 	//메인화면
 	@RequestMapping(value="main.do")
 	public String main() {

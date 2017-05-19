@@ -27,36 +27,14 @@
 
 	<mvc:interceptors>
 		<mvc:interceptor>
-			<mvc:mapping path="/**" />
-			<bean class="tm.log4j.LogInterceptor" id="logInterceptor" />
+			<mvc:mapping path="/guideWriteForm.do" />
+			<mvc:mapping path="/travelWriteForm.do" />
+			<mvc:mapping path="/reviewWriteForm.do" />
+			<bean class="tm.log4j.LoginCheckInterceptor" id="logInterceptor" />
 		</mvc:interceptor>
 	</mvc:interceptors>
 
-	<!-- <mvc:interceptors> -->
-	<!-- <mvc:interceptor> -->
-	<!-- <mvc:mapping path="/noticeList.do" /> -->
-	<!-- <ref bean="loginCheckInterceptor" /> -->
-	<!-- </mvc:interceptor> -->
-	<!-- </mvc:interceptors> -->
 
-	<!-- <mvc:interceptors> -->
-	<!-- <mvc:interceptor> -->
-	<!-- <mvc:mapping path="/*.do" /> -->
-	<!-- <mvc:exclude-mapping path="/main.do" /> -->
-	<!-- <ref bean="LoginCheckInterceptor" /> -->
-	<!-- </mvc:interceptor> -->
-
-	<!-- <mvc:interceptor> -->
-	<!-- <mvc:mapping path="/**" /> -->
-	<!-- <bean class="tm.log4j.LogInterceptor" id="logInterceptor" /> -->
-	<!-- </mvc:interceptor> -->
-	<!-- </mvc:interceptors> -->
-
-	<!-- <bean id="jspViewResolver" -->
-	<!-- class="org.springframework.web.servlet.view.InternalResourceViewResolver"> -->
-	<!-- <property name="prefix" value="/jsp/"></property> -->
-	<!-- <property name="suffix" value=".jsp"></property> -->
-	<!-- </bean> -->
 
 
 </beans>

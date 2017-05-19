@@ -21,6 +21,7 @@
 				<div class="account-wall">
 					<img class="profile-img" src="img/profile.jpg">
 <!-- 					<form action="loginProc.do" method="post" class="form-signin"> -->
+						<div class="form-signin">
 						<input type="text" class="form-control" placeholder="Email" id="form_userid" name="userid">
 						<input type="password" class="form-control" placeholder="Password" id="form_pwd" name="pwd">
 						<div>
@@ -32,6 +33,7 @@
 						<br>
 						<button type="button" id="form_submit" class="btn btn-lg btn-primary btn-block">SIGN IN</button>
 						<div id="form_msg" style="text-align: center"></div>
+						</div>
 <!-- 					</form> -->
 					<a href="certiForm.do" class="text-center new-account">Create an account</a>
 				</div>

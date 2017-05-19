@@ -268,6 +268,7 @@
 										<div class="row">
 											<div class="col-md-12">
 <!-- 												<form action="loginProc.do" method="post" class="form" role="form" accept-charset="UTF-8"> -->
+													<div class="form"> 
 													<div class="form-group">
 														<label class="sr-only" for="exampleInputEmail2">Email</label>
 														<input type="text" class="form-control" id="top_userid" name="userid" placeholder="Email">
@@ -282,6 +283,7 @@
 													<div class="form-group">
 														<button type="button" id="top_submit" class="btn btn-primary btn-block">Sign in</button>
 														<div id="top_msg" style="text-align: center"></div>
+													</div>
 													</div>
 <!-- 												</form> -->
 											</div>

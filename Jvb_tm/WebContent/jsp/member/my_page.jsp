@@ -657,13 +657,13 @@
 							<!-- 											class="glyphicon glyphicon-chevron-right"></span></a></li> -->
 							<!-- 								</ul> -->
 							<!-- 							</div> -->
-							<div class="row" style="text-align: center" id='addbtn'>
-								<div class="btns">
-									<%-- 									<a href="javascript:moreList();" class="btn btn-primary more_msg" id='addbtn${msg_pre_count }'>MORE</a> --%>
-									<div class="btn btn-primary more_msg_list"
-										id='addbtn${msg_pre_count }'>MORE</div>
-								</div>
-							</div>
+<!-- 							<div class="row" style="text-align: center" id='addbtn'> -->
+<!-- 								<div class="btns"> -->
+<%-- 																		<a href="javascript:moreList();" class="btn btn-primary more_msg" id='addbtn${msg_pre_count }'>MORE</a> --%>
+<!-- 									<div class="btn btn-primary more_msg_list" -->
+<%-- 										id='addbtn${msg_pre_count }'>MORE</div> --%>
+<!-- 								</div> -->
+<!-- 							</div> -->
 
 
 
@@ -816,18 +816,18 @@
 
 							<br> <br>
 
-							<div class="jb-center">
-								<ul class="pagination">
-									<li><a href="#"><span
-											class="glyphicon glyphicon-chevron-left"></span></a></li>
-									<c:forEach begin="1" end="10" step="1" varStatus="i">
-										<li class="matching default" id="paging_mch_${i.index }"><a
-											href="#">${i.index}</a></li>
-									</c:forEach>
-									<li><a href="#"><span
-											class="glyphicon glyphicon-chevron-right"></span></a></li>
-								</ul>
-							</div>
+<!-- 							<div class="jb-center"> -->
+<!-- 								<ul class="pagination"> -->
+<!-- 									<li><a href="#"><span -->
+<!-- 											class="glyphicon glyphicon-chevron-left"></span></a></li> -->
+<%-- 									<c:forEach begin="1" end="10" step="1" varStatus="i"> --%>
+<%-- 										<li class="matching default" id="paging_mch_${i.index }"><a --%>
+<%-- 											href="#">${i.index}</a></li> --%>
+<%-- 									</c:forEach> --%>
+<!-- 									<li><a href="#"><span -->
+<!-- 											class="glyphicon glyphicon-chevron-right"></span></a></li> -->
+<!-- 								</ul> -->
+<!-- 							</div> -->
 						</div>
 					</div>
 
@@ -1017,18 +1017,18 @@
 
 							<br> <br>
 
-							<div class="jb-center">
-								<ul class="pagination">
-									<li><a href="#"><span
-											class="glyphicon glyphicon-chevron-left"></span></a></li>
-									<c:forEach begin="1" end="10" step="1" varStatus="i">
-										<li class="matching default" id="paging_mch_${i.index }"><a
-											href="#">${i.index}</a></li>
-									</c:forEach>
-									<li><a href="#"><span
-											class="glyphicon glyphicon-chevron-right"></span></a></li>
-								</ul>
-							</div>
+<!-- 							<div class="jb-center"> -->
+<!-- 								<ul class="pagination"> -->
+<!-- 									<li><a href="#"><span -->
+<!-- 											class="glyphicon glyphicon-chevron-left"></span></a></li> -->
+<%-- 									<c:forEach begin="1" end="10" step="1" varStatus="i"> --%>
+<%-- 										<li class="matching default" id="paging_mch_${i.index }"><a --%>
+<%-- 											href="#">${i.index}</a></li> --%>
+<%-- 									</c:forEach> --%>
+<!-- 									<li><a href="#"><span -->
+<!-- 											class="glyphicon glyphicon-chevron-right"></span></a></li> -->
+<!-- 								</ul> -->
+<!-- 							</div> -->
 						</div>
 					</div>
 					

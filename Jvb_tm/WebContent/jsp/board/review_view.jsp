@@ -54,11 +54,12 @@
 						<label class="control-label">CONTENT:</label>
 						<textarea class="form-control" placeholder="Insert Content" rows="17" 
           			name="contents" style="resize:none; background-color:#FFFFFF" readonly="readonly">${contents.contents }</textarea>
-			</div>
 					</div>
 					<div class="form-group">
+					<c:if test="${userid == review.userid}">
 						<input type="button" value="modify" class="btn btn-primary" onclick="location.href='reviewModifyForm.do?boardIdx=${review.boardIdx}'">
 						<input type="button" value="delete" class="btn btn-primary" onclick="location.href='reviewDelete.do?boardIdx=${review.boardIdx}'">
+					</c:if>
 						<input type="button" value="list" class="btn btn-primary" onclick="location.href='reviewList.do?boardIdx=${review.boardIdx}'">
 					</div>
 				</div>

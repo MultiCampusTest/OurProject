@@ -50,12 +50,8 @@
 		}
 		
 		$('#form_submit').click(function(){	
-			var logEmail = /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
 			if($('#form_userid').val() == '') {
 				$('#form_msg').html('<font color="#FF605A">enter email</font>');
-				$('#form_userid').focus();
-			} else if( !logEmail.test($('#form_userid').val()) ) {
-				$('#form_msg').html('<font color="#FF605A">wrong email</font>');
 				$('#form_userid').focus();
 			} else if($('#form_pwd').val() == '') {
 				$('#form_msg').html('<font color="#FF605A">enter password</font>');

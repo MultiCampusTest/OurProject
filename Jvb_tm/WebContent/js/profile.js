@@ -565,8 +565,8 @@ $(document).ready(function() {
 			success : function(data) {
 
 				alert('매칭 거절');
-				$('#mathing_section' + board_idx + '_' + board_title).remove();
-				$('#br_mathing_section' + board_idx + '_' + board_title).remove();
+				$('#guide_mathing_section' + board_idx + '_' + board_title).remove();
+				$('#guide_br_mathing_section' + board_idx + '_' + board_title).remove();
 
 
 			},

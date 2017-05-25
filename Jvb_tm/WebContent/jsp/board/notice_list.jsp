@@ -9,37 +9,7 @@
 <!--   커스텀 CSS, JS -->
 <link href="css/noticeList.css" rel="stylesheet">
 <title>Insert title here</title>
- <style>
 
-.input_text { 
-display: inline-block;
-	width: 348px; height: 40px;
-	padding-left: 6px; 
-	padding-right: 6px;
-	border: 3px solid #FF605A;
-	line-height: 21px;
-	font-weight: bold;
-	font-size: 16px;
-	outline: none;
-}
-.sch_smit {
-	width: 54px; height: 40px;
-	margin: 0; border: 0;
-	vertical-align: top;
-	background: #FF605A;
-	color: white;
-	font-weight: bold;
-	border-radius: 1px;
-	cursor: pointer;
-}
-
-.t{
-width: 1200px; 
-margin: auto; 
-margin-left: expression(((document.body.clientWidth>1200) ? ((document.body.clientWidth-1200)/2) : 0) + "px"); 
-}
-
-</style>
 </head>
 <body>
 	<div class="container">
@@ -80,7 +50,7 @@ margin-left: expression(((document.body.clientWidth>1200) ? ((document.body.clie
 				<c:forEach items="${noticeList}" var="notice">
 					<tr>
 						<td>${notice.boardIdx }</td>
-						<td><a href="noticeView.do?boardIdx=${notice.boardIdx}"
+						<td><a href="noticeView.do?boardIdx=${notice.boardIdx}&page=${current}&searchValue=${searchValue}"
 							style="text-decoration: none">${notice.title }</a></td>
 						<td>${notice.userid}</td>
 						<td><fmt:formatDate value="${notice.writeDate}"

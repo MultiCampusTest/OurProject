@@ -45,7 +45,6 @@ public class BoardController {
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String maindo(){
-		System.out.println("???");
 		return "redirect:main.do";
 	}
 	//메인화면
@@ -84,12 +83,14 @@ public class BoardController {
 	}
 	
 	@RequestMapping(value="noticeView.do")
-	public ModelAndView noticeView(HttpServletRequest req, int boardIdx) {
+	public ModelAndView noticeView(HttpServletRequest req, int boardIdx, int page, String searchValue) {
 		String userid = (String)(req.getSession().getAttribute("userid"));
 		ModelAndView mav = new ModelAndView();
 		mav.addAllObjects(boardService.readNotice(boardIdx));
 		mav.addObject("userid", userid);
-		mav.addObject("comments",commentsService.selectComments(boardIdx)); 
+		mav.addObject("page", page);
+		mav.addObject("searchValue", searchValue);
+//		mav.addObject("comments",commentsService.selectComments(boardIdx)); 
 		mav.setViewName("board/notice_view");
 		
 		return mav;

@@ -134,6 +134,9 @@
 										<button type="button" class="form-control btn btn-primary"
 										onclick="location.href='certiForm.do'">JOIN</button>
 									</div>
+									<div style="margin-top: 20%">
+										<a href="http://s05.flagcounter.com/more/57Q"><img src="http://s05.flagcounter.com/count2/57Q/bg_FF605A/txt_FFFFFF/border_FF605A/columns_4/maxflags_15/viewers_0/labels_0/pageviews_1/flags_0/percent_0/" alt="Flag Counter" border="0" style="width: 100%"></a>
+									</div>
 								</form>							
 								</c:otherwise>
 							</c:choose>							

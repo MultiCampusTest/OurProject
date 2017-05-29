@@ -32,4 +32,5 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from matching where mch_g_userid=#{mch_g_userid} and b_idx=#{b_idx}
 	</select>
 
+
 </mapper>

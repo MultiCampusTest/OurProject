@@ -16,4 +16,5 @@ public interface IMatchingService {
 	public MatchingVo matchingByb_idx(int b_idx, String mch_g_userid);
 	
 	
+	
 }

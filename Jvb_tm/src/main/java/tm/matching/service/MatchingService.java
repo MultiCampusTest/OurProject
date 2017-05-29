@@ -114,6 +114,7 @@ public class MatchingService implements IMatchingService {
 		return matchingVo;
 	}
 
+	
 
 	@Override
 	public MatchingVo matchingByb_idx(int b_idx, String mch_g_userid) {

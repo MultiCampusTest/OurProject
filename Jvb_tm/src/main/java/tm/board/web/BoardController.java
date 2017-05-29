@@ -388,8 +388,7 @@ public class BoardController {
 				messageVo.setMsg_contents("Start Matching");
 				System.out.println(messageVo.toString());
 				messageService.sendMessage(messageVo);
-			}
-			
+			}		
 			
 		
 		}

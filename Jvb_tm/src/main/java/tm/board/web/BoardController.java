@@ -296,6 +296,7 @@ public class BoardController {
 	@ResponseBody
 	public ModelAndView reviewWrite(BoardVo board, ContentsVo contents, @RequestParam("ufile") MultipartFile file) {
 		boardService.insertReview(board, contents);
+		imageService.insertReviewImg(board, file);
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("redirect:reviewView.do?boardIdx="+board.getBoardIdx());
 		return mav;

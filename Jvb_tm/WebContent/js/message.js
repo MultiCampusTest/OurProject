@@ -5,6 +5,7 @@
 
 $(document).ready(function() {
 	
+	
 	$('.msg_contents_box').hide();//on cache par defaut les messages
 	
 	

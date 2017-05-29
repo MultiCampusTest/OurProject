@@ -52,7 +52,6 @@ function moreList() {
 
 
 
-
 $(document).ready(function() {
 	
 	$(".btn-pref .btn").click(function() {

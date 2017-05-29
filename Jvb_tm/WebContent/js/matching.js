@@ -6,7 +6,6 @@
 $(document).ready(function() {
 	
 	
-	
 	$('.matching_box').hide();//on cache par defaut les messages
 	$('.not_accept').click(function() {
 		var id = $(this).attr('id');

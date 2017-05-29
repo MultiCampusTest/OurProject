@@ -49,42 +49,6 @@ function sendFile(file, el) {
       }
     });
 }
-
-function readURL(input) {
-// 	alert($(input).attr('id'));
-	var id = $(input).attr('id');
-	var num = id.substring(6);
-	
-	if (input.files && input.files[0]) {
-		var reader = new FileReader();
-
-		reader.onload = function(e) {
-			$('#image' + id).attr('src', e.target.result);
-		}
-		
-		reader.readAsDataURL(input.files[0]);
-		
-	}
-}
-
-function read(input) {
-// 	alert($(input).attr('id'));
-	var id = $(input).attr('id');
-	var num = id.substring(6);
-	
-	if (input.files && input.files[0]) {
-		var reader = new FileReader();
-		
-		reader.onload = function(e) {
-			$('#inputImage' + num).attr('src', e.target.result);
-		}
-		reader.readAsDataURL(input.files[0]);
-	}
-	
-	function hidden(){
-		
-	}
-}
 </script>
 </head>
 <body>
@@ -99,6 +63,7 @@ function read(input) {
 					<div class="form-group">
 						<label class="control-label ">TITLE:</label> 
 						<input class="form-control" name="title" value="${review.title }" type="text">
+						<input type="hidden" name="boardIdx" value="${review.boardIdx }">
 					</div>
 					<div class="form-group">
 						<label class="control-label">CATEGORY:</label>

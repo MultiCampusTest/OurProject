@@ -314,10 +314,10 @@ public class BoardController {
 	@RequestMapping("reviewModifyForm.do")
 	public ModelAndView reviewModifyForm(int boardIdx) {
 		ModelAndView mav = new ModelAndView();
-		List<ImageVo> list = imageService.selectView(boardIdx);
+//		List<ImageVo> list = imageService.selectView(boardIdx);
 		
 		mav.addAllObjects(boardService.getReview(boardIdx));
-		mav.addObject("reviewImage", list);
+//		mav.addObject("reviewImage", list);
 		mav.setViewName("board/review_modify_form");
 		return mav;
 	}

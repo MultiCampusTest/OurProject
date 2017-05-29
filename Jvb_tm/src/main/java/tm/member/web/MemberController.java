@@ -101,18 +101,36 @@ public class MemberController {
 	public ModelAndView maindo(HttpSession session) {
 		String userid = (String) session.getAttribute("userid");
 		System.out.println(session.getAttribute("userid"));
+		String url="my_profile";
 		HashMap<String, Object> params=new HashMap<>();
 		params.put("userid", userid);
+		params.put("url", url);
 		ModelAndView mav=new ModelAndView();
 		mav.addObject("userImage", imageService.selectOne(userid));
 		mav.addAllObjects(memberService.memberSelectOne(userid));
-		mav.addAllObjects(messageService.messageList(userid));
-		mav.addAllObjects(matchingService.matchingList(userid));
 		mav.addAllObjects(params);
 		mav.setViewName("member/my_page");
 		return mav;
-		
 	}
+	
+	@RequestMapping("editProfile.do")
+	public ModelAndView editProfile(HttpSession session){
+		String userid = (String) session.getAttribute("userid");
+		System.out.println(session.getAttribute("userid"));
+	      
+		HashMap<String, Object> params=new HashMap<>();
+		String url="edit_profile";
+		params.put("userid", userid);
+		params.put("url", url);
+	      
+		ModelAndView mav=new ModelAndView();
+		mav.addObject("userImage", imageService.selectOne(userid));
+		mav.addAllObjects(memberService.memberSelectOne(userid));
+		mav.addAllObjects(params);
+		mav.setViewName("member/my_page");
+		return mav;
+	}
+	
 	
 	@RequestMapping(value="updateMember.do", method=RequestMethod.POST)
 	public String updateMember(HttpSession session, MemberVo memberVo, MultipartHttpServletRequest req){

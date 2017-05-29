@@ -13,6 +13,7 @@
 <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
 <!--   커스텀 스크립트 -->
 <script src="js/profile.js"></script>
+<script src="js/matching.js"></script>
 <!--   커스텀 CSS -->
 <link href="css/profile.css" rel="stylesheet">
 <link rel="stylesheet" href="css/review.css">

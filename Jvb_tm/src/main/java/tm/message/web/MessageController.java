@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import tm.message.service.IMessageService;
 import tm.message.vo.MessageVo;
@@ -35,7 +36,29 @@ public class MessageController {
 //	}
 	
 	
-	@RequestMapping("messageOneList.do")
+	
+	@RequestMapping("message.do")
+	public ModelAndView message(HttpSession session){
+		String userid = (String) session.getAttribute("userid");
+		System.out.println(session.getAttribute("userid"));
+		
+		String url="message";
+		HashMap<String, Object> params=new HashMap<>();
+		params.put("userid", userid);
+		params.put("url", url);
+		
+		ModelAndView mav=new ModelAndView();
+		mav.addAllObjects(messageService.messageList(userid));
+		mav.addAllObjects(params);
+		mav.setViewName("member/my_page");
+		return mav;
+	}
+	
+	
+	
+	
+	
+	@RequestMapping(value="messageOneList.do", method=RequestMethod.POST)
 	public @ResponseBody List<MessageVo> messageOneList(HttpSession session, String msg_send_userid){
 		String msg_receive_userid=(String)session.getAttribute("userid");
 		System.out.println(msg_receive_userid);

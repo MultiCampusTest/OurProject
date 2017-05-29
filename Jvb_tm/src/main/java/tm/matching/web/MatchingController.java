@@ -33,6 +33,50 @@ public class MatchingController {
 //	}
 	
 	
+	
+	
+	@RequestMapping("guideMatching.do")
+	public ModelAndView guideMatching(HttpSession session){
+		String userid = (String) session.getAttribute("userid");
+		System.out.println(session.getAttribute("userid"));
+		
+		String url="g_matching";
+		HashMap<String, Object> params=new HashMap<>();
+		params.put("userid", userid);
+		params.put("url", url);
+		
+		ModelAndView mav=new ModelAndView();
+		mav.addAllObjects(matchingService.matchingList(userid));
+		mav.addAllObjects(params);
+		mav.setViewName("member/my_page");
+		return mav;
+	}
+	
+	
+	@RequestMapping("travelMatching.do")
+	public ModelAndView travelMatching(HttpSession session){
+		String userid = (String) session.getAttribute("userid");
+		System.out.println(session.getAttribute("userid"));
+		
+		String url="t_matching";
+		HashMap<String, Object> params=new HashMap<>();
+		params.put("userid", userid);
+		params.put("url", url);
+		
+		ModelAndView mav=new ModelAndView();
+		mav.addAllObjects(matchingService.matchingList(userid));
+		mav.addAllObjects(params);
+		mav.setViewName("member/my_page");
+		return mav;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 	@RequestMapping(value="matchingHolding.do", method=RequestMethod.POST)
 	public @ResponseBody HashMap<String, Object> matchingHolding(HttpSession session, int b_idx, String mch_g_userid){
 		 String mch_t_userid=(String)session.getAttribute("userid");

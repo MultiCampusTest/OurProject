@@ -12,7 +12,7 @@
 	<div>
 		<tiles:insertAttribute name="top"></tiles:insertAttribute>
 	</div>
-	<div>
+	<div> 
 		<tiles:insertAttribute name="middle"></tiles:insertAttribute>
 	</div>
 	<div style="background-color: #FFFFFF">

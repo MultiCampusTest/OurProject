@@ -176,7 +176,7 @@ function popup() {
 </script>
 
 <style type="text/css">
-.dropdown:hover .dropdown-menu {
+.dropdown:hover .dropdown-menu { 
 	display: block;
 	margin-top: 0;
 }

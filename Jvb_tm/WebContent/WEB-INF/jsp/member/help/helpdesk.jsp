@@ -10,4 +10,4 @@
 <body>
 	<tiles:insertAttribute name="content"></tiles:insertAttribute>
 </body>
-</html>
+</html> 

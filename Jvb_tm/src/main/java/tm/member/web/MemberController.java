@@ -32,7 +32,7 @@ public class MemberController {
 	private MemberService memberService;
 	
 	@Autowired
-	private MessageService messageService;
+	private MessageService messageService; 
 	
 	@Autowired
 	private MatchingService matchingService;

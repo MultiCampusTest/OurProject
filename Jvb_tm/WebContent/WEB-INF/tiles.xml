@@ -23,4 +23,4 @@
 	<definition name="*/*/*.tiles" extends="help">
 		<put-attribute name="content" value="/WEB-INF/jsp/{1}/{2}/{3}.jsp"></put-attribute>
 	</definition>
-</tiles-definitions>   
+</tiles-definitions>    

@@ -27,6 +27,7 @@
 </head>
 <body>
 
+
 	<div class="container-fluid">
 		<div class="col-lg-12 col-sm-12">
 			<!--          <div class="card hovercard"> -->
@@ -81,10 +82,12 @@
 			</div>
 
 
-			<c:import url="/WEB-INF/jsp/member/my_page_my_profile.jsp"
+			<c:import url="/WEB-INF/jsp/member/my_page_${url }.jsp"
 				charEncoding="UTF-8">
-				<c:param name="mypage_include" value="${mypage_include }" />
+<%-- 				<c:param name="mypage_include" value="${mypage_include }" /> --%>
 			</c:import>
+			
+		
 
 		</div>
 	</div>

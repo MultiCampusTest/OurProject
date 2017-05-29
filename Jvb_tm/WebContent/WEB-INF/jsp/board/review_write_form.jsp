@@ -16,27 +16,6 @@
 
 <script type="text/javascript">
 $(document).ready(function(){
-	var cnt = 0;
-	$('#fileAdd').click(function(){
-		var div = document.getElementById('preDiv');
-		$('#container').append( $(div).html() );
-		$('.ex_file').each(function(index){
-			$(this).attr('id', 'idtest'+index);
-		});
-		$('.label').each(function(index) {
-			$(this).attr('id', 'labelid'+index);
-			$(this).attr('for', 'idtest'+index);
-			
-		})
-		$('.ex_image').each(function(index){
-			$(this).attr('id', 'img'+index);
-			if($(this).attr('id').substring(3) > cnt){
-				$(this).attr('src', 'img/review/noimage.png');
-			}
-		})
-		cnt++;
-	})
-
 	$(document).ready(function() {
       $('.summernote').summernote({
         height: 300,
@@ -53,6 +32,7 @@ $(document).ready(function(){
       });
     });
 });
+
 function sendFile(file, el) {
     var form_data = new FormData();
     form_data.append('file', file);

@@ -15,27 +15,7 @@
 <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.3/summernote.js"></script>
 
 <script type="text/javascript">
-
 $(document).ready(function(){
-	var cnt = 0;
-	$('#fileAdd').click(function(){
-		var div = document.getElementById('preDiv');
-		$('#container').append( $(div).html() );
-		$('.file').each(function(index){
-			$(this).attr('id', 'idtest'+index);
-			$(this).attr('name','file');
-		});
-		$('.inputLabel').each(function(index) {
-			$(this).attr('for', 'idtest'+index);
-		})
-		$('.inputImage').each(function(index){
-			$(this).attr('id', 'inputImage'+index);
-			if($(this).attr('id') > cnt)
-				$(this).attr('src', 'img/review/noimage.png');
-		})
-		cnt++;
-	})
-	
 	$(document).ready(function() {
       $('.summernote').summernote({
         height: 300,

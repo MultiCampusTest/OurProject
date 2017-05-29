@@ -290,7 +290,6 @@ public class BoardController {
 	@ResponseBody
 	public ModelAndView reviewWrite(BoardVo board, ContentsVo contents, MultipartHttpServletRequest req) {
 		boardService.insertReview(board, contents);
-//		imageService.insertReviewImg(board, req);
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("redirect:reviewView.do?boardIdx="+board.getBoardIdx());
 		return mav;
@@ -330,14 +329,11 @@ public class BoardController {
 		BoardVo board2 = board;
 		ContentsVo contents2 = contents;
 		
-		String[] img_idx = req.getParameterValues("img_idx");
+//		String[] img_idx = req.getParameterValues("img_idx");
 		
-		//게시판은 update, 이미지는 delete
+		//게시판은 update
 		boardService.updateReview(board2, contents2);
-		imageService.updateReviewImg(board2, req, img_idx);
-		
-		//이미지는 다시 insert
-//		imageService.insertReviewImg(board2, req);
+//		imageService.updateReviewImg(board2, req, img_idx);
 		
 		mav.addObject("review",board2);
 		mav.addObject("contents",contents2);

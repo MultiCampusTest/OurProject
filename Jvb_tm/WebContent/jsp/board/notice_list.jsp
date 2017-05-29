@@ -92,7 +92,7 @@ margin-left: expression(((document.body.clientWidth>1200) ? ((document.body.clie
 		</table>
 		<br>
 		<c:choose>
-			<c:when test="${userid != admin || userid==null }">
+			<c:when test="${userid != admin || userid == null }">
 				<input type="button" class="btn btn-primary" value="관리자 아닌 쉐키가 감히??" onclick="location.href='main.do'">
 			</c:when>
 			<c:otherwise>

@@ -3,6 +3,7 @@ package tm.image.service;
 import java.util.HashMap;
 import java.util.List;
 
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import tm.board.vo.BoardVo;
@@ -31,5 +32,6 @@ public interface IImageService {
    public void updateReviewImg(BoardVo board, MultipartHttpServletRequest req, String[] img_idx);
    public void deleteReviewImg(String img_code, MultipartHttpServletRequest req, String[] img_idx);
    public void deleteReview(String img_code);
+   public ImageVo insertImage(MultipartFile file);
 
 }

@@ -7,6 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<script src="js/comments.js"></script>
 <script type="text/javascript">
 
 function delete_event(){
@@ -221,6 +222,7 @@ background-color:#DC524D;
 		</div>
 	</div>
 		<!-- Comments Form -->
+		<c:if test="${userid != null }">
          <div class="well">
              <h4>Leave a Comment:</h4>
              <form role="form" action="commentsWrite.do" method="post">
@@ -237,6 +239,7 @@ background-color:#DC524D;
                  <input type="submit" value="등록" class="btn btn-primary">
              </form>
          </div>
+         </c:if>
          
          
 <!--         reComments input, nondisplay -->

@@ -362,6 +362,7 @@ $(document).ready(function() {
 
 				// 	   	            $('#msg_list'+realid).append('<br>');
 				// 	   	            $('#msg_list'+realid).append(send_msg_contents);
+				$('#message').click();
 
 			},
 			error : function() {

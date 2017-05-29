@@ -203,10 +203,7 @@ public class ImageService implements IImageService {
             UUID uuid = UUID.randomUUID();
 
             String fileName = files.get(i).getOriginalFilename();
-            int fileSize = (int) files.get(i).getSize();
-            String fileuri = path + uuid;
-            
-            System.out.println(fileName+"파일 이름 총 몇개 들어왔나?");
+            String fileuri = path + uuid;         
             
             ImageVo image = new ImageVo();
             int img_idxInt = Integer.parseInt(img_idx[i]);
@@ -257,6 +254,40 @@ public class ImageService implements IImageService {
 	public void deleteReview(String img_code) {
 		// TODO Auto-generated method stub
 		imageDao.deleteByImageCode(img_code);
+	}
+
+	@Override
+	public ImageVo insertImage(MultipartFile file) {
+		// TODO Auto-generated method stub
+		String path = "/Users/LeeGilSun/Upload/";
+		
+        File folder = new File(path);
+        if (!folder.exists()) {
+        	folder.mkdirs();
+        }
+        
+        UUID uuid = UUID.randomUUID();
+        String originName = file.getOriginalFilename();
+        String fileuri = path + uuid;
+        
+        ImageVo image = new ImageVo();
+        image.setImg_ori_name(originName);
+//        image.setImg_code(Integer.toString(board.getBoardIdx()));
+        image.setImg_path(fileuri);
+        
+        File localFile = new File(fileuri);
+
+        try {
+           file.transferTo(localFile);
+        } catch (IllegalStateException e) {
+           e.printStackTrace();
+        } catch (IOException e) {
+           e.printStackTrace();
+        }
+        
+        imageDao.insertImage(image); 
+        System.out.println(image.getImg_idx());
+        return image;
 	} 
    
    

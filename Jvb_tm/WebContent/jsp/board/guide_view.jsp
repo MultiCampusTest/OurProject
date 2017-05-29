@@ -163,6 +163,7 @@ $(document).ready(function(){
   
 <!-- Comments Form -->
 	<c:if test="${matchingComplete==null }">
+		<c:if test="${userid != null }">
          <div class="well">
              <h4>Leave a Comment:</h4>
              <form role="form" action="commentsWrite.do" method="post">
@@ -179,6 +180,7 @@ $(document).ready(function(){
                  <input type="submit" value="등록" class="btn btn-primary">
              </form>
          </div>
+         </c:if>
          
 <!--         reComments input, nondisplay -->
          <div class="well" style="display: none;" id="reComments">

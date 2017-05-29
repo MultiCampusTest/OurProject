@@ -16,6 +16,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import tm.image.service.ImageService;
@@ -56,7 +59,7 @@ public class ImageController {
    public void imageView(int img_idx, HttpServletResponse resp) throws IOException{
       ImageVo image = imageService.selectOnce(img_idx);
       
-      resp.setContentType("images/jpg; utf-8");
+       resp.setContentType("images/jpg; utf-8");
        String originFile = (String)image.getImg_ori_name();
        String filename = new String(originFile.getBytes("UTF-8"),"ISO-8859-1");
        resp.setHeader("Content-Disposition", "inline;filename=\"" + filename + "\";");
@@ -94,6 +97,13 @@ public class ImageController {
       
        outputStream.flush();
        outputStream.close();
+   }
+   
+   @RequestMapping("imageWrite.do")
+   public @ResponseBody ImageVo imageWrite(@RequestParam("file") MultipartFile file){
+	  ImageVo image = imageService.insertImage(file);
+	  System.out.println("다시한번"+image.getImg_idx());
+	  return image;
    }
    
 }

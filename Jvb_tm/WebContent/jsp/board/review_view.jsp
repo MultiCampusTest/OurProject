@@ -19,6 +19,9 @@
 </style>
 
 <script src="js/comments.js"></script>
+<script type="text/javascript">
+
+</script>
 </head>
 <body>
 	<div class="container">
@@ -26,20 +29,20 @@
 			<h3>후기게시판</h3>
 		</div>
 		<div class="row">
-				<div class="col-md-5">
-					<h2>Photo</h2>
-					<div class="table-responsive" id="reviewPhoto">
-						<table class="table table-condensed" style="height: inherit; vertical-align: middle">
-							<c:forEach var="image" items="${reviewImage}">
-								<tr class="clearfix" align="center" style="vertical-align: center">
-									<td style="width: 65%; height: 80%">
-											<img src="imageView.do?img_idx=${image.img_idx }" style="width: 200px">
-									</td>
-								</tr>
-							</c:forEach>
-						</table>
-					</div>
-				</div>
+<!-- 				<div class="col-md-5"> -->
+<!-- 					<h2>Photo</h2> -->
+<!-- 					<div class="table-responsive" id="reviewPhoto"> -->
+<!-- 						<table class="table table-condensed" style="height: inherit; vertical-align: middle"> -->
+<%-- 							<c:forEach var="image" items="${reviewImage}"> --%>
+<!-- 								<tr class="clearfix" align="center" style="vertical-align: center"> -->
+<!-- 									<td style="width: 65%; height: 80%"> -->
+<%-- 											<img src="imageView.do?img_idx=${image.img_idx }" style="width: 200px"> --%>
+<!-- 									</td> -->
+<!-- 								</tr> -->
+<%-- 							</c:forEach> --%>
+<!-- 						</table> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
 				<div class="col-md-7">
 					<h2>내용</h2>
 					<div class="form-group">
@@ -52,8 +55,8 @@
 					</div>
 					<div class="form-group">
 						<label class="control-label">CONTENT:</label>
-						<textarea class="form-control" placeholder="Insert Content" rows="17" 
-          			name="contents" style="resize:none; background-color:#FFFFFF" readonly="readonly">${contents.contents }</textarea>
+							${contents.contents }
+<%-- 						<textarea class="form-control" placeholder="Insert Content" rows="17" name="contents" style="resize:none; background-color:#FFFFFF" readonly="readonly">${contents.contents }</textarea> --%>
 					</div>
 					<div class="form-group">
 					<c:if test="${userid == review.userid}">
@@ -67,6 +70,7 @@
 		</div>
 
 		<!-- Comments Form -->
+		<c:if test="${userid != null }">
          <div class="well">
              <h4>Leave a Comment:</h4>
              <form role="form" action="commentsWrite.do" method="post">
@@ -83,6 +87,7 @@
                  <input type="submit" value="등록" class="btn btn-primary">
              </form>
          </div>
+         </c:if>
          
          
 <!--         reComments input, nondisplay -->

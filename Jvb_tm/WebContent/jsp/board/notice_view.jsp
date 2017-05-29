@@ -63,6 +63,7 @@
 		<br>
 
 <!-- Comments Form -->
+		<c:if test="${userid != null }">
          <div class="well">
              <h4>Leave a Comment:</h4>
              <form role="form" action="commentsWrite.do" method="post">
@@ -80,6 +81,7 @@
              </form>
          </div>
          
+		</c:if>
          
 <!--         reComments input, nondisplay -->
          <div class="well" style="display: none;" id="reComments">

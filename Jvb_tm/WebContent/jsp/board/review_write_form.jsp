@@ -9,7 +9,11 @@
 
 <link rel="stylesheet" href="css/review.css">
 <script src="js/review.js"></script>
-<!-- <script src="js/jqueryform.js"></script> -->
+
+<!-- 섬머노트 -->
+<link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.3/summernote.css" rel="stylesheet">
+<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.3/summernote.js"></script>
+
 <script type="text/javascript">
 $(document).ready(function(){
 	var cnt = 0;
@@ -32,7 +36,39 @@ $(document).ready(function(){
 		})
 		cnt++;
 	})
+
+	$(document).ready(function() {
+      $('.summernote').summernote({
+        height: 300,
+        minHeight: null,
+        maxHeight: null,
+        focus: true,
+        callbacks: {
+          onImageUpload: function(files, editor, welEditable) {
+            for (var i = files.length - 1; i >= 0; i--) {
+              sendFile(files[i], this);
+            }
+         }
+        }
+      });
+    });
 });
+function sendFile(file, el) {
+    var form_data = new FormData();
+    form_data.append('file', file);
+    $.ajax({
+      data: form_data,
+      type: "POST",
+      url: 'imageWrite.do',
+      cache: false,
+      contentType: false,
+      enctype: 'multipart/form-data',
+      processData: false,
+      success: function(data) {
+        $('.summernote').summernote('insertImage', 'imageView.do?img_idx='+data.img_idx);
+      }
+    });
+}
 </script>
 </head>
 <body>
@@ -41,36 +77,36 @@ $(document).ready(function(){
 			<h3>후기게시판</h3>
 		</div>
 		<div class="row">
-				<div class="col-md-5">
-					<h2>Photo</h2>
-						<button class="btn btn-primary" id="fileAdd">파일 추가</button>
+<!-- 				<div class="col-md-5"> -->
+<!-- 					<h2>Photo</h2> -->
+<!-- 						<button class="btn btn-primary" id="fileAdd">파일 추가</button> -->
 				<form id="reviewForm" name="reviewForm" action="reviewWrite.do" method="post" enctype="multipart/form-data">
-						<input type="hidden" name="boardType" value="review">
-						<div  id="preDiv" class="table-responsive" id="reviewPhoto">
-							<table id="preTable" class="table table-condensed" style="height: inherit; vertical-align: middle;">
-									<tr  id="preset" class="clearfix" align="center" style="vertical-align: center">
-										<td style="width: 35%; vertical-align: middle;">
-											<div class="filebox" style="padding-top: 10px">
+<!-- 						<input type="hidden" name="boardType" value="review"> -->
+<!-- 						<div  id="preDiv" class="table-responsive" id="reviewPhoto"> -->
+<!-- 							<table id="preTable" class="table table-condensed" style="height: inherit; vertical-align: middle;"> -->
+<!-- 									<tr  id="preset" class="clearfix" align="center" style="vertical-align: center"> -->
+<!-- 										<td style="width: 35%; vertical-align: middle;"> -->
+<!-- 											<div class="filebox" style="padding-top: 10px"> -->
 	
-												<label for="idtestfirst" id="label" class="label">choose file</label> 
-													<input type="file" id="idtestfirst" name="file" class="ex_file" onchange="readURL(this)">
-											</div>
-										</td>
+<!-- 												<label for="idtestfirst" id="label" class="label">choose file</label>  -->
+<!-- 													<input type="file" id="idtestfirst" name="file" class="ex_file" onchange="readURL(this)"> -->
+<!-- 											</div> -->
+<!-- 										</td> -->
 	
 	
-										<td style="width: 65%; height: 80%">
-											<div class="aspect_1_1 imgDiv">
-												<img id="imgfirst" class="ex_image" src="img/review/noimage.png">
-											</div>
+<!-- 										<td style="width: 65%; height: 80%"> -->
+<!-- 											<div class="aspect_1_1 imgDiv"> -->
+<!-- 												<img id="imgfirst" class="ex_image" src="img/review/noimage.png"> -->
+<!-- 											</div> -->
 	
-										</td>
-									</tr>
-							</table>
-						</div>
-						<div id="container">
-						</div>
-				</div>
-				<div class="col-md-7">
+<!-- 										</td> -->
+<!-- 									</tr> -->
+<!-- 							</table> -->
+<!-- 						</div> -->
+<!-- 						<div id="container"> -->
+<!-- 						</div> -->
+<!-- 				</div> -->
+				<div class="col-md-12">
 					<h2>Something Else here</h2>
 					<input type="hidden" name="userid" value="${userid }">
 					<div class="form-group">
@@ -89,24 +125,15 @@ $(document).ready(function(){
 							</select>
 						</div>
 					</div>
-<!-- 					<div class="form-group"> -->
-<!-- 						<label class="control-label">DAYS:</label> -->
-<!-- 						<div class="ui-select"> -->
-<!-- 							<select name="subCategory" id="review_category" class="form-control"> -->
-<!-- 								<option value="select">select</option> -->
-<!-- 								<option value="food" id="5">5DAY</option> -->
-<!-- 								<option value="shopping" id="10">10DAY</option> -->
-<!-- 								<option value="stay" id="15">+15DAY</option> -->
-<!-- 							</select> -->
-<!-- 						</div> -->
-<!-- 					</div> -->
 					<div class="form-group">
 						<label class="control-label">CONTENT:</label>
-						<textarea class="form-control" name="contents" rows="10" style="resize: none;"></textarea>
+						<textarea class="summernote" name="contents" rows="10" style="resize: none;"></textarea>
 					</div>
+					<input type="button" id="btn" value="dd">
 					<input type="hidden" name="code" value="r"> 
 					<div class="form-group">
-						<input type="submit" value="ok" class="btn btn-primary"> 
+<!-- 						<input type="button" id="submitbtn" value="ok" class="btn btn-primary">  -->
+						<button type="submit" class="btn btn-primary">submit</button>
 						<input type="reset" value="reset" class="btn btn-primary"> 
 						<input type="button" value="list" class="btn btn-primary" onclick="location.href='reviewList.do'">
 					</div>

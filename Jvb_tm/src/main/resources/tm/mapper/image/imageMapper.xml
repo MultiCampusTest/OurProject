@@ -5,7 +5,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="tm.image.dao.IImageDao">
 
-   <insert id="insertImage" parameterType="imageVo">
+   <insert id="insertImage" parameterType="imageVo" keyProperty="img_idx" useGeneratedKeys="true">
       insert into image(img_ori_name, img_code, img_path)
       values(#{img_ori_name}, #{img_code}, #{img_path})
    </insert>

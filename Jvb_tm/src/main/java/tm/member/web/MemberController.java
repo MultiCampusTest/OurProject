@@ -45,6 +45,15 @@ public class MemberController {
 		return "member/login_form";
 	}
 	
+	
+	@RequestMapping("searchAccount.do")
+	public String searchAccount() {
+		return "member/help/account";
+	}
+	
+	
+	
+	
 	@RequestMapping("joinForm.do")
 	public String joinForm(){
 		return "member/join_form";

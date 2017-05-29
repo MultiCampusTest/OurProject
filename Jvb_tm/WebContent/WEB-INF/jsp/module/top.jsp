@@ -54,6 +54,22 @@
     <![endif]-->
 
 <script type="text/javascript">
+function popup() {
+	var uri = 'searchAccount.do'
+	    var width = 520;
+	    var height = 450;
+	    var top = (screen.availHeight - height) / 2;
+	    var left = (screen.availWidth - width) / 2;
+
+	    var strFeature;
+	    strFeature = 'height=' + height + ',width=' + width + 
+
+	',menubar=no,toolbar=no,location=no,resizable=no,status=no,scrollbars=yes,top=' + top + ',left=' + left
+
+	window.open(uri, 'search', strFeature);
+}
+
+
 	$(document).ready(function() {
 
 		$('.dropdown,.dropdown-menu').hover(function() {
@@ -293,7 +309,7 @@
 									<li>
 									<div class="row">
 										<div class="col-md-12" style="text-align: center"> 
-											<a href="findPassword.do">forgot your password?</a>
+											<a href="javascript:popup();">forgot your password?</a>
 										</div>
 									</div>
 									</ul>

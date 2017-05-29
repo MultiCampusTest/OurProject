@@ -30,6 +30,8 @@ import tm.image.service.ImageService;
 import tm.image.vo.ImageVo;
 import tm.matching.service.IMatchingService;
 import tm.matching.vo.MatchingVo;
+import tm.message.service.IMessageService;
+import tm.message.vo.MessageVo;
 
 @Controller
 public class BoardController {
@@ -42,6 +44,9 @@ public class BoardController {
 	private ImageService imageService;
 	@Autowired
 	private IMatchingService matchingService;
+	
+	@Autowired
+	private IMessageService messageService;
 	
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
@@ -369,14 +374,24 @@ public class BoardController {
 		System.out.println(comment_pre_depth);
 //		System.out.println("댓글이다 보드 코드 받아오니 : "+board_code);
 		if(b_code.equals("g") && comment_pre_depth==0){
+			System.out.println("메시지 오니");
 			System.out.println("매칭 신청 됩니다.");
 			MatchingVo matchingVo=new MatchingVo();
 			matchingVo.setMch_t_userid(b_writer);
 			matchingVo.setMch_g_userid(mch_g_userid);
 			matchingVo.setB_idx(comments.getB_idx());
 			System.out.println(matchingVo.toString());
-			matchingService.matchingSend(matchingVo);
-
+			if(matchingService.matchingByb_idx(comments.getB_idx(), mch_g_userid)==null){
+				matchingService.matchingSend(matchingVo);
+				MessageVo messageVo=new MessageVo();
+				messageVo.setMsg_send_userid(comments.getCm_writer());
+				messageVo.setMsg_receive_userid(b_writer);
+				messageVo.setMsg_contents("Start Matching");
+				System.out.println(messageVo.toString());
+				messageService.sendMessage(messageVo);
+			}		
+			
+		
 		}
 		
 		mav.setViewName("redirect:"+site+"View.do?boardIdx="+comments.getB_idx());

@@ -114,6 +114,20 @@ public class MatchingService implements IMatchingService {
 		return matchingVo;
 	}
 
+	
+
+	@Override
+	public MatchingVo matchingByb_idx(int b_idx, String mch_g_userid) {
+		// TODO Auto-generated method stub
+		HashMap<String, Object> params=new HashMap<>();
+		params.put("b_idx", b_idx);
+		params.put("mch_g_userid", mch_g_userid);
+		
+		MatchingVo matchingVo=new MatchingVo();
+		matchingVo=matchingDao.matchingSelectByb_idx(params);
+		return matchingVo;
+	}
+
 
 	
 

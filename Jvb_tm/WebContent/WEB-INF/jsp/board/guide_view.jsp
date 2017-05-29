@@ -161,6 +161,7 @@ $(document).ready(function(){
   <br><br>
   
   
+  
 <!-- Comments Form -->
 	<c:if test="${matchingComplete==null }">
 		<c:if test="${userid != null }">
@@ -181,6 +182,7 @@ $(document).ready(function(){
              </form>
          </div>
          </c:if>
+	</c:if>
          
 <!--         reComments input, nondisplay -->
          <div class="well" style="display: none;" id="reComments">
@@ -217,7 +219,7 @@ $(document).ready(function(){
                  <input type="button" value="취소" class="btn btn-primary" onclick="commentsUpdateCancel()">
              </form>
          </div>	
-     </c:if>
+     
      <c:if test="${matchingComplete!=null }">
      	안녕 매칭 됐어 댓글 못 써
      
@@ -251,7 +253,7 @@ $(document).ready(function(){
 	                  		<div id="commentsDiv${comments.cm_idx}">
 	                  			${comments.cm_content }
 	                  		</div>
-	                  		<c:if test="${comments.cm_depth == 0 }">
+	                  		<c:if test="${comments.cm_depth == 0 && userid==guide.userid }">
 	                  			<div class="row col-md-12 pull-right" style="text-align: right">
 		                  			<button type="button" class="btn btn-primary btn-lg msg_send_btn glyphicon glyphicon-envelope"
 		                  				id="${status_index }_${comments.cm_writer }"

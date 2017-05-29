@@ -13,6 +13,8 @@ public interface IMatchingService {
 	public boolean matchingCancel(int mch_idx);
 	public HashMap<String, Object> matchingList(String mch_t_userid);
 	public MatchingVo matchingComplete(int b_idx);
+	public MatchingVo matchingByb_idx(int b_idx, String mch_g_userid);
+	
 	
 	
 }

@@ -49,6 +49,26 @@ function sendFile(file, el) {
       }
     });
 }
+
+//입력버튼 눌렀을때 입력처리 상황 확인
+	function submitEven(){
+		if( $('#title').val() == null || $('#title').val() == "" ){
+			alert('제목을 입력해주세요');
+			return false;
+		}
+		
+		if( $('#review_category').val() == 'select'){
+			alert('카테고리를 선택해주세요');
+			return false;
+		}
+		
+		if( $('.summernote').val() == null || $('.summernote').val() == ''){
+			alert('내용을 입력해주세요');
+			return false;
+		}
+		
+		return true;
+	}
 </script>
 </head>
 <body>
@@ -57,12 +77,12 @@ function sendFile(file, el) {
 			<h3>후기게시판</h3>
 		</div>
 		<div class="row">
-			<form action="reviewUpdate.do" method="post" enctype="multipart/form-data">
+			<form action="reviewUpdate.do" method="post" enctype="multipart/form-data" onsubmit="return submitEven();">
 				<div class="col-md-12">
 					<h2>게시글을 수정하시오</h2>
 					<div class="form-group">
 						<label class="control-label ">TITLE:</label> 
-						<input class="form-control" name="title" value="${review.title }" type="text">
+						<input class="form-control" name="title" value="${review.title }" type="text" id="title">
 						<input type="hidden" name="boardIdx" value="${review.boardIdx }">
 					</div>
 					<div class="form-group">

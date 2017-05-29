@@ -31,6 +31,8 @@ $(document).ready(function(){
         }
       });
     });
+	
+	
 });
 
 function sendFile(file, el) {
@@ -49,6 +51,26 @@ function sendFile(file, el) {
       }
     });
 }
+
+//입력버튼 눌렀을때 입력처리 상황 확인
+	function submitEven(){
+		if( $('#title').val() == null || $('#title').val() == "" ){
+			alert('제목을 입력해주세요');
+			return false;
+		}
+		
+		if( $('#review_category').val() == 'select'){
+			alert('카테고리를 선택해주세요');
+			return false;
+		}
+		
+		if( $('.summernote').val() == null || $('.summernote').val() == ''){
+			alert('내용을 입력해주세요');
+			return false;
+		}
+		
+		return true;
+	}
 </script>
 </head>
 <body>
@@ -60,7 +82,7 @@ function sendFile(file, el) {
 <!-- 				<div class="col-md-5"> -->
 <!-- 					<h2>Photo</h2> -->
 <!-- 						<button class="btn btn-primary" id="fileAdd">파일 추가</button> -->
-				<form id="reviewForm" name="reviewForm" action="reviewWrite.do" method="post" enctype="multipart/form-data">
+				<form id="reviewForm" name="reviewForm" action="reviewWrite.do" method="post" enctype="multipart/form-data" onsubmit="return submitEven();">
 <!-- 						<input type="hidden" name="boardType" value="review"> -->
 <!-- 						<div  id="preDiv" class="table-responsive" id="reviewPhoto"> -->
 <!-- 							<table id="preTable" class="table table-condensed" style="height: inherit; vertical-align: middle;"> -->
@@ -91,7 +113,7 @@ function sendFile(file, el) {
 					<input type="hidden" name="userid" value="${userid }">
 					<div class="form-group">
 						<label class="control-label ">TITLE:</label> 
-						<input class="form-control" name="title" type="text">
+						<input class="form-control" name="title" type="text" id="title">
 					</div>
 					<div class="form-group">
 						<label class="control-label">CATEGORY:</label>
@@ -106,14 +128,17 @@ function sendFile(file, el) {
 						</div>
 					</div>
 					<div class="form-group">
+						<label class="control-label">THUMBNAIL:</label> <br>
+						<input type="file" name="ufile" id="ufile">
+					</div>
+					<div class="form-group">
 						<label class="control-label">CONTENT:</label>
 						<textarea class="summernote" name="contents" rows="10" style="resize: none;"></textarea>
 					</div>
-					<input type="button" id="btn" value="dd">
 					<input type="hidden" name="code" value="r"> 
 					<div class="form-group">
 <!-- 						<input type="button" id="submitbtn" value="ok" class="btn btn-primary">  -->
-						<button type="submit" class="btn btn-primary">submit</button>
+						<button type="submit" class="btn btn-primary" id="submitBtn">submit</button>
 						<input type="reset" value="reset" class="btn btn-primary"> 
 						<input type="button" value="list" class="btn btn-primary" onclick="location.href='reviewList.do'">
 					</div>

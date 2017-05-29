@@ -148,7 +148,7 @@ public class ImageService implements IImageService {
    }
 
 	@Override
-	public void insertReviewImg(BoardVo board, MultipartHttpServletRequest req) {
+	public void insertReviewImg(BoardVo board, MultipartFile file) {
 		// TODO Auto-generated method stub
 		String path = "/Users/LeeGilSun/Upload/";
 		
@@ -157,34 +157,29 @@ public class ImageService implements IImageService {
         	folder.mkdirs();
         }
         
-        List<MultipartFile> files = req.getFiles("file");
+        UUID uuid = UUID.randomUUID();
+
+        String fileName = file.getOriginalFilename();
+        String fileuri = path + uuid;
         
-        for (int i = 0; i < files.size(); i++) {
-            UUID uuid = UUID.randomUUID();
+        ImageVo image = new ImageVo();
+        image.setImg_ori_name(fileName);
+        System.out.println(board.getBoardIdx()+"아이디엑스");
+        image.setImg_code(Integer.toString(board.getBoardIdx()));
+        image.setImg_path(fileuri);
 
-            String fileName = files.get(i).getOriginalFilename();
-            int fileSize = (int) files.get(i).getSize();
-            System.out.println(fileName+"파일 이름 총 몇개 들어왔나?");
-            String fileuri = path + uuid;
-            
-            ImageVo image = new ImageVo();
-            image.setImg_ori_name(fileName);
-            image.setImg_code(Integer.toString(board.getBoardIdx()));
-            image.setImg_path(fileuri);
+        File localFile = new File(fileuri);
 
-            File localFile = new File(fileuri);
-
-            try {
-               files.get(i).transferTo(localFile);
-            } catch (IllegalStateException e) {
-               e.printStackTrace();
-            } catch (IOException e) {
-               e.printStackTrace();
-            }
-            if(!fileName.equals("")){
-            	imageDao.insertImage(image);            	
-            }
-         }
+        try {
+           file.transferTo(localFile);
+        } catch (IllegalStateException e) {
+           e.printStackTrace();
+        } catch (IOException e) {
+           e.printStackTrace();
+        }
+        if(!fileName.equals("")){
+        	imageDao.insertImage(image);            	
+        }
 	}
 
 	@Override

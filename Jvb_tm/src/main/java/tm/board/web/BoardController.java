@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -293,8 +294,9 @@ public class BoardController {
 	
 	@RequestMapping(value="reviewWrite.do")
 	@ResponseBody
-	public ModelAndView reviewWrite(BoardVo board, ContentsVo contents, MultipartHttpServletRequest req) {
+	public ModelAndView reviewWrite(BoardVo board, ContentsVo contents, @RequestParam("ufile") MultipartFile file) {
 		boardService.insertReview(board, contents);
+		imageService.insertReviewImg(board, file);
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("redirect:reviewView.do?boardIdx="+board.getBoardIdx());
 		return mav;

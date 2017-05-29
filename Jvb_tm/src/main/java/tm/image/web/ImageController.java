@@ -102,7 +102,6 @@ public class ImageController {
    @RequestMapping("imageWrite.do")
    public @ResponseBody ImageVo imageWrite(@RequestParam("file") MultipartFile file){
 	  ImageVo image = imageService.insertImage(file);
-	  System.out.println("다시한번"+image.getImg_idx());
 	  return image;
    }
    

@@ -77,7 +77,7 @@ public class MemberController {
 		mav.setViewName("member/join_form");
 		return mav;
 	}
-	
+	 
 	@RequestMapping(method=RequestMethod.POST, value="naverLogin.do")
 	public ModelAndView naverLogin(HttpSession session, String id, String nickname, String email, String sex, String birthday, String name){
 		ModelAndView mav = new ModelAndView();	

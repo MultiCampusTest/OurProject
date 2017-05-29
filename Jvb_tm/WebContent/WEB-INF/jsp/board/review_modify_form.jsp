@@ -62,6 +62,11 @@ function sendFile(file, el) {
 			return false;
 		}
 		
+// 		if( $('#ufile').val() == ''){
+// 			alert('썸네일을 등록해주세요');
+// 			return false;
+// 		}
+		
 		if( $('.summernote').val() == null || $('.summernote').val() == ''){
 			alert('내용을 입력해주세요');
 			return false;
@@ -84,11 +89,13 @@ function sendFile(file, el) {
 						<label class="control-label ">TITLE:</label> 
 						<input class="form-control" name="title" value="${review.title }" type="text" id="title">
 						<input type="hidden" name="boardIdx" value="${review.boardIdx }">
+						<input type="hidden" name="img_idx" value="${image.img_idx }">
 					</div>
+					
 					<div class="form-group">
 						<label class="control-label">CATEGORY:</label>
 						<div class="ui-select">
-							<select name="subCategory" id="review_category" class="form-control">
+							<select name="subCategory" id="review_category" class="form-control" >
 								<option value="select">select</option>
 								<option value="food" id="food">food</option>
 								<option value="shopping" id="shopping">shopping</option>
@@ -96,6 +103,10 @@ function sendFile(file, el) {
 								<option value="tour" id="tour">tour</option>
 							</select>
 						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label">THUMBNAIL:</label> <br>
+						<input type="file" name="ufile" id="ufile">
 					</div>
 					<div class="form-group">
 						<label class="control-label">CONTENT:</label>

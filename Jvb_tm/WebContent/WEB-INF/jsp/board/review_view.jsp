@@ -46,17 +46,18 @@
 				<div class="col-md-7">
 					<h2>내용</h2>
 					<div class="form-group">
-						<label class="control-label ">TITLE:</label> 
-						<p class="form-control" type="text">${review.title }</p>
+						<label class="control-label ">TITLE:</label> <br>
+							${review.title }
 					</div>
+					<hr>
 					<div class="form-group">
-						<label class="control-label">CATEGORY:</label>
-						<p class="form-control">${review.subCategory }</p>
+						<label class="control-label">CATEGORY:</label><br>
+							${review.subCategory }
 					</div>
+					<hr>
 					<div class="form-group">
 						<label class="control-label">CONTENT:</label>
 							${contents.contents }
-<%-- 						<textarea class="form-control" placeholder="Insert Content" rows="17" name="contents" style="resize:none; background-color:#FFFFFF" readonly="readonly">${contents.contents }</textarea> --%>
 					</div>
 					<div class="form-group">
 					<c:if test="${userid == review.userid}">

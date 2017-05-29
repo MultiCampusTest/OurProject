@@ -183,7 +183,7 @@ public class ImageService implements IImageService {
 	}
 
 	@Override
-	public void updateReviewImg(BoardVo board, MultipartHttpServletRequest req, String[] img_idx) {
+	public void updateReviewImg(BoardVo board, MultipartFile file, String img_idx) {
 		// TODO Auto-generated method stub
 		String path = "/Users/LeeGilSun/Upload/";
 		
@@ -192,39 +192,31 @@ public class ImageService implements IImageService {
         	folder.mkdirs();
         }
         
-        List<MultipartFile> files = req.getFiles("file");
+        UUID uuid = UUID.randomUUID();
+
+        String fileName = file.getOriginalFilename();
+        String fileuri = path + uuid;         
         
-        for (int i = 0; i < files.size(); i++) {
-            UUID uuid = UUID.randomUUID();
+        ImageVo image = new ImageVo();
+        int img_idxInt = Integer.parseInt(img_idx);
+        image.setImg_idx(img_idxInt);
+        image.setImg_ori_name(fileName);
+        image.setImg_code(Integer.toString(board.getBoardIdx()));
+        image.setImg_path(fileuri);
 
-            String fileName = files.get(i).getOriginalFilename();
-            String fileuri = path + uuid;         
-            
-            ImageVo image = new ImageVo();
-            int img_idxInt = Integer.parseInt(img_idx[i]);
-            image.setImg_idx(img_idxInt);
-            image.setImg_ori_name(fileName);
-            image.setImg_code(Integer.toString(board.getBoardIdx()));
-            image.setImg_path(fileuri);
+        File localFile = new File(fileuri);
 
-            File localFile = new File(fileuri);
-
-            try {
-               files.get(i).transferTo(localFile);
-            } catch (IllegalStateException e) {
-               e.printStackTrace();
-            } catch (IOException e) {
-               e.printStackTrace();
-            }
-            
-            if(!fileName.equals("")){
-            	if(image.getImg_idx() == 0){
-            		imageDao.insertImage(image);
-            	} else {
-            		imageDao.updateReviewImage(image);            	            		
-            	}
-            }
-         }
+        try {
+           file.transferTo(localFile);
+        } catch (IllegalStateException e) {
+           e.printStackTrace();
+        } catch (IOException e) {
+           e.printStackTrace();
+        }
+        
+        if(!fileName.equals("")){
+        	imageDao.updateReviewImage(image);
+        }
 	}
 
 	@Override

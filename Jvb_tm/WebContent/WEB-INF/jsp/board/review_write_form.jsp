@@ -64,6 +64,11 @@ function sendFile(file, el) {
 			return false;
 		}
 		
+		if( $('#ufile').val() == ''){
+			alert('썸네일을 등록해주세요');
+			return false;
+		}
+		
 		if( $('.summernote').val() == null || $('.summernote').val() == ''){
 			alert('내용을 입력해주세요');
 			return false;

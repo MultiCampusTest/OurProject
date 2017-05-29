@@ -321,26 +321,24 @@ public class BoardController {
 	@RequestMapping("reviewModifyForm.do")
 	public ModelAndView reviewModifyForm(int boardIdx) {
 		ModelAndView mav = new ModelAndView();
-//		List<ImageVo> list = imageService.selectView(boardIdx);
 		
 		mav.addAllObjects(boardService.getReview(boardIdx));
-//		mav.addObject("reviewImage", list);
+		mav.addObject("image", imageService.selectOne(""+boardIdx));
 		mav.setViewName("board/review_modify_form");
 		return mav;
 	}
 	
 		@RequestMapping("reviewUpdate.do")
-	public ModelAndView reviewUpdate(BoardVo board, ContentsVo contents, MultipartHttpServletRequest req){
+	public ModelAndView reviewUpdate(BoardVo board, ContentsVo contents, @RequestParam("ufile") MultipartFile file, String img_idx){
 		ModelAndView mav = new ModelAndView();
 		
 		BoardVo board2 = board;
 		ContentsVo contents2 = contents;
 		
-//		String[] img_idx = req.getParameterValues("img_idx");
-		
 		//게시판은 update
 		boardService.updateReview(board2, contents2);
-//		imageService.updateReviewImg(board2, req, img_idx);
+		System.out.println("너의 아이디는"+img_idx);
+		imageService.updateReviewImg(board2, file, img_idx);
 		
 		mav.addObject("review",board2);
 		mav.addObject("contents",contents2);

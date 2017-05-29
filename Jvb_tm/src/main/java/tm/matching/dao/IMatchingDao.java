@@ -14,6 +14,7 @@ public interface IMatchingDao {
 	public int matchingDelete(int mch_idx);
 	public List<MatchingVo> matchingSelectByUserid(HashMap<String, Object> params);
 	public MatchingVo matchingSelectComplete(int b_idx);
+	public MatchingVo matchingSelectByb_idx(HashMap<String, Object> params);
 	
 	
 }

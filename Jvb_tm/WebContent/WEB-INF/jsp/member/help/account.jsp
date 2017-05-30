@@ -9,6 +9,30 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('#submit1').click(function(){
+			if($('#firstName1').val() == '') {
+				$('#firstName1').focus();
+				return false;
+			} else if($('#birthday1').val() == '') {
+				$('#birthday1').focus();
+				return false;
+			}
+		});
+		
+		$('#submit2').click(function(){
+			if($('#userid2').val() == '') {
+				$('#userid2').focus();
+				return false;
+			} else if($('#firstName2').val() == '') {
+				$('#firstName2').focus();
+				return false;
+			}
+		});
+	});
+</script>
+
 <title>Insert title here</title>
 </head>
 <body>
@@ -33,18 +57,18 @@
 				<div class="col-xs-12 col-sm-6 col-md-6">
 					<div class="form-group">
 						<label for="firstName">First Name</label>
-                        <input type="text" name="firstName" id="firstName" class="form-control input-lg" placeholder="first name">
+                        <input type="text" name="firstName" id="firstName1" class="form-control input-lg" placeholder="first name">
 					</div>  
 				</div>
 				<div class="col-xs-12 col-sm-6 col-md-6">
 					<div class="form-group">
 						<label for="birthday">birthday</label>
-						<input type="text" name="birthday" id="birthday" class="form-control input-lg" placeholder="yyyy-mm-dd">
+						<input type="text" name="birthday" id="birthday1" class="form-control input-lg" placeholder="yyyy-mm-dd">
 					</div>
 				</div>
 			</div>
 			<div class="form-group">
-				<input type="submit" class="btn btn-danger btn-block btn-lg" value="Submit">
+				<input type="submit" class="btn btn-danger btn-block btn-lg" id="submit1" value="Submit">
 			</div>
 			<div class="form-group">
 				<input type="button" class="btn btn-danger btn-block btn-lg" value="Close" onclick="window.close()">
@@ -64,18 +88,18 @@
 				<div class="col-xs-12 col-sm-6 col-md-6">
 					<div class="form-group">
 						<label for="firstName">Email</label>
-                        <input type="text" name="userid" id="userid" class="form-control input-lg" placeholder="email">
+                        <input type="text" name="userid" id="userid2" class="form-control input-lg" placeholder="email">
 					</div> 
 				</div>
 				<div class="col-xs-12 col-sm-6 col-md-6">
 					<div class="form-group">
 						<label for="firstName">First Name</label>
-						<input type="text" name="firstName" id="firstName" class="form-control input-lg" placeholder="first name">
+						<input type="text" name="firstName" id="firstName2" class="form-control input-lg" placeholder="first name">
 					</div>
 				</div>
 			</div>
 			<div class="form-group">
-				<input type="submit" class="btn btn-danger btn-block btn-lg" value="Submit">
+				<input type="submit" class="btn btn-danger btn-block btn-lg" id="submit2" value="Submit">
 			</div>
 			<div class="form-group">
 				<input type="button" class="btn btn-danger btn-block btn-lg" value="Close" onclick="window.close()">

@@ -52,7 +52,6 @@ public class MemberController {
 	}
 	
 	
-	
 	@RequestMapping(method=RequestMethod.POST, value="searchUsername.do")
 	public ModelAndView searchUsername(String firstName, String birthday) {
 		ModelAndView mav = new ModelAndView();

@@ -58,6 +58,12 @@ public class BoardController {
 	public String main() {
 		return "middle";
 	} 
+	
+	// about
+	@RequestMapping(value="about.do")
+	public String about() {
+		return "board/about";
+	}
 
 	// notice_board
 	@RequestMapping(value="noticeList.do")

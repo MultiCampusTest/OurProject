@@ -38,4 +38,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="memberSelectOne" parameterType="String" resultMap="member">
 		select * from member where userid = #{userid}
 	</select>
+	
+	<select id="findEmail" parameterType="java.util.HashMap" resultMap="member">
+		select * from member where f_name = #{firstName} and birthday = #{birthday}
+	</select>
 </mapper>

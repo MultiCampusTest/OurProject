@@ -18,4 +18,8 @@ public interface IMemberService {
 	
 	public boolean searchPassword(MemberVo memberVo);
 	public void sendEmail(EmailVo emailVo) throws Exception;
+	
+	
+	public HashMap<String, Object> findUsername(String firstName, String birthday);
+	public HashMap<String, Object> findPassword(String userid, String firstName);
 }

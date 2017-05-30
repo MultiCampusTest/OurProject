@@ -135,4 +135,40 @@ public class MemberService implements IMemberService {
         mailSender.send(msg);
 		
 	}
+
+
+	@Override
+	public HashMap<String, Object> findUsername(String firstName, String birthday) {
+		// TODO Auto-generated method stub
+		HashMap<String, Object> params = new HashMap<>();
+		params.put("firstName", firstName);
+		params.put("birthday", birthday);
+		MemberVo memberVo = memberDao.findEmail(params);
+		
+		if(memberVo != null) {
+			HashMap<String, Object> memberInfo = new HashMap<>();
+			memberInfo.put("member", memberVo);
+			return memberInfo;			
+		} else {
+			return null;
+		}
+	}
+
+
+	@Override
+	public HashMap<String, Object> findPassword(String userid, String firstName) {
+		// TODO Auto-generated method stub
+		MemberVo memberVo = memberDao.memberSelectOne(userid);
+		if(memberVo != null) {
+			if(firstName.equals(memberVo.getFirstName())) {
+				HashMap<String, Object> memberInfo = new HashMap<>();
+				memberInfo.put("member", memberVo);
+				return memberInfo;			
+			} else {
+				return null;
+			}
+		} else {
+			return null;
+		}
+	}
 }

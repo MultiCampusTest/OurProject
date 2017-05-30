@@ -28,7 +28,7 @@
       </p>
       
       <p>
-      	<form action="searchEmail.do" method="get">
+      	<form action="searchUsername.do" method="post">
       		<div class="row">
 				<div class="col-xs-12 col-sm-6 col-md-6">
 					<div class="form-group">
@@ -59,12 +59,12 @@
       </p>
       
       <p>
-      	<form action="searchPassword.do" method="get">
+      	<form action="searchPassword.do" method="post">
       		<div class="row">
 				<div class="col-xs-12 col-sm-6 col-md-6">
 					<div class="form-group">
 						<label for="firstName">Email</label>
-                        <input type="text" name="email" id="email" class="form-control input-lg" placeholder="email">
+                        <input type="text" name="userid" id="userid" class="form-control input-lg" placeholder="email">
 					</div> 
 				</div>
 				<div class="col-xs-12 col-sm-6 col-md-6">

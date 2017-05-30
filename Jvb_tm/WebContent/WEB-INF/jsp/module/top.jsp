@@ -57,7 +57,7 @@
 function popup() {
 	var uri = 'searchAccount.do'
 	    var width = 520;
-	    var height = 450;
+	    var height = 470;
 	    var top = (screen.availHeight - height) / 2;
 	    var left = (screen.availWidth - width) / 2;
 
@@ -309,7 +309,7 @@ function popup() {
 									<li>
 									<div class="row">
 										<div class="col-md-12" style="text-align: center"> 
-											<a href="javascript:popup();">forgot your password?</a>
+											<a href="javascript:popup();">Forgot your account?</a>
 										</div>
 									</div>
 									</ul>

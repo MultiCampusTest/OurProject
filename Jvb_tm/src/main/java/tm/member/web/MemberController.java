@@ -53,6 +53,21 @@ public class MemberController {
 	
 	
 	
+	@RequestMapping(method=RequestMethod.POST, value="searchUsername.do")
+	public ModelAndView searchUsername(String firstName, String birthday) {
+		ModelAndView mav = new ModelAndView();
+		mav.addAllObjects(memberService.findUsername(firstName, birthday));
+		mav.setViewName("member/help/username");
+		return mav;
+	}
+	
+	@RequestMapping(method=RequestMethod.POST, value="searchPassword.do")
+	public ModelAndView searchPassword(String userid, String firstName) {
+		ModelAndView mav = new ModelAndView();
+		mav.addAllObjects(memberService.findPassword(userid, firstName));
+		mav.setViewName("member/help/password");
+		return mav;
+	}
 	
 	@RequestMapping("joinForm.do")
 	public String joinForm(){

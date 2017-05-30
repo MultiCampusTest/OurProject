@@ -11,4 +11,5 @@ public interface IMemberDao {
 	public int passwordReset(MemberVo memberVo);
 	public int memberDelete(MemberVo memberVo);
 	public MemberVo memberSelectOne(String userid);
+	public MemberVo findEmail(HashMap<String, Object> params);
 }

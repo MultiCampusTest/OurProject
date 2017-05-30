@@ -28,7 +28,7 @@
 							<span class="remember">
 								<input type="checkbox" value="remember" id="form_checkbox">Remember me
 							</span>
-							<span style="float: right"><a href="findPassword.do">Forgot password</a></span>
+							<span style="float: right"><a href="javascript:popup();">Forgot your account?</a></span>
 						</div>
 						<br>
 						<button type="button" id="form_submit" class="btn btn-lg btn-primary btn-block">SIGN IN</button>

@@ -80,8 +80,7 @@ $(document).ready(function(){
 							&markers=color:red|label:E|${guide.endLatLng}&sensor=false">
                 </a>
                          <div class="caption">                
-                            <font style="font-size:12pt"><fmt:formatDate value="${guide.writeDate}"
-								pattern="yyyy-MM-dd"/></font><br>
+                           <i class="fa fa-calendar" aria-hidden="true"></i> ${guide.startDate }<br>
                              <font style="font-size:12pt"></font><br>
                          </div>
                      </div>

@@ -436,6 +436,7 @@ cursor:pointer;
 	      <div style="float:left;">
 	     	<font style="font-size:20px">LOCATION</font><br>
 	      	<select class="form-control category" name="locCategory" >
+	      		<option value="">LOCATION</option>
 	            <option value="seoul">SEOUL</option>
 	            <option value="incheon">INCHEON</option>
 	            <option value="gyeonggi">GYEONGGI-DO</option>

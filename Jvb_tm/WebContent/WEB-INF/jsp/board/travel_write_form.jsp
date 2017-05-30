@@ -173,6 +173,49 @@ function add_day_content(){
 }
 
 
+function boardCheck(){
+	 
+	 if(document.frm.title.value.length==0){
+		 alert("제목을 입력하세요.");
+		 document.frm.title.focus();
+		 return false;
+	 }
+	 
+	 if(document.frm.startDate.value.length==0){
+		 alert("출발날짜를 입력하세요.");
+		 document.frm.startDate.focus();
+		 return false;
+	 }
+	 
+	 if(document.frm.endDate.value.length==0){
+		 alert("도착날짜를 입력하세요.");
+		 document.frm.endDate.focus();
+		 return false;
+	 }
+	 
+	 if(document.frm.locCategory.value==''){
+		 alert("카테고리를 선택해주세요.");
+		 document.frm.locCategory.focus();
+		 return false;
+	 }
+	 
+	 if(document.frm.contents.value.length==0){
+		 alert("내용을 입력하세요.");
+		 document.frm.contents.focus();
+		 return false;
+	 }
+	 
+	 if(latLng.length==0){
+		 alert("하나 이상의 좌표를 지정하세요.");
+		 $('#pac-input').focus();
+		 return false;
+	 }
+	 
+	 return true;
+}S
+
+
+
 
 $(document).ready(function(){
 	
@@ -379,6 +422,7 @@ cursor:pointer;
 	      <div style="float:left;">
 	     	<font style="font-size:20px">LOCATION</font><br>
 	      	<select class="form-control category" name="locCategory" >
+	      		<option value="">LOCATION</option>
 	            <option value="seoul">SEOUL</option>
 	            <option value="incheon">INCHEON</option>
 	            <option value="gyeonggi">GYEONGGI-DO</option>
@@ -406,7 +450,7 @@ cursor:pointer;
 			
 		<div class="form-group">
 			<input type="hidden" value="t" name="code">
-			<input type="submit" value="ok" class="btn btn-primary">
+			<input type="submit" value="ok" class="btn btn-primary" onclick="return boardCheck()">
 			<input type="button" value="list" class="btn btn-primary" onclick="location.href='travelList.do'">
 		</div>
 		<div id="input_latLng"></div>

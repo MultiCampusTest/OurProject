@@ -25,14 +25,14 @@
 	<mvc:resources location="/vendor/" mapping="/vendor/**" />
 	<mvc:annotation-driven></mvc:annotation-driven>
 
-	<mvc:interceptors>
-		<mvc:interceptor>
-			<mvc:mapping path="/guideWriteForm.do" />
-			<mvc:mapping path="/travelWriteForm.do" />
-			<mvc:mapping path="/reviewWriteForm.do" />
-			<bean class="tm.log4j.LoginCheckInterceptor" id="logInterceptor" />
-		</mvc:interceptor>
-	</mvc:interceptors>
+<!-- 	<mvc:interceptors> -->
+<!-- 		<mvc:interceptor> -->
+<!-- 			<mvc:mapping path="/guideWriteForm.do" /> -->
+<!-- 			<mvc:mapping path="/travelWriteForm.do" /> -->
+<!-- 			<mvc:mapping path="/reviewWriteForm.do" /> -->
+<!-- 			<bean class="tm.log4j.LoginCheckInterceptor" id="logInterceptor" /> -->
+<!-- 		</mvc:interceptor> -->
+<!-- 	</mvc:interceptors> -->
 
 
 

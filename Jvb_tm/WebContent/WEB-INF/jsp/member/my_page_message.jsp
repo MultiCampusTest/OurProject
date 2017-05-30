@@ -27,6 +27,17 @@
 
 </script>
 
+<style type="text/css">
+	
+	.selector {word-break:break-all;}
+	
+	.msg_list{
+		word-break:break-all;
+		white-space:pre-line;
+	}
+
+</style>
+
 </head>
 <body>
 
@@ -75,21 +86,31 @@
 							</div>
 						</div>
 						<div class="msg_contents_box col-lg-9" id="msg_box_${i.index }">
+							<input type="hidden" id="msg_box_condition${i.index }" value="1">
 							<div class="msg_box" id="msg_box_selectOne${i.index }">
 								<div class="msg_list container-fluid">MessageList</div>
 							</div>
 							<div class="panel panel-default">
-								<div class="panel-body">
-									<textarea class="sending_msg_form form-control counted"
-										name="msg_contents" id="send_msg_contents${i.index }"
-										placeholder="Type in your message 메시지 입력" rows="5"
-										style="margin-bottom: 10px; resize: none"></textarea>
-									<span class="remain_sending_msg pull-right"
-										id="remain_sending_msg${i.index }">1000 characters
-										remaining</span> <input class="btn btn-info send_msg_button"
-										type="submit" value="Post New Message"
-										id="submit_msg${i.index }">
-								</div>
+								<form action="sendMessage.do" method="post" name="form">
+									<div class="panel-body">
+										<c:if test="${msg_List.msg_send_userid == userid}">
+											<input type="hidden" name="msg_receive_userid" value="${msg_List.msg_receive_userid }">
+										</c:if>
+										<c:if test="${msg_List.msg_send_userid != userid}">
+											<input type="hidden" name="msg_receive_userid" value="${msg_List.msg_send_userid }">
+										</c:if>
+										<input type="hidden" value="">
+										<textarea class="sending_msg_form form-control counted"
+											name="msg_contents" id="send_msg_contents${i.index }"
+											placeholder="Type in your message 메시지 입력" rows="5"
+											style="margin-bottom: 10px; resize: none"></textarea>
+										<span class="remain_sending_msg pull-right"
+											id="remain_sending_msg${i.index }">1000 characters
+											remaining</span> <input class="btn btn-info send_msg_button"
+											type="submit" value="Post New Message"
+											id="submit_msg${i.index }">
+									</div>
+								</form>
 							</div>
 						</div>
 					</div>

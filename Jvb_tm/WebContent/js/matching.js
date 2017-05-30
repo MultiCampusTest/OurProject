@@ -53,7 +53,7 @@ $(document).ready(function() {
 		var id = $(this).attr('id');
 		m_array = id.split('_');
 		var realid = m_array[0];
-		//	          alert(realid);
+			          alert(realid);
 		var board_idx = m_array[1];
 		//	                alert(board_idx);
 		//       alert(id);
@@ -84,7 +84,7 @@ $(document).ready(function() {
 
 
 		$.ajax({
-			url : 'matchingHolding.do',
+			url : 'matchingSuccess.do',
 			type : 'POST',
 			data : 'b_idx=' + board_title + '&mch_g_userid=' + realid,
 			dataType : 'json',

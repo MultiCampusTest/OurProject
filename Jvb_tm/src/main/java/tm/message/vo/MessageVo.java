@@ -7,6 +7,8 @@ public class MessageVo {
 	private String msg_receive_userid;
 	private String msg_contents;
 	private String msg_date;
+	private String msg_read;
+	
 	public int getMsg_idx() {
 		return msg_idx;
 	}
@@ -36,15 +38,20 @@ public class MessageVo {
 	}
 	public void setMsg_date(String msg_date) {
 		this.msg_date = msg_date;
+	}	 
+	public String getMsg_read() {
+		return msg_read;
 	}
-	 
+	public void setMsg_read(String msg_read) {
+		this.msg_read = msg_read;
+	}
 	@Override
 	public String toString() {
 		return "MessageVo [msg_idx=" + msg_idx + ", msg_send_userid=" + msg_send_userid + ", msg_receive_userid="
-				+ msg_receive_userid + ", msg_contents=" + msg_contents + ", msg_date=" + msg_date + "]";
+				+ msg_receive_userid + ", msg_contents=" + msg_contents + ", msg_date=" + msg_date + ", msg_read="
+				+ msg_read + "]";
 	}
 	
-	
-	
+
 	
 }

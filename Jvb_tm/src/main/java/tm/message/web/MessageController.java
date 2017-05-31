@@ -60,8 +60,10 @@ public class MessageController {
 	@RequestMapping(value="messageOneList.do", method=RequestMethod.POST)
 	public @ResponseBody List<MessageVo> messageOneList(HttpSession session, String msg_send_userid){
 		String msg_receive_userid=(String)session.getAttribute("userid");
-		System.out.println(msg_receive_userid);
-		System.out.println(msg_send_userid);
+		messageService.updateReadMessage(msg_receive_userid, msg_send_userid);
+//		System.out.println();
+//		System.out.println(msg_receive_userid);
+//		System.out.println(msg_send_userid);
 		return messageService.messageOneList(msg_receive_userid, msg_send_userid);
 	}
 	

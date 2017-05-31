@@ -40,6 +40,25 @@ public class MessageService implements IMessageService {
 		}
 		
 	}
+	
+	
+	@Override
+	public boolean updateReadMessage(String msg_receive_userid, String msg_send_userid) {
+		// TODO Auto-generated method stub
+		HashMap<String, Object> params=new HashMap<>();
+		params.put("msg_receive_userid", msg_receive_userid);
+		params.put("msg_send_userid", msg_send_userid);
+		int result=messageDao.messageReadUpdate(params);
+		if(result>0){
+			return true;
+		}
+		else{
+			return false;
+			
+		}
+	}
+	
+	
 
 	@Override
 	public boolean deleteMessage(String msg_receive_userid) {
@@ -79,6 +98,17 @@ public class MessageService implements IMessageService {
 		
 		return messageOneList;
 	}
+
+
+	@Override
+	public int messageNotReadCount(String msg_receive_userid) {
+		// TODO Auto-generated method stub
+		
+		int result=messageDao.messageSelectNotReadCount(msg_receive_userid);
+		return result;
+	}
+
+	
 	
 
 }

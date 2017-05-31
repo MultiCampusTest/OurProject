@@ -6,10 +6,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<insert id="messageInsert" parameterType="messageVo">
 		insert into message values(0, #{msg_send_userid}, #{msg_receive_userid},
-		#{msg_contents}, sysdate())
+		#{msg_contents}, sysdate(), 'n')
 <!-- 		insert into message values(0, #{msg_send_userid}, #{msg_receive_userid}, -->
 <!-- 		#{msg_contents}, date_format(sysdate(), '%b %d %Y %h:%i %p')) -->
 	</insert>
+	
+	<update id="messageReadUpdate" parameterType="java.util.HashMap">
+		update message set msg_read='y' where msg_receive_userid=#{msg_receive_userid}
+		 and msg_send_userid=#{msg_send_userid} and msg_read='n'
+	</update>
 
 	<delete id="messageDelete" parameterType="int">
 		delete from message where msg_idx=#{msg_idx}
@@ -40,7 +45,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		(msg_receive_userid=#{msg_send_userid} and
 		msg_send_userid=#{msg_receive_userid}) order by msg_date;
 	</select>
-
+	
+<!-- 	<select id="messageSelectNotReadCount" parameterType="java.util.HashMap" resultType="int"> -->
+<!-- 		select count(*) from message where msg_receive_userid=#{msg_receive_userid} -->
+<!-- 		 and msg_send_userid=#{msg_send_userid} and msg_read='n' -->
+<!-- 	</select> -->
+	
+	<select id="messageSelectNotReadCount" parameterType="String" resultType="int">
+		select count(*) from message where msg_receive_userid=#{msg_receive_userid} and msg_read='n'
+	</select>
 
 
 </mapper>

@@ -51,7 +51,6 @@ public class MessageVo {
 				+ msg_receive_userid + ", msg_contents=" + msg_contents + ", msg_date=" + msg_date + ", msg_read="
 				+ msg_read + "]";
 	}
-	
 
 	
 }

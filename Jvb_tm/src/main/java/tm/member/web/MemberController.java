@@ -21,7 +21,6 @@ import tm.image.service.ImageService;
 import tm.image.vo.ImageVo;
 import tm.matching.service.MatchingService;
 import tm.member.service.MemberService;
-import tm.member.vo.EmailVo;
 import tm.member.vo.MemberVo;
 import tm.message.service.MessageService;
 
@@ -40,18 +39,32 @@ public class MemberController {
 	@Autowired
 	private ImageService imageService;
 	
+	
+	//로그인 페이지
 	@RequestMapping("loginForm.do")
 	public String loginForm(){
 		return "member/login_form";
 	}
 	
+	//회원가입 페이지
+	@RequestMapping("joinForm.do")
+	public String joinForm(){
+		return "member/join_form";
+	}
 	
+	//회원인증 페이지
+	@RequestMapping("certiForm.do")
+	public String certifiForm() {
+		return "member/certi_form";
+	}
+	
+	//계정 찾기 페이지
 	@RequestMapping("searchAccount.do")
 	public String searchAccount() {
 		return "member/help/account";
 	}
 	
-	
+	//아이디 찾기 요청
 	@RequestMapping(method=RequestMethod.POST, value="searchUsername.do")
 	public ModelAndView searchUsername(String firstName, String birthday) {
 		ModelAndView mav = new ModelAndView();
@@ -60,6 +73,7 @@ public class MemberController {
 		return mav;
 	}
 	
+	//비밀번호 찾기 요청
 	@RequestMapping(method=RequestMethod.POST, value="searchPassword.do")
 	public ModelAndView searchPassword(String userid, String firstName) {
 		ModelAndView mav = new ModelAndView();
@@ -68,21 +82,7 @@ public class MemberController {
 		return mav;
 	}
 	
-	@RequestMapping("joinForm.do")
-	public String joinForm(){
-		return "member/join_form";
-	}
-	
-	@RequestMapping("certiForm.do")
-	public String certifiForm() {
-		return "member/certi_form";
-	}
-	
-	@RequestMapping("findPassword")
-	public String findPassword() {
-		return "member/find_password";
-	}
-	
+	//SNS계정 회원가입 페이지 요청
 	@RequestMapping(method=RequestMethod.POST, value="fbJoinForm.do")
 	public ModelAndView fbJoinForm(MemberVo memberVo, ImageVo imageVo) {
 		ModelAndView mav = new ModelAndView();
@@ -91,7 +91,8 @@ public class MemberController {
 		mav.setViewName("member/join_form");
 		return mav;
 	}
-	 
+	
+	//네이버 계정 회원가입 페이지 요청
 	@RequestMapping(method=RequestMethod.POST, value="naverLogin.do")
 	public ModelAndView naverLogin(HttpSession session, String id, String nickname, String email, String sex, String birthday, String name){
 		ModelAndView mav = new ModelAndView();	
@@ -106,11 +107,7 @@ public class MemberController {
 		return mav;
 	}
 	
-	@RequestMapping("joinResult.do")
-	public String joinResult() {
-		return "member/join_result";
-	}
-	
+	//마이 페이지 요청
 	@RequestMapping("myPage.do")
 	public ModelAndView maindo(HttpSession session) {
 		String userid = (String) session.getAttribute("userid");
@@ -127,6 +124,7 @@ public class MemberController {
 		return mav;
 	}
 	
+	//회원정보 수정 페이지
 	@RequestMapping("editProfile.do")
 	public ModelAndView editProfile(HttpSession session){
 		String userid = (String) session.getAttribute("userid");
@@ -145,7 +143,7 @@ public class MemberController {
 		return mav;
 	}
 	
-	
+	//회원정보 수정 요청
 	@RequestMapping(value="updateMember.do", method=RequestMethod.POST)
 	public String updateMember(HttpSession session, MemberVo memberVo, MultipartHttpServletRequest req){
 		String userid=(String)session.getAttribute("userid");
@@ -164,8 +162,9 @@ public class MemberController {
 		return "member/login_request";
 	}
 	
+	//로그인 요청
 	@RequestMapping(method=RequestMethod.POST, value="loginProc.do")
-	public @ResponseBody HashMap<String, Object> loginProc(HttpSession session, String userid, String pwd) {
+	public @ResponseBody HashMap<String, Object> loginProc(HttpSession session, String userid, String pwd) throws Exception {
 		HashMap<String, Object> response = new HashMap<>();
 		boolean insert = memberService.checkLogin(userid, pwd);
 		if(insert) {
@@ -181,13 +180,15 @@ public class MemberController {
 //			return "redirect:loginForm.do";
 //		}
 //	}
-
+	
+	//로그아웃 요청
 	@RequestMapping("logout.do")
 	public String logout(HttpSession session){
 		session.removeAttribute("userid");
 		return "redirect:main.do";
 	}
-
+	
+	//아이디 중복검사 요청
 	@RequestMapping(method=RequestMethod.POST, value="idCheck.do")
 	public @ResponseBody HashMap<String, Object> idCheck(HttpServletResponse resp, String userid) {
 		HashMap<String, Object> response = new HashMap<>();
@@ -196,17 +197,17 @@ public class MemberController {
 		return response;
 	}
 	
+	//회원가입 요청
 	@RequestMapping(method=RequestMethod.POST, value="joinProc.do")
 	public ModelAndView joinProc(MemberVo memberVo, @RequestParam(required=false, defaultValue="default") String img_code, MultipartHttpServletRequest req) throws Exception {
 		ModelAndView mav = new ModelAndView();
-		System.out.println("req : " + req);
-		System.out.println("img_code : " + img_code);
 		memberService.memberJoin(memberVo, img_code, req);
 		mav.addObject("f_name", memberVo.getFirstName());
 		mav.setViewName("member/join_result");
 		return mav;
 	}
 	
+	//회원탈퇴 요청
 	@RequestMapping("removeMember.do")
 	public @ResponseBody HashMap<String, Object> removeMember(HttpSession session, MemberVo memberVo){
 		HashMap<String, Object> response = new HashMap<>();
@@ -215,28 +216,6 @@ public class MemberController {
 			session.removeAttribute("userid");			
 		}
 		response.put("result", delete);
-		System.out.println("true인지 false인지? " + response.get("result"));
 		return response;
-	}
-	
-	@RequestMapping("getPassword.do")
-	public ModelAndView getPassword(String userid) throws Exception {
-		ModelAndView mav = new ModelAndView();
-		MemberVo m = new MemberVo();
-		EmailVo email = new EmailVo();
-		m.setUserid(userid);
-		m.setPwd(Integer.toString((int)(Math.random() * 999999999) + 1000000000));
-		
-		if(memberService.searchPassword(m)) {
-			email.setReciver(userid);
-			email.setSubject("[Travel Maker] Forgot your password?");
-			email.setContent("New password : " + m.getPwd());
-			memberService.sendEmail(email);
-			mav.addObject("receiver", m.getUserid());
-	        mav.setViewName("member/find_result");
-		} else {
-			mav.setViewName("redirect:loginForm.do");
-		}
-		return mav;
 	}
 }

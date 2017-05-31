@@ -6,6 +6,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
 
+import javax.crypto.Cipher;
+import javax.crypto.spec.IvParameterSpec;
+import javax.crypto.spec.SecretKeySpec;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMessage.RecipientType;
@@ -22,7 +25,6 @@ import tm.image.dao.IImageDao;
 import tm.image.service.ImageService;
 import tm.image.vo.ImageVo;
 import tm.member.dao.IMemberDao;
-import tm.member.vo.EmailVo;
 import tm.member.vo.MemberVo;
 
 @Service
@@ -41,8 +43,10 @@ public class MemberService implements IMemberService {
 	private ImageService imageService;
 
 	@Override
-	public void memberJoin(MemberVo memberVo, String img_url, MultipartHttpServletRequest req) {
+	public void memberJoin(MemberVo memberVo, String img_url, MultipartHttpServletRequest req) throws Exception {
+		memberVo.setPwd(generateKey(memberVo.getPwd()));
 		memberDao.memberInsert(memberVo);
+		
 		if(img_url.equals("default")) {
 			ImageVo imageVo = new ImageVo();
 			imageService.insertImg(imageVo, memberVo.getUserid(), req);
@@ -56,11 +60,14 @@ public class MemberService implements IMemberService {
 	
 
 	@Override
-	public boolean checkLogin(String userid, String pwd) {
+	public boolean checkLogin(String userid, String pwd) throws Exception {
 		// TODO Auto-generated method stub
 		MemberVo memberVo = memberDao.memberSelectOne(userid);
+		System.out.println(memberVo.getPwd());
 		if(memberVo != null) {
-			if(memberVo.getPwd().equals(pwd))
+			String inputKey = generateKey(pwd);
+			System.out.println(inputKey);
+			if(memberVo.getPwd().equals(inputKey))
 				return true;
 			else
 				return false;			
@@ -126,18 +133,6 @@ public class MemberService implements IMemberService {
 	}
 
 	@Override
-	public void sendEmail(EmailVo emailVo) throws Exception {
-		// TODO Auto-generated method stub
-		MimeMessage msg = mailSender.createMimeMessage();
-		msg.setSubject(emailVo.getSubject());
-        msg.setText(emailVo.getContent());
-        msg.setRecipient(RecipientType.TO , new InternetAddress(emailVo.getReciver()));
-        mailSender.send(msg);
-		
-	}
-
-
-	@Override
 	public HashMap<String, Object> findUsername(String firstName, String birthday) {
 		// TODO Auto-generated method stub
 		HashMap<String, Object> params = new HashMap<>();
@@ -170,5 +165,27 @@ public class MemberService implements IMemberService {
 		} else {
 			return null;
 		}
+	}
+
+	
+	//비밀번호 알고리즘
+	@Override
+	public String generateKey(String pwd) throws Exception {
+		// TODO Auto-generated method stub
+		Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
+				
+		String key = "abcdefghijklmnop";
+		byte[] keyByte = key.getBytes();
+				
+		String plainText = pwd;
+		byte[] plainByte = plainText.getBytes();
+				
+		SecretKeySpec keySpec = new SecretKeySpec(keyByte, "AES");
+		IvParameterSpec ivSpec = new IvParameterSpec(keyByte);
+		cipher.init(Cipher.ENCRYPT_MODE, keySpec, ivSpec);
+		
+		byte[] encryptData = cipher.doFinal(plainByte);
+		
+		return new String(encryptData);
 	}
 }

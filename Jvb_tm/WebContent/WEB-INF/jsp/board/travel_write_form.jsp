@@ -16,6 +16,8 @@
 <link rel="stylesheet" href="css/calender.css">
 <!-- /달력 -->
 <link rel="stylesheet" href="css/travelWriteForm.css">
+<!-- 게시판 예외처리 -->
+<script src="js/boardException.js"></script>
 <script type="text/javascript">
 
 	var polys =[];
@@ -173,47 +175,17 @@ function add_day_content(){
 }
 
 
-function boardCheck(){
-	 
-	 if(document.frm.title.value.length==0){
-		 alert("제목을 입력하세요.");
-		 document.frm.title.focus();
+function contentCheck(){
+	
+	 $('#content > textarea').each(function(){
+		 if($(this).val().length == 0){
+			 alert($(this).attr('id')+"의 내용을 입력해주세요.");
+		 }
 		 return false;
-	 }
-	 
-	 if(document.frm.startDate.value.length==0){
-		 alert("출발날짜를 입력하세요.");
-		 document.frm.startDate.focus();
-		 return false;
-	 }
-	 
-	 if(document.frm.endDate.value.length==0){
-		 alert("도착날짜를 입력하세요.");
-		 document.frm.endDate.focus();
-		 return false;
-	 }
-	 
-	 if(document.frm.locCategory.value==''){
-		 alert("카테고리를 선택해주세요.");
-		 document.frm.locCategory.focus();
-		 return false;
-	 }
-	 
-	 if(document.frm.contents.value.length==0){
-		 alert("내용을 입력하세요.");
-		 document.frm.contents.focus();
-		 return false;
-	 }
-	 
-	 if(latLng.length==0){
-		 alert("하나 이상의 좌표를 지정하세요.");
-		 $('#pac-input').focus();
-		 return false;
-	 }
+	 });
 	 
 	 return true;
-}S
-
+}
 
 
 
@@ -402,7 +374,7 @@ cursor:pointer;
 	</ul>
 		</div>
 		
-	<form action="travelWrite.do" method="post">
+	<form name="frm" action="travelWrite.do" method="post">
 	  <div class="col-md-5">
 		<div>
 		<font style="font-size:20px">TITLE</font>
@@ -450,12 +422,13 @@ cursor:pointer;
 			
 		<div class="form-group">
 			<input type="hidden" value="t" name="code">
-			<input type="submit" value="ok" class="btn btn-primary" onclick="return boardCheck()">
+			<input type="submit" value="ok" class="btn btn-primary" onclick="return travelBoardCheck()">
 			<input type="button" value="list" class="btn btn-primary" onclick="location.href='travelList.do'">
 		</div>
 		<div id="input_latLng"></div>
 		</div>
 	 </form>	
+			<button onclick="return contentCheck()">확인</button>
 	</div>
 </div>  
 </body>

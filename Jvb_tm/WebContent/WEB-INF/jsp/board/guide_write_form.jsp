@@ -14,6 +14,7 @@
 <script src="https://npmcdn.com/flatpickr/dist/l10n/ru.js"></script>
 <link rel="stylesheet" href="css/calender.css">
 <link rel="stylesheet" href="css/guideWriteForm.css">
+<script src="js/boardException.js"></script>
 <script type="text/javascript">
 
 	var polys =[];
@@ -115,46 +116,6 @@ $(function() {
 	});
 });
 
- function boardCheck(){
-	 
-	 if(document.frm.title.value.length==0){
-		 alert("제목을 입력하세요.");
-		 document.frm.title.focus();
-		 return false;
-	 }
-	 
-	 if(document.frm.startDate.value.length==0){
-		 alert("출발날짜를 입력하세요.");
-		 document.frm.startDate.focus();
-		 return false;
-	 }
-	 
-	 if(document.frm.endDate.value.length==0){
-		 alert("도착날짜를 입력하세요.");
-		 document.frm.endDate.focus();
-		 return false;
-	 }
-	 
-	 if(document.frm.locCategory.value==''){
-		 alert("카테고리를 선택해주세요.");
-		 document.frm.locCategory.focus();
-		 return false;
-	 }
-	 
-	 if(document.frm.contents.value.length==0){
-		 alert("내용을 입력하세요.");
-		 document.frm.contents.focus();
-		 return false;
-	 }
-	 
-	 if(latLng.length==0){
-		 alert("하나 이상의 좌표를 지정하세요.");
-		 $('#pac-input').focus();
-		 return false;
-	 }
-	 
-	 return true;
- }
 
 
 </script>
@@ -257,7 +218,7 @@ $(function() {
 		</div>
 		<div class="form-group">
 			<input type="hidden" value="g" name="code">
-			<input type="submit" value="ok" class="btn btn-primary" onclick="return boardCheck()">
+			<input type="submit" value="ok" class="btn btn-primary" onclick="return guideBoardCheck()">
 			<input type="button" value="list" class="btn btn-primary" onclick="location.href='guideList.do'">
 		</div>
 		<div id="input_latLng">

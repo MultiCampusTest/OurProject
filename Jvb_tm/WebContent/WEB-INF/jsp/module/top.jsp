@@ -208,7 +208,7 @@
 			<ul class="nav navbar-nav navbar-right">
 
 
-				<li><a href="about.do">Notice</a></li>
+				<li><a href="about.do">Abuot</a></li>
 
 				<li><a href="noticeList.do">Notice</a></li>
 

@@ -145,7 +145,7 @@ public class MemberController {
 	
 	//회원정보 수정 요청
 	@RequestMapping(value="updateMember.do", method=RequestMethod.POST)
-	public String updateMember(HttpSession session, MemberVo memberVo, MultipartHttpServletRequest req){
+	public String updateMember(HttpSession session, MemberVo memberVo, MultipartHttpServletRequest req) {
 		String userid=(String)session.getAttribute("userid");
 		memberVo.setUserid(userid);
 		boolean result=memberService.memberModify(memberVo, userid, req);
@@ -164,7 +164,7 @@ public class MemberController {
 	
 	//로그인 요청
 	@RequestMapping(method=RequestMethod.POST, value="loginProc.do")
-	public @ResponseBody HashMap<String, Object> loginProc(HttpSession session, String userid, String pwd) throws Exception {
+	public @ResponseBody HashMap<String, Object> loginProc(HttpSession session, String userid, String pwd) {
 		HashMap<String, Object> response = new HashMap<>();
 		boolean insert = memberService.checkLogin(userid, pwd);
 		if(insert) {
@@ -209,7 +209,7 @@ public class MemberController {
 	
 	//회원탈퇴 요청
 	@RequestMapping("removeMember.do")
-	public @ResponseBody HashMap<String, Object> removeMember(HttpSession session, MemberVo memberVo){
+	public @ResponseBody HashMap<String, Object> removeMember(HttpSession session, MemberVo memberVo) {
 		HashMap<String, Object> response = new HashMap<>();
 		boolean delete = memberService.memberRemove(memberVo);
 		if(delete) {

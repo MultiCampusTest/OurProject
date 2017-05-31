@@ -7,9 +7,9 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import tm.member.vo.MemberVo;
 
 public interface IMemberService {
-	public void memberJoin(MemberVo memberVo, String img_code, MultipartHttpServletRequest req) throws Exception;
+	public void memberJoin(MemberVo memberVo, String img_code, MultipartHttpServletRequest req);
 	public boolean memberRemove(MemberVo memberVo);
-	public boolean checkLogin(String userid, String pwd) throws Exception;
+	public boolean checkLogin(String userid, String pwd);
 	public boolean checkId(String userid);
 	
 	public HashMap<String, Object> memberSelectOne(String userid);

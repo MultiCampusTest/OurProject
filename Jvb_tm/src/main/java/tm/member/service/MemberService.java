@@ -29,25 +29,27 @@ import tm.member.vo.MemberVo;
 
 @Service
 public class MemberService implements IMemberService {
-	
+
 	@Autowired
 	private IMemberDao memberDao;
-	
+
 	@Autowired
 	private IImageDao imageDao;
-	
-	@Autowired
-	private JavaMailSender mailSender;
-	
+
 	@Autowired
 	private ImageService imageService;
 
 	@Override
-	public void memberJoin(MemberVo memberVo, String img_url, MultipartHttpServletRequest req) throws Exception {
-		memberVo.setPwd(generateKey(memberVo.getPwd()));
+	public void memberJoin(MemberVo memberVo, String img_url, MultipartHttpServletRequest req) {
+		try {
+			memberVo.setPwd(generateKey(memberVo.getPwd()));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		memberDao.memberInsert(memberVo);
-		
-		if(img_url.equals("default")) {
+
+		if (img_url.equals("default")) {
 			ImageVo imageVo = new ImageVo();
 			imageService.insertImg(imageVo, memberVo.getUserid(), req);
 		} else {
@@ -57,76 +59,87 @@ public class MemberService implements IMemberService {
 			imageService.insertUrl(params);
 		}
 	}
-	
 
 	@Override
-	public boolean checkLogin(String userid, String pwd) throws Exception {
+	public boolean checkLogin(String userid, String pwd) {
 		// TODO Auto-generated method stub
+		String inputKey = null;
 		MemberVo memberVo = memberDao.memberSelectOne(userid);
-		System.out.println(memberVo.getPwd());
-		if(memberVo != null) {
-			String inputKey = generateKey(pwd);
-			System.out.println(inputKey);
-			if(memberVo.getPwd().equals(inputKey))
+		if (memberVo != null) {
+			try {
+				inputKey = generateKey(pwd);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			if (memberVo.getPwd().equals(inputKey))
 				return true;
 			else
-				return false;			
+				return false;
 		} else
 			return false;
 	}
-
 
 	@Override
 	public boolean checkId(String userid) {
 		// TODO Auto-generated method stub
 		MemberVo memberVo = memberDao.memberSelectOne(userid);
-		if(memberVo == null)
+		if (memberVo == null)
 			return false;
 		else
 			return true;
 	}
-
 
 	@Override
 	public boolean memberRemove(MemberVo memberVo) {
 		// TODO Auto-generated method stub
+		try {
+			memberVo.setPwd(generateKey(memberVo.getPwd()));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		int result = memberDao.memberDelete(memberVo);
-		
-		if(result > 0)
+
+		if (result > 0)
 			return true;
 		else
 			return false;
 	}
-
 
 	@Override
 	public HashMap<String, Object> memberSelectOne(String userid) {
 		// TODO Auto-generated method stub
 		MemberVo memberVo = memberDao.memberSelectOne(userid);
-		HashMap<String, Object> memberInfo=new HashMap<>();
+		HashMap<String, Object> memberInfo = new HashMap<>();
 		memberInfo.put("member", memberVo);
 		return memberInfo;
 	}
-
 
 	@Override
 	public boolean memberModify(MemberVo memberVo, String userid, MultipartHttpServletRequest req) {
 		ImageVo imageVo = new ImageVo();
 		imageVo.setImg_code(userid);
 		imageService.updateImg(imageVo, userid, req);
-		int result=memberDao.memberUpdate(memberVo);
-		if(result>0)
+		try {
+			memberVo.setPwd(generateKey(memberVo.getPwd()));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		int result = memberDao.memberUpdate(memberVo);
+		if (result > 0)
 			return true;
 		else
 			return false;
-			
+
 	}
-	
+
 	@Override
 	public boolean searchPassword(MemberVo memberVo) {
 		// TODO Auto-generated method stub
 		int result = memberDao.passwordReset(memberVo);
-		if(result > 0)
+		if (result > 0)
 			return true;
 		else
 			return false;
@@ -139,26 +152,25 @@ public class MemberService implements IMemberService {
 		params.put("firstName", firstName);
 		params.put("birthday", birthday);
 		MemberVo memberVo = memberDao.findEmail(params);
-		
-		if(memberVo != null) {
+
+		if (memberVo != null) {
 			HashMap<String, Object> memberInfo = new HashMap<>();
 			memberInfo.put("member", memberVo);
-			return memberInfo;			
+			return memberInfo;
 		} else {
 			return null;
 		}
 	}
 
-
 	@Override
 	public HashMap<String, Object> findPassword(String userid, String firstName) {
 		// TODO Auto-generated method stub
 		MemberVo memberVo = memberDao.memberSelectOne(userid);
-		if(memberVo != null) {
-			if(firstName.equals(memberVo.getFirstName())) {
+		if (memberVo != null) {
+			if (firstName.equals(memberVo.getFirstName())) {
 				HashMap<String, Object> memberInfo = new HashMap<>();
 				memberInfo.put("member", memberVo);
-				return memberInfo;			
+				return memberInfo;
 			} else {
 				return null;
 			}
@@ -167,25 +179,24 @@ public class MemberService implements IMemberService {
 		}
 	}
 
-	
-	//비밀번호 알고리즘
+	// 비밀번호 알고리즘
 	@Override
 	public String generateKey(String pwd) throws Exception {
 		// TODO Auto-generated method stub
 		Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
-				
+
 		String key = "abcdefghijklmnop";
 		byte[] keyByte = key.getBytes();
-				
+
 		String plainText = pwd;
 		byte[] plainByte = plainText.getBytes();
-				
+
 		SecretKeySpec keySpec = new SecretKeySpec(keyByte, "AES");
 		IvParameterSpec ivSpec = new IvParameterSpec(keyByte);
 		cipher.init(Cipher.ENCRYPT_MODE, keySpec, ivSpec);
-		
+
 		byte[] encryptData = cipher.doFinal(plainByte);
-		
+
 		return new String(encryptData);
 	}
 }

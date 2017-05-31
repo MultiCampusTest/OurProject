@@ -54,20 +54,20 @@
     <![endif]-->
 
 <script type="text/javascript">
-function popup() {
-	var uri = 'searchAccount.do'
-	    var width = 520;
-	    var height = 450;
-	    var top = (screen.availHeight - height) / 2;
-	    var left = (screen.availWidth - width) / 2;
+	function popup() {
+		var uri = 'searchAccount.do'
+		var width = 520;
+		var height = 470;
+		var top = (screen.availHeight - height) / 2;
+		var left = (screen.availWidth - width) / 2;
 
-	    var strFeature;
-	    strFeature = 'height=' + height + ',width=' + width + 
+		var strFeature;
+		strFeature = 'height=' + height + ',width=' + width +
 
-	',menubar=no,toolbar=no,location=no,resizable=no,status=no,scrollbars=yes,top=' + top + ',left=' + left
+			',menubar=no,toolbar=no,location=no,resizable=no,status=no,scrollbars=yes,top=' + top + ',left=' + left
 
-	window.open(uri, 'search', strFeature);
-}
+		window.open(uri, 'search', strFeature);
+	}
 
 
 	$(document).ready(function() {
@@ -84,89 +84,94 @@ function popup() {
 				return false;
 			}
 		});
-		
+
 		var userid = getCookie("userid");
-	    $('#top_userid').val(userid); 
-	     
-	    if($('#top_userid').val() != "") {
-	        $('#top_checkbox').attr("checked", true);
-	    }
-	     
-	    $('#top_checkbox').change(function(){
-	        if($('#top_checkbox').is(":checked")){
-	            var userid = $('#top_userid').val();
-	            setCookie("userid", userid, 7);
-	        }else{
-	            deleteCookie("userid");
-	        }
-	    });
-	     
-	    $('#top_userid').keyup(function(){
-	        if($('#top_checkbox').is(":checked")){
-	            var userid = $('#top_userid').val();
-	            setCookie("userid", userid, 7);
-	        }
-	    });
-	 
-		function setCookie(cookieName, value, exdays){
-	   		var exdate = new Date();
-	  		exdate.setDate(exdate.getDate() + exdays);
-	    	var cookieValue = escape(value) + ((exdays==null) ? "" : "; expires=" + exdate.toGMTString());
-	    	document.cookie = cookieName + "=" + cookieValue;
+		$('#top_userid').val(userid);
+
+		if ($('#top_userid').val() != "") {
+			$('#top_checkbox').attr("checked", true);
 		}
-	 
-		function deleteCookie(cookieName){
-	    	var expireDate = new Date();
-	    	expireDate.setDate(expireDate.getDate() - 1);
-	    	document.cookie = cookieName + "= " + "; expires=" + expireDate.toGMTString();
+
+		$('#top_checkbox').change(function() {
+			if ($('#top_checkbox').is(":checked")) {
+				var userid = $('#top_userid').val();
+				setCookie("userid", userid, 7);
+			} else {
+				deleteCookie("userid");
+			}
+		});
+
+		$('#top_userid').keyup(function() {
+			if ($('#top_checkbox').is(":checked")) {
+				var userid = $('#top_userid').val();
+				setCookie("userid", userid, 7);
+			}
+		});
+
+		function setCookie(cookieName, value, exdays) {
+			var exdate = new Date();
+			exdate.setDate(exdate.getDate() + exdays);
+			var cookieValue = escape(value) + ((exdays == null) ? "" : "; expires=" + exdate.toGMTString());
+			document.cookie = cookieName + "=" + cookieValue;
 		}
-	 
+
+		function deleteCookie(cookieName) {
+			var expireDate = new Date();
+			expireDate.setDate(expireDate.getDate() - 1);
+			document.cookie = cookieName + "= " + "; expires=" + expireDate.toGMTString();
+		}
+
 		function getCookie(cookieName) {
-	    	cookieName = cookieName + '=';
-	    	var cookieData = document.cookie;
-	    	var start = cookieData.indexOf(cookieName);
-	    	var cookieValue = '';
-	    	if(start != -1){
-	        	start += cookieName.length;
-	        	var end = cookieData.indexOf(';', start);
-	        	if(end == -1)end = cookieData.length;
-	        	cookieValue = cookieData.substring(start, end);
-	    	}
-	    	return unescape(cookieValue);
+			cookieName = cookieName + '=';
+			var cookieData = document.cookie;
+			var start = cookieData.indexOf(cookieName);
+			var cookieValue = '';
+			if (start != -1) {
+				start += cookieName.length;
+				var end = cookieData.indexOf(';', start);
+				if (end == -1)
+					end = cookieData.length;
+				cookieValue = cookieData.substring(start, end);
+			}
+			return unescape(cookieValue);
 		}
-		
-		$('#top_submit').click(function(){
+
+		$('#top_submit').click(function() {
 			var logEmail = /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
-			if($('#top_userid').val() == '') {
+			if ($('#top_userid').val() == '') {
 				$('#top_msg').html('<font color="#FF605A">enter email</font>');
 				$('#top_userid').focus();
 				return false;
-			} else if( !logEmail.test($('#top_userid').val()) ) {
+			} else if (!logEmail.test($('#top_userid').val())) {
 				$('#top_msg').html('<font color="#FF605A">wrong email</font>');
 				$('#top_userid').focus();
 				return false;
-			} else if($('#top_pwd').val() == '') {
+			} else if ($('#top_pwd').val() == '') {
 				$('#top_msg').html('<font color="#FF605A">enter password</font>');
 				$('#top_pwd').focus();
 				return false;
 			} else {
 				$('#top_msg').text('');
-				
+
 				var id = $('#top_userid').val();
 				var pass = $('#top_pwd').val();
 				$.ajax({
 					url : 'loginProc.do',
 					type : 'POST',
-					data : { userid : id, pwd : pass },
+					data : {
+						userid : id,
+						pwd : pass
+					},
 					dataType : 'json',
 					success : function(data) {
-						if(data.result) {
-							location.href="main.do";
+						if (data.result) {
+							location.href = "main.do";
 						} else {
 							alert("you typed email or password wrong");
-							location.href="loginForm.do"
+							location.href = "loginForm.do"
 						}
-					}, error : function(){
+					},
+					error : function() {
 						alert('data error');
 					}
 				});
@@ -176,11 +181,10 @@ function popup() {
 </script>
 
 <style type="text/css">
-.dropdown:hover .dropdown-menu { 
+.dropdown:hover .dropdown-menu {
 	display: block;
 	margin-top: 0;
 }
-
 </style>
 
 </head>
@@ -204,10 +208,12 @@ function popup() {
 			<ul class="nav navbar-nav navbar-right">
 
 
+				<li><a href="about.do">About</a></li>
 
 				<li><a href="noticeList.do">Notice</a></li>
 
-				<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Travel</a>
+				<li class="dropdown"><a class="dropdown-toggle"
+					data-toggle="dropdown" href="#">Travel</a>
 					<ul class="dropdown-menu">
 						<li><a href="travelList.do">All List</a></li>
 						<li><a href="travelList.do?subCategory=five">5 Day</a></li>
@@ -229,7 +235,8 @@ function popup() {
 						<li><a href="travelList.do?locCategory=kyeongsang">GYEONGSANG-DO</a></li>
 					</ul></li>
 
-				<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Guide</a>
+				<li class="dropdown"><a class="dropdown-toggle"
+					data-toggle="dropdown" href="#">Guide</a>
 					<ul class="dropdown-menu">
 						<li><a href="guideList.do">All List</a></li>
 						<li><a href="guideList.do?subCategory=one">1 Day</a></li>
@@ -253,15 +260,16 @@ function popup() {
 						<li><a href="guideList.do?locCategory=gyeongsang">GYEONGSANG-DO</a></li>
 					</ul></li>
 
-				<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="reviewList.do">Review</a>
+				<li class="dropdown"><a class="dropdown-toggle"
+					data-toggle="dropdown" href="reviewList.do">Review</a>
 					<ul class="dropdown-menu">
 						<li><a href="reviewList.do">All List</a></li>
-<!-- 						<li><a href="guideList.do?subCategory=one">1 Day</a></li> -->
-<!-- 						<li><a href="guideList.do?subCategory=two">2 Days</a></li> -->
-<!-- 						<li><a href="guideList.do?subCategory=three">3 Days</a></li> -->
-<!-- 						<li><a href="guideList.do?subCategory=four">4 Days</a></li> -->
-<!-- 						<li><a href="guideList.do?subCategory=guide_more">5 Days+</a></li> -->
-<!-- 						<li class="divider"></li> -->
+						<!-- 						<li><a href="guideList.do?subCategory=one">1 Day</a></li> -->
+						<!-- 						<li><a href="guideList.do?subCategory=two">2 Days</a></li> -->
+						<!-- 						<li><a href="guideList.do?subCategory=three">3 Days</a></li> -->
+						<!-- 						<li><a href="guideList.do?subCategory=four">4 Days</a></li> -->
+						<!-- 						<li><a href="guideList.do?subCategory=guide_more">5 Days+</a></li> -->
+						<!-- 						<li class="divider"></li> -->
 						<!-- 						<li class="dropdown-header">네비게이션 헤더</li> -->
 						<li><a href="reviewList.do?subCategory=food">Food</a></li>
 						<li><a href="reviewList.do?subCategory=shopping">Shopping</a></li>
@@ -271,49 +279,57 @@ function popup() {
 
 				<c:choose>
 					<c:when test="${userid != null }">
-						<li><a class="page-scroll" href="myPage.do">MYPAGE &nbsp;<i class="fa fa-cog" aria-hidden="true"></i></a></li>
-						<li><a class="page-scroll" href="logout.do">SIGN OUT&nbsp;<i class="fa fa-times-circle" aria-hidden="true"></i></a></li>
+						<li><a class="page-scroll" href="myPage.do">MYPAGE &nbsp;<i
+								class="fa fa-cog" aria-hidden="true"></i></a></li>
+						<li><a class="page-scroll" href="logout.do">SIGN
+								OUT&nbsp;<i class="fa fa-times-circle" aria-hidden="true"></i>
+						</a></li>
 					</c:when>
 					<c:otherwise>
 						<li><a class="page-scroll" href="certiForm.do">SIGN UP</a></li>
 						<ul class="nav navbar-nav navbar-right">
-							<li class="dropdown"><a href="loginForm.do" class="dropdown-toggle" data-toggle="dropdown">Sign in <b class="caret"></b></a>
+							<li class="dropdown"><a href="loginForm.do"
+								class="dropdown-toggle" data-toggle="dropdown">Sign in <b
+									class="caret"></b></a>
 								<ul class="dropdown-menu"
 									style="padding: 15px; min-width: 250px;">
 									<li>
 										<div class="row">
 											<div class="col-md-12">
-<!-- 												<form action="loginProc.do" method="post" class="form" role="form" accept-charset="UTF-8"> -->
-													<div class="form"> 
+												<!-- 												<form action="loginProc.do" method="post" class="form" role="form" accept-charset="UTF-8"> -->
+												<div class="form">
 													<div class="form-group">
 														<label class="sr-only" for="exampleInputEmail2">Email</label>
-														<input type="text" class="form-control" id="top_userid" name="userid" placeholder="Email">
+														<input type="text" class="form-control" id="top_userid"
+															name="userid" placeholder="Email">
 													</div>
 													<div class="form-group">
 														<label class="sr-only" for="exampleInputPassword2">Password</label>
-														<input type="password" class="form-control" id="top_pwd" name="pwd" placeholder="Password">
+														<input type="password" class="form-control" id="top_pwd"
+															name="pwd" placeholder="Password">
 													</div>
 													<div class="checkbox">
-														<label><input type="checkbox" id="top_checkbox"> Remember me</label>
+														<label><input type="checkbox" id="top_checkbox">
+															Remember me</label>
 													</div>
 													<div class="form-group">
-														<button type="button" id="top_submit" class="btn btn-primary btn-block">Sign in</button>
+														<button type="button" id="top_submit"
+															class="btn btn-primary btn-block">Sign in</button>
 														<div id="top_msg" style="text-align: center"></div>
 													</div>
-													</div>
-<!-- 												</form> -->
+												</div>
+												<!-- 												</form> -->
 											</div>
 										</div>
 									</li>
 									<li class="divider"></li>
 									<li>
-									<div class="row">
-										<div class="col-md-12" style="text-align: center"> 
-											<a href="javascript:popup();">forgot your password?</a>
+										<div class="row">
+											<div class="col-md-12" style="text-align: center">
+												<a href="javascript:popup();">Forgot your account?</a>
+											</div>
 										</div>
-									</div>
-									</ul>
-							</li>
+								</ul></li>
 						</ul>
 					</c:otherwise>
 				</c:choose>

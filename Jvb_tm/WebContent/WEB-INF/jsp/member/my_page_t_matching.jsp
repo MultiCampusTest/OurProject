@@ -112,51 +112,6 @@
 
 
 
-			<h3 class="page-header">Travel Holding Matching</h3>
-			<div class="row" style="text-align: center">
-				<c:forEach varStatus="i" items="${hold_matchingList }"
-					var="hold_mch_List">
-					<c:if test="${hold_mch_List.mch_t_userid==userid }">
-						<div class="matching_section container-fluid">
-							<div class="holind col-lg-3" id="${i.index }">
-								<input type="hidden" id="matched_condition_${i.index }"
-									value="1">
-								<div class="col-md-4">
-									<img class="userid_img"
-										src="imageProfileView.do?img_code=${hold_mch_List.mch_g_userid }"
-										width="50px" height="50px">
-									<!-- 													<img class="userid_img" src="img/profile.jpg" width="50px" -->
-									<!-- 														height="50px"> -->
-								</div>
-								<div class="col-md-8">
-									<label class="container-fluid control-label">
-										${hold_mch_List.mch_g_userid }</label>
-								</div>
-							</div>
-							<div class="holding_matching" id="holding_matching_${i.index }">
-								<div class="holding_mch_contents col-lg-7">
-									<a href="guideView.do?boardIdx=${hold_mch_List.b_idx }"> <label
-										class="container-fluid control-label"> 해당 게시글 제목
-											${hold_mch_List.b_idx }</label>
-									</a>
-								</div>
-								<div class="holding_mch_date col-lg-2">
-									<label class="container-fluid control-label">
-										${hold_mch_List.mch_date }</label>
-								</div>
-							</div>
-						</div>
-					</c:if>
-					<br>
-				</c:forEach>
-			</div>
-			<div class="row add_matching_section" style="text-align: center">
-			</div>
-
-
-
-
-
 			<h3 class="page-header">Travel Accepted Matching</h3>
 			<div class="row" style="text-align: center">
 				<c:forEach varStatus="i" items="${acc_matchingList }"
@@ -195,6 +150,8 @@
 					<br>
 				</c:forEach>
 			</div>
+			<div class="row add_matching_section"
+				style="text-align: center"></div>
 
 
 

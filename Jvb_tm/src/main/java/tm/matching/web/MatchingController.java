@@ -76,27 +76,24 @@ public class MatchingController {
 	
 	
 	
-	@RequestMapping(value="matchingHolding.do", method=RequestMethod.POST)
-	public @ResponseBody HashMap<String, Object> matchingHolding(HttpSession session, int b_idx, String mch_g_userid){
-		 String mch_t_userid=(String)session.getAttribute("userid");
-	      boolean result=matchingService.matchingModify(b_idx, mch_g_userid, 2);
-	      if(result==true){
-	    		 return matchingService.matchingList(mch_t_userid);
-	      }
-	      else
-	         return matchingService.matchingList(mch_t_userid);
-	}
+//	@RequestMapping(value="matchingHolding.do", method=RequestMethod.POST)
+//	public @ResponseBody HashMap<String, Object> matchingHolding(HttpSession session, int b_idx, String mch_g_userid){
+//		 String mch_t_userid=(String)session.getAttribute("userid");
+//	      boolean result=matchingService.matchingModify(b_idx, mch_g_userid, 2);
+//	      if(result==true){
+//	    		 return matchingService.matchingList(mch_t_userid);
+//	      }
+//	      else
+//	         return matchingService.matchingList(mch_t_userid);
+//	}
 	
 	 @RequestMapping(value="matchingSuccess.do", method=RequestMethod.POST)
 	   public @ResponseBody HashMap<String, Object> matchingSuccess(HttpSession session, int b_idx, String mch_g_userid){
 		 System.out.println("야");
 	      String mch_t_userid=(String)session.getAttribute("userid");
-	      boolean result=matchingService.matchingModify(b_idx, mch_t_userid, 1);
-	      if(result==true){
-	    		 return matchingService.matchingList(mch_t_userid);
-	      }
-	      else
-	         return matchingService.matchingList(mch_t_userid);
+	      matchingService.matchingModify(b_idx, mch_g_userid, 1);
+	     
+	      return matchingService.matchingList(mch_t_userid);
 	      
 	   }
 	 
@@ -105,14 +102,12 @@ public class MatchingController {
 	 public @ResponseBody HashMap<String, Object> matchingReject(HttpSession session, int b_idx, String mch_g_userid){
 		 System.out.println("여기 오니");
 		 String mch_t_userid=(String)session.getAttribute("userid");
-	      HashMap<String, Object> params=new HashMap<>();
-	      boolean result=matchingService.matchingModify(b_idx, mch_g_userid, 2);
-	      params.put("mch_List_Reload", matchingService.matchingList(mch_t_userid));
-	      if(result==true){
-	    		 return params;
-	      }
-	      else
-	         return params;
+//	      HashMap<String, Object> params=new HashMap<>();
+	      matchingService.matchingModify(b_idx, mch_g_userid, 3);
+//	      params.put("mch_List_Reload", matchingService.matchingList(mch_t_userid));
+	      System.out.println( "외냐");
+	      
+	     return matchingService.matchingList(mch_t_userid);
 	 }
 	 
 

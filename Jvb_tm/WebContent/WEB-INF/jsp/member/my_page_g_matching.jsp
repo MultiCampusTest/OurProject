@@ -37,19 +37,19 @@
 			<h3 class="page-header">Guide Request Matching</h3>
 
 			<div class="row" style="text-align: center">
-				<c:forEach varStatus="i" items="${hold_matchingList }"
-					var="hold_mch_List">
-					<c:if test="${hold_mch_List.mch_g_userid==userid }">
+				<c:forEach varStatus="i" items="${res_matchingList }"
+					var="res_mch_List">
+					<c:if test="${res_mch_List.mch_g_userid==userid }">
 
 						<div class="guide_matching_section container-fluid"
-							id="guide_mathing_section${i.index }_${hold_mch_List.b_idx }">
+							id="guide_mathing_section${i.index }_${res_mch_List.b_idx }">
 							<div class="guide_not_accept col-lg-3" id="${i.index }">
 								<input type="hidden" id="guide_req_match_condition_${i.index }"
 									value="1">
 								<div class="col-md-4">
 
 									<img class="userid_img"
-										src="imageProfileView.do?img_code=${hold_mch_List.mch_t_userid }"
+										src="imageProfileView.do?img_code=${res_mch_List.mch_t_userid }"
 										width="50px" height="50px">
 
 									<%-- 													<c:if test="${msg_List.msg_send_userid != userid}"> --%>
@@ -61,43 +61,38 @@
 								</div>
 								<div class="col-md-8">
 									<label class="container-fluid control-label">
-										${hold_mch_List.mch_t_userid }</label>
+										${res_mch_List.mch_t_userid }</label>
 								</div>
 							</div>
 							<div class="guide_request_matching"
 								id="guide_req_matching_${i.index }">
 								<div class="guide_request_mch_contents col-lg-7">
-									<a href="guideView.do?boardIdx=${hold_mch_List.b_idx }"> <label
+									<a href="guideView.do?boardIdx=${res_mch_List.b_idx }"> <label
 										class="guide_board_title container-fluid control-label"
-										id="${hold_mch_List.b_idx }"> 해당 게시글 제목
-											${hold_mch_List.b_idx }</label>
+										id="${res_mch_List.b_idx }"> 해당 게시글 제목
+											${res_mch_List.b_idx }</label>
 									</a>
 								</div>
 								<div class="guide_request_mch_date col-lg-2">
 									<label
 										class="guide_matching_date container-fluid control-label"
-										id="${hold_mch_List.mch_date }">
-										${hold_mch_List.mch_date } </label>
+										id="${res_mch_List.mch_date }">
+										${res_mch_List.mch_date } </label>
 								</div>
 							</div>
 							<div class="guide_matching_box col-lg-9"
 								id="guide_matching_box_${i.index }" style="text-align: center">
 								<div>
-									<label class="container-fluid control-label"> 매칭 요청을
-										수락하시겠습니까?</label>
+									<label class="container-fluid control-label"> 매칭 신청을
+										취소하시겠습니까?</label>
 								</div>
 								<br>
 								<div class="guide_matching_response"">
 									<div class="col-md-3"></div>
-									<div class="col-md-3">
-										<input class="btn btn-info guide_matcing_accept_answer_yes"
-											id="${hold_mch_List.mch_t_userid }_${i.index}_${hold_mch_List.b_idx}_${hold_mch_List.mch_date}_${hold_matchingListSize }"
-											type="button" value="YES">
-									</div>
-									<div class="col-md-3">
-										<input class="btn btn-info guide_matcing_accept_answer_no"
-											id="${hold_mch_List.mch_t_userid }_${i.index}_${hold_mch_List.b_idx}_${hold_mch_List.mch_date}"
-											type="button" value="NO">
+									<div class="col-md-6">
+										<input class="btn btn-info guide_matcing_accept_answer_cancel"
+											id="${res_mch_List.mch_g_userid }_${i.index}_${res_mch_List.b_idx}_${res_mch_List.mch_date}_${res_matchingListSize }"
+											type="button" value="CANCEL">
 									</div>
 									<div class="col-md-3"></div>
 									<br> <br>
@@ -106,7 +101,7 @@
 						</div>
 					</c:if>
 					<br
-						id="guide_br_mathing_section${i.index }_${hold_mch_List.b_idx }">
+						id="guide_br_mathing_section${i.index }_${res_mch_List.b_idx }">
 				</c:forEach>
 			</div>
 

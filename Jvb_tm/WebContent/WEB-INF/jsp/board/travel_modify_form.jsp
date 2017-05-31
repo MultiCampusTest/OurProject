@@ -141,11 +141,19 @@
 	}
 
 
-$(function() {
-	$(".selector").flatpickr({
-
+	$(function() {
+		$(".selector").flatpickr({
+			mode:"range",
+			minDate: "today",
+			onClose : function(selectedDates, dateStr, instance){
+				var str = dateStr;
+				var startDate = str.substring(0,10);
+				var endDate = str.substring(14,24);
+				$('#startDate').val(startDate);
+				$('#endDate').val(endDate);
+			}
+		});
 	});
-});
 
 
 
@@ -426,9 +434,9 @@ cursor:pointer;
 		
 		<div>
         <font style="font-size:20px">DATE</font><br>
-          <input class="selector" id="fromDate" name="startDate" type="text" value="${travel.startDate }"> 
-          ~
-          <input class="selector" id="toDate" name="endDate" type="text" value="${travel.endDate }">
+          <input class="selector" id="datepick" type="text" value="${travel.startDate } to ${travel.endDate}">
+          <input id="startDate" name="startDate" type="hidden" value="${travel.startDate }" style="text-align: center;"> 
+          <input id="endDate" name="endDate" type="hidden" value="${travel.endDate }" style="text-align: center;">
         </div>
 	    <hr>
 	    <div>
@@ -476,4 +484,4 @@ cursor:pointer;
 	</div>
 </div>  
 </body>
-</html>
+</html> 

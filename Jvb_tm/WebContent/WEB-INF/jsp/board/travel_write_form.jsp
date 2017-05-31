@@ -114,11 +114,19 @@
 
 
 
-$(function() {
-	$(".selector").flatpickr({
-
+	$(function() {
+		$(".selector").flatpickr({
+			mode:"range",
+			minDate: "today",
+			onClose : function(selectedDates, dateStr, instance){
+				var str = dateStr;
+				var startDate = str.substring(0,10);
+				var endDate = str.substring(14,24);
+				$('#startDate').val(startDate);
+				$('#endDate').val(endDate);
+			}
+		});
 	});
-});
 
 
 
@@ -384,9 +392,9 @@ cursor:pointer;
 		
 		<div>
         <font style="font-size:20px">DATE</font><br>
-          <input class="selector" id="fromDate" name="startDate" type="text"> 
-          ~
-          <input class="selector" id="toDate" name="endDate" type="text">
+          <input class="selector" id="datepcik" type="text">
+          <input id="startDate" name="startDate" type="hidden" style="text-align: center;"> 
+          <input id="endDate" name="endDate" type="hidden" style="text-align: center;">
         </div>
 	    <hr>
 	    <div>

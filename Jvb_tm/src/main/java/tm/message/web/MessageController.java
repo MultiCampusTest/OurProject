@@ -64,6 +64,7 @@ public class MessageController {
 //		System.out.println();
 //		System.out.println(msg_receive_userid);
 //		System.out.println(msg_send_userid);
+//		msgReadCount((HttpSession) session.getAttribute("userid"));
 		return messageService.messageOneList(msg_receive_userid, msg_send_userid);
 	}
 	
@@ -103,6 +104,7 @@ public class MessageController {
 	
 	@RequestMapping(value="msgReadCount.do", method=RequestMethod.POST)
 	public @ResponseBody HashMap<String, Object> msgReadCount(HttpSession session){
+		System.out.println("????");
 		String userid=(String)session.getAttribute("userid");
 		HashMap<String, Object> params=new HashMap<>();
 		if(!userid.equals("")){

@@ -19,6 +19,7 @@
 
 <!-- Theme JavaScript -->
 <script src="js/creative.min.js"></script>
+<script src="js/msgCount.js"></script>
 
 
 <!-- Font Awesome CDN -->
@@ -68,36 +69,12 @@
 
 		window.open(uri, 'search', strFeature);
 	}
-	
-	
-	
-	(function msgCount(){
-		var userid=$('.msgCount').attr('id');
 
-		
-		$.ajax({
-			url : 'msgReadCount.do',
-			type : 'POST',
-			dataType : 'json',
-			success : function(data) {
-
-				if(data.msgCount!=0){
-// 					alert(data.msgCount);
-					var msgCountIcon='&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-envelope" aria-hidden="true">'
-										+data.msgCount+'</span>';
-					$('#msg_ReadCount').append(msgCountIcon);
-				}
-				
-				
-			},
-			error : function() {
-				alert('에러에러에러 메시지 에러');
-			}
-		});
-	})();
 	
 
 	$(document).ready(function() {
+		
+		msgCount();
 
 		$('.dropdown,.dropdown-menu').hover(function() {
 			if ($(window).width() >= 768) {
@@ -216,6 +193,7 @@
 
 </head>
 <body>
+<input type="text" value="hello" id="hello">
 	<section> <nav id="mainNav"
 		class="navbar navbar-default navbar-collapse navbar-fixed-top">
 	<div class="container-fluid">
@@ -308,6 +286,8 @@
 					<c:when test="${userid != null }">
 						<li><a class="page-scroll msg_count" href="myPage.do" id="${useid }">MYPAGE &nbsp;<i
 								class="fa fa-cog" aria-hidden="true" id="msg_ReadCount"></i>
+								&nbsp;&nbsp;&nbsp;
+								<span style="display: none" class="glyphicon glyphicon-envelope msg_count_icon" aria-hidden="true" id="msgReadCountNum"></span>
 								</a></li>
 						<li><a class="page-scroll" href="logout.do">SIGN
 								OUT&nbsp;<i class="fa fa-times-circle" aria-hidden="true"></i>

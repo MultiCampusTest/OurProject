@@ -7,8 +7,7 @@
 
 
 $(document).ready(function() {
-	
-	
+
 	$('.msg_contents_box').hide();//on cache par defaut les messages
 
 	
@@ -29,6 +28,32 @@ $(document).ready(function() {
 				data : 'msg_send_userid=' + result,
 				dataType : 'json',
 				success : function(data) {
+					
+					var userid=$('.msgCount').attr('id');
+
+					
+					$.ajax({
+						url : 'msgReadCount.do',
+						type : 'POST',
+						dataType : 'json',
+						success : function(data) {
+
+							if(data.msgCount!=0){
+								$('.msg_count_icon').css('display', '');
+								$('#msgReadCountNum').html(data.msgCount);
+							}
+							else{
+								$('.msg_count_icon').css('display', 'none');
+								$('#msgReadCountNum').html("");
+							}
+							
+							
+						},
+						error : function() {
+							alert('에러에러에러 메시지 에러');
+						}
+					});
+					
 // 					alert(data.length);
 					$('#msg_box_selectOne' + id).text('MessageList');
 
@@ -52,8 +77,11 @@ $(document).ready(function() {
 							$('#msg_box_selectOne' + id).append('<br>');
 							$('#msg_box_selectOne' + id).append(add_Label);
 						}
+						
 
 					}
+					
+						
 				},
 				error : function() {
 					alert('에러 ');

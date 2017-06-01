@@ -68,7 +68,34 @@
 
 		window.open(uri, 'search', strFeature);
 	}
+	
+	
+	
+	(function msgCount(){
+		var userid=$('.msgCount').attr('id');
 
+		
+		$.ajax({
+			url : 'msgReadCount.do',
+			type : 'POST',
+			dataType : 'json',
+			success : function(data) {
+
+				if(data.msgCount!=0){
+// 					alert(data.msgCount);
+					var msgCountIcon='&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-envelope" aria-hidden="true">'
+										+data.msgCount+'</span>';
+					$('#msg_ReadCount').append(msgCountIcon);
+				}
+				
+				
+			},
+			error : function() {
+				alert('에러에러에러 메시지 에러');
+			}
+		});
+	})();
+	
 
 	$(document).ready(function() {
 
@@ -279,8 +306,9 @@
 
 				<c:choose>
 					<c:when test="${userid != null }">
-						<li><a class="page-scroll" href="myPage.do">MYPAGE &nbsp;<i
-								class="fa fa-cog" aria-hidden="true"></i></a></li>
+						<li><a class="page-scroll msg_count" href="myPage.do" id="${useid }">MYPAGE &nbsp;<i
+								class="fa fa-cog" aria-hidden="true" id="msg_ReadCount"></i>
+								</a></li>
 						<li><a class="page-scroll" href="logout.do">SIGN
 								OUT&nbsp;<i class="fa fa-times-circle" aria-hidden="true"></i>
 						</a></li>

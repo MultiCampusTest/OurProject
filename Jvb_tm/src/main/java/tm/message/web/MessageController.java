@@ -101,6 +101,19 @@ public class MessageController {
 	
 	
 	
+	@RequestMapping(value="msgReadCount.do", method=RequestMethod.POST)
+	public @ResponseBody HashMap<String, Object> msgReadCount(HttpSession session){
+		String userid=(String)session.getAttribute("userid");
+		HashMap<String, Object> params=new HashMap<>();
+		if(!userid.equals("")){
+			params.put("msgCount", messageService.messageNotReadCount(userid));			
+		}
+		return params;
+	}
+	
+	
+	
+	
 //	  @InitBinder
 //	   public void initBinder(WebDataBinder binder){
 //	      SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");

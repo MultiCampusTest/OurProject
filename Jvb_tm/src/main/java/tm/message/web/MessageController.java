@@ -107,8 +107,11 @@ public class MessageController {
 		System.out.println("????");
 		String userid=(String)session.getAttribute("userid");
 		HashMap<String, Object> params=new HashMap<>();
-		if(!userid.equals("")){
+		if(userid!=null){
 			params.put("msgCount", messageService.messageNotReadCount(userid));			
+		}
+		else{
+			params.put("msgCount", 0);
 		}
 		return params;
 	}

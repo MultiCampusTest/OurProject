@@ -18,6 +18,11 @@
 					$('.msg_count_icon').css('display', '');
 					$('#msgReadCountNum').html(data.msgCount);
 				}
+				else{
+					$('.msg_count_icon').css('display', 'none');
+					$('#msgReadCountNum').html("");
+				}
+				
 				
 				
 			},

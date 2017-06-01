@@ -286,8 +286,9 @@
 					<c:when test="${userid != null }">
 						<li><a class="page-scroll msg_count" href="myPage.do" id="${useid }">MYPAGE &nbsp;<i
 								class="fa fa-cog" aria-hidden="true" id="msg_ReadCount"></i>
-								&nbsp;&nbsp;&nbsp;
-								<span style="display: none" class="glyphicon glyphicon-envelope msg_count_icon" aria-hidden="true" id="msgReadCountNum"></span>
+								&nbsp;
+								<i style="display: none; color:#FF605A" class="glyphicon glyphicon-envelope msg_count_icon" aria-hidden="true"></i>
+								<span style="color: #FF605A" id="msgReadCountNum"></span>
 								</a></li>
 						<li><a class="page-scroll" href="logout.do">SIGN
 								OUT&nbsp;<i class="fa fa-times-circle" aria-hidden="true"></i>

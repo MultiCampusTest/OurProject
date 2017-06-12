@@ -45,6 +45,7 @@
 <!-- Facebook API -->
 <script type="text/javascript" src="js/facebookAPI.js"></script>
 
+<!-- scrollreveal  -->
 <script src="vendor/scrollreveal/scrollreveal.min.js"></script>
 
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->

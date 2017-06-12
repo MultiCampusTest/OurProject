@@ -378,23 +378,24 @@ public class BoardController {
 		System.out.println(site);
 		System.out.println(comment_pre_depth);
 //		System.out.println("댓글이다 보드 코드 받아오니 : "+board_code);
-		if(b_code.equals("g") && comment_pre_depth==0){
+		if(b_code.equals("g") && comment_pre_depth==0 && !comments.getCm_writer().equals(b_writer)){
 			System.out.println("메시지 오니");
 			System.out.println("매칭 신청 됩니다.");
-			MatchingVo matchingVo=new MatchingVo();
-			matchingVo.setMch_t_userid(b_writer);
-			matchingVo.setMch_g_userid(mch_g_userid);
-			matchingVo.setB_idx(comments.getB_idx());
-			System.out.println(matchingVo.toString());
-			if(matchingService.matchingByb_idx(comments.getB_idx(), mch_g_userid)==null){
-				matchingService.matchingSend(matchingVo);
-				MessageVo messageVo=new MessageVo();
-				messageVo.setMsg_send_userid(comments.getCm_writer());
-				messageVo.setMsg_receive_userid(b_writer);
-				messageVo.setMsg_contents("Start Matching");
-				System.out.println(messageVo.toString());
-				messageService.sendMessage(messageVo);
-			}		
+				if(matchingService.matchingByb_idx(comments.getB_idx(), mch_g_userid)==null){
+					MatchingVo matchingVo=new MatchingVo();
+					matchingVo.setMch_t_userid(b_writer);
+					matchingVo.setMch_g_userid(mch_g_userid);
+					matchingVo.setB_idx(comments.getB_idx());
+					System.out.println(matchingVo.toString());
+					matchingService.matchingSend(matchingVo);
+					MessageVo messageVo=new MessageVo();
+					messageVo.setMsg_send_userid(comments.getCm_writer());
+					messageVo.setMsg_receive_userid(b_writer);
+					messageVo.setMsg_contents("Start Matching");
+					System.out.println(messageVo.toString());
+					messageService.sendMessage(messageVo);
+				}
+			
 			
 		
 		}

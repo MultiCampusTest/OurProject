@@ -77,15 +77,33 @@ public class MessageController {
 //	}
 	
 	
+	//form 형식일 때
+//	@RequestMapping("sendMessage.do")
+//	public String sendMessage(HttpSession session, MessageVo messageVo){
+//		String msg_send_userid=(String)session.getAttribute("userid");
+////		messageVo.setMsg_receive_userid(messageVo.getMsg_receive_userid());
+//		messageVo.setMsg_send_userid(msg_send_userid);
+////		messageVo.setMsg_contents(messageVo.getMsg_contents());
+//		messageService.sendMessage(messageVo);
+//		
+//		return "redirect:message.do";
+//		
+//	}
+	
+	
+	
+	
+	//ajax 형식일 때
 	@RequestMapping("sendMessage.do")
-	public String sendMessage(HttpSession session, MessageVo messageVo){
+	public @ResponseBody List<MessageVo> sendMessage(HttpSession session, String msg_receive_userid, String msg_contents){
 		String msg_send_userid=(String)session.getAttribute("userid");
-//		messageVo.setMsg_receive_userid(messageVo.getMsg_receive_userid());
+		MessageVo messageVo=new MessageVo();
 		messageVo.setMsg_send_userid(msg_send_userid);
-//		messageVo.setMsg_contents(messageVo.getMsg_contents());
+		messageVo.setMsg_receive_userid(msg_receive_userid);
+		messageVo.setMsg_contents(msg_contents);
 		messageService.sendMessage(messageVo);
 		
-		return "redirect:message.do";
+		return messageService.messageOneList(msg_receive_userid, msg_send_userid);
 		
 	}
 	

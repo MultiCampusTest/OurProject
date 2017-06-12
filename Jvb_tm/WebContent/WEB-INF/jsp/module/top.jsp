@@ -78,14 +78,14 @@
 
 		$('.dropdown,.dropdown-menu').hover(function() {
 			if ($(window).width() >= 768) {
-				$(this).addClass('open').trigger('shown.bs.dropdown', relatedTarget)
-				return false;
+				$(this).addClass('open').trigger('shown.bs.dropdown', null)
+// 				return false;
 			}
 
 		}, function() {
 			if ($(window).width() >= 768) {
-				$(this).removeClass('open').trigger('hidden.bs.dropdown', relatedTarget)
-				return false;
+				$(this).removeClass('open').trigger('hidden.bs.dropdown', null)
+// 				return false;
 			}
 		});
 

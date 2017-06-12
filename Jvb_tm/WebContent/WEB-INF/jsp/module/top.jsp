@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <!-- jQuery -->
-<script src="vendor/jquery/jquery.js"></script>
+<script src="vendor/jquery/jquery.min.js"></script>
 
 <!-- Bootstrap Core JavaScript -->
 <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
@@ -18,7 +18,7 @@
 
 
 <!-- Theme JavaScript -->
-<script src="js/creative.js"></script>
+<script src="js/creative.min.js"></script>
 <script src="js/msgCount.js"></script>
 
 
@@ -45,8 +45,7 @@
 <!-- Facebook API -->
 <script type="text/javascript" src="js/facebookAPI.js"></script>
 
-<!-- ScrollReveal -->
-<script src="vendor/scrollreveal/scrollreveal.js"></script>
+<script src="vendor/scrollreveal/scrollreveal.min.js"></script>
 
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -71,10 +70,10 @@
 		window.open(uri, 'search', strFeature);
 	}
 
-
+	
 
 	$(document).ready(function() {
-
+		
 		msgCount();
 
 		$('.dropdown,.dropdown-menu').hover(function() {
@@ -194,7 +193,7 @@
 
 </head>
 <body>
-	<input type="text" value="hello" id="hello">
+<input type="text" value="hello" id="hello">
 	<section> <nav id="mainNav"
 		class="navbar navbar-default navbar-collapse navbar-fixed-top">
 	<div class="container-fluid">
@@ -285,14 +284,12 @@
 
 				<c:choose>
 					<c:when test="${userid != null }">
-						<li><a class="page-scroll msg_count" href="myPage.do"
-							id="${useid }">MYPAGE &nbsp;<i class="fa fa-cog"
-								aria-hidden="true" id="msg_ReadCount"></i> &nbsp; <i
-								style="display: none; color: #FF605A"
-								class="glyphicon glyphicon-envelope msg_count_icon"
-								aria-hidden="true"></i> <span style="color: #FF605A"
-								id="msgReadCountNum"></span>
-						</a></li>
+						<li><a class="page-scroll msg_count" href="myPage.do" id="${useid }">MYPAGE &nbsp;<i
+								class="fa fa-cog" aria-hidden="true" id="msg_ReadCount"></i>
+								&nbsp;
+								<i style="display: none; color:#FF605A" class="glyphicon glyphicon-envelope msg_count_icon" aria-hidden="true"></i>
+								<span style="color: #FF605A" id="msgReadCountNum"></span>
+								</a></li>
 						<li><a class="page-scroll" href="logout.do">SIGN
 								OUT&nbsp;<i class="fa fa-times-circle" aria-hidden="true"></i>
 						</a></li>

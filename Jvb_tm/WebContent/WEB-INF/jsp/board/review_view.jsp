@@ -79,7 +79,7 @@
 		<c:if test="${userid != null }">
          <div class="well">
              <h4>Leave a Comment:</h4>
-             <form role="form" action="commentsWrite.do" method="post">
+             <form role="form" action="commentsWrite.do" method="post" onsubmit="return submitEven();">
                  <div class="form-group">
                  	 <input type="hidden" name="b_writer" value="${review.userid }">
                 	 <input type="hidden" name="b_code" value="${review.code }">
@@ -87,7 +87,7 @@
                  	 <input type="hidden" name="b_idx" value="${review.boardIdx }">
                  	 <input type="hidden" name="cm_writer" value="${userid}">
                  	 <input type="hidden" name="site" value="review">
-                     <textarea class="form-control" name="cm_content" rows="3"></textarea>
+                     <textarea class="form-control" id="cm_content" name="cm_content" rows="3"></textarea>
                  </div>
 <!--                  <button type="submit" class="btn btn-primary">Submit</button> -->
                  <input type="submit" value="등록" class="btn btn-primary">
@@ -125,10 +125,10 @@
                  	 <input type="hidden" name="b_idx" value="${review.boardIdx }">
                  	 <input type="hidden" name="cm_idx" >
                  	 <input type="hidden" name="site" value="review">
-                     <textarea class="form-control" name="cm_content" rows="3"></textarea>
+                     <textarea class="form-control" id="cm_content" name="cm_content" rows="3"></textarea>
                  </div>
                  <input type="submit" value="수정" class="btn btn-primary">
-                 <input type="button" value="취소" class="btn btn-primary" onclick="commentsUpdateCancel()">
+                 <input type="button" value="취소" class="btn btn-primary">
              </form>
          </div>		
 

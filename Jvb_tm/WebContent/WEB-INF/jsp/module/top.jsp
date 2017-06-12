@@ -46,7 +46,7 @@
 <script type="text/javascript" src="js/facebookAPI.js"></script>
 
 <!-- scrollreveal  -->
-<script src="vendor/scrollreveal/scrollreveal.min.js"></script>
+<!-- <script src="vendor/scrollreveal/scrollreveal.min.js"></script> -->
 
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -62,7 +62,6 @@
 		var height = 470;
 		var top = (screen.availHeight - height) / 2;
 		var left = (screen.availWidth - width) / 2;
-
 		var strFeature;
 		strFeature = 'height=' + height + ',width=' + width +
 

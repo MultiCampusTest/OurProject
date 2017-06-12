@@ -20,8 +20,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		delete from matching where mch_idx=#{mch_idx}
 	</delete>
 	
-	<select id="matchingSelectByUserid" parameterType="java.util.HashMap" resultType="matchingVo">
-		select * from matching where mch_code=#{mch_code} and (mch_t_userid=#{mch_t_userid} or mch_g_userid=#{mch_g_userid} ) order by mch_date
+	<select id="matchingSelectByUserid" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		select * from board b, matching m where
+		 m.mch_code=#{mch_code} and (m.mch_t_userid=#{mch_t_userid}
+		  or m.mch_g_userid=#{mch_g_userid} ) and b.b_idx=m.b_idx order by m.mch_date
 	</select>
 	
 	<select id="matchingSelectComplete" parameterType="int" resultType="matchingVo">

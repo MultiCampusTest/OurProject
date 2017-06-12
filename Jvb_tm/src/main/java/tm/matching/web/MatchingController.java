@@ -69,6 +69,8 @@ public class MatchingController {
 		mav.addAllObjects(matchingService.matchingList(userid));
 		mav.addAllObjects(params);
 		mav.setViewName("member/my_page");
+		
+		System.out.println(matchingService.matchingList(userid));
 		return mav;
 	}
 	

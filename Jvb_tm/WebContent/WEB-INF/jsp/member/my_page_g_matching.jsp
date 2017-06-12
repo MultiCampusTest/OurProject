@@ -69,8 +69,7 @@
 								<div class="guide_request_mch_contents col-lg-7">
 									<a href="guideView.do?boardIdx=${res_mch_List.b_idx }"> <label
 										class="guide_board_title container-fluid control-label"
-										id="${res_mch_List.b_idx }"> 해당 게시글 제목
-											${res_mch_List.b_idx }</label>
+										id="${res_mch_List.b_idx }">${res_mch_List.b_title}</label>
 									</a>
 								</div>
 								<div class="guide_request_mch_date col-lg-2">
@@ -136,8 +135,7 @@
 								id="guide_accepted_matching_${i.index }">
 								<div class="guide_accepted_mch_contents col-lg-7">
 									<a href="guideView.do?boardIdx=${acc_mch_List.b_idx }"> <label
-										class="container-fluid control-label"> 해당 게시글 제목
-											${acc_mch_List.b_idx }</label>
+										class="container-fluid control-label">${acc_mch_List.b_title}</label>
 									</a>
 								</div>
 								<div class="guide_accepted_mch_date col-lg-2">

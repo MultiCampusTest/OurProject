@@ -92,7 +92,7 @@
 								<div class="msg_list container-fluid">MessageList</div>
 							</div>
 							<div class="panel panel-default">
-								<form action="sendMessage.do" method="post" name="form">
+<!-- 								<form action="sendMessage.do" method="post" name="form"> -->
 									<div class="panel-body">
 										<c:if test="${msg_List.msg_send_userid == userid}">
 											<input type="hidden" name="msg_receive_userid" value="${msg_List.msg_receive_userid }">
@@ -107,11 +107,11 @@
 											style="margin-bottom: 10px; resize: none"></textarea>
 										<span class="remain_sending_msg pull-right"
 											id="remain_sending_msg${i.index }">1000 characters
-											remaining</span> <input class="btn btn-info send_msg_button"
-											type="submit" value="Post New Message"
+											remaining</span>
+											<input class="btn btn-info send_msg_button" type="submit" value="Post New Message"
 											id="submit_msg${i.index }">
 									</div>
-								</form>
+<!-- 								</form> -->
 							</div>
 						</div>
 					</div>

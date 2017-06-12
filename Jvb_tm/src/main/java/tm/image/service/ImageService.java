@@ -224,18 +224,18 @@ public class ImageService implements IImageService {
 		imageDao.insertUrl(params);
 	} 
 	
-	@Override
-	public void deleteReviewImg(String img_code, MultipartHttpServletRequest req, String[] img_idx) {
-		// TODO Auto-generated method stub
-		List<MultipartFile> files = req.getFiles("file");
-
-		for(int i=0; i<files.size(); i++){
-			String filename = files.get(i).getOriginalFilename();
-			if(!filename.equals("")){
-				imageDao.deleteByImageIdx(img_idx[i]);			
-			}
-		}
-	}
+//	@Override
+//	public void deleteReviewImg(String img_code, MultipartHttpServletRequest req, String[] img_idx) {
+//		// TODO Auto-generated method stub
+//		List<MultipartFile> files = req.getFiles("file");
+//
+//		for(int i=0; i<files.size(); i++){
+//			String filename = files.get(i).getOriginalFilename();
+//			if(!filename.equals("")){
+//				imageDao.deleteByImageIdx(img_idx[i]);			
+//			}
+//		}
+//	}
 
 	@Override
 	public void deleteReview(String img_code) {

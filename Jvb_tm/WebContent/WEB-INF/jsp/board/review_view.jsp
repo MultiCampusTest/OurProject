@@ -51,6 +51,11 @@
 					</div>
 					<hr>
 					<div class="form-group">
+						<label class="control-label ">WRITER:</label> <br>
+							${review.userid }
+					</div>
+					<hr>
+					<div class="form-group">
 						<label class="control-label">CATEGORY:</label><br>
 							${review.subCategory }
 					</div>

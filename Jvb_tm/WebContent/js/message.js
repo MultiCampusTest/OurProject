@@ -142,52 +142,64 @@ $(document).ready(function() {
 			// 		alert(result);
 			var send_msg_contents = $('#send_msg_contents' + realid).val();
 			// 		alert(send_msg_contents);
-			var send_time = new Date();
-
-			$.ajax({
-				url : 'sendMessage.do',
-				type : 'POST',
-				data : 'msg_receive_userid=' + result + '&msg_contents=' + send_msg_contents,
-				dataType : 'json',
-				success : function(data) {
-
-					$('#send_msg_contents' + realid).val("");
-					// 	            	$('#msg_box_selectOne'+realid).text('MessageList');
-
-					var add_Label = '<div class="msg_list message_panel message_out container-fluid">' + send_msg_contents + '<label class="msg_time container-fluid">' + send_time + '</label></div>';
-					$('#msg_box_selectOne' + realid).append('<br>');
-					$('#msg_box_selectOne' + realid).append(add_Label);
-
-					// 	   	            $('#msg_list'+realid).append('<br>');
-					// 	   	            $('#msg_list'+realid).append(send_msg_contents);
-
-				},
-				error : function() {
-					alert('에러 ');
-				// 	               $('#send_msg_contents'+realid).val("");
-				}
-			});
-		});
-		
-		
-		
-		$('.send_msg_button').click(function(){
-			var confirm = false;
-			var id=$(this).attr('id');
-			var realid=id.substring(10);
-//			alert(id);
-//			alert(realid);
+//			var send_time = new Date();
+			
 			
 			if($('#send_msg_contents'+realid).val() == ''){
 				alert("메시지를 입력해주세요.")
 				$('#send_msg_contents'+realid).focus();
+			}
+			
+			else{
+				$.ajax({
+					url : 'sendMessage.do',
+					type : 'POST',
+					data : 'msg_receive_userid=' + result + '&msg_contents=' + send_msg_contents,
+					dataType : 'json',
+					success : function(data) {
+						
+						$('#send_msg_contents' + realid).val("");
+						// 	            	$('#msg_box_selectOne'+realid).text('MessageList');
+						
+						var add_Label = '<div class="msg_list message_panel message_out container-fluid">'
+												+ send_msg_contents + '<br><div class="msg_time container-fluid">now</div></div>';
+						$('#msg_box_selectOne' + realid).append('<br>');
+						$('#msg_box_selectOne' + realid).append(add_Label);
+						
+						// 	   	            $('#msg_list'+realid).append('<br>');
+						// 	   	            $('#msg_list'+realid).append(send_msg_contents);
+						
+					},
+					error : function() {
+						alert('에러 ');
+						// 	               $('#send_msg_contents'+realid).val("");
+					}
+				});
 				
 			}
 			
-			else
-				confirm = true;
-			return confirm;
+			
+
 		});
+		
+		
+		
+//		$('.send_msg_button').click(function(){
+//			var confirm = false;
+//			var id=$(this).attr('id');
+//			var realid=id.substring(10);
+////			alert(id);
+////			alert(realid);
+//			
+//			if($('#send_msg_contents'+realid).val() == ''){
+//				alert("메시지를 입력해주세요.")
+//				$('#send_msg_contents'+realid).focus();
+//			}
+//			
+//			else
+//				confirm = true;
+//			return confirm;
+//		});
 		
 		
 		

@@ -108,7 +108,7 @@
 										<span class="remain_sending_msg pull-right"
 											id="remain_sending_msg${i.index }">1000 characters
 											remaining</span>
-											<input class="btn btn-info send_msg_button" type="submit" value="Post New Message"
+											<input class="btn btn-info send_msg_button" type="button" value="Post New Message"
 											id="submit_msg${i.index }">
 									</div>
 <!-- 								</form> -->

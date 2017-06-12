@@ -48,6 +48,7 @@ public class MessageController {
 		params.put("url", url);
 		
 		ModelAndView mav=new ModelAndView();
+		mav.addObject("type", "message");
 		mav.addAllObjects(messageService.messageList(userid));
 		mav.addAllObjects(params);
 		mav.setViewName("member/my_page");

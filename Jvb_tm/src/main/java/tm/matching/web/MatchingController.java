@@ -46,6 +46,7 @@ public class MatchingController {
 		params.put("url", url);
 		
 		ModelAndView mav=new ModelAndView();
+		mav.addObject("type", "g_matching");
 		mav.addAllObjects(matchingService.matchingList(userid));
 		mav.addAllObjects(params);
 		mav.setViewName("member/my_page");
@@ -64,6 +65,7 @@ public class MatchingController {
 		params.put("url", url);
 		
 		ModelAndView mav=new ModelAndView();
+		mav.addObject("type", "t_matching");
 		mav.addAllObjects(matchingService.matchingList(userid));
 		mav.addAllObjects(params);
 		mav.setViewName("member/my_page");

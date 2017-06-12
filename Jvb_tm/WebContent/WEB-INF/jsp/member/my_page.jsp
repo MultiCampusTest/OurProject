@@ -18,11 +18,25 @@
 <link href="css/profile.css" rel="stylesheet">
 <link rel="stylesheet" href="css/review.css">
 
+<script type="text/javascript">
+$(document).ready(function(){
+	
+	var page_type = '${type}';
+
+	$('.btn_mypage').each(function(){
+		if(page_type == $(this).attr('id')){
+			$(this).attr('class','btn btn_mypage btn-primary');
+			
+		}else{
+			$(this).attr('class','btn btn_mypage');
+		}
+	});
+
+})
+</script>
+
 <title>Travel Maker</title>
 
-<script type="text/javascript">
-
-</script>
 
 </head>
 <body>
@@ -45,35 +59,35 @@
 			<div class="btn-pref btn-group btn-group-justified btn-group-lg"
 				role="group" aria-label="...">
 				<div class="btn-group" role="group">
-					<button type="button" id="myPage" class="btn btn-primary"
+					<button type="button" id="myPage" class="btn btn_mypage btn-primary"
 						onclick="location.href='myPage.do'" data-toggle="tab">
 						<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
 						<div class="hidden-xs">My Profile</div>
 					</button>
 				</div>
 				<div class="btn-group" role="group">
-					<button type="button" id="update" class="btn btn-default"
+					<button type="button" id="update" class="btn btn_mypage btn-default"
 						onclick="location.href='editProfile.do'" data-toggle="tab">
 						<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
 						<div class="hidden-xs">Edit Profile</div>
 					</button>
 				</div>
 				<div class="btn-group" role="group">
-					<button type="button" id="message" class="btn btn-default"
+					<button type="button" id="message" class="btn btn_mypage btn-default"
 						onclick="location.href='message.do'" data-toggle="tab">
 						<span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
 						<div class="hidden-xs">Message</div>
 					</button>
 				</div>
 				<div class="btn-group" role="group">
-					<button type="button" id="g_matching" class="btn btn-default"
+					<button type="button" id="g_matching" class="btn btn_mypage btn-default"
 						onclick="location.href='guideMatching.do'" data-toggle="tab">
 						<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
 						<div class="hidden-xs">Guide Matching</div>
 					</button>
 				</div>
 				<div class="btn-group" role="group">
-					<button type="button" id="t_matching" class="btn btn-default"
+					<button type="button" id="t_matching" class="btn btn_mypage btn-default"
 						onclick="location.href='travelMatching.do'" data-toggle="tab">
 						<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
 						<div class="hidden-xs">Travel Matching</div>

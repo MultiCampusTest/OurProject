@@ -82,7 +82,9 @@
     -webkit-border-radius:0 !important;
 }
 
-
+.btn-primary{
+	background-color: #FF605A;
+}
 
 	.btn-primary:focus,
 	.btn-info:focus{

@@ -120,6 +120,7 @@ public class MemberController {
 		mav.addObject("userImage", imageService.selectOne(userid));
 		mav.addAllObjects(memberService.memberSelectOne(userid));
 		mav.addAllObjects(params);
+		mav.addObject("type","myPage");
 		mav.setViewName("member/my_page");
 		return mav;
 	}
@@ -136,6 +137,7 @@ public class MemberController {
 		params.put("url", url);
 	      
 		ModelAndView mav=new ModelAndView();
+		mav.addObject("type", "update");
 		mav.addObject("userImage", imageService.selectOne(userid));
 		mav.addAllObjects(memberService.memberSelectOne(userid));
 		mav.addAllObjects(params);

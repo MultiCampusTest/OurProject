@@ -27,7 +27,7 @@ public class ImageService implements IImageService {
       // int result = imageDao.insertImage(imageVo);
 
       // if (result > 0) {
-      String path = "/Users/LeeGilSun/Upload/";
+      String path = "/Users/KYS/Upload/";
       File folder = new File(path);
       if (!folder.exists()) {
          folder.mkdirs();
@@ -81,7 +81,7 @@ public class ImageService implements IImageService {
 
    @Override
    public void updateImg(ImageVo imageVo, String img_code, MultipartHttpServletRequest req) {
-      String path = "/Users/LeeGilSun/Upload/";
+      String path = "/Users/KYS/Upload/";
       File folder = new File(path);
       if (!folder.exists()) {
          folder.mkdirs();
@@ -150,7 +150,7 @@ public class ImageService implements IImageService {
 	@Override
 	public void insertReviewImg(BoardVo board, MultipartFile file) {
 		// TODO Auto-generated method stub
-		String path = "/Users/LeeGilSun/Upload/";
+		String path = "/Users/KYS/Upload/";
 		
         File folder = new File(path);
         if (!folder.exists()) {
@@ -185,7 +185,7 @@ public class ImageService implements IImageService {
 	@Override
 	public void updateReviewImg(BoardVo board, MultipartFile file, String img_idx) {
 		// TODO Auto-generated method stub
-		String path = "/Users/LeeGilSun/Upload/";
+		String path = "/Users/KYS/Upload/";
 		
         File folder = new File(path);
         if (!folder.exists()) {
@@ -246,7 +246,7 @@ public class ImageService implements IImageService {
 	@Override
 	public ImageVo insertImage(MultipartFile file) {
 		// TODO Auto-generated method stub
-		String path = "/Users/LeeGilSun/Upload/";
+		String path = "/Users/KYS/Upload/";
 		
         File folder = new File(path);
         if (!folder.exists()) {

@@ -28,7 +28,7 @@ $(document).ready(function(){
 			$(this).attr('class','btn btn_mypage btn-primary');
 			
 		}else{
-			$(this).attr('class','btn btn_mypage');
+			$(this).attr('class','btn btn_mypage btn-default');
 		}
 	});
 

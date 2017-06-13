@@ -183,19 +183,6 @@ function add_day_content(){
 }
 
 
-function contentCheck(){
-	
-	 $('#content > textarea').each(function(){
-		 if($(this).val().length == 0){
-			 alert($(this).attr('id')+"의 내용을 입력해주세요.");
-		 }
-		 return false;
-	 });
-	 
-	 return true;
-}
-
-
 
 $(document).ready(function(){
 	
@@ -436,7 +423,6 @@ cursor:pointer;
 		<div id="input_latLng"></div>
 		</div>
 	 </form>	
-			<button onclick="return contentCheck()">확인</button>
 	</div>
 </div>  
 </body>

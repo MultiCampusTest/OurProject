@@ -43,10 +43,10 @@
 
 						<div class="guide_matching_section container-fluid"
 							id="guide_mathing_section${i.index }_${res_mch_List.b_idx }">
-							<div class="guide_not_accept col-lg-3" id="${i.index }">
+							<div class="guide_not_accept col-lg-3 col-md-3" id="${i.index }">
 								<input type="hidden" id="guide_req_match_condition_${i.index }"
 									value="1">
-								<div class="col-md-4">
+								<div class="col-lg-4 col-md-4">
 
 									<img class="userid_img"
 										src="imageProfileView.do?img_code=${res_mch_List.mch_t_userid }"
@@ -59,27 +59,27 @@
 									<!-- 													<img class="userid_img" src="img/profile.jpg" width="50px" -->
 									<!-- 														height="50px"> -->
 								</div>
-								<div class="col-md-8">
+								<div class="col-lg-8 col-md-8">
 									<label class="container-fluid control-label">
 										${res_mch_List.mch_t_userid }</label>
 								</div>
 							</div>
 							<div class="guide_request_matching"
 								id="guide_req_matching_${i.index }">
-								<div class="guide_request_mch_contents col-lg-7">
+								<div class="guide_request_mch_contents col-lg-7 col-md-7">
 									<a href="guideView.do?boardIdx=${res_mch_List.b_idx }"> <label
 										class="guide_board_title container-fluid control-label"
 										id="${res_mch_List.b_idx }">${res_mch_List.b_title}</label>
 									</a>
 								</div>
-								<div class="guide_request_mch_date col-lg-2">
+								<div class="guide_request_mch_date col-lg-2 col-md-2">
 									<label
 										class="guide_matching_date container-fluid control-label"
 										id="${res_mch_List.mch_date }">
 										${res_mch_List.mch_date } </label>
 								</div>
 							</div>
-							<div class="guide_matching_box col-lg-9"
+							<div class="guide_matching_box col-lg-9 col-md-9"
 								id="guide_matching_box_${i.index }" style="text-align: center">
 								<div>
 									<label class="container-fluid control-label"> 매칭 신청을
@@ -87,13 +87,13 @@
 								</div>
 								<br>
 								<div class="guide_matching_response"">
-									<div class="col-md-3"></div>
-									<div class="col-md-6">
+									<div class="col-lg-3 col-md-3"></div>
+									<div class="col-lg-6 col-md-6">
 										<input class="btn btn-info guide_matcing_accept_answer_cancel"
 											id="${res_mch_List.mch_g_userid }_${i.index}_${res_mch_List.b_idx}_${res_mch_List.mch_date}_${res_matchingListSize }"
 											type="button" value="CANCEL">
 									</div>
-									<div class="col-md-3"></div>
+									<div class="col-lg-3 col-md-3"></div>
 									<br> <br>
 								</div>
 							</div>
@@ -116,29 +116,29 @@
 					var="acc_mch_List">
 					<c:if test="${acc_mch_List.mch_g_userid==userid }">
 						<div class="guide_matching_section container-fluid">
-							<div class="guide_accept col-lg-3" id="${i.index }">
+							<div class="guide_accept col-lg-3 col-md-3" id="${i.index }">
 								<input type="hidden" id="guide_matched_condition_${i.index }"
 									value="1">
-								<div class="col-md-4">
+								<div class="col-lg-4 col-md-4">
 									<img class="userid_img"
 										src="imageProfileView.do?img_code=${acc_mch_List.mch_t_userid }"
 										width="50px" height="50px">
 									<!-- 													<img class="userid_img" src="img/profile.jpg" width="50px" -->
 									<!-- 														height="50px"> -->
 								</div>
-								<div class="col-md-8">
+								<div class="col-lg-8 col-md-8">
 									<label class="container-fluid control-label">
 										${acc_mch_List.mch_t_userid }</label>
 								</div>
 							</div>
 							<div class="guide_accepted_matching"
 								id="guide_accepted_matching_${i.index }">
-								<div class="guide_accepted_mch_contents col-lg-7">
+								<div class="guide_accepted_mch_contents col-lg-7 col-md-7">
 									<a href="guideView.do?boardIdx=${acc_mch_List.b_idx }"> <label
 										class="container-fluid control-label">${acc_mch_List.b_title}</label>
 									</a>
 								</div>
-								<div class="guide_accepted_mch_date col-lg-2">
+								<div class="guide_accepted_mch_date col-lg-2 col-md-2">
 									<label class="container-fluid control-label">
 										${acc_mch_List.mch_date }</label>
 								</div>

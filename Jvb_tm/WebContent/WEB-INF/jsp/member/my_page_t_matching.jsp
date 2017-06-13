@@ -44,10 +44,10 @@
 					<c:if test="${res_mch_List.mch_t_userid==userid }">
 						<div class="matching_section container-fluid"
 							id="mathing_section${i.index }_${res_mch_List.b_idx }">
-							<div class="not_accept col-lg-3" id="${i.index }">
+							<div class="not_accept col-lg-3 col-md-3" id="${i.index }">
 								<input type="hidden" id="req_match_condition_${i.index }"
 									value="1">
-								<div class="col-md-4">
+								<div class="col-lg-4 col-md-4">
 
 									<img class="userid_img"
 										src="imageProfileView.do?img_code=${res_mch_List.mch_g_userid }"
@@ -60,25 +60,25 @@
 									<!-- 													<img class="userid_img" src="img/profile.jpg" width="50px" -->
 									<!-- 														height="50px"> -->
 								</div>
-								<div class="col-md-8">
+								<div class="col-lg-8 col-md-8">
 									<label class="container-fluid control-label">
 										${res_mch_List.mch_g_userid }</label>
 								</div>
 							</div>
 							<div class="request_matching" id="req_matching_${i.index }">
-								<div class="request_mch_contents col-lg-7">
+								<div class="request_mch_contents col-lg-7 col-md-7">
 									<a href="guideView.do?boardIdx=${res_mch_List.b_idx }"> <label
 										class="board_title container-fluid control-label"
 										id="${res_mch_List.b_idx }">${res_mch_List.b_title}</label>
 									</a>
 								</div>
-								<div class="request_mch_date col-lg-2">
+								<div class="request_mch_date col-lg-2 col-md-2">
 									<label class="matching_date container-fluid control-label"
 										id="${res_mch_List.mch_date }">
 										${res_mch_List.mch_date } </label>
 								</div>
 							</div>
-							<div class="matching_box col-lg-9" id="matching_box_${i.index }"
+							<div class="matching_box col-lg-9 col-md-9" id="matching_box_${i.index }"
 								style="text-align: center">
 								<div>
 									<label class="container-fluid control-label"> 매칭 요청을
@@ -86,18 +86,18 @@
 								</div>
 								<br>
 								<div class="matching_response"">
-									<div class="col-md-3"></div>
-									<div class="col-md-3">
+									<div class="col-lg-3 col-md-3"></div>
+									<div class="col-lg-3 col-md-3">
 										<input class="btn btn-info matcing_accept_answer_yes"
 											id="${res_mch_List.mch_g_userid }_${i.index}_${res_mch_List.b_idx}_${res_mch_List.mch_date}_${res_matchingListSize }"
 											type="button" value="YES">
 									</div>
-									<div class="col-md-3">
+									<div class="col-lg-3 col-md-3">
 										<input class="btn btn-info matcing_accept_answer_no"
 											id="${res_mch_List.mch_g_userid }_${i.index}_${res_mch_List.b_idx}_${res_mch_List.mch_date}"
 											type="button" value="NO">
 									</div>
-									<div class="col-md-3"></div>
+									<div class="col-lg-3 col-md-3"></div>
 									<br> <br>
 								</div>
 							</div>
@@ -117,28 +117,28 @@
 					var="acc_mch_List">
 					<c:if test="${acc_mch_List.mch_t_userid==userid }">
 						<div class="matching_section container-fluid">
-							<div class="accept col-lg-3" id="${i.index }">
+							<div class="accept col-lg-3 col-md-3" id="${i.index }">
 								<input type="hidden" id="matched_condition_${i.index }"
 									value="1">
-								<div class="col-md-4">
+								<div class="col-lg-4 col-md-4">
 									<img class="userid_img"
 										src="imageProfileView.do?img_code=${acc_mch_List.mch_g_userid }"
 										width="50px" height="50px">
 									<!-- 													<img class="userid_img" src="img/profile.jpg" width="50px" -->
 									<!-- 														height="50px"> -->
 								</div>
-								<div class="col-md-8">
+								<div class="col-lg-8 col-md-8">
 									<label class="container-fluid control-label">
 										${acc_mch_List.mch_g_userid }</label>
 								</div>
 							</div>
 							<div class="accepted_matching" id="accepted_matching_${i.index }">
-								<div class="accepted_mch_contents col-lg-7">
+								<div class="accepted_mch_contents col-lg-7 col-md-7">
 									<a href="guideView.do?boardIdx=${acc_mch_List.b_idx }"> <label
 										class="container-fluid control-label">${acc_mch_List.b_title}</label>
 									</a>
 								</div>
-								<div class="accepted_mch_date col-lg-2">
+								<div class="accepted_mch_date col-lg-2 col-md-2">
 									<label class="container-fluid control-label">
 										${acc_mch_List.mch_date }</label>
 								</div>

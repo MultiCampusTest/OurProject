@@ -51,9 +51,9 @@
 				<c:forEach items="${messageList }" var="msg_List" varStatus="i">
 					<div class="message_section container-fluid"
 						id="msg_section${i.index }">
-						<div class="sender col-lg-3" id="${i.index }">
+						<div class="sender col-lg-3 col-md-3" id="${i.index }">
 							<input type="hidden" id="msg_condition_${i.index }" value="1">
-							<div class="col-md-4">
+							<div class="col-lg-4 col-md-4">
 								<c:if test="${msg_List.msg_send_userid == userid}">
 									<img class="userid_img"
 										src="imageProfileView.do?img_code=${msg_List.msg_receive_userid }"
@@ -66,7 +66,7 @@
 								</c:if>
 
 							</div>
-							<div class="col-md-8">
+							<div class="col-lg-8 col-md-8">
 								<c:if test="${msg_List.msg_send_userid == userid}">
 									<h6 class="sender_name" id="name${i.index }">${msg_List.msg_receive_userid }</h6>
 								</c:if>
@@ -77,11 +77,11 @@
 							</div>
 						</div>
 						<div class="message" id="message_${i.index }">
-							<div class="msg_cosntents col-lg-7">
+							<div class="msg_cosntents col-lg-7 col-md-7">
 								<label class="container-fluid control-label">
 									${msg_List.msg_contents }</label>
 							</div>
-							<div class="msg_date col-lg-2">
+							<div class="msg_date col-lg-2 col-md-2">
 								<label class="container-fluid control-label">
 									${msg_List.msg_date }</label>
 							</div>

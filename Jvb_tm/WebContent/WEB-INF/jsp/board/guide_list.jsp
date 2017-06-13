@@ -80,7 +80,7 @@ $(document).ready(function(){
 							&markers=color:red|label:E|${guide.endLatLng}&sensor=false">
                 </a>
                          <div class="caption">                
-                           <i class="fa fa-calendar" aria-hidden="true"></i> ${guide.startDate }<br>
+                           <i class="fa fa-calendar" aria-hidden="true"></i> ${guide.startDate } ~<br>
                              <font style="font-size:12pt"></font><br>
                          </div>
                      </div>

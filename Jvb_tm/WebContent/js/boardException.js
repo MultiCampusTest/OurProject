@@ -10,14 +10,8 @@ function guideBoardCheck(){
 	 }
 	 
 	 if(document.frm.startDate.value.length==0){
-		 alert("Please enter your departure date");
+		 alert("Please enter your travel dates");
 		 document.frm.startDate.focus();
-		 return false;
-	 }
-	 
-	 if(document.frm.endDate.value.length==0){
-		 alert("Please enter your arrival date");
-		 document.frm.endDate.focus();
 		 return false;
 	 }
 	 
@@ -56,14 +50,8 @@ function travelBoardCheck(){
 	 }
 	 
 	 if(document.frm.startDate.value.length==0){
-		 alert("Please enter your departure date");
+		 alert("Please enter your travel dates");
 		 document.frm.startDate.focus();
-		 return false;
-	 }
-	 
-	 if(document.frm.endDate.value.length==0){
-		 alert("Please enter your arrival date");
-		 document.frm.endDate.focus();
 		 return false;
 	 }
 	 
@@ -81,10 +69,10 @@ function travelBoardCheck(){
 	 
 	 $('#content > textarea').each(function(){
 		 if($(this).val().length == 0){
-			 alert($(this).attr('id')+"의 내용을 입력해주세요.");
+			 alert("Please Enter The Contents of "+$(this).attr('id'));
 		 	result = false;
 		 }
-		 
+
 	 });
 	
 	 

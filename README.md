@@ -30,40 +30,40 @@ JavaBang
   가이드 신청자와 여행자 간의 매칭을 해주는 기능<br>
 
 #### 개발환경
-OS : Windows 7 Enterprise K<br>
-JDK : JDK 1.8.0_121<br>
-IDE : 이클립스 Jee Neon 2, 메이븐 프로젝트 
-WAS : 아파치 톰켓 8.5<br>
-DB : MySQL 5.7<br>
-ORM : 마이바티스 3.4.2<br>
+<pre>OS : Windows 7 Enterprise K
+JDK : JDK 1.8.0_121
+IDE : 이클립스 Jee Neon 2, 메이븐 프로젝트
+WAS : 아파치 톰켓 8.5
+DB : MySQL 5.7
+ORM : 마이바티스 3.4.2</pre>
 
 #### 라이브러리
-Spring 4.3.7.RELEASE<br>
-MyBatis 3.4.2<br>
-MyBatis Spring 1.3.1<br>
-MySQL Connector J 5.1.41<br>
-Aspectj Runtime 1.8.10<br>
-Aspectj Runtime<br>
-JSTL 1.2<br>
-JavaMail API Jar 1.4.7<br>
-Log4J 1.2.17<br>
-SLF4J 1.7.25<br>
-Commons File Upload 1.3.1<br>
-Jackson Databind 2.8.8<br>
-Jackson Mapper ASL 1.9.13<br>
-Tiles 2.2.2<br>
+<pre>Spring 4.3.7.RELEASE
+MyBatis 3.4.2
+MyBatis Spring 1.3.1
+MySQL Connector J 5.1.41
+Aspectj Runtime 1.8.10
+Aspectj Runtime
+JSTL 1.2
+JavaMail API Jar 1.4.7
+Log4J 1.2.17
+SLF4J 1.7.25
+Commons File Upload 1.3.1
+Jackson Databind 2.8.8
+Jackson Mapper ASL 1.9.13
+Tiles 2.2.2</pre>
 
 #### API
-Google Map JavaScript API<br>
-Google Static Maps API<br>
-Google Places API Web Service<br>
-Google Maps Geocoding API<br>
-Naver Login API<br>
-KakaoTalk Login API<br>
-Google Login Api<br>
+<pre>Google Map JavaScript API
+Google Static Maps API
+Google Places API Web Service
+Google Maps Geocoding API
+Naver Login API
+KakaoTalk Login API
+Google Login Api</pre>
 
 #### 기타
-github<br>
-bootstrap<br>
-jquery<br>
-font-awesome<br>
+<pre>github
+bootstrap
+jquery
+font-awesome</pre>

@@ -71,6 +71,7 @@
 		</c:choose>
 		<br>
 
+
 		<div class="jb-center">
 			<ul class="pagination">
 				<li>

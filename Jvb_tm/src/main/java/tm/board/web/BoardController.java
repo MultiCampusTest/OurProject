@@ -49,10 +49,10 @@ public class BoardController {
 	private IMessageService messageService;
 	
 	
-//	@RequestMapping(value = "/", method = RequestMethod.GET)
-//	public String maindo(){
-//		return "redirect:main.do";
-//	}
+	@RequestMapping(value = "/", method = RequestMethod.GET)
+	public String maindo(){
+		return "redirect:main.do";
+	}
 	//메인화면
 	@RequestMapping(value="main.do")
 	public String main() {

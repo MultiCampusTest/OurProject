@@ -1,6 +1,6 @@
 # Travel Maker
-### travelmakers.kr
-JavaBang
+[travel maker 바로가기](travelmakers.kr)  
+JavaBang  
 고석현 김리나 김이슬 정대원 이길선
 <hr>
 

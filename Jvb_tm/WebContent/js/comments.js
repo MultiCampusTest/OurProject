@@ -1,6 +1,28 @@
 /**
  * 
  */
+function inputCommentEven(){
+	if( $('#cm_content').val() == null || $('#cm_content').val() == "" ){
+		alert('Please enter the comments');
+		return false;
+	}
+	else{
+		return true;		
+	}
+}
+
+function updateCommentEven(){
+	if( $('#cm_update_content').val() == null || $('#cm_update_content').val() == "" ){
+		alert('Please enter the comments');
+		return false;
+	}
+	else{
+		return true;		
+	}
+}
+
+
+
 function commentsInput(cm_idx, cm_parent, cm_writer, cm_depth){
 	hideDiv("updateComments");
 	var form  = document.reForm;

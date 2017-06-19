@@ -88,11 +88,12 @@ $(document).ready(function(){
 		</c:forEach>
 	</div>
 	
-	
-	<div style="text-align: right">
-	         <input type="button" class="btn btn-primary" value="Write"
-	            onclick="location.href='guideWriteForm.do'">
-     	 </div>
+	<c:if test="${userid!=null }">
+		<div style="text-align: right">
+		         <input type="button" class="btn btn-primary" value="Write"
+		            onclick="location.href='guideWriteForm.do'">
+	     	 </div>
+	</c:if>
 	
 </div>
 				

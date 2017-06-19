@@ -221,7 +221,7 @@ $(document).ready(function(){
          </div>	
      
      <c:if test="${matchingComplete!=null }">
-     	안녕 매칭 됐어 댓글 못 써
+     	Matching is Complete! Comments can not be made.
      
      </c:if>	
 
@@ -229,7 +229,7 @@ $(document).ready(function(){
          <!-- Comment List -->
         <c:choose>
         	<c:when test="${comments ==null }">
-        		댓글이 없습니다.
+        		Comments do not exist.
         	</c:when>
         	<c:otherwise>
         		<c:forEach var="comments" items="${comments}" varStatus="status">

@@ -123,7 +123,7 @@
          <!-- Comment List -->
         <c:choose>
         	<c:when test="${comments ==null }">
-        		댓글이 없습니다.
+        		Comments do not exist.
         	</c:when>
         	<c:otherwise>
         		<c:forEach var="comments" items="${comments}" varStatus="status">

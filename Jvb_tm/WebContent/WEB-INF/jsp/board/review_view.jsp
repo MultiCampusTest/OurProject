@@ -26,7 +26,7 @@
 <body>
 	<div class="container">
 		<div>
-			<h3>후기게시판</h3>
+			<h3>Let's Share Your Review</h3>
 		</div>
 		<div class="row">
 <!-- 				<div class="col-md-5"> -->
@@ -44,7 +44,7 @@
 <!-- 					</div> -->
 <!-- 				</div> -->
 				<div class="col-md-7">
-					<h2>내용</h2>
+					<h2>Contents</h2>
 					<div class="form-group">
 						<label class="control-label ">TITLE:</label> <br>
 							${review.title }

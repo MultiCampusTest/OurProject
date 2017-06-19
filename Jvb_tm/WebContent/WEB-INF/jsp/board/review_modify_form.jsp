@@ -53,12 +53,12 @@ function sendFile(file, el) {
 //입력버튼 눌렀을때 입력처리 상황 확인
 	function submitEven(){
 		if( $('#title').val() == null || $('#title').val() == "" ){
-			alert('제목을 입력해주세요');
+			alert('Please enter the title');
 			return false;
 		}
 		
 		if( $('#review_category').val() == 'select'){
-			alert('카테고리를 선택해주세요');
+			alert('Please choose a category');
 			return false;
 		}
 		
@@ -68,7 +68,7 @@ function sendFile(file, el) {
 // 		}
 		
 		if( $('.summernote').val() == null || $('.summernote').val() == ''){
-			alert('내용을 입력해주세요');
+			alert('Please enter content');
 			return false;
 		}
 		

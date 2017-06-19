@@ -16,7 +16,12 @@
 <link rel="stylesheet" href="css/calender.css">
 <!-- /달력 -->
 <link rel="stylesheet" href="css/travelWriteForm.css">
+<!-- 게시판 예외처리 -->
+<script src="js/boardException.js"></script>
+
+
 <script type="text/javascript">
+
 
 
 	var polys =[];
@@ -425,7 +430,7 @@ cursor:pointer;
 		</div>
 		
 	  <div class="col-md-5">
-		<form action="travelModify.do" method="post">
+		<form action="travelModify.do" method="post" name="frm">
 		<div>
 		<font style="font-size:20px">TITLE</font>
          	<input type="text" class="form-control title" value="${travel.title }" name="title"/>
@@ -474,7 +479,7 @@ cursor:pointer;
 		<div class="form-group" style="float:left;">
 			<input type="hidden" value="${travel.readCount }" name="readCount">
 			<input type="hidden" value="${travel.boardIdx }" name="boardIdx">
-			<input type="submit" value="ok" class="btn btn-primary">
+			<input type="submit" value="ok" class="btn btn-primary" onclick="return travelBoardCheck()">
 			<input type="button" value="cancel" class="btn btn-primary"
 											onclick="location.href='travelView.do?boardIdx=${travel.boardIdx}'">
 		</div>	

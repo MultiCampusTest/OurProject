@@ -167,7 +167,7 @@ $(document).ready(function(){
 		<c:if test="${userid != null }">
          <div class="well">
              <h4>Leave a Comment:</h4>
-             <form role="form" action="commentsWrite.do" method="post">
+             <form role="form" action="commentsWrite.do" method="post" onsubmit="return inputCommentEven();">
                  <div class="form-group">
                 	 <input type="hidden" name="b_writer" value="${guide.userid }">
                 	 <input type="hidden" name="b_code" value="${guide.code }">
@@ -175,7 +175,7 @@ $(document).ready(function(){
                  	 <input type="hidden" name="b_idx" value="${guide.boardIdx }">
                  	 <input type="hidden" name="cm_writer" value="${userid}">
                  	 <input type="hidden" name="site" value="guide">
-                     <textarea class="form-control" name="cm_content" rows="3"></textarea>
+                     <textarea class="form-control" name="cm_content" rows="3" id="cm_content"></textarea>
                  </div>
 <!--                  <button type="submit" class="btn btn-primary">Submit</button> -->
                  <input type="submit" value="등록" class="btn btn-primary">
@@ -206,14 +206,14 @@ $(document).ready(function(){
          </div>
          
 <!--          comments update form -->
-         <div class="well" style="display: none;" id="updateComments">
+         <div class="well" style="display: none;" id="updateComments" onsubmit="return updateCommentEven();">
              <h4>Leave a Comment:</h4>
              <form role="form" action="commentsUpdate.do" method="post" name="updateForm">
                  <div class="form-group">
                  	 <input type="hidden" name="b_idx" value="${guide.boardIdx }">
                  	 <input type="hidden" name="cm_idx" >
                  	 <input type="hidden" name="site" value="guide">
-                     <textarea class="form-control" name="cm_content" rows="3"></textarea>
+                     <textarea class="form-control" name="cm_content" rows="3" id="cm_update_content"></textarea>
                  </div>
                  <input type="submit" value="수정" class="btn btn-primary">
                  <input type="button" value="취소" class="btn btn-primary" onclick="commentsUpdateCancel()">
@@ -221,7 +221,7 @@ $(document).ready(function(){
          </div>	
      
      <c:if test="${matchingComplete!=null }">
-     	안녕 매칭 됐어 댓글 못 써
+     	Matching is Complete! Comments can not be made.
      
      </c:if>	
 
@@ -229,7 +229,7 @@ $(document).ready(function(){
          <!-- Comment List -->
         <c:choose>
         	<c:when test="${comments ==null }">
-        		댓글이 없습니다.
+        		Comments do not exist.
         	</c:when>
         	<c:otherwise>
         		<c:forEach var="comments" items="${comments}" varStatus="status">

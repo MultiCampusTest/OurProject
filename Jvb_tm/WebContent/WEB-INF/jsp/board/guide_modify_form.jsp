@@ -14,6 +14,8 @@
 <script src="https://npmcdn.com/flatpickr/dist/l10n/ru.js"></script>
 <link rel="stylesheet" href="css/calender.css">
 <link rel="stylesheet" href="css/guideWriteForm.css">
+<!-- 게시판 예외처리 -->
+<script src="js/boardException.js"></script>
 <script type="text/javascript">
 
 	var polys =[];
@@ -210,7 +212,7 @@ $(document).ready(function(){
     </div>
     <div class="col-md-7">
       
-    <form class="form" action="guideModify.do" method="post">
+    <form class="form" action="guideModify.do" method="post" name="frm">
       <div>
 		<font style="font-size:20px">TITLE</font>
          	<input type="text" value="${guide.title}" class="form-control" name="title"/>
@@ -257,7 +259,7 @@ $(document).ready(function(){
 		<div class="form-group">
 			<input type="hidden" value="${guide.readCount }" name="readCount">
 			<input type="hidden" value="${guide.boardIdx }" name="boardIdx">
-			<input type="submit" value="ok" class="btn btn-primary">
+			<input type="submit" value="ok" class="btn btn-primary" onclick="return guideBoardCheck()">
 			<input type="button" value="cancel" class="btn btn-primary"
 											onclick="location.href='guideView.do?boardIdx=${guide.boardIdx}'">
 		</div>

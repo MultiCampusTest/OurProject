@@ -28,7 +28,7 @@
 		<input type='text' class='input_text' name="searchValue">
 		<button type='submit' class='sch_smit'><i class="fa fa-search fa-2x" aria-hidden="true"></i></button>
 	</form>
-		
+	${json  }
 		<table class="table table-hover t">
 			<colgroup>
 				<col width="60" />

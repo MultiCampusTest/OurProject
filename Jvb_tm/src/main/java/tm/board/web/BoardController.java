@@ -21,6 +21,10 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.Gson;
+
 import tm.board.service.BoardService;
 import tm.board.service.CommentsService;
 import tm.board.vo.BoardVo;
@@ -79,6 +83,15 @@ public class BoardController {
 		return mav;
 	}
 	
+	@RequestMapping(value="noticeListJson.do", produces="text/plain;charset=UTF-8")
+	public @ResponseBody String noticeListJSon(@RequestParam(defaultValue="1") int page, String searchValue){
+		String code = "n";
+		Gson gson = new Gson(); 
+		String str = gson.toJson(boardService.getNoticeBoardList(code, page, searchValue));
+//		System.out.println(str);
+		return str;
+	}
+	
 	@RequestMapping(value="noticeWriteForm.do")
 	public String noticeWriteForm(String userid) {
 		if(userid.equals("admin")){
@@ -108,6 +121,14 @@ public class BoardController {
 		return mav;
 	}
 	
+	@RequestMapping(value="noticeViewJson.do", produces="text/plain;charset=UTF-8")
+	public @ResponseBody String noticeViewJson(int boardIdx){
+		Gson gson = new Gson(); 
+		String str = gson.toJson(boardService.readNotice(boardIdx));
+//		System.out.println(str);
+		return str;
+	}
+	
 	@RequestMapping(value="noticeModifyForm.do")
 	public ModelAndView noticeModifyForm(int boardIdx) {
 		ModelAndView mav = new ModelAndView();
@@ -121,13 +142,6 @@ public class BoardController {
 		boardService.updateNotice(board, contents);
 		return "redirect:noticeView.do?boardIdx="+board.getBoardIdx();
 	}
-	
-	
-
-	
-	
-
-	
 
 	// travel_board
 	@RequestMapping(value="travelList.do")
@@ -142,6 +156,15 @@ public class BoardController {
 		mav.addAllObjects(boardService.getCommonBoardList(code, page, locCategory, subCategory));
 		mav.setViewName("board/travel_list");
 		return mav;
+	}
+	
+	@RequestMapping(value="travelListJson.do", produces="text/plain;charset=UTF-8")
+	public @ResponseBody String travelListJSon(@RequestParam(defaultValue="1") int page, String locCategory, String subCategory){
+		String code = "t";
+		Gson gson = new Gson(); 
+		String str = gson.toJson(boardService.getCommonBoardList(code, page, locCategory, subCategory));
+//		System.out.println(str);
+		return str;
 	}
 
 	@RequestMapping(value="travelWriteForm.do")
@@ -174,6 +197,17 @@ public class BoardController {
 		mav.setViewName("board/travel_view");
 		
 		return mav;
+	}
+	
+	@RequestMapping(value="travelViewJson.do", produces="text/plain;charset=UTF-8")
+	public @ResponseBody String travelViewJson(int boardIdx){
+		HashMap<String, Object> services = new HashMap<>();
+		services.put("board", boardService.readTravel(boardIdx));
+		services.put("comment", commentsService.selectComments(boardIdx));
+		Gson gson = new Gson(); 
+		String str = gson.toJson(services);
+//		System.out.println(str);
+		return str;
 	}
 
 	
@@ -216,6 +250,15 @@ public class BoardController {
 		mav.addAllObjects(boardService.getCommonBoardList(code, page, locCategory, subCategory));
 		mav.setViewName("board/guide_list");
 		return mav;
+	}
+	
+	@RequestMapping(value="guideListJson.do", produces="text/plain;charset=UTF-8")
+	public @ResponseBody String guideListJSon(@RequestParam(defaultValue="1") int page, String locCategory, String subCategory){
+		String code = "g";
+		Gson gson = new Gson(); 
+		String str = gson.toJson(boardService.getCommonBoardList(code, page, locCategory, subCategory));
+//		System.out.println(str);
+		return str;
 	}
 	
 	@RequestMapping("guideWriteForm.do")
@@ -291,6 +334,15 @@ public class BoardController {
 		mav.addAllObjects(boardService.getReviewBoardList(code, page, searchValue, subCategory));
 		mav.setViewName("board/review_list");
 		return mav;
+	}
+	
+	@RequestMapping(value="reviewListJson.do", produces="text/plain;charset=UTF-8")
+	public @ResponseBody String reviewListJSon(@RequestParam(defaultValue="1")int page,String searchValue, String subCategory){
+		String code = "r";
+		Gson gson = new Gson(); 
+		String str = gson.toJson(boardService.getReviewBoardList(code, page, searchValue, subCategory));
+//		System.out.println(str);
+		return str;
 	}
 	
 	@RequestMapping("reviewWriteForm.do")

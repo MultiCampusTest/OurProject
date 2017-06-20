@@ -166,6 +166,7 @@ public class BoardService {
 					String latLng = mapPositionArr.get(j).getLatLng();
 						   latLng = latLng.replace("(", "");
 						   latLng = latLng.replace(")", "");
+						   latLng = latLng.replace(" ", "");
 					strLatLng += latLng + "|";	   
 				    mapPositionArr.get(j).setLatLng(latLng);
 			}

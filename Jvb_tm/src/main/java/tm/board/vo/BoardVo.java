@@ -107,13 +107,4 @@ public class BoardVo {
 				+ subCategory + ", title=" + title + ", startDate=" + startDate + ", endDate=" + endDate + ", userid="
 				+ userid + ", writeDate=" + writeDate + ", readCount=" + readCount + "]";
 	}
-	
-	
-
-
-	
-	
-	
-	
-	
 }

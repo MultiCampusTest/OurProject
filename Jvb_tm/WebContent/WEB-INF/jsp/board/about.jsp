@@ -28,27 +28,27 @@
 		<div class="carousel-inner">
 			<!--슬라이드1-->
 			<div class="item active ">
-				<img src="img/main/img04.jpg" style="width: 100%" alt="First slide">
+				<img src="img/about/about01.png" style="width: 100%" alt="First slide">
 			</div>
 			<!--슬라이드1-->
 
 			<!--슬라이드2-->
 			<div class="item">
-				<img src="img/main/img01.jpg" style="width: 100%" data-src=""
+				<img src="img/about/about02.png" style="width: 100%" data-src=""
 					alt="Second slide">
 			</div>
 			<!--슬라이드2-->
 
 			<!--슬라이드3-->
 			<div class="item">
-				<img src="img/main/img02.jpg" style="width: 100%" data-src=""
+				<img src="img/about/about03.png" style="width: 100%" data-src=""
 					alt="Third slide">
 			</div>
 			<!--슬라이드3-->
 
 			<!--슬라이드4-->
 			<div class="item">
-				<img src="img/main/img03.jpg" style="width: 100%" data-src=""
+				<img src="img/about/about04.png" style="width: 100%" data-src=""
 					alt="fourth slide">
 			</div>
 			<!--슬라이드4-->

@@ -5,17 +5,26 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 
 	<alias name="dataSource" alias="dataSource" />
-	
+
 	<context:component-scan base-package="tm.**.service"></context:component-scan>
-	 
-	 
-	<bean class="org.springframework.jdbc.datasource.DriverManagerDataSource" id="dataSource">
+
+
+	<!-- <bean class="org.springframework.jdbc.datasource.DriverManagerDataSource" 
+		id="dataSource"> -->
+	<!-- <property name="driverClassName" value="com.mysql.jdbc.Driver"></property> -->
+	<!-- <property name="url" value="jdbc:mysql://localhost/travelmaker_db"></property> -->
+	<!-- <property name="username" value="root"></property> -->
+	<!-- <property name="password" value="mysql"></property> -->
+	<!-- </bean> -->
+
+	<bean class="org.springframework.jdbc.datasource.DriverManagerDataSource"
+		id="dataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
-		<property name="url" value="jdbc:mysql://localhost/travelmaker_db"></property>
-		<property name="username" value="root"></property>
-		<property name="password" value="mysql"></property>
+		<property name="url" value="jdbc:mysql://localhost:3306/javakim501"></property>
+		<property name="username" value="javakim501"></property>
+		<property name="password" value="wkqkwhgdk11!!"></property>
 	</bean>
-	
+
 	<bean class="org.mybatis.spring.SqlSessionFactoryBean" id="sqlSessionFactory">
 		<property name="mapperLocations" value="classpath*:tm/mapper/**/*.xml"></property>
 		<property name="typeAliases">
@@ -32,50 +41,50 @@
 		</property>
 		<property name="dataSource" ref="dataSource"></property>
 	</bean>
-	
 
-<!-- 	<bean class="org.mybatis.spring.SqlSessionTemplate" id="sqlSession"> -->
-<!-- 		<constructor-arg ref="sqlSessionFactory"></constructor-arg> -->
-<!-- 	</bean> -->
-	
+
+	<!-- <bean class="org.mybatis.spring.SqlSessionTemplate" id="sqlSession"> -->
+	<!-- <constructor-arg ref="sqlSessionFactory"></constructor-arg> -->
+	<!-- </bean> -->
+
 	<bean class="org.mybatis.spring.mapper.MapperFactoryBean" id="boardDao">
 		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
 		<property name="mapperInterface" value="tm.board.dao.IBoardDao"></property>
 	</bean>
-	
+
 	<bean class="org.mybatis.spring.mapper.MapperFactoryBean" id="commentsDao">
 		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
 		<property name="mapperInterface" value="tm.board.dao.ICommentsDao"></property>
 	</bean>
-	
+
 	<bean class="org.mybatis.spring.mapper.MapperFactoryBean" id="contentsDao">
 		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
 		<property name="mapperInterface" value="tm.board.dao.IContentsDao"></property>
 	</bean>
-	 
-	 <bean class="org.mybatis.spring.mapper.MapperFactoryBean" id="mapPositionDao">
+
+	<bean class="org.mybatis.spring.mapper.MapperFactoryBean" id="mapPositionDao">
 		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
 		<property name="mapperInterface" value="tm.board.dao.IMapPositionDao"></property>
 	</bean>
-	 
+
 	<bean class="org.mybatis.spring.mapper.MapperFactoryBean" id="imageDao">
 		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
 		<property name="mapperInterface" value="tm.image.dao.IImageDao"></property>
 	</bean>
-	 
+
 	<bean class="org.mybatis.spring.mapper.MapperFactoryBean" id="matchingDao">
 		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
 		<property name="mapperInterface" value="tm.matching.dao.IMatchingDao"></property>
 	</bean>
-	
+
 	<bean class="org.mybatis.spring.mapper.MapperFactoryBean" id="memberDao">
 		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
 		<property name="mapperInterface" value="tm.member.dao.IMemberDao"></property>
 	</bean>
-	
+
 	<bean class="org.mybatis.spring.mapper.MapperFactoryBean" id="messageDao">
 		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
 		<property name="mapperInterface" value="tm.message.dao.IMessageDao"></property>
-	</bean>	
-	
+	</bean>
+
 </beans>

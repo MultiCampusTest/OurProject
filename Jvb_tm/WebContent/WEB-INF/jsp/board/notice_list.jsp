@@ -62,7 +62,7 @@
 		</table>
 		<br>
 		<c:choose>
-			<c:when test="${userid !='javaKim501@gmail.com' || userid == null }">
+			<c:when test="${userid !='javakim051@gmail.com' || userid == null }">
 				<input type="button" class="btn btn-primary" value="Administrator's rights" onclick="location.href='main.do'">
 			</c:when>
 			<c:otherwise>

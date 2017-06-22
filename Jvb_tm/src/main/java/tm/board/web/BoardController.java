@@ -442,6 +442,15 @@ public class BoardController {
 	}
 
 
+	@RequestMapping(value="commentViewJson.do", produces="text/plain;charset=UTF-8")
+	public @ResponseBody String commentViewJson(int boardIdx){
+		Gson gson = new Gson(); 
+		String str = gson.toJson(commentsService.selectComments(boardIdx));
+//		System.out.println(str);
+		return str;
+		
+	}
+
 
 	@RequestMapping(value="commentsWrite.do")
 	public ModelAndView commentsWrite(HttpSession session, CommentsVo comments,

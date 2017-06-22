@@ -381,6 +381,15 @@ public class BoardController {
 		
 		return mav;
 	}
+	
+	@RequestMapping(value="commentViewJson.do", produces="text/plain;charset=UTF-8")
+	public @ResponseBody String commentViewJson(int boardIdx){
+		Gson gson = new Gson(); 
+		String str = gson.toJson(commentsService.selectComments(boardIdx));
+//		System.out.println(str);
+		return str;
+		
+	}
 
 	@RequestMapping("reviewModifyForm.do")
 	public ModelAndView reviewModifyForm(int boardIdx) {

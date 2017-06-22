@@ -105,7 +105,12 @@ public class BoardController {
 	}
 	
 	@RequestMapping(value="noticeView.do")
-	public ModelAndView noticeView(HttpServletRequest req, int boardIdx, int page, String searchValue) {
+	public ModelAndView noticeView(
+			HttpServletRequest req,
+			int boardIdx, 
+			@RequestParam(defaultValue="1") int page,
+			String searchValue) {
+		
 		String userid = (String)(req.getSession().getAttribute("userid"));
 		ModelAndView mav = new ModelAndView();
 		mav.addAllObjects(boardService.readNotice(boardIdx));

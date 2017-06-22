@@ -199,7 +199,7 @@ public class BoardController {
 		return mav;
 	}
 	
-	@RequestMapping(value="travelViewJson.do", produces="text/plain;charset=UTF-8")
+	@RequestMapping(value="otherBoardViewJson.do", produces="text/plain;charset=UTF-8")
 	public @ResponseBody String travelViewJson(int boardIdx){
 		HashMap<String, Object> services = new HashMap<>();
 		services.put("board", boardService.readTravel(boardIdx));

@@ -17,6 +17,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+
 import tm.image.service.ImageService;
 import tm.image.vo.ImageVo;
 import tm.matching.service.MatchingService;
@@ -220,4 +223,19 @@ public class MemberController {
 		response.put("result", delete);
 		return response;
 	}
+	
+	
+	
+	
+	
+	//안드로이드 회원 정보 요청
+	@RequestMapping(value="androidMyProfile.do", method=RequestMethod.GET)
+	public @ResponseBody HashMap<String, Object> test(String userid){
+		System.out.println("안드로이드 회원정보 요청");
+		return memberService.memberSelectOne(userid);
+	}
+	
+	
+	
+	
 }

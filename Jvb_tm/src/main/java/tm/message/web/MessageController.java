@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.google.gson.Gson;
+
 import tm.message.service.IMessageService;
 import tm.message.vo.MessageVo;
 
@@ -143,6 +145,23 @@ public class MessageController {
 //	      SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 //	      binder.registerCustomEditor(Date.class, new CustomDateEditor(sdf, true));
 //	   }
+	
+	
+	
+	
+	
+	
+	@RequestMapping(value="androidMessageList.do", method=RequestMethod.GET)
+	public @ResponseBody HashMap<String, Object> andMessageList(String userid){
+		System.out.println(userid);
+		System.out.println("안드로이드 메시지 요청");
+//		HashMap<String, Object> response=new HashMap<>();
+//		Gson gson = new Gson(); 
+//		String str = gson.toJson(messageService.messageList(userid));
+//		response.put("matchingListStr", str);
+		return messageService.messageList(userid);
+//		return str;
+	}
 	
 	
 }

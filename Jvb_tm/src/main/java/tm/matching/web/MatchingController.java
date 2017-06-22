@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.google.gson.Gson;
+
 import tm.matching.service.MatchingService;
 import tm.matching.vo.MatchingVo;
 import tm.message.vo.MessageVo;
@@ -51,6 +53,17 @@ public class MatchingController {
 		mav.addAllObjects(params);
 		mav.setViewName("member/my_page");
 		return mav;
+	}
+	
+	@RequestMapping(value="androidMatchingList.do", method=RequestMethod.GET)
+	public @ResponseBody HashMap<String, Object> and_matchingList(String userid){
+		System.out.println("안드로이드 매칭 리스트");
+//		HashMap<String, Object> response=new HashMap<>();
+//		Gson gson = new Gson(); 
+//		String str = gson.toJson(matchingService.matchingList(userid));
+//		response.put("matchingListStr", str);
+//		return response;
+		return matchingService.matchingList(userid);
 	}
 	
 	

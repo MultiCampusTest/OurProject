@@ -154,7 +154,8 @@ $(document).ready(function(){
 								onclick="delete_event()">
 					</c:when>
 				</c:choose>
-				<input type="button" value="list" class="btn btn-primary" onclick="location.href='guideList.do'">
+			<input type="button" value="list" class="btn btn-primary" 
+				onclick="location.href='guideList.do?page=${page}&locCategory=${locCategory}&subCategory=${subCategory}'">
 			</div>
 	    </div>
   </div>
@@ -271,7 +272,7 @@ $(document).ready(function(){
 	              					<a onclick="commentsUpdate(${comments.cm_idx})"> 수정</a>
 	              				</c:if>
 	              				<c:if test="${userid != null }">
-		              				<a onclick="commentsInput(${comments.cm_idx},${comments.cm_parent },'${comments.cm_writer }',${comments.cm_depth })"> 댓글</a>
+		             			<a onclick="commentsInput(${comments.cm_idx},${comments.cm_parent },'${comments.cm_writer }',${comments.cm_depth })"> 댓글</a>
 		              			</c:if>	
               				</c:if>
 <!--           		    <hr id="board_commentsLine"> -->

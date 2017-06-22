@@ -68,11 +68,11 @@ $(document).ready(function(){
 <p>A Total of ${count} Travel Plans Have Been Searched</p>
    	<div class="row">
          
-				
 	 	<c:forEach items="${list}" var="guide">
 			<div class="col-sm-2 col-lg-2 col-md-2">
                <div class="thumbnail">
-                <a href="guideView.do?boardIdx=${guide.boardIdx }">
+                <a href="guideView.do?boardIdx=${guide.boardIdx }
+                			&page=${current}&locCategory=${locCategory}&subCategory=${subCategory}">
                   <img src="http://maps.googleapis.com/maps/api/staticmap?size=300x400
                         	&key=AIzaSyBX21maM7ZEhRTCF0_hB8DSrYHsKOof2m8
 							&path=color:0x333333ff|weight:2|${guide.strLatLng}

@@ -182,11 +182,11 @@ public class BoardController {
 				
 	}
 	
-	@RequestMapping("travelView.do")
+	@RequestMapping(value="travelView.do")
 	public ModelAndView travelView(
 			 HttpServletRequest req, 
 			 int boardIdx, 
-			 int page,
+			 @RequestParam(defaultValue="1") int page,
 			 String locCategory,
 			 String subCategory ) {
 		
@@ -287,17 +287,24 @@ public class BoardController {
 	}
 
 	@RequestMapping("guideView.do")
-	public ModelAndView guideView(HttpServletRequest req, int boardIdx) {
+	public ModelAndView guideView(
+			HttpServletRequest req,
+			int boardIdx,
+			@RequestParam(defaultValue="1") int page,
+			String locCategory,
+			String subCategory ) {
 		
 		String userid = (String)(req.getSession().getAttribute("userid"));
 		ModelAndView mav = new ModelAndView();
 		mav.addAllObjects(boardService.readGuide(boardIdx));
 		mav.addObject("userid", userid);
+		mav.addObject("page", page);
+		mav.addObject("locCategory", locCategory);
+		mav.addObject("subCategory", subCategory);
 		mav.addObject("comments",commentsService.selectComments(boardIdx)); 
 		mav.addObject("matchingComplete", matchingService.matchingComplete(boardIdx));
 		mav.setViewName("board/guide_view");
 
-		
 		return mav;
 	}
 
@@ -368,19 +375,30 @@ public class BoardController {
 
 
 	@RequestMapping("reviewView.do")
-	public ModelAndView reviewView(HttpServletRequest req, int boardIdx) {
+	public ModelAndView reviewView(
+			HttpServletRequest req, 
+			int boardIdx,
+			@RequestParam(defaultValue="1") int page,
+			String searchValue,
+			String subCategory ) {
 		String userid = (String)(req.getSession().getAttribute("userid"));
 		ModelAndView mav = new ModelAndView();
 		List<ImageVo> list = imageService.selectView(boardIdx);
 
-		mav.addObject("userid", userid);
 		mav.addAllObjects(boardService.readReview(boardIdx));
+		mav.addObject("userid", userid);
+		mav.addObject("page", page);
+		mav.addObject("searchValue", searchValue);
+		mav.addObject("subCategory", subCategory);
 		mav.addObject("reviewImage", list);
 		mav.addObject("comments",commentsService.selectComments(boardIdx)); 
 		mav.setViewName("board/review_view");
 		
 		return mav;
 	}
+	
+	
+	
 
 	@RequestMapping("reviewModifyForm.do")
 	public ModelAndView reviewModifyForm(int boardIdx) {

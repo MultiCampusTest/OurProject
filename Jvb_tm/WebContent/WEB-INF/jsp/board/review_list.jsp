@@ -84,7 +84,8 @@ $(document).ready(function(){
 			<c:forEach var="review" items="${list}">
 		 		<div class="col-sm-2 col-lg-2 col-md-2">
 					<div class="thumbnail">
-							<a href="reviewView.do?boardIdx=${review.boardIdx }">
+							<a href="reviewView.do?boardIdx=${review.boardIdx }
+									&page=${current}&searchValue=${searchValue}&subCategory=${subCategory}">
 							<img src="imageShow.do?img_code=${review.boardIdx }" style="width: 200px; height: 100px">
 							</a>
 						<div class="caption" style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis">

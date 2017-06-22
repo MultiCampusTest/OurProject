@@ -152,7 +152,7 @@ public class MessageController {
 	
 	
 	@RequestMapping(value="androidMessageList.do", method=RequestMethod.GET)
-	public @ResponseBody HashMap<String, Object> andMessageList(String userid){
+	public @ResponseBody HashMap<String, Object> androidMessageList(String userid){
 		System.out.println(userid);
 		System.out.println("안드로이드 메시지 요청");
 //		HashMap<String, Object> response=new HashMap<>();
@@ -161,6 +161,15 @@ public class MessageController {
 //		response.put("matchingListStr", str);
 		return messageService.messageList(userid);
 //		return str;
+	}
+	
+	@RequestMapping(value="androidMessageOneList.do", method=RequestMethod.GET)
+	public @ResponseBody HashMap<String, Object> androidMessageOneList(String msg_send_userid, String msg_receive_userid){
+		System.out.println("안드로이드 1:1 메시지 요청");
+		HashMap<String, Object> response=new HashMap<>();
+		List<MessageVo> messageOneList=messageService.messageOneList(msg_receive_userid, msg_send_userid);
+		response.put("messageOneList", messageOneList);
+		return response;
 	}
 	
 	

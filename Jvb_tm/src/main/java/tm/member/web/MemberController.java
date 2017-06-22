@@ -232,7 +232,11 @@ public class MemberController {
 	@RequestMapping(value="androidMyProfile.do", method=RequestMethod.GET)
 	public @ResponseBody HashMap<String, Object> test(String userid){
 		System.out.println("안드로이드 회원정보 요청");
-		return memberService.memberSelectOne(userid);
+		HashMap<String, Object> response=new HashMap<>();
+		response.put("memberList", memberService.memberSelectOne(userid));
+		response.put("profile_image", imageService.selectProfileOne(userid));
+//		return memberService.memberSelectOne(userid);
+		return response;
 	}
 	
 	

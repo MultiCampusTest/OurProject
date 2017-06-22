@@ -117,7 +117,7 @@ public class BoardController {
 		mav.addObject("userid", userid);
 		mav.addObject("page", page);
 		mav.addObject("searchValue", searchValue);
-//		mav.addObject("comments",commentsService.selectComments(boardIdx)); 
+		mav.addObject("comments",commentsService.selectComments(boardIdx)); 
 		mav.setViewName("board/notice_view");
 		
 		return mav;
@@ -453,10 +453,6 @@ public class BoardController {
 		mav.setViewName("redirect:reviewList.do");
 		return mav;
 	}
-
-
-
-
 
 	@RequestMapping(value="commentsWrite.do")
 	public ModelAndView commentsWrite(HttpSession session, CommentsVo comments,

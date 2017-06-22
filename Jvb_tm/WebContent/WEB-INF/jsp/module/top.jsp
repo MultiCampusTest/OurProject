@@ -193,8 +193,8 @@
 
 </head>
 <body>
-
-	<section> <nav id="mainNav"
+	<section style="margin-bottom:30px;">
+	<nav id="mainNav"
 		class="navbar navbar-default navbar-collapse navbar-fixed-top">
 	<div class="container-fluid">
 		<!-- Brand and toggle get grouped for better mobile display -->
@@ -350,5 +350,6 @@
 	</div>
 
 	<!-- /.container-fluid --> </nav> </section>
+
 </body>
 </html>

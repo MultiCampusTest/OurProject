@@ -42,7 +42,7 @@ $(document).ready(function(){
 <body>
 
 
-	<div class="container"> 
+	<div class="container-fluid"> 
 		<div class="col-lg-12 col-sm-12">
 			<!--          <div class="card hovercard"> -->
 			<!--             <div class="card-background"> -->

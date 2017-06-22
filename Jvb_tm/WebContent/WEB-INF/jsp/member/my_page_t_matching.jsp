@@ -81,8 +81,7 @@
 							<div class="matching_box col-lg-9 col-md-9" id="matching_box_${i.index }"
 								style="text-align: center">
 								<div>
-									<label class="container-fluid control-label"> 매칭 요청을
-										수락하시겠습니까?</label>
+									<label class="container-fluid control-label"> Accepte this request?</label>
 								</div>
 								<br>
 								<div class="matching_response"">

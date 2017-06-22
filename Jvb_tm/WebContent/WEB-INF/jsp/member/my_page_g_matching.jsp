@@ -82,8 +82,7 @@
 							<div class="guide_matching_box col-lg-9 col-md-9"
 								id="guide_matching_box_${i.index }" style="text-align: center">
 								<div>
-									<label class="container-fluid control-label"> 매칭 신청을
-										취소하시겠습니까?</label>
+									<label class="container-fluid control-label">Are you sure you want to cancel the request?</label>
 								</div>
 								<br>
 								<div class="guide_matching_response"">

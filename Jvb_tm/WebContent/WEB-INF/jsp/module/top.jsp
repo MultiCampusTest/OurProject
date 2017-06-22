@@ -193,7 +193,7 @@
 
 </head>
 <body>
-<input type="text" value="hello" id="hello">
+
 	<section> <nav id="mainNav"
 		class="navbar navbar-default navbar-collapse navbar-fixed-top">
 	<div class="container-fluid">

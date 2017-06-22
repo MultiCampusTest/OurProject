@@ -103,7 +103,7 @@
 										<input type="hidden" value="">
 										<textarea class="sending_msg_form form-control counted"
 											name="msg_contents" id="send_msg_contents${i.index }"
-											placeholder="Type in your message 메시지 입력" rows="5"
+											placeholder="Type in your message" rows="5"
 											style="margin-bottom: 10px; resize: none"></textarea>
 										<span class="remain_sending_msg pull-right"
 											id="remain_sending_msg${i.index }">1000 characters

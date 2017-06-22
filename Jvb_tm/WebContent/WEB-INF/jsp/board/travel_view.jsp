@@ -218,7 +218,8 @@ background-color:#DC524D;
 								onclick="delete_event()">
 					</c:when>
 				</c:choose>
-				<input type="button" value="list" class="btn btn-primary" onclick="location.href='travelList.do'">
+		<input type="button" value="list" class="btn btn-primary" 
+			onclick="location.href='travelList.do?page=${page}&locCategory=${locCategory}&subCategory=${subCategory }'">
 			</div>
 		</div>
 	</div>

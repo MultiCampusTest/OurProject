@@ -379,7 +379,7 @@ cursor:pointer;
 		
 		<div>
         <font style="font-size:20px">DATE</font><br>
-          <input class="selector" id="datepcik" type="text">
+          <input class="selector" id="datepick" type="text">
           <input id="startDate" name="startDate" type="hidden" style="text-align: center;"> 
           <input id="endDate" name="endDate" type="hidden" style="text-align: center;">
         </div>

@@ -121,7 +121,7 @@ $(document).ready(function(){
 				 	</c:otherwise>
 				 </c:choose>
 				 </li>
-				 				
+			 	 				
 				<c:forEach begin="${start }" end="${end }" var="i">
 						<c:choose>
 							<c:when test="${i == current }">

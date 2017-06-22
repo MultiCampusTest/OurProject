@@ -65,7 +65,7 @@ $(document).ready(function(){
 
 <div class="container">
 <p>A Total of ${count}  Travel Plans Have Been Searched</p>
-   	
+   	 
    	<div class="row">	
 	 	<c:forEach items="${list}" var="travel">
 			<div class="col-sm-2 col-lg-2 col-md-2">

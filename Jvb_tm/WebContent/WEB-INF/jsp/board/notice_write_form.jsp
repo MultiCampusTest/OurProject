@@ -14,7 +14,7 @@
  <div class="container">
 
  <div class="row">
-
+ 
      <!-- Notice Input Column -->
      <div class="col-lg-12">
 		 <form name="frm" class="form" action="noticeWrite.do" method="post">

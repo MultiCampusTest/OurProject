@@ -221,7 +221,7 @@ background-color:#DC524D;
 		<input type="button" value="list" class="btn btn-primary" 
 			onclick="location.href='travelList.do?page=${page}&locCategory=${locCategory}&subCategory=${subCategory }'">
 			</div>
-		</div>
+		</div> 
 	</div>
 		<!-- Comments Form -->
 		<c:if test="${userid != null }">

@@ -45,7 +45,7 @@
 					<th>DATE</th>
 					<th>VIEWS</th>
 				</tr>
-			</thead>
+			</thead> 
 			<tbody>
 				<c:forEach items="${noticeList}" var="notice">
 					<tr>

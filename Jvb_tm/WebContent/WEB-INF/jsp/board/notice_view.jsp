@@ -60,7 +60,7 @@
 		 </c:if>
 			<input type="button" class="btn btn-primary" value="LIST" onclick="location.href='noticeList.do?page=${page}&searchValue=${searchValue }'">
 		<br>
-		<br>
+		<br> 
 
 <!-- Comments Form -->
 		<c:if test="${userid != null }">

@@ -26,7 +26,7 @@ $(document).ready(function(){
           onImageUpload: function(files, editor, welEditable) {
             for (var i = files.length - 1; i >= 0; i--) {
               sendFile(files[i], this);
-            }
+            } 
          }
         }
       });

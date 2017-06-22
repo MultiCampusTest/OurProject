@@ -408,7 +408,7 @@ cursor:pointer;
 	     <br><br><br>
 	  
 	    <hr> 
-	    
+	     
 		<div id="content">
 		<font style="font-size:20px">CONTENT</font>	 
 			<textarea placeholder="Write Your Travel Plan!" class="form-control-text" name="contents"

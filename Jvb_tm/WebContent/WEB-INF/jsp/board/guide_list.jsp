@@ -78,7 +78,7 @@ $(document).ready(function(){
 							&path=color:0x333333ff|weight:2|${guide.strLatLng}
 							&markers=color:red|label:S|${guide.startLatLng}
 							&markers=color:red|label:E|${guide.endLatLng}&sensor=false">
-                </a>
+               </a>
                          <div class="caption">                
                            <i class="fa fa-calendar" aria-hidden="true"></i> ${guide.startDate } ~<br>
                              <font style="font-size:12pt"></font><br>

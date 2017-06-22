@@ -74,7 +74,7 @@
 					</div>
 				</div>
 		</div>
-
+ 
 		<!-- Comments Form -->
 		<c:if test="${userid != null }">
          <div class="well">

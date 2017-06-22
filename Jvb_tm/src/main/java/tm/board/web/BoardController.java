@@ -182,11 +182,11 @@ public class BoardController {
 				
 	}
 	
-	@RequestMapping(value="travelView.do")
+	@RequestMapping("travelView.do")
 	public ModelAndView travelView(
 			 HttpServletRequest req, 
 			 int boardIdx, 
-			 @RequestParam(defaultValue="1") int page,
+			 int page,
 			 String locCategory,
 			 String subCategory ) {
 		
@@ -205,7 +205,7 @@ public class BoardController {
 		return mav;
 	}
 	
-	@RequestMapping(value="travelViewJson.do", produces="text/plain;charset=UTF-8")
+	@RequestMapping(value="otherBoardViewJson.do", produces="text/plain;charset=UTF-8")
 	public @ResponseBody String travelViewJson(int boardIdx){
 		HashMap<String, Object> services = new HashMap<>();
 		services.put("board", boardService.readTravel(boardIdx));
@@ -287,24 +287,17 @@ public class BoardController {
 	}
 
 	@RequestMapping("guideView.do")
-	public ModelAndView guideView(
-			HttpServletRequest req,
-			int boardIdx,
-			@RequestParam(defaultValue="1") int page,
-			String locCategory,
-			String subCategory ) {
+	public ModelAndView guideView(HttpServletRequest req, int boardIdx) {
 		
 		String userid = (String)(req.getSession().getAttribute("userid"));
 		ModelAndView mav = new ModelAndView();
 		mav.addAllObjects(boardService.readGuide(boardIdx));
 		mav.addObject("userid", userid);
-		mav.addObject("page", page);
-		mav.addObject("locCategory", locCategory);
-		mav.addObject("subCategory", subCategory);
 		mav.addObject("comments",commentsService.selectComments(boardIdx)); 
 		mav.addObject("matchingComplete", matchingService.matchingComplete(boardIdx));
 		mav.setViewName("board/guide_view");
 
+		
 		return mav;
 	}
 
@@ -375,21 +368,13 @@ public class BoardController {
 
 
 	@RequestMapping("reviewView.do")
-	public ModelAndView reviewView(
-			HttpServletRequest req, 
-			int boardIdx,
-			@RequestParam(defaultValue="1") int page,
-			String searchValue,
-			String subCategory ) {
+	public ModelAndView reviewView(HttpServletRequest req, int boardIdx) {
 		String userid = (String)(req.getSession().getAttribute("userid"));
 		ModelAndView mav = new ModelAndView();
 		List<ImageVo> list = imageService.selectView(boardIdx);
 
-		mav.addAllObjects(boardService.readReview(boardIdx));
 		mav.addObject("userid", userid);
-		mav.addObject("page", page);
-		mav.addObject("searchValue", searchValue);
-		mav.addObject("subCategory", subCategory);
+		mav.addAllObjects(boardService.readReview(boardIdx));
 		mav.addObject("reviewImage", list);
 		mav.addObject("comments",commentsService.selectComments(boardIdx)); 
 		mav.setViewName("board/review_view");
@@ -397,8 +382,14 @@ public class BoardController {
 		return mav;
 	}
 	
-	
-	
+	@RequestMapping(value="commentViewJson.do", produces="text/plain;charset=UTF-8")
+	public @ResponseBody String commentViewJson(int boardIdx){
+		Gson gson = new Gson(); 
+		String str = gson.toJson(commentsService.selectComments(boardIdx));
+//		System.out.println(str);
+		return str;
+		
+	}
 
 	@RequestMapping("reviewModifyForm.do")
 	public ModelAndView reviewModifyForm(int boardIdx) {
@@ -442,15 +433,6 @@ public class BoardController {
 	}
 
 
-	@RequestMapping(value="commentViewJson.do", produces="text/plain;charset=UTF-8")
-	public @ResponseBody String commentViewJson(int boardIdx){
-		Gson gson = new Gson(); 
-		String str = gson.toJson(commentsService.selectComments(boardIdx));
-//		System.out.println(str);
-		return str;
-		
-	}
-
 
 	@RequestMapping(value="commentsWrite.do")
 	public ModelAndView commentsWrite(HttpSession session, CommentsVo comments,
@@ -491,7 +473,7 @@ public class BoardController {
 	}
 	
 	 
-	
+	 
 	
 	@RequestMapping("commentsUpdate.do")
 	public ModelAndView commentsUpdate(CommentsVo comments, String site){

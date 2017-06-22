@@ -3,61 +3,62 @@
 
 <log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
 
-	<!-- Appenders -->
-	<appender name="console" class="org.apache.log4j.ConsoleAppender">
-		<param name="Target" value="System.out" />
-		<layout class="org.apache.log4j.PatternLayout">
-			<param name="ConversionPattern" value="[%d{yyyy-MM-dd HH:mm}] %5p [%C{1}(%M:%L)] :%m%n%n" />
-		</layout>
-	</appender>
+   <!-- Appenders -->
+   <appender name="console" class="org.apache.log4j.ConsoleAppender">
+      <param name="Target" value="System.out" />
+      <layout class="org.apache.log4j.PatternLayout">
+         <param name="ConversionPattern" value="[%d{yyyy-MM-dd HH:mm}] %5p [%C{1}(%M:%L)] :%m%n%n" />
+      </layout>
+   </appender>
 
-	<appender name="dailyout" class="org.apache.log4j.DailyRollingFileAppender">
-		<!-- 이것은 날짜별로 로그를 남김. 파일명.확장자.DatePattern으로 정의함. -->
-		<param name="file" value="D:/log4j/log4j_xml_daily.log" />
-		<param name="Append" value="true" />
-		<param name="DatePattern" value="'.'yyyy-MM-dd" />
-		<layout class="org.apache.log4j.PatternLayout">
-			<param name="ConversionPattern"
-				value="%t> [%d{yyyy-MM-dd HH:mm}] %5p [%C{1}(%M:%L)] :%m%n%n" />
-		</layout>
-		
-	</appender>
+   <appender name="dailyout" class="org.apache.log4j.DailyRollingFileAppender">
+      <!-- 이것은 날짜별로 로그를 남김. 파일명.확장자.DatePattern으로 정의함. -->
+      <param name="file" value="/home/hosting_users/javakim501/travel/logs/log4j_xml_daily.log" />
+      <param name="Append" value="true" />
+      <param name="DatePattern" value="'.'yyyy-MM-dd" />
+      <layout class="org.apache.log4j.PatternLayout">
+         <param name="ConversionPattern"
+            value="%t> [%d{yyyy-MM-dd HH:mm}] %5p [%C{1}(%M:%L)] :%m%n%n" />
+      </layout>
+      
+   </appender>
 
-	<!-- 특정 크기마다 백업하며 로그 -->
-	<appender name="rolling" class="org.apache.log4j.RollingFileAppender">
-		<param name="file" value="D:/log4j_xml_rolling.log" />
-		<param name="Append" value="true" />
-		<param name="MaxFileSize" value="5KB" />
-		<param name="MaxBackupIndex" value="3" />
-		<layout class="org.apache.log4j.PatternLayout">
-			<param name="ConversionPattern"
-				value="%t> [%d{yyyy-MM-dd HH:mm:ss}] [%c{1}] [%L line] [%p] %m %n" />
-		</layout>
-	</appender>
+   <!-- 특정 크기마다 백업하며 로그 -->
+   <appender name="rolling" class="org.apache.log4j.RollingFileAppender">
+      <param name="file" value="/home/hosting_users/javakim501/travel/logs/log4j_xml_rolling.log" />
+      <param name="Append" value="true" />
+      <param name="MaxFileSize" value="5KB" />
+      <param name="MaxBackupIndex" value="3" />
+      <layout class="org.apache.log4j.PatternLayout">
+         <param name="ConversionPattern"
+            value="%t> [%d{yyyy-MM-dd HH:mm:ss}] [%c{1}] [%L line] [%p] %m %n" />
+      </layout>
+   </appender>
 
-	<!-- xml 형식으로 로그를 남김 -->
-	<appender name="xmlout" class="org.apache.log4j.FileAppender">
-		<param name="file" value="D:/log4j_xml_xmlout.xml" />
-		<param name="Append" value="true" />
-		<layout class="org.apache.log4j.xml.XMLLayout" />
-	</appender>
+   <!-- xml 형식으로 로그를 남김 -->
+   <appender name="xmlout" class="org.apache.log4j.FileAppender">
+      <param name="file" value="/home/hosting_users/javakim501/travel/logs/log4j_xml_xmlout.xml" />
+      <param name="Append" value="true" />
+      <layout class="org.apache.log4j.xml.XMLLayout" />
+   </appender>
 
-	<!-- 3rdparty Loggers -->
-	<logger name="org.springframework" additivity="false">
-		<level value="INFO" />
-		<appender-ref ref="console" />
-	</logger>
+   <!-- 3rdparty Loggers -->
+   <logger name="org.springframework" additivity="false">
+      <level value="INFO" />
+      <appender-ref ref="console" />
+   </logger>
 
 
-	<!-- Root Logger -->
-	<root>
-		<priority value="INFO" />
-		<appender-ref ref="console" />
-		<appender-ref ref="dailyout" />
-		<appender-ref ref="rolling" />
-		<appender-ref ref="xmlout" />
-	</root>
+   <!-- Root Logger -->
+   <root>
+      <priority value="INFO" />
+      <appender-ref ref="console" />
+      <appender-ref ref="dailyout" />
+      <appender-ref ref="rolling" />
+      <appender-ref ref="xmlout" />
+   </root>
 
 </log4j:configuration>
+
 
 

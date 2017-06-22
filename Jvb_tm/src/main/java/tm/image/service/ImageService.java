@@ -27,7 +27,7 @@ public class ImageService implements IImageService {
       // int result = imageDao.insertImage(imageVo);
 
       // if (result > 0) {
-      String path = "/Users/KYS/Upload/";
+      String path = "/home/hosting_users/javakim501/travel/uploads/";
       File folder = new File(path);
       if (!folder.exists()) {
          folder.mkdirs();
@@ -81,7 +81,7 @@ public class ImageService implements IImageService {
 
    @Override
    public void updateImg(ImageVo imageVo, String img_code, MultipartHttpServletRequest req) {
-      String path = "/Users/KYS/Upload/";
+      String path = "/home/hosting_users/javakim501/travel/uploads/";
       File folder = new File(path);
       if (!folder.exists()) {
          folder.mkdirs();
@@ -113,8 +113,8 @@ public class ImageService implements IImageService {
          }
          
          if(!fileName.equals("")){
-        	 imageDao.updateProfileImage(imageVo);
-        	 
+            imageDao.updateProfileImage(imageVo);
+            
          }
       }
 
@@ -147,14 +147,14 @@ public class ImageService implements IImageService {
       return image;
    }
 
-	@Override
-	public void insertReviewImg(BoardVo board, MultipartFile file) {
-		// TODO Auto-generated method stub
-		String path = "/Users/KYS/Upload/";
-		
+   @Override
+   public void insertReviewImg(BoardVo board, MultipartFile file) {
+      // TODO Auto-generated method stub
+      String path = "/home/hosting_users/javakim501/travel/uploads/";
+      
         File folder = new File(path);
         if (!folder.exists()) {
-        	folder.mkdirs();
+           folder.mkdirs();
         }
         
         UUID uuid = UUID.randomUUID();
@@ -178,18 +178,18 @@ public class ImageService implements IImageService {
            e.printStackTrace();
         }
         if(!fileName.equals("")){
-        	imageDao.insertImage(image);            	
+           imageDao.insertImage(image);               
         }
-	}
+   }
 
-	@Override
-	public void updateReviewImg(BoardVo board, MultipartFile file, String img_idx) {
-		// TODO Auto-generated method stub
-		String path = "/Users/KYS/Upload/";
-		
+   @Override
+   public void updateReviewImg(BoardVo board, MultipartFile file, String img_idx) {
+      // TODO Auto-generated method stub
+      String path = "/home/hosting_users/javakim501/travel/uploads/";
+      
         File folder = new File(path);
         if (!folder.exists()) {
-        	folder.mkdirs();
+           folder.mkdirs();
         }
         
         UUID uuid = UUID.randomUUID();
@@ -215,42 +215,42 @@ public class ImageService implements IImageService {
         }
         
         if(!fileName.equals("")){
-        	imageDao.updateReviewImage(image);
+           imageDao.updateReviewImage(image);
         }
-	}
+   }
 
-	@Override
-	public void insertUrl(HashMap<String, Object> params) {
-		imageDao.insertUrl(params);
-	} 
-	
-//	@Override
-//	public void deleteReviewImg(String img_code, MultipartHttpServletRequest req, String[] img_idx) {
-//		// TODO Auto-generated method stub
-//		List<MultipartFile> files = req.getFiles("file");
+   @Override
+   public void insertUrl(HashMap<String, Object> params) {
+      imageDao.insertUrl(params);
+   } 
+   
+//   @Override
+//   public void deleteReviewImg(String img_code, MultipartHttpServletRequest req, String[] img_idx) {
+//      // TODO Auto-generated method stub
+//      List<MultipartFile> files = req.getFiles("file");
 //
-//		for(int i=0; i<files.size(); i++){
-//			String filename = files.get(i).getOriginalFilename();
-//			if(!filename.equals("")){
-//				imageDao.deleteByImageIdx(img_idx[i]);			
-//			}
-//		}
-//	}
+//      for(int i=0; i<files.size(); i++){
+//         String filename = files.get(i).getOriginalFilename();
+//         if(!filename.equals("")){
+//            imageDao.deleteByImageIdx(img_idx[i]);         
+//         }
+//      }
+//   }
 
-	@Override
-	public void deleteReview(String img_code) {
-		// TODO Auto-generated method stub
-		imageDao.deleteByImageCode(img_code);
-	}
+   @Override
+   public void deleteReview(String img_code) {
+      // TODO Auto-generated method stub
+      imageDao.deleteByImageCode(img_code);
+   }
 
-	@Override
-	public ImageVo insertImage(MultipartFile file) {
-		// TODO Auto-generated method stub
-		String path = "/Users/KYS/Upload/";
-		
+   @Override
+   public ImageVo insertImage(MultipartFile file) {
+      // TODO Auto-generated method stub
+      String path = "/home/hosting_users/javakim501/travel/uploads/";
+      
         File folder = new File(path);
         if (!folder.exists()) {
-        	folder.mkdirs();
+           folder.mkdirs();
         }
         
         UUID uuid = UUID.randomUUID();
@@ -275,7 +275,7 @@ public class ImageService implements IImageService {
         imageDao.insertImage(image); 
         System.out.println(image.getImg_idx());
         return image;
-	} 
+   } 
    
    
    

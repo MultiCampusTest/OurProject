@@ -57,6 +57,7 @@ public class BoardController {
 	public String maindo(){
 		return "redirect:main.do";
 	}
+	
 	//메인화면
 	@RequestMapping(value="main.do")
 	public String main() {
@@ -78,7 +79,7 @@ public class BoardController {
 		String userid = (String)(req.getSession().getAttribute("userid"));
 		ModelAndView mav = new ModelAndView();
 		mav.addAllObjects(boardService.getNoticeBoardList(code, page, searchValue));
-		mav.addObject("userid", userid);
+		mav.addObject("userid", "javaKim501@gmail.com");
 		mav.setViewName("board/notice_list");
 		return mav;
 	}
@@ -93,12 +94,8 @@ public class BoardController {
 	}
 	
 	@RequestMapping(value="noticeWriteForm.do")
-	public String noticeWriteForm(String userid) {
-		if(userid.equals("admin")){
+	public String noticeWriteForm() {
 			return "board/notice_write_form"; 
-		} else {
-			return "board/notice_list";
-		}
 	}
 	
 	@RequestMapping(value="noticeWrite.do", method=RequestMethod.POST)
@@ -186,15 +183,24 @@ public class BoardController {
 	}
 	
 	@RequestMapping("travelView.do")
-	public ModelAndView travelView(HttpServletRequest req, int boardIdx) {
+	public ModelAndView travelView(
+			 HttpServletRequest req, 
+			 int boardIdx, 
+			 int page,
+			 String locCategory,
+			 String subCategory ) {
 		
 		String userid = (String)(req.getSession().getAttribute("userid"));
 		ModelAndView mav = new ModelAndView();
 		mav.addAllObjects(boardService.readTravel(boardIdx));
 		mav.addObject("userid", userid);
+		mav.addObject("page", page);
+		mav.addObject("locCategory", locCategory);
+		mav.addObject("subCategory", subCategory);
 		mav.addObject("comments",commentsService.selectComments(boardIdx)); 
 		mav.addObject("matchingComplete", matchingService.matchingComplete(boardIdx));
 		mav.setViewName("board/travel_view");
+		
 		
 		return mav;
 	}

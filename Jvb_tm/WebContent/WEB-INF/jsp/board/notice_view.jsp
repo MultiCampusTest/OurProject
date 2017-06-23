@@ -77,7 +77,7 @@
                      <textarea class="form-control" name="cm_content" rows="3"></textarea>
                  </div>
 <!--                  <button type="submit" class="btn btn-primary">Submit</button> -->
-                 <input type="submit" value="등록" class="btn btn-primary">
+                 <input type="submit" value="submit" class="btn btn-primary">
              </form>
          </div>
          
@@ -99,8 +99,8 @@
                  	 <input type="hidden" name="site" value="notice">
                      <textarea class="form-control" name="cm_content" rows="3"></textarea>
                  </div>
-                 <input type="submit" value="등록" class="btn btn-primary">
-                 <input type="button" value="취소" class="btn btn-primary" onclick="commentsCancel()">
+                 <input type="submit" value="submit" class="btn btn-primary">
+                 <input type="button" value="cancel" class="btn btn-primary" onclick="commentsCancel()">
              </form>
          </div>
          
@@ -114,8 +114,8 @@
                  	 <input type="hidden" name="site" value="notice">
                      <textarea class="form-control" name="cm_content" rows="3"></textarea>
                  </div>
-                 <input type="submit" value="수정" class="btn btn-primary">
-                 <input type="button" value="취소" class="btn btn-primary" onclick="commentsUpdateCancel()">
+                 <input type="submit" value="update" class="btn btn-primary">
+                 <input type="button" value="cancel" class="btn btn-primary" onclick="commentsUpdateCancel()">
              </form>
          </div>		
 
@@ -144,11 +144,11 @@
               			</div>
               				<c:if test="${comments.cm_delete != 'Y' }">
 	              				<c:if test="${comments.cm_writer == userid }">
-	              					<a onclick="location.href='commentsDelete.do?cm_idx=${comments.cm_idx}&b_idx=${comments.b_idx }&site=notice'"> 삭제</a>
-	              					<a onclick="commentsUpdate(${comments.cm_idx})"> 수정</a>
+	              					<a onclick="location.href='commentsDelete.do?cm_idx=${comments.cm_idx}&b_idx=${comments.b_idx }&site=notice'"> delete</a>
+	              					<a onclick="commentsUpdate(${comments.cm_idx})"> update</a>
 	              				</c:if>
 	              				<c:if test="${userid != null }">
-		              				<a onclick="commentsInput(${comments.cm_idx},${comments.cm_parent },'${comments.cm_writer }',${comments.cm_depth })"> 댓글</a>
+		              				<a onclick="commentsInput(${comments.cm_idx},${comments.cm_parent },'${comments.cm_writer }',${comments.cm_depth })"> re-comment</a>
 		              			</c:if>	
               				</c:if>
           		    </div>

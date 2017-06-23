@@ -8,6 +8,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
@@ -24,6 +25,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
+import com.mysql.jdbc.log.Log;
 
 import tm.board.service.BoardService;
 import tm.board.service.CommentsService;
@@ -39,6 +41,7 @@ import tm.message.vo.MessageVo;
 
 @Controller
 public class BoardController {
+	private Logger log = Logger.getLogger(this.getClass());
 	  
 	@Autowired
 	private BoardService boardService;
@@ -95,7 +98,11 @@ public class BoardController {
 	
 	@RequestMapping(value="noticeWriteForm.do")
 	public String noticeWriteForm() {
-			return "board/notice_write_form"; 
+//		if( !userid.equals("javaKim501@gmail.com") || userid == null){
+//			return "redirect:noticeList.do";
+//		} else{
+			return "board/notice_write_form"; 			
+//		}
 	}
 	
 	@RequestMapping(value="noticeWrite.do", method=RequestMethod.POST)

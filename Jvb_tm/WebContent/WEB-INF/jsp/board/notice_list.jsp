@@ -61,14 +61,18 @@
 			</tbody>
 		</table>
 		<br>
-		<c:choose>
-			<c:when test="${userid !='javakim051@gmail.com' || userid == null }">
-				<input type="button" class="btn btn-primary" value="Administrator's rights" onclick="location.href='main.do'">
-			</c:when>
-			<c:otherwise>
-				<input type="button" class="btn btn-primary" value="Write" onclick="location.href='noticeWriteForm.do'">
-			</c:otherwise>
-		</c:choose>
+		<c:set var="admin" value="javaKim051@gmail.com" />
+		<c:if test="${admin eq userid }">
+			<input type="button" class="btn btn-primary" value="Write" onclick="location.href='noticeWriteForm.do'">
+		</c:if>
+<%-- 		<c:choose> --%>
+<%-- 			<c:when test="${admin ne userid || userid == null }"> --%>
+<!-- 				<input type="button" class="btn btn-primary" value="Administrator's rights" onclick="location.href='main.do'"> -->
+<%-- 			</c:when> --%>
+<%-- 			<c:otherwise> --%>
+<!-- 				<input type="button" class="btn btn-primary" value="Write" onclick="location.href='noticeWriteForm.do'"> -->
+<%-- 			</c:otherwise> --%>
+<%-- 		</c:choose> --%>
 		<br>
 
 

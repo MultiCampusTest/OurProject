@@ -119,6 +119,21 @@ public class MatchingController {
 		return matchingService.matchingList(mch_t_userid);
 
 	}
+	
+	@RequestMapping(value = "androidMatchingReject.do", method = RequestMethod.GET)
+	public @ResponseBody HashMap<String, Object> androidMatchingReject(String b_idx, String mch_g_userid,
+			String mch_t_userid) {
+		System.out.println("안드로이드 매칭 거절 요청");
+
+		// String[] str = b_idx.split(".");
+		// int num = Integer.parseInt(str[0]);
+
+		int num = Integer.parseInt(b_idx);
+
+		matchingService.matchingModify(num, mch_g_userid, 3);
+		return matchingService.matchingList(mch_t_userid);
+
+	}
 
 	@RequestMapping(value = "matchingReject.do", method = RequestMethod.POST)
 	public @ResponseBody HashMap<String, Object> matchingReject(HttpSession session, int b_idx, String mch_g_userid) {

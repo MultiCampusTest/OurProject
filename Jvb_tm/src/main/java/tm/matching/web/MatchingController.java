@@ -115,9 +115,10 @@ public class MatchingController {
       }
     
     @RequestMapping(value="androidMatchingSuccess.do", method=RequestMethod.GET)
-    public @ResponseBody HashMap<String, Object> androidMatchingSuccess(int b_idx, String mch_g_userid, String mch_t_userid){
+    public @ResponseBody HashMap<String, Object> androidMatchingSuccess(String b_idx, String mch_g_userid, String mch_t_userid){
        System.out.println("안드로이드 매칭 수락 요청");
-         matchingService.matchingModify(b_idx, mch_g_userid, 1);
+       int num = Integer.parseInt(b_idx);
+         matchingService.matchingModify(num, mch_g_userid, 1);
          return matchingService.matchingList(mch_t_userid);
          
      } 

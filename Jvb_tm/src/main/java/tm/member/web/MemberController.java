@@ -226,6 +226,16 @@ public class MemberController {
 	
 	
 	
+	@RequestMapping(value="androidLogin.do", method=RequestMethod.GET)
+	public @ResponseBody HashMap<String, Object> androidLogin(String userid, String pwd){
+		HashMap<String, Object> response=new HashMap<>();
+		boolean loginCheck=memberService.checkLogin(userid, pwd);
+		response.put("loginCheck", loginCheck);
+		return response;
+	
+	}
+	
+	
 	
 	
 	//안드로이드 회원 정보 요청

@@ -79,10 +79,10 @@ public class BoardController {
 								   @RequestParam(defaultValue="1") int page, 
 								   String searchValue) {
 		String code = "n";
-		String userid = (String)(req.getSession().getAttribute("userid"));
+//		String userid = (String)(req.getSession().getAttribute("userid"));
 		ModelAndView mav = new ModelAndView();
 		mav.addAllObjects(boardService.getNoticeBoardList(code, page, searchValue));
-		mav.addObject("userid", "javaKim501@gmail.com");
+//		mav.addObject("userid", "javaKim501@gmail.com");
 		mav.setViewName("board/notice_list");
 		return mav;
 	}

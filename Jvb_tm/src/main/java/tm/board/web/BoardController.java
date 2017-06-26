@@ -77,10 +77,8 @@ public class BoardController {
 	public ModelAndView noticeList(HttpServletRequest req, @RequestParam(defaultValue = "1") int page,
 			String searchValue) {
 		String code = "n";
-		// String userid = (String)(req.getSession().getAttribute("userid"));
 		ModelAndView mav = new ModelAndView();
 		mav.addAllObjects(boardService.getNoticeBoardList(code, page, searchValue));
-		// mav.addObject("userid", "javaKim501@gmail.com");
 		mav.setViewName("board/notice_list");
 		return mav;
 	}
@@ -97,10 +95,11 @@ public class BoardController {
 	@RequestMapping(value = "noticeWriteForm.do")
 	public String noticeWriteForm(HttpServletRequest req) {
 		String userid = (String) req.getSession().getAttribute("userid");
-		if (userid != "javaKim051@gmail.com") {
-			return "redirect:noticeList.do";
-		} else {
+
+		if (userid.equals("javaKim051@gmail.com") || userid.equals("javakim051@gmail.com")) {
 			return "board/notice_write_form";
+		} else {
+			return "redirect:noticeList.do";
 		}
 	}
 

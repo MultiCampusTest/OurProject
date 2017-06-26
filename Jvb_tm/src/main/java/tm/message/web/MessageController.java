@@ -172,5 +172,19 @@ public class MessageController {
 		return response;
 	}
 	
+	@RequestMapping(value="androidMessageSend.do", method=RequestMethod.GET)
+	public @ResponseBody HashMap<String, Object> 
+			androidMessageSend(String msg_send_userid,
+					String msg_receive_userid, String msg_contents){
+		HashMap<String, Object> response=new HashMap<>();
+		MessageVo messageVo=new MessageVo();
+		messageVo.setMsg_send_userid(msg_send_userid);
+		messageVo.setMsg_receive_userid(msg_receive_userid);
+		messageVo.setMsg_contents(msg_contents);
+		response.put("messageSendCheck", messageService.sendMessage(messageVo));
+		return response;
+		
+	}
+	
 	
 }

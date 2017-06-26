@@ -24,7 +24,7 @@ public class LoginCheckInterceptor extends HandlerInterceptorAdapter{
 //		return super.preHandle(request, response, handler);
 		if(request.getSession().getAttribute("userid") == null)
 		{	
-			response.sendRedirect("loginRequest.do");
+			response.sendRedirect("loginProc.do");
 			return false;
 		}
 		else

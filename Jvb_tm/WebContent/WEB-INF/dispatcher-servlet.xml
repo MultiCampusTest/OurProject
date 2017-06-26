@@ -28,6 +28,7 @@
 
 	<mvc:interceptors>
 		<mvc:interceptor>
+			<mvc:mapping path="/noticeWriteForm.do" />
 			<mvc:mapping path="/guideWriteForm.do" />
 			<mvc:mapping path="/travelWriteForm.do" />
 			<mvc:mapping path="/reviewWriteForm.do" />

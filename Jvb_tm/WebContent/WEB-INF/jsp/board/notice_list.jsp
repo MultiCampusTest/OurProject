@@ -61,7 +61,7 @@
 			</tbody>
 		</table>
 		<br>
-		<c:set var="admin" value="javaKim051@gmail.com" />
+		<c:set var="admin" value="javakim051@gmail.com" />
 		<c:if test="${admin eq userid }">
 			<input type="button" class="btn btn-primary" value="Write" onclick="location.href='noticeWriteForm.do'">
 		</c:if>

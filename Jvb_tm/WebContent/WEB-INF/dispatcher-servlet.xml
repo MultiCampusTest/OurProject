@@ -15,9 +15,10 @@
 	<bean class="org.springframework.web.servlet.view.tiles2.TilesViewResolver">
 		<property name="suffix" value=".tiles"></property>
 	</bean>
-	
-<!-- 	파일업로드관련 -->
-	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"></bean>
+
+	<!-- 파일업로드관련 -->
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver"></bean>
 
 	<mvc:resources location="/img/" mapping="/img/**" />
 	<mvc:resources location="/css/" mapping="/css/**" />
@@ -25,16 +26,13 @@
 	<mvc:resources location="/vendor/" mapping="/vendor/**" />
 	<mvc:annotation-driven></mvc:annotation-driven>
 
-<!-- 	<mvc:interceptors> -->
-<!-- 		<mvc:interceptor> -->
-<!-- 			<mvc:mapping path="/guideWriteForm.do" /> -->
-<!-- 			<mvc:mapping path="/travelWriteForm.do" /> -->
-<!-- 			<mvc:mapping path="/reviewWriteForm.do" /> -->
-<!-- 			<bean class="tm.log4j.LoginCheckInterceptor" id="logInterceptor" /> -->
-<!-- 		</mvc:interceptor> -->
-<!-- 	</mvc:interceptors> -->
-
-
-
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/guideWriteForm.do" />
+			<mvc:mapping path="/travelWriteForm.do" />
+			<mvc:mapping path="/reviewWriteForm.do" />
+			<bean class="tm.log4j.LoginCheckInterceptor" id="logInterceptor" />
+		</mvc:interceptor>
+	</mvc:interceptors>
 
 </beans>

@@ -95,8 +95,13 @@ public class BoardController {
 	}
 
 	@RequestMapping(value = "noticeWriteForm.do")
-	public String noticeWriteForm() {
-		return "board/notice_write_form";
+	public String noticeWriteForm(HttpServletRequest req) {
+		String userid = (String) req.getSession().getAttribute("userid");
+		if (userid != "javaKim051@gmail.com") {
+			return "redirect:noticeList.do";
+		} else {
+			return "board/notice_write_form";
+		}
 	}
 
 	@RequestMapping(value = "noticeWrite.do", method = RequestMethod.POST)
